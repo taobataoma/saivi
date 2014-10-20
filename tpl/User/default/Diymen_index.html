@@ -1,0 +1,142 @@
+<include file="Public:head"/>
+<script src="{Saivi::RES}/js/common.js" type="text/javascript"></script>
+<script type="text/javascript" src="{Saivi::RES}/js/jquery.min.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/js/main.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/js/global.js"></script>
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+
+
+<script type="text/javascript">
+ $(document).ready(function() {
+	
+	$("#iframe1").click(function(){
+		art.dialog.open("{Saivi:$f_siteUrl}{Saivi::U('Diymen/class_add')}",{lock:true,title:'添加菜单',width:760,height:480,yesText:'关闭',background: '#000',opacity: 0.45});
+	});
+ });
+ </script>
+
+<div class="content">
+
+<div class="cLineB">
+  <h4><span class=""><h1>注意：1级菜单最多只能开启3个，2级子菜单最多开启5个!</h1></span></h4>
+			  <button style="margin-top:-27px" class="ajax right btn btn-primary btn_submit  J_ajax_submit_btn cboxElement" id="iframe1" title="添加主菜单">添加菜单</button>
+ </div>
+ <div class="cLineD">
+ 	<form enctype="multipart/form-data" action="" method="post"> 
+    AppId:<input type="text" size="20" tabindex="1" class="px" value="{Saivi:$diymen.appid}" id="appid" name="appid" style="width:150px;">　 
+	AppSecret: <input type="text" size="20" tabindex="1" class="px" value="{Saivi:$diymen.appsecret}" id="appsecret" name="appsecret" style="width:250px;">
+	<button class=" btn btn-primary btn_submit  J_ajax_submit_btn" value="true" name="appidsubmit" type="submit"><strong>保存</strong></button>
+	<br><span style="color:red">通过认证服务号才能得到这2个值!</span>
+</form>
+         </div>
+         
+ <div class="msgWrap form">
+       <form enctype="multipart/form-data" action="" method="post"><input type="hidden" value="" name="anchor">
+<script src="/tpl/static/upyun.js"></script>
+
+		没内容      	  
+    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="ListProduct"> 
+<thead>
+<tr>
+	<th style=" width:60px;">显示顺序</th>
+	<th style=" width:220px;">主菜单名称</th>
+	<th style=" width:170px;">关联关键词</th>
+	<th>外链URL</th>
+	<th class="norightborder" style=" width:160px;">操作</th>
+</tr>
+</thead>
+   <tbody>
+  	<volist id="class" name="class">
+	<tr class="hover">
+        <td class="td25">
+			<span>{Saivi:$class.sort}</span>
+		</td>
+        <td>
+          <div>
+			<span>{Saivi:$class.title}</span>
+          </div>
+        </td>
+        <td><span>{Saivi:$class.keyword}</span></td>
+        <td><span><if condition="$class['url'] eq false">无链接地址<else/>
+			 <php>
+			 $url=$class['url'];
+			 //$url=str_replace(array('&','?','=','{siteUrl}'),array('%26','%3F','%3D',C('site_url')),$url);
+			 $url=htmlspecialchars_decode(str_replace(array('{siteUrl}'),array(C('site_url')),$url));
+			 </php>
+			 <a class="ajax btn btn-primary btn_submit  J_ajax_submit_btn cboxElement" href='###' Onclick='javascript:demo("<php>echo $url;</php>");' title="预览">预览</a>
+
+        <!--
+        {Saivi:$class.url}-->
+        </if></span></td>
+        <td>
+			<a class="ajax btn btn-primary btn_submit  J_ajax_submit_btn  cboxElement" href='###' Onclick='javascript:art.dialog.open("{Saivi:$f_siteUrl}{Saivi::U('Diymen/class_edit',array('id'=>$class['id']))}",{lock:true,title:"修改菜单",width:760,height:480,yesText:"关闭",background: "#000",opacity: 0.45});' title="修改主菜单">修改</a>
+			<a class=" btn btn-primary btn_submit  J_ajax_submit_btn " href="javascript:drop_confirm('您确定要删除吗?', '{Saivi:$f_siteUrl}{Saivi::U('Diymen/class_del',array('id'=>$class['id']))}');">删除</a>
+		</td>				
+      </tr>
+	  <volist id="class1" name="class['class']">
+	  <tr class="td29">
+			<td class="td25" colspan="1">
+				<span>{Saivi:$class1.sort}</span>
+			</td>
+			<td colspan="1">
+			  <div class="board">
+				<span>{Saivi:$class1.title}</span>
+			  </div>
+			</td>
+			
+			<td colspan="1">
+				<span>{Saivi:$class1.keyword}</span>
+			</td>
+			 <td><span><if condition="$class1['url'] eq false">无链接地址<else/>
+			 <php>
+			 $url=$class1['url'];
+			 //$url=str_replace(array('&','?','=','{siteUrl}'),array('%26','%3F','%3D',C('site_url')),$url);
+			 $url=str_replace(array('{siteUrl}'),array(C('site_url')),$url);
+			 </php>
+			 <a class="ajax btn btn-primary btn_submit  J_ajax_submit_btn cboxElement" href='###' Onclick='javascript:demo("<php>echo $url;</php>");' title="预览">预览</a></if></span></td>			
+			<td colspan="1">
+
+			<a class="ajax btn btn-primary btn_submit  J_ajax_submit_btn  cboxElement" href='###' Onclick='javascript:art.dialog.open("{Saivi:$f_siteUrl}{Saivi::U('Diymen/class_edit',array('id'=>$class1['id']))}",{lock:true,title:"修改菜单",width:760,height:480,yesText:"关闭",background: "#000",opacity: 0.45});' title="修改主菜单">修改</a>
+			<a class=" btn btn-primary btn_submit  J_ajax_submit_btn " href="javascript:drop_confirm('您确定要删除吗?', '{Saivi:$f_siteUrl}/{Saivi::U('Diymen/class_del',array('id'=>$class1['id']))}');">删除</a></td>				
+	 </tr>	
+	</volist>
+	</volist>
+	<tr class="hover">
+        <td class="td25" colspan="5">
+		<if condition="$class neq false">
+		<a class="btn btn-primary btn_submit  J_ajax_submit_btn " onclick="drop_confirm('自定义菜单最多勾选3个，每个菜单的子菜单最多5个，请确认!', '{Saivi::U('Diymen/class_send')}');" title="">生成自定义菜单</a>
+		</if>
+		<span style="float:left;" id="cdul">
+		<style>
+			#cdul{
+				float:left;
+				color:red;
+			}
+		</style>
+		注：<br>
+		(使用前提是已经拥有了自定义菜单的用户才能够使用，)<br>
+		第一步:必须先填写【AppId】【 AppSecret】！<br>
+		第二步:添加菜单，<br>
+		第三步:点击生成!<br>
+		注意：1级菜单最多只能开启3个，2级子菜单最多开启5个<br>
+		官方说明：修改后，需要重新关注，或者最迟隔天才会看到修改后的效果！<br>
+		</span>
+		</td>				
+      </tr>
+	      	  
+    </tbody>
+</table>
+</form>
+       <p>
+
+       </p>
+       <div class="clear"></div>
+      </div>
+  </div>
+         </div>
+        </dd>
+</dl>
+<include file="Public:footer"/>  
+ 

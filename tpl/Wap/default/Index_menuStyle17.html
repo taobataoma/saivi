@@ -1,0 +1,162 @@
+<link rel="stylesheet" href="{Saivi::RES}/css/138/common.css?20130923">
+<link rel="stylesheet" href="{Saivi::RES}/css/138/css.css?20130924">
+
+		<link rel="stylesheet" href="{Saivi::RES}/css/138/post-insert.css">
+
+		<link rel="stylesheet" href="{Saivi::RES}/css/138/animate.min.css">
+
+
+
+
+		<script src="{Saivi::RES}/css/138/jquery-1.6.3.min.js"></script>
+
+		<script src="{Saivi::RES}/css/138/js.js"></script>
+
+
+		<script src="{Saivi::RES}/css/138/menu.js"></script>
+
+<script>
+			
+			var omenu;
+			document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+				if (parseInt($('#unhideToolbar').val()) !== 1) {
+					WeixinJSBridge.call('hideToolbar');
+				}
+			});
+			$(function() {
+				omenu = new menu({
+					id: 'home-menu',
+					target: $('.home_nav > .mid > .plus'),
+					bottom: 55,
+					
+					
+				});
+				postInsert({
+					target: $('.send-post'),
+					power: false				});
+			});
+		
+		</script>
+<!--[if !IE]><!-->
+<link rel="stylesheet" href="http://chenkun.mybitsea.com/themes/default/css/ie10.css">
+<script>
+<script type="text/javascript">
+
+				var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+
+				document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F66299d8682992cb677d8c5d068c7da53' type='text/javascript'%3E%3C/script%3E"));
+
+			</script>
+<script>
+
+			if (/*@cc_on!@*/false) {
+
+				document.documentElement.className += ' ie10';
+
+			}
+
+		</script>
+<script src="{Saivi::RES}/css/138/menu.js"></script>
+
+		<script src="{Saivi::RES}/css/138/jquery-1.6.3.min.js"></script>
+
+		<script src="{Saivi::RES}/css/138/js.js"></script>
+
+		<script src="{Saivi::RES}/css/138/upload.js"></script>
+
+		<script src="{Saivi::RES}/css/138/confirm.js"></script>
+
+		<script src="{Saivi::RES}/css/138/post-insert.js"></script>
+
+		<script src="{Saivi::RES}/css/138/menu.js"></script>
+<style type="text/css">
+.home_nav {
+	width: 100%;
+	background-color: #000;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 99999;
+	height: 45px;
+	padding-top:10px;
+}
+
+.home_nav .left,.home_nav .mid,.home_nav .right {
+	width: 33.333%;
+	float: left;
+	padding-top: 5px;
+}
+
+.home_nav a {
+	display: block;
+}
+
+.home_nav .home {
+	background: url('/tpl/Wap/default/common/css/138/nav.png') no-repeat 0px 0px;
+	background-size: 430.5px 26.25px;
+	width: 37px;
+	height: 26px;
+	margin-left: 10px;
+	float: left;
+}
+
+.home_nav .profile {
+	background: url('/tpl/Wap/default/common/css/138/nav.png') no-repeat -62.25px 0px;
+	background-size: 430.5px 26.25px;
+	width: 27px;
+	height: 26.25px;
+	margin-left: 10px;
+	float: left;
+}
+
+.home_nav .plus {
+	background: url('/tpl/Wap/default/common/css/138/nav.png') no-repeat -198px 0px;
+	background-size: 430.5px 26.25px;
+	width: 28px;
+	height: 26.25px;
+	margin: 0 auto;
+}
+
+.home_nav .back {
+	background: url('/tpl/Wap/default/common/css/138/nav.png') no-repeat -301.5px 0px;
+	background-size: 430.5px 26.25px;
+	width: 37px;
+	height: 26.25px;
+	margin-right: 10px;
+	float: right;
+}
+
+.home_nav .forward {
+
+}
+
+.home_nav .refresh {
+	background: url('/tpl/Wap/default/common/css/138/nav.png') no-repeat -406.5px 0px;
+	background-size: 430.5px 26.25px;
+	width: 27px;
+	height: 26.25px;
+	margin-right: 10px;
+	float: right;
+}
+
+.hide_height {
+	clear: both;
+	width: 100%;
+	height: 45px;
+}
+
+</style>
+
+<div class="menu-div animated bounceInUp display" id="home-menu" style="bottom: 55px; display: none;">
+ <volist name="catemenu" id="vo">
+  <div class=""><a style="background-image:url({Saivi:$vo.picurl})" <?php if($vo['vo']){echo 'onclick="javascript:displayit('.$vo['k'].')"';}else{echo 'href="'.$vo['url'].'"';}?>>{Saivi:$vo.name}</a></div>
+  </volist>
+  
+</div>
+
+<div id="plug-wrap" onclick="showall()" style="display: none;"></div>
+<div class="home_nav">
+  <div class="left"> <a  class="home"href="?g=Wap&m=Index&a=index&token={Saivi:$token}&wecha_id={Saivi:$wecha_id}"></a><a class="profile" href="#"></a>  </div>
+  <div class="mid"> <a class="plus"></a> </div>
+  <div class="right"> <a href="javascript:window.location.reload();" class="refresh"></a> <a class="back" href="javascript:history.back();"></a> </div>
+</div>

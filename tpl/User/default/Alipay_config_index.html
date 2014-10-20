@@ -1,0 +1,95 @@
+<include file="Public:head"/>
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<div class="content">
+
+<div class="cLineB">
+  <h4>在线支付配置 </h4>
+   <div class="ftip" style="margin:10px 0">支持微信支付、财付通（WAP接口或者即时到帐接口）和支付宝支付（即时到帐接口）。请填写真实信息，否则支付中可能会出现错误</div> 
+ </div>
+   
+ <!--tab start-->
+<script>
+function ccolumns(value){
+	if(value=='alipay'){
+		$('.alipay').css('display','');
+		$('.tenpay').css('display','none');
+	}else{
+		$('.alipay').css('display','none');
+		$('.tenpay').css('display','');
+	}
+}
+</script>
+<!--tab end-->    
+
+    <div class="msgWrap bgfc">
+	  <form class="form" method="post" action=""   enctype="multipart/form-data">	 
+	  
+		<table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tbody>
+			<tr>
+					<th>支付开关：</th>
+					<td><select name="open">
+					<option value="0" <if condition="$config.open eq 0">selected</if>>关闭支付</option>
+					<option value="1" <if condition="$config.open eq 1"> selected</if>>开启支付</option>
+					</select> 开启支付后，商城等b2c功能将有在线支付功能</td>
+				</tr>
+				<tr>
+					<th>支付方式：</th>
+					<td>
+					<select name="paytype" onchange="ccolumns(this.value)">
+					<option value="weixin" <if condition="$config.paytype eq 'weixin'"> selected</if>>微信支付</option>
+					<option value="alipay" <if condition="$config.paytype eq 'alipay'">selected</if>>支付宝</option>
+					<option value="tenpay" <if condition="$config.paytype eq 'tenpay'"> selected</if>>财付通(WAP手机接口)</option>
+					<option value="tenpayComputer" <if condition="$config.paytype eq 'tenpayComputer'"> selected</if>>财付通(即时到帐接口)</option>
+					</select> </td>
+				</tr>
+				
+				<tr class="alipay" <if condition="$config.paytype neq 'alipay'">style="display:none"</if>>
+					<th width="120">帐号：</th>
+					<td><input type="text" name="name" value="{Saivi:$config.name}" class="px" style="width:550px;"></td>
+				</tr>
+				<tr class="alipay" <if condition="$config.paytype neq 'alipay'">style="display:none"</if>>
+					<th width="120">PID：</th>
+					<td><input type="text" name="pid" value="{Saivi:$config.pid}" class="px" style="width:550px;"></td>
+				</tr>
+				<tr class="alipay" <if condition="$config.paytype neq 'alipay'">style="display:none"</if>>
+					<th>KEY：</th>
+					<td><input type="text" name="key" value="{Saivi:$config.key}" class="px" style="width:550px;"></td>
+				</tr>
+
+				<tr class="tenpay" <if condition="$config.paytype eq 'alipay'">style="display:none"</if>>
+					<th>appId：</th>
+					<td><input type="text" name="appid" value="{Saivi:$config.appid}" class="px" style="width:350px;"> 公众号身份的唯一标识（使用财付通接口不用填写）</td>
+				</tr>
+				<tr class="tenpay" <if condition="$config.paytype eq 'alipay'">style="display:none"</if>>
+					<th>paySignKey：</th>
+					<td><input type="text" name="paysignkey" value="{Saivi:$config.paysignkey}" class="px" style="width:350px;"> 公众号支付请求中用于加密的密钥Key（使用财付通接口不用填写）</td>
+				</tr>
+				<tr class="tenpay" <if condition="$config.paytype eq 'alipay'">style="display:none"</if>>
+					<th>AppSecret：</th>
+					<td><input type="text" name="appsecret" value="{Saivi:$config.appsecret}" class="px" style="width:350px;"> （使用财付通接口不用填写）</td>
+				</tr>
+				<tr class="tenpay" <if condition="$config.paytype eq 'alipay'">style="display:none"</if>>
+					<th>partnerId：</th>
+					<td><input type="text" name="partnerid" value="{Saivi:$config.partnerid}" class="px" style="width:350px;"> 财付通商户身份的标识</td>
+				</tr>
+				<tr class="tenpay" <if condition="$config.paytype eq 'alipay'">style="display:none"</if>>
+					<th>partnerKey：</th>
+					<td><input type="text" name="partnerkey" value="{Saivi:$config.partnerkey}" class="px" style="width:350px;"> 财付通商户权限密钥Key</td>
+				</tr>
+
+				<th>&nbsp;</th>
+					<td>
+					<input type="hidden" name="token" value="{Saivi:$token}" />
+						<button type="submit" name="button" class="btn btn-primary btn_submit  J_ajax_submit_btn">保存</button>
+						<a href="javascript:history.go(-1);" class="btn">取消</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+  </div> 
+ 
+  
+        </div>
+<include file="Public:footer"/>

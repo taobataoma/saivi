@@ -1,0 +1,92 @@
+<include file="Public:head"/> 
+<script>
+function selectall(name) {
+	var checkItems=$('.cbitem');
+	if ($("#check_box").attr('checked')==false) {
+		$.each(checkItems, function(i,val){
+			val.checked=false;
+		});
+		
+	} else {
+		$.each(checkItems, function(i,val){
+			val.checked=true;
+		});
+	}
+}
+</script> 
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<div class="content" style="width:920px; background:none;   border:none; margin-bottom:30px;" >
+         
+          <div class="cLineB">
+              <h4 class="left">添加分类           
+              <div class="clr"></div>
+          </div>
+          <div class="cLine">
+			<div class="pageNavigator left">
+				<a href="{Saivi::U('Weilive/category_add',array('token'=>$token))}"  class="btn btn-primary btn_submit  J_ajax_submit_btn"><img src="./tpl/User/default/common/images/product/add.png" class="vm">添加分类
+				</a>
+			</div>
+			<div class="clr"></div>
+          </div>
+          <div class="msgWrap">
+          <form method="post" action="" id="info">
+          <input name="delall" type="hidden" value="del">
+           <input name="wxid" type="hidden" value="gh_423dwjkewad">
+            <table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+              <thead>
+                <tr>
+					<th>名称</th>					
+					<th>商户数</th>
+                    <th>显示顺序</th>
+                    <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <volist name="list" id="vo">           
+                <tr>
+					  <td><a href="{Saivi::U('Weilive/business_index',array('token'=>$token,'catid'=>$vo['id']))}">{Saivi:$vo.title}</a></td>
+					  <td>
+						<?php
+							echo countGetM("member_business","catid=".$vo['id']);						
+						?>					  
+					  </td>
+                      <td> {Saivi:$vo.displayorder}
+                      </td>
+					  <td>
+						&nbsp;&nbsp;<a href="{Saivi::U('Weilive/business_index',array('token'=>$token,'catid'=>$vo['id']))}">商户管理</a>&nbsp;&nbsp;<a class="edit" href="{Saivi::U('Weilive/business_add',array('token'=>$token,'catid'=>$vo['id']))}" >添加商户</a>
+						
+						&nbsp;&nbsp;<a class="edit" href="{Saivi::U('Weilive/category_edit',array('token'=>$token,'id'=>$vo['id']))}" >修改</a>
+
+						&nbsp;&nbsp;<a href="{Saivi::U('Weilive/delCategory',array('token'=>$token,'id'=>$vo['id']))}" onclick="return window.confirm('确定删除？');" >删除</a>
+					  </td>
+                </tr>
+				</volist>
+              </tbody>
+            </table>
+           </form> 
+			<script>
+			   function checkvotethis() {
+					var aa=document.getElementsByName('del_id[]');
+					var mnum = aa.length;
+					j=0;
+					for(i=0;i<mnum;i++){
+					if(aa[i].checked){
+					j++;
+					}
+					}
+					if(j>0) {
+					document.getElementById('info').submit();
+					} else {
+					alert('未选中内容！')
+					}
+				}
+			</script>
+          </div>
+          <div class="cLine">
+            <div class="pageNavigator right">
+                 <div class="pages">{Saivi:$page}</div>
+             </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+<include file="Public:footer"/>

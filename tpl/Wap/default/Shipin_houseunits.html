@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<link href="{Saivi::RES}/css/Estate/lp/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="{Saivi::RES}/css/Estate/lp/css/back.css" rel="stylesheet" type="text/css" media="all" />
+<script src="{Saivi::RES}/css/Estate/lp/js/share.js" type="text/javascript"></script>
+<script src="{Saivi::RES}/css/Estate/js/swipe.js" type="text/javascript"></script>
+<script src="{Saivi::RES}/css/Estate/js/zepto.js" type="text/javascript"></script>
+<script src="{Saivi::RES}/css/Estate/lp/js/common.js" type="text/javascript"></script>
+<script src="{Saivi::RES}/css/Estate/lp/js/picroll.js" type="text/javascript"></script>
+<title>食品展示</title>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta content="telephone=no, address=no" name="format-detection">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="shortcut icon" href="{Saivi::RES}/css/Estate/img/favicon.ico" />
+</head>
+<body onselectstart="return true;" ondragstart="return false;">
+<style type="text/css">
+	.btn_zoom_in,.btn_zoom_out,.btn_down {bottom: 100px;}
+	.btn_down{left: 20px;}
+	.btn_zoom_in,.btn_zoom_out{right:20px;}
+	.zoomDiv{
+		width:100%;
+		height:100%;
+		display:none;
+		z-index:299;
+		overflow:scroll;
+		text-align:center;
+		background: rgba(0,0,0,0.7) url({Saivi::RES}/css/Estate/lp/img/img.gif) no-repeat center center;
+		background-size:30px 30px;
+	}
+	.type_up .btn_more{top:45px;}
+	.type_full .type_up .btn_more{top:22px;}
+	.type_full .type_info .type_num{display:none;}
+
+</style>
+<div id="zoomDiv" class="zoomDiv"> <img id="zoomImg" width="200%" height="200%" src="{Saivi::RES}/css/Estate/lp/img/img.gif"> </div>
+<div id="detailContainer" class="type_show" style="overflow: hidden; ">
+  <div style="-webkit-transform:translate3d(0,0,0);">
+    <div id="banner_box" class="box_swipe">
+      <ul>
+        <volist name="elist" id="elist">
+          <li> <a onClick="return false;"> <img src="{Saivi:$info.picurl}" id="pic0" width="100%" height="583" style="margin: 0px auto; "/> </a> </li>
+        </volist>
+      </ul>
+    </div>
+  </div>
+  <script>
+		$(function(){
+			new Swipe(document.getElementById('banner_box'), {
+				speed:500,
+				auto:5000,
+				callback: function(){
+					var lis = $(this.element).next("ol").children();
+					lis.removeClass("on").eq(this.index).addClass("on");
+				}
+			});
+		});
+	</script>
+  <div class="type_info" id="picDetail" onClick="Picroll.switchDetail();">
+    <p class="type_num" id="typeNum">{Saivi:$info.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;展开详情</p>
+    <a href="javascript:void(0);" class="type_up"> <strong>销售门店：{Saivi:$info.sub}</strong> <span>食品名称：{Saivi:$info.name}</span> <em>重量：{Saivi:$info.area}</em> <span class="btn_more">关闭详情</span> </a>
+    <footer class="nav_footer">
+      <ul class="box_db">
+        <li><a href="javascript:history.go(-1);">返回</a></li>
+        <li><a href="javascript:history.go(1);">前进</a></li>
+        <li><a href="{Saivi::U('Shipin/shouye',array('token'=>$_GET['token'],'id'=>$estate['id']))}">首页</a></li>
+        <li><a href="javascript:location.reload();">刷新</a></li>
+      </ul>
+    </footer>
+    <div class="type_detail">
+      <p>口味：{Saivi:$info.lc}</p>
+      <p>重量：{Saivi:$info.area}</p>
+      <ul>
+        <li>食品介绍：
+          <php>echo htmlspecialchars_decode($info['content'])</php>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="popFail" style="display: none; " jqmoldstyle="block">
+  <div class="bk"></div>
+  <div class="cont"> <img src="img/img.gif"> 正在加载... </div>
+</div>
+<div class="pop_mask" id="popMask" style="display:none;"></div>
+<div mark="stat_code" style="width:0px; height:0px; display:none;"> </div>
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['shipin'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if></body>
+</html>

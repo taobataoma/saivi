@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{Saivi:$vote.title}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="{Saivi:$vote.title}">
+
+<link href="{Saivi::STATICS}/vote/wap/css/custom.css?v=1.0.1" rel="stylesheet">
+<link href="{Saivi::STATICS}/vote/wap/skins/all.css?v=1.0.1" rel="stylesheet">
+<!--link href="{Saivi::STATICS}/vote/wap/vote.css" rel="stylesheet"-->
+<script src="{Saivi::STATICS}/vote/wap/js/jquery.js"></script>
+<script src="{Saivi::STATICS}/vote/wap/icheck.js?v=1.0.1"></script>
+<script src="{Saivi::STATICS}/vote/wap/jquery.icheck.min.js"></script>
+ <style>
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+  margin:0;
+  padding:0;
+}
+body{
+  font:normal 14px/1.5 Microsoft YaHei,Helvitica,Verdana,Tohoma,Arial,san-serif;color:#000;
+  /*background: url(../images/themes/bg009.jpg) #D0D0D0;*/
+  background-size:288px auto;
+-webkit-user-select:none;margin:0 auto;padding:0;list-style:none;vertical-align:middle}
+a {
+  color: #C00;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+#vote-text ul {
+    list-style: none outside none;
+    margin: 0 auto;
+    padding: 0;
+    background-color: white;
+}
+#vote-text li{
+  display:block;
+  position:relative;
+  display:block;
+  margin:0;
+  padding:0;
+  -webkit-border-radius:3px;
+  -moz-border-radius:3px;
+  border-radius: 3px;
+  /*box-shadow:0 0 2px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow:0 0 2px 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow:0 0 2px 0 rgba(0, 0, 0, 0.1);*/
+  border-bottom:1px solid #E6E6E6;
+}
+/*#vote-text li:hover{
+  background-color:#FAFAFA;
+}*/
+#vote-text li label{
+  display:block; padding:15px 5px 15px 10px; cursor:pointer;
+}
+#vote-text li label div{
+  float:left;
+}
+#vote-text li label span{
+  display: block;
+    margin-left: 25px;
+  margin-right: 5px;
+  font-size:14px;line-height: 20px
+}
+
+/*li label div.checked ~ span{
+  color:#3498db;
+}*/
+
+
+#vote-text .votebar{
+  padding-bottom:8px;
+}
+#vote-text .percentage{
+  bottom: 8px;
+    font-size: 10px;
+    max-width: 100px;
+    position: absolute;
+  line-height:10px;
+    right: 7px;
+}
+#vote-text .user{
+  max-width: 50px;
+  font-style:normal;
+  color:#333;
+  margin-left:3px;
+
+}
+#vote-text .pbg {
+  height: 10px;
+  background-color:rgba(0, 0, 0, 0.02);
+  box-shadow:1px 1px 1px 1px rgba(0, 0, 0, 0.07) inset;
+  -moz-box-shadow:1px 1px 1px 1px rgba(0, 0, 0, 0.07) inset;
+  -webkit-box-shadow:1px 1px 1px 1px rgba(0, 0, 0, 0.07) inset;
+  -webkit-border-radius:6px;
+  -moz-border-radius:6px;
+    border-radius: 6px;
+  margin-left:10px;
+  margin-right:100px;
+}
+#vote-text .pbr {
+    background-color: #5AAF4A;
+    border-radius: 6px;
+    height: 10px;
+}
+ul li{list-style:none;margin:5px;}
+.div_test {
+padding: 5px 10px 6px;
+text-decoration: none;
+
+border-radius: 15px;
+-moz-border-radius: 15px;
+-webkit-border-radius: 15px;
+
+-moz-box-shadow: 0 1px 2px rgba（0，0，0，0.5）;
+-webkit-box-shadow: 0 1px 2px rgba（0，0，0，0.5）;
+text-shadow: 0 -1px 1px rgba（0，0，0，0.25）;
+border-bottom: 1px solid rgba（0，0，0，0.25）;
+position: relative;
+cursor: pointer;
+background-color: #fff;
+}
+.date {
+  display:block;
+    color: #8C8C8C;
+    font-size: 11px;
+    margin:5px auto 10px auto;
+}
+.modus{
+  margin:0; font-size:14px; line-height:30px;border-top:1px solid #E6E6E6;border-bottom:1px solid #E6E6E6; margin:15px 0 0 0; background-color:#FAFAFA; text-align:center
+}
+.number{
+  color:#999;
+}
+.clr{
+  display:block;
+  clear:both;
+  height:1px;
+  overflow:hidden;
+}
+h2{
+  font-size:18px;
+  line-height:22px;
+  font-weight:normal;
+  margin:0;
+  word-break:normal;
+  word-wrap:break-word;
+}
+
+.pxbtn {
+
+  background: #ff6501;
+  background-image: -webkit-gradient(linear, left top, left bottom, from( #ffa201 ), to( #ff6501 )); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient( #ffa201 , #ff6501 ); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient( #ffa201 , #ff6501 ); /* FF3.6 */
+  background-image:     -ms-linear-gradient( #ffa201 , #ff6501 ); /* IE10 */
+  background-image:      -o-linear-gradient( #ffa201 , #ff6501 ); /* Opera 11.10+ */
+  background-image:         linear-gradient( #ffa201 , #ff6501 );
+  border: 1px solid #ff6501;
+  border-bottom: 1px solid #d35605;
+  color: #ffffff;
+  font-weight: bold;
+  text-shadow: 0 1px 0 #FFFFFF;
+  border-radius: 0.6em 0.6em 0.6em 0.6em;
+  display: block;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  text-shadow: 0 0 2px #BE4205;
+  font-size: 18px;
+  padding:10px;
+  margin:15px 0 0 0;
+}
+.pxbtn:visited {
+  background-image: -webkit-gradient(linear, left top, left bottom, from( #ffa201 ), to( #ff6501 )); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient( #ffa201 , #ff6501 ); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient( #ffa201 , #ff6501 ); /* FF3.6 */
+  background-image:     -ms-linear-gradient( #ffa201 , #ff6501 ); /* IE10 */
+  background-image:      -o-linear-gradient( #ffa201 , #ff6501 ); /* Opera 11.10+ */
+  background-image:         linear-gradient( #ffa201 , #ff6501 );
+}
+.pxbtn:hover {
+  background-image: -webkit-gradient(linear, left top, left bottom, from( #ff7f01 ), to( #ff6501 )); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient( #ff7f01 , #ff6501 ); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient( #ff7f01 , #ff6501 ); /* FF3.6 */
+  background-image:     -ms-linear-gradient( #ff7f01 , #ff6501 ); /* IE10 */
+  background-image:      -o-linear-gradient( #ff7f01 , #ff6501 ); /* Opera 11.10+ */
+  background-image:         linear-gradient( #ff7f01 , #ff6501 );
+}
+.pxbtn:active {
+  background-image: -webkit-gradient(linear, left top, left bottom, from( #ff6501 ), to( #ffa201 )); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient( #ff6501 , #ffa201 ); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient( #ff6501 , #ffa201 ); /* FF3.6 */
+  background-image:     -ms-linear-gradient( #ff6501 , #ffa201 ); /* IE10 */
+  background-image:      -o-linear-gradient( #ff6501 , #ffa201 ); /* Opera 11.10+ */
+  background-image:         linear-gradient( #ff6501 , #ffa201 );
+  border: 1px solid #ff6501;
+  border-top: 1px solid #d35605;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3) inset;
+}
+
+.vote_result_meta {
+    display: inline-block;
+    vertical-align: top
+}
+ .vote_graph {
+    display: block;
+    background-color: #dedede
+}
+ .vote_progress {
+    display: block;
+    background-color: #dedede;
+    height: 5px
+}
+
+</style>
+</head>
+<body id="vote-text" style="width:100%;margin:0 auto;">
+<div class="vote">
+  <div class="layout clear div_test" style="width:100%">
+
+      <div class="skin skin-line">
+            <!--div class="skin-section"-->
+            <div>
+            <h2>{Saivi:$vote.title}</h2>
+              <span class="date">{Saivi:$vote.statdate|date="Y-m-d",###} / {Saivi:$vote.enddate|date="Y-m-d",###}</span>
+               <p class="modus">{Saivi:$vote['info']|htmlspecialchars_decode|htmlspecialchars_decode}</p><p>
+         <br/>
+               <if condition="($vote['picurl'] neq '') AND ($vote['showpic'] eq 1) ">
+               <p><img src="{Saivi:$vote.picurl}" style="width:100%;" /></p>
+               </if>
+
+             <p class="modus"> <if condition="$vote['cknums'] eq 1"> 单选<else/>多选</if>投票，<span class="number">共有{Saivi:$count} 人参与投票</span></p>
+       <br/>
+<!--投票选项开始-->
+
+        <ul class="list">
+              <volist name="vote_item" id="li">
+<if condition="$vote['cknums'] eq 1"> <!--单选投票开始-->
+          <if condition="$vote['type'] eq 'text'"> <!--单选 文字投票开始-->
+              <li>
+                  <input tabindex="{Saivi:$i}" type="radio" name="vid" value="{Saivi:$li.id}" id="line-radio-{Saivi:$i}">
+                  <label for="line-radio-{Saivi:$i}">{Saivi:$li.item}</label>
+                  <div class="progress-bar orange shine">
+                      <span style="width: {Saivi:$li.per|default=0}%"> {Saivi:$li.per}%</span>&nbsp; &nbsp;<span>{Saivi:$li['pro']}(人)</span>
+                      <div class="vote_result_meta vote_graph">
+                <span style="width:{Saivi:$li.per|default=0}%;background-color:#<?php echo rand(100000,999999);?>" class="vote_progress"></span>
+                </div>
+                  </div>
+
+              </li>
+          <else/> <!--单选 图片投票开始-->
+                <li>
+                    <span><a href="{Saivi:$li.tourl}"><img src="{Saivi:$li.startpicurl}" heigth="260" style="width:100%;max-height:720px;"></a></span>
+                    <input tabindex="{Saivi:$i}" type="radio" name="vid" value="{Saivi:$li.id}" id="line-radio-{Saivi:$i}">
+                    <label for="line-radio-{Saivi:$i}">{Saivi:$li.item}</label>
+                    <div class="progress-bar orange shine">
+                    <span style="width: {Saivi:$li.per|default=0}%">{Saivi:$li.per}%</span>&nbsp; &nbsp;<span>{Saivi:$li['pro']}(人)</span>
+                    <div class="vote_result_meta vote_graph">
+                <span style="width:{Saivi:$li.per|default=0}%;background-color:#<?php echo rand(100000,999999);?>" class="vote_progress"></span>
+                </div>
+                </div>
+              </li>
+          </if>
+
+
+<else/><!--多选 投票开始-->
+                    <if condition="$vote['type'] eq 'text'"><!--多选 文字投票开始-->
+              <li>
+
+                <input tabindex="{Saivi:$i}" type="checkbox" name="vid" value="{Saivi:$li['id']}"  id="line-checkbox-{Saivi:$i}">
+                <label for="line-checkbox-{Saivi:$i}">{Saivi:$li.item}</label>
+                <div class="progress-bar orange shine">
+                <span style="width: {Saivi:$li.per|default=0}%">{Saivi:$li.per}%</span>&nbsp; &nbsp;<span>{Saivi:$li['pro']}(人) </span>
+                <div class="vote_result_meta vote_graph">
+                <span style="width:{Saivi:$li.per|default=0}%;background-color:#<?php echo rand(100000,999999);?>" class="vote_progress"></span>
+                </div>
+                </div>
+
+             </li>
+          <else/> <!--多选 图片投票开始-->
+                <li>
+                <span><a href="{Saivi:$li.tourl}"><img src="{Saivi:$li.startpicurl}" heigth="260" style="width:100%;max-height:720px;" ></a></span>
+
+                  <input tabindex="{Saivi:$i}" type="checkbox" name="vid" value="{Saivi:$li.id}"  id="line-checkbox-{Saivi:$i}">
+                <label for="line-checkbox-{Saivi:$i}">{Saivi:$li.item}</label>
+                <div class="progress-bar orange shine">
+                 <span style="width: {Saivi:$li.per|default=0}%">{Saivi:$li.per}%</span>&nbsp; &nbsp;<span>{Saivi:$li['pro']}(人)</span>
+                 <div class="vote_result_meta vote_graph">
+                <span style="width:{Saivi:$li.per|default=0}%;background-color:#<?php echo rand(100000,999999);?>" class="vote_progress"></span>
+                </div>
+                </div>
+              </li>
+          </if>
+  </if> <!--投票结束-->
+                </volist>
+        </ul>
+
+       <?php
+        if($vote['enddate'] < time()){
+            if($vote_record == 1){ ?>
+                    您已投过票，投票项为: <p style="color: coral;"><volist name="hasitems" id="vo">
+                   {Saivi:$vo['item']},
+                    </volist></p>
+                   <br/> 活动已经过结束<br/>
+         <?php   }else{
+               echo "活动已经过结束";
+            }
+
+        }elseif($vote['statdate'] > time()){
+            echo "活动还没正式开始";
+        }else{
+        ?>
+         <input class="pxbtn" name="sub" id="sub" value="提交选票" type="submit">
+        <?php
+        }
+       ?>
+
+
+         <br/><br/>
+    </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+     $('.skin-line input').each(function(){
+       var self = $(this),
+        label = self.next(),
+        label_text = label.text();
+
+       label.remove();
+       self.iCheck({
+         checkboxClass: 'icheckbox_line-orange',
+         radioClass: 'iradio_line-orange',
+         insert: '<div class="icheck_line-icon"></div>' + label_text
+       });
+
+    });
+
+  $(".pxbtn").bind("click",function(){
+     var self = $(this);
+    var chk = document.getElementsByName('vid');
+    var objarray = chk.length;
+    var chid = "";
+    var wecha_id = "{Saivi:$wecha_id}";
+    var token  = "{Saivi:$token}";
+    var tid = "{Saivi:$id}";
+    for (i=0;i<objarray;i++)
+    {
+      if(chk[i].checked == true)
+      {
+         chid+=chk[i].value+",";
+      }
+    }
+    if(wecha_id == ''){
+        alert("请关注后再重新打开此页面。");
+        return;
+    }
+    if(chid == ""){
+      alert("您还没选择哦。");
+      return;
+    }else{
+        var submitData={
+            wecha_id : wecha_id,
+            tid      : tid,
+            chid     : chid,
+            token    : token,
+            action   : "add_vote"
+        };
+        $.post('index.php?g=Wap&m=Vote&a=add_vote&token={Saivi:$token}&wecha_id={Saivi:$wecha_id}', submitData, function(bakcdata) {
+          var obj=eval('('+bakcdata+')');
+          if(obj.success == 1){
+           alert('您已投票成功');
+          setTimeout("window.location.href='index.php?g=Wap&m=Vote&a=index&token={Saivi:$token}&wecha_id={Saivi:$wecha_id}&id={Saivi:$id}'",2000);
+              return
+          }else{
+            alert('您已经投票过了');
+            return false;
+          }
+
+        });
+
+    }
+
+  });
+
+});
+</script>
+</div>
+</div>
+<script type="text/javascript">
+window.shareData = {
+            "moduleName":"Vote",
+            "moduleID":"0",
+            "imgUrl": "{Saivi:$vote.picurl}",
+            "sendFriendLink": "{Saivi::C('site_url')}{Saivi::U('Vote/index',array('token'=>$token,'id'=>$id))}",
+            "tTitle": "{{Saivi:$vote.title}",
+            "tContent": "{Saivi:$vote['info']|html_entity_decode}"
+        };
+</script>
+{Saivi:$shareScript}
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['toupiao'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if></body>
+</html>

@@ -1,0 +1,73 @@
+<include file="Public:head"/> 
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<div class="content">
+<div class="cLineB">
+<h4 class="left">商品管理({Saivi:$page})</h4>
+<div class="clr"></div>
+</div>
+<!--tab start-->
+<div class="tab">
+<ul>
+<li class="tabli" id="tab2"><a href="{Saivi::U('Store/index',array('token'=>$token))}">商品分类管理</a></li>
+<li class="current tabli" id="tab0"><a href="{Saivi::U('Store/product',array('token'=>$token, 'catid'=>$catid))}">商品管理</a></li>
+<li class="tabli" id="tab2"><a href="{Saivi::U('Store/orders',array('token'=>$token))}">订单管理</a></li>
+<li class="tabli" id="tab5"><a href="{Saivi::U('Reply_info/set',array('token'=>$token,'infotype'=>'Shop'))}">商城回复配置</a></li>
+</ul>
+</div>
+<!--tab end-->
+<div class="cLine">
+<if condition="$catid neq 0">
+<div class="pageNavigator left">
+<a href="{Saivi::U('Store/addNew', array('token' => $token, 'catid' => $catid))}" title="添加" class="btn btn-primary btn_submit  J_ajax_submit_btn">
+<img src="{Saivi::RES}/images/product/add.png" width="16" class="vm">添加商品</a>
+</div>
+</if>
+<div class="pageNavigator right">
+	<a href="{Saivi::U('Store/index',array('token'=>$token,'catid'=>$catid))}" class="btn btn-primary btn_submit  J_ajax_submit_btn">返回</a>
+</div>
+<div class="clr"></div>
+</div>
+<div class="msgWrap">
+<form method="post" action="" id="info">
+<input name="delall" type="hidden" value="">
+<input name="wxid" type="hidden" value="">
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+<thead>
+<tr>
+<th class="select">选择</th>
+<th width="160">商品名称</th>
+<th width="60">价格</th>
+<th width="60">会员价</th>
+<th width="170">关键词</th>
+<th width="200">创建时间</th>
+<th width="150" class="norightborder">操作</th>
+</tr>
+</thead>
+<tbody>
+<tr></tr>
+<volist name="list" id="hostlist"> 
+<tr>
+<td><input type="checkbox" name="del_id[{Saivi:$i}]" value="285" class="checkitem"></td>
+<td>{Saivi:$hostlist.name}</td>
+<td>{Saivi:$hostlist.price}元</td>
+<td>{Saivi:$hostlist.vprice}元</td>
+<td>{Saivi:$hostlist.keyword}</td>
+<td>{Saivi:$hostlist.time|date="Y-m-d H:i:s",###}</td> 
+<td class="norightborder" align="center">
+	<a href="{Saivi::U('Store/addNew',array('id' => $hostlist['id'], 'token' => $token,'catid' => $catid))}">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="javascript:drop_confirm('您确定要删除吗?', '{Saivi::U('Store/del',array('id'=>$hostlist['id'],'token'=>$token,'catid'=>$catid))}');">删除</a>
+</td>
+</tr>
+</volist>
+</tbody>
+</table>
+</form>
+</div>
+<div class="cLine">
+<div class="pageNavigator right">
+<div class="pages">{Saivi:$page}</div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+<include file="Public:footer"/>

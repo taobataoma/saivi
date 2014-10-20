@@ -1,0 +1,93 @@
+<include file="Hotels:header"/>
+<body>
+	<div class="html">
+		<div class="main">
+<header>
+  <a href="{Saivi::U('Hotels/selectdate',array('token' => $_GET['token'], 'wecha_id' => $wecha_id))}" class="ico-hd arr-hd"></a>
+  <h1>{Saivi:$company['name']}</h1>
+  <a href="{Saivi::U('Hotels/my',array('token' => $_GET['token'], 'wecha_id' => $wecha_id))}" class="ico-hd ico-order">我的订单</a>
+</header>
+<div class="contxt cont-artical">
+  <div class="box-cont box-hotel">
+      <div class="hotel-th">
+      <span>
+      <a href="">
+      <img src="{Saivi:$company['logourl']}">
+      </a>
+      </span>
+      </div>
+    <div class="hotel-td">
+      <p><span class="ico ico-comment" >{Saivi:$company['name']}</span><i class="arrow arr-small"></i></p>
+      <p><span class="ico ico-phone" onclick="javascript:window.location.href='tel:{Saivi:$company['tel']}';">{Saivi:$company['tel']}</span><i class="arrow arr-small"></i></p>
+    </div>
+  </div>
+  <div class="box-cont box-list">
+		<a href="{Saivi::U('Card/companyMap', array('token'=>$token, 'wecha_id'=>$wecha_id, 'companyid'=>$company['id']))}">
+			<span class="ico ico-location">{Saivi:$company['address']}</span>
+			<span class="arrow arr-small"></span>
+		</a>
+		<a href="{Saivi::U('Card/companyMap', array('token'=>$token, 'wecha_id'=>$wecha_id, 'companyid'=>$company['id']))}">
+			<span class="ico ico-nav">一键导航</span>
+			<span class="arrow arr-small"></span>
+		</a>
+  </div>
+  <div class="box-cont box-txt box-hotel-txt">
+    <p><span>入住</span><b> {Saivi:$sday}</b></p>
+    <p><span>离店</span><b> {Saivi:$eday} （{Saivi:$days} 晚）</b></p>
+  </div>
+  <div class="box-cont box-list-room">
+	<volist name="list" id="sort">
+	<div class="list-li">
+	  <div class="table">
+	    <div class="hd box-txt td">
+	      <a class="box-block list-a"><span class="visuallyhidden">链接</span></a>
+	      <p><span>普通价格</span><em>￥{Saivi:$sort['price']}</em></p>
+	      <p><span>会员价格</span><em>￥{Saivi:$sort['vprice']}</em></p>
+	    </div>
+	    <div class="bd td">
+	      <span>{Saivi:$sort['name']} (容纳人数:{Saivi:$sort['num']})</span>
+	    </div>
+	    <div class="bd2 td">
+	    	<if condition="$sort['houses'] gt $sort['useHouse']">
+	    	<a class="btn btn-small" href="{Saivi::U('Hotels/order',array('wecha_id' => $wecha_id, 'token' => $token, 'sid' => $sort['id'], 'startdate' => $startdate, 'enddate' => $enddate))}">预订</a>
+	    	<else />
+	    	<a class="btn btn-error btn-small">已满</a>
+	    	</if>
+	        
+	    </div>
+	  </div>
+		  <volist name="sort['houseslist']" id="house">
+		  <div class="ft">
+		    <div class="fl">
+		      <img src="{Saivi:$house['image']}" height="150">
+		    </div>
+		    <div class="fr">
+		      <p>房间号：{Saivi:$house['name']}</p>
+		      <p>房间介绍：{Saivi:$house['note']}</p>
+		    </div>
+		  </div>
+		  </volist>
+	</div>
+	</volist>
+  </div>
+  <div class="tcenter"></div>
+  <div class="tcenter"><div class="isloading loading" style="display: none">加载中...</div></div>
+</div>
+	</div>
+</div>
+</body>
+
+<script type="text/javascript">
+window.shareData = {  
+            "moduleName":"Hotels",
+            "moduleID":"{Saivi:$company[0]['id']}",
+            "imgUrl": "{Saivi:$company[0]['logourl']}", 
+            "timeLineLink": "{Saivi::C('site_url') .  U('Hotels/hotel',array('token' => $_GET['token']))}",
+            "sendFriendLink": "{Saivi::C('site_url') .  U('Hotels/hotel',array('token' => $_GET['token']))}",
+            "weiboLink": "{Saivi::C('site_url') .  U('Hotels/hotel',array('token' => $_GET['token']))}",
+            "tTitle": "{Saivi:$metaTitle}",
+            "tContent": "{Saivi:$metaTitle}"
+        };
+</script>
+{Saivi:$shareScript}
+</html>

@@ -1,0 +1,58 @@
+<include file="Public:head"/>
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<div class="content">
+<div class="cLineB">
+  <h4>添加门店相册<span class="FAQ">请设置门店相册相关内容。</span></h4>
+</div>
+<div class="tab">
+<ul>
+<li class="tabli" id="tab0"><a href="{Saivi::U('Shipin/index',array('token'=>$token))}">食品公司简介</a></li>
+<li class="tabli" id="tab0"><a href="{Saivi::U('Shipinsub/index',array('token'=>$token))}">销售门店</a></li>
+<li class="tabli" id="tab0"><a href="{Saivi::U('Shipinunits/index',array('token'=>$token))}">食品分类</a></li>
+<li class="tabli" id="tab0"><a href="{Saivi::U('Shipinposter/index',array('token'=>$token))}">宣传海报</a></li>
+<li class="current tabli" id="tab0"><a href="{Saivi::U('Shipinphoto/index',array('token'=>$token))}">门店相册</a></li>
+<li class="tabli" id="tab0"><a href="{Saivi::U('Shipincom/index',array('token'=>$token))}">客户点评</a></li>
+</ul>
+</div>
+
+ <div class="cLineC" style="line-height: 32px;">
+ <a   href="{Saivi::U('Shipinphoto/add',array('token'=>$token))}" class="btnGrayS vm bigbtn" >添加相册</a>　 
+</div>
+ 
+ <div class="msgWrap form">
+
+<div class="bdrcontent">
+<div id="div_ptype">
+<table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+<thead>
+<tr> <th style=" width:100px;">名称</th>  <th style=" width:100px;">相册分类：</th> <th style=" width:100px;">排序</th>  <th style=" width:100px;">相册图片：</th></span></span></th>
+<th style=" width:120px;">操作</th>
+</tr>
+</thead>
+<volist name="info" id="vo">
+<tr><td>{Saivi:$vo.name}</td><td>{Saivi:$vo.namephoto}</td><td>{Saivi:$vo.sort}</td><td><div class="cateimg"><img src="{Saivi:$vo.picurl}" class="cateimg_small"  /></div></td><td class="norightborder">
+	
+	<a  href="{Saivi::U('Shipinphoto/edit',array('id'=>$vo['id']))}">编辑</a>
+	<a href="{Saivi::U('Shipinphoto/del',array('id'=>$vo['id']))}">删除</a>
+</td>
+</tr>
+</volist>
+               
+  </table>
+</div>
+</div>
+<div class="footactions" style="padding-left:10px">
+  <div class="pages">{Saivi:$page}</div>
+</div>
+          </div>
+  
+        </div>
+   
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div> 
+  <!--底部-->
+  	</div>
+
+<include file="Public:footer"/>

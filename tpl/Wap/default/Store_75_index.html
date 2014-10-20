@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html><head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <title>{Saivi:$tpl.wxname}</title>
+
+        <base href="." />
+
+        <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+        <meta name="format-detection" content="telephone=no" />
+
+<link href="{Saivi::RES}/css/allcss/cate{Saivi:$tpl.tpltypeid}_{Saivi:$tpl.color_id}.css" rel="stylesheet" type="text/css" />
+
+
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/118/reset.css" media="all">
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/118/font-awesome.css" media="all">
+
+<!-- <link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/118/home-47.css" media="all"> -->
+
+<script type="text/javascript" src="{Saivi::RES}/css/116/jQuery.js"></script>
+
+<script type="text/javascript" src="{Saivi::RES}/css/118/zepto.js"></script>
+
+<script type="text/javascript" src="{Saivi::RES}/css/118/swipe.js"></script><link type="text/css" rel="stylesheet" href="{Saivi::$staticFilePath}/css/touch_index.css"></head>
+
+    <body onselectstart="return true;" ondragstart="return false;">
+
+    <div id="top"></div>
+
+<div id="scnhtm5" class="m-body">
+
+<div class="menu">
+
+<a href="{Saivi::U('Store/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}"><i></i>所有商品</a>
+
+<a href="{Saivi::U('Store/cart',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}"><i></i>购物车</a>
+
+<a href="{Saivi::U('Store/my',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}"><i></i>查物流</a>
+
+<a href="{Saivi::U('Store/my',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}"><i></i>用户中心</a>
+
+</div>  <!--背景音乐-->
+
+ 
+
+    
+
+        <div class="body">
+
+        <!--
+
+    幻灯片管理
+
+    -->
+
+    <div style="-webkit-transform:translate3d(0,0,0);">
+
+        <div id="banner_box" class="box_swipe" style="visibility: visible;">
+
+            <ul style="list-style: none; width: 1350px; transition: 500ms; -webkit-transition: 500ms; -webkit-transform: translate3d(-900px, 0, 0);">
+
+                <volist name="flash" id="so">
+
+                                    <li style="width: 450px; display: table-cell; vertical-align: top;">
+
+                                                    <a href="{Saivi:$so.url}">
+
+                                                                    <img src="{Saivi:$so.img}"  style="width:100%;">
+
+                                </a>
+
+                    </li>
+
+                    </volist>
+
+                                   
+
+                            </ul>
+
+            <ol>
+
+                                    <li class=""></li>
+
+                                    <li class="on"></li>
+
+                                    <li class=""></li>
+
+                            </ol>
+
+        </div>
+
+    </div>
+
+        <script>
+
+        $(function(){
+
+            new Swipe(document.getElementById('banner_box'), {
+
+                speed:500,
+
+                auto:3000,
+
+                callback: function(){
+
+                    var lis = $(this.element).next("ol").children();
+
+                    lis.removeClass("on").eq(this.index).addClass("on");
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+ <section>
+
+        <div>
+
+            <ul class="list_ul">
+
+            
+
+                <li class="box"> 
+
+            <volist name="cats" id="hostlist"> 
+
+                <if condition="$i lt 4">              
+
+                <dl>
+
+                    <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+                    <dd>
+
+                        <div>
+
+                            <span ><img src="{Saivi:$hostlist.logourl}" class="icon-smile" style="width:60px;height:42px;"></span>
+
+                        </div>
+
+                    </dd>
+
+                        <dt>{Saivi:$hostlist.name}</dt>
+
+                    </a>
+
+                </dl>
+
+                </if>
+
+            </volist>
+
+                </li> 
+
+                <li class="box"> 
+
+            <volist name="cats" id="hostlist"> 
+
+                <if condition="($i gt 3) and ($i lt 6)">              
+
+                <dl>
+
+                    <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+                    <dd>
+
+                        <div>
+
+                            <span ><img src="{Saivi:$hostlist.logourl}" class="icon-smile" style="width:60px;height:42px;"></span>
+
+                        </div>
+
+                    </dd>
+
+                        <dt>{Saivi:$hostlist.name}</dt>
+
+                    </a>
+
+                </dl>
+
+                </if>
+
+            </volist>
+
+                </li> 
+
+               <li class="box"> 
+
+            <volist name="cats" id="hostlist"> 
+
+                <if condition="$i gt 5">              
+
+                <dl>
+
+                    <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+                    <dd>
+
+                        <div>
+
+                            <span ><img src="{Saivi:$hostlist.logourl}" class="icon-smile" style="width:60px;height:42px;"></span>
+
+                        </div>
+
+                    </dd>
+
+                        <dt>{Saivi:$hostlist.name}</dt>
+
+                    </a>
+
+                </dl>
+
+                </if>
+
+            </volist>
+
+                </li> 
+
+                </ul>
+
+        </div>
+
+    </section>
+
+   
+
+<div class="copyright" style="text-align:center">
+
+<if condition="$iscopyright eq 1">
+
+{Saivi:$homeInfo.copyright}
+
+<else/>
+
+{Saivi:$siteCopyright}
+
+</if>
+
+</div>
+
+</div>
+
+
+
+                    
+
+     
+
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['sc'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if></body></html>
+
+    

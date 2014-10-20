@@ -1,0 +1,16 @@
+<div class="lay_footer qb_tac qb_fs_s mod_mb15">
+    <div class="fn_quicklinks">
+        <a class="mod_color_weak" href="{Saivi::U('Product/cats',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'dining'=>$isDining))}">商城首页</a>
+        <span class="mod_color_comment">|</span>
+        <a class="mod_color_weak" href="{Saivi::U('Product/cart',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'dining'=>$isDining))}">购物车</a>
+        <span class="mod_color_comment">|</span>
+        <a class="mod_color_weak" href="{Saivi::U('Product/my',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'dining'=>$isDining))}">我的信息</a>
+    </div>
+    <div class="fn_copyright qb_bfc">
+        <div class="mod_color_comment bfc_c"><if condition="$iscopyright eq 1">
+©{Saivi:$homeInfo.copyright}
+<else/>
+©{Saivi:$siteCopyright}
+</if></div>
+    </div>
+</div>

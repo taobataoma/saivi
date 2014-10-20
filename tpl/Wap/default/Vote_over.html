@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="keywords" content="{Saivi::C('keyword')}" />
+<meta name="description" content="{Saivi::C('content')}" />     
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/vote.css?2013-9-13-2" media="all" />
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/all.css?2013-9-13-2" media="all" />
+<script type="text/javascript" src="{Saivi::RES}/js/jQuery.js?2013-9-13-2"></script>
+<script type="text/javascript" src="{Saivi::RES}/js/jquery_icheck_min.js?2013-9-13-2"></script>
+ 
+<title>{Saivi::C('site_name')}-微投票</title>
+<link rel="shortcut icon" href="/tpl/static/favicon.ico" />
+    <!--[if lte IE 9]><script src="{Saivi::RES}/js/watermark.js"></script><![endif]-->
+	<!--[if IE 7]><link href="{Saivi::RES}/css/font_awesome_ie7.css" rel="stylesheet" /><![endif]-->
+</head>
+<body>
+	<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>微投票</title> 
+     <meta name="viewport" content=" initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+  
+</head>
+<style>
+	.masklayer{
+	display:none;
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:2000;
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,0.5);
+	text-align:right;
+}
+.masklayer.on{
+	display:block;
+}
+.masklayer img{
+	margin-top:10px;
+	margin-right:30px;
+	width:160px;
+}
+	</style>
+<body id="vote-img">
+    <div class="vote">
+     
+            <div class="votecontent">
+                <h2>{Saivi:$Vote.title}</h2>
+                <span class="date"><php>echo date('Y-m-d',$Vote['updatetime']);</php></span>
+                               <if condition="$Vote.pic_show eq 1">
+			       <div class="voteimg"><img src="{Saivi:$Vote.vpicurl}"></div> 
+			       </if>
+                                <p class="content"><span>{Saivi:$Vote.instructions}</span></p>
+
+
+                <p class="modus"><if condition="$Vote.type eq 2">多选投票，最多可以选择{Saivi:$Vote.select_num}项<else/>单选投票</if><span class="number">共有{Saivi:$Total}个投票  <if condition="$Vote.result eq 3"><br>(投票结束可见)</if> <if condition="$Vote.result eq 2"><br>(投票后可见)</if>  <if condition="$Vote.result eq 1"><br>(投票前可见)</if></span></p>
+                <ul class="list" id="list"> 
+                  <volist name="list" id="info" key="b">	 
+                     <li>
+                        <label for="square-checkbox-{Saivi:$b}">
+			
+                                <if condition="$Vote.type eq 2"> 
+				<p class="voteimg2">
+                                <a href="{Saivi:$info.piclink}" target="_blank"><img src="{Saivi:$info.picurl}"></a>
+				</p>
+				</if>                         
+				<if condition="$Vote.is_radio eq 2"><input class="ckbx" tabindex="9" name="vid[]" value="{Saivi:$info.id}" type="checkbox"  disabled  id="square-checkbox-{Saivi:$b}"><span>{Saivi:$info.vtitle}</span></if>
+				<if condition="$Vote.is_radio eq 1"><input class="ckbx" tabindex="9" name="vid[]" value="{Saivi:$info.id}" type="radio"  disabled  id="square-checkbox-{Saivi:$b}"><span>{Saivi:$info.vtitle}</span></if>
+                    
+                        </label>
+                   <if condition="$Vote.result eq 1">
+                   <div id="voteshow1" class="votebar">
+                     <div class="pbg"><div style="width: {Saivi:$info['num']*100/$Total}%; background-color:#ffcc00" class="pbr"></div></div>
+                     <span class="percentage" style="color:#ffcc00"><php>echo number_format($info['num']*100/$Total,2);</php>%<span class="user">({Saivi:$info.num})</span></span>
+                   </div>
+		   </if>
+		    <if condition="$Vote.result eq 2">
+		        <if condition="$record.votes neq ''">
+                     <div id="voteshow1" class="votebar">
+                     <div class="pbg"><div style="width: {Saivi:$info['num']*100/$Total}%; background-color:#ffcc00" class="pbr"></div></div>
+                     <span class="percentage" style="color:#ffcc00"><php>echo number_format($info['num']*100/$Total,2);</php>%<span class="user">({Saivi:$info.num})</span></span>
+                   </div>
+		   </if>
+		   </if>
+		   
+		    <if condition="$Vote.result eq 3">
+		      <if condition="$record.status eq 4">
+                   <div id="voteshow1" class="votebar">
+                     <div class="pbg"><div style="width: {Saivi:$info['num']*100/$Total}%; background-color:#ffcc00" class="pbr"></div></div>
+                     <span class="percentage" style="color:#ffcc00"><php>echo number_format($info['num']*100/$Total,2);</php>%<span class="user">({Saivi:$info.num})</span></span>
+                   </div>
+		    </if> 
+		   </if> 
+                    </li>
+		   </volist>
+		    
+                <div class="clr"></div>
+                </ul>
+		 
+		 </div>
+    </div>
+	    <script>
+
+        $(document).ready(function () {
+	    var tnum = {Saivi:$Vote.select_num};
+	    var Title = "{Saivi:$Vote.title}";
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_flat',
+                radioClass: 'iradio_flat'
+            });
+
+            $("ins").click(function () {
+                var i = 0;
+                $(".checked").each(function () {
+                    i++;
+                });
+				                if (i > tnum || i<1) {
+                    $(this).click();
+                }
+				            });
+            $("label").click(function () {
+                var i = 0;
+                $(".checked").each(function () {
+                    i++;
+                });
+                                if (i > tnum || i<1) {
+                    $(this).click();
+                }
+                            });
+        });
+		        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        window.shareData = {  
+            "imgUrl": "{Saivi::C('site_url')}{Saivi:$Vote.vpicurl}", 
+            "timeLineLink": "{Saivi::C('site_url')}{Saivi::U('Wap/Vote/index',array('type'=>$Vote['type'],'token'=>$gtoken,'id'=>$Vote['id'],'wecha_id'=>$wecha_id,'Saivi'=>'mp.weixin.qq.com'))}",
+            "sendFriendLink": "{Saivi::C('site_url')}{Saivi::U('Wap/Vote/index',array('type'=>$Vote['type'],'token'=>$gtoken,'id'=>$Vote['id'],'wecha_id'=>$wecha_id,'Saivi'=>'mp.weixin.qq.com'))}",
+            "weiboLink": "{Saivi::C('site_url')}{Saivi::U('Wap/Vote/index',array('type'=>$Vote['type'],'token'=>$gtoken,'id'=>$Vote['id'],'wecha_id'=>$wecha_id,'Saivi'=>'mp.weixin.qq.com'))}",
+            "tTitle": "微投票",
+            "tContent": Title,
+            "fTitle": "微投票",
+            "fContent": Title,
+            "wContent": Title 
+        };
+        // 发送给好友
+        WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+            WeixinJSBridge.invoke('sendAppMessage', { 
+                "img_url": window.shareData.imgUrl,
+                "img_width": "640",
+                "img_height": "640",
+                "link": window.shareData.sendFriendLink,
+                "desc": window.shareData.fContent,
+                "title": window.shareData.fTitle
+            }, function (res) {
+                _report('send_msg', res.err_msg);
+            })
+        });
+
+        // 分享到朋友圈
+        WeixinJSBridge.on('menu:share:timeline', function (argv) {
+            WeixinJSBridge.invoke('shareTimeline', {
+                "img_url": window.shareData.imgUrl,
+                "img_width": "640",
+                "img_height": "640",
+                "link": window.shareData.timeLineLink,
+                "desc": window.shareData.tContent,
+                "title": window.shareData.tTitle
+            }, function (res) {
+                _report('timeline', res.err_msg);
+            });
+        });
+
+        // 分享到微博
+        WeixinJSBridge.on('menu:share:weibo', function (argv) {
+            WeixinJSBridge.invoke('shareWeibo', {
+                "content": window.shareData.wContent,
+                "url": window.shareData.weiboLink,
+            }, function (res) {
+                _report('weibo', res.err_msg);
+            });
+        });
+        }, false)
+    </script>
+</body>
+<footer style="text-align:center; color:#ffd800;margin-right:20px">{Saivi::C('site_name')}提供</footer>
+</html>
+</body>
+</html>

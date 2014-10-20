@@ -1,0 +1,560 @@
+<include file="Public:head"/> 
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+
+<script src="{Saivi::RES}/js/card/jquery.js"  type="text/javascript"></script>
+
+<div class="content"   >
+<include file="Public:hangye"/>
+<h4>订单设置 </h4>
+
+	<div class="tab">
+
+		<ul>
+
+		<li class="tabli" id="tab2"><a href="{Saivi::U('Huisuo/index',array('token'=>$token))}">会所管理</a></li>
+          <li class="tabli" id="tab2"><a href="{Saivi::U('Huisuo/photo_index',array('token'=>$token))}">会所相册</a></li>
+
+		<li class="tabli" id="tab2"><a href="{Saivi::U('Huisuo/infos',array('token'=>$token,'pid'=>$pid))}">订单管理</a></li>
+
+		<li class="tabli" id="tab2"><a href="{Saivi::U('Huisuo/setcin',array('token'=>$token,'pid'=>$pid))}">套餐设置</a></li>
+
+		<li class="current tabli" id="tab0"><a href="{Saivi::U('Huisuo/setinfo',array('token'=>$token,'pid'=>$pid))}">表单设置</a></li>
+
+		</ul>
+
+	</div>
+
+<div class="searchbar right">
+
+<form method="post" action="">
+
+</form>
+
+</div>
+
+<div class="clr"></div>
+
+
+
+
+
+<div class="msgWrap">
+
+	<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+
+	<thead>
+
+	<tr>
+
+	<th width="210">字段类型</th>
+
+	<th width="240">字段名称</th>
+
+	<th width="240">初始内容</th>
+
+	<th width="150" class="norightborder">操作</th>
+
+	</tr>
+
+	</thead>
+
+	<tbody>
+
+	<form method="post" action="" name="yuyue_info" enctype="multipart/form-data" id="info">
+
+	
+
+	<tr>
+
+		<td>单行文字：</td>
+
+		<td><input type="text"  class="px" disabled="disabled" value="联系人"  /></td>
+
+		<td><input type="text" class="px"  disabled="disabled" value="请输入您的名字" /></td>
+
+		<td><input type="checkbox" value="{Saivi:$data['person']}" name="person" <?php if($data["person"]==1):?>checked="true"<?php endif;?> />是否显示</td>
+
+	</tr>
+
+	<tr>
+
+		<td>单行文字：</td>
+
+		<td><input type="text"  class="px" disabled="disabled" value="联系电话"  /></td>
+
+		<td><input type="text" class="px"  disabled="disabled" value="请输入您的联系电话" /></td>
+
+		<td><input type="checkbox" value="{Saivi:$data['phone']}" name="phone" <?php if($data["phone"]==1):?>checked="true"<?php endif;?> />是否显示</td>
+
+	</tr>
+
+	<tr>
+
+		<td>日期选择：</td>
+
+		<td><input type="text"  class="px" disabled="disabled" value="预约日期"  /></td>
+
+		<td><input type="text" class="px"  disabled="disabled" value="请输入您的预约日期" /></td>
+
+		<td><input type="checkbox" value="{Saivi:$data['date']}" name="date" <?php if($data["date"]==1):?>checked="true"<?php endif;?> />是否显示</td>
+
+	</tr>
+
+	<tr>
+
+		<td>时间选择：</td>
+
+		<td><input type="text"  class="px" disabled="disabled" value="预约时间"  /></td>
+
+		<td><input type="text" class="px"  disabled="disabled" value="请输入您的预约时间" /></td>
+
+		<td><input type="checkbox" value="{Saivi:$data['time']}" name="time" <?php if($data["time"]==1):?>checked="true"<?php endif;?> />是否显示</td>
+
+	</tr>
+
+	<tr id="addtxt1">
+
+		<td>输入需要增加的内容：</td>
+
+		<td><input type="hidden" name="id1" value="{Saivi:$arr[0]['id']}" /><input type="text" class="px" name="name1" id="txt1" placeholder="请输入您要添加的内容名称" value="{Saivi:$arr[0]['name']}" /></td>
+
+		<td><input type="text" class="px" name="content1" id="value1" placeholder="请输入您所添加内容的提示信息" value="{Saivi:$arr[0]['value']}"  /></td>
+
+		<td><a id="add2" href="javascript:doaddit(2)" style="">添加</a>&nbsp;&nbsp;<a href="javascript:dodelit(1)">删除</a></td>
+
+	</tr>
+
+	<tr id="addtxt2"  <if condition="$arr[1]['id'] eq ''"> style="display:none"; </if> >
+
+		<td>输入需要增加的内容：</td>
+
+		<td><input type="hidden" name="id2" value="{Saivi:$arr[1]['id']}" /><input type="text" class="px" name="name2" id="txt2" placeholder="请输入您要添加的内容名称" value="{Saivi:$arr[1]['name']}" /></td>
+
+		<td><input type="text" class="px" name="content2" id="value2" placeholder="请输入您所添加内容的提示信息" value="{Saivi:$arr[1]['value']}"  /></td>
+
+		<td><a id="add3" href="javascript:doaddit(3)" style="">添加</a>&nbsp;&nbsp;<a href="javascript:dodelit(2)">删除</a></td>
+
+	</tr>
+
+	<tr id="addtxt3"  <if condition="$arr[2]['id'] eq ''"> style="display:none"; </if> >
+
+		<td>输入需要增加的内容：</td>
+
+		<td><input type="hidden" name="id3" value="{Saivi:$arr[2]['id']}" /><input type="text" class="px" name="name3" id="txt3" placeholder="请输入您要添加的内容名称" value="{Saivi:$arr[2]['name']}" /></td>
+
+		<td><input type="text" class="px" name="content3" id="value3" placeholder="请输入您所添加内容的提示信息" value="{Saivi:$arr[2]['value']}"  /></td>
+
+		<td><a id="add4" href="javascript:doaddit(4)" style="">添加</a>&nbsp;&nbsp;<a href="javascript:dodelit(3)">删除</a></td>
+
+	</tr>
+
+	<tr id="addtxt4"  <if condition="$arr[3]['id'] eq ''"> style="display:none"; </if> >
+
+		<td>输入需要增加的内容：</td>
+
+		<td><input type="hidden" name="id4" value="{Saivi:$arr[3]['id']}" /><input type="text" class="px" name="name4" id="txt4" placeholder="请输入您要添加的内容名称" value="{Saivi:$arr[3]['name']}" /></td>
+
+		<td><input type="text" class="px" name="content4" id="value4" placeholder="请输入您所添加内容的提示信息" value="{Saivi:$arr[3]['value']}"  /></td>
+
+		<td><a id="add5" href="javascript:doaddit(5)" >添加</a>&nbsp;&nbsp;<a href="javascript:dodelit(4)">删除</a></td>
+
+	</tr>
+
+	<tr id="addtxt5"  <if condition="$arr[4]['id'] eq ''"> style="display:none"; </if> >
+
+		<td>输入需要增加的内容：</td>
+
+		<td><input type="hidden" name="id5" value="{Saivi:$arr[4]['id']}" /><input type="text" class="px" name="name5" id="txt5" placeholder="请输入您要添加的内容名称" value="{Saivi:$arr[4]['name']}" /></td>
+
+		<td><input type="text" class="px" name="content5" id="value5" placeholder="请输入您所添加内容的提示信息" value="{Saivi:$arr[4]['value']}"  /></td>
+
+		<td><a id="add6" href="javascript:doaddit(6)" style="" >添加</a>&nbsp;&nbsp;<a href="javascript:dodelit(5)">删除</a></td>
+
+	</tr>
+
+	<tr id="strtxt1">
+
+		<td>添加多选设置：</td>
+
+		<td><input type="hidden" name="id6" value="{Saivi:$list[0]['id']}" />
+
+		<input type="text" class="px" name="name6" placeholder="请输入您要添加的内容名称" value="{Saivi:$list[0]['name']}" id="select1" /></td>
+
+		<td><input type="text" class="px" name="content6"  id="svalue1" placeholder="每个选项之间以'|'分割" value="{Saivi:$list[0]['value']}" /></td>
+
+		<td><a id="sadd2" href="javascript:sdoaddit(2)" style="">添加</a>&nbsp;&nbsp;<a href="javascript:sdodelit(1)">删除</a></td>
+
+	</tr>
+
+	<tr id="strtxt2" <if condition="$list[1]['name'] eq ''"> style="display:none"; </if> >
+
+		<td>添加多选设置1：</td>
+
+		<td><input type="hidden" name="id7" value="{Saivi:$list[1]['id']}" />
+
+		<input type="text" class="px" name="name7" placeholder="请输入您要添加的内容名称" value="{Saivi:$list[1]['name']}" id="select2" /></td>
+
+		<td><input type="text" class="px" name="content7"  id="svalue2" placeholder="每个选项之间以'|'分割" value="{Saivi:$list[1]['value']}" /></td>
+
+		<td><a id="sadd3" href="javascript:sdoaddit(3)" style="">添加</a>&nbsp;&nbsp;<a href="javascript:sdodelit(2)">删除</a></td>
+
+	</tr>
+
+	<tr id="strtxt3" <if condition="$list[2]['name'] eq ''"> style="display:none"; </if> >
+
+		<td>添加多选设置2：</td>
+
+		<td><input type="hidden" name="id8" value="{Saivi:$list[2]['id']}" />
+
+		<input type="text" class="px" name="name8" placeholder="请输入您要添加的内容名称" placeholder="请输入您要添加的内容名称" value="{Saivi:$list[2]['name']}" id="select3" /></td>
+
+		<td><input type="text" class="px" name="content8"  id="svalue3" placeholder="每个选项之间以'|'分割" value="{Saivi:$list[2]['value']}" /></td>
+
+		<td><a id="sadd4" href="javascript:sdoaddit(4)" style="">添加</a>&nbsp;&nbsp;<a href="javascript:sdodelit(3)">删除</a></td>
+
+	</tr>
+
+	<tr id="strtxt4" <if condition="$list[3]['name'] eq ''"> style="display:none"; </if> >
+
+		<td>添加多选设置3：</td>
+
+		<td><input type="hidden" name="id9" value="{Saivi:$list[3]['id']}" />
+
+		<input type="text" class="px" name="name9" placeholder="请输入您要添加的内容名称" value="{Saivi:$list[3]['name']}" id="select4" /></td>
+
+		<td><input type="text" class="px" name="content9"  id="svalue4" placeholder="每个选项之间以'|'分割" value="{Saivi:$list[3]['value']}" /></td>
+
+		<td><a id="sadd5" href="javascript:sdoaddit(5)" style="">添加</a>&nbsp;&nbsp;<a href="javascript:sdodelit(4)">删除</a></td>
+
+	</tr>
+
+	<tr id="strtxt5" <if condition="$list[4]['name'] eq ''"> style="display:none"; </if> >
+
+		<td>添加多选设置4：</td>
+
+		<td><input type="hidden" name="id10" value="{Saivi:$list[4]['id']}" />
+
+		<input type="text" class="px" name="name10" placeholder="请输入您要添加的内容名称" value="{Saivi:$list[4]['name']}" id="select5" /></td>
+
+		<td><input type="text" class="px" name="content10"  id="svalue5" placeholder="每个选项之间以'|'分割" value="{Saivi:$list[4]['value']}" /></td>
+
+		<td><a id="sadd6" href="javascript:sdoaddit(6)" style="">添加</a>&nbsp;&nbsp;<a href="javascript:sdodelit(5)">删除</a></td>
+
+	</tr>
+
+	<tr id="strtxt6" <if condition="$list[5]['name'] eq ''"> style="display:none"; </if> >
+
+		<td>添加多选设置5：</td>
+
+		<td><input type="hidden" name="id11" value="{Saivi:$list[5]['id']}" />
+
+		<input type="text" class="px" name="name11" placeholder="请输入您要添加的内容名称" value="{Saivi:$list[5]['name']}" id="select6" /></td>
+
+		<td><input type="text" class="px" name="content11"  id="svalue6" placeholder="每个选项之间以'|'分割" value="{Saivi:$list[5]['value']}" /></td>
+
+		<td><a id="sadd7" href="javascript:sdoaddit(7)" style="display:none;">添加</a>&nbsp;&nbsp;<a href="javascript:sdodelit(6)">删除</a></td>
+
+	</tr>
+
+	<tr>
+
+		<td>多行文字：</td>
+
+		<td><input type="hidden" name="id" value="{Saivi:$line[0]['id']}" />
+
+		<input type="text" class="px" name="textname" placeholder="备注" value="{Saivi:$line[0]['name']}" id="dateline" /></td>
+
+		<td><input type="text" class="px" disabled="disabled" readonly name="text" value="请留言!" id="dateline" /></td>
+
+		<td>订单默认项</td>
+
+	</tr>
+
+	<input type="hidden" name="token" id="token" value="{Saivi:$data.token}" />
+
+	<tr>
+
+		<th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th>
+
+        <th><button type="submit" class="btn btn-primary btn_submit  J_ajax_submit_btn" onClick="yuYueInfo()">保存</button> &nbsp; <a href="javascript:history.go(-1);" class="btn">取消</a></th>
+
+		
+
+	</tr> 
+
+	
+
+	</form>
+
+	</tbody>
+
+	</table>
+
+
+
+
+
+</div>
+
+<div class="cLine">
+
+<div class="pageNavigator right">
+
+<div class="pages">{Saivi:$page}</div>
+
+</div>
+
+<div class="clr"></div>
+
+</div>
+
+</div></div>
+
+<script>
+
+function dodelit(i) {
+
+		
+
+         document.getElementById("txt" + i).value = "";
+
+         document.getElementById("value" + i).value = "";
+
+         if (i != 1) {
+
+			
+
+               document.getElementById("addtxt" + i).style.display = "none";
+
+               document.getElementById("add" + i).style.display = "";
+
+            }
+
+}
+
+function doaddit(i){ 
+
+        document.getElementById('addtxt' + i).style.display = "";
+
+        document.getElementById('add' + i).style.display = "none";
+
+
+
+}
+
+function sdodelit(i) {
+
+        document.getElementById("select" + i).value = "";
+
+        document.getElementById("svalue" + i).value = "";
+
+        if (i != 1) {
+
+             document.getElementById("strtxt" + i).style.display = "none";
+
+             document.getElementById("sadd" + i).style.display = "";
+
+             }
+
+}
+
+function sdoaddit(i) {
+
+
+
+        document.getElementById('strtxt' + i).style.display = "";
+
+        document.getElementById('sadd' + i).style.display = "none";
+
+
+
+}
+
+
+
+
+
+function yuYueInfo()
+
+{
+
+	//获取接受返回信息层
+
+	var msg = document.getElementById("msg");
+
+
+
+	//获取表单对象和用户信息值
+
+	var f = document.yuyue_info;
+
+	var txt = f.txt1.value;
+
+	var value   = f.value1.value;
+
+
+
+	//接收表单的URL地址
+
+	var url = window.location.href;
+
+	//alert(url);
+
+	//需要POST的值，把每个变量都通过&来联接
+
+	var postStr   = "user_name="+ txt +"&user_age="+ value1;
+
+	//alert(postStr);
+
+	//实例化Ajax
+
+	//var ajax = InitAjax();
+
+
+
+
+
+	var ajax = false;
+
+	//开始初始化XMLHttpRequest对象
+
+	if(window.XMLHttpRequest) 
+
+	{ 	//Mozilla 浏览器
+
+		ajax = new XMLHttpRequest();
+
+        if (ajax.overrideMimeType) 
+
+		{	//设置MiME类别
+
+            ajax.overrideMimeType("text/xml");
+
+        }
+
+	}
+
+	else if (window.ActiveXObject) 
+
+	{ 	// IE浏览器
+
+		try 
+
+		{
+
+			ajax = new ActiveXObject("Msxml2.XMLHTTP");
+
+    	} 
+
+		catch (e) 
+
+		{
+
+        	try 
+
+			{
+
+            	ajax = new ActiveXObject("Microsoft.XMLHTTP");
+
+            } 
+
+			catch (e) {}
+
+         }
+
+	}
+
+    if (!ajax) 
+
+	{ 	// 异常，创建对象实例失败
+
+		window.alert("不能创建XMLHttpRequest对象实例.");
+
+		return false;
+
+	}
+
+
+
+	//通过Post方式打开连接
+
+	ajax.open("POST", url, true);
+
+
+
+	//定义传输的文件HTTP头信息
+
+	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+
+
+	//发送POST数据
+
+	ajax.send(postStr);
+
+	
+
+	//获取执行状态
+
+	
+
+	ajax.onreadystatechange = function() 
+
+	{ 
+
+	//history.go(0);
+
+   		//如果执行状态成功，那么就把返回信息写到指定的层里
+
+   		if (ajax.readyState == 4 && ajax.status == 200) 
+
+		{ 
+
+    		
+
+			msg.innerHTML = ajax.responseText; 
+
+   		} 
+
+	}
+
+	
+
+	
+
+	
+
+}
+
+
+
+
+
+
+
+</script>
+
+<script>
+
+$("input[type='checkbox']").click(function(){
+
+	var i = $(this).val();
+
+	if(i==1){
+
+		$(this).attr("value",0);
+
+	}else{
+
+		$(this).attr("value",1);
+
+	}
+
+})
+
+</script>
+
+
+
+<include file="Public:footer"/>

@@ -1,0 +1,79 @@
+<include file="Public:head"/>
+
+<div class="content" style="width:920px; background:none;border:none; margin-bottom:30px;">
+
+         
+
+          <div class="cLineB">
+
+              <h4 class="left">活动结果</h4>
+
+              <div class="clr"></div>
+
+          </div>
+
+          
+
+          <div class="msgWrap">
+
+            <TABLE class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+
+              <THEAD>
+
+                <TR>
+
+					<TH class="keywords" width="80%">奖项</TH>
+
+					<TH class="edit norightborder">兑奖码</TH>
+
+                </TR>
+
+              </THEAD>
+
+              <TBODY id="ind">
+
+                <TR></TR>
+
+				<volist name="point" id="vo">
+
+				<tr>
+
+                  
+
+                  <td>{Saivi:$vo[0]}等奖</td>
+
+                  
+
+                   
+
+                   <td class="norightborder">
+
+                   {Saivi:$vo[1]}
+
+				   </td>
+
+          
+
+                </tr>
+
+				</volist>
+
+                              
+
+              </TBODY>
+
+            </TABLE>
+
+
+
+<script>
+
+	 
+
+</script>   
+
+  <!--底部-->
+
+  	</div>
+
+<include file="Public:footer"/>

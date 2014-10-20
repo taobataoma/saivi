@@ -1,0 +1,58 @@
+<include file="Dining:header"/>
+</head>
+<body class="mode_webapp">
+<div class="menu_header"> 
+     <div class="menu_topbar">
+      <strong class="head-title">查看我的订单</strong>
+      <span class="head_btn_left"><a href="javascript:history.go(-1);"><span>返回</span></a><b></b></span>
+      <a class="head_btn_right" href="{Saivi::U('Dining/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'dining'=>1))}">
+      <span><i class="menu_header_home"></i></span><b></b>
+      </a>
+     </div>
+</div>
+
+<div class="cardexplain"> 
+
+<!--超过预订时间3天后自动删掉预订记录，免得占服务器资源！-->
+ 
+<if condition="$ordersCount neq 0">
+<volist name="orders" id="o">      
+<ul class="round">
+<li class="title"><span style="float:right;">详情</span><a href="{Saivi::U('Dining/xiangqing',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'id'=>$o['id']))}"><span>{Saivi:$o.time|date="Y-m-d H:i:s",###}</span></a></li>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="cpbiaoge">
+  <tr>
+    <th>订单编号</th>
+<!--    <th width="60" class="cc">数量</th>-->
+    <th width="100" class="cc">金额</th>
+    <th width="80" class="cc">状态</th>
+  </tr>
+  	<td>{Saivi:$o.orderid}</td>
+<!--    <td class="cc">{Saivi:$o.total}</td>-->
+    <td class="cc">{Saivi:$o.price}元</td>
+    <td class="cc">
+    <if condition="$o.paid eq 1" >
+	<em  style='width:70px;color:green;'>已处理</em>
+    <else/>
+	<em  style='width:70px;color:red;'>未处理</em>
+    </if>
+    </td>
+  </tr>
+        </table>
+</ul>
+ </volist>
+<else/>
+     <div style="padding:10px; text-align:center">没有订单</div>
+</if>     
+
+<include file="Dining:footer"/>
+
+<script type="text/javascript">
+ 
+
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+WeixinJSBridge.call('hideToolbar');
+});
+</script>
+
+</body>
+</html>

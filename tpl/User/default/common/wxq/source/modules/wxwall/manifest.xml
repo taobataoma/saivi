@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest versionCode="0.4">
+	<application setting="true">
+		<name><![CDATA[微信墙]]></name>
+		<identifie><![CDATA[wxwall]]></identifie>
+		<version><![CDATA[1.0]]></version>
+		<ability><![CDATA[]]></ability>
+		<description><![CDATA[]]></description>
+		<author><![CDATA[WeEngine Team]]></author>
+	</application>
+	<hooks>
+		<hook name="rule" />
+		<hook name="hookBefore" />
+	</hooks>
+	<menus>
+		<menu name="查看内容" value="index.php?act=module&do=detail&name=wxwall&id=%id" />
+		<menu name="审核内容" value="index.php?act=module&do=manage&name=wxwall&id=%id" />
+		<menu name="中奖用户" value="index.php?act=module&do=awardlist&name=wxwall&id=%id" />
+	</menus>
+	<install><![CDATA[
+CREATE TABLE IF NOT EXISTS `ims_wxwall_award` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rid` int(10) unsigned NOT NULL,
+  `from_user` varchar(50) NOT NULL,
+  `createtime` int(10) unsigned NOT NULL,
+  `status` tinyint(1) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `ims_wxwall_members` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `from_user` varchar(50) NOT NULL COMMENT '用户的唯一身份ID',
+  `nickname` varchar(20) NOT NULL DEFAULT '' COMMENT '昵称',
+  `avatar` varchar(100) NOT NULL DEFAULT '' COMMENT '头像',
+  `rid` int(10) unsigned NOT NULL COMMENT '用户当前所在的微信墙话题',
+  `isjoin` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否正在加入话题',
+  `isblacklist` tinyint(1) NOT NULL DEFAULT '0' COMMENT '用户是否是黑名单',
+  `lastupdate` int(10) unsigned NOT NULL COMMENT '用户最后发表时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `ims_wxwall_message` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rid` int(10) unsigned NOT NULL COMMENT '规则ID',
+  `from_user` varchar(50) NOT NULL COMMENT '用户的唯一ID',
+  `content` varchar(1000) NOT NULL DEFAULT '' COMMENT '用户发表的内容',
+  `type` varchar(10) NOT NULL COMMENT '发表内容类型',
+  `isshow` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否显示',
+  `createtime` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `ims_wxwall_reply` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rid` int(10) unsigned NOT NULL COMMENT '规则ID',
+  `enter_tips` varchar(300) NOT NULL DEFAULT '' COMMENT '进入提示',
+  `quit_tips` varchar(300) NOT NULL DEFAULT '' COMMENT '退出提示',
+  `send_tips` varchar(300) NOT NULL DEFAULT '' COMMENT '发表提示',
+  `quit_command` varchar(10) NOT NULL DEFAULT '' COMMENT '退出指令',
+  `timeout` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '超时时间',
+  `isshow` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否需要审核',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+	]]></install>
+	<uninstall><![CDATA[]]></uninstall>
+	<upgrade><![CDATA[]]></upgrade>
+</manifest>

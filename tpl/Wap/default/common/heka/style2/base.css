@@ -1,0 +1,22 @@
+/**
+author : zhupinelei;
+**/
+
+/*---------------------- css reset ----------------------*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, a, blockquote, th,i,u {margin:0;padding:0;border:0;}
+h1, h2, h3, h4, h5, h6 {font-size:100%;}
+ol, ul {list-style:none;}
+u, i {font-size:12px; font-weight:normal; font-style:normal;}
+table {border-collapse:collapse; border-spacing:0px;}
+fieldset,img {border:0;}
+html {width:100%; height:100%;}
+body{width:100%; height:100%; color:#000;background:#fff;font:12px Verdana,Arial,sans-serif,"Times New Roman",'微软雅黑';}
+
+/*清除浮动*/
+.clearfix:after {content:".";display:block;height:0;clear:both; visibility:hidden;}
+.clearfix {display:inline-block;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height:1%;}
+.clearfix {display:block;}
+/* End hide from IE-mac */

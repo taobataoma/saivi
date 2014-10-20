@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<include file="Public:header" />
+
+<body style="background:#fff;">
+
+<include file="Public:menu" />
+
+<div class="banner_reg">
+	<div class="banner_reg_main">
+    	
+    </div>
+</div>
+<div class="bg_reg_main">
+	<form action="{Saivi::U('Users/checkreg')}" method="post" id="info_form" onsubmit='return checkSubmit(this);'>
+	<div class="reg_main">
+    	<div class="title">
+        	<i>1</i><h2>账号信息</h2>
+        </div>
+        <table width="100%" border="0">
+          <tr>
+            <th>用户名</th>
+            <td><input name="username" id="username" type="text" placeholder="请输入用户名" class="focus" /></td>
+          </tr>
+          <tr>
+            <th>密码</th>
+            <td><input name="password" id="password" type="password" placeholder="请输入密码" /></td>
+          </tr>
+          <tr>
+            <th>确认密码</th>
+            <td><input name="repassword" id="repassword" type="password" placeholder="请确认密码" /></td>
+          </tr>
+        </table>
+        <div class="title">
+        	<i>2</i><h2>公司信息</h2>
+        </div>
+        <table width="100%" border="0">
+          <tr>
+            <th>邮箱</th>
+            <td><input name="email" id="email" type="text" placeholder="请输入邮箱" /></td>
+          </tr>
+          <tr>
+            <th>QQ</th>
+            <td><input name="qq" id="qq" type="text" placeholder="请填写qq" /></td>
+          </tr>
+          <tr>
+            <th>电话</th>
+            <td><input name="tel" id="phone" type="text" placeholder="请输入电话" /></td>
+          </tr>
+
+<tr>
+                    <td width="80px" style="width:80px;">手机验证码：</td>
+                    <td colspan="2"><input type="text" size="6" id="tel_auth_code" name="tel_auth_code"  maxlength="6" placeholder="(必填*)请输入您的手机验证码" style="width:50px;">
+                    <button id="bt_tel_code" type='button' class='btn_reg' style="width:150px;height:50px;margin:0;font-size:26px;"/>取验证码</button>&nbsp;&nbsp;<span style="color:#F00" id="bt_tel_code_msg"></span>
+                    </td>
+                </tr>      
+
+
+
+
+        </table>
+
+        <input type="submit" value="立即注册" class="btn_reg" />
+    </div>
+    </form>
+</div>
+{Saivi:$validate}
+<script>
+$("#email").formValidator({empty:false}).inputValidator({min:6,max:100,onerror:"格式不正确"}).regexValidator({regexp:"^([\\w-.]+)@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.)|(([\\w-]+.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(]?)$",onerror:"格式不正确"});
+
+
+    /**
+     * 选择地区（默认选中已选择的地区）
+     */
+    function selected_region(){
+    	select_region();
+    	var province_id=$('select[name="province_id"]').attr('data-value');
+    	var city_id = $('select[name="city_id"]').attr('data-value');
+    	getCitys(province_id, 'city_id');
+    	getCitys(city_id, 'area_id');
+    }
+
+    /**
+     * 选择地区
+     */
+    function select_region(){
+    	
+    	var select_province_id='province_id';
+    	var input_province='province';
+    	var select_city_id='city_id';
+    	var input_city='city';
+    	var select_area_id='area_id';
+    	var input_area='area';
+    	
+    	getCitys(0, select_province_id);
+    	$("#" + select_province_id).change(function() {
+    		var province_id = $('#'+ select_province_id).val();
+    		var province = $('#'+ select_province_id).find('option:selected').text();
+    		$('#' + input_province).val(province);
+    		getCitys(province_id, select_city_id);
+    		$("#"+ input_city).val('');
+    		$("#"+ select_city_id).empty();
+    		$('#'+ select_city_id).append('<option value="">请选择</option>');
+    		$("#"+ input_area).val('');
+    		$("#"+ select_area_id).empty();
+    		$('#'+ select_area_id).append('<option value="">请选择</option>');
+    	});
+    	$("#" + select_city_id).change(function() {
+    		var city_id = $('#'+ select_city_id).val();
+    		var city = $('#'+ select_city_id).find('option:selected').text();
+    		$('#'+ input_city).val(city);
+    		getCitys(city_id, select_area_id);
+    		$("#"+ input_area).val('');
+    		$("#"+ select_area_id).empty();
+    		$('#'+ select_area_id).append('<option value="">请选择</option>');
+    	});
+    	$("#"+ select_area_id).change(function() {
+    		var area = $('#'+ select_area_id).find('option:selected').text();
+    		$('#'+ input_area).val(area);
+    	});
+    }
+
+    /**
+     * 获取城市
+     */
+    function getCitysBak(parent_id,select_id) {
+    	$.ajax({
+        	type:'post',
+            url:'/trend/region/getCitys',
+            data:'parent_id=' + parent_id,
+            dataType:'json',
+            timeout:60000,
+            success:function(data){
+            	if(data.status==0){
+            		var selected_value = $('#'+ select_id).attr('data-value');
+            		var selected_html = '';
+    	    		$(data.data).each(function(){
+    	    			if(selected_value==this.area_id){
+    	    				$('#'+ select_id).append('<option value="'+ this.area_id +'" selected="selected">'+ this.title +'</option>');
+    	    			}else{
+    	    				$('#'+ select_id).append('<option value="'+ this.area_id +'"'+ selected_html +'>'+ this.title +'</option>');
+    	    			}
+    	    		});
+            	}
+        	}
+        });
+    }
+
+    /**
+     * 获取城市
+     */
+    function getCitys(parent_id,select_id) {
+    	$.ajax({
+    		type:'post',
+    		url:'/trend/region/getCitys',
+    		data:'parent_id=' + parent_id,
+    		dataType:'json',
+    		timeout:60000,
+    		success:function(data){
+    			if(data.status==0){
+    				var selected_value = $('#'+ select_id).attr('data-value');
+    				var selected_html = '';
+    				$(data.data).each(function(){
+    					if(selected_value>0 && selected_value==this.region_id ){
+    						$('#'+ select_id).append('<option value="'+ this.region_id +'" selected="selected">'+ this.region_name +'</option>');
+    					}else{
+    						$('#'+ select_id).append('<option value="'+ this.region_id +'"'+ selected_html +'>'+ this.region_name +'</option>');
+    					}
+    				});
+    			}
+    		}
+    	});
+    }
+    selected_region();
+</script>
+<script type="text/javascript">
+    $(function(){
+        var phone = $('#phone').val();
+        $('#phone').blur(function(){
+            phone = $('#phone').val();
+        })
+        
+
+        $('#bt_tel_code').click(function(){
+                    if(phone == ''){
+            alert('请输入手机号');return false;
+        }
+            //alert(phone);return;
+            $.ajax({
+                type:'post',
+                url:'{Saivi::U('Home/Users/get_sms_auth_code')}',
+                data:{'phone':phone},
+                dataType:'json',
+                success:function(data){
+                    if(data == 1){
+                        alert('验证码发送成功');
+                    }else{
+                        alert('验证码发送失败');
+                    }
+                },
+            })
+        })
+    })
+
+    function checkSubmit(){
+        var tel_auth_code = $('#tel_auth_code').val();
+        var phone = $('#phone').val();
+        if(phone == ''){
+            alert('手机号不能为空');
+            return false;
+        }
+        if(tel_auth_code == ''){
+            alert('验证码不能为空')
+            return false;
+        }
+        var flag = true;
+        $.ajax({
+            type:'post',
+            async:false,
+            cache:false,
+            data:{'tel_auth_code':tel_auth_code},
+            url:'{Saivi::U('Home/Users/checkAuthCode')}',
+            dataType:'json',
+            success:function(data){
+               if(data == 2){
+                flag = false;
+                alert('验证码错误');
+               }
+            },
+        });
+        if(!flag){
+            return false;
+        }
+
+    }
+</script>
+<include file="Public:footer" />
+<!----注册 end---->
+</body>
+</html>
+

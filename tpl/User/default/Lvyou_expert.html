@@ -1,0 +1,67 @@
+<include file="Public:head"/>
+<include file="Lvyou:menu"/>
+<link rel="stylesheet" type="text/css" href="{Saivi::Common}/default_user_com.css" media="all">
+<div class="content">
+          <div class="cLineB">
+              <h4 class="left">游客点评管理</h4>
+               
+          </div>
+          
+          <div class="cLine">
+    <div class="alert">
+    <p><span class="bold">使用方法：</span>请添加点评</p>
+    </div>
+</div>
+          
+          <div class="cLine">
+            <div class="pageNavigator left">
+                <a href="{Saivi::U('Lvyou/expert_add',array('token'=>$token))}" class="btnGrayS vm bigbtn">
+                    <img src="{Saivi::RES}/images/pic.png" class="vm">添加点评
+                </a>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <div class="msgWrap">
+          <form method="post" action="" id="info">
+          <input name="delall" type="hidden" value="del">
+           <input name="wxid" type="hidden" value="gh_423dwjkewad">
+            <table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+              <thead>
+                                        <tr> 
+                                          <th class="span3">点评标题</th>
+                                            <th class="span3">客户</th>
+                                            <th class="span1">显示顺序</th>
+                                            <th class="span2">操作</th>
+                                        </tr>
+                                    </thead>
+                                       <tbody>
+                                            <if condition="$expert eq ''">
+                                        <tr>
+                                        <td colspan="5" style="text-align:center; height:30px;"><strong>请加添游客印象信息.</strong></td>
+                                        </tr>
+                                    <else/>
+                                    <volist name="expert" id="list">
+                                        <tr>
+                                         
+                                        <td style="text-align:center; ;">{Saivi:$list['title']}</td>
+                                        <td style="text-align:center; ;">{Saivi:$list['name']}</td> 
+                                        <td style="text-align:center; ">{Saivi:$list['sort']}</td>
+                                        <td style="text-align:center; ">
+                                        <a href="{Saivi::U('Lvyou/expert_add',array('id'=>$list['id'],'token'=>$list['token']))}" class="btn">编辑</a>
+                                        <a href="{Saivi::U('Lvyou/expert_del',array('id'=>$list['id'],'token'=>$list['token']))}" onclick="return(confirm('确定要删除吗？'))"  class="btn">删除</a></a>
+</td>
+                                        </tr>
+                                    </volist>
+                                    </if>
+                                        </tbody>
+            </table>
+           </form> 
+          </div>
+          <div class="cLine">
+            <div class="pageNavigator right">
+                 <div class="pages">{Saivi:$page}</div>
+            </div>
+            <div class="clr"></div>
+          </div>
+        </div>  
+<include file="Public:footer"/>

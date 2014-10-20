@@ -1,0 +1,380 @@
+<include file="Public:head"/> 
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/themes/default/default.css" />
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/plugins/code/prettify.css" />
+
+<script src="{Saivi::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+
+<script src="{Saivi::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+
+<script src="{Saivi::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+
+<script src="./tpl/User/default/common/js/cart/jscolor.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="/tpl/User/default/common/js/jQuery.js"></script>
+
+<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+
+<script type="text/javascript" src="{Saivi::RES}/js/jquery.min.js"></script>
+
+<script type="text/javascript" src="{Saivi::RES}/js/main.js"></script>
+
+<script type="text/javascript" src="{Saivi::RES}/js/formCheck/formcheck.js"> </script>
+
+<script>
+
+var editor;
+
+KindEditor.ready(function(K) {
+
+editor = K.create('#content1', {
+
+resizeType : 1,
+
+allowPreviewEmoticons : false,
+
+allowImageUpload : false,
+
+items : [
+
+'source','undo','clearhtml','hr',
+
+'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+
+'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
+
+});
+
+});
+
+</script>
+
+<script>
+
+var editor;
+
+KindEditor.ready(function(K) {
+
+editor = K.create('#description', {
+
+resizeType : 1,
+
+allowPreviewEmoticons : false,
+
+allowImageUpload : true,
+
+uploadJson : '/index.php?g=User&m=Upyun&a=kindedtiropic',
+
+items : [
+
+'source','undo','clearhtml','hr',
+
+'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+
+'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
+
+});
+
+});
+
+</script>
+
+<script>
+
+function selectall(name) {
+
+	var checkItems=$('.cbitem');
+
+	if ($("#check_box").attr('checked')==false) {
+
+		$.each(checkItems, function(i,val){
+
+			val.checked=false;
+
+		});
+
+	} else {
+
+		$.each(checkItems, function(i,val){
+
+			val.checked=true;
+
+		});
+
+	}
+
+}
+
+function setlatlng(longitude,latitude){
+
+	art.dialog.data('longitude', longitude);
+
+	art.dialog.data('latitude', latitude);
+
+	art.dialog.open('{Saivi::U('Map/setLatLng',array('token'=>$token,'id'=>$id))}',{lock:false,title:'设置经纬度',width:600,height:400,yesText:'关闭',background: '#000',opacity: 0.87});
+
+}
+
+</script>
+
+<div class="content"   >
+
+<include file="Public:hangye"/>
+    <h4>会所管理 </h4>
+
+	<div class="tab">
+
+
+
+		<ul>
+
+		<a href="{Saivi::U('Huisuo/index',array('token'=>$token))}"><li class="current tabli" id="tab0">会所管理</li></a>
+        <a href="{Saivi::U('Huisuo/photo_index',array('token'=>$token,'pid'=>$set['id']))}"><li class="tabli" id="tab2">相册管理</li></a>
+
+		<a href="{Saivi::U('Huisuo/infos',array('token'=>$token,'pid'=>$set['id']))}"><li class="tabli" id="tab2">订单管理</li></a>
+
+		<a href="{Saivi::U('Huisuo/setcin',array('token'=>$token,'pid'=>$set['id']))}"><li class="tabli" id="tab2">套餐设置</li></a>
+
+		<a href="{Saivi::U('Huisuo/setinfo',array('token'=>$token,'pid'=>$set['id']))}"><li class="tabli" id="tab2">表单设置</li></a>
+
+		</ul>
+
+	</div>
+
+<div class="clr"></div>
+
+
+
+   <form class="form" method="post" id="form" action="" enctype="multipart/form-data"> 
+
+<if condition="$isUpdate eq 1">
+
+<input type="hidden" name="id" value="{Saivi:$set.id}" />
+
+</if>
+
+    <div class="msgWrap bgfc"> 
+
+     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+
+      <tbody> 
+
+	   <tr> 
+
+        <th><span class="red">*</span>关键词：</th>
+
+        <td><input type="text" name="keyword" id="keyword" value="{Saivi:$set.keyword}" class="px" style="width:400px;" /></td> 
+
+       </tr>
+
+	   <tr> 
+
+        <th ><span class="red">*</span>标题：</th> 
+
+        <td><input  type="text" id="name" name="title" value="{Saivi:$set.title}" class="px require" style="width:400px;" /></td> 
+
+       </tr> 
+
+	   <tr> 
+
+        <th><span class="red"></span>订单页头部图片：</th>
+
+        <td><input type="text" name="topic" value="{Saivi:$set.topic}" id="pic" class="px" style="width:400px;"  readonly="readonly"/> <script src="{Saivi::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic',720,400,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a> <a href="###" onclick="viewImg('pic')" class="btn btn-primary btn_submit  J_ajax_submit_btn">预览</a></td> 
+
+       </tr>
+        <tr> 
+
+        <th><span class="red"></span>会所相册头部图片：</th>
+
+        <td><input type="text" name="photo" value="{Saivi:$set.photo}" id="photo" class="px" style="width:400px;"  readonly="readonly"/> <script src="{Saivi::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('photo',720,400,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a> <a href="###" onclick="viewImg('photo')" class="btn btn-primary btn_submit  J_ajax_submit_btn">预览</a></td> 
+
+       </tr>
+
+	   <tr>
+
+	   <th>是否调用LBS信息：</th>
+
+	   <td><if condition="$arr eq ''"><input type="radio" name="lbs" value="1" checked="true" /><else/><input type="radio" name="lbs" value="1" /></if><font size="4px">调用</font> &nbsp; <if condition="$arr eq ''"><input type="radio" name="lbs" value="0" /><else/><input type="radio" name="lbs" value="0" checked="true" /></if><font size="4px">自己填写</font></td>
+
+	   </tr>
+
+	   <if condition="$arr eq ''"><tr name="lbb"><else/><tr name="lbb" style="display:none" ></if>
+
+        <th><span class="red">*</span>选择会所地址</th>
+
+        <td><select name="cid" id="cid" onchange='javascript:ShowInfo(this.value);' style="width:412px; height:29px" class="px">
+
+					<volist name="arr" id="i" key="k">
+
+					<option value="{Saivi:$i.catid}">{Saivi:$i.address}</option>
+
+					</volist>
+
+			</select>
+
+		</td> 
+
+	   </tr>
+
+	   <if condition="$arr eq ''"><tr name="lbss" style="display:none"><else/><tr name="lbss"></if>
+
+        <th><span class="red">*</span>会所电话：</th>
+
+        <td><input type="text" name="phone" value="{Saivi:$set.phone}" class="px" style="width:400px;" /></td> 
+
+	   </tr>
+
+	   <if condition="$arr eq ''"><tr name="lbss" style="display:none"><else/><tr name="lbss"></if>
+
+        <th><span class="red"></span>会所地址：</th>
+
+        <td><input type="text" name="address" value="{Saivi:$set.address}" class="px" style="width:400px;" /></td> 
+
+       </tr>
+
+	   <if condition="$arr eq ''"><tr name="lbss" style="display:none"><else/><tr name="lbss"></if> 
+
+        <th><span class="red">*</span>经纬度：</th> 
+
+        <td>经度 <input type="text" id="longitude"  name="longitude" size="14" class="px" value="{Saivi:$set.longitude}" /> 纬度 <input type="text" name="latitude" size="14" id="latitude" class="px" value="{Saivi:$set.latitude}" /> <a href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())" class="btn btn-primary btn_submit  J_ajax_submit_btn">在地图中查看/设置</a></td> 
+
+       </tr>
+
+		<TR>
+
+			<th><span class="red">*</span>预约时间：</th>
+
+			<td><input type="text" class="px" id="statdate" value="<if condition="$set['statdate'] neq ''">{Saivi:$set.statdate}<else/><?php 
+
+			echo date('Y-m-d',mktime(0, 0, 0, date("m")  , date("d"), date("Y")));?></if>" onClick="WdatePicker()" name="statdate" />                
+
+			到
+
+			<input type="text" class="px" id="enddate" value="<if condition="$set['enddate'] neq ''">{Saivi:$set.enddate}<else/><?php 
+
+			echo date('Y-m-d',mktime(0, 0, 0, date("m")  , date("d")+3, date("Y")));?></if>" name="enddate" onClick="WdatePicker()"  /> 
+
+			</td>
+
+		</TR>
+
+	   <tr> 
+
+        <th ><span class="red">*</span>版权：</th> 
+
+        <td><input  type="text" id="copyright" name="copyright" value="{Saivi:$set.copyright}" class="px require" style="width:400px; float:none" /></td> 
+
+       </tr> 
+
+        <TR>
+
+			<TH valign="top"><label for="info">娱乐说明：</label></TH>
+
+            <TD><textarea name="info" id="content1"  rows="5" style="width:590px;height:160px">{Saivi:$set.info}</textarea></TD>
+
+        </TR>  
+
+       <tr>
+
+        <TR>
+
+			<TH valign="top"><label for="description">商家介绍：</label></TH>
+
+            <TD><textarea name="description" id="description"  rows="5" style="width:590px;height:160px">{Saivi:$set.description}</textarea></TD>
+
+        </TR>  
+
+       <tr>  
+
+       <th>&nbsp;</th>
+
+       <td>
+
+		<!--input type="hidden" name="time" value="{Saivi:$set.time}" /-->
+
+       <button type="submit" class="btn btn-primary btn_submit  J_ajax_submit_btn">保存</button> &nbsp; <a href="javascript:history.go(-1);" class="btn">取消</a></td> 
+
+       </tr> 
+
+      </tbody> 
+
+     </table> 
+
+     </div>
+
+   </form> 
+
+  </div> </div>
+
+<script language="javascript">
+
+$(function(){
+
+	$("#form").valid([
+
+	{ name:"name",simple:"名称",require:true},
+
+	{ name:"keyword",simple:"关键词",require:true}，
+
+	],true,true);
+
+});
+
+</script>
+
+<script language="javascript">
+
+function ShowInfo(Id){
+
+	$('[name="lbbb"]').attr("style","display:none");
+
+	$("#la"+Id).attr("style","");
+
+	$("#lb"+Id).attr("style","");
+
+	$("#lc"+Id).attr("style","");
+
+}
+
+</script>
+
+<script language="javascript">
+
+$("input[type='radio']").click(function(){
+
+	var i = $(this).val();
+
+	if(i==1){
+
+		$('[name="lbss"]').attr("style","display:none");
+
+		$('[name="lbb"]').attr("style","");
+
+		$("#la1").attr("style","");
+
+		$("#lb1").attr("style","");
+
+		$("#lc1").attr("style","");
+
+	}else{
+
+		$('[name="lbss"]').attr("style","");
+
+		$('[name="lbb"]').attr("style","display:none");
+
+		$('[name="lbbb"]').attr("style","display:none");
+
+	}
+
+})
+
+</script>
+
+  <include file="Public:footer" />

@@ -1,0 +1,13 @@
+#cate31 .mainmenu li { border: 0px; overflow: hidden; box-shadow:0 1px 5px rgba(0,0,0,0.8); border-radius:0}
+.copyright { color:#000; }
+.copyright a { color:#000; }
+#cate31 .mainmenu li p {margin:0;}
+#cate31 .mainmenu li a img {margin:20px 0; }
+#cate31  .mainmenu li a span { display:block;  padding:0px 2%;  line-height:30px; font-size:14px; overflow:hidden; background-color:rgba(0,0,0,0.4);text-overflow:ellipsis; white-space:nowrap; text-align:center   }
+
+#cate31  .mainmenu li:nth-child(6n+1){ background-color:#dd1184}
+#cate31  .mainmenu li:nth-child(6n+2){ background-color:#079ae8}
+#cate31  .mainmenu li:nth-child(6n+3){ background-color:#8fb210}
+#cate31  .mainmenu li:nth-child(6n+4){ background-color:#caa703}
+#cate31  .mainmenu li:nth-child(6n+5){ background-color:#5359bb}
+#cate31  .mainmenu li:nth-child(6n+6){ background-color:#019cba}

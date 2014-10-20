@@ -1,0 +1,38 @@
+<div class="alert alert-block alert-new">
+	<a class="close" data-dismiss="alert">×</a>
+	<h4 class="alert-heading">添加第三方接口</h4>
+	<table>
+		<tr>
+			<th>接口地址</th>
+			<td>
+				<div><input type="text" id="" class="span7" placeholder="" name="apiurl" value="{$row['apiurl']}">
+				<div class="help-block" style="margin-top:10px;"><select name="apilocal"><option value="0">请选择本地文件</option>{loop $apis $file}<option {if $row['apilocal'] == $file} selected="selected"{/if} value="{$file}">{$file}</option>{/loop}</select>
+				<ol style="margin-top:10px;">
+					<li>接口地址为可以访问的URL地址，通过此地址返回回复数据。</li>
+					<li>添加此模块的规则后，只针对于单个关键字有效，如果需要全部路由给接口处理，则修改该模块的优先级顺序。</li>
+					<li>接口地址支持远程URL和本地文件，本地文件存放在模块文件夹内（/source/modules/userapi/api）下。</li>
+					<li><a href="http://bbs.we7.cc/forum.php?mod=viewthread&tid=39" target="_blank">查看“自定义接口回复”文档</a></li>
+				</ol>
+				</div>
+			</td>
+			<tr>
+				<th>默认回复文字</th>
+				<td>
+					<input type="text" id="" class="span7" placeholder="" name="default-text" value="{$row['default_text']}">
+					<div class="help-block">当接口无回复时，则返回用户此处设置的文字信息，优先级高于“默认回复URL”</div>
+				</td>
+			</tr>
+			<tr>
+				<th>默认回复URL</th>
+				<td>
+					<input type="text" id="" class="span7" placeholder="" name="default-apiurl" value="{$row['default_apiurl']}">
+					<div class="help-block">当接口无回复时，则调取此处设置的URL进行数据返回，优先级低于“默认回复文字”。</div>
+				</td>
+			</tr>
+			<tr>
+				<th>缓存时间</th>
+				<td><input type="text" id="" class="span7" placeholder="" name="cachetime" value="{$row['cachetime']}">
+					<div class="help-block">接口返回数据将缓存在微擎系统中的时限，默认为0不缓存。</div></td>
+			</tr>
+	</table>
+</div>

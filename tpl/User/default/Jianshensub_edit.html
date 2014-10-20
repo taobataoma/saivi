@@ -1,0 +1,63 @@
+﻿<include file="Public:head"/>
+
+<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/js/formCheck/formcheck.js"> </script>
+
+<div class="content">
+  <div class="cLineB">
+    <h4>编辑健身房</h4>
+    <a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div>
+
+  <div class="msgWrap">
+    <form class="form" method="post"  action="{Saivi::U('Jianshensub/upsave')}"    enctype="multipart/form-data" >
+      <TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
+        <TBODY>
+        <input type="hidden" class="px" id="id" value="{Saivi:$_GET['id']}" name="id" style="width:500px" >
+        <input type="hidden" class="px" id="token" value="{Saivi:$_SESSION['token']}" name="token" style="width:500px" >
+        <TR>
+          <TH valign="top"><label for="keyword">健身房：</label></TH>
+          <TD><input type="input" class="px" id="name" value="{Saivi:$info.name}" name="name" style="width:300px"   >
+            <br/>
+          </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">健身中心名称：</label></TH>
+          <TD><input type="input" class="px" id="title" value="{Saivi:$info.title}" name="title" style="width:50px"   >
+            <br/>
+          </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">显示顺序：</label></TH>
+          <TD><input type="input" class="px" id="sort" value="{Saivi:$info.sort}" name="sort" style="width:30px"   >
+            <br/>
+            请输入数字 0-9 </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">健身房介绍：</label></TH>
+          <TD><input type="input" class="px" id="content" value="{Saivi:$info.content}" name="content" style="width:500px;display:none;"   >
+
+            <br/>
+          </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH></TH>
+          <TD><button type="submit"  name="button"  class="btnGreen left" >保存</button>
+            <div class="clr"></div></TD>
+        </TR>
+        </TBODY>
+        
+      </TABLE>
+    </form>
+  </div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+</div>
+<!--底部-->
+</div>
+<include file="Public:footer"/>

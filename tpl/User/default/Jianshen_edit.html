@@ -1,0 +1,294 @@
+﻿<include file="Public:head"/>
+
+<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/js/formCheck/formcheck.js"> </script>
+
+<div class="content">
+  <div class="cLineB">
+    <h4>编辑健身中心</h4>
+    <a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div>
+
+  <div class="msgWrap">
+    <form class="form" method="post"  action="{Saivi::U('Jianshen/upsave')}"    enctype="multipart/form-data" >
+      <TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
+        <TBODY>
+        <input type="hidden" class="px" id="id" value="{Saivi:$_GET['id']}" name="id" style="width:500px" >
+        <input type="hidden" class="px" id="token" value="{Saivi:$_SESSION['token']}" name="token" style="width:500px" >
+        <TR>
+          <TH valign="top"><label for="keyword">图文消息标题：</label></TH>
+          <TD><input type="input" class="px" id="title" value="{Saivi:$info.title}" name="title" style="width:400px"   >
+            <br/>
+          </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">图文消息触发关键词：</label></TH>
+          <TD><input type="input" class="px" id="keyword" value="{Saivi:$info.keyword}" name="keyword" style="width:200px"   >
+            <br/>
+            请输入关键词,10个字以内 </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">图文消息封面：</label></TH>
+          <TD><input type="input" class="px" id="picurl" value="{Saivi:$info.picurl}" name="picurl" style="width:400px"  >
+            <br />
+  <script src="/tpl/static/upyun.js"></script>
+<a href="###" onclick="upyunPicUpload('picurl',700,420,'{Saivi:$token}')" class="a_upload">上传</a> 
+<a href="###" onclick="viewImg('picurl')">预览</a> </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">相册名称：</label></TH>
+          <TD><input type="input" class="px" id="name" value="{Saivi:$info.name}" name="name" style="width:300px"   >
+            <br/>
+            相册名称 建议10字内 </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">简介头部图片：</label></TH>
+          <TD><input type="input" class="px" id="toppicurl" value="{Saivi:$info.toppicurl}" name="toppicurl" style="width:400px" >
+            <br />
+<a href="###" onclick="upyunPicUpload('toppicurl',700,420,'{Saivi:$token}')" class="a_upload">上传</a> 
+<a href="###" onclick="viewImg('toppicurl')">预览</a> </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">健身房头部图片：</label></TH>
+          <TD><input type="input" class="px" id="roompicurl" value="{Saivi:$info.roompicurl}" name="roompicurl" style="width:400px" >
+            <br />
+<a href="###" onclick="upyunPicUpload('roompicurl',700,420,'{Saivi:$token}')" class="a_upload">上传</a> 
+<a href="###" onclick="viewImg('roompicurl')">预览</a> </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">地址</label></TH>
+          <TD><input type="input" class="px" id="address" value="{Saivi:$info.address}" name="address" style="width:500px"  onchange="loadmap()"   >
+            <br/>
+          </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">经纬地址</label></TH>
+          <td><div class="control-group">
+            <label class="control-label" for="suggestId"></label>
+            <div class="controls">
+            <div id="l-map"  style="width:605px; height:320px;"> </div>
+            <div id="r-result">
+              <input type="input" class="px" id="lng" value=""  name="lng" style="width:80px;">
+              <input type="input" class="px" id="lat" value=""  name="lat" style="width:80px;">
+              <input  type="hidden"  name="city" class="px" id="city" size="20" value=""/>
+            </div>
+            <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:350px;height:auto;"> </div></td>
+        </tr>
+        <TR>
+          <TH valign="top"><label for="keyword">健身中心简介：</label></TH>
+          <TD><input type="input" class="px" id="content" value="{Saivi:$info.content}" name="content" style="width:500px;display:none;"   >
+
+            <br/>
+          </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">项目简介：</label></TH>
+          <TD><input type="input" class="px" id="content1" value="{Saivi:$info.xmcontent}" name="xmcontent" style="width:500px;display:none;"   >
+
+            <br/>
+          </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">交通配套：</label></TH>
+          <TD><input type="input" class="px" id="content2" value="{Saivi:$info.jtcontent}" name="jtcontent" style="width:500px;display:none;"   >
+
+            <br/>
+          </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH></TH>
+          <TD><button type="submit"  name="button"  class="btnGreen left" >保存</button>
+            <div class="clr"></div></TD>
+        </TR>
+        </TBODY>
+        
+      </TABLE>
+    </form>
+  </div>
+</div>
+<script src="{Saivi::RES}/js/baidu.js" type="text/javascript" type="text/javascript" >
+</script>
+<script type="text/javascript">
+var map = new BMap.Map("l-map");
+var myGeo = new BMap.Geocoder();  
+//map.addControl(new BMap.MapTypeControl({mapTypes: [BMAP_NORMAL_MAP,BMAP_HYBRID_MAP]}));     //2D图，卫星图
+
+//map.addControl(new BMap.MapTypeControl({anchor: BMAP_ANCHOR_TOP_LEFT}));    //左上角，默认地图控件
+
+//alert(city);
+var currentPoint ;
+var marker1;
+var marker2;
+map.enableScrollWheelZoom(); 
+//var point = new BMap.Point(116.331398,39.897445);  
+
+map.enableDragging();   
+map.enableContinuousZoom();
+map.addControl(new BMap.NavigationControl());  
+map.addControl(new BMap.ScaleControl());  
+map.addControl(new BMap.OverviewMapControl());
+
+var point = new BMap.Point({Saivi:$info.lng},{Saivi:$info.lat});
+doit(point);
+window.setTimeout(function(){
+auto();
+},100);
+
+ function auto(){
+ var geolocation = new BMap.Geolocation();  
+geolocation.getCurrentPosition(function(r){  
+if(this.getStatus() == BMAP_STATUS_SUCCESS){  
+//var mk = new BMap.Marker(r.point);  
+//map.addOverlay(mk);  
+ // point = r.point;  
+//map.panTo(r.point); 
+
+var point = new BMap.Point(r.point.lng,r.point.lat);  
+marker1 = new BMap.Marker(point);        // 创建标注
+map.addOverlay(marker1);
+var opts = {
+width : 220,     // 信息窗口宽度 220-730
+height: 60,     // 信息窗口高度 60-650
+title : ""  // 信息窗口标题
+}
+var infoWindow = new BMap.InfoWindow("定位成功这是你当前的位置!,移动红点标注目标位置，你也可以直接修改上方位置,系统自动定位!", opts);  // 创建信息窗口对象
+marker1.openInfoWindow(infoWindow);      // 打开信息窗口
+doit(point);
+
+}else {  
+ 
+}  
+})
+ }
+function  doit(point){
+
+//map.centerAndZoom(point,12);  
+ 
+
+//myGeo.getPoint(city, function(point){ 
+if (point) {
+//window.external.setlngandlat(point.lng,point.lat);
+//alert(point.lng + "  ddd " + point.lat);
+
+ document.getElementById('lat').value = point.lat;
+  document.getElementById('lng').value =point.lng;
+map.setCenter(point);
+map.centerAndZoom(point, 15);
+map.panTo(point);
+
+var cp = map.getCenter();		
+myGeo.getLocation(point, function(result){  
+/*if (result){
+ document.getElementById('suggestId').value = result.address;
+}	*/		
+});	
+marker2 = new BMap.Marker(point);        // 创建标注  
+var opts = {
+width : 220,     // 信息窗口宽度 220-730
+height: 60,     // 信息窗口高度 60-650
+title : ""  // 信息窗口标题
+}
+var infoWindow = new BMap.InfoWindow("拖拽地图或红点，在地图上用红点标注您的店铺位置。", opts);  // 创建信息窗口对象
+marker2.openInfoWindow(infoWindow);      // 打开信息窗口
+
+map.addOverlay(marker2);                     // 将标注添加到地图中
+
+marker2.enableDragging();
+marker2.addEventListener("dragend", function(e){
+ document.getElementById('lat').value =e.point.lat;
+   document.getElementById('lng').value =e.point.lng;
+myGeo.getLocation(new BMap.Point(e.point.lng,e.point.lat), function(result){  
+if (result){
+//$('suggestId').value = result.address;
+//$('city').value = result.city;
+//			alert(result.address)				
+//	window.external.setaddress(result.address);//setarrea(result.address);//
+//marker1.setPoint(new BMap.Point(e.point.lng,e.point.lat));        // 移动标注
+marker2.setPoint(new BMap.Point(e.point.lng,e.point.lat));     
+map.panTo(new BMap.Point(e.point.lng,e.point.lat));
+//window.external.setlngandlat(e.point.lng,e.point.lat);
+}			
+});	
+});	
+
+map.addEventListener("dragend", function showInfo(){
+var cp = map.getCenter();		
+myGeo.getLocation(new BMap.Point(cp.lng,cp.lat), function(result){  
+if (result){
+ //document.getElementById('suggestId').value = result.address;
+ document.getElementById('lat').value =cp.lat;
+   document.getElementById('lng').value =cp.lng;
+//	window.external.setaddress(result.address);//setarrea(result.address);//
+//alert(point.lng + "  ddd " + point.lat);
+//marker1.setPoint(new BMap.Point(cp.lng,cp.lat));        // 移动标注
+marker2.setPoint(new BMap.Point(cp.lng,cp.lat));     
+map.panTo(new BMap.Point(cp.lng,cp.lat));
+//window.external.setlngandlat(cp.lng,cp.lat);
+}			
+});	
+});	
+
+map.addEventListener("dragging", function showInfo(){
+var cp = map.getCenter();
+//marker1.setPoint(new BMap.Point(cp.lng,cp.lat));        // 移动标注
+marker2.setPoint(new BMap.Point(cp.lng,cp.lat)); 
+map.panTo(new BMap.Point(cp.lng,cp.lat));
+map.centerAndZoom(marker2.getPoint(), map.getZoom());
+});	
+}
+
+//}, province);
+
+}
+function loadmap() {
+var province =  document.getElementById('city').value;
+var city =   document.getElementById('address').value ;
+// 将结果显示在地图上，并调整地图视野  
+myGeo.getPoint(city, function(point){  
+if (point) {
+//marker1.setPoint(new BMap.Point(point.lng,point.lat));        // 移动标注
+marker2.setPoint(new BMap.Point(point.lng,point.lat));  
+//window.external.setlngandlat(marker2.getPoint().lng,marker2.getPoint().lat);
+//alert(point.lng + "  ddd " + point.lat);
+ document.getElementById('lat').value =point.lat;
+   document.getElementById('lng').value =point.lng;
+map.panTo(new BMap.Point(marker2.getPoint().lng,marker2.getPoint().lat));
+map.centerAndZoom(marker2.getPoint(), map.getZoom());
+}}, province);
+} 
+
+function setarrea(address,city) {
+//$('suggestId').value = address;
+//$('city').value=city;
+window.setTimeout(function(){
+loadmap();
+},2000);
+}
+
+function initarreawithpoint(lng,lat){
+window.setTimeout(function(){
+//marker1.setPoint(new BMap.Point(lng,lat));        // 移动标注
+marker2.setPoint(new BMap.Point(lng,lat));  
+//window.external.setlngandlat(lng,lat);
+map.panTo(new BMap.Point(lng,lat));
+map.centerAndZoom(marker2.getPoint(), map.getZoom());
+}, 2000);	
+}
+
+</script>
+<div class="clr"></div>
+</div>
+</div>
+</div>
+<!--底部-->
+</div>
+<include file="Public:footer"/>

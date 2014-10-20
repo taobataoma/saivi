@@ -1,0 +1,49 @@
+body, .weimob-content{
+    background: #ebebeb;
+}
+.weimob-list{ background:#f5f5f5;overflow:hidden;}
+.weimob-list-item{
+    width:33.3%;
+    height: 108px;
+    display: inline-block;
+    padding: 0;
+    background: inherit;
+    border:none;
+	float:left;
+}
+
+.weimob-list-item-bg{
+    min-height: 100%;
+    text-align:center;
+    padding-top:10px;
+}
+.weimob-list-item-bg span{
+    font-size:35px;
+    color:rgb(244,91,137);
+}
+
+
+.weimob-list-item-image{
+    position: relative;
+    margin: auto;
+    left : 0;
+    top:20px;
+    background-size: contain;
+}
+
+.weimob-list-item-box{
+    top:20px;
+    position: relative;
+    margin: auto;
+    display: table;
+	
+}
+
+.weimob-list-item-line{
+    padding: 0;
+    margin: auto;
+    text-align: center;
+    max-width: 88%;
+}
+.weimob-list-item-title{color:#000;}
+.weimob-copyright{ color:#000;}

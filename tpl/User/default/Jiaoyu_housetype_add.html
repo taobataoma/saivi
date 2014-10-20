@@ -1,0 +1,226 @@
+<include file="Public:head"/>
+<include file="Jiaoyu:menu"/> 
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<script src="{Saivi::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{Saivi::STATICS}/artDialog/plugins/iframeTools.js"></script>
+<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/plugins/code/prettify.css" />
+<script src="{Saivi::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+<script src="{Saivi::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+<script src="{Saivi::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+<script>
+			KindEditor.ready(function(K) {
+				var editor = K.editor({
+					allowFileManager : true
+				});
+				K('#image1').click(function() {
+					editor.loadPlugin('image', function() {
+						editor.plugin.imageDialog({
+							imageUrl : K('#type1').val(),
+							clickFn : function(url, title, width, height, border, align) {
+								K('#type1').val(url);
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+				K('#image2').click(function() {
+					editor.loadPlugin('image', function() {
+						editor.plugin.imageDialog({
+							imageUrl : K('#type2').val(),
+							clickFn : function(url, title, width, height, border, align) {
+								K('#type2').val(url);
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+				K('#image3').click(function() {
+					editor.loadPlugin('image', function() {
+						editor.plugin.imageDialog({
+							imageUrl : K('#type3').val(),
+							clickFn : function(url, title, width, height, border, align) {
+								K('#type3').val(url);
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+				K('#image4').click(function() {
+					editor.loadPlugin('image', function() {
+						editor.plugin.imageDialog({
+							imageUrl : K('#type4').val(),
+							clickFn : function(url, title, width, height, border, align) {
+								K('#type4').val(url);
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+				K('#insertfile').click(function() {
+					editor.loadPlugin('insertfile', function() {
+						editor.plugin.fileDialog({
+							fileUrl : K('#url4').val(),
+							clickFn : function(url, title) {
+								K('#url4').val(url);
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+			});
+		</script>
+ <script src="/tpl/static/upyun.js"></script>
+<script>
+
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('#description', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : true,
+uploadJson : '/index.php?g=User&m=Upyun&a=kindedtiropic',
+items : [
+'source','undo','plainpaste','wordpaste','clearhtml','quickformat','selectall','fullscreen','fontname', 'fontsize','subscript','superscript','indent','outdent','|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','hr']
+});
+});
+</script>
+ <div class="content" style="width:920px; background:none;  border:none; margin-bottom:30px;" >
+
+<div class="cLineB">
+
+  <h4 style="padding-top:10px;">添加培训课程 </h4>
+ </div>
+ <!--tab start-->
+
+<!--tab end-->        
+    <div class="msgWrap bgfc" style="margin-top:10px;">
+	  <form class="form" method="post" action=""  enctype="multipart/form-data">	 
+	  
+		<table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tbody>
+				<tr>
+					<th width="120">培训课程名称：</th>
+					<input type="hidden" name="addtype" value="Jiaoyu">
+					<td> <input type="text" id="name" name="name" value="{Saivi:$housetype['name']}" class="input-large px" data-rule-required="true" data-rule-maxlength="20">
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">尽量简单，不要超过20字</span></td>
+				</tr>
+			   <tr>
+					<th>所属校区：</th>
+					<td><select id="son_id" name="son_id" class="input-medium" data-rule-required="true">
+                                         
+                                            <option value="0">请选择校区</option>
+                                         
+                                            <volist name="son_data" id="vo">
+                                            <option value="{Saivi:$vo['sid']}" <if condition="$vo['sid'] eq $housetype['son_id']">selected="selected"</if>>{Saivi:$vo['title']}</option>
+                                            </volist>
+                                        </select></td>
+				</tr>
+                 <tr>
+                    <th>选择全景相册：</th>
+                    <td>
+                        <select id="panorama_id" name="panorama_id" class="input-medium" data-rule-required="true"> 
+                                          <option value="0">请选择360全景相册</option> 
+                                            <volist name="panorama" id="vo">
+                                               <option value="{Saivi:$vo['pid']}" <if condition="$vo['pid'] eq $housetype['panorama_id']">selected="selected"</if>>{Saivi:$vo['name']}</option>
+                                            </volist>
+                                        </select>
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">如果没有，请先到 <a href="{Saivi::U('Panorama/add',array('token'=>$token))}" class="btn"><strong><font color='red'>360°全景</strong></font></a>添加</span>
+                    </td>
+                </tr>
+				<tr>
+					<th width="120">简要描述：</th>
+					<td> <input type="text" id="floor_num" name="floor_num" value="{Saivi:$housetype['floor_num']}" class="input-large px" data-rule-required="true">
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">如：1-10</span></td>
+				</tr>
+				<tr>
+					<th width="120">培训课程描述：</th>
+					<td> <input type="text" id="area" name="area" value="{Saivi:$housetype['area']}" class="input-large px" data-rule-required="true">
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">如：约120平方米</span></td>
+				</tr>
+				<tr>
+					<th width="120">显示顺序：</th>
+					<td>  <input type="text" id="sort" name="sort" value="{Saivi:$housetype['sort']|default=1}" class="input-mini px" data-rule-required="true" data-rule-number="true">
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">数值越大越靠前</span></td>
+				</tr>
+				<tr>
+					<th width="120">培训课程介绍：</th>
+					<td>  <textarea id="description" name="description" class='input-xxlarge'  placeholder="介绍简单明了就好" style="width:100%;height:125px">{Saivi:$housetype['description']}</textarea></td>
+				</tr>
+				<tr>
+					<th width="120">培训课程图片:</th>
+					<td> <div id="upimg_main">
+                                        <p>
+                                            <img class="thumb_img" id="type1_src" src="{Saivi:$housetype['type1']}" style="max-height:100px;">
+                                            <input type="input" class="px" id="type1" value="{Saivi:$housetype['type1']}" name="type1" >
+                                     
+                                            <span class="help-inline">
+                                                 <script src="{Saivi::STATICS}/upyun.js"></script>
+                                                 <span class="ke-button-common" id="image1" style="margin-top: 3px;margin-left: 5px;">
+                  		<input type="button" class="ke-button-common ke-button" value="上传"></span> <a href="###" onclick="viewImg('type1')">预览</a>
+                                                <span class="help-inline">建议尺寸：宽720像素，高400像素</span>
+                                            </span>
+                                        </p>
+                                            <br />
+                                        <p>
+                                            <img class="thumb_img" id="type2_src" src="{Saivi:$housetype['type2']}" style="max-height:100px;">
+                                            <input type="input" class="px" id="type2" value="{Saivi:$housetype['type2']}" name="type2" >
+                                     
+                                            <span class="help-inline">
+                                                 <span class="ke-button-common" id="image2" style="margin-top: 3px;margin-left: 5px;">
+                  		<input type="button" class="ke-button-common ke-button" value="上传"></span> 
+                                                 <a href="###" onclick="viewImg('type2')">预览</a>
+                                                <span class="help-inline">建议尺寸：宽720像素，高400像素</span>
+                                            </span>
+                                        </p>
+                                            <br />
+                                        <p>
+                                            <img class="thumb_img" id="type3_src" src="{Saivi:$housetype['type3']}" style="max-height:100px;">
+                                            <input type="input" class="px" id="type3" value="{Saivi:$housetype['type3']}" name="type3" >
+                                     
+                                            <span class="help-inline">
+                                                 <span class="ke-button-common" id="image3" style="margin-top: 3px;margin-left: 5px;">
+                  		<input type="button" class="ke-button-common ke-button" value="上传"></span>  <a href="###" onclick="viewImg('type3')">预览</a>
+                                                <span class="help-inline">建议尺寸：宽720像素，高400像素</span>
+                                            </span>
+                                        </p>
+                                                <br />
+                                        <p>
+                                            <img class="thumb_img" id="type4_src" src="{Saivi:$housetype['type4']}" style="max-height:100px;">
+                                            <input type="input" class="px"  id="type4" value="{Saivi:$housetype['type4']}" name="type4" >
+                                     
+                                            <span class="help-inline">
+                                                 <span class="ke-button-common" id="image4" style="margin-top: 3px;margin-left: 5px;">
+                  		<input type="button" class="ke-button-common ke-button" value="上传"></span>  <a href="###" onclick="viewImg('type4')">预览</a>
+                                                <span class="help-inline">建议尺寸：宽720像素，高400像素</span>
+                                            </span>
+                                        </p>
+
+                                        </div></td>
+				</tr>
+			                                <if condition="$housetype['id'] neq ''">
+                                    <input type="hidden" name="id" value="{Saivi:$housetype['id']}" />
+                                    </if>
+				<th>&nbsp;</th>
+					<td>
+					<input type="hidden" name="token" value="{Saivi:$token}" />
+						<button type="submit" name="button" class="btnGreen">保存</button>
+						<a href="javascript:history.go(-1);" class="btnGray vm">取消</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+  </div> 
+ 
+  
+        </div>
+<include file="Public:footer"/>

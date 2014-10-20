@@ -1,0 +1,133 @@
+<include file="Public:head"/>
+
+<div class="content" style="width:920px; background:none; margin-left:275px; border:none; margin-bottom:30px;">
+
+         
+
+          <div class="cLineB">
+
+              <h4 class="left">审核上墙信息</h4>
+
+              <div class="clr"></div>
+
+          </div>
+
+          
+
+          <div class="msgWrap">
+
+            <TABLE class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+
+              <THEAD>
+
+                <TR>
+
+					
+
+					<TH class="keywords" width="80%">上墙内容</TH>
+
+					
+
+					<TH class="edit norightborder">操作</TH>
+
+                </TR>
+
+              </THEAD>
+
+              <TBODY id="ind">
+
+                <TR></TR>
+
+				<volist name="info" id="vo">
+
+				<tr class="tr{Saivi:$vo.id}">
+
+                  
+
+                  <td>{Saivi:$vo.content}</td>
+
+                  
+
+                   
+
+                   <td class="norightborder">
+
+				   <a href="javascript:passlog({Saivi:$vo.id})">审核通过</a> 
+
+				   <a href="javascript:dellog({Saivi:$vo.id})">删除</a></td>
+
+          
+
+                </tr>
+
+				</volist>
+
+                              
+
+              </TBODY>
+
+            </TABLE>
+
+
+
+<script>
+
+	 var yuni,hoko;
+
+     	function getCheck(){
+
+			$.ajax({ 
+
+    		type: "post", 
+
+    		url : "{Saivi::U('Wewall/sentcheck')}",
+
+    		dataType:'json', 
+
+    		data: 'uid={Saivi:$id}',
+
+    		success: function(json){
+
+				if(json!=null){
+
+	     			for(i=0;i<json.length;i++){
+
+				 		$('#ind').prepend("<tr class='tr"+json[i]['id']+"'><td>"+json[i]['content']+"</td><td class='norightborder'><a href='javascript:passlog("+json[i]['id']+")'>审核通过</a>  <a href='javascript:dellog"+json[i]['id']+"()'>删除</a></td>")
+
+			 		}
+
+		 		 }
+
+        	}  
+
+	 	 });	 
+
+		yuni=setTimeout(getCheck,5000) ;	 
+
+	}
+
+	function passlog(num){
+
+		$.ajax({ url : "{Saivi::U('Wewall/passlog')}",dataType:'text',  data: 'id='+num,success: function(data){ $(".tr"+num).remove()}  });	 
+
+	}
+
+	function dellog(num){
+
+		$.ajax({ url : "{Saivi::U('Wewall/dellog')}",dataType:'text',  data: 'id='+num,success: function(data){ $(".tr"+num).remove()}  });	 
+
+	}
+
+	$(function(){
+
+		getCheck();
+
+		})
+
+</script>   
+
+  <!--底部-->
+
+  	</div>
+
+<include file="Public:footer"/>

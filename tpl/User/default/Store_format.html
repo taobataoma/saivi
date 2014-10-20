@@ -1,0 +1,62 @@
+<include file="Public:head"/>
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />  
+<div class="content">
+<!--tab start-->
+<div class="tab">
+<ul>
+<li class="current tabli" id="tab2"><a href="{Saivi::U('Store/index',array('token'=>$token))}">商品分类管理</a></li>
+<li class="tabli" id="tab0"><a href="{Saivi::U('Store/product',array('token'=>$token, 'catid'=>$catid))}">商品管理</a></li>
+<li class="tabli" id="tab2"><a href="{Saivi::U('Store/orders',array('token'=>$token))}">订单管理</a></li>
+<li class="tabli" id="tab5"><a href="{Saivi::U('Reply_info/set',array('token'=>$token,'infotype'=>'Shop'))}">商城回复配置</a></li>
+</ul>
+</div>
+<!--tab end-->
+<div class="cLine">
+<div class="pageNavigator left">
+	<a href="{Saivi::U('Store/normsAdd',array('token'=>$token,'catid'=>$catid))}" title="新增规格名称" class="btn btn-primary btn_submit  J_ajax_submit_btn">
+	<img src="{Saivi::RES}/images/product/add.png" class="vm">新增<span class="red">{Saivi:$catData.name}</span>分类的规格名称</a>
+</div>
+<div class="pageNavigator right">
+	<a href="{Saivi::U('Store/index',array('token'=>$token,'catid'=>$catid))}" class="btn btn-primary btn_submit  J_ajax_submit_btn">返回</a>
+</div>
+<div class="clr"></div>
+</div>
+<div class="msgWrap">
+<form method="post" action="" id="info">
+<input name="delall" type="hidden" value="">
+<input name="wxid" type="hidden" value="">
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+<thead>
+<tr>
+<th class="select">名称</th>
+<th width="160">分类名称</th>
+<th width="130">规格名称</th>
+<th width="250" class="norightborder">操作</th>
+</tr>
+</thead>
+<tbody>
+<tr></tr>
+<volist name="list" id="hostlist"> 
+<tr>
+<td></td>
+<td>{Saivi:$catData.name}</td>
+<td>{Saivi:$hostlist.name}</td>
+<td class="norightborder">
+	<a href="{Saivi::U('Store/formatAdd',array('token'=>$token,'id'=> $hostlist['id'], 'catid' => $catid))}">修改</a>
+	<a href="javascript:drop_confirm('您确定要删除吗?', '{Saivi::U('Store/normsDel',array('id' => $hostlist['id'], 'token'=>$token, 'catid' => $catid))}');">删除</a>
+	<a href="{Saivi::U('Store/norms',array('token'=>$token,'fid'=> $hostlist['id'], 'catid' => $catid))}">增加规格值</a>
+</td>
+</tr>
+</volist>
+</tbody>
+</table>
+</form>
+</div>
+<div class="cLine">
+<div class="pageNavigator right">
+<div class="pages">{Saivi:$page}</div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+<include file="Public:footer"/>

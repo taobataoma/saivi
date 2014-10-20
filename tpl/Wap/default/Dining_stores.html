@@ -1,0 +1,91 @@
+<include file="Dining:header"/>
+
+<style type="text/css">
+
+/*.round .dandanb ul { border-top:1px solid #ddd;}
+
+.round .dandanb ul li{width:30%; height:36px; line-height:36px; float:left; text-indent:25px;}*/
+
+.round .dandanb .kjj { border-top:1px solid #ddd;}
+
+.round .dandanb .kjj span {width:30%; height:30px; line-height:32px; float:left; text-indent:25px; padding:0;margin:0;}
+
+.round .dandanb .kjj span.tell{width:40%; background:url({Saivi::RES}/weidingcan/index/images/card/themes/1/icon_order.png) left 5px no-repeat; background-size:24px;}
+
+.round .dandanb .kjj span.reserve{background:url({Saivi::RES}/weidingcan/index/images/card/themes/1/icon_reserve.png) left 5px no-repeat; background-size:24px;}
+
+.round .dandanb .kjj span.lbs{background:url({Saivi::RES}/weidingcan/index/images/card/themes/1/icon_lbs.png) left 5px no-repeat; background-size:24px;}
+
+.round .dandanb .kjj span a{color:#36B35F; text-decoration:none;}
+
+
+
+</style>
+
+</head>
+
+<body id="diancaiindex">
+
+<div class="cardexplain"> 
+
+<!--热门商家-->
+
+<ul class="round">
+
+<li class="title"><span class="none smallspan">店铺信息({Saivi:$StoreCount}个)</span></li>
+
+<volist id="b" name="stores">
+
+<li class="dandanb">
+
+<if condition="$dtype eq 3">
+
+<a href="{Saivi::U('Dining/tables',array('token'=>$token,'wecha_id'=>$wecha_id,'storeid'=>$b['id'],'dtype'=>$dtype))}">
+
+<else />
+
+<a href="{Saivi::U('Dining/cats',array('token'=>$token,'wecha_id'=>$wecha_id,'storeid'=>$b['id'],'dtype'=>$dtype))}">
+
+</if>
+
+    <span class="none shangjia"><img src="{Saivi:$b.logourl}"><h2>{Saivi:$b.name}</h2>
+
+    <p>区域：{Saivi:$b.scope}</p><p>起送价：￥{Saivi:$b.money}</p>
+
+    <if condition="$b.status eq 1"><em class="ok">营业中</em><else/><em class="no">未营业</em></if></span>
+
+</a>
+
+    <div class="kjj">
+
+    <span class="tell"><a href="tel:{Saivi:$b.tel}">电话预订</a></span>
+
+    <span class="reserve"><a href="{Saivi::U('Dining/about',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'storeid'=>$b['id']))}">店铺信息</a></span>
+
+    <span class="lbs"><a href="http://api.map.baidu.com/marker?location={Saivi:$b.latitude},{Saivi:$b.longitude}&title={Saivi:$b.name}&content={Saivi:$b.address}&output=html">导航</a></span>
+
+    </div>
+
+<div class="clr"></div>
+
+</li>
+
+</volist>
+
+</ul>
+
+</div>
+
+<script type="text/javascript">
+
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+	WeixinJSBridge.call('hideToolbar');
+
+});
+
+</script>
+
+</body>
+
+</html>

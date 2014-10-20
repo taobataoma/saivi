@@ -1,0 +1,361 @@
+<include file="Public:head"/>
+
+
+
+<div class="content" style="width:920px; background:none; border:none; margin-bottom:30px;">
+
+
+
+
+
+
+
+<div class="cLineB">
+
+
+
+  <h4>微信墙活动设置<span class="FAQ">每次只能开启一个活动，上个活动未结束不能创建下个活动</span></h4>
+
+
+
+  
+
+
+
+ </div>
+
+
+
+         <div class="cLineC" style="line-height: 32px;">
+
+
+
+ <a href="{Saivi::U('Wewall/add')}" class="btnGrayS vm bigbtn" >添加活动</a>　 
+
+
+
+</div>
+
+
+
+ 
+
+
+
+ <div class="msgWrap form">
+
+
+
+
+
+
+
+<div class="bdrcontent">
+
+
+
+<div id="div_ptype">
+
+
+
+<table class="ListProduct" border="0" style="margin-bottom:20px; border:2px #333 solid" cellSpacing="0" cellPadding="0" width="100%">
+
+
+
+<thead>
+
+
+
+<tr>
+
+
+
+<th style=" width:180px;">正在进行的活动名称</th>                 
+
+
+
+<th style=" width:110px;">前台发送间隔</th>
+
+
+
+<th>是否需要审核</th>
+
+
+
+<th>是否开启抽奖</th>
+
+
+
+<th>前台背景图片</th>
+
+
+
+<th style=" width:150px;" class="norightborder">操作</th>
+
+
+
+</tr>
+
+
+
+</thead>
+
+
+
+
+
+
+
+<tr>
+
+
+
+<if condition="$actinfo neq NULL">
+
+
+
+<td>{Saivi:$actinfo.acttitle}</td>
+
+
+
+<td>{Saivi:$actinfo.showtime}秒</td>
+
+
+
+<td><if condition="$actinfo['ifcheck'] eq '1'">需要审核<else/>不需要审核</if></td>
+
+
+
+<td><if condition="$actinfo['iflottery'] eq '1'">已开启抽奖<else/>未开启抽奖</if></td>
+
+
+
+<td><if condition="$actinfo['background'] eq Null">未设置自定义背景<else/><img style="width:100px" src="{Saivi:$info.background}"></if></td>
+
+
+
+<td class="norightborder">
+
+
+
+    <if condition="$actinfo['isact'] eq 0"> 
+
+
+
+    <a href="{Saivi::U('Wewall/change',array('id'=>$actinfo['id'],'actid'=>0,'token'=>$_SESSION['token']))}">启动</a>
+
+
+
+    <else /> <a href="{Saivi::U('Wewall/change',array('id'=>$actinfo['id'],'actid'=>1,'token'=>$_SESSION['token']))}">停止</a>
+
+
+
+    </if>
+
+
+
+    <a target="_blank" href="{Saivi::U('Wewall/show',array('token'=>$_SESSION['token'],'id'=>$actinfo['id']))}">前台</a>
+
+
+
+    <if condition="$actinfo['ifcheck'] eq 1"> 
+
+
+
+    <a target="_blank" href="{Saivi::U('Wewall/gocheck',array('token'=>$_SESSION['token'],'id'=>$actinfo['id']))}">审核</a>
+
+
+
+    </if>
+
+
+
+    <a href="{Saivi::U('Wewall/edit',array('id'=>$actinfo['id'],'token'=>$_SESSION['token']))}" target=iframe>编辑</a>
+
+
+
+    <a href="{Saivi::U('Wewall/change',array('id'=>$actinfo['id'],'actid'=>2,'token'=>$_SESSION['token']))}" title="统计活动结果并关闭游戏，无法再次开启">关闭</a>
+
+
+
+</td>
+
+
+
+<else />
+
+
+
+<td colspan="7" style="text-align:center">目前没有进行中的活动哦</td>
+
+
+
+</if>
+
+
+
+</tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+
+
+
+<thead>
+
+
+
+<tr>
+
+
+
+<th style=" width:70px;">过往活动名称</th>                 
+
+
+
+<th style=" width:70px;">结束时间</th>
+
+
+
+
+
+
+
+<th style=" width:100px;" class="norightborder">操作</th>
+
+
+
+</tr>
+
+
+
+</thead>
+
+
+
+<volist name="info" id="vo">
+
+
+
+<tr>
+
+
+
+<td>{Saivi:$vo.acttitle}</td>
+
+
+
+<td>{Saivi:$vo.endtime|date="Y-m-d",###}</td>
+
+
+
+<td class="norightborder">
+
+
+
+	<a target="ddd" href="{Saivi::U('Wewall/result',array('id'=>$vo['id'],'token'=>$_SESSION['token']))}">查看结果</a>
+
+
+
+	<a href="{Saivi::U('Wewall/delold',array('id'=>$vo['id']))}">删除</a>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+</volist>
+
+
+
+               
+
+
+
+  </table>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="footactions" style="padding-left:10px">
+
+
+
+  <div class="pages">{Saivi:$page}</div>
+
+
+
+</div>
+
+
+
+          </div>
+
+
+
+  
+
+
+
+        </div>
+
+
+
+   
+
+
+
+        <div class="clr"></div>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+  </div> 
+
+
+
+  <!--底部-->
+
+
+
+  	</div>
+
+
+
+
+
+
+
+<include file="Public:footer"/>

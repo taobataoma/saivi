@@ -1,0 +1,111 @@
+<include file="Public:head"/>
+
+<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/js/formCheck/formcheck.js"> </script>
+<div class="content">
+  <div class="cLineB">
+    <h4>编辑预约</h4>
+    <a href="javascript:history.go(-1);"  class="right btn btn-primary btn_submit  J_ajax_submit_btn" style="margin-top:-27px" >返回</a></div>
+  <div class="msgWrap">
+    <form class="form" method="post"  action="{Saivi::U('Cosmetology_setup/upsave')}"    enctype="multipart/form-data" >
+      <TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
+        <TBODY>
+        <input type="hidden" class="px" id="id" value="{Saivi:$_GET['id']}" name="id" style="width:500px" >
+        <input type="hidden" class="px" id="token" value="{Saivi:$_SESSION['token']}" name="token" style="width:500px" >
+        <TR>
+          <TH valign="top"><label for="keyword">姓名</label></TH>
+          <TD><input type="text" class="px" id="name" value="{Saivi:$info.name}" name="name" style="width:300px"   >
+            填写关键词20个字以内<br/>
+          </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">性别</label></TH>
+          <TD><input type="text" class="px" id="sex" value="{Saivi:$info.sex}" name="sex" style="width:300px"   >
+            <br/>
+          </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">年龄</label></TH>
+          <TD><input type="text" class="px" id="age" value="{Saivi:$info.age}" name="age" style="width:300px"   >
+            <br/>
+          </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">预约日期</label></TH>
+          <TD><input type="text" class="px" id="scheduled_date" value="{Saivi:$info.scheduled_date}" name="scheduled_date" style="width:120px" onClick="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true});"    >
+            <br/>
+          </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">套餐选择</label></TH>
+          <TD><select name="departments" id="departments"   style="width:200px" >
+              <option value="{Saivi:$info.departments}">{Saivi:$info.departments}</option>
+              <volist name="id" id="ks">
+                <option value="{Saivi:$ks.name}">{Saivi:$ks.name}</option>
+              </volist>
+            </select>
+            <br/>
+          </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">人数</label></TH>
+          <TD><input type="text" class="px" id="expert" value="{Saivi:$info.expert}" name="expert" style="width:300px"   >
+            <br/>
+          </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">备注</label></TH>
+          <TD><input type="text" class="px" id="disease" value="{Saivi:$info.disease}" name="disease" style="width:300px"   >
+            <br/>
+          </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">联系方式</label></TH>
+          <TD><input type="text" class="px" id="phone" value="{Saivi:$info.phone}" name="phone" style="width:300px"   >
+            <br/>
+          </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">地址</label></TH>
+          <TD><input type="text" class="px" id="address" value="{Saivi:$info.address}" name="address" style="width:300px"   >
+            <br/>
+          </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">是否处理</label></TH>
+          <TD><select name="process" id="process"   style="width:200px" >
+              <option value="{Saivi:$info.process}">{Saivi:$info.process}</option>
+              <option value="已处理">已处理</option>
+              <option value="未处理">未处理</option>
+            </select>
+            <br/>
+          </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH></TH>
+          <TD><button type="submit"  name="button"  class="btn btn-primary btn_submit  J_ajax_submit_btn" >保存</button>
+            <div class="clr"></div></TD>
+        </TR>
+        </TBODY>
+        
+      </TABLE>
+    </form>
+  </div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+</div>
+<!--底部-->
+</div>
+<include file="Public:footer"/>

@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{Saivi:$tpl.wxname}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta charset="utf-8">
+<link href="{Saivi::RES}/css/yl/news.css" rel="stylesheet" type="text/css" />
+
+</head>
+<script>
+window.onload = function ()
+{
+var oWin = document.getElementById("win");
+var oLay = document.getElementById("overlay");	
+var oClose = document.getElementById("close");
+
+oLay.onclick = function ()
+{
+oLay.style.display = "none";
+oWin.style.display = "none"	
+}
+};
+</script>
+<body id="listhome1">
+<div id="ui-header">
+<div class="fixed">
+
+<a class="ui-btn-left_pre" href="javascript:history.go(-1)"></a>
+<a class="ui-btn-right" href="{Saivi::U('Index/index',array('token'=>$tpl['token']))}"></a>
+</div>
+</div>
+<div id="overlay"></div>
+
+<div class="Listpage">
+<div class="top46"></div>
+    <div id="todayList">
+<ul  class="todayList">
+ <volist name="cats" id="hostlist">  
+<li>
+<if condition="$hostlist['url']">
+<a href="{Saivi:$hostlist.url}">
+<else />
+<a href="{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}">
+</if>
+<div class="img"><img src="{Saivi:$hostlist.logourl}"></div>
+<h2>{Saivi:$hostlist.name}</h2>
+<p class="onlyheight">{Saivi:$hostlist.des}</p>
+<div class="commentNum"></div>
+</a>
+</li>
+ </volist>
+
+</ul>
+</div>
+<section id="Page_wrapper">
+<div id="pNavDemo" class="c-pnav-con">
+
+</div>
+<script>
+function dourl(url){
+location.href= url;
+}
+</script>
+<div style="display:none"> </div>
+<div style="display:none">{Saivi:$tpl.tongji|htmlspecialchars_decode}</div>
+
+  <div class="copyright">
+<if condition="$iscopyright eq 1">
+{Saivi:$homeInfo.copyright}
+<else/>
+{Saivi:$siteCopyright}
+</if>
+</div> 
+<include file="Index:styleInclude"/><include file="$cateMenuFileName"/>
+<!-- share -->
+<include file="Index:share" />
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['sc'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if></body>
+</html>

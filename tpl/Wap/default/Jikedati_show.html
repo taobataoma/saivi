@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>美容大师榜单</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<link rel="stylesheet" type="text/css" href="{Saivi::RES}/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{Saivi::RES}/2048/style/view.css">
+	    <style type="text/css">
+        #cover{z-index: 10000;background: rgba(0,0,0,0.7);width: 100%;height: 100%;position: fixed;left: 0px;top: 0px;}
+        #cover p{text-align:left;margin: 0 auto;font-family: microsoft yahei;color: white;font-size: 20px;margin-top: 180px;line-height: 30px;width: 90%;border: 1px dashed yellow;}
+  </style>
+</head>
+<body>
+      <div id="cover" <if condition="$cover eq 0">style="display:none;"</if>>
+        <p>您可能是从朋友分享过的页面打开的连接，无法直接玩游戏<br><br>您可以点击右上角→查看公众号，关注公众号后，回复’小游戏‘即可参与游戏</p>
+    </div>	
+	<h1>聚美汇成——美容大师排行榜</h1>
+    <a href="{Saivi::U('learning',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'score'=>$_GET['score']))}" class="btn btn-info btn-large btn-block" style="width:90%;">查看做错了哪些题</a>
+	<div id="table">
+		<table class="table table-striped table-bordered table-hover table-condensed">
+			<tbody>
+				<tr>
+					<th>排名</th>
+					<th>玩家</th>
+					<th>分数</th>
+				</tr>
+				<volist name='list' id="vo">
+				<tr>
+					<td>{Saivi:$i}</td>
+					<td><img src="{Saivi:$vo.portrait}" class="img-rounded" width="50"><span>{Saivi:$vo.wechaname}</span></td>
+					<td>{Saivi:$vo.bestscore}</td>
+				</tr>
+				</volist>
+		
+			</tbody>
+		</table>
+	</div>
+	<div class="pagination"><ul>{Saivi:$page}</ul></div>
+
+  <script type="text/javascript">
+
+var imgUrl = "http://wx.kmarfl.com/uploads/j/jptdvx1394503693/5/2/2/a/thumb_53d21a81b34a7.jpg";
+        var lineLink = "{saivi:$Think.server.http_host}{Saivi::U('view',array('token'=>$_GET['token']))}";
+        var descContent = "挑战2048记录拿奖金";
+        var shareTitle = '聚美汇成2048挑战大赛';
+        var appid = 'wxa84796a6ad7591fc';
+        
+         
+        function shareFriend() {
+            WeixinJSBridge.invoke('sendAppMessage',{
+                "appid": appid,
+                "img_url": imgUrl,
+                "img_width": "200",
+                "img_height": "200",
+                "link": lineLink,
+                "desc": descContent,
+                "title": shareTitle
+            }, function(res) {
+                //_report('send_msg', res.err_msg);
+            })
+        }
+        function shareTimeline() {
+            WeixinJSBridge.invoke('shareTimeline',{
+                "img_url": imgUrl,
+                "img_width": "200",
+                "img_height": "200",
+                "link": lineLink,
+                "desc": descContent,
+                "title": shareTitle
+            }, function(res) {
+                   //_report('timeline', res.err_msg);
+            });
+        }
+        function shareWeibo() {
+            WeixinJSBridge.invoke('shareWeibo',{
+                "content": descContent,
+                "url": lineLink,
+            }, function(res) {
+                //_report('weibo', res.err_msg);
+            });
+        }
+
+        
+        // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+            // 发送给好友
+            WeixinJSBridge.on('menu:share:appmessage', function(argv){
+                shareFriend();
+            });
+            // 分享到朋友圈
+            WeixinJSBridge.on('menu:share:timeline', function(argv){
+                shareTimeline();
+            });
+            // 分享到微博
+            WeixinJSBridge.on('menu:share:weibo', function(argv){
+                shareWeibo();
+            });
+        }, false);
+    </script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="">
+<title>{Saivi:$Goldegg.title}</title>
+<link href="{Saivi::RES}/{Saivi::MODULE_NAME}/css/app.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="{Saivi::STATICS}/jQuery/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/{Saivi::MODULE_NAME}/js/alert.js"></script>
+</head>
+<body data-role="page" class="activity-winning">
+<if condition="$Goldegg['end'] eq 1">
+	<div class="main">
+		<div class="banner"><img src="{Saivi::RES}/css/guajiang/images/activity-scratch-card-end2.jpg"></div>
+		<div class="content" style="margin-top:-5px">
+			<div class="boxcontent boxwhite">
+				<div class="box">
+					<div class="title-brown">活动结束说明：</div>
+					<div class="Detail">
+						<p>{Saivi:$Goldegg.endinfo}.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<elseif condition="($Goldegg['end'] eq '5') and ($Goldegg['redo'] eq '0')"/>
+	<div class="main">
+		<div class="content" style="margin-top:-5px">
+			<div class="boxcontent boxwhite">
+				<div class="box">
+					<div class="title-brown">恭喜：</div>
+					<div class="Detail">
+						<p>尊敬的<font color='red'>{Saivi:$Goldegg.uname}</font>您已经中过奖了，兑奖号：</p>
+						<p>&nbsp;</p>
+						<volist id="snlist" name="snlist">
+						<p>{Saivi:$snlist.prize}&nbsp;:&nbsp;<font color='red'>{Saivi:$snlist.sn}</font>&nbsp;&nbsp;({Saivi:$snlist.createtime|date="Y-m-d H:i:s",###})</p>
+						</volist>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<elseif condition="$Goldegg['status'] eq 2"/>
+	<div class="main">
+		<div class="banner"><img src="{Saivi::RES}/Goldegg/images/activity_end.jpg"></div>
+		<div class="content" style="margin-top:-5px">
+			<div class="boxcontent boxwhite">
+				<div class="box">
+					<div class="title-brown">活动结束说明：</div>
+					<div class="Detail">
+						<p>{Saivi:$Goldegg.endinfo}.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<elseif condition="$Goldegg['usenums'] eq $Goldegg['canrqnums']"/>
+	<div class="main">
+		<script>alert("砸蛋次数已用完！");</script>
+	</div>
+<else/>
+<div class="main">
+	<div class="cover">
+		<div class="egg">
+			<ul class="eggList">
+				<p class="hammer" id="hammer">锤子</p>
+				<p class="resultTip" id="resultTip"><b id="result"></b></p>
+				<li><span>1</span><sup></sup></li>
+				<li><span>2</span><sup></sup></li>
+				<li><span>3</span><sup></sup></li>
+				<div id="prize"></div>
+			</ul>
+		</div>
+	</div>
+	<div class="content">
+		<div id="goodlucky" class="boxcontent boxwhite">
+			<div class="box">
+				<div class="title-red"><span>恭喜你中奖了</span></div>
+				<div class="Detail">
+					<p>您中了：<span class="red" id="prizetype"></span>，SN码为：<span class="red" id="sncode"></span></p>
+					<p class="red">{Saivi:$Goldegg.summary}</p>
+					<p>
+						<input name="tel" class="px" id="tel" value="{Saivi:$Goldegg.phone}" type="text" placeholder="请输入您的手机号">
+						<input name="wechaname" class="px" id="wechaname" value="{Saivi:$Goldegg.uname}" type="text" placeholder="请输入您的微信号">
+						<input name="wechaid" id="wechaid" value="{Saivi:$Goldegg.wecha_id}" type="hidden">
+						<input name="lid" id="lid" value="{Saivi:$Goldegg.lid}" type="hidden">
+						<input name="sncode" value="{Saivi:$Goldegg.sn}" type="hidden">
+						<input name="prizetype" value="{Saivi:$Goldegg.prizetype}" type="hidden">
+					</p>
+					<p>
+						<input class="pxbtn" name="提 交" id="save-btn" type="button" value="用户提交">
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="boxcontent boxwhite">
+			<div class="box">
+				<div class="title-brown"><span>奖项说明：</span></div>
+				<div class="Detail">
+					<volist name="Goldegg['prizeinfo']" id="prizeinfo">
+					<p>{Saivi:$prizeinfo.tit}：{Saivi:$prizeinfo.info}<if condition="$Goldegg['displayjpnums'] eq '1'">&nbsp;&nbsp;奖品数量：{Saivi:$prizeinfo.num}</if>
+					</volist>
+					<p>每人最多有{Saivi:$Goldegg.canrqnums}次机会</p>
+					<p>这是您第<span class="red" id="usenums">{Saivi:$Goldegg.usenums}</span>次砸金蛋</p>
+					{Saivi::$prizeStr}
+				</div>
+			</div>
+		</div>
+		<div class="boxcontent boxwhite">
+			<div class="box">
+				<div class="title-brown">活动说明：</div>
+				<div class="Detail">{Saivi:$Goldegg.info}
+					<p>活动时间:{Saivi:$Goldegg.startdate|date="Y-m-d",###}至{Saivi:$Goldegg.enddate|date="Y-m-d",###}</p>
+					<p>{Saivi:$Goldegg.txt}</p>					
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="clear:both;"></div>
+</div>	
+</if>
+<div style="height:60px;"></div>
+<div class="footFix" id="footReturn">
+	<a href="javascript:void(0)" onClick="location.href='{Saivi::U('Wap/Index/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}';"><span>返回3G网站</span></a>
+</div>
+
+<div class="window" id="windowcenter">
+	<div id="title" class="title">消息提醒<span class="close" id="alertclose"></span></div>
+	<div class="content">
+		<div id="txt"></div>
+		<input type="button" value="确定" id="windowclosebutton" name="确定" class="txtbtn">	
+	</div>
+</div>
+<script type="text/javascript">
+function eggClick(obj) {
+	var PATH_GOODLUCK = '{Saivi::U('Goldegg/goodluck')}';
+	var id = getQueryString('id');
+	var wxid = getQueryString('wxid');
+	var wecha_id = getQueryString('wecha_id');
+	var token = getQueryString('token');
+	if(id===undefined){
+		return;
+	}
+	var _this = obj;
+	$.getJSON(PATH_GOODLUCK,{id : id, wecha_id : wecha_id, token : token},function(res){
+		if(_this.hasClass("curr")){
+			alert("蛋都碎了，别砸了！刷新再来.");
+			return false;
+		}
+		$(".hammer").css({"top":_this.position().top - 55,"left":_this.position().left + 185});
+		$(".hammer").animate({
+			"top":_this.position().top - 25,
+			"left":_this.position().left + 125
+			},30,function(){
+				_this.addClass("curr"); //蛋碎效果
+				_this.find("sup").show(); //金花四溅
+				$(".hammer").hide();
+				$('.resultTip').css({display:'none',top:'100px',left:_this.position().left + 32,opacity:0}).animate({top: '50px',opacity:0.7},300,function(){
+					if(res.msgtype == 3){
+						//$("#result").html(res.msg);
+						$("#usenums").html(res.usenums);
+						$("#prizetype").html(res.prizetype+"等奖");
+						$("#sncode").html(res.sn);
+						$("input[name=sncode]").val(res.sn);
+						$("input[name=prizetype]").val(res.prizetype);
+						$("#goodlucky").slideToggle(500);
+						
+					}else{
+						//$("#result").html(res.msg);
+						$("#usenums").html(res.usenums);
+						alert(res.msg);
+					}
+				});	
+			}
+		);
+	});
+}
+
+$(".eggList li").click(function() {
+	$(this).children("span").hide();
+	eggClick($(this));
+});
+
+$(".eggList li").hover(function() {
+	var posL = $(this).position().left + $(this).width() + 20;
+	$("#hammer").show().css('left', posL);
+})
+
+function getQueryString(name){
+	var reg = new RegExp("(^|\\?|&)"+ name +"=([^&]*)(\\s|&|$)", "i");
+	var str = location.href;
+	var lurl = str.replace(/#code.jiawoyige.com.qq.com/g, "");
+	if (reg.test(lurl)) {
+		return decodeURIComponent(RegExp.$2.replace(/\+/g, " "));
+	}
+	return undefined;
+}
+</script>
+<script type="text/javascript">
+$("#save-btn").bind("click",
+	function() {
+		var btn 	= $(this);
+		var tel 	= $("#tel").val();
+		var wxname	= $("#wechaname").val();
+		var wechaid = $("#wechaid").val();
+		var lid 	= $("#lid").val();
+		var prize 	= $("input[name=prizetype]").val();
+		var sncode 	= $("input[name=sncode]").val();
+		var token   = "{Saivi:$Goldegg.token}";
+		 
+		if (tel == '') {
+	        alert("请认真输入手机号");
+	        return
+    	}
+		if(wxname == ''){
+			alert("请认真输入微信号");
+			return;
+		}
+
+		var submitData = {
+			//tid: 440,
+			tel 	: tel,
+			wxname	: wxname,
+			wechaid : wechaid,
+			lid 	: lid,
+			prize 	: prize,
+			sncode 	: sncode,
+			token 	: token,
+			action 	: "add"
+		};
+		$.post('{Saivi::U('Goldegg/add')}', submitData,
+			function(res) {
+				if (res.success == true) {
+					$("#goodlucky").hide("slow");
+					alert(res.msg);
+					return
+				} else { 
+					//alert('失败'+data);
+					return
+				}
+			},"json"
+		)
+});
+
+</script>
+</body></html>

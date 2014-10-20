@@ -1,0 +1,250 @@
+
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <meta charset="utf-8" />
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/template/weimob-ui-1-1.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/template/common.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/template/reset.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/template/list-0.css" media="all" />
+
+<script type="text/javascript" src="{Saivi::RES}/src/jQuery.js"></script>
+
+<title>{Saivi:$tpl.wxname}</title>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+		<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+
+        <meta name="Keywords" content="微盟、微信营销、微信代运营、微信定制开发、微信托管、微网站、微商城、微营销" />
+
+        <meta name="Description" content="微盟，国内最大的微信公众智能服务平台，微盟八大微体系：微菜单、微官网、微会员、微活动、微商城、微推送、微服务、微统计，企业微营销必备。" />
+
+        <!-- Mobile Devices Support @begin -->
+
+            <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+
+            <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+
+            <meta content="no-cache" http-equiv="pragma">
+
+            <meta content="0" http-equiv="expires">
+
+            <meta content="telephone=no, address=no" name="format-detection">
+
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+            <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <!-- Mobile Devices Support @end -->
+
+        <link rel="shortcut icon" href="{Saivi::RES}/img/favicon.ico" />
+
+    </head>
+
+    <body onselectstart="return true;" ondragstart="return false;">
+
+        <link rel="stylesheet" type="text/css" href="../../wm-xin-a/font-awesome.css?v=2013122901" media="all" />
+
+<div class="weimob-page">
+
+		<div style="height:35px!important;"></div>
+
+	<div class="top_bar1">
+
+		<nav>
+
+			<ul class="top_menu1">
+
+				<li onclick="window.history.go(-1);"><span class="icon-chevron-sign-left"></span></li>
+
+				<li onclick="location.href='{Saivi::U('Index/index',array('token'=>$tpl['token']))}'"><span class="icon-home" ></span></li>
+
+									<li><a href="tel:<if condition="$homeInfo.dianhua neq false">{Saivi:$homeInfo.dianhua}<else/>没有留电话</if>"><span class="icon-phone"></span></a></li>
+
+								<li onclick="$('#menu_font').toggleClass('hidden');">
+
+					<span class="icon-list-ul"></span>
+
+					<ul id="menu_font" class="menu_font hidden" onclick="$('#menu_font').toggleClass('hidden');">
+
+					<volist name="info" id="vo">
+
+																					<li>
+
+																		<a href="<if condition="$vo['url'] eq ''">{Saivi::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{Saivi:$vo.url|htmlspecialchars_decode}</if>" class="icon-smile">
+
+										{Saivi:$vo.name}									</a>
+
+								</li>
+
+								</volist> 
+
+																		</ul>
+
+				</li>
+
+			</ul>
+
+		</nav>
+
+	</div>
+
+
+
+<!--
+
+分享前控制
+
+-->
+
+	<script>
+
+		document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+WeixinJSBridge.call('showOptionMenu');
+});
+</script>
+
+<div class="weimob-content">
+
+            <div class="weimob-list">
+
+			<volist name="res" id="so">
+
+				<if condition="$so['url']"><a href="{Saivi:$so.url}" class="weimob-list-item"><else /><a href="{Saivi::U('Index/content',array('id'=>$so['id'],'token'=>$so['token']))}" class="weimob-list-item"></if>
+
+						<div class="weimob-list-item-line">
+
+                            <div class="weimob-list-item-title">{Saivi:$so.title}</div>
+
+                            <div class="weimob-list-item-summary">{Saivi:$so.text}</div>
+
+                        </div>
+
+                        <div class="weimob-list-item-icon icon-arrow-r"></div>
+
+                    </a>
+
+				</volist>
+
+				 </div>
+
+        </div>
+
+		  </div>
+
+					<!--
+
+下一页 上一页 开始
+
+-->
+
+<section id="Page_wrapper">
+
+<div id="pNavDemo" class="c-pnav-con">
+
+<section class="c-p-sec">
+
+<div class='c-p-pre <eq name="p" value="1"> c-p-grey </eq> '><span class="c-p-p"><em></em></span><a <eq name="p" value="1"><else/>href="{Saivi::C('site_url')}/index.php?g=Wap&m=Index&a=lists&classid=<php>echo $_GET['classid'];</php>&token={Saivi:$tpl.token}&p=<php>echo $p-1;</php>"</eq>  >上一页</a></div>
+
+<div class="c-p-cur">
+
+<div class="c-p-arrow c-p-down"><span>{Saivi:$p}/{Saivi:$page}</span><span></span></div>
+
+	<select class="c-p-select" onChange="dourl('{Saivi::C('site_url')}/index.php?g=Wap&m=Index&a=lists&classid=<php>echo $_GET['classid'];</php>&token={Saivi:$tpl.token}&p='+this.value)">
+
+		<?php
+
+			for($i=1;$i<=$page;$i++){
+
+				if($i==$p){
+
+					echo '<option value="'.$i.'" selected>第'.$i.'页</option>';
+
+				}else{
+
+					echo '<option value="'.$i.'">第'.$i.'页</option>';
+
+				}
+
+			}
+
+		?>
+
+	</select>
+
+</div>
+
+<div class='c-p-next <eq name="p" value="$page"> c-p-grey </eq>'  >
+
+
+
+<?php
+
+	if($p<$page){
+
+		echo '<a href="'.C('site_url').'/index.php?g=Wap&m=Index&a=lists&classid='.(int)$_GET['classid'].'&token='.$tpl['token'].'&p='.($p+1).'">';
+
+	}else{
+
+		echo '<a>';
+
+	}
+
+?>
+
+下一页</a><span class="c-p-p"><em></em></span></div>
+
+</section>
+
+</div>
+
+</section>
+
+<!--
+
+下一页 上一页 结束
+
+-->
+
+
+
+				<footer>
+
+				<div class="weimob-copyright">
+
+					<a href="{Saivi::U('Index/index',array('token'=>$res['token']))}">© {Saivi:$tpl.wxname}</a>
+
+				</div>
+
+									<span class="weimob-support" style="display:none;">©{Saivi::C('copyright')}</span>
+
+							</footer>  
+
+				<div mark="stat_code" style="width:0px; height:0px; display:none;">
+
+					</div>
+
+	<!-- wtoken.com Baidu tongji analytics -->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F866a46b8a4d233aa883b072a2158aaa2' type='text/javascript'%3E%3C/script%3E"));
+
+</script>
+<include file="Index:styleInclude"/>
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['status'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if>  
+</body>
+
+</html>

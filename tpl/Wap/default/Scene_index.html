@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ch">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>{Saivi:$set.name}</title>
+	<meta charset="utf-8">
+	<meta name="apple-touch-fullscreen" content="YES">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta http-equiv="Expires" content="-1">
+	<meta http-equiv="pragram" content="no-cache">
+	<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/scene/style/copyright.css">
+	<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/scene/main.css">
+	<script type="text/javascript" src="/tpl/Wap/default/common/scene/style/offline.js"></script><!--移动端版本兼容 -->
+	<script type="text/javascript">
+		var jsVer = 8.222;
+		var phoneWidth = parseInt(window.screen.width);
+		var phoneScale = phoneWidth/640;
+
+		var ua = navigator.userAgent;
+		if (/Android (\d+\.\d+)/.test(ua)){
+			var version = parseFloat(RegExp.$1);
+			// andriod 2.3
+			if(version>2.3){
+				document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+			// andriod 2.3以上
+			}else{
+				document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+			}
+			// 其他系统
+		} else {
+			document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+		}
+	</script>
+	<!--移动端版本兼容 end -->
+	</head>
+
+	<body >
+<!--模版加载提示-->
+<section class="u-alert"> <img style="display:none;" src="/tpl/Wap/default/common/scene/style/loading_large.gif">
+      <div class="alert-loading z-move">
+    <div class="cycleWrap"> <span class="cycle cycle-1"></span> <span class="cycle cycle-2"></span> <span class="cycle cycle-3"></span> <span class="cycle cycle-4"></span> </div>
+    <div class="lineWrap"> <span class="line line-1"></span> <span class="line line-2"></span> <span class="line line-3"></span> </div>
+  </div>
+    </section>
+<!--模版加载提示 end--> 
+
+<!-- 声音控件 -->
+<section class="u-audio f-hide" data-src="{Saivi:$set.musicurl}">
+      <p id="coffee_flow" class="btn_audio"> <strong class="txt_audio z-hide">关闭</strong> <span class="css_sprite01 audio_open"></span>
+  <div class="coffee-steam-box" style="height: 100px; width: 44px; left: 60px; top: -50px; position: absolute; overflow: hidden; z-index: 0;"></div>
+      </p>
+    </section>
+<!-- 声音控件 end--> 
+<!-- 箭头指示引导 -->
+<section class="u-arrow f-hide">
+      <p class="css_sprite01"></p>
+    </section>
+<!-- 箭头指示引导 end--> 
+
+<!-- page页面内容 -->
+<section class="p-ct transformNode-3d" style="height: 773px;"> 
+      <!-- 旋转正面 -->
+      <div id="j-mengban" class="translate-front " style="height: 773px;">
+    <div class="mengban-warn"></div>
+    <canvas style="position: fixed; left: 50%; top: 0px; width: 640px; margin-left: -320px; height: 100%; background-color: transparent; z-index: 20;" width="640" height="773"></canvas>
+  </div>
+      <!-- 旋转正面 end--> 
+      
+      <!-- 旋转反面 -->
+      <div class="translate-back f-hide" style="height: 773px;"> 
+    <!-- 封页 1--> 
+    <!-- 擦一擦 --> 
+    <!-- 蒙板背景图 -->
+    <div class="m-page m-fengye" data-page-type="info_pic3" data-statics="info_pic3" style="height: 773px;">
+          <div class="page-con lazy-finish" data-src="{Saivi:$set.tph}" data-position="50% 50%" data-size="cover" style="background-image: url({Saivi:$set.tph}); background-size: cover; height: 775px; background-position: 50% 50%;"></div>
+        </div>
+    <!-- 封页 end--> 
+    <!-- volist输出开始 -->
+  <volist name="info" id="p">
+    <div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height: 773px;">
+          <div class="page-con j-txtWrap lazy-finish" data-src="{Saivi:$p.picurl}" data-position="50% 50%" data-size="cover" style="background-image: url({Saivi:$p.picurl}); background-size: cover; background-position: 50% 50%;">
+          
+          <!--是否视频-->
+           <if condition="$p.style1 eq 2">
+           <div class="video-title" style="color:#ff005e;">
+              <h3 class="f-tc"></h3>
+            </div>
+        <div class="video-con j-video" data-width="640" data-height="480" data-src="{Saivi:$p.video}" data-poster="{Saivi:$p.picurl}">
+              <div class="img lazy-finish" data-src="{Saivi:$p.picurl}" data-position="50% 50%" data-size="cover" style="background-image: url({Saivi:$p.picurl}); background-size: cover; background-position: 50% 50%;"> <span class="css_sprite01"></span> </div>
+              <video class="f-hide" controls preload="none" width="640" height="480" src="{Saivi:$p.video}"></video>
+              
+            </div>
+            </if>
+          
+          
+            <!--end-->
+
+          <!--是否地图-->
+          <if condition="$p.style1 eq 3">
+           <div class="book-bd f-tc">
+              <div class="bd-map j-map" data-mapindex="42627" data-detal="{'sign_name':'','contact_tel':'{Saivi:$p.tel}','address':'{Saivi:$p.address}'}" data-longitude="{Saivi:$p.lng}" data-latitude="{Saivi:$p.lat}"> <img class="lazy-finish" data-src="{Saivi:$p.ad}" src="{Saivi:$p.ad}"> <span class="css_sprite01"></span>
+            <p class="map-animate"><strong></strong><strong></strong></p>
+          </div>
+              <div class="bd-tit">
+            <h3 class="f-tc"></h3>
+          </div>
+              <div class="bd-form">
+            <p class="tel"><span class="css_sprite01"></span><a href="tel:{Saivi:$p.tel}">{Saivi:$p.tel}</a></p>
+            <p class="wx"><span class="css_sprite01"></span><a>{Saivi:$p.wechat}</a></p>
+          </div>
+            </div>
+            </if>
+          
+          
+          
+           <!--end-->
+
+           </div>
+        </div>
+        </volist>
+    <!-- 内页 end--> 
+    
+     <!-- 结束页--> 
+
+    <div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height: 773px;">
+          <div class="page-con j-txtWrap lazy-img" data-src="{Saivi:$set.share}" data-position="50% 50%" data-size="cover" style="background-image: url({Saivi:$set.share}); background-size: cover; background-position: 50% 50%;"> </div>
+          <!-- 微信 分享 -->
+          <div class="bigTxt-btn bigTxt-btn-wx lazy-img" data-src="{Saivi:$set.sharean}" data-position="50% 50%" data-size="auto" style="background-image: url({Saivi:$set.sharean}); background-size: cover; background-position: 50% 50%;"><a href="javascript:void(0)"></a></div>
+          <div class="bigTxt-weixin"><img src="{Saivi:$set.sharetstp}"></div>
+          <!-- 微信 end--> 
+        </div>
+  </div>
+      <!-- 旋转反面 end--> 
+    </section>
+<!-- 正文介绍 end--> 
+
+<!--pageLoading-->
+<section class="u-pageLoading"> <img src="/tpl/Wap/default/common/scene/style/load.gif" alt="loading"> </section>
+<div class="ylmap bigOpen">
+      <div class="bk"><span class="css_sprite01"></span></div>
+    </div>
+<!--pageLoading end--> 
+ 
+
+<!--脚本加载--> 
+<script src="/tpl/Wap/default/common/scene/style/init_mobile.js" type="text/javascript" charset="utf-8"></script> 
+
+<!--脚本加载 end-->
+<input id="ca-tips" type="hidden" value="{Saivi:$set.ca}">
+<input id="r-cover" type="hidden" value="{Saivi:$set.catp}">
+<input id="activity_id" type="hidden" value="3464">
+<input id="r-wx-title" type="hidden" value="{Saivi:$set.sharetitle}">
+<input id="r-wx-img" type="hidden" value="{Saivi:$set.sharetp}">
+<input id="r-wx-con" type="hidden" value="{Saivi:$set.miaosu}">
+</body>
+
+
+</html>

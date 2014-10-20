@@ -1,0 +1,33 @@
+.body{
+	max-width:640px;
+	margin:auto;
+	min-height:100%;
+	background-color:#f4f4f4;
+	position:relative;
+}
+
+.list_font li{
+	width:33.3%!important;
+	background-color:#2e81a9;
+}
+.list_font li:nth-child(2n){
+	background-color:#fff;
+}
+.list_font li:nth-child(2n) a{
+	color:#2e81a9;
+}
+
+.list_font li p{
+	text-align:left;
+	text-indent:20px;
+}
+
+.list_font div:first-child{
+	text-align:right;
+	margin:8px;
+}
+
+
+.link_tel{
+    background-color:#2e81a9;
+}

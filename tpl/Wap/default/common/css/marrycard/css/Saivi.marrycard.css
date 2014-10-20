@@ -1,0 +1,538 @@
+body{
+    padding: 0;
+    margin: 0;
+    background: url(img/bg.png) repeat;
+	font-family:"Microsoft YaHei";
+
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+.loading{
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: none;
+    z-index: 9999;
+}
+
+.loading-part{
+    position: absolute;padding: 0;margin: 0;
+    width: 100%;height: 50%;
+    background-color: #FFFFFF;
+    z-index: 1;
+}
+.loading-part.top{
+    top: 0;
+}
+
+.loading-part.bottom{
+    bottom:0;
+}
+.loading-panel{
+    position: absolute;
+    width: 200px;
+    height: 82px;
+    top:50%;
+    left: 50%;
+    margin-top: -41px;
+    margin-left: -100px;
+    z-index: 2;
+}
+.loading-icon{
+    position: relative;
+    width: 50px;height: 50px;
+    background: url(img/love.gif) center center no-repeat;
+    margin:auto;
+}
+
+.loading-text{
+    position: relative;
+    width: 200px;
+    height: 32px;
+    color: #fc8e65;
+    text-align: center;
+    line-height: 32px;
+    margin:auto;
+}
+
+.main{
+    min-height: 640px;
+
+}
+
+.main .head{
+    height: 50px;
+    background: url(img/main.png) repeat-x;
+}
+
+.head-icon{
+    left: 8px;
+    position: relative;
+    width: 70px;height: 80px;
+}
+
+.head-mask{
+    position: absolute;
+    top:0;left: 0;
+    width: 70px;height: 80px;
+    background: url(img/main.png) 0 -221px no-repeat;
+}
+
+.head-pic{
+    position: absolute;
+    top:5px;left: 8px;
+    width: 53px;height: 53px;
+    background-color: #ff80c0;
+    background-position: center center;
+    background-size: cover;
+}
+
+.head-pic.default{
+    background-image: url(img/default.png);
+}
+
+.main .music{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 25px;height: 25px;
+    background: url(img/main.png) -95px -221px no-repeat; 
+}
+
+.main .music.pause{
+    background: url(img/main.png) -70px -221px no-repeat; 
+}
+
+.main .role{
+    position: absolute;
+    left: 85px;
+    top: 15px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 18px;
+    color: #FFFFFF;
+    text-shadow:2px 2px 2px rgba(124,124,0,.6);
+}
+
+.main .role .loveicon{
+    display: inline-block;
+    margin: auto 6px;
+    width: 16px;height: 16px;
+    background: url(img/main.png) -70px -280px no-repeat; 
+}
+
+.main .content{
+    background-color: #FFFFFF;
+    border: 1px solid #808080;
+    border-bottom: none;
+    min-height: 300px;
+    margin: 35px 10px 0 10px;
+    padding: 10px;
+}
+
+.main .content-bottom{
+    position: relative;
+    top: -9px;
+    background-color: #FFFFFF;
+    height: 21px;
+    margin: 0 11px;
+    background: url(img/main.png) 0 -50px repeat-x; 
+}
+
+.video-box{
+    position: relative;
+    height: 158px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.img-box{
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+    background: #FFFFFF;
+    overflow: hidden;
+    padding-left: -300px;
+}
+
+.img-item{
+    position: relative;
+    margin-bottom:10px;
+}
+
+.image-body{
+    width: 100%;
+}
+.img-title{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;height: 20px;
+    z-index: 99;
+}
+.img-title .img-text{
+    position: absolute;
+    width: 100%;height: 100%;
+    color: #ffffff;
+    z-index: 2;
+}
+.img-title .img-bg{
+    position: absolute;
+    width: 100%;height: 100%;
+    background-color: #FF8000;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.dec-box{
+    position: relative;
+    height: 150px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    background: url(img/main.png) 0 -71px repeat-x;    
+}
+
+.dec-box .dec-title{
+    position: absolute;
+    width: 271px;
+    height: 17px;
+    top: 5px;
+    left: 50%;margin-left: -135px;
+    background: url(img/main.png) -136px -266px no-repeat;
+}
+
+.dec-box .dec-content{
+    position: absolute;
+    font-size: 14px;
+    top: 30px;
+    bottom: 10px;
+    left: 5px;right: 5px;
+    color: #FFFFFF;
+    overflow: hidden;
+}
+
+.dec-box .icon{
+    position: absolute;
+    width: 106px;height: 102px;
+    right: 0;bottom: 0;
+    background: url(img/main.png) -524px -221px no-repeat;    
+}
+
+.linkbox{
+    position: relative;
+    height: 45px;
+    margin-bottom: 3px;
+    background: #F7E6D2;
+    overflow: hidden;
+    width: 100%;
+}
+.linkbox.date{
+    margin-top: 25px;
+
+}
+
+.linkbox .icon{
+    position: absolute;
+    width: 49px;height: 45px;
+    background-image: url(img/main.png);
+    background-repeat: no-repeat;
+    right: 0;
+    top: 0;
+}
+.linkbox .label{
+    position: absolute;
+    font-size: 10px;
+    text-align: center;
+    width: 45px;height: 16px;
+    line-height: 16px;
+    right: 2px;bottom: 2px;
+    color: #FFFFFF;
+}
+
+.linkbox.date .icon{
+    background-position: -369px -221px;
+}
+.linkbox.address .icon{
+    background-position: -136px -221px;
+}
+.linkbox.tel .icon{
+    background-position: -185px -221px;
+}
+
+.linkbox.date .text{
+    position: absolute;
+    font-size: 18px;
+    height: 45px;
+    top: 0;left: 0;right: 50px;
+    overflow: hidden;
+    line-height: 45px;
+    color: #000000;
+    padding-left: 5px;
+}
+
+
+.linkbox.address .text-box{
+    display:table-row;
+}
+
+.linkbox.address .text-box .text{
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 14px;
+    height: 45px;
+    top: 0;left: 0;right: 50px;
+    overflow: hidden;
+    line-height: 23px;
+    color: #000000;
+    padding-left: 5px;
+    max-width: 220px;
+}
+.linkbox.tel .text{
+    position: absolute;
+    font-size: 18px;
+    height: 45px;
+    top: 0;left: 0;right: 50px;
+    overflow: hidden;
+    line-height: 45px;
+    color: #000000;
+    padding-left: 5px;
+    font-family: monospace;
+}
+
+.control-box{
+    position: relative;
+    height: 40px;
+    width: 280px;
+    margin: 25px auto 15px auto;
+}
+
+.control-box .button{
+    position: absolute;
+    width: 90px;height: 40px;
+    top: 0;
+    background: url(img/main.png) -234px -221px no-repeat;
+    line-height: 40px;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 16px;
+}
+
+.control-box .button.join{
+    left: 0;
+}
+
+.control-box .button.bless{
+    left: 50%;
+    margin-left: -45px;
+}
+
+.control-box .button.forward{
+    right: 0;
+}
+
+.support,.follow{
+    margin: auto;
+    font-size: 14px;
+    color: #FFFFFF;
+    text-align: center;
+    min-height: 38px;
+}
+
+.support a{
+    color: #F8C600;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.follow .mp{
+    font-weight: bold;
+    color: #00ff00;
+}
+
+.qrcode{
+    width: 100px;
+    height: 100px;
+    margin: -5px auto;
+    display: block;
+}
+/*dialog*/
+.layer-mask{
+    position: absolute;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #1b1b1b;
+    opacity: 0.9;
+    z-index: 9999;
+    top: 0;left: 0;
+}
+.dialog{
+    display: none;
+    position: absolute;
+    position: fixed;
+    width: 280px;
+    border: 1px solid #FFFFFF;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    background-color: #FFFFFF;
+    color: #000000;
+    bottom: 0;
+    left: 50%;margin-left: -140px;
+}
+
+.dialog .button.close{
+    position: absolute;
+    width: 27px;height: 27px;
+    background: url(img/main.png) -324px -221px no-repeat;
+    top: -12px;right: -12px;
+}
+.dialog .content{
+    margin: 5px 10px 15px 10px;
+    overflow: hidden;
+}
+
+.dialog .dialog-title{
+    height: 30px;
+    width: 250px;
+    background: url(img/main.png) -86px -283px no-repeat;
+    font-size: 20px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 30px;
+    margin: 15px auto 5px auto;
+}
+
+.dialog .line{
+    margin: 5px auto;
+    height: 36px;
+    line-height: 30px;
+    font-size: 18px;
+}
+
+.dialog .line input[type="text"] ,
+.dialog .line input[type="number"] ,
+.dialog .line input[type="tel"]{
+    border: 1px solid #C0C0C0;
+    border-radius: 3px;
+    height: 25px;
+    font-size: 20px;
+}
+
+.dialog .line .label{
+    display: inline-block;
+}
+
+.dialog .line .input{
+    display: inline-block;
+}
+
+.dialog .button{
+    margin: 10px auto;
+    height: 40px;width: 90px;
+    background: url(img/main.png) -234px -221px no-repeat;
+    line-height: 40px;
+    text-align: center;
+    font-size: 22px;
+    color: #FFFFFF;
+}
+.dialog.bless .blesstext{
+    margin: auto;
+    width: 250px;
+    height: 80px;
+    font-size: 18px;
+    line-height: 22px;
+    border: 1px solid #C0C0C0;
+}
+
+.helper.forward{
+    display: none;
+    position: fixed;
+    width: 291px;height: 174px;
+    top: 0;right: 0;
+    background: url(img/main.png) 0 -313px  no-repeat;
+}
+
+
+/*cover*/
+
+.cover{
+    display: none;
+    position: absolute;
+    position: fixed;
+    top: 0;left: 0;
+    width: 100%;height: 100%;
+    padding: 0;margin: 0;
+    background-color: #A00908;
+    box-shadow:5px 5px 5px 10px rgba(0,0,0,.6);
+    z-index: 999;
+}
+
+/*cover:t1*/
+.cover{
+    min-height: 330px;
+    background-color: #A00908; 
+}
+.cover .slogan{
+    position: absolute;
+    width: 266px;height: 290px;
+    left: 50%;margin-left: -133px;
+    top: 50%; margin-top: -145px;
+}
+.cover .mask{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(img/icons.png) 0 0 no-repeat;
+    top: 0;left: 0;
+}
+
+.cover .head{
+    position: absolute;
+    width: 158px;
+    height: 153px;
+    top: 68px;left: 48px;
+    background-repeat: no-repeat;
+    background-size:  cover;
+    background-position: center;
+}
+
+.cover .head.default{
+    background: url(img/icons.png) -266px 0 no-repeat;
+}
+/*
+.cover.t1 .person{
+    position: relative;
+    width: 120px;
+    margin: 25px auto;
+}
+
+.cover.t1 .person .role{
+    position: relative;
+    margin: 2px auto;
+    width: 120px;
+}
+
+.cover.t1 .person .role .groom,.cover.t1 .person .role .bride{
+    display: inline-block;
+    position: relative;
+    font-size: 22px;
+    text-align:justify;text-justify:inter-ideograph;
+    width: 90px;
+    color: #ffff00;
+    text-shadow: 2px 2px 2px #ffff4f;
+}
+
+.cover.t1 .person .role .title{
+    position: absolute;
+    right: 0;bottom: 0;
+    font-size: 16px;
+    
+}
+*/

@@ -1,0 +1,9 @@
+.content-slide>a .mbg {
+margin: 0 auto;
+width: 90px;
+height: 90px;
+border-radius: 100%;
+}
+.device {height: 345px;}
+.swiper-container {height: 325px;}
+.ico img {margin-top: 10px;}

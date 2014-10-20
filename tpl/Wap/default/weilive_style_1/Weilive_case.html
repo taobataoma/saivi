@@ -1,0 +1,167 @@
+
+﻿﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+ 
+<title>{Saivi:$vo.name}</title> 
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta charset="utf-8">
+
+<link href="{Saivi::RES}/weishenghuo/template/default/theme2/pwx.css" rel="stylesheet" type="text/css">
+<link href="{Saivi::RES}/weishenghuo/template/default/theme2/news2.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="{Saivi::RES}/weishenghuo/pwximg/plugmenu.css">
+
+  <script src="{Saivi::RES}/weishenghuo/pwximg/audio.min.js" type="text/javascript"></script>
+   
+    <script>
+      audiojs.events.ready(function() {
+        audiojs.createAll();
+      });
+    </script>
+<script>
+window.onload = function ()
+{
+var oWin = document.getElementById("win");
+var oLay = document.getElementById("overlay");	
+var oBtn = document.getElementById("popmenu");
+var oClose = document.getElementById("close");
+oBtn.onclick = function ()
+{
+oLay.style.display = "block";
+oWin.style.display = "block"	
+};
+oLay.onclick = function ()
+{
+oLay.style.display = "none";
+oWin.style.display = "none"	
+}
+};
+</script><style>
+#cate6 .mainmenu li.li0:nth-child(5) .menumesg {
+    background-color: #990000;
+}
+#cate6 .mainmenu li.li0:nth-child(1) .menumesg {
+    background-color: #01AA0A;
+}
+#cate6 .mainmenu li.li0:nth-child(9) .menumesg {
+    background-color: #8B4500;
+}
+
+#cate8 .mainmenu li .menubtn {
+    border-radius: 5px;
+}
+#cate8 .mainmenu li div img {
+    border-radius: 5px;
+}
+
+ .themeStyle{background:#DE270B}  
+
+</style></head> 
+    
+<body
+ id="listhome3"
+>
+<div id="ui-header">
+<div class="fixed">
+
+<a class="ui-title" id="popmenu"><font  style="font-size: 18px;">选择分类</font> </a>
+
+<a class="ui-btn-left_pre" href="javascript:" onclick="window.history.go(-1)"></a>
+
+<a class="ui-btn-right_home" href="javascript:" onclick="window.history.go(-1)"></a>
+</div>
+</div>
+<div id="overlay"></div>
+
+<div id="win">
+
+<ul class="dropdown"> 
+    <li><a href="/index.php?g=Wap&m=Weilive&a=schedule&token={Saivi:$vo.token}&wecha_id=<?php echo $_GET['wecha_id']?>&id={Saivi:$vo.id}"><span>婚宴档期</span></a></li>
+   <li><a href="/index.php?g=Wap&m=Weilive&a=company&token={Saivi:$vo.token}&wecha_id=<?php echo $_GET['wecha_id']?>&id={Saivi:$vo.id}"><span>酒店详情</span></a></li>
+   <li><a href="/index.php?g=Wap&m=Weilive&a=product&token={Saivi:$vo.token}&wecha_id=<?php echo $_GET['wecha_id']?>&id={Saivi:$vo.id}"><span>宴席菜单</span></a></li>
+   <li><a href="/index.php?g=Wap&m=Weilive&a=wcase&token={Saivi:$vo.token}&wecha_id=<?php echo $_GET['wecha_id']?>&id={Saivi:$vo.id}"><span>婚礼案例</span></a></li>
+   <li><a href="{Saivi:$vo.map}"><span>一键导航</span></a></li>
+   <li><a href="/index.php?g=Wap&m=Weilive&a=fav&token={Saivi:$vo.token}&wecha_id=<?php echo $_GET['wecha_id']?>&id={Saivi:$vo.id}"><span>优惠活动</span></a></li>
+ 
+<div class="clr"></div>
+
+</ul>
+</div>
+
+<div class="Listpage">
+<div class="top46"></div>
+
+
+<div class="topding">
+
+<ul class="chatPanel">
+
+</ul>
+</div>
+
+
+
+<div id="todayList">
+
+ <ul class="chatPanel">
+  
+    
+
+<volist name="list" id="vo">
+
+<li class="media mediaFullText">
+<a href="{Saivi:$vo.addr}">
+<div class="mediaPanel">
+<div class="mediaHead"><span class="title">{Saivi:$vo.title}</span>
+<div class="clr" style="background-origin:content-box"></div>
+</div>
+ <div class="mediaImg" style="background:url({Saivi:$vo.logo}) no-repeat center center; background-size:100% auto;-moz-background-size:100% auto;-webkit-background-size:100% auto;-o-background-size-size:100% auto; height:150px;"></div>
+<div class="mediaContent mediaContentP">
+{Saivi:$vo.summary}</div>
+<div class="mediaFooter">
+<span class="mesgIcon right"></span><span style="line-height:50px;" class="left">点击播放视频>></span>
+<div class="clr"></div>
+</div>
+</div>
+</a>
+</li>
+</volist>
+    
+
+</ul>
+
+</div>
+
+<div class="pagination">
+</div>
+</div>
+<a class="footer" href="#" target="_self"><span class="top">返回顶部</span></a>
+<script>
+function dourl(url){
+location.href= url;
+}
+</script>
+<!--
+<div class="plug-div">
+        <div class="plug-phone">
+            <div class="plug-menu themeStyle"><span class="close"></span></div> 
+               
+                        <div class="themeStyle plug-btn plug-btn1 close"><a href="tel:18688679999"><span style="background-image: url(http://www.lanrenmb.com/wap/126/pwximg/plugmenu1.png);"></span></a></div>
+                  
+                        <div class="themeStyle plug-btn plug-btn2 close"><a href="#"><span style="background-image: url(http://www.lanrenmb.com/wap/126/pwximg/plugmenu2.png);"></span></a></div>
+                  
+                        <div class="themeStyle plug-btn plug-btn3 close"><a href="#"><span style="background-image: url(http://www.lanrenmb.com/wap/126/pwximg/plugmenu6.png);"></span></a></div>
+                  
+                        <div class="themeStyle plug-btn plug-btn4 close"><a href="#"><span style="background-image: url(http://www.lanrenmb.com/wap/126/pwximg/plugmenu7.png);"></span></a></div>
+                         
+<div class="plug-btn plug-btn5 close"></div>
+                    </div>
+</div>
+<script src="http://www.lanrenmb.com/wap/126/pwximg/zepto.min.js" type="text/javascript"></script>
+<script src="http://www.lanrenmb.com/wap/126/pwximg/plugmenu.js" type="text/javascript"></script>-->
+ <div class="copyright">© 2013-2014 版权所有</div> <div style="display:none"> </div>
+ 
+
+</body></html>

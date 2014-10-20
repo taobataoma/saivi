@@ -1,0 +1,558 @@
+<include file="Public:head"/>
+
+<!--鼠标移动上去效果start-->
+
+<style>
+
+    li .mbtip {
+
+    display: none;
+
+} 
+
+.cateradio li:hover .mbtip {
+
+    background-color: #000000;
+
+    border: 1px solid rgba(0, 0, 0, 0.15);
+
+    border-radius: 7px;
+
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.15);
+
+    color: #FFFFFF;
+
+    display: block;
+
+    padding: 6px;
+
+    float:right;
+
+    position:relative;
+
+    right:-140px;
+
+    top:-325px;
+
+    width: 130px;
+
+    text-align: left;
+
+    z-index: 999;
+
+}
+
+
+
+</style>
+
+
+
+
+
+<!--鼠标移动上去效果end-->
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/themes/default/default.css" />
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/plugins/code/prettify.css" />
+
+<script src="{Saivi::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+
+<script src="{Saivi::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+
+<script src="{Saivi::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+
+<div class="content">
+
+
+
+    <div class="cLineB">
+
+        <h4>商城首页模板管理 <span class="FAQ">选择适合您的商城首页模版风格，手机输入“商城”测试效果。</span></h4>
+
+    </div>
+
+
+
+    <div class="msgWrap form">
+
+        <ul id="tags">
+
+            <li class="selectTag"><a onclick="selectTag('tagContent0',this)" href="javascript:void(0)">1. 商城首页模板风格</a> </li>
+
+     
+
+            <div class="clr"></div>
+
+        </ul>
+
+
+
+        <div id="tagContent">
+
+            <div class="tagContent selectTag" id="tagContent0">
+
+                <fieldset>
+
+                    <ul class="cateradio">
+                   
+
+					<li <eq name="info.shoptpltypeid" value="1">class="active"</eq>>                   
+
+                            <label>
+
+                                <img src="{Saivi::RES}/images/shop/cate101.png" >
+
+                                <input class="radio" type="radio" name="optype" value="1" <eq name="info.shoptpltypeid" value="1">checked</eq> /> 商城模板风格1
+
+                            </label>
+
+                             <if condition="$desinfo[1] neq ''">
+
+                             <p class="mbtip">{Saivi:$desinfo[1]}</p>
+
+                             </if>
+
+                        </li>
+
+                        <li <eq name="info.shoptpltypeid" value="2">class="active"</eq>>                   
+
+                            <label>
+
+                                <img src="{Saivi::RES}/images/shop/cate102.png" >
+
+                                <input class="radio" type="radio" name="optype" value="2" <eq name="info.shoptpltypeid" value="2">checked</eq> /> 商城模板风格2 
+
+                            </label>
+
+                             <if condition="$desinfo[2] neq ''">
+
+                             <p class="mbtip">{Saivi:$desinfo[2]}</p>
+
+                             </if>
+
+                        </li>
+                         <li <eq name="info.shoptpltypeid" value="3">class="active"</eq>>                   
+
+                            <label>
+
+                                <img src="{Saivi::RES}/images/shop/cate103.png" >
+
+                                <input class="radio" type="radio" name="optype" value="3" <eq name="info.shoptpltypeid" value="3">checked</eq> /> 商城模板风格3
+
+                            </label>
+
+                             <if condition="$desinfo[3] neq ''">
+
+                             <p class="mbtip">{Saivi:$desinfo[3]}</p>
+
+                             </if>
+
+                        </li>
+                        <li <eq name="info.shoptpltypeid" value="4">class="active"</eq>>                   
+
+                            <label>
+
+                                <img src="{Saivi::RES}/images/cate1122.png" >
+
+                                <input class="radio" type="radio" name="optype" value="4" <eq name="info.shoptpltypeid" value="4">checked</eq> /> 商城模板风格4
+
+                            </label>
+
+                             <if condition="$desinfo[4] neq ''">
+
+                             <p class="mbtip">{Saivi:$desinfo[4]}</p>
+
+                             </if>
+
+                        </li>
+
+                      
+                      
+                     
+
+
+
+
+                        <!--li <eq name="info.shoptpltypeid" value="6">class="active"</eq>><label><img src="{Saivi::RES}/images/cate6.png"><input class="radio" type="radio" name="optype" <eq name="Think.session.gid" value="2">disabled="disabled"</eq> value="6" <eq name="info.shoptpltypeid" value="6">checked</eq> /> v1模板6(metro风格) </label></li>
+
+                        <li <eq name="info.shoptpltypeid" value="7">class="active"</eq>><label><img src="{Saivi::RES}/images/cate7.png" title="提示：头部为首页封面图片外链720x400，高度可以根据自己情况调整，
+
+                        图标最好是144x144透明png图片外链，
+
+                        懂PS的玩，不懂的就算了，"><input class="radio" type="radio" name="optype" value="7" <eq name="Think.session.gid" value="2">disabled="disabled"</eq> <eq name="info.shoptpltypeid" value="7">checked</eq> />v1 模板7(自定义风格) </label></li>-->
+
+                    </ul>
+
+                </fieldset>
+
+            </div>
+
+
+
+            <div class="tagContent" id="tagContent1">
+
+                <fieldset>
+
+                    <ul class="cateradio2">
+                     
+
+                        <li <eq name="info.tpllistid" value="4">class="active"</eq> >
+
+                            <label><img src="{Saivi::RES}/images/list4.png">
+
+                                <input class="radio2" type="radio" name="optype2" <eq name="Think.session.gid" value="2">disabled="disabled"</eq> value="4" <eq name="info.tpllistid" value="4">checked</eq> /> 模板2(省流量)
+
+                            </label>
+
+                        </li>
+
+                        <li <eq name="info.tpllistid" value="1">class="active"</eq>>
+
+                            <label><img src="{Saivi::RES}/images/list1.png">
+
+                                <input class="radio2" type="radio" name="optype2" value="1" <eq name="info.tpllistid" value="1">checked</eq> /> 模板1(美观)
+
+                            </label>
+
+                        </li>
+                          <li <eq name="info.tpllistid" value="5">class="active"</eq> style="margin:10px 30px;" >
+                            <label><img src="{Saivi::RES}/images/list-3.png" onclick="javascript:alert('已选择格状酷似微信列表')" />
+                                <input class="radio2" type="radio" name="optype2" value="5" <eq name="info.tpllistid" value="5">checked</eq> />格状酷似微信列表
+                            </label>
+                        </li>
+												                        <li <eq name="info.tpllistid" value="6">class="active"</eq> style="margin:10px 30px;" >
+                            <label><img src="{Saivi::RES}/images/list-7.png" onclick="javascript:alert('已选择新闻图文列表模式')" />
+                                <input class="radio2" type="radio" name="optype2" value="6" <eq name="info.tpllistid" value="6">checked</eq> /> 新闻图文列表模式
+                            </label>
+                        </li>
+												                        <li <eq name="info.tpllistid" value="7">class="active"</eq> style="margin:10px 30px;" >
+                            <label><img src="{Saivi::RES}/images/list-10.png" onclick="javascript:alert('已选择切图列表模式')" />
+                                <input class="radio2" type="radio" name="optype2" value="7" <eq name="info.tpllistid" value="7">checked</eq> /> 切图列表模式
+                            </label>
+                        </li>
+												                        <li <eq name="info.tpllistid" value="8">class="active"</eq> style="margin:10px 30px;" >
+                            <label><img src="{Saivi::RES}/images/list-0.png" onclick="javascript:alert('已选择简洁列表模式A')" />
+                                <input class="radio2" type="radio" name="optype2" value="8" <eq name="info.tpllistid" value="8">checked</eq> /> 简洁列表模式A
+                            </label>
+                        </li>
+
+                        <!--                        <li <eq name="info.tpllistid" value="2">class="active"</eq> ><label><img src="{Saivi::RES}/images/list2.png"><input class="radio2" type="radio" name="optype2" value="2" <eq name="info.tpllistid" value="2">checked</eq> /> 模板2(省流量) </label></li>
+
+                                                <li <eq name="info.tpllistid" value="3">class="active"</eq> ><label><img src="{Saivi::RES}/images/list3.png"><input class="radio2" type="radio" name="optype2" <eq name="Think.session.gid" value="2">disabled="disabled"</eq> value="3" <eq name="info.tpllistid" value="3">checked</eq> /> 模板3(小清晰)V1 </label></li>-->
+
+
+
+                        <!--<li <eq name="info.tpllistid" value="5">class="active"</eq> ><label><img src="{Saivi::RES}/images/list5.png"><input class="radio2" type="radio" name="optype2" <eq name="Think.session.gid" value="2">disabled="disabled"</eq> value="5" <eq name="info.tpllistid" value="5">checked</eq> /> 模板5(文艺风) V1</label></li>
+
+                        <li <eq name="info.tpllistid" value="6">class="active"</eq> ><label><img src="{Saivi::RES}/images/list6.png" title="提示：仅适合一张图片配少量文字内容的微信号，
+
+                        如：冷笑话/经典语录"><input class="radio2" type="radio" name="optype2" <eq name="Think.session.gid" value="2">disabled="disabled"</eq> value="6" <eq name="info.tpllistid" value="6">checked</eq> /> 模板6(经典语录) V1</label></li>-->
+
+                    </ul>
+
+                </fieldset>
+
+            </div>
+
+            <div class="tagContent" id="tagContent2">
+
+                <fieldset>
+
+                    <ul class="cateradio3">
+
+                        <li <eq name="info.tplcontentid" value="1">class="active"</eq> ><label><img src="{Saivi::RES}/images/news1.png"><input class="radio3" type="radio" name="optype3" value="1" <eq name="info.tplcontentid" value="1">checked</eq>/>模板1(有头像) </label></li>
+
+                        <!--<li <eq name="info.tplcontentid" value="2">class="active"</eq> ><label><img src="{Saivi::RES}/images/news2.png"><input class="radio3" <eq name="Think.session.gid" value="2">disabled="disabled"</eq> type="radio" name="optype3" value="2" <eq name="info.tplcontentid" value="2">checked</eq>/>模板2 V1(无头像)</label></li>-->
+
+                        <li <eq name="info.tplcontentid" value="3">class="active"</eq> ><label><img src="{Saivi::RES}/images/news3.png"><input class="radio3" type="radio" name="optype3" value="3" <eq name="info.tplcontentid" value="3">checked</eq>/>模板3(无头像)</label></li>
+
+                    </ul>
+
+                </fieldset>
+
+            </div>
+
+            <div class="tagContent" id="tagContent3">
+
+                <fieldset>
+
+                    <div class="cateradio4">
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td width="400" rowspan="2" valign="top">
+
+                                        <div class="samsung-render">
+
+                                            <iframe src="/index.php?g=Wap&m=Index&token={Saivi:$info.token}&show=1" id="myiframe" width="320" height="406" frameborder="0" style="overflow-x:hidden;"></iframe>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td valign="top"><h3>请选择你喜欢的颜色风格，实时预览 (<span style="color:#c30">注意：只有在手机上才能获得最佳浏览效果，电脑浏览并不一定是最终显示效果，并且仅部分模板支持更换颜色风格</span>)</h3>
+
+                                        <ul>
+
+                                            <li><label><input class="radio4" type="radio" name="optype4" value="0" <eq name="info.color_id" value="0">checked="checked"</eq>> 默认风格</label></li>
+
+                                            <li><label><input class="radio4" type="radio" name="optype4" value="1" <eq name="info.color_id" value="1">checked="checked"</eq>> 黑色风格</label></li>
+
+                                            <li><label><input class="radio4" type="radio" name="optype4" value="2" <eq name="info.color_id" value="2">checked="checked"</eq>> 蓝色风格</label></li>
+
+                                            <li><label><input class="radio4" type="radio" name="optype4" value="3" <eq name="info.color_id" value="3">checked="checked"</eq>> 木纹风格</label></li>
+
+                                            <li><label><input class="radio4" type="radio" name="optype4" value="4" <eq name="info.color_id" value="4">checked="checked"</eq>> 橙色风格</label></li>
+
+                                            <li><label><input class="radio4" type="radio" name="optype4" value="5" <eq name="info.color_id" value="5">checked="checked"</eq>> 紫色风格</label></li>
+
+                                            <li><label><input class="radio4" type="radio" name="optype4" value="6" <eq name="info.color_id" value="6">checked="checked"</eq>> 绿色风格</label></li>
+
+                                        </ul>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                        <div class="clr"></div>
+
+                    </div>
+
+                </fieldset>
+
+            </div>
+
+        </div>
+
+
+
+        <script type="text/javascript">
+
+            function selectTag(showContent,selfObj){
+
+                // 操作标签
+
+                var tag = document.getElementById("tags").getElementsByTagName("li");
+
+                var taglength = tag.length;
+
+                for(i=0; i<taglength; i++){
+
+                    tag[i].className = "";
+
+                }
+
+                selfObj.parentNode.className = "selectTag";
+
+                // 操作内容
+
+                for(i=0; j=document.getElementById("tagContent"+i); i++){
+
+                    j.style.display = "none";
+
+                }
+
+                document.getElementById(showContent).style.display = "block";
+
+
+
+
+
+            }
+
+        </script>
+
+
+
+
+
+        <script>
+
+
+
+            $(".radio").click(function(){
+
+                $(".cateradio li").each(function(){
+
+                    $(this).removeClass("active");
+
+                });
+
+                $(this).parents("li").addClass("active");
+
+                var myurl='index.php?g=User&m=Shoptmpls&a=add&style='+$(this).val()+'&r='+Math.random(); 
+
+                $.ajax({url:myurl,async:false});
+
+
+
+//                $("#homeurl").attr("href","http://baidu.com/index.php?ac=cate"+$(this).val()+"&tid=9379&w=1");
+
+                $("#myiframe").attr("src",$("#myiframe").attr("src")+'&r='+Math.random());
+
+
+
+
+
+            });
+
+            $(".radio2").click(function(){
+
+                $(".cateradio2 li").each(function(){
+
+                    $(this).removeClass("active");
+
+                });
+
+                $(this).parents("li").addClass("active");
+
+  
+
+                var myurl ='index.php?g=User&m=Tmpls&a=lists&style='+$(this).val()+'&r='+Math.random(); 
+
+                $.ajax({url:myurl,async:false});
+
+
+
+
+
+            });
+
+            $(".radio3").click(function(){
+
+                $(".cateradio3 li").each(function(){
+
+                    $(this).removeClass("active");
+
+                });
+
+                $(this).parents("li").addClass("active");
+
+  
+
+                var myurl='index.php?g=User&m=Tmpls&a=content&style='+$(this).val()+'&r='+Math.random(); 
+
+                $.ajax({url:myurl,async:false});
+
+
+
+            });
+
+            $(".radio4").click(function(){
+
+                var myurl='index.php?g=User&m=Tmpls&a=background&style='+$(this).val()+'&r='+Math.random(); 
+
+                $.ajax({url:myurl,async:false});
+
+                $("#myiframe").attr("src",$("#myiframe").attr("src")+'&r='+Math.random());
+
+            });
+
+            function changeapp(obj,gid){
+
+                if(obj.checked==true){
+
+                    //var image=new Image();   
+
+                    var myurl='index.php?ac=app&op=open&value=1&id=9379&wxid=gh_858dwjkeww5&openid='+gid+'&r='+Math.random(); 
+
+                    $.ajax({url:myurl,async:false});
+
+
+
+                }else{
+
+ 
+
+                    var myurl='index.php?ac=app&op=open&value=0&id=9379&wxid=gh_858dwjkeww5&openid='+gid+'&r='+Math.random(); 
+
+                    $.ajax({url:myurl,async:false});
+
+
+
+                }
+
+            }
+
+
+
+        </script>
+
+
+
+ 
+
+        <div class="clr"></div>
+
+    </div>
+
+
+
+</div>
+
+
+
+<div class="clr"></div>
+
+</div>
+
+</div>
+
+</div> 
+
+<!--底部-->
+
+</div><script>
+
+    KindEditor.ready(function(K) {
+
+        var editor = K.editor({
+
+            allowFileManager : true
+
+        });
+
+
+
+        K('#image').click(function() {
+
+            editor.loadPlugin('image', function() {
+
+                editor.plugin.imageDialog({
+
+                    showRemote : false,
+
+                    imageUrl : K('#img').val(),
+
+                    clickFn : function(url, title, width, height, border, align) {
+
+                        K('#img').val(url);
+
+                        var show_img = '<img src = "' + url + '" width="80" height="80" />';
+
+                        $('#show_img').html(show_img);
+
+                        editor.hideDialog();
+
+                    }
+
+                });
+
+            });
+
+        });
+
+    });
+
+</script>
+
+<include file="Public:footer"/>

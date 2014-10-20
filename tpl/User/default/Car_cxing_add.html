@@ -1,0 +1,135 @@
+<include file="Public:head"/>
+				<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+				<script type="text/javascript" src="{Saivi::RES}/js/formCheck/formcheck.js"> </script>
+                      <script src="{Saivi::RES}/js/jquery.js"  type="text/javascript" ></script>
+          
+
+<script>
+$(document).ready(function(){
+	 getSection();
+    
+    $("#pp").change(function(){
+     getCatid();
+    });
+    
+    
+ function getSection()
+    {
+     $.getJSON("__URL__/getSection", function(data) {
+      $.each(data, function(i, item) {
+       $("<option></option>").val(item['name']).text(item['name']).appendTo($("#pp"));
+      });
+		getCatid();
+     });
+    }
+  function getCatid()
+    {
+     $("#cx").empty();
+     $.getJSON("__URL__/getCatid",  {pp:$("#pp").val()}, function(data) {
+      $.each(data, function(i, item) {
+       $("<option></option>").val(item['name']).text(item['name']).appendTo($("#cx"));
+      });
+   
+     });
+    }
+    
+   
+});
+	
+	
+</script>
+                
+                
+<div class="content">
+          <div class="cLineB"><h4>添加车型</h4><a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div> 
+
+      
+
+<div class="msgWrap">
+  <form class="form" method="post"   action="{Saivi::U('Car_cxing/insert')}"    enctype="multipart/form-data" >
+<TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
+ <TBODY>
+<TR><input type="hidden" class="px" id="id" value="{Saivi:$info.id}" name="id" style="width:500px" >  <TR>
+  <TH valign="top"><label for="keyword">品牌</label></TH>
+  <TD>
+  <select name="pp" id="pp" >
+                     
+                    </select> 
+  
+<br />
+                  </TD>
+  <TD></TD>
+</TR>  <TR>
+  <TH valign="top"><label for="keyword">车系</label></TH>
+  <TD>
+  <select name="cx" id="cx" >
+                       
+                    </select> 
+  
+ <br />
+                  </TD>
+  <TD></TD>
+</TR>  <TR>
+  <TH valign="top"><label for="keyword">年款</label></TH>
+  <TD><input type="input" class="px" id="year" value="" name="year" style="width:100px"   ><br />
+  例如:  2013                </TD>
+  <TD></TD>
+</TR>  <TR>
+  <TH valign="top"><label for="keyword">排序</label></TH>
+  <TD><input type="input" class="px" id="Sort" value="0" name="Sort" style="width:30px"   ><br />
+  请填写数字 数字越大越靠前                </TD>
+  <TD></TD>
+</TR>  <TR>
+  <TH valign="top"><label for="keyword">指导价</label></TH>
+  <TD><input type="input" class="px" id="price" value="" name="price" style="width:100px"   >万元<br />
+                  </TD>
+  <TD></TD>
+</TR>  <TR>
+  <TH valign="top"><label for="keyword">经销商报价</label></TH>
+  <TD><input type="input" class="px" id="saleprice" value="" name="saleprice" style="width:100px"   >万元<br />
+                  </TD>
+  <TD></TD>
+</TR>  <TR>
+  <TH valign="top"><label for="keyword">图片地址</label></TH>
+  <TD><input type="input" class="px" id="picurl" value="" name="picurl" style="width:500px" ><br />
+<script src="/tpl/static/upyun.js"></script>
+<a href="###" onclick="upyunPicUpload('picurl',700,420,'{Saivi:$token}')" class="a_upload">上传</a> 
+<a href="###" onclick="viewImg('picurl')">预览</a>
+                  </TD>
+  <TD></TD>
+</TR>  <TR>
+  <TH valign="top"><label for="keyword">排量</label></TH>
+  <TD><input type="input" class="px" id="pl" value="" name="pl" style="width:100px"   ><br />
+        例如： 1.5   2.0          </TD>
+  <TD></TD>
+</TR>  <TR>
+  <TH valign="top"><label for="keyword">挡位个数</label></TH>
+  <TD><input type="input" class="px" id="dw" value="" name="dw" style="width:100px"   ><br />
+           请填写数字       </TD>
+  <TD></TD>
+</TR>  <TR>
+  <TH valign="top"><label for="keyword">变速箱</label></TH>
+  <TD><input type="input" class="px" id="atmt" value="" name="atmt" style="width:150px"   ><br />
+    例如：手动  自动   半自动  手自一体              </TD>
+  <TD></TD>
+</TR><input type="hidden" class="px" id="token" value="{Saivi:$_SESSION["token"]}" name="token" style="width:500px" ><TR>
+  <TH></TH>
+  <TD><button type="submit"  name="button"  class="btnGreen left" >保存</button>
+  	<div class="clr"></div>
+  	</TD>
+  </TR>
+  </TBODY>
+</TABLE>
+  </form>
+  </div> 
+
+        </div>
+        
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div> 
+
+<!--底部-->
+  	</div>
+<include file="Public:footer"/>

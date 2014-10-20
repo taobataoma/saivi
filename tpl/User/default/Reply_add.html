@@ -1,0 +1,45 @@
+ <include file="Public:head" /> 
+ <link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/js/formCheck/formcheck.js"> </script>
+
+
+  <div class="content"> 
+   <div class="cLineB"> 
+    <h4>添加回复</h4> 
+    <a href="{Saivi::U('Reply/index',array('token'=>$token,'wecha_id'=>$wecha_id))}" class="right  btn btn-primary btn_submit  J_ajax_submit_btn" style="margin-top:-27px">返回</a> 
+   </div> 
+   
+
+   <form class="form" method="post" id="form" action="{Saivi::U('User/Reply/insert',array('token'=>$token,'wecha_id'=>$wecha_id))}"> 
+<!--<if condition="$isUpdate eq 1">
+<input type="hidden" name="id" value="{Saivi:$set.id}" />
+</if>-->
+<!--<input type="hidden" name="discount" id="discount" value="{Saivi:$set.discount}" />-->
+<input type="hidden" name="wecha_id"  value="{Saivi:$wecha_id}" />
+<input type="hidden" name="checked"  value="{Saivi:$checked}" />
+<input type="hidden" name="chk"  value="{Saivi:$chk_value}" />
+    <div class="msgWrap bgfc"> 
+     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+      <tbody> 
+      
+        <TR>
+                  <TH valign="top"><label for="info">回复内容详细：</label></TH>
+                  <TD><textarea name="content" id="content"  rows="5" style="width:590px;height:360px;display:none;"></textarea>
+<iframe id="eWebEditor1" src="/tpl/editor/ewebeditor.htm?id=content&style=jhbar&skin=office2003" frameborder="0" scrolling="no" width="95%" height="400"></iframe>
+                  </TD>
+                </TR>  
+       <tr>         
+       <th>&nbsp;</th>
+       <td>
+      <input type="hidden" name="groupon" value="1" />
+       <button type="submit" name="button" class="btn btn-primary btn_submit  J_ajax_submit_btn">保存</button> &nbsp; <a href="{Saivi::U('Reply/index',array('token'=>$token,'wecha_id'=>$wecha_id))}" class="btn">取消</a></td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     </div>
+    
+   </form> 
+  </div> 
+
+  <include file="Public:footer" />

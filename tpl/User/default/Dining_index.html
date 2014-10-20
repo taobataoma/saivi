@@ -1,0 +1,185 @@
+<include file="Public:head"/> 
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+
+<div class="content"   >
+
+<div class="cLineB">
+
+<h4 class="left">菜品管理 ({Saivi:$page}) </h4>
+
+<div class="searchbar right">
+
+<script language=javascript>
+
+function gourl(v)
+
+{
+
+	window.location.href ="{Saivi::U('Dining/index',array('token'=>$token))}&storeid="+v;
+
+}
+
+</script>
+
+<b>切换店铺：</b><select name="storeid" onchange="gourl(this.value);"><option value="0">所有店铺</option>
+
+<volist name="stores" id="st"> 
+
+<option value="{Saivi:$st.id}" <if condition="$storeid eq $st['id']">selected</if>>{Saivi:$st.name}</option>
+
+</volist>
+
+</select>
+
+</div>
+
+<div class="clr"></div>
+
+</div>
+
+<!--tab start-->
+
+<div class="tab">
+
+<ul>
+
+<li class="tabli" id="tab2"><a href="{Saivi::U('Dining/stores',array('token'=>$token,'storeid'=>$storeid))}">店铺信息</a></li>
+
+<li class="current tabli" id="tab0"><a href="{Saivi::U('Dining/index',array('token'=>$token,'storeid'=>$storeid))}">菜品管理</a></li>
+
+<li class="tabli" id="tab2"><a href="{Saivi::U('Dining/cats',array('token'=>$token,'storeid'=>$storeid))}">菜品分类管理</a></li>
+
+<li class="tabli" id="tab2"><a href="{Saivi::U('Dining/orders',array('token'=>$token,'storeid'=>$storeid))}">订单管理</a></li>
+
+<li class="tabli" id="tab2"><a href="{Saivi::U('Dining/tables',array('token'=>$token,'storeid'=>$storeid))}">桌台管理</a></li>
+
+<li class="tabli" id="tab5"><a href="{Saivi::U('Reply_info/set',array('token'=>$token,'infotype'=>'Dining'))}">订餐回复配置</a></li>
+
+</ul>
+
+</div>
+
+<!--tab end-->
+
+<div class="cLine">
+
+<div class="pageNavigator left"> <a href="{Saivi::U('Dining/add',array('token'=>$token,'storeid'=>$storeid))}" title="添加" class="btnGrayS vm bigbtn"><img src="{Saivi::RES}/images/product/add.png" width="16" class="vm">添加菜品</a></div>
+
+<div class="clr"></div>
+
+</div>
+
+<div class="msgWrap">
+
+<form method="post" action="" id="info">
+
+<input name="delall" type="hidden" value="">
+
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+
+<thead>
+
+<tr>
+
+<th class="select">选择</th>
+
+<th>名称</th>
+
+<th width="60">价格</th>
+
+<th width="100">分类</th>
+
+<th width="170">关键词</th>
+
+<th width="130">时间</th>
+
+<th width="100" class="norightborder">操作</th>
+
+</tr>
+
+</thead>
+
+<tbody style="text-align:center;">
+
+<volist name="list" id="hostlist"> 
+
+<tr>
+
+<td><input type="checkbox" name="del_id[{Saivi:$i}]" value="285" class="checkitem"></td>
+
+<td><div class="cateimg"><if condition="$hostlist['logourl']"><img src="{Saivi:$hostlist.logourl}" class="cateimg_big2"><img src="{Saivi:$hostlist.logourl}" width="48" style="vertical-align:middle;"/></if> {Saivi:$hostlist.name}</div></td>
+
+<td>{Saivi:$hostlist.price}元</td>
+
+<td><a href="{Saivi::U('index',array('catid'=>$hostlist['catid'],'token'=>$token,'storeid'=>$storeid))}">{Saivi:$hostlist.catname}</a></td>
+
+<td>{Saivi:$hostlist.keyword}</td>
+
+<td>{Saivi:$hostlist.time|date="Y-m-d H:i:s",###}</td> 
+
+
+
+<td class="norightborder"><a href="{Saivi::U('Dining/set',array('id'=>$hostlist['id'],'token'=>$token,'storeid'=>$storeid))}">修改</a> <a href="javascript:drop_confirm('您确定要删除吗?', '{Saivi::U('Dining/del',array('id'=>$hostlist['id'],'token'=>$token,'storeid'=>$storeid))}');">删除</a></td>
+
+</tr>
+
+</volist>
+
+</tbody>
+
+</table>
+
+</form>
+
+<script>
+
+function checkvotethis() {
+
+	var aa=document.getElementsByName('del_id[]');
+
+	var mnum = aa.length;
+
+	j=0;
+
+	for(i=0;i<mnum;i++){
+
+		if(aa[i].checked){
+
+		j++;
+
+		}
+
+	}
+
+	if(j>0) {
+
+		document.getElementById('info').submit();
+
+		} else {
+
+		alert('未选中任何信息！')
+
+	}
+
+}
+
+</script> 
+
+</div>
+
+<div class="cLine">
+
+<div class="pageNavigator right">
+
+<div class="pages">{Saivi:$page}</div>
+
+</div>
+
+<div class="clr"></div>
+
+</div>
+
+</div>
+
+<include file="Public:footer"/>

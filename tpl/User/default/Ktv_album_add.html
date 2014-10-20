@@ -1,0 +1,43 @@
+<include file="Public:head"/><include file="Ktv:menu"/> 
+ <div class="content">
+
+<div class="cLineB">
+
+  <h4 style="padding-top:10px;">添加经营主体相册</h4><a href="javascript:history.go(-1);return false;" class="right btnGrayS vm" style="margin-top:-27px">返回</a>
+ </div>
+         
+    <div class="msgWrap bgfc">
+	  <form class="form" method="post" action=""  >	 
+		<table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tbody>
+				<tr>
+					<input type="hidden" name="addtype" value="Ktv">
+				  <th valign="top"><span class="red">*</span>经选择相册名称：</th>
+				  <td>
+					  <select id="poid" name="poid" class="input-medium" data-rule-required="true"> 
+                            <option value="0">请选择相册</option> 
+                                <volist name="photo" id="vo">
+                                    <option value="{Saivi:$vo['id']}" <if condition="$vo['id'] eq $album['poid']">selected="selected"</if>>{Saivi:$vo['title']}</option>
+                                </volist>
+                          </select>
+                     <a href="{Saivi::U('Photo/add',array('token'=>$token,'poid'=>$poid['poid']))}" class="btn"><i class="icon-plus"></i>添加相册</a></td>
+				</tr>
+				
+				
+				<th>&nbsp;</th>
+				  <if condition="$album['id'] neq ''">
+                                    <input type="hidden" name="id" value="{Saivi:$album['id']}" />
+                                </if>
+					<td>
+						<button type="submit" name="button" class="btnGreen">保存</button>
+						<a href="javascript:history.go(-1);" class="btnGray vm">取消</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+  </div> 
+ 
+  
+        </div>
+<include file="Public:footer"/>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <meta charset="utf-8" />
+
+        <link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/162/css/snower.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/162/css/weimob-ui-1-1.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/162/css/common.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/162/css/home-5.css" media="all" />
+
+<script type="text/javascript" src="{Saivi::RES}/css/162/js/maivl.js"></script>
+
+<script type="text/javascript" src="{Saivi::RES}/css/162/js/jQuery.js"></script>
+
+<script type="text/javascript" src="{Saivi::RES}/css/162/js/swipe.js"></script>
+
+<script type="text/javascript" src="{Saivi::RES}/css/162/js/zepto.js"></script>
+
+<title>{Saivi:$tpl.wxname}</title>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+		<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+
+        
+
+        <!-- Mobile Devices Support @begin -->
+
+            <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+
+            <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+
+            <meta content="no-cache" http-equiv="pragma">
+
+            <meta content="0" http-equiv="expires">
+
+            <meta content="telephone=no, address=no" name="format-detection">
+
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+            <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <!-- Mobile Devices Support @end -->
+
+    </head>
+
+    <body onselectstart="return true;" ondragstart="return false;">
+
+        <!--背景音乐-->
+
+    <if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/></if>
+
+        
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/162/css/font-awesome.css?v=2013121116" media="all" />
+
+<style>
+
+	.weimob-list-item-bg{text-align:center; padding-top:10px;}
+
+	.weimob-list-item-bg span{display:inline-block; color:#fff; font-size:30px;}
+
+</style>
+
+
+
+<div class="weimob-page" style="display:block; padding-bottom:48px;">
+
+		<!--
+
+	幻灯片管理
+
+	-->
+
+	<div style="-webkit-transform:translate3d(0,0,0);">
+
+		<div id="banner_box" class="box_swipe">
+
+<ul>
+
+<volist name="flash" id="so">
+
+<li><a href="{Saivi:$so.url|htmlspecialchars_decode}"><img src="{Saivi:$so.img}" alt="{Saivi:$so.info}" style="width:100%;" border="0"/></a></li>
+
+</volist>
+
+</ul>
+
+<ol><volist name="flash" id="so"><li <if condition="$i eq 1">class="on"</if></li></volist></ol>
+
+		</div>
+
+	</div>
+
+		<script>
+
+		$(function(){
+
+			new Swipe(document.getElementById('banner_box'), {
+
+				speed:500,
+
+				auto:3000,
+
+				callback: function(){
+
+					var lis = $(this.element).next("ol").children();
+
+					lis.removeClass("on").eq(this.index).addClass("on");
+
+				}
+
+			});
+
+		});
+
+	</script>
+
+<br/><header>
+
+        <div class="snower">
+
+            <script type="text/javascript"></script>
+
+            <script type="text/javascript" src="{Saivi::RES}/css/162/css/template/snower.js"></script>
+
+        </div>
+
+    </header>     		<!--
+
+		用户分类管理
+
+		-->
+
+		<div class="weimob-content">
+
+            <div class="weimob-list">
+
+                											<volist name="info" id="vo"><a href="<if condition="$vo['url'] eq ''">{Saivi::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{Saivi:$vo.url|htmlspecialchars_decode}</if>" class="weimob-list-item">
+
+					                        <div class="weimob-list-item-bg">
+
+                            <div>
+
+								<span class="icon-smile1"><img src="{Saivi:$vo.img}" style="height:40px;width:40px;"></span>
+
+							</div>
+
+                            <div class="weimob-list-item-box">
+
+                                <div class="weimob-list-item-line">
+
+                                    <div class="weimob-list-item-title">{Saivi:$vo.name}</div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </a></volist>
+
+                											
+
+                            </div>
+
+        </div>
+
+    </div>
+
+
+
+<!--
+
+导航菜单
+
+   后台设置的快捷菜单
+
+-->
+
+
+
+<!--
+
+分享前控制
+
+-->
+
+	<script>
+
+		document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+
+
+
+
+			// 发送给好友
+
+			WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+
+				WeixinJSBridge.invoke('sendAppMessage', {
+
+					"img_url": window.shareData.imgUrl,
+
+					"img_width": "640",
+
+					"img_height": "640",
+
+					"link": window.shareData.sendFriendLink,
+
+					"desc": window.shareData.fContent,
+
+					"title": window.shareData.fTitle
+
+				}, function (res) {
+
+					_report('send_msg', res.err_msg);
+
+				})
+
+			});
+
+
+
+			// 分享到朋友圈
+
+			WeixinJSBridge.on('menu:share:timeline', function (argv) {
+
+				WeixinJSBridge.invoke('shareTimeline', {
+
+					"img_url": window.shareData.imgUrl,
+
+					"img_width": "640",
+
+					"img_height": "640",
+
+					"link": window.shareData.timeLineLink,
+
+					"desc": window.shareData.tContent,
+
+					"title": window.shareData.tTitle
+
+				}, function (res) {
+
+					_report('timeline', res.err_msg);
+
+				});
+
+			});
+
+
+
+			// 分享到微博
+
+			WeixinJSBridge.on('menu:share:weibo', function (argv) {
+
+				WeixinJSBridge.invoke('shareWeibo', {
+
+					"content": window.shareData.wContent,
+
+					"url": window.shareData.weiboLink
+
+				}, function (res) {
+
+					_report('weibo', res.err_msg);
+
+				});
+
+			});
+
+		}, false)
+
+	</script>
+
+
+
+        			<footer>
+
+ <div class="copyright" style="text-align:center;"><if condition="$iscopyright eq 1">{Saivi:$homeInfo.copyright}<else/>{Saivi:$siteCopyright}</if></div>
+
+<include file="Index:styleInclude"/> 
+
+</footer>
+
+				<div mark="stat_code" style="width:0px; height:0px; display:none;">
+
+					</div>
+
+	<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['status'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if> </body>
+
+</html>

@@ -1,0 +1,105 @@
+<include file="Dining:header"/>
+</head>
+<body class="mode_webapp">
+<div class="menu_header"> 
+     <div class="menu_topbar">
+      <strong class="head-title">订单详情</strong>
+      <span class="head_btn_left"><a href="javascript:history.go(-1);"><span>返回</span></a><b></b></span>
+      <a class="head_btn_right" href="{Saivi::U('Dining/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'dining'=>1))}">
+      <span><i class="menu_header_home"></i></span><b></b>
+      </a>
+     </div>
+</div>
+
+<div class="cardexplain"> 
+
+<ul class="round">
+<li class="title"><span class="none smallspan">订单详情</span></li>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="cpbiaoge">
+ <volist name="products" id="p">   
+  <tr>
+    <th>名称</th>
+     <th class="cc">单价</th>
+    <th class="cc">数量</th>
+    <th class="rr">备注</th>
+  </tr>
+         
+  <tr>
+    <td>{Saivi:$p.name}</td>
+    <td class="cc">{Saivi:$p.price}</td>
+     <td class="cc">{Saivi:$p.count}</td>
+     <td class="rr">无</td>
+    <!--<td class="rr"><php>echo ($products['price']*$products['count']);</php></td>-->
+  </tr>
+  </volist>
+     <tr>
+    <td>总计：</td>
+   <td class="cc">￥{Saivi:$totalFee}</td>
+     <td class="cc" > 总量：</td> 
+     <td class="rr" >{Saivi:$totalCount}</td>
+  </tr>
+   
+   
+  <tr>
+    <td>总计：</td>
+    <td ></td>
+     <td ></td>
+    <td class="rr">￥{Saivi:$totalFee}元</td>
+  </tr>
+</table>
+
+</ul>
+
+<ul class="round">
+<li class="title"><span class="none smallspan">订单信息</span></li>
+  
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="cpbiaoge">
+  <tr>
+    <td width="70">订单编号： {Saivi:$thisOrder.orderid}</td>
+  </tr>
+  <tr>
+    <td>下单时间：{Saivi:$thisOrder.time|date="Y-m-d H:i:s",###}</td>
+    </tr>
+       <tr>
+    <td>联系人 ： {Saivi:$thisOrder.truename}</td>
+    </tr>
+                 <tr>
+    <td>桌号 ： {Saivi:$tables.name}</td>
+    </tr>
+             <tr>
+    <td>联系电话 ： {Saivi:$thisOrder.tel}</td>
+  </tr>
+                                                    
+  
+  <tr>
+    <td>订单状态 ：<span style="color:green"><em  style='width:70px;' class='no'><if condition="$thisOrder.paid eq 1" >已处理<else/>未处理</if></em></span>
+  </tr>
+   <tr>
+    <td>商家留言：</td>
+  </tr>
+  <tr>
+  <td>    
+    <div class="twobtn">
+    <a class="del 3"  href="{Saivi::U('Dining/deleteOrder',array('token'=>$token,'id'=>$thisOrder['id'],'wecha_id'=>$wecha_id,'dining'=>1))}">删除</a></div>
+   
+
+            <div class="clr"></div>
+</div>
+    </td>
+  </tr>
+        </table>
+</ul>
+
+ 
+</div>
+
+<include file="Dining:footer"/>
+
+<script type="text/javascript">
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+WeixinJSBridge.call('hideToolbar');
+});
+</script>
+</body>
+</html>

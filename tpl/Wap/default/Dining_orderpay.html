@@ -1,0 +1,161 @@
+<include file="Dining:header"/>
+
+</head>
+
+<body class="mode_webapp">
+
+<div class="menu_header"> 
+
+ <div class="menu_topbar">
+
+  <strong class="head-title">订单支付</strong>
+
+  <span class="head_btn_left"><a href="javascript:history.go(-1);"><span>返回</span></a><b></b></span>
+
+  <a class="head_btn_right" href="{Saivi::U('Dining/index',array('token'=>$token,'wecha_id'=>$wecha_id))}">
+
+  <span><i class="menu_header_home"></i></span><b></b>
+
+  </a>
+
+ </div>
+
+</div>
+
+<div class="cardexplain"> 
+
+<ul class="round">
+
+<li class="title"><span class="none smallspan">订单信息</span></li>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="cpbiaoge">
+
+<tr>
+
+<td width="100">订单编号：</td><td>{Saivi:$thisOrder.orderid}</td>
+
+</tr>
+
+<tr>
+
+<td>下单时间：</td><td>{Saivi:$thisOrder.time|date="Y-m-d H:i:s",###}</td>
+
+</tr>
+
+<tr>
+
+<td>总计：</td><td>份数：<font color="red">{Saivi:$totalCount}</font>&nbsp;&nbsp;金额：<font color="red">￥{Saivi:$totalFee}</font></td>
+
+</tr>
+
+<tr>
+
+<td >联系方式：</td><td> {Saivi:$thisOrder.truename}， {Saivi:$thisOrder.tel}<br>{Saivi:$thisOrder.address}</td>
+
+</tr>
+
+</table>
+
+</ul>
+
+<if condition="$payment">
+
+<ul class="round">
+
+<li class="title"><span class="none smallspan">在线支付</span></li>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="cpbiaoge">
+
+<tr>
+
+<td>
+
+<form name="payForm" id="payForm" method="post" action="" >
+
+<input type="hidden" name="orderid" value="{Saivi:$thisOrder.orderid}">
+
+<select name="payment" id="payment">
+
+<volist id="v" name="payment">
+
+	<option value="{Saivi:$v.pay_code}">{Saivi:$v.pay_name}</option>
+
+</volist>
+
+</select>
+
+</form></td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<a id="payorder" class="submit" href="javascript:void(0)">在线支付</a>
+
+</td>
+
+</tr>
+
+</table>
+
+</ul>
+
+</if>
+
+</div>
+
+<include file="Dining:footer"/>
+
+<script type="text/javascript" >
+
+$(document).ready(function () {
+
+	$("#payorder").click(function () {
+
+	payForm.submit();	
+
+	});
+
+});
+
+</script>
+
+<script type="text/javascript" src="{Saivi::RES}/weidingcan/oakshopcart.js"></script>
+
+<script type="text/javascript" >
+
+var cart = new OAK.Shop.Cart();
+
+cart.showTotalNum = function(){
+
+    var quant = cart.getQuantity();
+
+	document.getElementById("cartN2").innerHTML = ""+quant.totalNumber;
+
+};
+
+window.onload = function () {
+
+	cart.getFromCache();
+
+	cart.showTotalNum();
+
+}
+
+</script>
+
+<script type="text/javascript">
+
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+	WeixinJSBridge.call('hideToolbar');
+
+});
+
+</script>
+
+</body>
+
+</html>

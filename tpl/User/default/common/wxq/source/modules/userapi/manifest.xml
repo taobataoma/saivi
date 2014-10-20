@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest versionCode="0.4">
+	<application setting="true">
+		<name><![CDATA[自定义接口回复]]></name>
+		<identifie><![CDATA[userapi]]></identifie>
+		<version><![CDATA[1.0]]></version>
+		<ability><![CDATA[更方便的第三方接口设置]]></ability>
+		<description><![CDATA[自定义接口又称第三方接口，可以让开发者更方便的接入微擎系统，高效的与微信公众平台进行对接整合。]]></description>
+		<author><![CDATA[WeEngine Team]]></author>
+	</application>
+	<hooks>
+		<hook name="rule" />
+	</hooks>
+	<install><![CDATA[]]></install>
+	<uninstall><![CDATA[]]></uninstall>
+	<upgrade><![CDATA[]]></upgrade>
+</manifest>

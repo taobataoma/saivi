@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0137)http://demo.Saivi.cn/index.php?g=Wap&m=Index&a=index&token=vemmyj1400164325&wecha_id=oKhaVjqgLaKArgt56avxkHtsuPtI&sgssz=mp.weixin.qq.com -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{Saivi:$tpl.wxname}</title>
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no"><style>
+
+#iframe_screen{
+    background:#fff;
+    position:absolute;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    z-index:300000;
+    overflow:hidden;
+}
+</style>
+<meta charset="utf-8">
+<link href="{Saivi::RES}/css/1125/cate.css" rel="stylesheet" type="text/css">
+<link href="{Saivi::RES}/css/1125/iscroll.css" rel="stylesheet" type="text/css">
+<style></style>
+<script src="{Saivi::RES}/css/1125/iscroll.js" type="text/javascript"></script><script type="text/javascript">var myScroll;
+
+function loaded() {
+myScroll = new iScroll('wrapper', {
+snap: true,
+momentum: false,
+hScrollbar: false,
+onScrollEnd: function () {
+document.querySelector('#indicator > li.active').className = '';
+document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+}
+ });
+ 
+}
+
+document.addEventListener('DOMContentLoaded', loaded, false);
+</script><script type="text/javascript">window.onload=function(){
+var cc=document.getElementById("dd").getElementsByTagName("a")[0].offsetHeight;
+
+document.getElementById("dd").getElementsByTagName("a")[1].style.height=[(cc-6)/3]+"px";
+document.getElementById("dd").getElementsByTagName("a")[2].style.height=[(cc-6)/3]+"px";
+document.getElementById("dd").getElementsByTagName("a")[3].style.height=[(cc-6)/3]+"px";
+
+}
+</script>
+</head>
+<body style=""><!--music-->
+		<if condition="$dh['animation'] neq '0'"><iframe id="iframe_screen" src="./tpl/Wap/default/Index_an{Saivi:$dh.animation}.html" frameborder="0"></iframe></if> <if condition="$homeInfo['musicurl'] neq false">
+			<include file="Index:music"/>
+		</if>
+<!--music-->
+<div class="banner">
+  <div id="wrapper" style="overflow: hidden;">
+    <div id="scroller" style="width: 1239px; -webkit-transition: -webkit-transform 0ms; transition: -webkit-transform 0ms; -webkit-transform-origin: 0px 0px; -webkit-transform: translate3d(0px, 0px, 0px) scale(1);">
+       <ul id="thelist">
+      <volist name="flash" id="so">
+<li><p>{Saivi:$so.info}</p><a href="{Saivi:$so.url}"><img src="{Saivi:$so.img}" /></a></li>
+</volist>
+</ul>
+    </div>
+  </div>
+  <div id="nav">
+    <div id="prev" onclick="myScroll.scrollToPage(&#39;prev&#39;, 0,400,2);return false">← prev</div>
+    <ul id="indicator">
+      <li class="active"></li>
+    </ul>
+    <div id="next" onclick="myScroll.scrollToPage(&#39;next&#39;, 0);return false">next →</div>
+  </div>
+  <div class="clr"></div>
+</div>
+<div id="insert1"></div>
+<ul class="mainmenu" id="dd">
+<volist name="info" id="vo">
+  <li>	<a href="<if condition="$vo['url'] eq ''">{Saivi::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{Saivi:$vo.url}</if>"><img src="{Saivi:$vo.img}">
+    <p>{Saivi:$vo.name}</p>
+    </a></li>
+ </volist>
+</ul>
+<script>var count = document.getElementById("thelist").getElementsByTagName("img").length;	
+
+var count2 = document.getElementsByClassName("menuimg").length;
+for(i=0;i<count;i++){
+ document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
+
+}
+document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
+
+ setInterval(function(){
+myScroll.scrollToPage('next', 0,400,count);
+},3500 );
+window.onresize = function(){ 
+for(i=0;i<count;i++){
+document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
+
+}
+ document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
+
+ var cc=document.getElementById("dd").getElementsByTagName("a")[0].offsetHeight;
+
+document.getElementById("dd").getElementsByTagName("a")[1].style.height=[(cc-6)/3]+"px";
+document.getElementById("dd").getElementsByTagName("a")[2].style.height=[(cc-6)/3]+"px";
+document.getElementById("dd").getElementsByTagName("a")[3].style.height=[(cc-6)/3]+"px";
+
+} 
+
+
+</script>
+<div class="copyright"></div>
+<script src="{Saivi::RES}/css/1125/jquery.min.js" type="text/javascript"></script><script>function displayit(n){
+	for(i=0;i<4;i++){
+		if(i==n){
+			var id='menu_list'+n;
+			if(document.getElementById(id).style.display=='none'){
+				document.getElementById(id).style.display='';
+				document.getElementById("plug-wrap").style.display='';
+			}else{
+				document.getElementById(id).style.display='none';
+				document.getElementById("plug-wrap").style.display='none';
+			}
+		}else{
+			if($('#menu_list'+i)){
+				$('#menu_list'+i).css('display','none');
+			}
+		}
+	}
+}
+function closeall(){
+	var count = document.getElementById("top_menu").getElementsByTagName("ul").length;
+	for(i=0;i<count;i++){
+		document.getElementById("top_menu").getElementsByTagName("ul").item(i).style.display='none';
+	}
+	document.getElementById("plug-wrap").style.display='none';
+}
+
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+	WeixinJSBridge.call('hideToolbar');
+});
+</script>
+<include file="Index:styleInclude"/><include file="$cateMenuFileName"/> 
+
+	<if condition="ACTION_NAME eq 'index'">
+		<script type="text/javascript">
+			window.shareData = {  
+					"moduleName":"Index",
+					"moduleID": '0',
+					"imgUrl": "{Saivi:$homeInfo.picurl}", 
+					"timeLineLink": "{Saivi::C('site_url')}{Saivi::U(Index/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"sendFriendLink": "{Saivi::C('site_url')}{Saivi::U(Index/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"weiboLink": "{Saivi::C('site_url')}{Saivi::U(Index/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"tTitle": "{Saivi:$homeInfo.title}",
+					"tContent": "{Saivi:$homeInfo.info}"
+				};
+		</script>
+	<else />
+		<script type="text/javascript">
+			window.shareData = {  
+				"moduleName":"Index",
+				"moduleID": '1',
+				"imgUrl": "{Saivi:$homeInfo.picurl}", 
+				"timeLineLink": "{Saivi::C('site_url')}{Saivi::U(Index/ACTION_NAME,array('token'=>$_GET['token'],'classid'=>$_GET['classid']))}",
+				"sendFriendLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token'],'classid'=>$_GET['classid']))}",
+				"weiboLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token'],'classid'=>$_GET['classid']))}",
+				"tTitle": "{Saivi:$homeInfo.title}",
+				"tContent": "{Saivi:$homeInfo.info}"
+			};
+		</script>	
+	
+	</if>
+{Saivi:$shareScript}<!--chat-->
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['status'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if>   </body>
+
+</html>

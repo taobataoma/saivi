@@ -1,0 +1,219 @@
+<include file="Public:head"/> 
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/themes/default/default.css" />
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/plugins/code/prettify.css" />
+
+<script src="{Saivi::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+
+<script src="{Saivi::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+
+<script src="{Saivi::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+
+<script src="./tpl/User/default/common/js/cart/jscolor.js" type="text/javascript"></script>
+
+
+
+<script type="text/javascript" src="/tpl/User/default/common/js/jQuery.js"></script>
+
+<script>
+
+var editor;
+
+KindEditor.ready(function(K) {
+
+editor = K.create('#intro', {
+
+resizeType : 1,
+
+allowPreviewEmoticons : false,
+
+allowImageUpload : true,
+
+uploadJson : '/index.php?g=User&m=Upyun&a=kindedtiropic',
+
+items : [
+
+'source','undo','clearhtml','hr',
+
+'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+
+'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
+
+});
+
+
+
+});
+
+</script>
+
+<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+
+ <form class="form" method="post"   action=""  target="iframe" enctype="multipart/form-data" >
+
+        <div id="content" style="margin-top:50px; margin-left:15px;">
+
+<!--活动开始-->
+
+<div class="cLineB">
+
+    <h4>一站到底活动内容</h4><a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a>
+
+</div> 
+
+<div class="msgWrap bgfc"> 
+
+<TABLE class="userinfoArea" style=" margin:0;" border="0" cellSpacing="0" cellPadding="0" width="100%"><TBODY>
+
+<TR>
+
+  <th valign="top"><span class="red">*</span>关键词：</th>
+
+  <TD>
+
+	<input type="hidden" class="px" value="1" name="type" style="width:350px" >
+
+	<input type="input" class="px" id="gjz" name="gjz" value="<if condition="$vo['gjz'] eq ''">一站到底<else/>{Saivi:$vo.gjz}</if>"  style="width:350px" ><br />
+
+  	<span class="red">只能写一个关键词</span>，用户输入此关键词将会触发此活动。
+
+  </TD>
+
+  <TD rowspan="7" valign="top">
+
+	  <div style="margin-left:20px">
+
+		<img id="pic_src" src="<if condition="$vo['pic'] eq ''">{Saivi::C('site_url')}/tpl/User/default/common/images/img/yzdd.jpg<else/>{Saivi:$vo.pic}</if>" width="373px" >	
+
+		<br />
+
+		<input class="px"  name="pic" value="<if condition="$vo['pic'] eq ''">{Saivi::C('site_url')}/tpl/User/default/common/images/img/yzdd.jpg<else/>{Saivi:$vo.pic}</if>" id="pic" style="width:363px;"  />
+
+		<br />
+
+		  <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic',700,420,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic')">预览</a>&nbsp;活动开始图片
+
+	  </div>
+
+  </TD>
+
+</TR>
+
+<TR>
+
+  <th valign="top"><span class="red">*</span>活动标题：</th>
+
+  <TD>
+
+	<input type="input" class="px" id="name" name="name" value="<if condition="$vo['name'] eq ''">一站到底活动开始了<else/>{Saivi:$vo.name}</if>"  style="width:350px" />
+
+  	<br />
+
+  	请不要多于50字!
+
+  </TD>
+<TR>
+
+  	<th valign="top"><span class="red">*</span>活动简介：</th>
+
+  	<td><textarea class="px" id="ms"  name="ms" style="width:350px"  >{Saivi:$vo.ms}</textarea>图文消息的详细内容，活动中的说明页显示这个内容
+
+  		 </td>
+
+</TR>
+  
+ <TR>
+
+  	<th valign="top"><span class="red">*</span>每天答题数：</th>
+
+  	<td>
+
+		<input type="input" class="px" id="mrtm" value="{Saivi:$vo.mrtm}" name="mrtm" style="width:350px" />
+
+	</td>
+
+  </TR>
+  
+   <TR>
+
+  	<th valign="top"><span class="red">*</span>答题天数：</th>
+
+  	<td>
+
+		<input type="input" class="px" id="dtts" value="{Saivi:$vo.dtts}" name="dtts" style="width:350px" />
+
+	</td>
+
+  </TR>
+   <TR>
+  	<th valign="top"><span class="red">*</span>正确积分：</th>
+  	<td>
+		<input type="input" class="px" id="limit" value="{Saivi:$vo.limit}" name="limit" style="width:350px" />答对一题的积分
+	</td>
+  </TR>
+  
+<TR>
+
+	<th><span class="red">*</span>活动时间：</th>
+
+	<td><input type="input" class="px" id="kssj" value="<if condition="$vo['kssj'] neq ''">{Saivi:$vo.kssj|date="Y-m-d H:i:s",###}</if>" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" name="kssj" />                
+
+		到
+
+		<input type="input" class="px" id="jssj" value="<if condition="$vo['jssj'] neq ''">{Saivi:$vo.jssj|date="Y-m-d H:i:s",###}</if>" name="jssj"  onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  /> 
+
+	</td>
+
+</TR>
+
+
+
+
+<TR>
+
+<th>&nbsp;</th>
+
+<td><button type="submit" class="btnGreen" >保存</button>　<a href=""  class="btnGray vm">取消</a>　<span class="red">请确认功能管理已开启一站到底功能</span></td>
+
+
+</TBODY>
+
+</TABLE>
+
+  </div>  
+
+
+
+
+
+
+        </div>
+
+</form>
+
+      
+
+        <div class="clr"></div>
+
+      </div>
+
+    </div>
+
+  </div> 
+
+
+
+<!--底部-->
+
+  	</div>
+
+
+
+<include file="Public:footer"/> 

@@ -1,0 +1,5 @@
+#cate34 {background-color: #fdf7e9;}
+#cate34 .mainmenu li{background-color: transparent !important;}
+#cate34 .mainmenu li a { display:block;   background-color:#fdfdfd; border:1px solid #eae3d1; height: 106px; text-align:center; border-radius:5px; overflow:hidden }
+#cate34 .mainmenu li a img {margin:10px auto; width:50px; height:50px; padding:3px; border-radius:100%; background-color:#FFCC00;box-shadow: 0 0px 0px 3px #fff; }
+#cate34 .mainmenu li a span { padding:0px 10px; text-align:center; margin:auto; line-height:26px; height:26px;color:#f6eddc;background:-webkit-gradient(linear, 55% 100%, 55% 0%, from(#d61b08), to(#fa5e38)); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; border-radius:0px 0px 5px 5px;}

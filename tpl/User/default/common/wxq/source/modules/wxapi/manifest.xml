@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest versionCode="0.4">
+	<application setting="false">
+		<name><![CDATA[乐享接口回复]]></name>
+		<identifie><![CDATA[wxapi]]></identifie>
+		<version><![CDATA[1.0]]></version>
+		<ability><![CDATA[乐享微信营销管理平台与微擎管理系统的兼容]]></ability>
+		<description><![CDATA[微擎将试水与第三方管理平台进行战略融合，更好的服务于广大的微信公众平台用户。微擎内置模块的优先级高于其他平台接口，微擎无法处理的对话内容将交于第三方平台处理。]]></description>
+		<author><![CDATA[WeEngine Team]]></author>
+	</application>
+	<hooks>
+	</hooks>
+	<install><![CDATA[]]></install>
+	<uninstall><![CDATA[]]></uninstall>
+	<upgrade><![CDATA[]]></upgrade>
+</manifest>

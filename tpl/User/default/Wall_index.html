@@ -1,0 +1,55 @@
+<include file="Public:head"/>
+<div class="content" >  
+<div class="cLineB">
+  <h4>微信墙<span class="FAQ"></span></h4>
+ </div>
+<div class="cLineC" style="line-height: 32px;">
+ <a href="{Saivi::U('Wall/add')}" class="btn btn-primary btn_submit  J_ajax_submit_btn" >添加活动</a>　 
+</div>
+ 
+ <div class="msgWrap form">
+<div class="bdrcontent">
+<div id="div_ptype">
+<table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+<thead>
+<tr>
+<th style=" width:180px;">活动名称</th>
+<th style=" width:100px;">状态</th>             
+<th style=" width:150px;" class="norightborder">操作</th>
+</tr>
+</thead>
+<volist name="info" id="actinfo">
+<tr>
+<td>{Saivi:$actinfo.title}</td>
+<td><if condition="$actinfo['isopen'] eq 0"> 
+    <span style="color:red">关闭中</span>
+    <else /><span style="color:green">开启中</span>
+    </if></td>
+<td class="norightborder">
+    <if condition="$actinfo['isopen'] eq 0"> 
+    <else /><a target="_blank" href="{Saivi::U('Wall/screen',array('id'=>$actinfo['id'],'token'=>$_SESSION['token']))}">大屏幕</a> 
+    </if> <a href="{Saivi::U('Wall/prizeRecords',array('id'=>$actinfo['id'],'token'=>$_SESSION['token']))}">中奖名单</a> 
+    <a href="{Saivi::U('Wall/edit',array('id'=>$actinfo['id'],'token'=>$_SESSION['token']))}" >编辑</a>  <a href="javascript:drop_confirm('您确定要删除吗?', '{Saivi::U('Wall/del',array('token'=>$token,'id'=>$actinfo['id']))}');">删除</a>
+</td>
+</volist>
+</tr>
+
+</table>
+
+</div>
+</div>
+<div class="footactions" style="padding-left:10px">
+  <div class="pages">{Saivi:$page}</div>
+</div>
+          </div>
+  
+        </div>
+   
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div> 
+  <!--底部-->
+  	</div>
+
+<include file="Public:footer"/>

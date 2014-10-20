@@ -1,0 +1,220 @@
+<include file="Dining:header"/>
+
+<script src="{Saivi::C(site_url)}{Saivi::$staticFilePath}/index/js/iscroll.js" type="text/javascript"></script>
+
+<SCRIPT type=text/javascript>
+
+	var myScroll;
+
+	
+
+	function loaded() {
+
+		myScroll = new iScroll('wrapper', {
+
+			snap: true,
+
+			momentum: false,
+
+			hScrollbar: false,
+
+			onScrollEnd: function () {
+
+				document.querySelector('#indicator > li.active').className = '';
+
+				document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+
+			}
+
+		});
+
+	}
+
+	document.addEventListener('DOMContentLoaded', loaded, false);
+
+</SCRIPT>
+
+<style>
+
+</style>
+
+</head>
+
+<body class="mode_webapp">
+
+
+
+<div class="menu_header"> 
+
+     <div class="menu_topbar">
+
+      <strong class="head-title">店铺介绍</strong>
+
+      <span class="head_btn_left"><a href="javascript:history.go(-1);"><span>返回</span></a><b></b></span> <a class="head_btn_right" href="{Saivi::U('Dining/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'dining'=>1))}">
+
+      <span><i class="menu_header_home"></i></span><b></b>
+
+      </a>
+
+     </div>
+
+</div>
+
+<div class="banner">
+
+<div id="wrapper">
+
+<div id="scroller">
+
+<ul id="thelist">
+
+               
+
+<li><p></p><img src="{Saivi:$thisCompany.baner}"></li>
+
+ 
+
+
+
+</ul>
+
+</div>
+
+</div><div class="cardexplain">
+
+    <div class="detailcontent"><h2>公告</h2>
+
+<div class="content">{Saivi:$thisCompany.bulletin}</div>
+
+    </div>
+
+
+
+<ul class="round">
+
+    <li class="title"><span class="none smallspan">店铺信息</span></li>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="cpbiaoge">
+
+  <tr>
+
+    <td width="70">店铺状态：<em class="ok"><if condition="$thisCompany.status eq 1">未营业。。<else/>营业中。。</if></em>  </tr>
+
+  <tr>
+
+    <td>店铺分类：{Saivi:$thisCompany.category}</td>
+
+    </tr>
+
+  <tr>
+
+    <td>营业时间：{Saivi:$thisCompany.time}</td>
+
+    </tr>
+
+  <tr>
+
+    <tr>
+
+       
+
+  <tr>
+
+    <td>起送价格：{Saivi:$thisCompany.money}元</td>
+
+  </tr>
+
+  <tr>
+
+    <td>服务半径：{Saivi:$thisCompany.radius}</td>
+
+  </tr>
+
+  <tr>
+
+    <td valign="top">配送区域：{Saivi:$thisCompany.scope}</td>
+
+  </tr>
+
+        </table>
+
+</ul>
+
+    
+
+    <ul class="round">
+
+        <li class="tel"><a href="tel:{Saivi:$Company.tel}"><span>{Saivi:$Company.tel}</span></a></li>
+
+<li class="addr"><a href="http://api.map.baidu.com/marker?location={Saivi:$Company.latitude},{Saivi:$Company.longitude}&amp;title={Saivi:$Company.name}&amp;content={Saivi:$Company.address}&amp;output=html"><span>{Saivi:$Company.address}</span></a></li>
+
+        <li class="addr"><a href="{Saivi::U('Dining/dingdan',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'setid'=>$_GET['setid'],'dining'=>1))}"><span>订单管理</span></a></li>
+
+</ul>
+
+
+
+<div class="detailcontent"><h2>详情介绍</h2>
+
+        <div class="content">
+
+           <p>{Saivi:$Company.intro}
+
+	</p><br>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+var count = $("#thelist img").size();
+
+$("#thelist img").css("width",document.body.clientWidth);
+
+$("#scroller").css("width",document.body.clientWidth*count);
+
+ setInterval(function(){
+
+myScroll.scrollToPage('next', 0,400,count);
+
+},3500 );
+
+window.onresize = function(){ 
+
+ 
+
+  $("#thelist img").css("width",document.body.clientWidth);
+
+  $("#scroller").css("width",document.body.clientWidth*count);
+
+} 
+
+
+
+</script>
+
+
+
+
+
+<include file="Dining:footer"/>
+
+
+
+<script type="text/javascript">
+
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+WeixinJSBridge.call('hideToolbar');
+
+});
+
+</script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<link href="{Saivi::RES}/css/Estate/lp/css/review.css" rel="stylesheet" type="text/css" media="all" />
+<link href="{Saivi::RES}/css/Estate/css/reset_ny.css" rel="stylesheet" type="text/css" />
+<title>客户点评</title>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta content="telephone=no, address=no" name="format-detection">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="shortcut icon" href="{Saivi::RES}/css/Estate/img/favicon.ico" />
+</head>
+<body onselectstart="return true;" ondragstart="return false;">
+<style type="text/css">
+	.review_man h3{font-size:18px;}
+	#impress a{
+		overflow:hidden;
+	}
+	.review_man h3{font-size:18px;}
+	.is_1 a[style*='flex:0'], .is_2 a[style*='flex:0']{
+		display:none;
+	}
+</style>
+<div class="wrapper">
+  <footer class="nav_footer">
+    <ul class="box_db">
+      <li><a href="javascript:history.go(-1);">返回</a></li>
+      <li><a href="javascript:history.go(1);">前进</a></li>
+      <li><a href="{Saivi::U('Lvyou/shouye',array('token'=>$_GET['token'],'id'=>$estate['id']))}">首页</a></li>
+      <li><a href="javascript:location.reload();">刷新</a></li>
+    </ul>
+  </footer>
+  <ul class="nav_top" id="navTop" style="display: -webkit-box; ">
+    <li><a href="#" class="current">客户点评</a></li>
+  </ul>
+  <div id="professional" style="display: block; ">
+    <volist name="zjdpall" id="info">
+      <div class="review_box">
+        <div class="review_man"> <img src="{Saivi:$info.picurl}" width="70" height="70"  style="width:70px!important; height:70px!important; " alt="">
+          <h3>{Saivi:$info.name}&nbsp;&nbsp;&nbsp;&nbsp;点评旅游区：{Saivi:$info.subestatename}<em><br>
+            {Saivi:$info.zw}</em></h3>
+          <p>
+            <php>echo htmlspecialchars_decode($info['content'])</php>
+          </p>
+        </div>
+        <div class="review_word">
+          <h2>{Saivi:$info.title}</h2>
+          <p>
+            <php>echo htmlspecialchars_decode($info['dpcontent'])</php>
+          </p>
+        </div>
+      </div>
+    </volist>
+  </div>
+  <br>
+  <br>
+  <br>
+</div>
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['lvyou'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if></body>
+</html>

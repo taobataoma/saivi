@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD>        <title>{Saivi:$tpl.wxname}</title>
+<base href="." />
+<META content="text/html; charset=UTF-8" http-equiv=Content-Type>
+<META name=viewport 
+content=width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;>
+<META name=apple-mobile-web-app-capable content=yes>
+<META name=apple-mobile-web-app-status-bar-style content=black>
+<META name=format-detection content=telephone=no><LINK rel=stylesheet 
+type=text/css href="{Saivi::RES}/w54/w57.css">
+<SCRIPT type=text/javascript src="{Saivi::RES}/w54/jquery-1.7.2.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript src="{Saivi::RES}/w54/rotate.js"></SCRIPT>
+
+<SCRIPT type=text/javascript src="{Saivi::RES}/w54/jquery.transform.js"></SCRIPT>
+
+<META name=GENERATOR content="MSHTML 9.00.8112.16446"></HEAD>
+<BODY id=cate8>
+    <!--背景音乐-->
+    <if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/></if>
+<UL class=cateul>
+<volist name="info" id="vo">
+<if condition="($i eq '1') OR ($i eq '6') OR ($i eq '7') OR ($i eq '8') OR ($i eq '17') OR ($i eq '18') OR ($i eq '23') OR ($i eq '24') OR ($i eq '29')">
+  <LI class=li0><A 
+  href="<if condition="$vo['url'] eq ''">{Saivi::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{Saivi:$vo.url|htmlspecialchars_decode}</if>">
+  <DIV class=menubtn>
+  <DIV class=menuimg><IMG 
+  src="{Saivi:$vo.img}"> 
+  </DIV>
+  <DIV class=menutitle>{Saivi:$vo.name}</DIV></DIV></A></LI>
+  <else/>
+  <LI class=li1><A 
+  href="<if condition="$vo['url'] eq ''">{Saivi::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{Saivi:$vo.url|htmlspecialchars_decode}</if>">
+  <DIV class=menubtn>
+  <DIV class=menuimg><IMG src="{Saivi:$vo.img}"> </DIV>
+  <DIV class=menutitle></DIV></DIV></A></LI>
+  	</if>
+  </volist>
+  </UL>
+<div class="copyright" style="text-align:center;"><if condition="$iscopyright eq 1">{Saivi:$homeInfo.copyright}<else/>{Saivi:$siteCopyright}</if></div>
+<include file="Index:styleInclude"/> 
+</BODY></HTML>

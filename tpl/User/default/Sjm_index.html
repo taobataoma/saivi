@@ -1,0 +1,128 @@
+<include file="Public:head"/>
+
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+
+
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+
+<div class="content">
+
+<!--tab start-->
+
+
+
+<!--tab end-->
+
+
+
+      
+
+    <div class="msgWrap bgfc" style="margin-top:10px;">
+
+	  <form class="form" method="post" action=""  enctype="multipart/form-data">	 
+
+		<table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+
+			<tbody>
+
+				<tr>
+
+				  <th valign="top"><span class="red">*</span>关键词：</th>
+
+				  <td>
+
+					<span class="red">神经猫 —— 当用户输入该关键词时，将会触发此回复。</span></td>
+
+				</tr>
+
+				<tr>
+
+					<th width="120"><span class="red">*</span>回复标题：</th>
+
+					<td><input type="text" name="title" value="{Saivi:$set.title}" class="px" style="width:550px;"></td>
+
+				</tr>
+
+				<tr>
+
+					<th width="120"><span class="red">*</span>内容介绍：</th>
+
+					<td><textarea style="width:560px;height:75px" name="info" id="info" class="px">{Saivi:$set.info}</textarea><br/>最多填写120个字</td>
+
+				</tr>
+
+				<tr>
+
+					<th><span class="red">*</span>回复图片：</th>
+
+					<td><input type="text" name="picurl" value="{Saivi:$set.picurl}" id="pic" class="px" style="width:550px;"> <script src="/tpl/static/upyun.js"></script><a href="#" onclick="upyunPicUpload('pic',700,420,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a> <a href="#" onclick="viewImg('pic')">预览</a>   &nbsp; 大小为720x400</td>
+
+				</tr>
+              
+               
+                <tr>
+
+					<th width="120"><span class="red">*</span>提示收藏语：</th>
+
+					<td><input type="text" name="tip" value="{Saivi:$set.tip}" class="px" style="width:550px;"></br>例如：关注{Saivi:$f_siteName}，发送【神经猫】可以再次玩"抓住神经猫"，要不要收藏这个游戏？</td>
+
+				</tr>
+                 <tr>
+
+					<th width="120"><span class="red">*</span>微信名称：</th>
+
+					<td><input type="text" name="wxname" value="{Saivi:$set.wxname}" class="px" style="width:550px;"></td>
+
+				</tr>
+                <tr>
+
+					<th><span class="red">*</span>分享出去的图片：</th>
+
+					<td><input type="text" name="sharepicurl" value="{Saivi:$set.sharepicurl}" id="sharepicurl" class="px" style="width:550px;"> <script src="/tpl/static/upyun.js"></script><a href="#" onclick="upyunPicUpload('sharepicurl',700,420,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a> <a href="#" onclick="viewImg('sharepicurl')">预览</a>   &nbsp; 如要使用默认图片，请留空</td>
+
+				</tr>
+                <TR>
+                  <TH valign="top"><span class="red">*</span>更多内容链接：</TH>
+                  <TD><input type="text" class="px" id="url" value="{Saivi:$set.url}" name="url" style="width:280px;">  <a href="###" onclick="addLink('url',0)" class="btn btn-primary btn_submit  J_ajax_submit_btn">从功能库添加</a><br /><span class="red">如需点击"更多内容跳"转到其他网址，请在输入框右侧选择或这里填写网址(例如：{Saivi:$f_siteUrl}，记住如果填写必须有http://)</span>如果填写了图文详细内容，这里请留空，不要设置！</TD>
+                </TR>
+                 <TR>
+                  <TH valign="top"><span class="red">*</span>分享后跳转地址：</TH>
+                  <TD><input type="text" class="px" id="shareurl" value="{Saivi:$set.shareurl}" name="shareurl" style="width:280px;">  <a href="###" onclick="addLink('shareurl',0)" class="btn btn-primary btn_submit  J_ajax_submit_btn">从功能库添加</a><br /><span class="red">如需分享后跳转到其他网址，请在输入框右侧选择或这里填写网址(例如：{Saivi:$f_siteUrl}，记住如果填写必须有http://)</span>如果填写了图文详细内容，这里请留空，不要设置！</TD>
+                </TR>
+
+                
+
+
+				<th>&nbsp;</th>
+
+					<td>
+
+
+					<input type="hidden" name="token" value="{Saivi:$token}" />
+
+						<button type="submit" name="button" class="btn btn-primary btn_submit  J_ajax_submit_btn">保存</button>
+
+						<a href="javascript:history.go(-1);" class="btn">取消</a>
+
+					</td>
+
+				</tr>
+
+			</tbody>
+
+		</table>
+
+	</form>
+
+  </div> 
+
+ 
+
+  
+
+        </div>
+
+<include file="Public:footer"/>

@@ -1,0 +1,192 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{Saivi:$wall.title}信息管理后台</title>
+<meta name="keywords" content="微动力微信墻" />
+<meta name="description" content="微动力微信墻" />
+<link type="text/css" rel="stylesheet" href="{Saivi::RES}/wxq/resource/style/bootstrap.css" />
+<link type="text/css" rel="stylesheet" href="{Saivi::RES}/wxq/resource/style/font-awesome.css" />
+<link type="text/css" rel="stylesheet" href="{Saivi::RES}/wxq/resource/style/common.css" />
+<script type="text/javascript" src="{Saivi::RES}/wxq/resource/script/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/wxq/resource/script/bootstrap.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/wxq/resource/script/common.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/wxq/resource/script/emotions.js"></script>
+<script type="text/javascript">
+   function shenHe(id){
+   $.getJSON("{Saivi::U('Wxq/operateOne')}",{"id":id,"type":'shenhe'},
+    function(data){
+        if(data['info'] == "ok") {
+            $('#shenhe'+id).removeClass('btn btn-primary');
+        } else {
+            alert('信息已经审核请刷新页面或者审核出错');
+        }
+    });
+}
+
+function del(id){
+    $.getJSON("{Saivi::U('Wxq/operateOne')}",{"id":id,"type":'del'},
+    function(data){
+        if(data['info'] == "ok") {
+            $('#tr_'+id).hide();
+        } else {
+            alert(data['data']);
+        }
+    })
+}
+
+function buShen(id){
+    $.getJSON("{Saivi::U('Wxq/operateOne')}",{"id":id,"type":'bushen'},
+    function(data){
+        if(data['info'] == "ok") {
+            $('#bushen'+id).removeClass('btn btn-primary');
+        }
+    })
+}
+function selectall(){
+	$("input[type=checkbox]").each(function() {
+		$(this).attr("checked",true);
+	});
+}
+function noSelect(){
+    $("input[type=checkbox]").each(function(){
+       $(this).attr("checked", false);
+    })
+}
+</script>
+
+</head>
+<body
+    <div class="main">
+		<div class="stat">
+			<div class="stat-div">
+				<div class="navbar navbar-static-top">
+					<div class="navbar-inner">
+						<span class="pull-right" style="color:red; padding:10px 10px 0 0;">当前在线人数：{Saivi:$wall.onlinenum}</span>
+						<div class="pull-left">
+							<ul class="nav">
+                                <li <if condition="$_GET['isshow']==2"> class='active' </if> ><a href="{Saivi::U('Wxq/examineInfo',array('id'=>$wall['id'],'isshow'=>2))}">全部内容</a></li>
+                                <li <if condition="$_GET['isshow']==0"> class='active' </if> ><a href="{Saivi::U('Wxq/examineInfo',array('id'=>$wall['id'],'isshow'=>0))}">待审核</a></li>
+                                <li <if condition="$_GET['isshow']==1"> class='active' </if> ><a href="{Saivi::U('Wxq/examineInfo',array('id'=>$wall['id'],'isshow'=>1))}">已审核</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="sub-item" id="table-list">
+					<h4 class="sub-title">详细数据</h4>
+					<form action="{Saivi::U('Wxq/examine')}" method="post">
+					<div class="sub-content">
+						<table class="table table-hover">
+							<thead class="navbar-inner">
+								<tr>
+									<th style="width:40px;" class="row-first">选择</th>
+									<th class="row-hover">消息<i></i></th>
+									<th style="width:100px;">时间<i></i></th>
+									<th style="width:110px;">单条审核</th>
+								</tr>
+							</thead>
+							<tbody>
+                                <volist name="list" id="vo">
+                                    <tr id="tr_{Saivi:$vo.id}">
+									<td class="row-first">
+                                        <input type="checkbox" name="yes{Saivi:$i}" value="{Saivi:$vo.id}" />
+                                    </td>
+									<td class="row-hover">
+                                        <img src="{Saivi:$vo.avatar}"  style="float: left;width: 80px;"/>
+										<div>
+                                            <span style="float: left">【{Saivi:$vo['nickname']}】
+                                                <if condition="$vo['isblacklist']==1"><font color="red">（黑名单）</font></if>
+                                            </span>
+                                            <span>{Saivi:$vo['content']}</span>
+										</div>
+									</td>
+									<td style="font-size:12px; color:#666;">
+										<div style="margin-bottom:10px;"><?php echo date('Y-m-d', $vo[createtime]);?></div>
+										<div><?php echo date('h:i:s', $vo[createtime]);?></div>
+									</td>
+                                    <td>
+                                        <if condition="$_GET['isshow']==0">
+                                        <a id="shenhe{Saivi:$vo.id}" onclick="javacript:shenHe({Saivi:$vo.id});" class="btn btn-primary">审核</a>
+                                        <a id="bushen{Saivi:$vo.id}" onclick="javacript:buShen({Saivi:$vo.id});" class="btn btn-primary">不审</a>
+                                        <a onclick="javacript:del({Saivi:$vo.id});"  class="btn btn-primary">删除</a>
+                                        <else/>
+                                        <a id="bushen{Saivi:$vo.id}" onclick="javacript:buShen({Saivi:$vo.id});" class="btn btn-primary">不审</a>
+                                        <a onclick="javacript:del({Saivi:$vo.id});"  class="btn btn-primary">删除</a>
+                                        </if>
+                                    </td>
+								</tr>
+                                </volist>
+							</tbody>
+						</table>
+						<table class="table">
+							<tr style="width:40px;" class="row-first">
+                                <td>全选<input type="radio" name="1" onclick="selectall();" />
+                                    不选<input type="radio" name="1" checked="true" onclick="noSelect();" />
+                                </td>
+								<td>
+                                    <input type="hidden" name="max" value="{Saivi:$max}"/>
+                                    <if condition="$_GET['isshow']==0">
+                                        <input type="submit" name="verify" value="一键审核" class="btn btn-primary" />
+                                        <input type="submit" name="delete" value="一键删除" class="btn btn-primary" />
+                                        <else/>
+                                        <input type="submit" name="delete" value="一键删除" class="btn btn-primary" />
+                                    </if>
+								</td>
+							</tr>
+						</table>
+					</div>
+					</form>
+					{Saivi:$page}
+				</div>
+			</div>
+		</div>
+    </div>
+<script>
+$(function() {
+	//详细数据相关操作
+	var tdIndex;
+	$("#table-list thead").delegate("th", "mouseover", function(){
+		if($(this).find("i").hasClass("")) {Saivi:
+			$("#table-list thead th").each(function() {Saivi:
+				if($(this).find("i").hasClass("icon-sort")) $(this).find("i").attr("class", "");
+			});
+			$("#table-list thead th").eq($(this).index()).find("i").addClass("icon-sort");
+		}
+	});
+	$("#table-list thead th").click(function() {
+		if($(this).find("i").length>0) {
+			var a = $(this).find("i");
+			if(a.hasClass("icon-sort") || a.hasClass("icon-caret-up")) {Saivi: //递减排序
+				/*
+					数据处理代码位置
+				*/
+				$("#table-list thead th i").attr("class", "");
+				a.addClass("icon-caret-down");
+			} else if(a.hasClass("icon-caret-down")) { //递增排序
+				/*
+					数据处理代码位置
+				*/
+				$("#table-list thead th i").attr("class", "");
+				a.addClass("icon-caret-up");
+			}
+			$("#table-list thead th,#table-list tbody:eq(0) td").removeClass("row-hover");
+			$(this).addClass("row-hover");
+			tdIndex = $(this).index();
+			$("#table-list tbody:eq(0) tr").each(function() {
+				$(this).find("td").eq(tdIndex).addClass("row-hover");
+			});
+		}
+	});
+});
+</script>
+	<div id="footer">
+		<span class="pull-left">
+
+		</span>
+		<span class="pull-right">
+
+		</span>
+	</div>
+	<div class="emotions" style="display:none;"></div>
+</body>
+</html>

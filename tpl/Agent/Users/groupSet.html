@@ -1,0 +1,89 @@
+<include file="Frame:header"/>
+<script type="text/javascript" src="tpl/Agent/Common/js/formCheck/lang/cn.js"> </script>
+<script type="text/javascript" src="tpl/Agent/Common/js/formCheck/formcheck.js"> </script>
+<link rel="stylesheet" href="tpl/Agent/Common/js/formCheck/theme/grey/formcheck.css" type="text/css" media="screen" />
+<link href="tpl/Agent/Common/style/calendar.css" type="text/css" rel="stylesheet">
+<script src="tpl/Agent/Common/js/calendar.js"></script>
+<script src="tpl/Agent/Common/js/artDialog4.1.6/artDialog.js?skin=default"></script>
+<script src="tpl/Agent/Common/js/artDialog4.1.6/plugins/iframeTools.js"></script>
+<script type="text/javascript">
+window.addEvent('domready', function(){
+	new FormCheck('myform');
+});
+</script>
+<style>
+strong{font-weight:normal}
+</style>
+<div class="columntitle">设置会员组</div>
+   <form method="post" action="?g=Agent&m=Users&a=groupSet" id="myform">
+            <table class="addTable">
+        <tr>
+					<th height="48" align="right"><strong>是否显示版权:</strong></th>
+					<td colspan="3" class="lt">
+						<label><input type="radio" class="radio" class="ipt" value="1" name="iscopyright" id="status1" <if condition="($info['iscopyright'] eq 1) OR ($info['iscopyright'] eq '')">checked</if> >
+							启用</label>
+							<label><input type="radio" class="radio" class="ipt"  value="0" name="iscopyright" id="status2" <Saiviif where="$info['iscopyright'] eq '0'">checked</Saiviif> >
+							关闭</label>
+			
+					</td>
+				</tr>
+				<tr>
+					<th height="48" align="right"><strong>用户组名称：</strong></th>
+					<td colspan="3" class="lt">
+						<input type="text" name="name" class="validate['required'] colorblur" size="45" value="{Saivi:$info.name}" />
+					</td>
+				</tr>
+				<tr>
+					<th height="48" align="right"><strong>公众号数量：</strong></th>
+					<td colspan="3" class="lt">
+						<input type="text" name="wechat_card_num" value="{Saivi:$info.wechat_card_num}" class="validate['required','digit'] colorblur" size="45"/>
+					</td>
+				</tr>
+				<tr>
+					<th height="48" align="right"><strong>自定义图文条数：</strong></th>
+					<td colspan="3" class="lt">
+						<input type="text" name="diynum" value="{Saivi:$info.diynum}" class="validate['required','digit'] colorblur" size="45"/>
+					</td>
+				</tr>
+				<tr>
+					<th height="48" align="right"><strong>功能请求次数：</strong></th>
+					<td colspan="3" class="lt">
+						<input type="text" name="connectnum" value="{Saivi:$info.connectnum}" class="validate['required','digit'] colorblur" size="45"/>
+					
+					</td>
+				</tr>
+				<tr>
+					<th height="48" align="right"><strong>活动创建次数：</strong></th>
+					<td colspan="3" class="lt">
+						<input type="text" name="activitynum"  value="{Saivi:$info.activitynum}" class="validate['required','digit'] colorblur" size="45"/>
+						
+					</td>
+				</tr>
+				
+				<tr>
+					<th height="48" align="right"><strong>包月价格：</strong></th>
+					<td colspan="3" class="lt">
+						<input type="text" name="price" class="validate['required','digit'] colorblur" size="45" value="{Saivi:$info.price}"/>
+					</td>
+				</tr>
+					<tr>
+					<th height="48" align="right"><strong>创建会员卡数量：</strong></th>
+					<td colspan="3" class="lt">
+						<input type="text" name="create_card_num" class="validate['required','digit'] colorblur" size="45" value="{Saivi:$info.create_card_num}"/>
+					</td>
+				</tr>
+          <tr>
+            <td class="addName"></td>
+            <td>
+            <Saiviif where="$info">
+            <input type="hidden" name="id" value="{Saivi:$info.id}" />
+            </Saiviif>
+            <input type="hidden" name="agentid" value="{Saivi:$thisAgent.id}" />
+            <input type="hidden" name="status" value="1" />
+            <input type="submit" name="doSubmit" value="提交" class="button"/></td>
+          </tr>
+         
+        </table>
+        <input type="hidden" value="<?php echo $_SERVER['HTTP_REFERER'];?>" name="referer" />
+</form>
+<include file="Frame:footer"/>

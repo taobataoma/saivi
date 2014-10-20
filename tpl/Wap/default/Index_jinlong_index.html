@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title{Saivi:$tpl['wxname']}</title>
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/jinlong/common.css"/>
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/jinlong/reset.css"/>
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/jinlong/home-21.css" />
+<script type="text/javascript" src="{Saivi::RES}/jinlong/jQuery.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/jinlong/swipe.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/jinlong/zepto.js"></script>
+    </head>
+    <body onselectstart="return true;" ondragstart="return false;">
+
+<div class="body">
+    <!--背景音乐-->
+    <if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/></if>
+		<!--
+	幻灯片管理
+	-->
+	<div style="-webkit-transform:translate3d(0,0,0);">
+		<div id="banner_box" class="box_swipe">
+			<ul>
+					<volist name="flash" id="so">
+				<li>
+						  <a href="{Saivi:$so.url|htmlspecialchars_decode}"><img src="{Saivi:$so.img}" /></a>
+				</li></volist>
+									
+							</ul>
+			<ol>
+			  <volist name="flash" id="so">
+<li   <if condition="$i eq 1">class="active"</if>  >{Saivi:$i}</li>
+				</volist>
+							</ol>
+		</div>
+	</div>
+		<script>
+		$(function(){
+			new Swipe(document.getElementById('banner_box'), {
+				speed:500,
+				auto:3000,
+				callback: function(){
+					var lis = $(this.element).next("ol").children();
+					lis.removeClass("on").eq(this.index).addClass("on");
+				}
+			});
+		});
+	</script>
+<section>
+			<a href="tel:{Saivi:$speeddial.phone}" class="link_tel icon-phone">{Saivi:$info.phone}</a>
+    		<!--
+		用户分类管理
+		-->
+		<section style="padding-bottom:20px">
+            <ul class="list_font">
+            <volist name="info" id="vo">
+                                    <li>
+													<a href="<if condition="$vo['url'] eq ''">{Saivi::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{Saivi:$vo.url}</if>">
+													<div><span class="icon-smile"></span></div>
+							<div>
+								<p>{Saivi:$vo.name}<small>{Saivi:$vo.name}</small></p>
+							</div>
+                        </a>
+                    </li></volist>
+                             
+                            </ul>
+        </section>
+    </div>
+
+<!--
+导航菜单
+   后台设置的快捷菜单
+-->
+
+<!--
+分享前控制
+-->
+        			<footer>
+<div class="copyright" style="text-align:center;"><if condition="$iscopyright eq 1">{Saivi:$homeInfo.copyright}<else/>{Saivi:$siteCopyright}</if></div>
+<include file="Index:styleInclude"/> 
+
+							</footer>
+				<div mark="stat_code" style="width:0px; height:0px; display:none;">
+					</div>
+	</body>
+</html>

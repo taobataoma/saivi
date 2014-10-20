@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <script type="text/javascript" src="http://stc.weimob.com/src/jQuery.js?2013-9-13-2"></script>
+<script type="text/javascript" src="http://stc.weimob.com/src/chinaz_com.js?2013-9-13-2"></script>
+<title>微盟（Weimob）—国内最大的微信公众服务平台</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <meta name="Keywords" content="微盟、微信营销、微信代运营、微信定制开发、微信托管、微网站、微商城、微营销" />
+        <meta name="Description" content="微盟，国内最大的微信公众智能服务平台，微盟八大微体系：微菜单、微官网、微会员、微活动、微商城、微推送、微服务、微统计，企业微营销必备。" />
+        <!-- Mobile Devices Support @begin -->
+            <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+            <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+            <meta content="no-cache" http-equiv="pragma">
+            <meta content="0" http-equiv="expires">
+            <meta content="telephone=no, address=no" name="format-detection">
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+            <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Mobile Devices Support @end -->
+        <link rel="shortcut icon" href="http://stc.weimob.com/img/favicon.ico" />
+        <style>
+            img{width:100%!important;}
+        </style>
+    </head>
+    <body onselectstart="return true;" ondragstart="return false;">
+        <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="anjey.wu">
+	<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=UTF-8">
+	<meta http-equiv="Cache-Control" content="no-cache,must-revalidate">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<meta name="format-detection" content="telephone=no, address=no">
+	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<style>
+*{
+	margin:0;
+	padding:0;
+	outline:none;
+}
+
+body{
+   background:#000;
+}
+
+a:link,a:visited {
+	color:#FFF;
+	text-decoration:none;
+}
+
+a:hover,a:active {
+	color:#FFF;
+	text-decoration:none;
+}
+
+#logo{
+	background:url(/tpl/static/lamborghini.png?v=) no-repeat center bottom;
+	background-size:100% auto;
+	position:absolute;
+	width:20px;
+	height:50px;
+	top:50px;
+	left:20px;
+	display:none;
+}
+
+.container{
+	background:url(/tpl/static/splash-bg-small.jpg?v=) top center no-repeat #000;
+	position:absolute;
+	width:100%;
+	max-width:640px;
+	height:100%;
+	background-size:100% 50%;
+}
+
+.title{
+    text-align:center;
+    font:30px 'Bickham Script Pro', 'Edwardian Script ITC', 'Palace Script MT', Zapfino, cursive;
+	text-shadow:0 0 30px #fff;
+	color:#fff;
+	margin-top:80px;
+	text-indent:90px;
+	display:none;
+	width:100px;
+}
+
+
+
+.car{
+	position:absolute;
+	left:50%;
+	top:90px;
+	width:200px;
+	height:200px;
+	margin-left:-95px;
+	background:url(/tpl/static/BMW.png?v=) no-repeat center;
+	background-size:100% auto;
+	z-index:1;
+}
+
+.small{
+	-webkit-transform:scale(0.05);
+	-moz-transform:scale(0.05);
+	-ms-transform:scale(0.05);
+	-o-transform:scale(0.05);
+}
+
+
+.door{
+	background:url(/tpl/static/doors.png?v=);
+	position:absolute;
+	left:250px;
+	top:160px;
+	width:545px;
+	height:395px;
+	opacity:0;
+	z-index:2px;
+}
+
+.door.hover{
+	opacity:1;
+
+}
+</style>
+</head>
+
+<body ontouchstart="return false;">
+<div class="container">
+      <div id="logo"></div>
+      <div class="title">BMW</div>
+      <div class="car small"></div>
+</div>
+
+<script type='text/javascript'> 	
+	$(document).ready(function(){
+	var n = 0.05;		
+    
+	$(".car").removeClass("small");
+	var running = setInterval(function(){
+		if(n<1){
+		n+=0.05;
+		var scale = "scale("+n+")"	
+		$(".car").css({"-ms-transform":scale,
+					   "-webkit-transform":scale,
+					   "-moz-transform": scale,
+					   "-o-transform" : scale
+							});
+		}
+		else{
+			clearInterval(running);
+			fadeIn();
+		}
+	},70)
+	
+	var i = 0;
+
+	function fadeIn(){
+		$("#logo,.title").fadeIn(500,show);
+	}
+	
+	function show(){
+			$("ul").animate({"margin-left":40});
+		screenAndAudio();
+	}
+
+	function screenAndAudio(){
+		var closeScreen = {
+			manual_off: false,
+			evtName: ("ontouchstart" in window)?"touchend":"click",
+			handleEvent: function(){
+				if(closeScreen.manual_off){
+					var playbox = parent.playbox;
+					if(playbox){
+						playbox.autoPlayFix.on = false;
+						playbox.autoPlayEvt(false);
+						playbox.play();
+					}
+				}
+				setTimeout(function(){
+					var iframe_screen = parent.document.getElementById("iframe_screen");
+					iframe_screen.parentNode.removeChild(iframe_screen);
+				}, 500);
+			}
+		}
+		//
+		if(closeScreen.manual_off){
+			document.body.addEventListener(closeScreen.evtName, closeScreen, false);
+		}else{
+			closeScreen.handleEvent();
+		}
+	}
+});
+
+</script> 
+</body>
+</html>        		<div mark="stat_code" style="width:0px; height:0px; display:none;">
+					</div>
+	</body>
+</html>

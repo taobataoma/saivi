@@ -1,0 +1,55 @@
+<include file="Public:head"/>
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<div class="content">
+  <div class="cLineB">
+    <h4>添加健身房<span class="FAQ">请设置健身房相关内容。</span></h4>
+  </div>
+  <div class="tab">
+    <ul>
+<li class="tabli" id="tab0"><a href="{Saivi::U('Jianshen/index',array('token'=>$token))}">健身中心简介</a></li>
+<li class="current tabli" id="tab0"><a href="{Saivi::U('Jianshensub/index',array('token'=>$token))}">健身房</a></li>
+<li class="tabli" id="tab0"><a href="{Saivi::U('Jianshenunits/index',array('token'=>$token))}">健身项目</a></li>
+<li class="tabli" id="tab0"><a href="{Saivi::U('Jianshenposter/index',array('token'=>$token))}">宣传海报</a></li>
+<li class="tabli" id="tab0"><a href="{Saivi::U('Jianshenphoto/index',array('token'=>$token))}">健身相册</a></li>
+<li class="tabli" id="tab0"><a href="{Saivi::U('Jianshencom/index',array('token'=>$token))}">客户点评</a></li>
+    </ul>
+  </div>
+  <div class="cLineC" style="line-height: 32px;"> <a   href="{Saivi::U('Jianshensub/add')}" class="btnGrayS vm bigbtn" >添加健身房</a>　 </div>
+  <div class="msgWrap form">
+    <div class="bdrcontent">
+      <div id="div_ptype">
+        <table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+          <thead>
+            <tr>
+              <th style=" width:100px;">健身房：</th>
+              <th style=" width:100px;">健身中心名称：</th>
+              <th style=" width:100px;">显示顺序：</th>
+              </span>
+              </span>
+              </th>
+              <th style=" width:120px;">操作</th>
+            </tr>
+          </thead>
+          <volist name="info" id="vo">
+            <tr>
+              <td>{Saivi:$vo.name}</td>
+              <td>{Saivi:$vo.title}</td>
+              <td>{Saivi:$vo.sort}</td>
+              <td class="norightborder"><a  href="{Saivi::U('Jianshensub/edit',array('id'=>$vo['id']))}">编辑</a> <a href="{Saivi::U('Jianshensub/del',array('id'=>$vo['id']))}">删除</a> </td>
+            </tr>
+          </volist>
+        </table>
+      </div>
+    </div>
+    <div class="footactions" style="padding-left:10px">
+      <div class="pages">{Saivi:$page}</div>
+    </div>
+  </div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+</div>
+<!--底部-->
+</div>
+<include file="Public:footer"/>

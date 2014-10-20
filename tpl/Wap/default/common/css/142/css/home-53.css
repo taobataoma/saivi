@@ -1,0 +1,69 @@
+.body{
+	max-width:640px;
+	margin:auto;
+	min-height:100%;
+	background-color:#e1e0de;
+	position:relative;
+}
+
+.body{
+	display:block;
+	background:#e9e9e9;
+	background:url(../../img/template/lib/v47_2.jpg);
+}
+
+/******************************/
+.list_ul li{
+	
+}
+.list_ul dl{
+	text-align:center;
+	line-height:30px;
+	border-right:1px solid #dadada;
+	border-top:1px solid #dadada;
+	/*width:50%;*/
+}
+.list_ul dl a{
+	/*padding:15px 0 0 0;*/
+	display:block;
+	color:#909090;
+}
+.list_ul dl:last-of-type{
+	border-right:0;
+}
+.list_ul dd{
+	/*width:100px;*/
+	display:table;
+	margin:auto;
+}
+
+.list_ul dt{
+	padding:0 20px;
+	text-align:left;
+	height:30px;
+	overflow: hidden;
+}
+
+
+/*.list_ul div{
+	width:100%;
+	text-align:center;
+	height:100px;
+	vertical-align: middle;
+	display:table-cell;
+}
+.list_ul div img{
+	max-height:100px;
+	max-width:100px;
+}*/
+
+.list_ul div{
+	margin:5px;
+	height:100px;
+	overflow:hidden;
+}
+
+.list_ul div img{
+	width:100%;
+	height:100%;
+}

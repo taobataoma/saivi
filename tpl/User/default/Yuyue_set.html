@@ -1,0 +1,1264 @@
+<include file="Public:head"/>
+
+
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/themes/default/default.css" />
+
+
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/plugins/code/prettify.css" />
+
+
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+
+
+
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+
+
+
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+
+
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/themes/default/default.css" />
+
+
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/plugins/code/prettify.css" />
+
+
+
+<script src="{Saivi::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+
+
+
+<script src="{Saivi::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+
+
+
+<script src="{Saivi::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+
+
+
+<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+
+
+
+<script type="text/javascript" src="{Saivi::RES}/js/formCheck/formcheck.js"> </script>
+
+
+
+<script src="{Saivi::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+
+
+
+<script>
+
+
+
+	KindEditor.ready(function(K){
+
+
+
+		var editor = K.editor({
+
+
+
+			allowFileManager:true
+
+
+
+		});
+
+
+
+		K('#upload_pic').click(function() {
+
+
+
+			editor.loadPlugin('image', function() {
+
+
+
+				editor.plugin.imageDialog({
+
+
+
+					fileUrl : K('#pic').val(),
+
+
+
+					clickFn : function(url, title) {
+
+
+
+						if(url.indexOf("http") > -1){
+
+
+
+							K('#pic').val(url);
+
+
+
+						}else{
+
+
+
+							K('#pic').val("{Saivi::C('site_url')}"+url);
+
+
+
+						}
+
+
+
+						editor.hideDialog();
+
+
+
+					}
+
+
+
+				});
+
+
+
+			});
+
+
+
+		});
+
+
+
+		K('#upload_opening_animation').click(function() {
+
+
+
+			editor.loadPlugin('image', function() {
+
+
+
+				editor.plugin.imageDialog({
+
+
+
+					fileUrl : K('#opening_animation').val(),
+
+
+
+					clickFn : function(url, title) {
+
+
+
+						if(url.indexOf("http") > -1){
+
+
+
+							K('#opening_animation').val(url);
+
+
+
+						}else{
+
+
+
+							K('#opening_animation').val("{Saivi::C('site_url')}"+url);
+
+
+
+						}
+
+
+
+						editor.hideDialog();
+
+
+
+					}
+
+
+
+				});
+
+
+
+			});
+
+
+
+		});
+
+
+
+		K('#upload_small_pic').click(function() {
+
+
+
+			editor.loadPlugin('image', function() {
+
+
+
+				editor.plugin.imageDialog({
+
+
+
+					fileUrl : K('#small_pic').val(),
+
+
+
+					clickFn : function(url, title) {
+
+
+
+						if(url.indexOf("http") > -1){
+
+
+
+							K('#small_pic').val(url);
+
+
+
+						}else{
+
+
+
+							K('#small_pic').val("{Saivi::C('site_url')}"+url);
+
+
+
+						}
+
+
+
+						editor.hideDialog();
+
+
+
+					}
+
+
+
+				});
+
+
+
+			});
+
+
+
+		});
+
+
+
+		K('#upload_site_map_1').click(function() {
+
+
+
+			editor.loadPlugin('image', function() {
+
+
+
+				editor.plugin.imageDialog({
+
+
+
+					fileUrl : K('#site_map_1').val(),
+
+
+
+					clickFn : function(url, title) {
+
+
+
+						if(url.indexOf("http") > -1){
+
+
+
+							K('#site_map_1').val(url);
+
+
+
+						}else{
+
+
+
+							K('#site_map_1').val("{Saivi::C('site_url')}"+url);
+
+
+
+						}
+
+
+
+						editor.hideDialog();
+
+
+
+					}
+
+
+
+				});
+
+
+
+			});
+
+
+
+		});
+
+
+
+		K('#upload_site_map_2').click(function() {
+
+
+
+			editor.loadPlugin('image', function() {
+
+
+
+				editor.plugin.imageDialog({
+
+
+
+					fileUrl : K('#site_map_2').val(),
+
+
+
+					clickFn : function(url, title) {
+
+
+
+						if(url.indexOf("http") > -1){
+
+
+
+							K('#site_map_2').val(url);
+
+
+
+						}else{
+
+
+
+							K('#site_map_2').val("{Saivi::C('site_url')}"+url);
+
+
+
+						}
+
+
+
+						editor.hideDialog();
+
+
+
+					}
+
+
+
+				});
+
+
+
+			});
+
+
+
+		});
+
+
+
+		K('#upload_site_map_3').click(function() {
+
+
+
+			editor.loadPlugin('image', function() {
+
+
+
+				editor.plugin.imageDialog({
+
+
+
+					fileUrl : K('#site_map_3').val(),
+
+
+
+					clickFn : function(url, title) {
+
+
+
+						if(url.indexOf("http") > -1){
+
+
+
+							K('#site_map_3').val(url);
+
+
+
+						}else{
+
+
+
+							K('#site_map_3').val("{Saivi::C('site_url')}"+url);
+
+
+
+						}
+
+
+
+						editor.hideDialog();
+
+
+
+					}
+
+
+
+				});
+
+
+
+			});
+
+
+
+		});
+
+
+
+		K('#upload_site_map_4').click(function() {
+
+
+
+			editor.loadPlugin('image', function() {
+
+
+
+				editor.plugin.imageDialog({
+
+
+
+					fileUrl : K('#site_map_4').val(),
+
+
+
+					clickFn : function(url, title) {
+
+
+
+						if(url.indexOf("http") > -1){
+
+
+
+							K('#site_map_4').val(url);
+
+
+
+						}else{
+
+
+
+							K('#site_map_4').val("{Saivi::C('site_url')}"+url);
+
+
+
+						}
+
+
+
+						editor.hideDialog();
+
+
+
+					}
+
+
+
+				});
+
+
+
+			});
+
+
+
+		});
+
+
+
+		K('#upload_site_map_5').click(function() {
+
+
+
+			editor.loadPlugin('image', function() {
+
+
+
+				editor.plugin.imageDialog({
+
+
+
+					fileUrl : K('#site_map_5').val(),
+
+
+
+					clickFn : function(url, title) {
+
+
+
+						if(url.indexOf("http") > -1){
+
+
+
+							K('#site_map_5').val(url);
+
+
+
+						}else{
+
+
+
+							K('#site_map_5').val("{Saivi::C('site_url')}"+url);
+
+
+
+						}
+
+
+
+						editor.hideDialog();
+
+
+
+					}
+
+
+
+				});
+
+
+
+			});
+
+
+
+		});
+
+
+
+	});
+
+
+
+</script>
+
+
+
+
+
+
+
+<script>
+
+
+
+
+
+
+
+var editor;
+
+
+
+KindEditor.ready(function(K) {
+
+
+
+editor = K.create('#content', {
+
+
+
+resizeType : 1,
+
+
+
+allowPreviewEmoticons : false,
+
+
+
+allowImageUpload : false,
+
+
+
+items : [
+
+
+
+'source','undo','clearhtml','hr',
+
+
+
+'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+
+
+
+'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
+
+
+
+});
+
+
+
+
+
+
+
+});
+
+
+
+</script>
+
+
+
+<script>
+
+
+
+function selectall(name) {
+
+
+
+	var checkItems=$('.cbitem');
+
+
+
+	if ($("#check_box").attr('checked')==false) {
+
+
+
+		$.each(checkItems, function(i,val){
+
+
+
+			val.checked=false;
+
+
+
+		});
+
+
+
+		
+
+
+
+	} else {
+
+
+
+		$.each(checkItems, function(i,val){
+
+
+
+			val.checked=true;
+
+
+
+		});
+
+
+
+	}
+
+
+
+}
+
+
+
+function setlatlng(longitude,latitude){
+
+
+
+	art.dialog.data('longitude', longitude);
+
+
+
+	art.dialog.data('latitude', latitude);
+
+
+
+	// 此时 iframeA.html 页面可以使用 art.dialog.data('test') 获取到数据，如：
+
+
+
+	// document.getElementById('aInput').value = art.dialog.data('test');
+
+
+
+	art.dialog.open('{Saivi::U('Map/setLatLng',array('token'=>$token,'id'=>$id))}',{lock:false,title:'设置经纬度',width:600,height:400,yesText:'关闭',background: '#000',opacity: 0.87});
+
+
+
+}
+
+
+
+</script>
+
+
+
+<div class="content"  >
+
+
+
+   <div class="cLineB"> 
+
+
+
+    <h4>预约设置</h4> 
+
+
+
+    <a href="{Saivi::U($type.'/index',array('token'=>$token))}" class="right  btn btn-primary btn_submit  J_ajax_submit_btn" style="margin-top:-27px">返回</a> 
+
+
+
+   </div> 
+
+
+
+
+
+
+
+   <form class="form" method="post" id="form" action="" enctype="multipart/form-data"> 
+
+
+
+<if condition="$isUpdate eq 1">
+
+
+
+<input type="hidden" name="id" value="{Saivi:$set.id}" />
+
+
+
+</if>
+
+
+
+    <div class="msgWrap bgfc"> 
+
+
+
+     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+
+
+
+      <tbody> 
+
+
+
+       
+
+
+
+	   <tr> 
+
+
+
+        <th><span class="red">*</span>关键词：</th>
+
+
+
+        <td><input type="text" name="keyword" id="keyword" value="{Saivi:$set.keyword}" class="px" style="width:400px;" /></td> 
+
+
+
+       </tr>
+
+
+
+	   <tr> 
+
+
+
+        <th ><span class="red">*</span>标题：</th> 
+
+
+
+        <td><input  type="text" id="name" name="title" value="{Saivi:$set.title}" class="px require" style="width:400px;" /></td> 
+
+
+
+       </tr> 
+
+
+
+	   
+
+
+
+	   <tr> 
+
+
+
+        <th><span class="red"></span>订单页头部图片：</th>
+
+
+
+        <td><input type="text" name="topic" value="{Saivi:$set.topic}" id="small_pic" class="px" style="width:400px;"  readonly="readonly"/><script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('small_pic',700,420,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a> <a href="###" onclick="viewImg('small_pic')">预览</a>   &nbsp; 大小为720x400</td></td> 
+
+
+
+       </tr>
+
+
+
+	   <tr>
+
+
+
+	   <th>是否调用LBS信息：</th>
+
+
+
+	   <td><if condition="$act eq ''"><input type="radio" name="lbs" value="1" checked="true" /><else/><input type="radio" name="lbs" value="1" /></if><font size="4px">调用</font> &nbsp; <if condition="$act eq ''"><input type="radio" name="lbs" value="0" /><else/><input type="radio" name="lbs" value="0" checked="true" /></if><font size="4px">自己填写</font></td>
+
+
+
+	   </tr>
+
+
+
+	   <if condition="$act eq ''"><tr name="lbb"><else/><tr name="lbb" style="display:none" ></if>
+
+
+
+        <th><span class="red">*</span>选择公司地址</th>
+
+
+
+        <td><select name="cid" id="cid" onchange='javascript:ShowInfo(this.value);' style="width:412px; height:30px" class="px">
+
+
+
+					<volist name="arr" id="i" key="k">
+
+
+
+					<option value="{Saivi:$k}">{Saivi:$i.address}</option>
+
+
+
+					</volist>
+
+
+
+			</select>
+
+
+
+		</td> 
+
+
+
+	   </tr>
+
+
+
+	   <if condition="$act eq ''"><tr name="lbss" style="display:none"><else/><tr name="lbss"></if>
+
+
+
+        <th><span class="red">*</span>订单电话：</th>
+
+
+
+        <td><input type="text" name="phone" value="{Saivi:$set.phone}" class="px" style="width:400px;" /></td> 
+
+
+
+	   </tr>
+
+
+
+	   <if condition="$act eq ''"><tr name="lbss" style="display:none"><else/><tr name="lbss"></if>
+
+
+
+        <th><span class="red"></span>地址：</th>
+
+
+
+        <td><input type="text" name="address" value="{Saivi:$set.address}" class="px" style="width:400px;" /></td> 
+
+
+
+       </tr>
+
+
+
+	   <if condition="$act eq ''"><tr name="lbss" style="display:none"><else/><tr name="lbss"></if> 
+
+
+
+        <th><span class="red">*</span>经纬度：</th> 
+
+
+
+        <td>经度 <input type="text" id="longitude"  name="longitude" size="14" class="px" value="{Saivi:$set.longitude}" /> 纬度 <input type="text" name="latitude" size="14" id="latitude" class="px" value="{Saivi:$set.latitude}" /> <a href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())">在地图中查看/设置</a></td> 
+
+
+
+       </tr>
+
+
+
+	   <volist name="arr" id="i" key="k">
+
+
+
+	   <if condition="($act eq '') AND ($i['catid'] eq 0)"><tr name="lbbb" id="la{Saivi:$k}">
+
+
+
+	   <else/><tr name="lbbb" id="la{Saivi:$k}" style="display:none"></if>
+
+
+
+        <th><span class="red">*</span>订单电话：</th>
+
+
+
+        <td><input type="text" name="phone" value="{Saivi:$i.phone}" class="px" style="width:400px;" /></td> 
+
+
+
+	   </tr>
+
+
+
+	   <if condition="($act eq '') AND ($i['catid'] eq 0)"><tr name="lbbb" id="lb{Saivi:$k}">
+
+
+
+	   <else/><tr name="lbbb" id="lb{Saivi:$k}" style="display:none"></if>
+
+
+
+        <th><span class="red"></span>地址：</th>
+
+
+
+        <td><input type="text" name="address" value="{Saivi:$i.address}" class="px" style="width:400px;" /></td> 
+
+
+
+       </tr>
+
+
+
+	   <if condition="($act eq '') AND ($i['catid'] eq 0)"><tr name="lbbb" id="lc{Saivi:$k}">
+
+
+
+	   <else/><tr name="lbbb" id="lc{Saivi:$k}" style="display:none"></if>
+
+
+
+        <th><span class="red">*</span>经纬度：</th> 
+
+
+
+        <td>经度 <input type="text" id="longitude"  name="longitude" size="14" class="px" value="{Saivi:$i.longitude}" /> 纬度 <input type="text"  name="latitude" size="14" id="latitude" class="px" value="{Saivi:$i.latitude}" /> <a href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())">在地图中查看/设置</a></td> 
+
+
+
+       </tr>
+
+
+
+	   </volist>
+
+
+
+		<TR>
+
+
+
+			<th><span class="red">*</span>活动时间：</th>
+
+
+
+			<td><input type="text" class="px" id="statdate" value="<if condition="$set['statdate'] neq ''">{Saivi:$set.statdate}<else/><?php 
+
+
+
+			echo date('Y-m-d',mktime(0, 0, 0, date("m")  , date("d"), date("Y")));?></if>" onClick="WdatePicker()" name="statdate" />                
+
+
+
+			到
+
+
+
+			<input type="text" class="px" id="enddate" value="<if condition="$set['enddate'] neq ''">{Saivi:$set.enddate}<else/><?php 
+
+
+
+			echo date('Y-m-d',mktime(0, 0, 0, date("m")  , date("d")+3, date("Y")));?></if>" name="enddate" onClick="WdatePicker()"  /> 
+
+
+
+			</td>
+
+
+
+		</TR>
+
+
+          <tr> 
+
+
+
+			<th ><span class="red">*</span>版权：</th> 
+
+
+
+			<td><input  type="text" id="copyrigh" name="copyright" value="{Saivi:$set.copyright}" class="px require" style="width:400px;" /></td> 
+
+
+
+		</tr> 
+
+
+
+        <TR>
+
+
+
+			<TH valign="top"><label for="info">订单说明：</label></TH>
+
+
+
+            <TD><textarea name="info" id="content"  rows="5" style="width:590px;height:360px">{Saivi:$set.info}</textarea></TD>
+
+
+
+        </TR>  
+
+
+
+		
+
+
+
+       <tr>         
+
+
+
+       <th>&nbsp;</th>
+
+
+
+       <td>
+
+
+
+		<!--input type="hidden" name="time" value="{Saivi:$set.time}" /-->
+
+
+
+       <button type="submit" class="btn btn-primary btn_submit  J_ajax_submit_btn">保存</button> &nbsp; <a href="{Saivi::U($type.'/index',array('token'=>$token))}" class="btn">取消</a></td> 
+
+
+
+       </tr> 
+
+
+
+	   
+
+
+
+      </tbody> 
+
+
+
+     </table> 
+
+
+
+     </div>
+
+
+
+    
+
+
+
+   </form> 
+
+
+
+  </div> 
+
+
+
+<script language="javascript">
+
+
+
+$(function(){
+
+
+
+	$("#form").valid([
+
+
+
+	{ name:"name",simple:"名称",require:true},
+
+
+
+	{ name:"keyword",simple:"关键词",require:true}
+
+
+
+		
+
+
+
+	],true,true);
+
+
+
+
+
+
+
+});
+
+
+
+</script>
+
+
+
+<script language="javascript">
+
+
+
+function ShowInfo(Id){
+
+
+
+	
+
+
+
+	$('[name="lbbb"]').attr("style","display:none");
+
+
+
+	$("#la"+Id).attr("style","");
+
+
+
+	$("#lb"+Id).attr("style","");
+
+
+
+	$("#lc"+Id).attr("style","");
+
+
+
+	
+
+
+
+}
+
+
+
+</script>
+
+
+
+<script language="javascript">
+
+
+
+$("input[type='radio']").click(function(){
+
+
+
+	var i = $(this).val();
+
+
+
+	if(i==1){
+
+
+
+		$('[name="lbss"]').attr("style","display:none");
+
+
+
+		$('[name="lbb"]').attr("style","");
+
+
+
+		$("#la1").attr("style","");
+
+
+
+		$("#lb1").attr("style","");
+
+
+
+		$("#lc1").attr("style","");
+
+
+
+	}else{
+
+
+
+		$('[name="lbss"]').attr("style","");
+
+
+
+		$('[name="lbb"]').attr("style","display:none");
+
+
+
+		$('[name="lbbb"]').attr("style","display:none");
+
+
+
+	}
+
+
+
+})
+
+
+
+</script>
+
+
+
+  <include file="Public:footer" />

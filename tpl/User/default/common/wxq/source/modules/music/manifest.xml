@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest versionCode="0.4">
+	<application setting="false">
+		<name><![CDATA[基本语音回复]]></name>
+		<identifie><![CDATA[music]]></identifie>
+		<version><![CDATA[1.0]]></version>
+		<ability><![CDATA[提供语音、音乐等音频类回复]]></ability>
+		<description><![CDATA[在回复规则中可选择具有语音、音乐等音频类的回复内容，并根据用户所设置的特定关键字精准的返回给粉丝，实现一问一答得简单对话。]]></description>
+		<author><![CDATA[WeEngine Team]]></author>
+	</application>
+	<hooks>
+		<hook name="rule" />
+	</hooks>
+	<install><![CDATA[
+CREATE TABLE IF NOT EXISTS `ims_music_reply` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rid` int(10) unsigned NOT NULL COMMENT '规则ID',
+  `title` varchar(50) NOT NULL DEFAULT '' COMMENT '标题',
+  `description` varchar(255) NOT NULL DEFAULT '' COMMENT '介绍',
+  `url` varchar(300) NOT NULL DEFAULT '' COMMENT '音乐地址',
+  `hqurl` varchar(300) NOT NULL DEFAULT '' COMMENT '高清地址',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+	]]></install>
+	<uninstall><![CDATA[]]></uninstall>
+	<upgrade><![CDATA[]]></upgrade>
+</manifest>

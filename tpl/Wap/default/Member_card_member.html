@@ -1,0 +1,193 @@
+<include file="Public:head"/>
+<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>  
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<script src="/tpl/static/upyun.js?{Saivi::date('YmdHis',time())}"></script>
+<div class="content">
+         
+          <div class="cLineB">
+              <h4 class="left">当前位置：<a href="{Saivi::U('Member_card/index',array('token'=>$token))}">会员卡</a> >> <a href="{Saivi::U('Member_card/members',array('token'=>$token,'id'=>$thisCard['id']))}">{Saivi:$thisCard.cardname}会员管理</a> >> {Saivi:$thisUser.truename}</h4>
+                 
+              <div class="clr"></div>
+          </div>
+      
+          <div class="msgWrap">
+          
+         
+          <input name="delall"  type="hidden" value="del" />
+           <input name="wxid"  type="hidden" value="gh_423dwjkewad" />
+           <h5 style="margin-top:20px;">会员资料</h5>
+            <TABLE class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+              <THEAD>
+                <TR>
+				<TH>卡号</TH>
+				<TH>微信名</TH>
+				<TH>姓名</TH>
+        <TH>联系电话</TH>
+				<TH>QQ号码</TH> 
+        <TH>领卡时间</TH>
+        <TH>积分</TH>
+        <TH>消费总额(元)</TH>
+        <TH>余额(元)</TH>
+
+                </TR>
+              </THEAD>
+              <TBODY>
+                <TR></TR>
+
+				 <volist id="list" name="members">
+                <TR>
+                  <TD>{Saivi:$list.number}</TD>
+                  <TD>{Saivi:$list.wechaname}</TD>
+                  <TD>{Saivi:$list.truename}</TD>
+                  <TD>{Saivi:$list.tel}</TD>
+                  <TD>{Saivi:$list.qq}</TD> 
+                  <TD>
+                   <if condition="$list['getcardtime'] gt 0">
+                        {Saivi:$list.getcardtime|date='Y-m-d',###}
+                    <else/>
+                    无时间记录
+                    </if>                      
+                  </TD>
+                  <TD>{Saivi:$list.total_score}</TD> 
+                  <TD>{Saivi:$list.expensetotal}</TD> 
+                  <TD>{Saivi:$list.balance} &nbsp; <a href="###" onclick="memberCardRecharge({Saivi:$list.uid})" class="btn btn-primary btn_submit  J_ajax_submit_btn">充值</a></TD> 
+                </TR>
+					<assign name="wecha_id" value="$list['wecha_id']" />
+				</volist>
+
+
+              </TBODY>
+            </TABLE>
+
+  <!-- 导入 -->	
+			<div style="margin-top:20px;">
+				<a href="###" onclick="$('#import').css('display','')" class="btnGrayS vm">导入积分、线下消费记录</a>
+				<a href="/tpl/User/default/common/images/cardUseRecord.xls" class="btnGrayS vm">下载导入示例Excel</a>
+				<a href="?g=User&amp;m=Member_card&amp;a=exportCardUseRecord&wecha_id={Saivi:$wecha_id}" class="btnGrayS vm">导出此会员的积分、线下消费记录</a>
+				<a href="?g=User&amp;m=Member_card&amp;a=exportCardUseRecord&wecha_id={Saivi:$wecha_id}&amp;type=all" class="btnGrayS vm">导出所有会员的积分、线下消费记录</a>
+			</div>
+			
+			<div style="margin-top: 20px;display:none" id="import">
+				<form enctype="multipart/form-data" action="?g=User&amp;m=Upyun&amp;a=localUploadUsecordExcel" id="thumbForm" method="POST" style="font-size:14px;padding:10px 20px 10px 0px;">
+					<div>
+						选择本地文件：<input type="file" style="width:250px;border:1px solid #ddd" name="photo">
+						<input id="submitbtn" name="doSubmit" type="submit" class="btn btn-primary btn_submit  J_ajax_submit_btn" value="上传" onclick="this.value='上传中...'">
+						<input name="id" type="hidden" value="{Saivi:$Think.get.id|intval}" />
+						<input name="wecha_id" type="hidden" value="{Saivi:$wecha_id}" />
+						<a href="###" onclick="$('#import').css('display','none')" class="btnGrayS vm">取消导入</a> 注意：不支持xlsx格式
+					</div>
+				</form>
+			</div>
+<!-- 导入end -->	  
+<h5 style="margin-top:20px;">积分、线下消费记录</h5>
+            <TABLE class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+              <THEAD>
+                <TR>
+				<TH>日期</TH>
+				<TH>金额(元)</TH>
+				<TH>获取积分</TH>
+				<TH>操作</TH>
+
+                </TR>
+              </THEAD>
+              <TBODY>
+				 <volist id="r" name="records">
+                <TR>
+                  <TD>{Saivi:$r.time|date='Y-m-d',###}</TD>
+                  <TD>{Saivi:$r.expense}</TD>
+                  <TD>{Saivi:$r.score}</TD>
+                
+                  <TD><a href="javascript:drop_confirm('您确定要删除吗?', '/index.php?g=User&m=Member_card&a=useRecord_del&token={Saivi:$Think.get.token}&itemid={Saivi:$r.id}&id={Saivi:$thisCard.id}');"><strong>删除</strong></a></TD> 
+                </TR>
+				</volist>
+              </TBODY>
+            </TABLE>
+			<div class="cLine">
+            <div class="pageNavigator right">
+                <div class="pages">{Saivi:$page}</div>
+              </div>
+            <div class="clr"></div>
+          </div>
+  <!-- 导入 -->	
+			<div style="margin-top:20px;">
+				<a href="###" onclick="$('#import2').css('display','')" class="btnGrayS vm">导入会员卡消费记录</a>
+				<a href="/tpl/User/default/common/images/CardPayRecord.xls" class="btnGrayS vm">下载导入示例Excel</a>
+				<a href="?g=User&amp;m=Member_card&amp;a=exportrmb&wecha_id={Saivi:$wecha_id}" class="btnGrayS vm">导出此会员的会员卡消费记录</a>
+				<a href="?g=User&amp;m=Member_card&amp;a=exportrmb&wecha_id={Saivi:$wecha_id}&amp;type=all" class="btnGrayS vm">导出所有会员的会员卡消费记录</a>
+			</div>
+			
+			<div style="margin-top: 20px;display:none" id="import2">
+				<form enctype="multipart/form-data" action="?g=User&amp;m=Upyun&amp;a=localUploadPayrecordExcel" id="thumbForm2" method="POST" style="font-size:14px;padding:10px 20px 10px 0px;">
+					<div>
+						选择本地文件：<input type="file" style="width:250px;border:1px solid #ddd" name="photo">
+						<input id="submitbtn2" name="doSubmit" type="submit" class="btn btn-primary btn_submit  J_ajax_submit_btn" value="上传" onclick="this.value='上传中...'">
+						<input name="id" type="hidden" value="{Saivi:$Think.get.id|intval}" />
+						<input name="wecha_id" type="hidden" value="{Saivi:$wecha_id}" />
+						<a href="###" onclick="$('#import2').css('display','none')" class="btnGrayS vm">取消导入</a> 注意：不支持xlsx格式
+					</div>
+				</form>
+			</div>
+<!-- 导入end -->	
+			<h5 style="margin-top:20px;">会员卡消费记录</h5>
+            <TABLE class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+              <THEAD>
+                <TR>
+				<TH>日期</TH>
+				<TH>订单号</TH>
+				<TH>订单名称</TH>
+				<TH>交易金额</TH>
+				<TH>状态</TH>
+        <TH>操作</TH>
+
+                </TR>
+              </THEAD>
+              <TBODY>
+				 <volist id="rmb" name="rmb">
+                <TR>
+                  <TD>{Saivi:$rmb.createtime|date='Y-m-d H:i',###}</TD>
+                  <TD>{Saivi:$rmb.orderid}</TD>
+                  <TD>{Saivi:$rmb.ordername}</TD>
+                  <TD>{Saivi:$rmb.price}</TD>
+                  <TD><if condition="$rmb['paid'] eq 1">交易成功<else /><font color="red">未付款</font></if></TD>
+               
+                  <TD><a href="javascript:drop_confirm('您确定要删除吗?', '/index.php?g=User&m=Member_card&a=payRecord_del&token={Saivi:$rmb.token}&itemid={Saivi:$rmb.id}&id={Saivi:$thisCard.id}');"><strong>删除</strong></a></TD> 
+                </TR>
+				</volist>
+              </TBODY>
+            </TABLE>
+			
+			
+			
+			
+          </div>
+            
+
+ 
+ 
+          <div class="cLine">
+            <div class="pageNavigator right">
+                <div class="pages">{Saivi:$page2}</div>
+              </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+
+function checkAll(form, name) {
+for(var i = 0; i < form.elements.length; i++) {
+var e = form.elements[i];
+if(e.name.match(name)) {
+e.checked = form.elements['chkall'].checked;
+}
+}
+}
+  </script>
+  <!--底部-->
+  	</div>
+<include file="Public:footer"/>  

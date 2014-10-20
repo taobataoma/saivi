@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>一战到底</title>
+<link type="text/css" rel="stylesheet" href="{Saivi::RES}/yzdd/style/war.css" />
+<script src="{Saivi::RES}/css/guajiang/js/jquery.js" type="text/javascript"></script> 
+<style type="text/css">
+.wrapper{width: 100%;  position: relative; min-height:1000px; margin:0px; background:url({Saivi::RES}/yzdd/images/desc_bg.jpg); background-size:100% 100%; }
+.desc-cont{position:absolute;background:none;z-index: 1;width:250px;margin:0px;word-break: break-word;padding: 30px; height:340px; font-size:15px;line-height: 28px;left:50%; top:50%; margin-left:-155px; margin-top:-330px;}
+.next-btn{ margin-left:46px;}
+</style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="desc-cont">
+        <h3>活动说明：</h3>
+        <p>{Saivi:$info.ms}
+        </p>
+		<h3>活动规则：</h3>
+		<p>
+1.每人每天仅限进行1次答题，每次5道题<br/>
+2.每题积分为{Saivi:$info.limit}分，答对即获{Saivi:$info.limit}分奖励，答错不扣分，中途退出没有分<br/>
+	<button id="save-btn" onclick="gotokz()" class="next-btn">好了，开战吧</button>
+	</div>	
+</div>
+<script type="text/javascript">
+function gotokz(){
+	
+	tusi('进入战场...');
+	location.href= "{Saivi::U('Yzdd/kz',array('wecha_id'=>$_GET['wecha_id'],'id'=>$_GET['id'],'rid'=>$rid,'token'=>$_GET['token']))}";
+	
+}
+function tusi(txt,fun){
+	$('.tusi').remove();
+	var div = $('<div style="background:url({Saivi::RES}/yzdd/images/tusi.png);max-width: 85%;min-height: 77px;min-width: 270px;position: absolute;left: -1000px;top: -1000px;text-align: center;border-radius:10px;"><span style="color: #ffffff;line-height: 77px;font-size: 23px;">'+txt+'</span></div>');
+	$('body').append(div);
+	div.css('zIndex',9999999);
+	div.css('left',parseInt(($(window).width()-div.width())/2));
+	var top = parseInt($(window).scrollTop()+($(window).height()-div.height())/2);
+	div.css('top',top);
+	setTimeout(function(){
+		div.remove();
+    	if(fun){
+    		fun();
+    	}
+	},2000);
+}
+</script>
+
+
+<script type="text/javascript">
+   //分享出去的连接统一都改为wecha_id = fromuser,后台判定就行重新获取
+	var dataForWeixin={
+	    baseUrl:"{Saivi::C('site_url')}",
+		img:	"{Saivi:$info.pic}", 
+		url:	"{Saivi::U('Yzdd/index',array('token'=>$_GET['token'],'wecha_id'=>'fromUser','id'=>$_GET['id']))}",
+		title:	"{Saivi:$info.name}",
+		desc:	"{Saivi:$info.ms}"
+	};
+   
+	(function() {
+		var onBridgeReady = function() {
+			
+			
+			WeixinJSBridge.on('menu:share:appmessage',
+		          function(argv) {
+					   // alert('朋友');
+					WeixinJSBridge.invoke('sendAppMessage', {
+						"img_url": dataForWeixin.img,
+						"img_width": "120",
+						"img_height": "120",
+						"link": dataForWeixin.baseUrl+dataForWeixin.url,
+						"desc": dataForWeixin.desc,
+						"title": dataForWeixin.title
+					},
+					function(res) { 
+						//alert(res.err_msg);
+					});
+				});
+				
+			WeixinJSBridge.on('menu:share:contact',
+					function(argv) {
+					    //alert('关注');
+						WeixinJSBridge.invoke('addContact', {webtype: "1",username: 'gh_a079aeaa0380'},
+						function(res) {
+						//e.err_msg:add_contact:added 已经添加
+			            //e.err_msg:add_contact:cancel 取消添加
+			            //e.err_msg:add_contact:ok 添加成功
+			            if(res.err_msg == 'add_contact:added' || res.err_msg == 'add_contact:ok'){
+			                //关注成功，或者已经关注过
+			            }
+						
+						// alert(res.err_msg);
+						});
+					});
+			
+		WeixinJSBridge.on('menu:share:timeline',
+			function(argv) { 
+				WeixinJSBridge.invoke('shareTimeline', {
+					"img_url": dataForWeixin.img,
+					"img_width": "120",
+					"img_height": "120",
+					"link": dataForWeixin.baseUrl+dataForWeixin.url,
+					"desc": dataForWeixin.desc,
+					"title": dataForWeixin.title
+				},function(res) {
+					
+					
+				});
+			});
+		};
+		if (document.addEventListener) {
+			document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+		} else if (document.attachEvent) {
+			document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+			document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+		}else{
+			alert(3);
+		}
+	})();
+</script>
+
+</body>
+</html>

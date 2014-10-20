@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>微盟（Weimob）—国内最大的微信公众服务平台</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <meta name="Keywords" content="微盟、微信营销、微信代运营、微信定制开发、微信托管、微网站、微商城、微营销" />
+        <meta name="Description" content="微盟，国内最大的微信公众智能服务平台，微盟八大微体系：微菜单、微官网、微会员、微活动、微商城、微推送、微服务、微统计，企业微营销必备。" />
+        <!-- Mobile Devices Support @begin -->
+            <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+            <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+            <meta content="no-cache" http-equiv="pragma">
+            <meta content="0" http-equiv="expires">
+            <meta content="telephone=no, address=no" name="format-detection">
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+            <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Mobile Devices Support @end -->
+        <link rel="shortcut icon" href="http://stc.weimob.com/img/favicon.ico" />
+        <style>
+            img{width:100%!important;}
+        </style>
+    </head>
+    <body onselectstart="return true;" ondragstart="return false;">
+        <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="anjey.wu">
+	<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=UTF-8">
+	<meta http-equiv="Cache-Control" content="no-cache,must-revalidate">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<meta name="format-detection" content="telephone=no, address=no">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+	<style>
+		*{
+			padding:0;
+			margin:0;
+		}
+		html, body{
+			height:100%;
+		}
+		.overlay{
+			height:100%;
+			background:rgba(254,235,117,0.8);
+			position:absolute;
+			z-index:100;
+			width:100%;
+			left:0;
+			top:0;
+
+			/*-webkit-transform-style: preserve-3d;*/
+			/*-webkit-animation-name:'bg';*/
+			/*-webkit-animation-duration: 1s;*/
+			/*-webkit-animation-timing-function: ease-out;*/
+			/*-webkit-animation-delay: 0.6s;*/
+			/*-webkit-animation-iteration-count:1;//infinite*/
+			/*-webkit-animation-direction: alternate;*/
+		}
+		.overlay>div{
+			background:rgba(255,255,255,0.5);
+			position:absolute;
+			top:0;
+			left:0;
+			right:0;
+			bottom:0;
+			width:0;
+			margin:auto;
+			height:100%;
+
+			-webkit-transform-style: preserve-3d;
+			-webkit-animation-name:'open';
+			-webkit-animation-duration: 1s;
+			-webkit-animation-timing-function: ease-out;
+			-webkit-animation-delay: 0s;
+			-webkit-animation-iteration-count:1;//infinite
+		-webkit-animation-direction: alternate;
+		}
+
+
+		@-webkit-keyframes 'open' {
+			0% {
+				width:0;
+				-webkit-transform:rotateX(89.9deg);
+			}
+			50% {
+				width:100%;
+				-webkit-transform:rotateX(89.9deg);
+			}
+			100% {
+				width:100%;
+				-webkit-transform:rotateX(0deg);
+			}
+		}
+
+		@-webkit-keyframes 'bg' {
+			 0% {
+				opacity:1;
+			 }
+			
+			 100% {
+				opacity:0;
+			 }
+		}
+
+
+		
+	</style>
+	<script>
+		window.addEventListener("DOMContentLoaded", function(){
+			document.getElementById("loader1").querySelectorAll("div")[0].addEventListener("webkitAnimationEnd", function(){
+				screenAndAudio();
+			}, false);
+		}, false);
+
+		function screenAndAudio(){
+			var closeScreen = {
+				manual_off: false,
+				evtName: ("ontouchstart" in window)?"touchend":"click",
+				handleEvent: function(){
+					if(closeScreen.manual_off){
+						var playbox = parent.playbox;
+						if(playbox){
+							playbox.autoPlayFix.on = false;
+							playbox.autoPlayEvt(false);
+							playbox.play();
+						}
+					}
+					setTimeout(function(){
+						var iframe_screen = parent.document.getElementById("iframe_screen");
+						iframe_screen.parentNode.removeChild(iframe_screen);
+					}, 500);
+				}
+			}
+			//
+			if(closeScreen.manual_off){
+				document.body.addEventListener(closeScreen.evtName, closeScreen, false);
+			}else{
+				closeScreen.handleEvent();
+			}
+		}
+	</script>
+</head>
+<body ontouchmove="return false;">
+	<section id="loader1" class="overlay">
+		<div></div>
+	</section>
+</body>
+</html>        		<div mark="stat_code" style="width:0px; height:0px; display:none;">
+					</div>
+	</body>
+</html>

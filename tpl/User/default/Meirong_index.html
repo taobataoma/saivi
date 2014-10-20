@@ -1,0 +1,223 @@
+<include file="Public:head"/>
+<include file="Meirong:menu"/>
+<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+<script src="{Saivi::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{Saivi::STATICS}/artDialog/plugins/iframeTools.js"></script>
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/plugins/code/prettify.css" />
+<script src="{Saivi::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+<script src="{Saivi::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+<script src="{Saivi::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+
+ <script src="{Saivi::STATICS}/upyun.js"></script>
+ <script>
+
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('#estate_desc', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : true,
+uploadJson : '/index.php?g=User&m=Upyun&a=kindedtiropic',
+items : [
+'source','undo','plainpaste','wordpaste','clearhtml','quickformat','selectall','fullscreen','fontname', 'fontsize','subscript','superscript','indent','outdent','|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','hr']
+});
+editor = K.create('#project_brief', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : true,
+uploadJson : '/index.php?g=User&m=Upyun&a=kindedtiropic',
+items : [
+'source','undo','plainpaste','wordpaste','clearhtml','quickformat','selectall','fullscreen','fontname', 'fontsize','subscript','superscript','indent','outdent','|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','hr']
+});
+editor = K.create('#traffic_desc', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : true,
+uploadJson : '/index.php?g=User&m=Upyun&a=kindedtiropic',
+items : [
+'source','undo','plainpaste','wordpaste','clearhtml','quickformat','selectall','fullscreen','fontname', 'fontsize','subscript','superscript','indent','outdent','|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','hr']
+});
+});
+</script>
+<div class="content">
+
+<link rel="stylesheet" type="text/css" href="{Saivi::Common}/default_user_com.css" media="all">
+<div class="cLineB">
+
+ </div> 
+  <div class="msgWrap bgfc">
+  <form action="" method="post" class="form-horizontal form-validate" novalidate="novalidate">
+  <input type="hidden" name="token" value="{Saivi:$token}" />
+  <input type="hidden" name="addtype" value="Meirong">
+<if condition="$es_data['id'] neq ''">
+<input type="hidden" name="id" value="{Saivi:$es_data['id']}" />
+</if>
+  <div class="control-group">
+    <label for="title" class="control-label">图文消息标题：</label>
+    <div class="controls">
+      <input type="text" name="title" id="title" maxlength="10" class="px" value="{Saivi:$es_data['title']}" data-rule-required="true"><span class="maroon">*</span><span class="help-inline">触发关键词后返回图文消息标题</span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label for="keyword" class="control-label">触发关键词：</label>
+    <div class="controls">
+      <input type="text" name="keyword" id="keyword" class="px" data-rule-required="true" value="{Saivi:$es_data['keyword']}"><span class="maroon">*</span><span class="help-inline">只能设置一个关键字</span>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label for="coverurl" class="control-label">图文消息封面：</label>
+    <div class="controls">
+	
+		
+		<img class="thumb_img" id="cover_src" src="<if condition="$vo['cover'] eq ''">{Saivi::C('site_url')}/tpl/static/sucai/meirong/1.jpg<else/>{Saivi:$es_data['cover']}</if>" style="max-height:100px;" >	
+		<input type="text" name="cover" value="<if condition="$vo['cover'] eq ''">{Saivi::C('site_url')}/tpl/static/sucai/meirong/1.jpg<else/>{Saivi:$es_data['cover']}</if>" id="cover" class="px" style="width:150px;"  />
+		
+                                     
+          <span class="help-inline">
+               <script src="{Saivi::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('cover',720,400,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('cover')">预览</a>
+              <span class="help-inline">建议尺寸：宽720像素，高400像素</span>
+          </span>
+       </div>
+  </div>
+  <div class="control-group">
+         <label class="control-label">美容机构头部图片：</label>
+                                    <div class="controls">
+										<img class="thumb_img" id="banner_src" src="<if condition="$vo['banner'] eq ''">{Saivi::C('site_url')}/tpl/static/sucai/meirong/2.png<else/>{Saivi:$es_data['banner']}</if>" style="max-height:100px;" >	
+										<input type="text" id="banner" name="banner" class="px" value="<if condition="$vo['banner'] eq ''">{Saivi::C('site_url')}/tpl/static/sucai/meirong/2.png<else/>{Saivi:$es_data['banner']}</if>"  />
+                                            <span class="help-inline">  
+                                            <a href="###" onclick="upyunPicUpload('banner',720,400,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('banner')">预览</a>                          
+                                            <span class="help-inline">建议尺寸：宽720像素，高350像素</span>
+                                        </span>
+                                    </div>
+                                </div>
+  <div class="control-group">
+    <div class="control-group">
+                                    <label class="control-label">美容店面头部图片：</label>
+                                    <div class="controls">
+ 										<img class="thumb_img" id="house_banner_src" src="<if condition="$vo['house_banner'] eq ''">{Saivi::C('site_url')}/tpl/static/sucai/meirong/4.png<else/>{Saivi:$es_data['house_banner']}</if>" style="max-height:100px;" >	
+										<input type="text" name="house_banner" id="house_banner" class="px" value="<if condition="$vo['house_banner'] eq ''">{Saivi::C('site_url')}/tpl/static/sucai/meirong/4.png<else/>{Saivi:$es_data['house_banner']}</if>"  />
+                                        <span class="help-inline">
+                                             <script src="{Saivi::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('house_banner',720,400,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('house_banner')">预览</a>
+                                            <span class="help-inline">建议尺寸：宽720像素，高350像素</span>
+                                        </span>
+                                    </div>
+                                </div>
+  </div>
+
+  <div class="control-group">
+                                    <label for="album_title" class="control-label">全景相册名称：</label>
+                                    <div class="controls">
+                                    <select id="panorama_id" name="panorama_id" class="input-medium" data-rule-required="true"> 
+                                          <option value="0">请选择360全景相册</option> 
+                                            <volist name="panorama" id="vo">
+                                               <option value="{Saivi:$vo['pid']}" <if condition="$vo['pid'] eq $es_data['panorama_id']">selected="selected"</if>>{Saivi:$vo['name']}</option>
+                                            </volist>
+                                        </select>
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">如果没有，请先到 <a href="{Saivi::U('Panorama/add',array('token'=>$token))}" class="btn"><strong><font color='red'>360°全景</strong></font></a>添加</span>
+
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">美容新闻：</label>
+                                    <div class="controls">
+                                     <select id="classify_id" name="classify_id" class="input-medium" data-rule-required="true"> 
+                                          <option value="0">请选择3G美容新闻</option> 
+                                            <volist name="classify" id="vo">
+                                               <option value="{Saivi:$vo['cid']}" <if condition="$vo['cid'] eq $es_data['classify_id']">selected="selected"</if>>{Saivi:$vo['name']}</option>
+                                            </volist>
+                                        </select>
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">如果没有，请先到<a href="{Saivi::U('Classify/add',array('token'=>$token))}" class="btn"> <strong><font color='red'>文章分类管理</strong></font></a>添加</span> <span class="maroon">注意：只能添加［图文回复］的［新增图文自定义回复］！</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">预约版面：</label>
+                                    <div class="controls">
+                                     <select id="res_id" name="res_id" class="input-medium" data-rule-required="true"> 
+                                          <option value="0">请选择预约版面</option> 
+                                            <volist name="reslist" id="vo">
+                                               <option value="{Saivi:$vo['rid']}" <if condition="$vo['rid'] eq $es_data['res_id']">selected="selected"</if>>{Saivi:$vo['title']}</option>
+                                            </volist>
+                                        </select>
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">如果没有，请先到<a href="{Saivi::U('Reservation/index',array('token'=>$token))}" class="btn"><strong><font color='red'>预约管理</strong></font></a>添加</span>
+                                    </div>
+                                </div>
+  <div class="control-group">
+    <label for="video" class="control-label">美容视频：</label>
+    <div class="controls"> 
+       <input type="text" name="video" id="video" class="span4" style="width:480px" value="{Saivi:$es_data['video']}"><p>
+       支持优酷视频地址如：http://v.youku.com/v_show/id_XNDA1ODEyNjE2.html <br> 
+       腾讯fash视频地址：如http://static.video.qq.com/TPout.swf?vid=v0119s27wd5&amp;auto=0 <br> 
+       也支持mp4和ogg 格式地址 http://www.w3school.com.cn/example/html5/mov_bbb.mp4 </p>
+    </div>
+  </div>
+                                
+<script>
+function setlatlng(longitude,latitude){
+  art.dialog.data('longitude', longitude);
+  art.dialog.data('latitude', latitude);
+  // 此时 iframeA.html 页面可以使用 art.dialog.data('test') 获取到数据，如：
+  // document.getElementById('aInput').value = art.dialog.data('test');
+  art.dialog.open('{Saivi::U('Map/setLatLng',array('token'=>$token,'id'=>$id))}',{lock:false,title:'设置经纬度',width:600,height:400,yesText:'关闭',background: '#000',opacity: 0.87});
+}
+</script>
+<div class="control-group">
+    <label for="place" class="control-label">美容地址地址：</label>
+    <div class="controls"> 
+      <div class="input-prepend">
+         <input type="text" id="suggestId" class="span4 px"  name="place" value="{Saivi:$es_data['place']}" class="input-xlarge" data-rule-required="true"> <span class="maroon">*</span> 
+      </div>
+    </div>
+  </div>
+  	<div class="control-group">
+		<label for="place" class="control-label">联系电话：</label>
+		<div class="controls"> 
+			<div class="input-prepend">
+				 <input type="text" id="suggestId" class="span4 px"  name="tel" value="{Saivi:$es_data['tel']}" class="input-xlarge" data-rule-required="true"> <span class="maroon">*</span> 
+			</div>
+		</div>
+	</div>
+
+    <div class="control-group">
+    <label for="suggestId" class="control-label">地图标识：</label>
+         <div class="controls">
+         经度 <input type="text" id="longitude"  name="lng" size="14" class="px" value="{Saivi:$es_data['lng']}" /> 纬度 <input type="text"  name="lat" size="14" id="latitude" class="px" value="{Saivi:$es_data['lat']}" /> <a href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())">在地图中查看/设置</a>
+         </div>
+    </div>
+<div class="control-group">
+         <label for="estate_desc" class="control-label">美容简介：</label>
+         <div class="controls">
+             <textarea class="px" id="estate_desc" name="estate_desc" style="width: 605px; height: 150px;">{Saivi:$es_data['estate_desc']}</textarea>
+                                        
+         </div>
+     </div>
+     <div class="control-group">
+         <label for="project_brief" class="control-label">项目简介：</label>
+         <div class="controls">
+             <textarea class="px" id="project_brief" name="project_brief" style="width: 605px; height: 150px; ">{Saivi:$es_data['project_brief']}</textarea>
+         </div>
+     </div>
+     <div class="control-group">
+        <label for="traffic_desc" class="control-label">交通配套：</label>
+        <div class="controls">
+            <textarea class="px" id="traffic_desc" name="traffic_desc" style="width: 605px; height: 150px; ">{Saivi:$es_data['traffic_desc']}</textarea>
+        </div>
+    </div>
+ <if condition="$es_data['id'] neq ''">
+<input type="hidden" name="id" value="{Saivi:$es_data['id']}" />
+</if>
+   <div class="form-actions">
+      <button id="bsubmit" type="submit" data-loading-text="提交中..." class="btnGreen">保存</button>　<button type="button" class="btnGray vm">取消</button>
+    </div>
+</form>
+  </div> 
+ 
+  
+        </div>
+    
+<include file="Public:footer"/>

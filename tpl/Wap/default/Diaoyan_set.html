@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,user-scalable=no,maximum-scale=1,initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="" name="Keywords">
+	<meta content="" name="Description">
+    <link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/diaoyan/common.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/diaoyan/survey.css" media="all" />
+    <script src="/tpl/Wap/default/common/css/product/js/jquery.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="{Saivi::RES}/js/diaoyan/zepto.js"></script>
+	<title>调研</title>
+	<style type="text/css">
+		.question{z-index: 2;position: relative;padding-top: 20px;}
+		.index{position: absolute;color: #b40000;top: 75px;left: 80px;font-size: 10px;}
+		.index strong{font-size: 12px;}
+		.question .title{
+			font-size: 24px;
+			text-align: center;
+			max-height: 77px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			padding: 0 10px;
+			line-height: 26px;
+			margin-bottom: 10px;
+		}
+		.question .option{position: relative;height: 45px;}
+		.question .option .text{position: relative;line-height: 40px;overflow: hidden;}
+		.question .option .i{float: left;margin-left: 20px;}
+		.question .option .otext{
+			margin-left: 45px;
+			overflow: hidden;
+			max-width: 260px;
+			height: 40px;
+		}
+		.question .option .oimg,.question .option .oimg-sel{position: absolute;top: 4px;left: 10px;width: 300px;}
+		.question .option .oimg-sel{display: none;}
+		.question .option-sel .oimg{display: none;}
+		.question .option-sel .oimg-sel{display: block;}
+		.result-timeout .timg{
+			margin-left: -40px;
+		}
+		#submit{
+			width: 80px;
+			margin: 20px 20px 0px 0px;
+			float: right;
+			position: relative;
+		}
+		#submit img{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+		}
+		#submit span{
+			position: relative;
+			color: #FFF;
+			font-size: 18px;
+			line-height: 40px;
+			margin-left: 8px;
+		}
+		/*.page-url{
+			position: absolute;
+			width: 100%;
+			bottom: 0px;
+		}*/
+		.tip{
+			color: #FFF;
+			font-size: 12px;
+			margin-left: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+	<volist name="info" id="data">
+		<img class="bg" src="{Saivi::RES}/images/diaoyan/bg.jpg" />
+		<div class="question" style="overflow:hidden;">
+			<div class="title">{Saivi:$data.title}</div>
+			<div class="tip">注：本题最多能选择{Saivi:$data.max}个答案！</div>
+			<div class="options">
+		
+			<php>
+				if($data['optia']!=''){
+			</php>
+				<div class="option" data-value="1">
+					<img class="oimg" src="{Saivi::RES}/images/diaoyan/option_bg.png">
+					<img class="oimg-sel" src="{Saivi::RES}/images/diaoyan/option_sel_bg.png">
+					<div class="text">
+						<div class="otext">{Saivi:$data.optia}</div>
+					</div>
+				</div>
+			<php>
+				}
+			</php>	
+
+			<php>
+				if($data['optib']!=''){
+			</php>
+				<div class="option" data-value="2">
+					<img class="oimg" src="{Saivi::RES}/images/diaoyan/option_bg.png">
+					<img class="oimg-sel" src="{Saivi::RES}/images/diaoyan/option_sel_bg.png">
+					<div class="text">
+						<div class="otext">{Saivi:$data.optib}</div>
+					</div>
+				</div>
+			<php>
+				}
+			</php>	
+
+			<php>
+				if($data['optic']!=''){
+			</php>
+				<div class="option" data-value="3">
+					<img class="oimg" src="{Saivi::RES}/images/diaoyan/option_bg.png">
+					<img class="oimg-sel" src="{Saivi::RES}/images/diaoyan/option_sel_bg.png">
+					<div class="text">
+						<div class="otext">{Saivi:$data.optic}</div>
+					</div>
+				</div>
+			<php>
+				}
+			</php>	
+
+			<php>
+				if($data['optid']!=''){
+			</php>
+				<div class="option" data-value="4">
+					<img class="oimg" src="{Saivi::RES}/images/diaoyan/option_bg.png">
+					<img class="oimg-sel" src="{Saivi::RES}/images/diaoyan/option_sel_bg.png">
+					<div class="text">
+						<div class="otext">{Saivi:$data.optid}</div>
+					</div>
+				</div>
+			<php>
+				}
+			</php>	
+
+			<php>
+				if($data['optie']!=''){
+			</php>
+				<div class="option" data-value="5">
+					<img class="oimg" src="{Saivi::RES}/images/diaoyan/option_bg.png">
+					<img class="oimg-sel" src="{Saivi::RES}/images/diaoyan/option_sel_bg.png">
+					<div class="text">
+						<div class="otext">{Saivi:$data.optie}</div>
+					</div>
+				</div>
+			<php>
+				}
+			</php>		
+
+			</div>
+			
+		</div>
+	</volist>
+	
+		<!-- <div style="text-align:center; padding:35px; letter-spacing:3px;">{Saivi:$page}</div> -->
+			<div id="submit">
+				<img src="{Saivi::RES}/images/diaoyan/next_btn.png">
+				<span>下一步</span>
+			</div>
+ 	<p class="page-url">
+		<a href="Research_Comment.html" target="_blank" class="page-url-link"></a>
+	</p>
+
+		<audio id="musicClick" src="{Saivi::RES}/images/diaoyan/click.mp3" preload="auto"></audio>
+	</div>
+	<div id="loading" class="loading-mask">
+		<img class="gimg" src="{Saivi::RES}/images/diaoyan/ajax-loader.gif">
+	</div>
+
+<script type="text/javascript">
+	$(function(){
+		var maxsel = {Saivi:$data.max};
+		$(".option").on("touchend",function(){
+			var $option = $(this);
+			$option.toggleClass("option-sel");
+			$("#musicClick")[0].play();
+		});
+		$("#submit").on("click",function(){
+			var $btn = $(this);
+			if($btn.hasClass("disabled")) return;
+			var $answer = $(".options .option-sel");
+			if($answer.size() == 0){
+				alert("请选择一个答案!");
+				return;
+			}
+			if($answer.size() > maxsel){
+				alert("本题最多只能选择个"+maxsel+"答案!");
+				return;
+			}
+			var i=0;
+			var ans = "";
+			$answer.each(function(index,o){
+				if(i++ != 0){
+					ans += ",";
+				}
+				ans += $(o).attr("data-value");
+			});
+			var submitData = {
+				"qid" : '{Saivi:$data.tid}',
+				"ans":ans
+			};
+			$btn.addClass("disabled");
+			$.ajax({
+				type : "POST",
+				//url : "Research_Comment.html", 
+				url : '{Saivi::U("Diaoyan/set",array("token"=> $token, "wecha_id"=> $wecha_id, "id"=> $diaoyan_id, "uid"=>$uid, "p"=>$p))}',
+				data : submitData,
+				dataType : "text",
+				contentType: "application/x-www-form-urlencoded; charset=utf-8",
+				success : function(data){
+					$btn.removeClass("disabled");
+					window.location.href = data;
+				},
+				error : function(data){
+					$btn.removeClass("disabled");
+					alert("抱歉,服务器繁忙");
+				}
+			});
+		});
+		$(document).on('ajaxBeforeSend', function(e, xhr, options){
+			$("#loading").show();
+		}).on("ajaxComplete ",function(e, xhr, options){
+			//$("#loading").hide();
+		});
+	});
+</script>
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['diaoyan'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if></body>
+</html>
+

@@ -1,0 +1,18 @@
+<table class="tb">
+   <tr>
+		<th>接口地址</th>
+		<td><input type="text" value="{$settings['apiurl']}" class="span6" name="apiurl">
+			<div class="help-block">
+			<ol>
+				<li>接口地址为可以访问的URL地址，通过此地址返回回复数据。</li>
+				<li>配置此项后，需要设置模块的优先级，则可全局的调用。</li>
+				<li><a href="http://bbs.we7.cc/forum.php?mod=viewthread&tid=39" target="_blank">查看“自定义接口回复”文档</a></li>
+			</ol>
+			</div></td>
+	</tr>
+	<tr>
+		<th>默认回复文字</th>
+		<td><input type="text" value="{$settings['default']}" class="span6" name="default">
+			<div class="help-block">当接口无回复时，则返回用户此处设置的文字信息，优先级高于“默认回复URL”</div></td>
+	</tr>
+</table>

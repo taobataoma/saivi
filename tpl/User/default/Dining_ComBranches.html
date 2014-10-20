@@ -1,0 +1,123 @@
+<include file="Public:head"/>  
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+
+<script src="{Saivi::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+
+<script src="{Saivi::STATICS}/artDialog/plugins/iframeTools.js"></script>
+
+
+
+<div class="content"   >
+
+<div class="cLineB">
+
+<h4 class="left">{Saivi:$infoType.name}回复配置 </h4>
+
+<div class="clr"></div>
+
+</div>
+
+<!--tab start-->
+
+<div class="tab">
+
+<ul>
+
+<li class="current tabli" id="tab2"><a href="{Saivi::U('Dining/ComBranches',array('token'=>$token))}">店铺信息</a></li>
+
+<li class="tabli" id="tab0"><a href="{Saivi::U('Dining/index',array('token'=>$token,'dining'=>1))}">菜品管理</a></li>
+
+<li class="tabli" id="tab2"><a href="{Saivi::U('Dining/cats',array('token'=>$token,'dining'=>1))}">菜品分类管理</a></li>
+
+<li class="tabli" id="tab2"><a href="{Saivi::U('Dining/orders',array('token'=>$token,'dining'=>1))}">订单管理</a></li>
+
+<li class="tabli" id="tab2"><a href="{Saivi::U('Dining/tables',array('token'=>$token,'dining'=>1))}">桌台管理</a></li>
+
+<li class="tabli" id="tab5"><a href="{Saivi::U('Reply_info/set',array('token'=>$token,'infotype'=>'Dining'))}">订餐回复配置</a></li>
+
+</ul>
+
+</div>
+
+<!--tab end-->  
+
+<div class="msgWrap">
+
+<form method="post" action="" id="info">
+
+<div class="cLine">
+
+<div class="pageNavigator left"> <a href="{Saivi::U('Dining/ComIndex',array('token'=>$token,'isBranch'=>1))}" title="" class="btnGrayS vm bigbtn"><img src="{Saivi::RES}/images/icons/add.png" class="vm">添加</a></div>
+
+<div class="clr"></div>
+
+</div>
+
+
+
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+
+<thead>
+
+<tr>
+
+<th class="select" style="display:none"><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>
+
+<th width="200">店铺名称</th>
+
+<th width="100">店铺</th>
+
+<th >营业时间</th>
+
+<th width="150" class="norightborder">操作</th>
+
+</tr>
+
+</thead>
+
+<tbody style="text-align:center;">
+
+<volist name="branches" id="c"> 
+
+<tr>
+
+<td style="display:none"><input type="checkbox" value="{Saivi:$o.id}" class="cbitem" name="id_{Saivi:$i}"></td>
+
+<td>{Saivi:$c.name}</td>
+
+<td>{Saivi:$c.category}</td>
+
+<td>{Saivi:$c.time}</td>
+
+<td class="norightborder"><a href="{Saivi::U('Dining/ComIndex',array('token'=>$token,'id'=>$c['id'],'catid'=>$c['catid']))}">修改</a> <a href="javascript:drop_confirm('您确定要删除吗?', '{Saivi::U('Dining/ComDelete',array('token'=>$token,'id'=>$c['id'],'isBranch'=>1))}');">删除</a></td>
+
+</tr>
+
+</volist>
+
+</tbody>
+
+</table>
+
+<input type="hidden" name="token" value="{Saivi:$_GET['token']}" />
+
+</form>
+
+</div>
+
+<div class="cLine">
+
+<div class="pageNavigator right">
+
+<div class="pages">{Saivi:$page}</div>
+
+</div>
+
+<div class="clr"></div>
+
+</div>
+
+</div>
+
+<include file="Public:footer"/>

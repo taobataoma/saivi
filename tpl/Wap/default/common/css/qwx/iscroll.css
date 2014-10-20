@@ -1,0 +1,48 @@
+.banner {
+	margin: 0px auto; padding: 0px; width: 100%; background-color: rgb(21, 21, 21);
+}
+#wrapper {
+	margin: 0px; width: 100%; height: auto; overflow: hidden; float: left; position: relative; z-index: 1;
+}
+#scroller {
+	padding: 0px; height: auto; float: left;
+}
+#scroller ul {
+	list-style: none; margin: 0px; padding: 0px; width: 100%; height: auto; text-align: left; float: left; display: block;
+}
+#scroller li {
+	padding: 0px; width: auto; height: auto; text-align: center; font-size: 0px; float: left; display: block; position: relative;
+}
+#scroller li a {
+	margin: 0px; padding: 0px; display: block;
+}
+#scroller li p {
+	margin: 0px; padding: 0px; width: 100%; text-align: left; bottom: 0px; color: rgb(244, 244, 244); line-height: 24px; text-indent: 10px; font-size: 14px; display: block; white-space: nowrap; position: absolute; z-index: 2; text-overflow: ellipsis; background-color: rgba(0, 0, 0, 0.5);
+}
+#nav {
+	padding: 0px; width: auto; margin-top: -15px; float: right; position: relative; z-index: 3;
+}
+#prev {
+	padding: 5px 0px; width: 80px; font-size: 14px; font-weight: bold; float: left; display: none;
+}
+#next {
+	padding: 5px 0px; width: 80px; font-size: 14px; font-weight: bold; float: left; display: none;
+}
+#next {
+	text-align: right; float: right;
+}
+#indicator > li {
+	list-style: none; margin: 0px; padding: 0px; float: left; display: block;
+}
+#indicator {
+	margin: 0px 8px; padding: 0px; width: auto; display: block;
+}
+#indicator > li {
+	background: rgb(136, 136, 136); border-radius: 4px; width: 8px; height: 8px; text-indent: -9999em; overflow: hidden; margin-right: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -o-border-radius: 4px;
+}
+#indicator > li.active {
+	background: rgb(221, 221, 221);
+}
+#indicator > li:last-child {
+	margin: 0px;
+}

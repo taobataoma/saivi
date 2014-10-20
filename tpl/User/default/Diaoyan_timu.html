@@ -1,0 +1,66 @@
+<include file="Public:head"/>
+<script src="./tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="./tpl/static/sucaiku/iframeTools.js"></script>
+<script src="./tpl/static/sucaiku/upyun.js"></script> 
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<div class="content"  >
+<div class="cLineB">
+<h4 class="left">题目列表 </h4>
+<div class="searchbar right">
+<form method="post" action="">
+</form>
+</div>
+<div class="clr"></div>
+</div>
+
+<div class="cLine">
+<div class="pageNavigator left"> <a href="{Saivi::U('Diaoyan/addTimu',array('token'=>$token,'id'=> $id))}" title="添加" class="btn btn-primary btn_submit  J_ajax_submit_btn"><img src="{Saivi::RES}/images/product/add.png" width="16" class="vm">添加</a></div>
+<div class="clr"></div>
+ <a href="{Saivi::U('Diaoyan/index',array('token'=>$token))}" class="right  btn btn-primary btn_submit  J_ajax_submit_btn" style="margin-top:-37px">返回</a> 
+</div>
+
+<div class="msgWrap">
+
+
+	<form method="post" action="" id="info">
+	<input name="delall" type="hidden" value="">
+	<input name="wxid" type="hidden" value="">
+	<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+	<thead>
+	<tr>
+	<th width="30">序号</th>
+	<th width="200">调研题目</th>
+	<th width="200">题目数量</th>
+	<th width="200" class="norightborder">操作</th>
+	<th width="30">PID</th>
+	
+	</tr>
+	</thead>
+	<tbody>
+	<tr></tr>
+	<volist name="data" id="item"> 
+		<tr>
+		<td>{Saivi:$item.tid}</td>
+		<td>{Saivi:$item.title}</td>
+		<td>{Saivi:$item.max}</td>
+		<td class="norightborder">
+			<a href="{Saivi::U('Diaoyan/setTimu',array('id'=>$item['tid'],'token'=>$token, 'pid'=>$item['pid']))}">修改</a>&nbsp;&nbsp;
+			<a href="{Saivi::U('Diaoyan/delTimu',array('id'=>$item['tid'],'token'=>$token, 'pid'=>$item['pid']))}">删除</a>
+		</td>
+		<td>{Saivi:$item.pid}</td>
+		</tr>
+	</volist>
+	</tbody>
+	</table>
+	</form>
+
+
+</div>
+<div class="cLine">
+<div class="pageNavigator right">
+<div class="pages">{Saivi:$page}</div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+<include file="Public:footer"/>

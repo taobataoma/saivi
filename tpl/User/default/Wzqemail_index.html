@@ -1,0 +1,483 @@
+﻿<include file="Public:head"/>
+
+<div class="content" style=" width:94%; margin:0px; padding:0px; border:0px; padding:0px 3%; border-left: 0px solid #D7DDE6 !important;">
+<div class="cLineB" style="border-bottom:2px solid #1A6AAC; -webkit-box-shadow:0px 2px 0px #CCC;box-shadow:0px 2px 0px #ccc; padding-bottom:0px; margin-top:0px;">
+  <h4>邮件平台</h4>
+</div>
+
+<script>
+
+function ccolumns(value){
+
+	if(value=='1'){
+
+		$('.alipay').css('display','');
+
+	}else{
+
+		$('.alipay').css('display','none');
+
+	}
+
+}
+
+</script>
+
+          <form method="post" action="" enctype="multipart/form-data">
+
+          <div class="msgWrap">
+
+            <table class="userinfoArea" border="0" cellspacing="0" cellpadding="0" width="100%">
+
+              <thead>
+
+				<tr>
+
+					<th>发送邮箱：</th>
+
+					<td><select name="type" onchange="ccolumns(this.value)">
+
+					<option value="1" <if condition="$config.type eq '1'">selected</if>>自定义邮箱发送</option>
+
+					<option value="0" <if condition="$config.type neq '1'"> selected</if>>系统邮箱发送</option></select>
+
+					<span class="red">推荐用系统邮箱发送比较稳定</span>
+
+					</td>
+
+				</tr>
+
+				
+
+				<tr class="alipay" <if condition="$config.type neq '1'">style="display:none"</if>>
+
+					<th width="120">smtp服务器：</th>
+
+					<td><input type="text" name="smtpserver" value="{Saivi:$config.smtpserver}" class="px" style="height:100%">
+
+					<span class="red">一定要在邮箱里开通smtp服务，一般163的为smtp.163.com ，QQ邮箱的为smtp.qq.com</span>
+
+					</td>
+
+				</tr>
+
+				<tr class="alipay" <if condition="$config.type neq '1'">style="display:none"</if>>
+
+					<th width="120">smtp端口：</th>
+
+					<td><input type="text" name="port" value="{Saivi:$config.port}" class="px" style="height:100%">
+
+					<span class="red">一般默认端口都是25</span>
+
+					</td>
+
+				</tr>
+
+				<tr class="alipay" <if condition="$config.type neq '1'">style="display:none"</if>>
+
+					<th>SMTP账号：</th>
+
+					<td><input type="text" name="name" value="{Saivi:$config.name}" class="px" style="height:100%">
+
+					<span class="red">输入邮箱帐号</span>
+
+					</td>
+
+				</tr>
+
+				<tr class="alipay" <if condition="$config.type neq '1'">style="display:none"</if>>
+
+					<th>SMTP密码：</th>
+
+					<td><input type="password" name="password" value="{Saivi:$config.password}" class="px" style="height:100%">
+
+					<span class="red">输入邮箱密码</span>
+
+					</td>
+
+				</tr>
+
+			    <tr>
+
+                  <th><span class="red">*</span>接受邮箱：</th>
+
+                  <td><input type="text" required class="px" name="receive" value="{Saivi:$config.receive}" tabindex="1" size="25" style="height:100%">
+
+                  <span class="red">商家邮箱用于接收邮件</span>
+
+                  </td>
+
+                </tr>
+</table>
+
+
+<style>
+.email_turn { width: 100%; height: 40px;}
+.email_turn tr th { width: 120px; text-align:right; }
+.email_turn input[type="radio"], .email_turn input[type="checkbox"]  {height: 30px; line-height: 30px; margin-right: 5px; margin-top: 0px; margin-left: 10px;}
+.email_turn div {height: 30px; line-height: }
+</style>
+
+<table class="userinfoArea email_turn" border="0" cellspacing="0" cellpadding="0" width="100%">
+                <tr>
+
+                  <th class="email_turn"><span class="red">*</span>微招聘：</th>
+
+                  <td>
+
+				  <div><input type="radio" value="1" <if condition="$config.zhaopin eq 1">checked="checked"</if> name="zhaopin"/>开启
+
+				  <input type="radio" value="0" name="zhaopin" <if condition="$config.zhaopin eq 0">checked="checked"</if>/>关闭</div>
+
+                 
+
+          
+
+                  </td>
+                   <th><span class="red">*</span>微招聘(简历)：</th>
+
+                  <td>
+
+				  <div>
+
+                  <input type="radio" value="1" <if condition="$config.jianli eq 1">checked="checked"</if> name="jianli"/>开启
+
+				  <input type="radio" value="0" name="jianli" <if condition="$config.jianli eq 0">checked="checked"</if>/>关闭
+
+          
+
+                  </td>
+
+                </tr>
+
+   <tr>
+
+				<tr>
+
+                  <th><span class="red">*</span>微房产：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.fangchan eq 1">checked="checked"</if> name="fangchan"/>开启
+
+				  <input type="radio" value="0" name="fangchan" <if condition="$config.fangchan eq 0">checked="checked"</if>/>关闭
+
+                  
+
+                  </td>
+                   <th><span class="red">*</span>商城通知：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.shangcheng eq 1">checked="checked"</if> name="shangcheng"/>开启
+
+				  <input type="radio" value="0" name="shangcheng" <if condition="$config.shangcheng eq 0">checked="checked"</if>/>关闭
+
+                  
+
+                  </td>
+
+                </tr>
+
+ 
+
+                <tr>
+
+				
+                <tr>
+
+                  <th><span class="red">*</span>微餐饮：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.dingcan eq 1">checked="checked"</if> name="dingcan"/>开启
+
+				  <input type="radio" value="0" name="dingcan" <if condition="$config.dingcan eq 0">checked="checked"</if>/>关闭
+
+                  
+
+                  </td>
+                  <th><span class="red">*</span>微预约：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.yuyue eq 1">checked="checked"</if> name="yuyue"/>开启
+
+				  <input type="radio" value="0" name="yuyue" <if condition="$config.yuyue eq 0">checked="checked"</if>/>关闭
+
+                 
+
+                  </td>
+
+                </tr>
+
+				
+
+				<tr>
+
+                  <th><span class="red">*</span>在线预约：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.zxyy eq 1">checked="checked"</if> name="zxyy"/>开启
+
+				  <input type="radio" value="0" name="zxyy" <if condition="$config.zxyy eq 0">checked="checked"</if>/>关闭
+
+                 
+
+                  </td>
+                   <th><span class="red">*</span>微汽车：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.car eq 1">checked="checked"</if> name="car"/>开启
+
+				  <input type="radio" value="0" name="car" <if condition="$config.car eq 0">checked="checked"</if>/>关闭
+
+                  
+                  </td>
+
+                </tr>
+
+				
+
+             
+                <tr>
+
+                  <th><span class="red">*</span>微医疗：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.yiliao eq 1">checked="checked"</if> name="yiliao"/>开启
+
+				  <input type="radio" value="0" name="yiliao" <if condition="$config.yiliao eq 0">checked="checked"</if>/>关闭
+
+                 
+
+                  </td>
+                   <th><span class="red">*</span>酒店宾馆：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.jdbg eq 1">checked="checked"</if> name="jdbg"/>开启
+
+				  <input type="radio" value="0" name="jdbg" <if condition="$config.jdbg eq 0">checked="checked"</if>/>关闭
+
+                 
+
+                  </td>
+
+                </tr>
+
+              
+                 <tr>
+
+                  <th><span class="red">*</span>微美容：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.beauty eq 1">checked="checked"</if> name="beauty"/>开启
+
+				  <input type="radio" value="0" name="beauty" <if condition="$config.beauty eq 0">checked="checked"</if>/>关闭
+
+               
+                  </td>
+                   <th><span class="red">*</span>微健身：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.fitness eq 1">checked="checked"</if> name="fitness"/>开启
+
+				  <input type="radio" value="0" name="fitness" <if condition="$config.fitness eq 0">checked="checked"</if>/>关闭
+
+               
+
+                  </td>
+
+
+                </tr>
+
+              
+
+                <tr>
+
+                  <th><span class="red">*</span>微政务：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.gover eq 1">checked="checked"</if> name="gover"/>开启
+
+				  <input type="radio" value="0" name="gover" <if condition="$config.gover eq 0">checked="checked"</if>/>关闭
+
+                 
+
+                  </td>
+                   <th><span class="red">*</span>微食品：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.food eq 1">checked="checked"</if> name="food"/>开启
+
+				  <input type="radio" value="0" name="food" <if condition="$config.food eq 0">checked="checked"</if>/>关闭
+
+                  
+
+                  </td>
+
+                </tr>
+                  <tr>
+
+                  <th><span class="red">*</span>微旅游：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.travel eq 1">checked="checked"</if> name="travel"/>开启
+
+				  <input type="radio" value="0" name="travel" <if condition="$config.travel eq 0">checked="checked"</if>/>关闭
+
+                  
+                  </td>
+                   <th><span class="red">*</span>微花店：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.flower eq 1">checked="checked"</if> name="flower"/>开启
+
+				  <input type="radio" value="0" name="flower" <if condition="$config.flower eq 0">checked="checked"</if>/>关闭
+
+               
+
+                  </td>
+
+                </tr>
+                  <tr>
+
+                  <th><span class="red">*</span>微物业：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.property eq 1">checked="checked"</if> name="property"/>开启
+
+				  <input type="radio" value="0" name="property" <if condition="$config.property eq 0">checked="checked"</if>/>关闭
+
+                 
+
+                  </td>
+                   <th><span class="red">*</span>微酒吧：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.bar eq 1">checked="checked"</if> name="bar"/>开启
+
+				  <input type="radio" value="0" name="bar" <if condition="$config.bar eq 0">checked="checked"</if>/>关闭
+
+                 
+                  </td>
+
+                </tr>
+                       <tr>
+
+                  <th><span class="red">*</span>微婚庆：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.wedding eq 1">checked="checked"</if> name="wedding"/>开启
+
+				  <input type="radio" value="0" name="wedding" <if condition="$config.wedding eq 0">checked="checked"</if>/>关闭
+
+                
+
+                  </td>
+                   <th><span class="red">*</span>微装修：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.fitment eq 1">checked="checked"</if> name="fitment"/>开启
+
+				  <input type="radio" value="0" name="fitment" <if condition="$config.fitment eq 0">checked="checked"</if>/>关闭
+
+                 
+                  </td>
+
+                </tr>
+                            <tr>
+
+                  <th><span class="red">*</span>微宠物：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.affections eq 1">checked="checked"</if> name="affections"/>开启
+
+				  <input type="radio" value="0" name="affections" <if condition="$config.affections eq 0">checked="checked"</if>/>关闭
+
+                 
+
+                  </td>
+                   <th><span class="red">*</span>微家政：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.housekeeper eq 1">checked="checked"</if> name="housekeeper"/>开启
+
+				  <input type="radio" value="0" name="housekeeper" <if condition="$config.housekeeper eq 0">checked="checked"</if>/>关闭
+
+
+                  </td>
+
+                </tr>
+                              <tr>
+
+                  <th><span class="red">*</span>微租赁：</th>
+
+                  <td>
+
+				  <input type="radio" value="1" <if condition="$config.lease eq 1">checked="checked"</if> name="lease"/>开启
+
+				  <input type="radio" value="0" name="lease" <if condition="$config.lease eq 0">checked="checked"</if>/>关闭
+
+                  </td>
+                  
+
+                </tr>
+
+				<div>
+
+				<input type="hidden" name="token" value="{Saivi:$config.token}" class="px" tabindex="1" size="40">
+
+				</div>
+
+              </thead>
+
+              
+
+                <tr>
+
+                  <td  colspan="4" style=""><div style="clear:both; margin:0 auto; width:100px;"><button  type="submit" class="btnGreen" id="saveSetting">保存</button></div></td>
+
+                </tr>
+
+            </table>
+
+            
+
+          </div>
+
+          </form>
+
+        </div>
+
+        
+
+        <div class="clr"></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!--底部-->
+
+  	</div>
+
+<include file="Public:footer"/>	

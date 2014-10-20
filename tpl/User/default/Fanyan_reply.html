@@ -1,0 +1,156 @@
+<include file="Public:head"/>
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<div class="content">
+
+<div class="cLineB">
+  <h4>回复信息配置 </h4><a href="javascript:history.go(-1);" class="right btn btn-primary btn_submit  J_ajax_submit_btn" style="margin-top:-27px">返回</a>
+ </div>
+<div class="tab">
+<ul>
+<li class="tabli" id="tab2"><a href="{Saivi::U('Fanyan/index')}">题目管理</a></li>
+<li class="current  tabli" id="tab20"><a href="{Saivi::U('Fanyan/reply')}">回复信息配置</a></li>
+</ul>
+</div>
+<!--tab end-->        
+    <div class="msgWrap bgfc" style="margin-top:10px;">
+	  <form class="form" method="post" action="" enctype="multipart/form-data">	 
+		<table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tbody>
+             <tr>
+				  <th valign="top"><span class="red"></span></th>
+				  <td><span class="red">多功能考试</span>————微信里输入关键字"考试"即可看到效果
+					</td>
+				</tr>
+            <tr>
+				  <th valign="top"><span class="red">*</span>回复标题：</th>
+				  <td><input type="text" name="title" value="{Saivi:$info.title}" class="px" style="width:550px;">
+					</td>
+				</tr>
+               
+                 <tr>
+					<th>回复图片：</th>
+					<td><input type="text" id="picurl1" value="{Saivi:$info.tp}" name="tp" class="px" style="width:550px;">  
+<script src="/tpl/static/upyun.js"></script>
+<a href="javascript:void(0)" onclick="upyunPicUpload('picurl1',700,420,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a>
+<a href="###" onclick="viewImg('picurl1')" class="btn btn-primary btn_submit  J_ajax_submit_btn">预览</a>
+					</td>
+				</tr>
+				
+			
+				<tr>
+					<th width="120"><span class="red">*</span>回复简介：</th>
+					<td><textarea style="width:560px;height:75px" name="info" id="info" class="px" onkeydown='countChar("info","counter");' onkeyup="countChar('info','counter');">{Saivi:$info.info}</textarea><br/><font color="red">可以输入<span id="counter">400</span>字<br></font></td>
+				</tr>
+                <tr>
+					<th width="120"><span class="red">*</span>考试规则：</th>
+					<td><textarea style="width:560px;height:75px" name="gz" id="info" class="px" onkeydown='countChar("info","counter");' onkeyup="countChar('info','counter');">{Saivi:$info.gz}</textarea><br/><font color="red">例如：<span id="counter">本份试卷为选择题,本试卷共有 25 道小题，总分 100 分，标准答题时间 6 分钟。（请在没有指导人的情况下独立完成，如有舞弊，一经发现，即刻永久吊销参加临安话考试资格。）</span><br></font></td>
+				</tr>
+                <tr>
+					<th>广告图片：</th>
+					<td><input type="text" id="banner" value="{Saivi:$info.banner}" name="banner" class="px" style="width:550px;">  
+<script src="/tpl/static/upyun.js"></script>
+<a href="javascript:void(0)" onclick="upyunPicUpload('banner',700,420,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a>
+<a href="###" onclick="viewImg('banner')" class="btn btn-primary btn_submit  J_ajax_submit_btn">预览</a>
+					</td>
+				</tr>
+                <TR>
+                  <TH valign="top"><span class="red">*</span>广告图片链接：</TH>
+                  <TD><input type="text" class="px" id="url" value="{Saivi:$info.url}" name="url" style="width:280px;">  <a href="###" onclick="addLink('url',0)" class="btn btn-primary btn_submit  J_ajax_submit_btn">从功能库添加</a><br /><span class="red">如需点击"更多内容跳"转到其他网址，请在输入框右侧选择或这里填写网址(例如：{Saivi:$f_siteUrl}，记住如果填写必须有http://)</span>如果填写了图文详细内容，这里请留空，不要设置！</TD>
+                </TR>
+				
+               <tr>
+				  <th valign="top"><span class="red">*</span>微信公众号名称：</th>
+				  <td><input type="text" name="copyright" value="{Saivi:$info.copyright}" class="px" style="width:550px;">
+					</td>
+				</tr>
+                 <tr>
+				  <th valign="top"><span class="red">*</span>分数名称：</th>
+				  <td><input type="text" name="scorename" placeholder="结束后显示为'xxxx'指数" value="{Saivi:$info.scorename}" class="px" style="width:550px;">
+					</td>
+				</tr>
+                
+                <tr>
+				  <th valign="top"><span class="red">*</span>0-10分提示语：</th>
+				  <td><input type="text" name="tip1"  value="{Saivi:$info.tip1}" class="px" style="width:550px;">
+					</td>
+				</tr>
+                <tr>
+				  <th valign="top"><span class="red">*</span>10-50分提示语：</th>
+				  <td><input type="text" name="tip2"  value="{Saivi:$info.tip2}" class="px" style="width:550px;">
+					</td>
+				</tr>
+                 <tr>
+				  <th valign="top"><span class="red">*</span>50-60分提示语：</th>
+				  <td><input type="text" name="tip3"  value="{Saivi:$info.tip3}" class="px" style="width:550px;">
+					</td>
+				</tr>
+                <tr>
+				  <th valign="top"><span class="red">*</span>60-70分提示语：</th>
+				  <td><input type="text" name="tip4"  value="{Saivi:$info.tip4}" class="px" style="width:550px;">
+					</td>
+				</tr>
+                 <tr>
+				  <th valign="top"><span class="red">*</span>70-80分提示语：</th>
+				  <td><input type="text" name="tip5"  value="{Saivi:$info.tip5}" class="px" style="width:550px;">
+					</td>
+				</tr>
+                 <tr>
+				  <th valign="top"><span class="red">*</span>80-90分提示语：</th>
+				  <td><input type="text" name="tip6"  value="{Saivi:$info.tip6}" class="px" style="width:550px;">
+					</td>
+				</tr>
+                 <tr>
+				  <th valign="top"><span class="red">*</span>100分提示语：</th>
+				  <td><input type="text" name="tip7"  value="{Saivi:$info.tip7}" class="px" style="width:550px;">
+					</td>
+				</tr>
+				<th>&nbsp;</th>
+					<td>
+						<button type="submit" name="button" class="btn btn-primary btn_submit  J_ajax_submit_btn">保存</button>
+						<a href="javascript:history.go(-1);" class="btn">取消</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+  </div> 
+ 
+  
+        </div>
+<link rel="stylesheet" href="/static/js/editor/themes/default/default.css" />
+<script charset="utf-8" src="/static/js/editor/kindeditor-min.js"></script>
+<script charset="utf-8" src="/static/js/editor/zh_CN.js"></script>
+<script>
+	KindEditor.ready(function(K) {
+		var uploadbutton = K.uploadbutton({
+			button : K('#uploadBtn')[0],
+			fieldName : 'imgFile',
+			url : '/index.php?g=User&m=Attachment&a=upload&type=reply',
+			afterUpload : function(data) {
+				if (data.error === 0) {
+					K('#picurl').val(data.url);
+				} else {
+					alert(data.message);
+				}
+			},
+			afterError : function(str) {
+				alert('自定义错误信息: ' + str);
+			}
+		});
+		uploadbutton.fileBox.change(function(e) {
+			uploadbutton.submit();
+		});
+	});
+</script>
+<script language="javascript">
+function countChar(textareaName,spanName){
+ document.getElementById(spanName).innerHTML=400-document.getElementById(textareaName).value.length;
+ if(document.getElementById(textareaName).value.length>=400){
+  window.alert("已经是最大字数了哦！")
+  return false;
+ }
+}
+</script>
+<include file="Public:footer"/>

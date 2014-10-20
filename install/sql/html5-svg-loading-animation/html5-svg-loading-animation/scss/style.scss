@@ -1,0 +1,161 @@
+@import "compass/css3";
+
+$max: 12;
+$size: 120px;
+$fill: dodgerblue;
+
+BODY {
+  background: 
+    linear-gradient(45deg, 
+      rgba(255,255,255,0) 48%,
+      rgba(255,255,255,.05) 50%, 
+      rgba(255,255,255,0) 52%),
+  linear-gradient(-45deg, 
+      rgba(255,255,255,0) 48%,
+      rgba(255,255,255,.05) 50%, 
+      rgba(255,255,255,0) 52%);
+  background-size: 1em 1em;
+  background-color: #000;
+  }
+
+.l-wrapper {
+  position: absolute;
+  width: $size*4;
+  height: $size*2.5;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+  }
+svg {
+  height: $size;
+  width: $size;
+  margin: 0 2em 2em;
+  overflow: visible;
+/*   border: 1px solid red; */
+  }
+
+.g-circles {
+  transform: scale(.9) translate(7px, 7px);
+  }
+circle {
+  fill: $fill;
+  fill-opacity: 0;
+  animation: opacity 1.2s linear infinite;
+  
+  @for $item from 1 through $max {
+    &:nth-child(#{$max}n + #{$item}){
+      animation-delay: -#{$item/10}s;
+    }
+  }
+}
+.g-circles--v2 circle {
+  fill-opacity: 0;
+  stroke-opacity: 0;
+  stroke-width: 1;
+  stroke: yellowgreen;
+  animation-name: opacity-stroke, colors, colors-stroke, transform-2;
+}
+
+.g-circles--v3 circle {
+  fill-opacity: 1;
+  animation-name: opacity, colors;
+}
+
+.g-circles--v4 circle {
+  fill-opacity: 1;
+  fill: orange;
+  transform-origin: 60px 60px;
+  animation-name: opacity, colors-3, transform;
+}
+
+@keyframes opacity {
+  3% {
+    fill-opacity: 1;
+  }
+  75% {
+    fill-opacity: 0;
+  }
+  
+}
+
+@keyframes opacity-stroke {
+  10% {
+    stroke-opacity: 1;
+  }
+  85% {
+    stroke-opacity: 0;
+  }
+  
+}
+
+@keyframes colors {
+  0% {
+    fill: yellowgreen;
+    }
+  10% {
+    fill: gold;
+    }
+  75% {
+    fill: crimson;
+  }
+}
+
+@keyframes colors-stroke {
+  0% {
+    stroke: yellowgreen;
+    }
+  10% {
+    stroke: gold;
+    }
+  75% {
+    stroke: crimson;
+  }
+}
+
+@keyframes colors-2 {
+  0% {
+    fill: yellow;
+    }
+  50% {
+    fill: red;
+    }
+  65% {
+    fill: orangered;
+  }
+  95% {
+    fill: gold;
+  }
+}
+
+@keyframes colors-3 {
+  0% {
+    fill: yellowgreen;
+    }
+  50% {
+    fill: turquoise;
+    }
+  65% {
+    fill: yellow;
+  }
+  95% {
+    fill: orange;
+  }
+}
+
+@keyframes transform {
+  10% {
+    transform: scale(.75);
+    }
+}
+
+@keyframes transform-2 {
+  40% {
+    transform: scale(.85);
+    }
+  60% {
+    stroke-width: 20;
+    }
+}

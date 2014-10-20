@@ -1,0 +1,347 @@
+<include file="Public:head"/>
+<include file="Estate:menu"/>
+
+
+<script src="./tpl/User/default/common/js/date/WdatePicker.js"></script>
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/plugins/code/prettify.css" />
+<script src="{Saivi::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+<script src="{Saivi::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+<script src="{Saivi::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="{Saivi::STATICS}/jQValidationEngine/css/validationEngine.jquery.css" type="text/css"/>
+<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+<script src="{Saivi::STATICS}/jQValidationEngine/js/languages/jquery.validationEngine-zh_CN.js" type="text/javascript" charset="utf-8"></script>
+<script src="{Saivi::STATICS}/jQValidationEngine/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="/tpl/static/upyun.js?2013"></script>
+<script>
+
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('#estate_desc', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : true,
+uploadJson : '/index.php?g=User&m=Upyun&a=kindedtiropic',
+items : [
+'source','undo','plainpaste','wordpaste','clearhtml','quickformat','selectall','fullscreen','fontname', 'fontsize','subscript','superscript','indent','outdent','|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','hr']
+});
+editor = K.create('#project_brief', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : true,
+uploadJson : '/index.php?g=User&m=Upyun&a=kindedtiropic',
+items : [
+'source','undo','plainpaste','wordpaste','clearhtml','quickformat','selectall','fullscreen','fontname', 'fontsize','subscript','superscript','indent','outdent','|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','hr']
+});
+editor = K.create('#traffic_desc', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : true,
+uploadJson : '/index.php?g=User&m=Upyun&a=kindedtiropic',
+items : [
+'source','undo','plainpaste','wordpaste','clearhtml','quickformat','selectall','fullscreen','fontname', 'fontsize','subscript','superscript','indent','outdent','|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','hr']
+});
+});
+</script>
+
+<script>
+    jQuery(document).ready(function(){
+      jQuery("#formID").validationEngine();
+    });
+    </script>
+<div class="content">
+
+<link rel="stylesheet" type="text/css" href="{Saivi::Common}/default_user_com.css" media="all">
+<div class="cLineB">
+
+ </div>
+  <div class="msgWrap bgfc">
+  <form action="" method="post" id="formID" class="form-horizontal form-validate" novalidate="novalidate">
+  <input type="hidden" name="token" value="{Saivi:$token}" />
+<if condition="$es_data['id'] neq ''">
+<input type="hidden" name="id" value="{Saivi:$es_data['id']}" />
+</if>
+  <div class="control-group">
+    <label for="title" class="control-label">图文消息标题：</label>
+    <div class="controls">
+      <input type="text" name="title" id="title" maxlength="10" class="span4" value="{Saivi:$es_data['title']}" schoolSet><span class="maroon">*</span><span class="help-inline">触发关键词后返回图文消息标题</span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label for="keyword" class="control-label">触发关键词：</label>
+    <div class="controls">
+      <input type="text" name="keyword" id="keyword" class="span4" schoolSet value="{Saivi:$es_data['keyword']}"><span class="maroon">*</span><span class="help-inline">关键字只能是“微房产”</span>
+    </div>
+  </div>
+
+    <div class="control-group">
+    <label for="keyword" class="control-label">首页模板：</label>
+    <div class="controls">
+      <TR>
+
+  <TD>
+    <input type="text" id="selecttpl" class="px" value="已选择模板 {Saivi:$es_data['tpid']|default=36}" disabled size="40"  />
+    <a class="a_upload" onclick="chooseTpl('tpid','selecttpl',1)">选择模板</a>
+    <a class="a_upload" onclick="viewTpl()">预览</a> <font color="red">[请注意,并不是所有模板都支持,如果发现所选模板显示不正确,请另换一个]</font>
+    <script>
+        function viewTpl(){
+            var tid = $('#tpid').val();
+            chooseTpl(tid,'',2);
+        }
+    </script>
+    <input type="hidden" class="px" id="tpid" value="{Saivi:$es_data['tpid']|default=36}" name="tpid" style="width:250px">
+  </TD>
+
+</TR>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label for="keyword" class="control-label">菜单列表：</label>
+    <div class="controls">
+      <tr>
+                    <td>
+                     <input type="text" name="menu1" id="menu1" class="px" value="{Saivi:$es_data['menu1']|default='楼盘首页'}" data-validation-engine="validate[required,minSize[2],maxSize[4]]"> &nbsp;
+
+ <input type="input" class="px"  value="{Saivi:$es_data['picurl1']}" name="picurl1" id="img" style="width:400px" data-validation-engine="validate[required,custom[url]]" data-errormessage-value-missing="必须选择(上传)图片!!"  data-errormessage-custom-error="如果是手动填写,正确的网址,如: http://www.yourdomain.com/images/demo.png"> <a href="###" onclick="chooseFile('img','icon')" class="a_upload">选择</a> <a href="###" onclick="upyunPicUpload('img',236,236,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('img')">预览</a>
+  <br/>
+  <div style="margin:10px 0">您可以点击下面这些图片作为图标（直接点击即可）236 × 236</div>
+  <div style="background:#eee;width:570px;margin:10px 0;text-align:center">
+  <?php
+  for ($i=1;$i<20;$i++){
+    echo '<img onclick="document.getElementById(\'img\').value=this.src" style="width:30px;cursor:pointer;" src="tpl/User/default/common/images/photo/plugmenu'.$i.'.png" />';
+  }
+  ?>
+  </div>
+
+                     <input type="text" name="menu2" id="menu2" value="{Saivi:$es_data['menu2']|default='楼盘介绍'}" class="px" data-validation-engine="validate[required,minSize[2],maxSize[4]]"> &nbsp;
+<input type="input" class="px"  value="{Saivi:$es_data['picurl2']}" name="picurl2" id="img2" style="width:400px" data-validation-engine="validate[required,custom[url]]" data-errormessage-value-missing="必须选择(上传)图片!!"  data-errormessage-custom-error="如果是手动填写,正确的网址,如: http://www.yourdomain.com/images/demo.png">  <a href="###" onclick="chooseFile('img2','icon')" class="a_upload">选择</a> <a href="###" onclick="upyunPicUpload('img2',236,236,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('img2')">预览</a>
+  <br/>
+  <div style="margin:10px 0">您可以点击下面这些图片作为图标（直接点击即可）236 × 236</div>
+  <div style="background:#eee;width:570px;margin:10px 0;text-align:center">
+  <?php
+  for ($i=1;$i<20;$i++){
+    echo '<img onclick="document.getElementById(\'img2\').value=this.src" style="width:30px;cursor:pointer;" src="tpl/User/default/common/images/photo/plugmenu'.$i.'.png" />';
+  }
+  ?>
+  </div>
+                    <br>
+                     <input type="text" name="menu3" id="menu3" value="{Saivi:$es_data['menu3']|default='户型全景'}"class="px" data-validation-engine="validate[required,minSize[2],maxSize[4]]"> &nbsp;
+<input type="input" class="px"  value="{Saivi:$es_data['picurl3']}" name="picurl3" id="img3" style="width:400px" data-validation-engine="validate[required,custom[url]]" data-errormessage-value-missing="必须选择(上传)图片!!"  data-errormessage-custom-error="如果是手动填写,正确的网址,如: http://www.yourdomain.com/images/demo.png">  <a href="###" onclick="chooseFile('img3','icon')" class="a_upload">选择</a> <a href="###" onclick="upyunPicUpload('img3',236,236,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('img3')">预览</a>
+  <br/>
+  <div style="margin:10px 0">您可以点击下面这些图片作为图标（直接点击即可）236 × 236</div>
+  <div style="background:#eee;width:570px;margin:10px 0;text-align:center">
+  <?php
+  for ($i=1;$i<20;$i++){
+    echo '<img onclick="document.getElementById(\'img3\').value=this.src" style="width:30px;cursor:pointer;" src="tpl/User/default/common/images/photo/plugmenu'.$i.'.png" />';
+  }
+  ?>
+  </div>
+                     <input type="text" name="menu4" id="menu4" value="{Saivi:$es_data['menu4']|default='楼盘相册'}" class="px" data-validation-engine="validate[required,minSize[2],maxSize[4]]"> &nbsp;
+<input type="input" class="px"  value="{Saivi:$es_data['picurl4']}" name="picurl4" id="img4" style="width:400px" data-validation-engine="validate[required,custom[url]]" data-errormessage-value-missing="必须选择(上传)图片!!"  data-errormessage-custom-error="如果是手动填写,正确的网址,如: http://www.yourdomain.com/images/demo.png">  <a href="###" onclick="chooseFile('img4','icon')" class="a_upload">选择</a> <a href="###" onclick="upyunPicUpload('img4',236,236,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('img4')">预览</a>
+  <br/>
+  <div style="margin:10px 0">您可以点击下面这些图片作为图标（直接点击即可）236 × 236</div>
+  <div style="background:#eee;width:570px;margin:10px 0;text-align:center">
+  <?php
+  for ($i=1;$i<20;$i++){
+    echo '<img onclick="document.getElementById(\'img4\').value=this.src" style="width:30px;cursor:pointer;" src="tpl/User/default/common/images/photo/plugmenu'.$i.'.png" />';
+  }
+  ?>
+  </div>
+                    <br>
+                     <input type="text" name="menu5" id="menu5" value="{Saivi:$es_data['menu5']|default='楼盘信息'}" class="px" data-validation-engine="validate[required,minSize[2],maxSize[4]]"> &nbsp;
+<input type="input" class="px"  value="{Saivi:$es_data['picurl5']}" name="picurl5" id="img5" style="width:400px" data-validation-engine="validate[required,custom[url]]" data-errormessage-value-missing="必须上传图片!"  data-errormessage-custom-error="如果是手动填写,正确的网址,如: http://www.yourdomain.com/images/demo.png">  <a href="###" onclick="chooseFile('img5','icon')" class="a_upload">选择</a> <a href="###" onclick="upyunPicUpload('img5',236,236,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('img5')">预览</a>
+  <br/>
+  <div style="margin:10px 0">您可以点击下面这些图片作为图标（直接点击即可）236 × 236</div>
+  <div style="background:#eee;width:570px;margin:10px 0;text-align:center">
+  <?php
+  for ($i=1;$i<20;$i++){
+    echo '<img onclick="document.getElementById(\'img5\').value=this.src" style="width:30px;cursor:pointer;" src="tpl/User/default/common/images/photo/plugmenu'.$i.'.png" />';
+  }
+  ?>
+  </div>
+
+                     <input type="text" name="menu6" id="menu6" value="{Saivi:$es_data['menu6']|default='点评印象'}" class="px" data-validation-engine="validate[required,minSize[2],maxSize[4]]"> &nbsp;
+<input type="input" class="px"  value="{Saivi:$es_data['picurl6']}" name="picurl6" id="img6" style="width:400px" data-validation-engine="validate[required,custom[url]]" data-errormessage-value-missing="必须选择(上传)图片!!"  data-errormessage-custom-error="如果是手动填写,正确的网址,如: http://www.yourdomain.com/images/demo.png">  <a href="###" onclick="chooseFile('img6','icon')" class="a_upload">选择</a> <a href="###" onclick="upyunPicUpload('img6',236,236,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('img6')">预览</a>
+  <br/>
+  <div style="margin:10px 0">您可以点击下面这些图片作为图标（直接点击即可）236 × 236</div>
+  <div style="background:#eee;width:570px;margin:10px 0;text-align:center">
+  <?php
+  for ($i=1;$i<20;$i++){
+    echo '<img onclick="document.getElementById(\'img6\').value=this.src" style="width:30px;cursor:pointer;" src="tpl/User/default/common/images/photo/plugmenu'.$i.'.png" />';
+  }
+  ?>
+  </div>
+                     <br>
+                     <input type="text" name="menu7" id="menu7" value="{Saivi:$es_data['menu7']|default='预约看房'}" class="px" data-validation-engine="validate[required,minSize[2],maxSize[4]]"> &nbsp;
+<input type="input" class="px"  value="{Saivi:$es_data['picurl7']}" name="picurl7" id="img7" style="width:400px" data-validation-engine="validate[required,custom[url]]" data-errormessage-value-missing="必须选择(上传)图片!!"  data-errormessage-custom-error="如果是手动填写,正确的网址,如: http://www.yourdomain.com/images/demo.png">  <a href="###" onclick="chooseFile('img7','icon')" class="a_upload">选择</a> <a href="###" onclick="upyunPicUpload('img7',236,236,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('img7')">预览</a>
+  <br/>
+  <div style="margin:10px 0">您可以点击下面这些图片作为图标（直接点击即可）236 × 236</div>
+  <div style="background:#eee;width:570px;margin:10px 0;text-align:center">
+  <?php
+  for ($i=1;$i<20;$i++){
+    echo '<img onclick="document.getElementById(\'img7\').value=this.src" style="width:30px;cursor:pointer;" src="tpl/User/default/common/images/photo/plugmenu'.$i.'.png" />';
+  }
+  ?>
+  </div>
+                    <input type="text" name="menu8" id="menu8" value="{Saivi:$es_data['menu8']|default='关于我们'}" class="px" data-validation-engine="validate[required,minSize[2],maxSize[4]]"> &nbsp;
+<input type="input" class="px"  value="{Saivi:$es_data['picurl8']}" name="picurl8" id="img8" style="width:400px" data-validation-engine="validate[required,custom[url]]" data-errormessage-value-missing="必须选择(上传)图片!"  data-errormessage-custom-error="如果是手动填写,正确的网址,如: http://www.yourdomain.com/images/demo.png">  <a href="###" onclick="chooseFile('img8','icon')" class="a_upload">选择</a> <a href="###" onclick="upyunPicUpload('img8',236,236,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('img8')">预览</a>
+  <br/>
+  <div style="margin:10px 0">您可以点击下面这些图片作为图标（直接点击即可）236 × 236</div>
+  <div style="background:#eee;width:570px;margin:10px 0;text-align:center">
+  <?php
+  for ($i=1;$i<20;$i++){
+    echo '<img onclick="document.getElementById(\'img8\').value=this.src" style="width:30px;cursor:pointer;" src="tpl/User/default/common/images/photo/plugmenu'.$i.'.png" />';
+  }
+  ?>
+  </div>
+
+                    </td>
+                </tr>
+    </div>
+  </div>
+
+
+
+  <div class="control-group">
+    <label for="coverurl" class="control-label">图文消息封面：</label>
+    <div class="controls">
+<if condition="$es_data['cover'] neq ''">
+      <img class="thumb_img" id="cover_src" src="{Saivi:$es_data['cover']|default=''}" style="max-height:100px;">
+</if>
+      <input type="input" class="px" id="cover" value="{Saivi:$es_data['cover']|default=''}" name="cover" >
+
+          <span class="help-inline">
+               <!--script src="{Saivi::STATICS}/upyun.js"></script--><a href="###" onclick="upyunPicUpload('cover',720,400,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('cover')">预览</a>
+              <span class="help-inline">建议尺寸：宽720像素，高400像素</span>
+          </span>
+       </div>
+  </div>
+  <div class="control-group">
+         <label class="control-label">楼盘头部图片：</label>
+                                    <div class="controls">
+                                    <if condition="$es_data['banner'] neq ''">
+                    <img class="thumb_img" id="banner_src" src="{Saivi:$es_data['banner']|default=''}" style="max-height:100px;">
+</if>
+                                            <input type="text" id="banner" name="banner" class="px" value="{Saivi:$es_data['banner']|default=''}">
+                                            <span class="help-inline">
+                                            <a href="###" onclick="upyunPicUpload('banner',720,400,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('banner')">预览</a>
+                                            <span class="help-inline">建议尺寸：宽720像素，高350像素</span>
+                                        </span>
+                                    </div>
+                                </div>
+  <div class="control-group">
+    <div class="control-group">
+                                    <label class="control-label">户型头部图片：</label>
+                                    <div class="controls">
+<if condition="$es_data['house_banner']">
+    <img class="thumb_img" id="house_banner_src" src="{Saivi:$es_data['house_banner']|default=''}" style="max-height:100px;">
+</if>
+
+                                        <input type="text" name="house_banner" id="house_banner" class="px" value="{Saivi:$es_data['house_banner']|default=''}">
+                                        <span class="help-inline">
+                                             <script src="{Saivi::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('house_banner',720,400,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('house_banner')">预览</a>
+                                            <span class="help-inline">建议尺寸：宽720像素，高350像素</span>
+                                        </span>
+                                    </div>
+                                </div>
+  </div>
+
+  <div class="control-group">
+                                    <label for="album_title" class="control-label">全景相册名称：</label>
+                                    <div class="controls">
+                                    <select id="panorama_id" name="panorama_id" class="input-medium" schoolSet>
+                                          <option value="0">请选择360全景相册</option>
+                                            <volist name="panorama" id="vo">
+                                               <option value="{Saivi:$vo['pid']}" <if condition="$vo['pid'] eq $es_data['panorama_id']">selected="selected"</if>>{Saivi:$vo['name']}</option>
+                                            </volist>
+                                        </select>
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">如果没有，请先到 <a href="{Saivi::U('Panorama/add',array('token'=>$token))}" class="btn"><strong><font color='red'>360°全景</strong></font></a>添加</span>
+
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">楼盘新闻：</label>
+                                    <div class="controls">
+                                     <select id="classify_id" name="classify_id" class="input-medium" schoolSet>
+                                          <option value="0">请选择3G楼盘新闻</option>
+                                            <volist name="classify" id="vo">
+                                               <option value="{Saivi:$vo['cid']}" <if condition="$vo['cid'] eq $es_data['classify_id']">selected="selected"</if>>{Saivi:$vo['name']}</option>
+                                            </volist>
+                                        </select>
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">如果没有，请先到<a href="{Saivi::U('Classify/add',array('token'=>$token))}" class="btn"> <strong><font color='red'>文章分类管理</strong></font></a>添加</span> <span class="maroon">注意：只能添加［图文回复］的［新增图文自定义回复］！</span>
+                                    </div>
+                                </div>
+
+  <div class="control-group">
+    <label for="video" class="control-label">楼盘视频：</label>
+    <div class="controls">
+       <input type="text" name="video" id="video" class="span4" style="width:480px" value="{Saivi:$es_data['video']}"><p>
+       支持优酷视频地址如：http://v.youku.com/v_show/id_XNDA1ODEyNjE2.html <br>
+       腾讯fash视频地址：如http://static.video.qq.com/TPout.swf?vid=v0119s27wd5&amp;auto=0 <br>
+       也支持mp4和ogg 格式地址 http://www.w3school.com.cn/example/html5/mov_bbb.mp4 </p>
+    </div>
+  </div>
+
+<script>
+function setlatlng(longitude,latitude){
+  art.dialog.data('longitude', longitude);
+  art.dialog.data('latitude', latitude);
+  // 此时 iframeA.html 页面可以使用 art.dialog.data('test') 获取到数据，如：
+  // document.getElementById('aInput').value = art.dialog.data('test');
+  art.dialog.open('{Saivi::U('Map/setLatLng',array('token'=>$token,'id'=>$id))}',{lock:false,title:'设置经纬度',width:600,height:400,yesText:'关闭',background: '#000',opacity: 0.87});
+}
+</script>
+<div class="control-group">
+    <label for="place" class="control-label">楼盘地址地址：</label>
+    <div class="controls">
+      <div class="input-prepend">
+         <input type="text" id="suggestId" class="span4 px"  name="place" value="{Saivi:$es_data['place']}" class="input-xlarge" schoolSet> <span class="maroon">*</span>
+      </div>
+    </div>
+  </div>
+    <div class="control-group">
+    <label for="suggestId" class="control-label">地图标识：</label>
+         <div class="controls">
+         经度 <input type="text" id="longitude"  name="lng" size="14" class="px" value="{Saivi:$es_data['lng']}" /> 纬度 <input type="text"  name="lat" size="14" id="latitude" class="px" value="{Saivi:$es_data['lat']}" /> <a href="###" onclick="setlatlng($('#longitude').val(),$('#latitude').val())">在地图中查看/设置</a>
+         </div>
+    </div>
+<div class="control-group">
+         <label for="estate_desc" class="control-label">楼盘简介：</label>
+         <div class="controls">
+             <textarea class="px" id="estate_desc" name="estate_desc" style="width: 605px; height: 150px;">{Saivi:$es_data['estate_desc']}</textarea>
+
+         </div>
+     </div>
+     <div class="control-group">
+         <label for="project_brief" class="control-label">项目简介：</label>
+         <div class="controls">
+             <textarea class="px" id="project_brief" name="project_brief" style="width: 605px; height: 150px; ">{Saivi:$es_data['project_brief']}</textarea>
+         </div>
+     </div>
+     <div class="control-group">
+        <label for="traffic_desc" class="control-label">交通配套：</label>
+        <div class="controls">
+            <textarea class="px" id="traffic_desc" name="traffic_desc" style="width: 605px; height: 150px; ">{Saivi:$es_data['traffic_desc']}</textarea>
+        </div>
+    </div>
+ <if condition="$es_data['id'] neq ''">
+<input type="hidden" name="id" value="{Saivi:$es_data['id']}" />
+</if>
+   <div class="form-actions">
+      <button id="bsubmit" type="submit" data-loading-text="提交中..." class="btnGreen">保存</button>　<button type="button" class="btnGray vm">取消</button>
+    </div>
+</form>
+  </div>
+
+
+        </div>
+
+<include file="Public:footer"/>

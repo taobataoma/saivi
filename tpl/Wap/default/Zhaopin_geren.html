@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html><head _wxhkphogpkobbkjccgfifhfjlahnoocnan_="shake_1.0"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/zhaopin/geren/main.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/zhaopin/geren/dialog.css" media="all">
+	<script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/geren/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/geren/main.js"></script>
+	<script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/geren/dialog_min.js"></script>
+	<title>个人求职添加</title>
+	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+	<meta name="Keywords" content="{Saivi:$f_siteName}">
+	<meta name="Description" content="{Saivi:$f_siteName}">
+	<!-- Mobile Devices Support @begin -->
+	<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+	<meta content="no-cache" http-equiv="pragma">
+	<meta content="0" http-equiv="expires">
+	<meta content="telephone=no, address=no" name="format-detection">
+	<meta name="apple-mobile-web-app-capable" content="yes"> <!-- apple devices fullscreen -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/geren/mymain.js"></script>
+<script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/geren/aSelect.js"></script>
+<script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/geren/aLocation.js"></script>
+<script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/geren/dater_min.js"></script>
+<link type="text/css" rel="stylesheet" href="chrome-extension://cpngackimfmofbokmjmljamhdncknpmg/style.css">
+<script type="text/javascript" charset="utf-8" src="chrome-extension://cpngackimfmofbokmjmljamhdncknpmg/js/page_context.js"></script>
+<script type="text/javascript">
+
+function submit1(){
+	var form = document.getElementById("form1");
+	var obj = {
+		name: form.name.value,
+		phone: form.phone.value,
+		job: form.job.value,
+		workarea:form.workarea.value,
+		introduce:form.introduce.value
+	}
+
+	if(obj.name.length<=0){
+		alert("请输入姓名", 1000);
+		return;
+	}
+
+	if(obj.phone.length<=0){
+		alert("请输入联系电话", 1000);
+		return;
+	}
+
+	if(obj.job.length<=0){
+		alert("请输入期望工作", 1000);
+		return;
+	}
+
+	if(obj.workarea.length<=0){
+		alert("请输入期望工作地点", 1000);
+		return;
+	}
+
+	if(obj.introduce.length<=0){
+		alert("请输入自我简介", 1000);
+		return;
+	}
+	
+	form.submit();
+}
+
+</script>
+<style type="text/css">
+.list_ul_card {
+margin: 10px;
+margin-top: 1px;
+border: 1px solid #c3cfd0;
+}
+*[data-card] header {
+padding: 10px 30px;
+-webkit-box-sizing: border-box;
+background: -webkit-gradient(linear, 0 0, 100% 0, from(#ebebeb), to(#ebebeb), color-stop(30%, #ebebeb));
+}
+.info_tx {
+background: #fff;
+}
+.list_ul_card *[data-card] header label span {
+display: inline-block;
+width: 40px;
+height: 40px;
+background: url(/tpl/Wap/default/common/zhaopin/icons12.png) no-repeat center -106px;
+-webkit-background-size: 50px auto;
+}
+.list_ul_card *[data-card] header label {
+display: block;
+line-height: 40px;
+color: #ee5871; 
+font-size: 18px;
+}
+.button {
+background: #ee5871;
+}
+</style></head>
+
+<body onselectstart="return true;" ondragstart="return false;" style="">
+
+<div class="container info_tx">
+	<div class="body pt_10">
+		<ul class="list_ul_card">
+		<li data-card="">
+		
+			<form id="form1" action="" method="post">
+				<header class="center">
+					<label style="display:inline-block;"><span>&nbsp;</span>个人简历登记表</label>
+				</header>
+								<div class="forms">
+						<dl>
+							<dt>姓名： </dt>
+							<dd>
+								<input type="text" name="name" id="name" placeholder="请填写姓名" maxlength="10" class="input">
+							</dd>
+						</dl>
+						<dl>
+							<dt>性别： </dt>
+							<dd>
+								<select name="sex" id="sex" class="select" style="width:100%;">
+									<option value="男">男</option>
+									<option value="女">女</option>
+								</select>                        
+							</dd>
+						</dl>
+                        <dl>
+							<dt>年龄： </dt>
+							<dd>
+								<input type="text" name="age" id="age" placeholder="请填年龄" maxlength="10" class="input">                   
+							</dd>
+						</dl>
+						<dl>
+							<dt>出生年月：</dt>
+							<dd><select name="year" id="year" class="select"><option value="1960">1960</option><option value="1961">1961</option><option value="1962">1962</option><option value="1963">1963</option><option value="1964">1964</option><option value="1965">1965</option><option value="1966">1966</option><option value="1967">1967</option><option value="1968">1968</option><option value="1969">1969</option><option value="1970">1970</option><option value="1971">1971</option><option value="1972">1972</option><option value="1973">1973</option><option value="1974">1974</option><option value="1975">1975</option><option value="1976">1976</option><option value="1977">1977</option><option value="1978">1978</option><option value="1979">1979</option><option value="1980">1980</option><option value="1981">1981</option><option value="1982">1982</option><option value="1983">1983</option><option value="1984">1984</option><option value="1985">1985</option><option value="1986">1986</option><option value="1987">1987</option><option value="1988">1988</option><option value="1989">1989</option><option value="1990">1990</option><option value="1991">1991</option><option value="1992">1992</option><option value="1993">1993</option><option value="1994">1994</option><option value="1995">1995</option><option value="1996">1996</option><option value="1997">1997</option><option value="1998">1998</option><option value="1999">1999</option><option value="2000">2000</option><option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option><option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option><option value="2013">2013</option>								</select>
+							<a>&nbsp;年&nbsp;</a><select name="month" id="month" class="select"><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>								</select>
+							<a>&nbsp;月&nbsp;</a><select name="day" id="date" class="select"><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>								</select>
+							<a>&nbsp;日&nbsp;</a>
+							</dd>
+						</dl>
+<!--                         <dl>
+							<dt>籍贯： </dt>
+							<dd>
+								<input type="text" name="jiguan" id="jiguan"  placeholder="请填写籍贯" maxlength="10" class="input">
+							</dd>
+						</dl> -->
+                        <dl>
+							<dt>联系电话： </dt>
+							<dd>
+								<input type="text" name="phone" id="phone" placeholder="请填写常用联系电话" maxlength="20" class="input">
+							</dd>
+						</dl>
+
+						<dl>
+							<dt>学历： </dt>
+							<dd>
+								<select name="education" id="education" class="select" style="width:100%;">
+																		<option value="初中及以下">初中及以下</option>
+																		<option value="高中">高中</option>
+																		<option value="大专">大专</option>
+																		<option value="本科">本科</option>
+																		<option value="硕士及以上">硕士及以上</option>
+																	</select>
+							</dd>
+						</dl>
+<!-- 						<dl>
+							<dt>毕业学校： </dt>
+							<dd>
+								<input type="text" name="school" id="school"  placeholder="请填写毕业学校" maxlength="30" class="input">
+							</dd>
+						</dl> -->
+                        <dl>
+							<dt>期望工作： </dt>
+							<dd>
+								<input type="text" name="job" id="job" placeholder="请填写期望工作" maxlength="20" class="input">
+							</dd>
+						</dl>
+                        
+                        <dl>
+							<dt>期望薪资： </dt>
+							<dd>
+								<select name="salary" id="salary" class="select" style="width:100%;">
+																		<option value="1000-3000">1000-3000</option>
+																		<option value="3000-5000">3000-5000</option>
+																		<option value="5000-7000">5000-7000</option>
+																		<option value="7000-10000">7000-10000</option>
+																		<option value="10000以上">10000以上</option>
+																	</select>
+								</dd>
+						</dl>
+                        <dl>
+							<dt>期望工作地点： </dt>
+							<dd>
+								<input type="text" name="workarea" id="workarea" placeholder="请填写期望工作地点" maxlength="20" class="input">
+							</dd>
+						</dl>
+                        
+                        <dl>
+							<dt>自我简介： </dt>
+							<dd>
+								<fieldset><textarea name="introduce" id="introduce" class="textarea" placeholder="请简单的介绍一下你自己" rows="5" style="width:100%"></textarea></fieldset>
+							</dd>
+						</dl>
+                        
+                        <dl>
+							<dt>有效期： </dt>
+							<dd>
+								<select name="validTime" id="validTime" class="select" style="width:100%;">
+																		<option value="3">3天</option>
+																		<option value="5">5天</option>
+																		<option value="10">10天</option>
+																		<option value="15" selected="">15天</option>
+																		<option value="20">20天</option>
+																		<option value="30">30天</option>
+																	</select>
+							</dd>
+						</dl>
+                        <button style="width:100%" type="submit" class="button">提&nbsp;&nbsp;交</button>  
+				</div></form></li>
+			
+			
+		</ul>
+	</div>
+
+<style type="text/css">
+	.back360{
+    display:inline-block;
+    width:40px;
+    height:40px;
+    position:fixed;
+    bottom:10px;
+    left:10px;
+    z-index:1000;
+    border-radius:60px;
+    background:url('../../images/wap/back.png') no-repeat center center;
+    background-size:100% 100%;
+}
+</style>
+<a href="javascript:history.go(-1);" class="back360" style="">&nbsp;</a>
+<!-- 			<footer>
+				<nav class="nav_add_addr">
+					<ul class="tbox">
+						<li>
+							<a href="wap.php?m=wxuser&a=main&wxid=olqrhjkniK_cMuV-IRKG6aMlmy-Q" class="icons icons_before">&nbsp;</a>
+						</li>
+					</ul>
+				</nav>
+			</footer> -->
+</div>
+
+<script>
+
+
+
+(function(){
+	   var onBridgeReady=function(){
+	   WeixinJSBridge.on('menu:share:appmessage', function(argv){
+	      WeixinJSBridge.invoke('sendAppMessage',{
+	         "appid":dataForWeixin.appId,
+	         "img_url":dataForWeixin.MsgImg,
+	         "img_width":"640",
+	         "img_height":"640",
+	         "link":dataForWeixin.path,
+	         "desc":dataForWeixin.desc,
+	         "title":dataForWeixin.title
+	      }, function(res){(dataForWeixin.callback)();});
+	   });
+	   WeixinJSBridge.on('menu:share:timeline', function(argv){
+		  (dataForWeixin.callback)();
+		  WeixinJSBridge.invoke('shareTimeline',{
+	         "img_url":dataForWeixin.TLImg,
+	         "img_width":"640",
+	         "img_height":"640",
+	         "link":dataForWeixin.path,
+	         "desc":dataForWeixin.desc,
+	         "title":dataForWeixin.title
+	      }, function(res){});
+	   });
+	   WeixinJSBridge.on('menu:share:weibo', function(argv){
+		  WeixinJSBridge.invoke('shareWeibo',{
+	         "content":dataForWeixin.title,
+	         "url":dataForWeixin.path
+	      }, function(res){(dataForWeixin.callback)();});
+	   });
+	   WeixinJSBridge.on('menu:share:facebook', function(argv){
+		  (dataForWeixin.callback)();
+		  WeixinJSBridge.invoke('shareFB',{
+	         "img_url":dataForWeixin.TLImg,
+	         "img_width":"640",
+	         "img_height":"640",
+	         "link":dataForWeixin.path,
+	         "desc":dataForWeixin.desc,
+	         "title":dataForWeixin.title
+	      }, function(res){});
+	   });
+	};
+	if(document.addEventListener){
+	   document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+	}else if(document.attachEvent){
+	   document.attachEvent('WeixinJSBridgeReady'   , onBridgeReady);
+	   document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
+	}
+	})();
+	var _cookie={
+		_set:function(name,value,expires){
+		   if(expires){
+			  var _end = new Date();
+			  _end.setTime(_end.getTime()+(expires*1000));
+		    }
+		    document.cookie=name+"="+escape(value)+(expires ? ";expires="+_end.toGMTString() : "")+"; path=/";
+	    },
+		_get:function(name){
+	       var _cookie=document.cookie;
+	       var _start=_cookie.indexOf(name+"=");
+	       if(_start!=-1){
+	          _start+=name.length+1;
+	          var _end=_cookie.indexOf(";",_start);
+	          if(_end==-1){_end = _cookie.length;}
+	          return unescape(_cookie.substring(_start,_end));
+	        }
+	        return "";
+	    }
+	};
+</script><!-- <footer style="margin-top: 1px;"><a class="" href="http://mp.weixin.qq.com/s?__biz=MjM5NzE1Mzk0Mg==&mid=200035509&idx=1&sn=85296d44e36bce522fdc279639878e75#rd">&copy;2012-2014&nbsp;聚微乐城市生活</a></footer>
+</div> -->
+
+ <script type="text/javascript">
+			window.shareData = {  
+					"moduleName":"Zhaopin",
+					"moduleID": '0',
+					"imgUrl": "{Saivi:$date.tp}", 
+					"timeLineLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"sendFriendLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"weiboLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"tTitle": "{Saivi:$date.title}",
+					"tContent": "{Saivi:$date.info}"
+				};
+		</script>
+        	
+        {Saivi:$shareScript}
+
+
+</body></html>

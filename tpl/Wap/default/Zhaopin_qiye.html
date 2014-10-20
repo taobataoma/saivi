@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!-- saved from url=(0086)http://xiangshan.juweile.com/wap.php?m=recruit&a=add&wxid=olqrhjkniK_cMuV-IRKG6aMlmy-Q -->
+<html><head _wxhkphogpkobbkjccgfifhfjlahnoocnan_="shake_1.0"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/zhaopin/qiye/main.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/zhaopin/qiye/dialog.css" media="all">
+	<script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/qiye/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/qiye/main.js"></script>
+	<script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/qiye/dialog_min.js"></script>
+	<title>添加招聘信息</title>
+	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+	<meta name="Keywords" content="{Saivi:$f_siteName}">
+	<meta name="Description" content="{Saivi:$f_siteName}">
+	<!-- Mobile Devices Support @begin -->
+	<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+	<meta content="no-cache" http-equiv="pragma">
+	<meta content="0" http-equiv="expires">
+	<meta content="telephone=no, address=no" name="format-detection">
+	<meta name="apple-mobile-web-app-capable" content="yes"> <!-- apple devices fullscreen -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/qiye/mymain.js"></script>
+<script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/qiye/aSelect.js"></script>
+<script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/qiye/aLocation.js"></script>
+<script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/qiye/dater_min.js"></script>
+<link type="text/css" rel="stylesheet" href="chrome-extension://cpngackimfmofbokmjmljamhdncknpmg/style.css">
+<script type="text/javascript" charset="utf-8" src="chrome-extension://cpngackimfmofbokmjmljamhdncknpmg/js/page_context.js"></script>
+<script type="text/javascript">
+
+function submit1(){
+	var form = document.getElementById("form1");
+	var obj = {
+		shopname: form.shopname.value,
+		address: form.address.value,
+		title: form.title.value,
+		content:form.content.value,
+		person:form.person.value,
+		contact:form.contact.value
+	}
+
+	if(obj.shopname.length<=0){
+		alert("请输入完整企业名称", 1000);
+		return;
+	}
+
+	if(obj.title.length<=0){
+		alert("请输入招聘职位", 1000);
+		return;
+	}
+
+	if(obj.address.length<=0){
+		alert("请输入工作地点", 1000);
+		return;
+	}
+
+	if(obj.content.length<=0){
+		alert("请输入招聘要求", 1000);
+		return;
+	}
+	
+	if(obj.person.length<=0){
+		alert("请输入联系人", 1000);
+		return;
+	}
+	
+	form.submit();
+}
+
+</script>
+</head>
+<body onselectstart="return true;" ondragstart="return false;" style="">
+
+<div class="container info_tx">
+	<div class="body pt_10">
+		<ul class="list_ul_card">
+		<li data-card="">
+		
+			<form id="form1" action="" method="post">
+				<header class="center">
+					<label style="display:inline-block;"><span>&nbsp;</span>发布招聘信息</label>
+				</header>
+								<div class="forms">
+						<dl>
+							<dt>企业名称： </dt>
+							<dd>
+								<input type="text" name="jigou" id="shopname" placeholder="请填写公司名称" maxlength="100" class="input">
+							</dd>
+						</dl>
+                        
+                        <dl>
+							<dt>招聘职位： </dt>
+							<dd>
+								<input type="text" name="gangwei" id="title" placeholder="请填写职位名称" maxlength="100" class="input">
+							</dd>
+						</dl>
+
+						<dl>
+							<dt>岗位分类： </dt>
+							<dd>
+								<select name="leibie" id="job_type" class="select" style="width:100%;">
+																		<option value="服务/销售">服务/销售</option>
+																		<option value="电子/商务">电子/商务</option>
+																		<option value="普工/技工">普工/技工</option>
+																		<option value="市场/运营">市场/运营</option>
+																	</select>
+							</dd>
+						</dl>
+                        
+                         <dl>
+							<dt>招聘人数： </dt>
+							<dd>
+								<select name="ren" id="employee_num" class="select" style="width:100%;">
+																		<option value="1-3人">1-3人</option>
+																		<option value="4-5人">4-5人</option>
+																		<option value="6-8人">6-8人</option>
+																		<option value="9-12人">9-12人</option>
+																		<option value="12人以上">12人以上</option>
+																	</select>
+							</dd>
+						</dl>
+                        
+                        <dl>
+							<dt>薪资水平： </dt>
+							<dd>
+								<select name="xinzi" id="salary" class="select" style="width:100%;">
+																		<option value="1000-3000">1000-3000</option>
+																		<option value="3000-5000">3000-5000</option>
+																		<option value="5000-7000">5000-7000</option>
+																		<option value="7000-10000">7000-10000</option>
+																		<option value="10000以上">10000以上</option>
+																		<option value="面议">面议</option>
+																	</select>
+								</dd>
+						</dl>
+                        
+                        <dl>
+							<dt>工作地点： </dt>
+							<dd>
+								<input type="text" name="address" id="address" placeholder="请填写具体工作地点" maxlength="30" class="input">
+							</dd>
+						</dl>
+                        
+                        <dl>
+							<dt>请选择本次招聘有效期： </dt>
+							<dd>
+								<select name="validTime" id="validTime" class="select" style="width:100%;">
+																		<option value="3">3天</option>
+																		<option value="5">5天</option>
+																		<option value="10">10天</option>
+																		<option value="15" selected="">15天</option>
+																		<option value="20">20天</option>
+																		<option value="30">30天</option>
+																	</select>
+								</dd>
+						</dl>  
+                        
+                        <dl>
+							<dt>招聘具体要求及备注： </dt>
+							<dd>
+								<fieldset><textarea name="yaoqiu" id="content" class="textarea" placeholder="请填写该职位的任职要求" rows="5" style="width:100%"></textarea></fieldset>
+							</dd>
+						</dl>
+                        
+                        <dl>
+							<dt>联系人： </dt>
+							<dd>
+								<input type="text" name="people" id="person" placeholder="请填写联系人姓名" maxlength="30" class="input">
+							</dd>
+						</dl>
+                        
+                        <dl>
+							<dt>联系电话： </dt>
+							<dd>
+								<input type="text" name="tell" id="contact" placeholder="请填写联系人电话" maxlength="30" class="input">
+							</dd>
+						</dl>
+                       
+				</div><div class="pt_10 pb_10">
+					<button style="width:100%" type="submit" class="button">发&nbsp;&nbsp;布</button>
+				</div></form></li>
+				
+			
+		</ul>
+	</div>
+
+<style type="text/css">
+	.back360{
+    display:inline-block;
+    width:40px;
+    height:40px;
+    position:fixed;
+    bottom:10px;
+    left:10px;
+    z-index:1000;
+    border-radius:60px;
+    background:url('../../images/wap/back.png') no-repeat center center;
+    background-size:100% 100%;
+}
+</style>
+<a href="javascript:history.go(-1);" class="back360" style="">&nbsp;</a>
+<!-- 			<footer>
+				<nav class="nav_add_addr">
+					<ul class="tbox">
+						<li>
+							<a href="wap.php?m=wxuser&a=main&wxid=olqrhjkniK_cMuV-IRKG6aMlmy-Q" class="icons icons_before">&nbsp;</a>
+						</li>
+					</ul>
+				</nav>
+			</footer> -->
+</div>
+
+<script>
+
+
+
+(function(){
+	   var onBridgeReady=function(){
+	   WeixinJSBridge.on('menu:share:appmessage', function(argv){
+	      WeixinJSBridge.invoke('sendAppMessage',{
+	         "appid":dataForWeixin.appId,
+	         "img_url":dataForWeixin.MsgImg,
+	         "img_width":"640",
+	         "img_height":"640",
+	         "link":dataForWeixin.path,
+	         "desc":dataForWeixin.desc,
+	         "title":dataForWeixin.title
+	      }, function(res){(dataForWeixin.callback)();});
+	   });
+	   WeixinJSBridge.on('menu:share:timeline', function(argv){
+		  (dataForWeixin.callback)();
+		  WeixinJSBridge.invoke('shareTimeline',{
+	         "img_url":dataForWeixin.TLImg,
+	         "img_width":"640",
+	         "img_height":"640",
+	         "link":dataForWeixin.path,
+	         "desc":dataForWeixin.desc,
+	         "title":dataForWeixin.title
+	      }, function(res){});
+	   });
+	   WeixinJSBridge.on('menu:share:weibo', function(argv){
+		  WeixinJSBridge.invoke('shareWeibo',{
+	         "content":dataForWeixin.title,
+	         "url":dataForWeixin.path
+	      }, function(res){(dataForWeixin.callback)();});
+	   });
+	   WeixinJSBridge.on('menu:share:facebook', function(argv){
+		  (dataForWeixin.callback)();
+		  WeixinJSBridge.invoke('shareFB',{
+	         "img_url":dataForWeixin.TLImg,
+	         "img_width":"640",
+	         "img_height":"640",
+	         "link":dataForWeixin.path,
+	         "desc":dataForWeixin.desc,
+	         "title":dataForWeixin.title
+	      }, function(res){});
+	   });
+	};
+	if(document.addEventListener){
+	   document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+	}else if(document.attachEvent){
+	   document.attachEvent('WeixinJSBridgeReady'   , onBridgeReady);
+	   document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
+	}
+	})();
+	var _cookie={
+		_set:function(name,value,expires){
+		   if(expires){
+			  var _end = new Date();
+			  _end.setTime(_end.getTime()+(expires*1000));
+		    }
+		    document.cookie=name+"="+escape(value)+(expires ? ";expires="+_end.toGMTString() : "")+"; path=/";
+	    },
+		_get:function(name){
+	       var _cookie=document.cookie;
+	       var _start=_cookie.indexOf(name+"=");
+	       if(_start!=-1){
+	          _start+=name.length+1;
+	          var _end=_cookie.indexOf(";",_start);
+	          if(_end==-1){_end = _cookie.length;}
+	          return unescape(_cookie.substring(_start,_end));
+	        }
+	        return "";
+	    }
+	};
+</script> <script type="text/javascript">
+			window.shareData = {  
+					"moduleName":"Zhaopin",
+					"moduleID": '0',
+					"imgUrl": "{Saivi:$date.tp}", 
+					"timeLineLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"sendFriendLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"weiboLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"tTitle": "{Saivi:$date.title}",
+					"tContent": "{Saivi:$date.info}"
+				};
+		</script>
+        	
+        {Saivi:$shareScript}
+
+
+
+</body></html>

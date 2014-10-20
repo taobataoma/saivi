@@ -1,0 +1,408 @@
+﻿
+
+
+
+<!DOCTYPE html>
+
+
+
+<html>
+
+
+
+    <head>
+
+
+
+        <meta charset="utf-8" />
+
+
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/yuyue/common.css" media="all" />
+
+
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/yuyue/datepicker.css" media="all" />
+
+
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/yuyue/onlinebooking.css" media="all" />
+
+
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/yuyue/weimob-ui-1-1.css" media="all" />
+
+
+
+<script type="text/javascript" src="{Saivi::RES}/js/yuyue/jQuery.js"></script>
+
+
+
+<script type="text/javascript" src="{Saivi::RES}/js/yuyue/jquery-ui.js"></script>
+
+
+
+<script type="text/javascript" src="{Saivi::RES}/js/yuyue/swipe.js"></script>
+
+<script src="{Saivi::RES}/js/yuyue/jquery.flexslider-min.js"></script>
+
+
+<title>{Saivi:$info.name}</title>
+
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+
+
+		<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+
+
+
+        <meta name="Keywords" content="微享、微信营销、微信代运营、微信定制开发、微信托管、微网站、微商城、微营销" />
+
+
+
+        <meta name="Description" content="微享，国内最大的微信公众智能服务平台，微享八大微体系：微菜单、微官网、微会员、微活动、微商城、微推送、微服务、微统计，企业微营销必备。" />
+
+
+
+        <!-- Mobile Devices Support @begin -->
+
+
+
+            <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+
+
+
+            <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+
+
+
+            <meta content="no-cache" http-equiv="pragma">
+
+
+
+            <meta content="0" http-equiv="expires">
+
+
+
+            <meta content="telephone=no, address=no" name="format-detection">
+
+
+
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+
+            <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+
+
+
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+
+
+        <!-- Mobile Devices Support @end -->
+
+
+
+        <link rel="shortcut icon" href="img/favicon.ico" />
+
+
+
+       
+
+
+           
+
+
+
+<script>
+$(window).load(function() {
+	$('.flexslider').flexslider({
+		directionNav: false,
+		pauseOnAction: false
+	});
+});
+</script>
+<style>
+img{ width:100%}
+* { margin: 0; padding: 0;}
+.flexslider { position: relative; overflow: hidden;background: url(images/loading.gif) 50% no-repeat;}
+.slides { position: relative; z-index: 1;}
+.slides li { height: 100%;}
+.flex-control-nav { position: absolute; bottom: 10px; z-index: 2; width: 100%; text-align: center;}
+.flex-control-nav li { display: inline-block; width: 14px; height: 14px; margin: 0 5px; *display: inline; zoom: 1;}
+.flex-control-nav a { display: inline-block; width: 14px; height: 14px; line-height: 40px; overflow: hidden; background: url(/tpl/Wap/default/common/js/yuyue/dot.png) right 0 no-repeat; cursor: pointer;}
+.flex-control-nav .flex-active { background-position: 0 0;}
+.link_tel {
+display: block!important;
+line-height: 40px!important;
+background: #EA5946;
+color: white!important;
+text-align: center;
+word-spacing: nowrap;
+overflow: hidden;
+font-size: 18px;
+position: relative;
+margin: 0;
+margin-top: 0px!important;
+border-radius: 0;
+}
+.round li.tel {
+background: url(/tpl/Wap/default/common/css/img/tel.png) no-repeat scroll 11px 13px transparent;
+background-size: 15px 15px;
+line-height: 40px;
+padding-left: 34px;
+height: 40px;
+font-size: 16px;
+color: #090909;
+}
+
+</style>
+
+    </head>
+
+
+
+    <body onselectstart="return true;" ondragstart="return false;">
+<div style="float:none;width:100%;" class="headselect">
+	<a class="link_tel icon-phone">{Saivi:$info.name}详细介绍</a>
+</div>
+<div class="flexslider">
+	<ul class="slides">
+   <foreach name='flash[picurl]' item='i'>
+
+      <li><img src="{Saivi:$i}"></li>
+
+    </foreach>
+
+		
+	</ul>
+</div>
+
+
+	<div class="cardexplain">
+
+
+
+	<!--后台可控制是否显示-->
+
+
+
+	<ul class="round">
+
+
+
+		<li class="biaotou bradius pad">
+
+
+
+			<table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+
+
+				<tr>
+
+
+
+					<td>商家最新动态</td>
+
+
+					</tr>
+
+
+
+			</table>
+
+
+
+		</li>
+
+
+
+		<li>
+
+
+
+			<span class="noneorder">
+
+
+
+			<table class="jiagebiao" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+
+
+				<tr>
+
+
+
+					<td>{Saivi:$info.info}</td>
+
+
+
+					
+                   
+
+
+
+				</tr>
+
+
+
+			</table>
+
+
+
+			</span>
+
+
+
+		</li>
+
+
+
+	</ul>
+
+
+
+	
+
+
+
+	<ul class="round">
+
+
+
+		<li>
+
+
+
+			<h2 >商家地址</h2>
+
+
+
+			<div class="text"><a href=" http://api.map.baidu.com/marker?location={Saivi:$vo['lat']},{Saivi:$vo['lng']}&title={Saivi:$vo['name']}&name={Saivi:$vo['info']}&content={Saivi:$vo['address']}&output=html&src=weiba|weiweb">{Saivi:$info.address}</a></div>
+
+
+
+		</li>
+
+
+
+		<li class="tel"><a href="tel:{Saivi:$info.tel}">商家电话：{Saivi:$info.tel}</a></li>
+
+
+
+	</ul>
+    
+    <ul class="round">
+
+
+
+		<li>
+
+
+
+			<h2>商家详细介绍</h2>
+
+
+
+			<div class="text">{Saivi:$info.messages|htmlspecialchars_decode}</div>
+
+
+
+		</li>
+
+
+
+		
+
+
+
+	</ul>
+
+
+
+
+
+
+
+	<!--后台可控制是否显示-->
+
+
+
+
+
+
+
+	<ul class="round roundyellow" style="display:none;">
+
+
+
+		<li class="userinfo"><a href="dingdan"><span>请完善个人资料再填表单</span></a></li>
+
+
+
+	</ul>
+
+
+
+
+
+
+
+	<!--粉丝填写过的信息的，直接就显示名字电话，粉丝没有填写过信息的话，这里就直接留空让粉丝填写-->
+
+
+
+
+	
+
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer style="text-align:center; color:#ffd800;margin-right:20px;margin-top:0px;"><a>{Saivi:$copyright.copyright}
+</a></footer>
+
+
+
+         		<div mark="stat_code" style="width:0px; height:0px; display:none;">
+
+
+
+					</div>
+
+
+
+
+</body>
+ <script type="text/javascript">
+window.shareData = {  
+            "moduleName":"Fenlei",
+            "moduleID":"{Saivi:$info.id}",
+            "imgUrl": "{Saivi:$info.banner}", 
+            "sendFriendLink": "{Saivi:$f_siteUrl}{Saivi::U('Fenlei/xiangqing',array('token'=>$_GET['token'], 'pid'=>$_GET['pid'],'id'=>$_GET['id']))}",
+            "tTitle": "{Saivi:$info.name}",
+            "tContent": "{Saivi:$info.info|substr=0,60}"
+};
+</script>
+{Saivi:$shareScript}
+
+
+
+</html>

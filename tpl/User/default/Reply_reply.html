@@ -1,0 +1,194 @@
+<include file="Public:head"/> 
+<style type="text/css">
+body,h2{margin:0;padding:0;}
+#faqbg{background-color:#666666;position:absolute;z-index:99;left:0;top:0;display:none;width:100%;height:1000px;opacity:0.5;filter:alpha(opacity=50);-moz-opacity:0.5;}
+#faqdiv{position:absolute;width:600px;left:50%;top:50%;margin-left:-300px;height:auto;z-index:100;background-color:#fff;border:1px #8FA4F5 solid;padding:1px;}
+#faqdiv h2{height:25px;font-size:14px;background-color:#BABABA;position:relative;padding-left:10px;line-height:25px;}
+#faqdiv h2 a{position:absolute;right:5px;font-size:12px;color:#FF0000;}
+#faqdiv .form{padding:10px;}
+</style>
+ <link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/plugins/code/prettify.css" />
+<script src="{Saivi::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+<script src="{Saivi::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+<script src="{Saivi::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/js/formCheck/formcheck.js"> </script>
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<script src="{Saivi::RES}/js/jquery.min.js"></script>
+<script>
+
+//弹出层start
+$(function(){
+	$(".but").click(function(){
+            var messageid = $(this).attr("messageid");
+		//var str = "这里是信息内容，这里是信息内容！";
+		$(".form").html(messageid);
+		$("#faqbg").css({display:"block",height:$(document).height()});
+		var yscroll =document.documentElement.scrollTop;
+		$("#faqdiv").css("top","100px");
+		$("#faqdiv").css("display","block");
+		document.documentElement.scrollTop=0;
+	});
+	$(".close").click(function(){
+		$("#faqbg").css("display","none");
+		$("#faqdiv").css("display","none");
+	});
+})
+//弹出层end
+
+    //校验提交是否为空
+    function check(){
+       if( document.getElementById("addcontent").value.length < 1){
+           alert("请输入回复内容");
+           return false;
+       }
+    }
+
+$(document).ready(function(){
+    $("#selected").click(function () {//反选  
+       $("input[name='items']").each(function(){
+	            if (this.checked) {
+	                this.checked = false;
+	            }
+	            else {
+	                this.checked = true;
+	            }
+	        });
+    }); 
+    $("#addbtn").click(function(){//显示/隐藏添加回复框
+        $("#showmsg").toggle();
+    });
+
+    $("#checked").click(function(){//选中全部审核
+        var chk_value =[]; 
+        var token = $("#tokened").val();
+        $('input[name="items"]:checked').each(function(){    
+            chk_value.push($(this).val());    
+        }); 
+        if(chk_value.length==0){
+            alert("你还未选择要操作的项！");
+            return;
+        }
+
+        $.ajax({
+            type:"get",
+            url:"index.php?g=User&m=Reply&a=replyChk&token={Saivi:$token}&chk_value="+chk_value,
+            success:function(result){
+                 $("input[name='items']").each(function(){
+	            if (this.checked) {
+	                this.checked = false;
+	            }
+	        });
+	            //alert(result);
+                window.location.reload();
+            }
+        });
+    });  
+})
+$(document).on("click","#del",function(){  
+    var chk_value =[]; 
+    var token = $("#tokened").val();
+    $('input[name="items"]:checked').each(function(){    
+        chk_value.push($(this).val());    
+    }); 
+    if(chk_value.length==0){
+        alert("你还未选择要操作的项！");
+        return;
+    } 
+    $.ajax({
+        type:"get",
+        url:"index.php?g=User&m=Reply&a=replyDel&token="+token+"&chk_value="+chk_value,
+        success:function(result){
+            $("input[name='items']").each(function(){
+	            if (this.checked) {
+	                this.checked = false;
+	            }
+            });
+            window.location.reload();
+            alert(result);
+             
+        }
+    });
+});
+
+</script>
+
+
+<div class="content">
+    
+    
+<div class="cLineB">
+<a href="{Saivi::U('Reply/index',array('token'=>$token,'wecha_id'=>$wecha_id))}" class="right  btn btn-primary btn_submit  J_ajax_submit_btn" >返回</a> 
+</div>
+
+
+<h4 id="addbtn" style="margin:10px 0">添加回复  </h4>
+<p style="padding:4px;"  >{Saivi:$message}</p>
+<div  id="showmsg" >
+    <form method="post" onsubmit="return check();" action="{Saivi::U('User/Reply/addreply',array('token'=>$token,'wecha_id'=>$wecha_id,'message_id'=>$message_id))}">
+<div style="margin-top:0px;"><textarea  id="addcontent" name="content"  rows="5" style="width:592px;height:100px;border:1px solid #D7DDE6;" ></textarea></div>
+ <div style="margin:10px 0"><input type="submit" value="保存" class="btn btn-primary btn_submit  J_ajax_submit_btn smallbtn">&nbsp; <a href="{Saivi::U('Reply/index',array('token'=>$token,'wecha_id'=>$wecha_id))}" class="btn btn-primary btn_submit  J_ajax_submit_btn smallbtn">取消</a></div>
+</form>
+<div style="bordre-buttom:1px solid #EEEEEE;margin-top:5px;"></div>
+</div>
+
+<div class="cLineB" >
+<h4 class="left">回复列表 </h4>
+</div>
+<if condition="$res">
+<div class="cLine">
+<div class="pageNavigator left">    
+      <span> <a href="#" title="选中审核" class="btn btn-primary btn_submit  J_ajax_submit_btn smallbtn" id="checked">选中审核</a></span>
+
+       <span> <a href="#" title="选中删除" class="btn btn-primary btn_submit  J_ajax_submit_btn smallbtn" id="del">选中删除</a></span>
+</div>   
+<div class="clr"></div>
+</div>
+<div class="msgWrap">
+<form method="post" action="" id="info">
+    <input name="wecha_id" type="hidden" id="wecha_id" value="{Saivi:$wecha_id}">
+    <input name="checked" type="hidden" id="needCheck" value="{Saivi:$needCheck}">
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+<thead>
+
+<tr>
+<th  class="select"><input type="button" value="反选" name="button" id="selected" style="color:#94D38A;" ></th>
+
+<th width="160">回复内容</th>
+<th width="130">回复时间</th>
+ 
+<th width="200" class="norightborder">操作</th>
+</tr>
+</thead>
+<tbody>
+<tr></tr>
+<volist name="res" id="item"> 
+    <tr>
+<td><input type="checkbox" name="items" value="{Saivi:$item.id}" class="checkitem"  ></td>
+<td><if condition="$item['differ'] neq 1"><font style="color:#94D38A;">(网友回复)</font><else/><font style="color:#94D38A;">(管理员回复)</font></if><if condition="$item['checked'] neq 1"><font color="red">(未审核)</font><else/><font ></font></if>{Saivi:$item.reply|htmlspecialchars}</td>
+<td>{Saivi:$item.time|date="Y-m-d H:i:s",###}</td> 
+
+<td class="norightborder">
+    <a href="{Saivi::U('Reply/replyChked',array('id'=>$item['id'],'token'=>$token))}"><if condition="$item['checked'] neq 1">审核<else/><font style="margin-left:30px;"></font></if></a>
+    &nbsp;&nbsp;<a href="javascript:drop_confirm('您确定要删除吗?', '{Saivi::U('User/Reply/replyDeled',array('id'=>$item['id'],'token'=>$token))}');">删除</a></td>
+</tr>
+
+</volist>
+</tbody>
+</table>
+</form>
+
+</div>
+<else/> 
+<h4 align="center" style="color:red; font-weight:normal"><br>还没有回复内容</h4>
+</if>
+<div class="cLine">
+<div class="pageNavigator right">
+<div class="pages">{Saivi:$page}</div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+<include file="Public:footer"/>

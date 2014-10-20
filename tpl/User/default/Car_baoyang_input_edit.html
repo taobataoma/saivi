@@ -1,0 +1,74 @@
+<include file="Public:head"/>
+				<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+				<script type="text/javascript" src="{Saivi::RES}/js/formCheck/formcheck.js"> </script>
+ <div class="content">
+          <div class="cLineB"><h4>编辑客户预约</h4><a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div> 
+    
+<div class="msgWrap">
+  <form class="form" method="post"  action="{Saivi::U('Car_baoyang_input/upsave')}"    enctype="multipart/form-data" >
+<TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
+  <TBODY><input type="hidden" class="px" id="id" value="{Saivi:$_GET['id']}" name="id" style="width:500px" ><input type="hidden" class="px" id="token" value="{Saivi:$_SESSION['token']}" name="token" style="width:500px" ><input type="hidden" class="px" id="wecha_id" value="{Saivi:$_SESSION['wecha_id']}" name="wecha_id" style="width:500px" ><input type="hidden" class="px" id="hid" value="{Saivi:$_SESSION['hid']}" name="hid" style="width:500px" ><TR>
+  <TH valign="top"><label for="keyword">名称</label></TH>
+  <TD><input type="input" class="px" id="name" value="{Saivi:$info.name}" name="name" style="width:500px"   ><br/>
+                  </TD>
+  <TD></TD>
+</TR><TR>
+  <TH valign="top"><label for="keyword">联系方式</label></TH>
+  <TD><input type="input" class="px" id="phone" value="{Saivi:$info.phone}" name="phone" style="width:500px"   ><br/>
+                  </TD>
+  <TD></TD>
+</TR><TR>
+  <TH valign="top"><label for="keyword">车牌</label></TH>
+  <TD><input type="input" class="px" id="carno" value="{Saivi:$info.carno}" name="carno" style="width:500px"   ><br/>
+                  </TD>
+  <TD></TD>
+</TR><TR>
+  <TH valign="top"><label for="keyword">公里数</label></TH>
+  <TD><input type="input" class="px" id="Kilometer" value="{Saivi:$info.Kilometer}" name="Kilometer" style="width:500px"   ><br/>
+                  </TD>
+  <TD></TD>
+</TR>
+
+<TR>
+  <TH valign="top"><label for="keyword">状态</label></TH>
+  <TD><select name="status" id="status"  class="dropdown-select"   >                          
+		  <option   value="未处理"  <if condition="($info.status eq '未处理')">selected</if>>未处理</option>
+		  <option   value="已处理"  <if condition="($info.status eq '已处理')">selected</if>>已处理</option>
+		 
+	</select>
+  
+<br/>
+                  </TD>
+  <TD></TD>
+</TR>
+<TR>
+  <TH valign="top"><label for="keyword">预约开始时间</label></TH>
+  <TD><input type="input" class="px" id="starttime" value="{Saivi:$info.starttime}" name="starttime" style="width:500px" onClick="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true});"    ><br/>
+                  </TD>
+  <TD></TD>
+</TR>
+
+<TR>
+  <TH></TH>
+  <TD><button type="submit"  name="button"  class="btnGreen left" >保存</button>
+  	<div class="clr"></div>
+  	</TD>
+  </TR>
+  </TBODY>
+</TABLE>
+  </form>
+
+
+
+  </div> 
+
+        </div>
+        
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div> 
+
+<!--底部-->
+  	</div>
+<include file="Public:footer"/>

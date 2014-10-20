@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>销售管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link href="{Saivi::RES}/css/style/css/hotels.css" rel="stylesheet" type="text/css">
+</head>
+
+<body id="" >
+
+<div class="cardexplain"> 
+
+
+<ul class="round">
+<li class="title"><span class="none">销售管理</span></li>
+            
+ <volist name="set" id="vo">            
+<li class="dandanb"> 
+<a href="index.php?g=Wap&m=Car_sale&a=content&token={Saivi:$vo.token}&id={Saivi:$vo.id}"><span>
+<table class="jiagebiao" width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td><div>{Saivi:$vo.name}</div>
+<div><img src="{Saivi:$vo.picurl}" class="showimg"></td>
+<td><p>电话：{Saivi:$vo.phone}</p>
+</td>
+</tr>
+</table>
+</span></a>
+</li>
+</volist>  
+</ul>
+
+<!--后台可控制是否显示-->
+
+</div>
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['car'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if></body>
+</html>

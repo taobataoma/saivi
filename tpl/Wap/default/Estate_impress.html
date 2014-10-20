@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html><head>
+<link rel="stylesheet" type="text/css" href="{Saivi::STATICS}/vhouse/wap/review.css" media="all">
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript" src="{Saivi::STATICS}/vhouse/wap/common.js"></script>
+<script type="text/javascript" src="{Saivi::STATICS}/vhouse/wap/review.js"></script>
+<title>专家点评•房友印象</title>
+
+<link rel="stylesheet" type="text/css" href="{Saivi::STATICS}/vhouse/wap/style.css" media="all">
+<link rel="stylesheet" type="text/css" href="{Saivi::STATICS}/vhouse/wap/back.css" media="all">
+
+<!-- <script type="text/javascript" src="{Saivi::STATICS}/vhouse/wap/common.js"></script> -->
+<script type="text/javascript" src="{Saivi::STATICS}/vhouse/wap/index.js"></script>
+<link rel="stylesheet" type="text/css" href="{Saivi::STATICS}/vhouse/waphome.css" media="all">
+<link rel="stylesheet" type="text/css" href="{Saivi::STATICS}/vhouse/reset.css" media="all">
+<script type="text/javascript" src="{Saivi::STATICS}/vhouse/jQuery.js"></script>
+<script type="text/javascript" src="{Saivi::STATICS}/vhouse/swipe.js"></script>
+<script type="text/javascript" src="{Saivi::STATICS}/vhouse/zepto.js"></script>
+
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta content="telephone=no, address=no" name="format-detection">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+
+
+    function iswitch_panel(obj){
+        var ipm = $('#impress');
+        var pro = $('#professional');
+
+        if(obj==0){
+            ipm.show();
+            pro.hide();
+        }else{
+            ipm.hide();
+            pro.show();
+        }
+    }
+</script>
+
+</head>
+    <body onselectstart="return true;" ondragstart="return false;" id="cate1">
+        <style type="text/css">
+    .review_man h3{font-size:18px;}
+    #impress a{
+        overflow:hidden;
+    }
+    .review_man h3{font-size:18px;}
+    .is_1 a[style*='flex:0'], .is_2 a[style*='flex:0']{
+        display:none;
+    }
+</style>
+
+<div class="wrapper">
+    <!-- start -->
+        <ul class="nav_top" id="navTop" style="display: -webkit-box;">
+            <li><a href="javascript:void(0);" onclick="iswitch_panel(0);return false;" class="current">房友印象</a></li>
+            <li><a href="javascript:void(0);" onclick="iswitch_panel(1);return false;">专家点评</a></li>
+        </ul>
+    <!-- end -->
+    <div id="impress" class="impress" style="display: block;">
+    <h3>选择您的楼盘印象，喜欢就赞我吧</h3>
+
+
+ <style>
+html, body {
+    color:#222;
+    font-family:Microsoft YaHei,Helvitica,Verdana,Tohoma,Arial,san-serif;
+    margin:0;
+    padding: 0;
+    text-decoration: none;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+    margin:0;
+    padding:0;
+}
+img {
+    border:0;
+}
+ol, ul {
+    list-style: none outside none;
+    margin:0;
+    padding: 0;
+}
+a {
+    color:#000000;
+    text-decoration: none;
+}
+.clr {
+    display:block;
+    clear:both;
+    height:0;
+    overflow:hidden;
+}
+ /*cate1*/
+#cate1{background-color:#FBF5E0;overflow-x: hidden;}
+#cate1 .mainmenu {
+    display: block;
+    margin: 0 auto;
+    padding:0 0 5px 5px;
+
+}
+#cate1 .mainmenu li {
+    width:50%;
+    float:left;
+    display: block;
+    -moz-user-select:none;
+    -webkit-user-select:none;
+    -ms-user-select:none;
+}
+#cate1 .mainmenu li .menubtn {
+    display: block;
+    overflow: hidden;
+    text-decoration:none;
+    color:#000;
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin: 5px 5px 0 0;
+    box-shadow:0 1px 2px 0 rgba(0, 0, 0, 0.25);
+    -moz-box-shadow:0 1px 2px 0 rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow:0 1px 2px 0 rgba(0, 0, 0, 0.25);
+}
+#cate1 .mainmenu li .menubtn:hover {
+    background-color: #f5f5f5;
+}
+#cate1 .mainmenu li a {
+    display:block;
+    padding:0px;
+    font-size:14px;
+    color: #000000;
+    text-decoration: none;
+    -moz-user-select:none;
+    -webkit-user-select:none;
+    -ms-user-select:none;
+}
+#cate1 .mainmenu li .menubtn .menumesg {
+    padding:0px
+}
+#cate1 .mainmenu li .menubtn .menuimg {
+    /*max-height:106px;*/
+    overflow:hidden;
+
+}
+#cate1 .mainmenu li div img {
+    border:0;
+    width:100%;
+}
+#cate1 .mainmenu li .menutitle {
+    text-align:center;
+    line-height: 25px;
+    text-decoration: none;
+    color:#000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+            #cate1 .mainmenu li .menutitle { font-size: 18px;
+                                             padding: 20px 0; color:#ffffff;
+                                             position: inherit;background-color: rgba(0, 0, 0, 0);}
+            #cate1 .mainmenu li .menubtn {
+                box-shadow: none;-moz-box-shadow:none;-webkit-box-shadow:none;
+            }
+            #cate1 .mainmenu li .menubtn .menumesg {
+                position: inherit;
+            }
+            #cate1 .mainmenu li .menubtn .menuimg {
+                display:none
+            }
+            #cate1 .mainmenu li .menubtn {
+                border-radius:0;
+                margin: 0;
+            }
+            #cate1 .mainmenu {
+                padding: 0;
+            }
+            #cate1 .mainmenu li {
+                margin-right:0;
+            }
+            #cate1 .mainmenu li:nth-child(10n+1) .menubtn{
+                background-color:#fd9e0c;
+            }
+            #cate1 .mainmenu li:nth-child(10n+2) .menubtn{
+                background-color:#474548;
+            }
+            #cate1 .mainmenu li:nth-child(10n+3) .menubtn{
+                background-color:#d43316;
+            }
+            #cate1 .mainmenu li:nth-child(10n+4) .menubtn{
+                background-color:#034e78;
+            }
+            #cate1 .mainmenu li:nth-child(10n+5) .menubtn{
+                background-color:#436773;
+            }
+            #cate1 .mainmenu li:nth-child(10n+6) .menubtn{
+                background-color:#2cb9b3;
+            }
+            #cate1 .mainmenu li:nth-child(10n+7) .menubtn{
+                background-color:#2bba67;
+            }
+            #cate1 .mainmenu li:nth-child(10n+8) .menubtn{
+                background-color:#037863;
+            }
+            #cate1 .mainmenu li:nth-child(10n+9) .menubtn{
+                background-color:#844F00;
+            }
+            #cate1 .mainmenu li:nth-child(10n+10) .menubtn{
+                background-color:#B88E2C;
+            }
+
+.sup {
+    vertical-align: baseline;
+    position: relative;
+    top: -0.7em;
+    margin-left:2px;
+    font-size:0.2em;
+    color:#ffffff;
+    font-weight:700;
+}
+</style>
+        </style>
+<ul class="mainmenu">
+            <volist name="impress" id="vo">
+                <li>
+                    <div class="menubtn">
+                        <a href="javascript:void(0);" id="{Saivi:$vo['id']}" onclick="getMyId(this,{Saivi:$vo['id']});return false;">
+                            <div class="menumesg">
+                                <div class="menuimg"></div>
+                                <div class="menutitle">{Saivi:$vo['title']}<sup class="sup">{Saivi:$vo['comment']}赞</sup>  </div>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+            </volist>
+
+            <div class="clr"></div>
+        </ul>
+<p><br></p>
+<if condition="$thiscount gt 12">
+    {Saivi:$page2}</if>
+    <p><br><br><br></p>
+
+     </div>
+
+    <div id="professional" style="display: none;" jqmoldstyle="block">
+ <volist name="expert" id="exp">
+    <div class="review_box">
+    <div class="review_man"> <img src="{Saivi:$exp['face']}" width="70" height="70" style="width:70px!important; height:70px!important; " alt="">  <h3>{Saivi:$exp['name']}<em><br>{Saivi:$exp['position']}</em></h3><p>{Saivi:$exp['description']}</p></div>
+    <div class="review_word"> <h2>{Saivi:$exp['title']}</h2> <p>{Saivi:$exp['comment']}</p>    </div>
+   </div>
+</volist>
+
+    <p>
+    <if condition="$tcount gt 5">
+    {Saivi:$page}
+    </if>
+    <br><br><br></p>
+
+  </div>
+</div>
+
+<script>
+function getMyId(obj,id){
+    var imp_id   = id;
+    var token    ="{Saivi:$token}";
+    var wecha_id ="{Saivi:$wecha_id}";
+    if (wecha_id == '') {
+        alert("请关注后再重新点赞哦。");
+        return
+    }
+
+    var submitData ={
+        imp_id  : imp_id,
+        token   : token,
+        wecha_id:wecha_id,
+    };
+
+    var myurl="{Saivi::U('Estate/impress_add',array('token'=>$token,'wecha_id'=>$wecha_id))}";
+    $.post(myurl,submitData,function(retuandata){
+        var xobj=eval('('+retuandata+')');
+         if(xobj.errno == 1){
+            alert(xobj.msg);
+            window.location.reload();
+         }else if(xobj.errno == 2){
+             alert(xobj.msg + ' '+ xobj.thiscom);
+
+         }else if(xobj.errno == 0){
+            alert(xobj.msg);
+         }
+    });
+
+}
+</script>
+<include file="Estate:menu"/>
+
+</body></html>

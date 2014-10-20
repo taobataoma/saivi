@@ -1,0 +1,364 @@
+<!DOCTYPE html> 
+
+<html lang="zh-CN">
+
+<head> 
+
+<title>微生活商盟</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=no,user-scalable=no">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<meta name="format-detection" content="telephone=no">
+
+<link rel="stylesheet" href="{Saivi::RES}/weilive/jquery.mobile-1.1.0.min.css" />
+
+<link rel="stylesheet" href="{Saivi::RES}/weilive/My.jquery.mobile.css" />
+
+<script src="{Saivi::RES}/weilive/jquery-1.7.1.min.js "></script>
+
+<script src="{Saivi::RES}/weilive/jquery.mobile-1.1.0.min.js "></script>
+
+<link rel="stylesheet" href="{Saivi::RES}/weilive/flexslider.css" type="text/weilive" media="screen" />
+
+<script src="{Saivi::RES}/weilive/jquery.flexslider-min.js "></script>
+
+<!-- Hook up the FlexSlider -->
+
+<script type="text/javascript">
+
+$(window).load(function() {
+
+});	
+
+</script>
+
+
+
+<script language=JavaScript>
+
+function chkif_weixin()  
+
+{  
+
+if(typeof(WeixinweiliveBridge) =="undefined"){
+
+my_header.style.display='block'; 
+
+}
+
+}
+
+</script>
+
+
+
+
+
+<script language=JavaScript>
+
+function chkif_weixin()  
+
+{  
+
+if(typeof(WeixinweiliveBridge) =="undefined"){
+
+my_header.style.display='block';
+
+}
+
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+</head>
+
+<body onload="chkif_weixin()"> 
+
+
+
+<!-- ALLPAGE -->
+
+<div data-role="page" class="type-home" id="index">
+
+
+
+<!-- header -->
+
+<div data-role="header" data-position="inline" data-theme="x" id="my_header" style="display:none">
+
+<h1 style="font-size:20px;margin:9px 0px 8px 0px !important;">{Saivi:$info.biaoti}</h1>
+
+</div> 
+
+<!-- /header -->
+
+
+
+
+
+
+
+
+
+<!-- content -->
+
+<div data-role="content">
+
+
+
+
+
+<div class="content-primary">
+
+
+
+
+
+<div class="flexslider" id="flexslider">
+
+<ul class="slides">
+
+
+
+
+
+<!--广告切换-->
+
+
+
+<?php
+
+		$list1 = findList("member_business_ad","","addtime",3);
+
+		foreach($list1 as $v){
+
+			echo '
+
+
+
+<li><a rel="external" href="'.$v['url'].'"><img src="'.$v['img'].'" width="100%" height="150"></a>
+
+<p class="flex-caption"><span class="title"></span></p>
+
+</li>';
+
+		}
+
+	?>
+
+	<!--END 广告切换	-->
+
+
+
+</ul>
+
+</div>
+
+
+
+
+
+<script type="text/javascript">
+
+  $('#flexslider').flexslider();
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!--搜索-->
+
+	<form action="{Saivi::U('Weilive/search',array('token'=>$_GET['token']))}" method="post">
+
+		<table style="width:200px;">
+
+			<tr >
+
+				<td  width=30%>
+
+					区域：
+
+					<select name="flag_q" style="width:80px;">
+
+						<option selected="" value="1">青羊区</option>
+
+						<option value="2">锦江区</option>
+
+						<option value="3">金牛区</option>
+
+						<option value="4">成华区</option>
+
+						<option value="5">武候区</option>
+
+						<option value="6">青白江区</option>
+
+						<option value="7">龙泉驿区</option>
+
+						<option value="8">新都区</option>
+
+						<option value="9">温江区</option>
+
+						<option value="0">周边近郊</option>
+
+					</select>
+
+				</td>
+
+
+
+				<td  width=30%>
+
+					星级：
+
+					<select name="flag_x" style="width:80px;">
+
+						<option selected="" value="5">5星级酒店</option>
+
+						<option value="4">4星级酒店</option>
+
+						<option value="3">3星级酒店</option>
+
+						<option value="2">酒家酒楼</option>
+
+						<option value="1">田园农家乐</option>
+
+						<option value="0">特色场地</option>
+
+					</select>
+
+				</td>
+			</tr>
+			<tr>
+
+				<td  width=30%>
+
+					桌数：
+
+					<select name="flag_z" style="width:80px;">
+
+						<option selected="" value="0">10以下</option>
+
+						<option value="1">10-20桌</option>
+
+						<option value="2">20-30桌</option>
+
+						<option value="3">30-50桌</option>
+
+						<option value="4">50桌以上</option>
+
+					</select>
+
+				</td>
+
+				<td  width=30%>
+					查询：
+					<input type="submit" name="submit" value="提交">
+				</td>
+
+			</tr>
+
+		</table>
+
+	</form>
+<!--END搜索-->
+
+
+
+
+<div style="width:100%;padding-left:5px;line-height:30px;height:30px;background-color:#cbcac8;text-align:left;">
+<h1 class="ui-li-heading">推荐商家<span style="float:right;padding-right:15px;"><a href="/index.php?g=Wap&m=Weilive&a=search&token=<?php echo $_GET['token'];?>">更多</a></span></h1>
+</div>
+
+<!--icon list start-->
+<div class="wap-index-table0">
+<table border='0' cellpadding='0' cellspacing='0' align=center class="table_iconlist">
+<?php 
+$tmps = findList2("Member_business","flag_c=1",'','0,4');
+echo '<tr>';
+foreach($tmps as $value){
+	echo '<td width=25%><a rel="external" href="/index.php?g=Wap&m=Weilive&a=info&token='.$value['token'].'&wecha_id='.$_GET['wecha_id'].'&id='.$value['id'].'"><img src="'.$value['logo'].'" width=74%></a></td>';
+}
+echo '</tr>';
+
+echo '<tr>';
+foreach($tmps as $value){
+	echo '<td><a rel="external" href="/index.php?g=Wap&m=Weilive&a=info&token='.$value['token'].'&wecha_id='.$_GET['wecha_id'].'&id='.$value['id'].'"><font color=#545454>'.$value['name'].'</font></a></td>';
+}
+echo '</tr>';
+
+echo '<tr><td height=10 colspan=4></td></tr>';
+?>
+
+
+<?php 
+$tmps = findList2("Member_business","flag_c=1",'','4,4');
+echo '<tr>';
+foreach($tmps as $value){
+	echo '<td width=25%><a rel="external" href="/index.php?g=Wap&m=Weilive&a=info&token='.$value['token'].'&wecha_id='.$_GET['wecha_id'].'&id='.$value['id'].'"><img src="'.$value['logo'].'" width=74%></a></td>';
+}
+echo '</tr>';
+
+echo '<tr>';
+foreach($tmps as $value){
+	echo '<td><a rel="external" href="/index.php?g=Wap&m=Weilive&a=info&token='.$value['token'].'&wecha_id='.$_GET['wecha_id'].'&id='.$value['id'].'"><font color=#545454>'.$value['name'].'</font></a></td>';
+}
+echo '</tr>';
+
+echo '<tr><td height=10 colspan=4></td></tr>';
+?>
+
+</table>
+
+</div>
+<!--icon list --end-->
+
+
+
+
+
+
+
+
+<div style="width:100%;padding-left:5px;line-height:20px;height:20px;text-align:CENTER;">
+{Saivi:$info.copyright}
+</div>
+
+
+<!-- footer -->
+
+<div data-role="footer" data-theme="a">
+
+<h4> <a href="{Saivi:$info.tel}">免费咨询：{Saivi:$info.tel}</a></h4>
+
+</div>
+
+
+
+
+
+</body>
+
+</html>
+

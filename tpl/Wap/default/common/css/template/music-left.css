@@ -1,0 +1,17 @@
+/**********************audio***********************/
+.btn_music{
+    display:inline-block;
+    width:35px;
+    height:35px;
+    background:url('../../img/play.png') no-repeat center center;
+    background-size:100% auto;
+    position:absolute;
+    z-index:100;
+    left:15px;
+    top:20px;
+}
+.btn_music.on{
+    background-image:url('../../img/stop.png');
+}
+
+/******************************¶¯»­*************************/

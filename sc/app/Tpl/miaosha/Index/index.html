@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+ 
+<html>
+<head>
+<include file="public:headtop" />
+
+
+</head>
+
+<body>
+<include file="public:head" />
+
+
+
+
+
+<div class="banner">
+    <div id="slider" class="slider" style="overflow: hidden; visibility: visible; list-style: none outside none; position: relative;">
+        <ul id="sliderlist" class="sliderlist" style="position: relative; overflow: hidden; transition: left 600ms ease 0s; width: 1800px; left: -1200px;">
+        <volist name='ad' id='vo'>
+            <li style="float: left; display: block; width: 600px;">
+                <span>
+                   <a href="{$vo.url}"> <img title="{$vo.desc}" width="100%" src="./data/upload/advert/{$vo.content}"></a>
+                </span>
+            </li>
+        </volist>
+      
+        </ul>
+        <div id="pagenavi">
+         <volist name='ad' id='vo' key='k' >
+           <a <if condition='$k eq 1'>class="active"</if> href="javascript:void(0);">{$k}</a>
+        </volist>
+        
+        </div>
+    </div>
+</div>
+<div class="s_bottom"></div>
+<script type="text/javascript">
+$(function(){
+	$("div.module_special .wrap .major ul.list li:last-child").addClass("remove_bottom_line");
+});
+var active=0,
+	as=document.getElementById('pagenavi').getElementsByTagName('a');
+	
+for(var i=0;i<as.length;i++){
+	(function(){
+		var j=i;
+		as[i].onclick=function(){
+			t2.slide(j);
+			return false;
+		}
+	})();
+}
+var t2=new TouchSlider({id:'sliderlist', speed:600, timeout:6000, before:function(index){
+		as[active].className='';
+		active=index;
+		as[active].className='active';
+	}});
+</script>
+<div id="content">
+
+    <div class="module_special">
+        <h2 class="common_title veins2">
+            <div class="ornament1"></div>
+            <div class="ornament2"></div>
+            <span class="ico1">
+                <span class="ico2">疯狂秒杀</span>
+            </span>
+        </h2>
+        <div class="wrap">
+            <div class="wrap_child" style="background-color:#CCC">
+                <div class="group_major">
+                    <ul class="list" style="background-color:#EAEAEA">
+                        <volist name="tuijian" id="item">
+                      <li>
+                    
+                       
+                    <div  style=" float:left; width:40%;">
+                     <a href="index.php?g=miaosha&m=Item&a=index&id={:$item['id']}&token={:$_GET['token']}"><img  width="100%" src="{:attach(get_thumb($item['img'], '_b'), 'item')}"></a>
+                   
+                    
+                    </div>
+                   
+                   <div style="float:left; width:60%; height:auto;">
+                   
+                   
+                  
+                  <div  style="   text-align:left; height:auto;  "> 
+                   
+                <a  href="index.php?g=miaosha&m=Item&a=index&id={:$item['id']}&token={:$_GET['token']}">{$item.title}</a>
+                <div style="clear:both;"></div>
+                    </div>   
+                    <div style="clear:both; height:0px;"></div>
+                   <div class="good_content" style=" text-align:left; color:#FFF">
+<div   style="background:#F30; width:100%; height:25px;">                 
+  <div  style="background:#F30;text-align:left; float:left; width:50%;font-family:'黑体';">
+  <div  style="background:#F30;text-align:left; float:left; width:120px;font-family:'黑体';">秒杀价：¥{$item.groupprice}</div>
+  </div>
+  
+    <div  style="background:#FC0;text-align:right; float:right; width:80px;font-family:'黑体';"><a href="index.php?g=miaosha&m=Item&a=index&id={:$item['id']}&token={:$_GET['token']}">我要秒杀&nbsp;</a></div>
+    </div>
+                    </div>
+                     <div class="good_content" style="text-align:left;" >
+       
+              <div  style="text-align:left; float:left;background-color:#F5F5F5; width:100%;font-family:'黑体';">原价：¥{$item.price}</div>
+              
+              <div style="text-align:left; float:left;background-color:#F5F5F5;width:100%; font-family:'黑体';">节省：¥{$item['price']-$item['groupprice']}</div>
+              
+                        
+                   </div>
+                   
+                   <div style="clear:both;"></div>
+                       <div class="good_content" style="text-align:left; 
+bottom:0px;" >
+       
+              <div  style="text-align:left; float:left;background-color:#F5F5F5; width:100%;font-family:'黑体';">开始时间：<br>{$item.startdate}</div>
+              
+           
+                        
+                   </div>
+                   
+                   
+                   
+                   </div>
+
+
+<div style="clear:both;"></div>
+
+                    <span class="show_good">
+                      <a  href="index.php?g=miaosha&m=Item&a=index&id={:$item['id']}&token={:$_GET['token']}"></a>
+                    </span>
+    </li>                 
+<li style="height:0px; margin: 10 0 10 0; border:dashed 1px #993333;  "></li> 
+                      </volist>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+<div style="text-align:right; font-family:'黑体'; font-size:16px;" >{$page}
+</div>
+<include file="public:footer" />
+
+</body>
+</html>

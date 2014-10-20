@@ -1,0 +1,75 @@
+﻿<include file="Public:head"/>
+
+<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/js/formCheck/formcheck.js"> </script>
+
+<div class="content">
+  <div class="cLineB">
+    <h4>添加装修相册</h4>
+    <a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div>
+
+  <div class="msgWrap">
+    <form class="form" method="post"   action="{Saivi::U('Zhuangxiuphoto/insert')}"    enctype="multipart/form-data" >
+      <TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
+        <TBODY>
+          <TR>
+            <input type="hidden" class="px" id="id" value="{Saivi:$info.id}" name="id" style="width:500px" >
+            <input type="hidden" class="px" id="token" value="{Saivi:$_SESSION["token"]}" name="token" style="width:500px" >
+          <TR>
+            <TH valign="top"><label for="keyword">名称</label></TH>
+            <TD><input type="input" class="px" id="name" value="" name="name" style="width:300px"   >
+              <br />
+              请输入关键词,10个字以内 </TD>
+            <TD></TD>
+          </TR>
+          <TR>
+            <TH valign="top"><label for="keyword">选择相册分类：</label></TH>
+            <TD><select name="namephoto"  style="width:300px" >
+                <volist name="info" id="vo">
+                  <option  value="{Saivi:$vo.title}">{Saivi:$vo.title}</option>
+                </volist>
+              </select>
+              <br/>
+            </TD>
+            <TD></TD>
+          </TR>
+          <TR>
+            <TH valign="top"><label for="keyword">排序</label></TH>
+            <TD><input type="input" class="px" id="sort" value="" name="sort" style="width:30px"   >
+              <br />
+              请输入数字 0-9 </TD>
+            <TD></TD>
+          </TR>
+          <TR>
+            <TH valign="top"><label for="keyword">相册图片：</label></TH>
+            <TD><input type="input" class="px" id="picurl" value="" name="picurl" style="width:400px"   >
+<br />
+  <script src="/tpl/static/upyun.js"></script>
+<a href="###" onclick="upyunPicUpload('picurl',700,420,'{Saivi:$token}')" class="a_upload">上传</a> 
+<a href="###" onclick="viewImg('picurl')">预览</a> </TD>
+            <TD></TD>
+          </TR>
+          <TR>
+            <TH valign="top"><label for="keyword">描述：</label></TH>
+            <TD><input type="input" class="px" id="content" value="" name="content" style="width:400px;display:none;"   >
+<iframe id="eWebEditor1" src="/tpl/editor/ewebeditor.htm?id=content&style=jhbar&skin=office2003" frameborder="0" scrolling="no" width="95%" height="300"></iframe>
+</TD>
+            <TD></TD>
+          </TR>
+          <TR>
+            <TH></TH>
+            <TD><button type="submit"  name="button"  class="btnGreen left" >保存</button>
+              <div class="clr"></div></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+    </form>
+  </div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+</div>
+<!--底部-->
+</div>
+<include file="Public:footer"/>

@@ -1,0 +1,56 @@
+﻿body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {margin: 0;padding: 0}
+body, button, input, select, textarea {font: 12px/1.5 arial, \5b8b\4f53, sans-serif}
+h1, h2, h3, h4, h5, h6 {font-size: 100%}
+address, cite, dfn, em, var {font-style: normal}
+code, kbd, pre, samp {font-family: courier new, courier, monospace}
+small {font-size: 12px}
+ul, ol {list-style: none}
+a {text-decoration: none}
+a:hover {text-decoration: underline}
+legend {color: #000}
+fieldset, img {border: 0}
+button, input, select, textarea {font-size: 100%}
+table {border-collapse: collapse;border-spacing: 0}
+img {-ms-interpolation-mode: bicubic}
+body{font-family: 微软雅黑, 黑体, sans-serif; background:#f3f3f3;}
+#page{ width:1020px; box-shadow:1px 1px 3px #999999; height:auto; padding:10px; margin: 60px auto 20px auto; background:#fff; border-radius:5px; position:relative;}
+#page h2{ height:20px; font-size:16px;}
+#page h3{ font-size:14px; font-weight:bold; margin:15px 0; text-indent:1em;}
+#page p{ line-height:28px; text-indent:2em; font-size:14px; margin:15px 0;}
+.title{ text-align:center; line-height:40px; font-size:20px; background:#FFF;background: #fff url(../../../img/www/help/lemma-catalog-topbg.png) no-repeat left bottom; height:100px;}
+.z-catalog {z-index: 0;margin-bottom: 10px;position: relative;background: #fff ;overflow: hidden;padding:5px 30px;}
+.z-catalog h2 {margin-top: -2px;font-size: 24px;color: #333;font-family: 微软雅黑, 黑体, sans-serif;padding: 25px 0 18px 70px;line-height: 22px;width: 95px;font-weight: 200;letter-spacing: 4px;}
+.z-catalog dl {background: #fff;}
+.z-catalog .catalog-item {line-height: 26px;}
+.catalog-item p {width: 420px;}
+.catalog-item p span {color: #b2b2b2;font-size: 16px;padding-right: 8px;}
+.catalog-item p a {font-size: 16px;font-weight: 500;color: #333;text-decoration: none;background-color: #fff;padding-right: 10px;font-family: 微软雅黑, 黑体;}
+.catalog-item ol {padding-left: 30px;}
+.z-catalog li {height: 28px;line-height: 28px;position: relative; border-bottom:1px dashed #ccc;}
+.z-catalog li span {color: #aaa;margin-right: 7px;}
+.z-catalog li a {color: #333;text-decoration: none;}
+.z-catalog li strong{ float:right; padding-right:30px;}
+
+
+.bottom{ position:absolute; width:25px; height:25px; background:#c54e46; border-radius:13px; right:5px; bottom:5px; line-height:25px; font-size:14px; color:#FFF; text-align:center;}
+#sideCatalog {width: 150px;height: 355px;overflow: hidden;margin-bottom: 10px;font-size: 14px;line-height: 23px;position: relative;zoom: 1;left: 10px;}
+#sideCatalog #sideCatalog-sidebar {border-radius: 10px;top: 0;width: 2px;height: 353px;
+background-color: #eaeaea;border: 1px solid #e5e5e5;position: absolute;left: 4px;}
+#sideCatalog-catalog {height: 320px;padding-left: 20px;overflow: hidden;margin-top: 13px;}
+#sideCatalog-catalog dl {position: relative;}
+#sideCatalog-catalog dl dd {position: relative;line-height:28px;}
+#sideCatalog span {color: #999;font-weight: bold;font-family: Arial;font-size: 14px;padding-right: 5px;}
+#sideCatalog a {color: #333;text-decoration: none;font-weight: 500;}
+#sideToolbar-up {display: block;width: 45px;height: 45px;margin-left: 10px;border-radius: 2px;-moz-border-radius: 2px;
+-webkit-border-radius: 2px;background: transparent url(../../../img/www/help/sideToolbar_d9a62b56.gif) -1px -62px no-repeat;}
+#sideToolbar-up:hover {background: transparent url(../../../img/www/help/sideToolbar_d9a62b56.gif) -74px -62px no-repeat;}
+#sideCatalogBtn {width: 45px;height: 45px;display: block;background:url(../../../img/www/help/sideToolbar_d9a62b56.gif) 0 0 no-repeat;cursor: pointer;margin-bottom: 5px;position: relative;margin-left: 10px;display: block;}
+#sideCatalogBtn:hover {
+background: transparent url(../../../img/www/help/sideToolbar_d9a62b56.gif) -154px 0 no-repeat!important;
+}
+#menuList{overflow:hidden;position:relative;}
+.slideDown{position:absolute;right:6px;bottom:16px;z-index:10;background:red;width:24px;height:24px;background:url(img/catalog-collapse_5e429c71.gif) no-repeat 0 0;}
+.slideDown:hover{background-position:right 0;;}
+.slideDown.on{background-position:0 bottom;}
+.slideDown.on:hover{background-position:right bottom;;}
+#sideToolbar:not(.on){display:none!important;}

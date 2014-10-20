@@ -1,0 +1,23 @@
+
+.list{margin:20px auto;width:85%;}
+.list .photograph{position:relative;top:-5px;left:-10px;border:1px solid #fff;border-radius:3px;}
+.list .photograph img{width:65px;display:block;}
+.list .list-mess{line-height:18px;}
+.list .list-mess h2{font-size:14px;font-weight:normal;}
+.list .list-mess h3{font-size:12px;font-weight:normal;}
+.list .list-pz{margin-top:15px;margin-right:10px;}
+.list .list-pz .p{display: inline-block;}
+.list .list-pz .z{display: inline-block;margin-left:3px;}
+.list .list-pz .p h4,.list .list-pz .z h4{font-size:10px;font-weight:normal;text-align:center;line-height:12px;}
+.list .list-pz .p a,.list .list-pz .z a{display:block;}
+.list .list-pz .p a{background:url(../images/ico_p_blue.png) no-repeat;background-size:100%;height:25px;width:25px;}
+.list .list-pz .z a{background:url(../images/ico_z_blue.png) no-repeat;background-size:100%;height:25px;width:25px;}
+.blueline.bottom80,.redline.bottom80{top:65px;}
+.con .c-left img{width:100px;}
+.list1{background-image:-o-linear-gradient(top,rgba(75,37,136,0.5) 5%,rgba(50,29,110,0.8));
+	   background-image:-moz-linear-gradient(top,rgba(75,37,136,0.5) 5%,rgba(50,29,110,0.8));
+	   background-image:-webkit-gradient(linear, 50% 0%, 50% 100%, from(rgba(75,37,136,0.5)), to(rgba(50,29,110,0.8)));
+	   width:98%;}
+.con .c-right{float:left;font-size:10px;padding-left:10px;}
+.con .c-right h1{font-size:15px;overflow:hidden;white-space:nowrap;text-overflow: ellipsis;}
+.con .c-right h3{font-size:13px;white-space:nowrap;text-overflow: ellipsis;overflow:hidden;}

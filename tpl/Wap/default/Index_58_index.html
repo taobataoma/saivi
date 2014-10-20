@@ -1,0 +1,240 @@
+
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <meta charset="utf-8" />
+
+        <link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/158/css/snower.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/158/css/common.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/158/css/reset.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/158/css/home-34.css" media="all" />
+
+<script type="text/javascript" src="{Saivi::RES}/css/158/js/maivl.js"></script>
+
+<script type="text/javascript" src="{Saivi::RES}/css/158/js/jQuery.js"></script>
+
+<title>{Saivi:$tpl.wxname}</title>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+		<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+
+        
+
+        <!-- Mobile Devices Support @begin -->
+
+            <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+
+            <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+
+            <meta content="no-cache" http-equiv="pragma">
+
+            <meta content="0" http-equiv="expires">
+
+            <meta content="telephone=no, address=no" name="format-detection">
+
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+            <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <!-- Mobile Devices Support @end -->
+
+    </head>
+
+    <body onselectstart="return true;" ondragstart="return false;">
+
+        <!--背景音乐-->
+
+    <if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/></if>
+
+        
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/158/css/font-awesome.css?v=2013121116" media="all" />
+
+<style>
+
+	.body{
+
+		display:block;
+
+		background: url("<if condition="$homeInfo.homeurl neq false">{Saivi:$homeInfo.homeurl}<else/>{Saivi::RES}/css/158/images/bg.jpg</if>") no-repeat scroll 0 bottom;
+
+				background-size:100% 100%;
+
+	}
+
+</style>
+
+
+
+<div class="body">
+
+	<header>
+
+        <div class="snower">
+
+            <script type="text/javascript"></script>
+
+            <script type="text/javascript" src="{Saivi::RES}/css/158/js/snower.js"></script>
+
+        </div>
+
+    </header>  
+
+				<!--
+
+		用户分类管理
+
+        -->
+
+		<section>
+
+			<ul class="list_ul">
+
+									<volist name="info" id="vo"><li>
+
+													<a href="<if condition="$vo['url'] eq ''">{Saivi::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{Saivi:$vo.url|htmlspecialchars_decode}</if>" class="weimob-list-item">
+
+													<label>{Saivi:$vo.name}</label>
+
+						</a>
+
+					</li></volist>
+
+									
+
+							</ul>
+
+		</section>
+
+	</div>
+
+
+
+<!--
+
+导航菜单
+
+   后台设置的快捷菜单
+
+-->
+
+
+
+<!--
+
+分享前控制
+
+-->
+
+	<script>
+
+		document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+
+
+
+
+			// 发送给好友
+
+			WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+
+				WeixinJSBridge.invoke('sendAppMessage', {
+
+					"img_url": window.shareData.imgUrl,
+
+					"img_width": "640",
+
+					"img_height": "640",
+
+					"link": window.shareData.sendFriendLink,
+
+					"desc": window.shareData.fContent,
+
+					"title": window.shareData.fTitle
+
+				}, function (res) {
+
+					_report('send_msg', res.err_msg);
+
+				})
+
+			});
+
+
+
+			// 分享到朋友圈
+
+			WeixinJSBridge.on('menu:share:timeline', function (argv) {
+
+				WeixinJSBridge.invoke('shareTimeline', {
+
+					"img_url": window.shareData.imgUrl,
+
+					"img_width": "640",
+
+					"img_height": "640",
+
+					"link": window.shareData.timeLineLink,
+
+					"desc": window.shareData.tContent,
+
+					"title": window.shareData.tTitle
+
+				}, function (res) {
+
+					_report('timeline', res.err_msg);
+
+				});
+
+			});
+
+
+
+			// 分享到微博
+
+			WeixinJSBridge.on('menu:share:weibo', function (argv) {
+
+				WeixinJSBridge.invoke('shareWeibo', {
+
+					"content": window.shareData.wContent,
+
+					"url": window.shareData.weiboLink
+
+				}, function (res) {
+
+					_report('weibo', res.err_msg);
+
+				});
+
+			});
+
+		}, false)
+
+	</script>
+
+
+
+        			<footer>
+
+ <div class="copyright" style="text-align:center;"><if condition="$iscopyright eq 1">{Saivi:$homeInfo.copyright}<else/>{Saivi:$siteCopyright}</if></div>
+
+<include file="Index:styleInclude"/> </footer>
+
+				<div mark="stat_code" style="width:0px; height:0px; display:none;">
+
+					</div>
+
+	<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['status'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if> </body>
+
+</html>

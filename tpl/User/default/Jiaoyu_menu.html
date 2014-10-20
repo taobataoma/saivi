@@ -1,0 +1,14 @@
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<div class="tab" style="margin-left:30px">
+<ul>
+<li class="<if condition="ACTION_NAME EQ 'index'">current</if> tabli" id="tab0"><a href="{Saivi::U('Jiaoyu/index',array('token'=>$token))}">培训结构介绍</a></li>
+<li class="<if condition="ACTION_NAME EQ 'son' ">current</if> tabli" id="tab2"><a href="{Saivi::U('Jiaoyu/son',array('token'=>$token))}">校区</a></li>
+<li class="<if condition="ACTION_NAME EQ 'housetype' ">current</if> tabli" id="tab2"><a href="{Saivi::U('Jiaoyu/housetype',array('token'=>$token))}">培训课程</a></li>
+<li class="<if condition="ACTION_NAME EQ 'album' or ACTION_NAME EQ 'album_add'">current</if> tabli" id="tab5"><a href="{Saivi::U('Jiaoyu/album',array('token'=>$token))}">教学相册</a></li>
+<li class="<if condition="ACTION_NAME EQ 'impress'">current</if> tabli" id="tab5" style="display:none"><a href="{Saivi::U('Jiaoyu/impress',array('token'=>$token))}" style="display:none">学员印象</a></li>
+<li class="<if condition="ACTION_NAME EQ 'expert'">current</if> tabli" id="tab5"><a href="{Saivi::U('Jiaoyu/expert',array('token'=>$token))}">学院印象</a></li>
+<li class="<if condition="ACTION_NAME EQ 'jiaoyuindex'">current</if> tabli" id="tab6"><a href="{Saivi::U('Reservation/jiaoyuindex',array('token'=>$token))}">预约管理</a></li>
+<li class="<if condition="ACTION_NAME EQ 'aboutus'">current</if> tabli" id="tab6"><a href="{Saivi::U('Jiaoyu/aboutus',array('token'=>$token))}">关于我们</a></li>
+</ul>
+
+</div>

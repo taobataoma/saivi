@@ -1,0 +1,47 @@
+#cate17 {
+	background-color: #000000;overflow-x: hidden;
+}
+#cate17 .mainbg{ 
+	width:100%;
+	position:fixed;
+	z-index:1
+}
+#cate17 .mainbg img{
+	width:100%;
+}
+#nav {
+	width: 100%; float: none;
+}
+#scroller li p {
+	display: none;
+}
+#wrapper {
+	position: fixed;
+}
+#indicator {
+	margin: 0px; left: 0px; width: 100%; text-align: center; bottom: 295px; position: fixed;
+}
+#indicator > li {
+	float: none; display: inline-block;
+}
+#indicator > li.active {
+	background: rgb(255, 255, 255);
+}
+.bottom_nav {
+	margin: 0px auto; left: 0px; width: 100%; height: 270px; bottom: 15px; padding-top: 30px; position: fixed; z-index: 99;
+}
+.content {
+	padding: 8px 10px; color: rgb(255, 255, 255);
+}
+.content a {
+	width: 25%; text-align: center; color: rgb(255, 255, 255); overflow: hidden; margin-bottom: 15px; float: left;
+}
+.title {
+	overflow: hidden; font-size: 12px; margin-top: 3px; white-space: nowrap; text-overflow: ellipsis;
+}
+.ico img {
+	border-radius: 0px; width: 50px; height: 50px;
+}
+.copyright {
+	padding: 8px 0px; left: 0px; width: 100%; text-align: center; bottom: 0px; color: rgb(255, 255, 255); font-size: 12px; position: fixed; z-index: 999;
+}

@@ -1,0 +1,34 @@
+@charset "utf-8";
+a, body, div, html, img, li, ul { border: 0; margin: 0; padding: 0; font-size: 100%; }
+html, body { height: 100%; }
+img { color: transparent; font-size: 0; vertical-align: middle; -ms-interpolation-mode: bicubic; }
+ol, ul { list-style: none; }
+li { display: list-item; }
+body { min-width: 960px; }
+
+.clearfix:before, .clearfix:after { content: '.'; display: block; overflow: hidden; visibility: hidden; font-size: 0; line-height: 0; width: 0; height: 0; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+.icon-arrow-a-left, .icon-arrow-a-right { background: url(../images/icon-sd26986d847.png) no-repeat; }
+.icon-arrow-a-left { background-position: 0 0; height: 50px; width: 50px; }
+    .icon-arrow-a-left:hover, .icon-arrow-a-left.arrow-a-left_hover, .icon-arrow-a-left.arrow-a-left-hover { background-position: -60px 0; }
+.icon-arrow-a-right { background-position: -120px 0; height: 50px; width: 50px; }
+    .icon-arrow-a-right:hover, .icon-arrow-a-right.arrow-a-right_hover, .icon-arrow-a-right.arrow-a-right-hover { background-position: -180px 0; }
+
+html, body { background: #fff; font: 12px/1.5 tahoma,helvetica,arial,\5b8b\4f53,sans-serif; }
+* html, * html body { background-image: url(about:blank); background-attachment: fixed; zoom: 1; }
+
+a { color: #262626; text-decoration: none; }
+    a:hover { color: #FF4503; text-decoration: underline; }
+#main {overflow: hidden; zoom: 1; position: relative; }
+#index_b_hero { width:100%; height: 100%; margin: auto; position: relative; }
+    #index_b_hero .hero-wrap { overflow: visible; position: absolute; }
+    #index_b_hero .next, #index_b_hero .prev { filter: alpha(Opacity=70); opacity: .7; position: absolute; top: 50%; margin-top: -25px; margin-left: 5px; background-color: #303030; z-index: 3; }
+        #index_b_hero .next:hover, #index_b_hero .prev:hover { background-color: orangered; }
+    #index_b_hero .next { margin: -25px 5px 0 0; right: 0; }
+    #index_b_hero .disabled { background-color: #eee; }
+    #index_b_hero .mask-left, #index_b_hero .mask-right, #index_b_hero .hero { background: #fff; padding: 5px; z-index: 1; position: absolute; top: 0; left: 0;  overflow: hidden; left: 1920px; }
+    #index_b_hero .mask-right, #index_b_hero .mask-left { z-index: 4; left: -960px; filter: alpha(Opacity=50); opacity: .5; background: #fff; overflow: hidden; }
+    #index_b_hero .mask-right { left: 960px; }
+    #index_b_hero .active { z-index: 2; left: 0; }

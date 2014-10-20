@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <include file="Public:header" />
+
+    <body style="background:#fff;">
+        <!---header begin--->
+        <include file="Public:menu" />
+        <!---header end--->
+        <div class="banner_agency">
+            <img src="{Saivi::STATICS}/home/summer/images/banner_agency.jpg" width="1440" height="399" />
+        </div>
+        <div class="main_agency">
+            <div class="item item_green">
+                <div class="title"><i><em>01</em></i><h1>The agent qualification<br /><em>代理商资质</em></h1></div>
+                <p>
+                    <em>条件一：</em>工商合法注册，能够独立承担民事责任，遵守双方承诺、约定或协议； <br />
+                    <em>条件二：</em>从事互联网营销两年以上，熟悉互联网、媒体、广告市场和相关产品； <br />
+                    <em>条件三：</em>能够配合总部开展当地市场推广和组织会议营销等活动；<br />
+                    <em>条件四：</em>
+                    销售团队成熟，能够为用户提供基于{Saivi::C('site_name')}产品的服务，及直接、准确的业务咨询服务&amp;业务受理能力。</p>
+            </div>
+            <div class="item item_blue">
+                <div class="title"><i><em>02</em></i><h1>Support and service<br /><em>服务支持</em></h1></div>
+                <p>根据代理商地区市场行情，给予代理合作商代理折扣价格，保证代理商利益；<br />
+                    免费提供后台和人员的培训；<br />
+                    免费提供面对客户的业务咨询培训、系统预算方案制作培训、销售、谈判技巧等。 </p>
+            </div>
+            <div class="item item_red">
+                <div class="title"><i><em>03</em></i><h1>The agent process<br />
+                        <em>代理商签约流程</em></h1></div>
+                <ul class="flow">
+                    <li class="step01"><h2>1.提交合作申请</h2><p>登录：<br />
+                            在线填写并提交《代理商申请表》<br />
+                            或致电：</p></li>
+                    <li class="step02">
+                        <h2>2.客服受理</h2>
+                        <p>客服受理代理商预审并提交到渠道部由渠道经理跟进洽谈</p></li>
+                    <li class="step03">
+                        <h2>3.签约合作</h2>
+                        <p>确认合作意向并完成代理协议签约</p></li>
+                    <li class="step04">
+                        <h2>4.开通代理商权限</h2>
+                        <p>由总部开放代理权限并提供相关业务拓展的培训和支持</p></li>
+                </ul>
+            </div>
+           
+        </div>
+        <!---底部 begin--->
+        <include file="Public:footer" />
+       {Saivi:$validate}
+       <script>
+            $("#email").formValidator({defaultvalue:""}).inputValidator({min:6,max:100,onerror:"你输入的邮箱长度非法,请确认"}).regexValidator({regexp:"^([\\w-.]+)@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.)|(([\\w-]+.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(]?)$",onerror:"你输入的邮箱格式不正确"});
+            $("#area").formValidator({
+            tipid:"regionTip",
+            onshow:"请选择区",
+            onfocus:"请选择区",
+            oncorrect:"&nbsp;"
+            }).inputValidator({
+            min:1,
+            max:50,
+            onerror:"请选择业务区域"
+            });
+       </script>
+    </body>
+</html>

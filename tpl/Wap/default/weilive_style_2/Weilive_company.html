@@ -1,0 +1,207 @@
+
+﻿﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+ 
+<title>{Saivi:$vo.name}</title> 
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta charset="utf-8">
+
+<link href="{Saivi::RES}/weishenghuo/template/default/theme2/pwx.css" rel="stylesheet" type="text/css">
+<link href="{Saivi::RES}/weishenghuo/template/default/theme2/news2.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="{Saivi::RES}/weishenghuo/pwximg/plugmenu.css">
+<link rel="stylesheet" href="{Saivi::RES}/weishenghuo/img/wxp.css">
+
+  <script src="{Saivi::RES}/weishenghuo/pwximg/audio.min.js" type="text/javascript"></script>
+   
+    <script>
+      audiojs.events.ready(function() {
+        audiojs.createAll();
+      });
+    </script>
+<script>
+window.onload = function ()
+{
+var oWin = document.getElementById("win");
+var oLay = document.getElementById("overlay");	
+var oBtn = document.getElementById("popmenu");
+var oClose = document.getElementById("close");
+oBtn.onclick = function ()
+{
+oLay.style.display = "block";
+oWin.style.display = "block"	
+};
+oLay.onclick = function ()
+{
+oLay.style.display = "none";
+oWin.style.display = "none"	
+}
+};
+</script><style>
+#cate6 .mainmenu li.li0:nth-child(5) .menumesg {
+    background-color: #990000;
+}
+#cate6 .mainmenu li.li0:nth-child(1) .menumesg {
+    background-color: #01AA0A;
+}
+#cate6 .mainmenu li.li0:nth-child(9) .menumesg {
+    background-color: #8B4500;
+}
+
+#cate8 .mainmenu li .menubtn {
+    border-radius: 5px;
+}
+#cate8 .mainmenu li div img {
+    border-radius: 5px;
+}
+
+ .themeStyle{background:#DE270B}  
+
+</style></head> 
+    
+<body
+ id="news2"
+>
+<div id="ui-header">
+<div class="fixed">
+
+<a class="ui-title" id="popmenu"><font  style="font-size: 18px;">选择分类</font> </a>
+
+<a class="ui-btn-left_pre" href="javascript:" onclick="window.history.go(-1)"></a>
+
+<a class="ui-btn-right_home" href="javascript:" onclick="window.history.go(-1)"></a>
+</div>
+</div>
+<div id="overlay"></div>
+
+<div id="win">
+
+<ul class="dropdown"> 
+    <li><a href="/index.php?g=Wap&m=Weilive&a=schedule&token={Saivi:$vo.token}&wecha_id=<?php echo $_GET['wecha_id']?>&id={Saivi:$vo.id}"><span>婚宴档期</span></a></li>
+   <li><a href="/index.php?g=Wap&m=Weilive&a=company&token={Saivi:$vo.token}&wecha_id=<?php echo $_GET['wecha_id']?>&id={Saivi:$vo.id}"><span>酒店详情</span></a></li>
+   <li><a href="/index.php?g=Wap&m=Weilive&a=product&token={Saivi:$vo.token}&wecha_id=<?php echo $_GET['wecha_id']?>&id={Saivi:$vo.id}"><span>宴席菜单</span></a></li>
+   <li><a href="/index.php?g=Wap&m=Weilive&a=wcase&token={Saivi:$vo.token}&wecha_id=<?php echo $_GET['wecha_id']?>&id={Saivi:$vo.id}"><span>婚礼案例</span></a></li>
+   <li><a href="{Saivi:$vo.map}"><span>一键导航</span></a></li>
+   <li><a href="/index.php?g=Wap&m=Weilive&a=fav&token={Saivi:$vo.token}&wecha_id=<?php echo $_GET['wecha_id']?>&id={Saivi:$vo.id}"><span>优惠活动</span></a></li>
+ 
+<div class="clr"></div>
+
+</ul>
+</div>
+
+<div class="Listpage">
+<div class="top46"></div>
+
+<div class="page-bizinfo">
+<div class="header" style="position: relative;">
+
+<h1 id="activity-name">{Saivi:$vo.name}</h1>
+
+</div>
+
+<div class="text" id="content">
+<span></span>
+
+{Saivi:$vo.description}
+</div>
+ <script src="{Saivi::RES}/weishenghuo/pwximg/play.js" type="text/javascript"></script>
+
+<div class="page-content">
+
+</div>
+
+
+
+
+</div>
+
+<div class="list">
+
+   <div id="mess_share">
+    <div id="share_1"><button class="button2" onclick="_system._guide(true)">
+            <img src="{Saivi::RES}/weishenghuo/img/icon_msg.png">&nbsp;发送给朋友</button></div>
+    <div id="share_2">
+        <button class="button2" onclick="_system._guide(true)"><img src="{Saivi::RES}/weishenghuo/img/icon_timeline.png">&nbsp;分享到朋友圈</button></div><div class="clr"></div></div>
+</div>
+<style type="text/css">
+    button{width:100%;text-align:center;border-radius:3px;}
+.button2{font-size:16px;padding:8px 0;border:1px solid #adadab;color:#000000;background-color: #e8e8e8;background-image:linear-gradient(to top, #dbdbdb, #f4f4f4);background-image:-webkit-gradient(linear, 0 100%, 0 0, from(#dbdbdb),to(#f4f4f4));box-shadow: 0 1px 1px rgba(0,0,0,0.45), inset 0 1px 1px #efefef; text-shadow: 0.5px 0.5px 1px #ffffff;}
+.button2:active{background-color: #dedede;background-image: linear-gradient(to top, #cacaca, #e0e0e0);background-image:-webkit-gradient(linear, 0 100%, 0 0, from(#cacaca),to(#e0e0e0));}
+#mess_share{margin:15px 0;}
+#share_1{float:left;width:49%;}
+#share_2{float:right;width:49%;}
+#mess_share img{width:22px;height:22px;}
+#cover{display:none;position:absolute;left:0;top:0;z-index:18888;background-color:#000000;opacity:0.7;}
+#guide{display:none;position:absolute;right:18px;top:5px;z-index:19999;}
+#guide img{width:260px;height:180px;}
+
+</style>
+
+<script type="text/javascript">
+    var _system={
+        $:function(id){return document.getElementById(id);},
+   _client:function(){
+      return {w:document.documentElement.scrollWidth,h:document.documentElement.scrollHeight,bw:document.documentElement.clientWidth,bh:document.documentElement.clientHeight};
+   },
+   _scroll:function(){
+      return {x:document.documentElement.scrollLeft?document.documentElement.scrollLeft:document.body.scrollLeft,y:document.documentElement.scrollTop?document.documentElement.scrollTop:document.body.scrollTop};
+   },
+   _cover:function(show){
+      if(show){
+     this.$("cover").style.display="block";
+     this.$("cover").style.width=(this._client().bw>this._client().w?this._client().bw:this._client().w)+"px";
+     this.$("cover").style.height=(this._client().bh>this._client().h?this._client().bh:this._client().h)+"px";
+  }else{
+     this.$("cover").style.display="none";
+  }
+   },
+   _guide:function(click){
+      this._cover(true);
+      this.$("guide").style.display="block";
+      this.$("guide").style.top=(_system._scroll().y+5)+"px";
+      window.onresize=function(){_system._cover(true);_system.$("guide").style.top=(_system._scroll().y+5)+"px";};
+  if(click){_system.$("cover").onclick=function(){
+         _system._cover();
+         _system.$("guide").style.display="none";
+ _system.$("cover").onclick=null;
+ window.onresize=null;
+  };}
+   },
+   _zero:function(n){
+      return n<0?0:n;
+   }
+}
+</script>
+</div>
+<a class="footer" href="#" target="_self"><span class="top">返回顶部</span></a>
+<script>
+function dourl(url){
+location.href= url;
+}
+</script>
+<!--
+<div class="plug-div">
+        <div class="plug-phone">
+            <div class="plug-menu themeStyle"><span class="close"></span></div> 
+               
+                        <div class="themeStyle plug-btn plug-btn1 close"><a href="tel:18688679999"><span style="background-image: url(http://www.lanrenmb.com/wap/126/pwximg/plugmenu1.png);"></span></a></div>
+                  
+                        <div class="themeStyle plug-btn plug-btn2 close"><a href="#"><span style="background-image: url(http://www.lanrenmb.com/wap/126/pwximg/plugmenu2.png);"></span></a></div>
+                  
+                        <div class="themeStyle plug-btn plug-btn3 close"><a href="#"><span style="background-image: url(http://www.lanrenmb.com/wap/126/pwximg/plugmenu6.png);"></span></a></div>
+                  
+                        <div class="themeStyle plug-btn plug-btn4 close"><a href="#"><span style="background-image: url(http://www.lanrenmb.com/wap/126/pwximg/plugmenu7.png);"></span></a></div>
+                         
+<div class="plug-btn plug-btn5 close"></div>
+                    </div>
+</div>
+<script src="http://www.lanrenmb.com/wap/126/pwximg/zepto.min.js" type="text/javascript"></script>
+<script src="http://www.lanrenmb.com/wap/126/pwximg/plugmenu.js" type="text/javascript"></script>-->
+ <div class="copyright">© 2013-2014 版权所有</div> <div style="display:none"> </div>
+ 
+
+</body></html>
+<div id="cover"></div>
+<div id="guide"><img src="{Saivi::RES}/weishenghuo/guide.png"></div>

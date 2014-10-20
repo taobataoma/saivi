@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{Saivi:$thisForm.name}</title>
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link href="{Saivi::RES}/css/style/css/hotels.css" rel="stylesheet" type="text/css">
+<script src="{Saivi::RES}/css/style/js/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{Saivi::$staticFilePath}/js/main.js"></script>
+
+</head>
+
+<body id="wrap">
+
+<div class="cardexplain">
+
+
+<ul class="round">
+<li class="title mb"><span class="none">信息</span></li>
+<volist name="submitInfo" id="item">
+<li class="nob" style="height:35px;line-height:35px;">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+<tr>
+<th>{Saivi:$item.displayname}</th>
+<td>{Saivi:$item.value}</td>
+</tr>
+</table>
+</li>
+</volist>                                                          
+</li>
+</ul>
+
+</div>
+
+<script type="text/javascript">
+window.shareData = {  
+            "moduleName":"Panorama",
+            "moduleID":"{Saivi:$item.id}",
+            "imgUrl": "{Saivi:$item.frontpic}", 
+            "sendFriendLink": "{Saivi:$f_siteUrl}{Saivi::U('Panorama/item',array('token'=>$token,'id'=>$item['id']))}",
+            "tTitle": "{Saivi:$item.name}",
+            "tContent": ""
+};
+</script>
+{Saivi:$shareScript}
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['baoming'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if></body>
+</html>

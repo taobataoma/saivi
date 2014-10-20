@@ -1,0 +1,102 @@
+.Tip {
+    position:absolute;
+    top:0;left:0;
+    border:1px solid #808080;
+    background-color:#f8f198;
+    height:30px;min-width:150px;
+    z-index:999999;
+    display:none;
+}
+    .Tip.Warning {
+        border:1px solid #FF0000;
+    }
+    .Tip .Text {
+        position:relative;
+        border:0;
+        margin:0;
+        padding:3px;
+        z-index:2;
+        height:24px;min-width:150px;
+        overflow:hidden;
+        text-align:center;
+    }
+    .Tip .ICON {
+        position:absolute;
+        width:18px;height:11px;
+        border:0;
+        background:url(system.png) 0 0 no-repeat;
+        z-index:1;
+    }
+    .Tip.TopLeft .ICON {
+        background:url(system.png) 0 0 no-repeat;
+        left:0;
+        top:30px;
+    }
+    .Tip.TopRight .ICON {
+        background:url(system.png) -18px 0 no-repeat;
+        right:0;
+        top:30px;
+    }
+    .Tip.BottomRight .ICON {
+        background:url(system.png) -36px 0 no-repeat;
+        right:0;
+        bottom:30px;
+    }
+    .Tip.BottomLeft .ICON {
+        background:url(system.png) -54px 0 no-repeat;
+        left:0;
+        bottom:30px;
+    }
+    .Tip.Warning.TopLeft .ICON {
+        background:url(miniqa.png) 0 -11px no-repeat;
+        left:0;
+        top:30px;
+    }
+    .Tip.Warning.TopRight .ICON {
+        background:url(system.png) -18px -11px no-repeat;
+        right:0;
+        top:30px;
+    }
+    .Tip.Warning.BottomRight .ICON {
+        background:url(system.png) -36px -11px no-repeat;
+        right:0;
+        bottom:30px;
+    }
+    .Tip.Warning.BottomLeft .ICON {
+        background:url(system.png) -54px -11px no-repeat;
+        left:0;
+        bottom:30px;
+    }
+
+/*Loading*/
+.System-Loading {
+    position: absolute;
+    position: fixed;
+    z-index: 9999999;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    top:0;left:0;
+    right:0;bottom；0;
+    display:none;
+}
+    .System-Loading .BG {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color:#f1efef;
+        opacity:0;
+    }
+    .System-Loading .ICON {
+        position:absolute;
+        width:32px;height:32px;
+        top:50%;left:50%;
+        margin:-16px auto auto -16px;
+        background:url(images/system-loading.gif) center center no-repeat;
+    }

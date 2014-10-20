@@ -1,0 +1,175 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>微信公众平台管理系统</TITLE>
+<META charset=utf-8><LINK rel=stylesheet type=text/css 
+href="{Saivi::RES}/css/global.css"><LINK rel=stylesheet type=text/css 
+ href="{Saivi::RES}/css/main.css">
+<link href="{Saivi::RES}/css/account.css" rel="stylesheet" type="text/css">
+<SCRIPT type=text/javascript src="{Saivi::RES}/js/jquery-1.7.2.min.js"></SCRIPT>
+<SCRIPT type=text/javascript src="{Saivi::RES}/js/global.js"></SCRIPT>
+<SCRIPT type=text/javascript src="{Saivi::RES}/js/account.js"></SCRIPT>
+<META name=GENERATOR content="MSHTML 8.00.6001.18702"></HEAD>
+<BODY><!--[if lte IE 9]>
+<SCRIPT src="member_files/jquery.watermark-1.3.js"></SCRIPT>
+<![endif]-->
+<STYLE type=text/css>BODY {
+	BACKGROUND:url({Saivi::RES}/images/main/main-bg.jpg) fixed no-repeat left top
+}
+HTML {
+	BACKGROUND: url({Saivi::RES}/images/main/main-bg.jpg) fixed no-repeat left top
+}
+</STYLE>
+<DIV id=iframe_page>
+<DIV class=iframe_content><LINK rel=stylesheet type=text/css 
+href="{Saivi::RES}/css/account.css">
+<SCRIPT type=text/javascript src="{Saivi::RES}/js/account.js"></SCRIPT>
+<SCRIPT language=javascript>$(document).ready(account_obj.index_init);</SCRIPT>
+<DIV id=home>
+<DIV class=welcome>
+<DIV></DIV><SPAN>{Saivi:$Think.session.uname}</SPAN></DIV>
+
+
+<DIV class=info>
+<DIV class=member>
+<DIV class=face><IMG src="{Saivi:$wecha.headerpic}" style="width:116px; height:116px"></DIV>
+<UL class=info_list>
+  <LI><IMG src="{Saivi::RES}/images/member_files/icon-0.png">公众账号：已绑定【{Saivi:$wecha.wxname}】</LI>
+  <LI><IMG src="{Saivi::RES}/images/member_files/icon-1.png">帐号状态：<eq name="userinfo.status" value="1">正常<else/>不正常</eq>
+</LI>
+  <LI><IMG src="{Saivi::RES}/images/member_files/icon-3.png">开通时间：{Saivi:$thisUser.createtime|date="Y-m-d",###}</LI>
+  <LI><IMG src="{Saivi::RES}/images/member_files/icon-4.png">到期时间：{Saivi:$thisUser.viptime|date="Y-m-d",###}</LI></UL></DIV>
+  
+<DIV class=data>
+<DIV class=d0>
+<H1>{Saivi:$list.follownum|default=0}</H1>
+<H2>今日新增粉丝</H2></A></DIV>
+<DIV class=d1>
+<H1><php>echo $_SESSION['connectnum']</php></H1>
+<H2>本月累计请求量</H2></A></DIV>
+<DIV class=d2>
+<H1>{Saivi:$list.other|default=0}</H1>
+<H2>今日参与活动</H2></A></DIV>
+<DIV class=d3>
+<H1><?php echo $list['3g']+$list['textnum']+$list['imgnum']+$list['videonum']+$list['other']?></H1>
+<H2>今日请求总量</H2></A></DIV></DIV>
+<DIV class=clear></DIV></DIV>
+<DIV class=list>
+<DIV><IMG src="{Saivi::RES}/images/member_files/list-app.png"></DIV>
+<UL>
+  
+<if condition="$thisUser[wyy] eq '1'">
+  <LI><A href="{Saivi::U('Yuyue/index',array('token'=>$token))}"><IMG 
+  src="{Saivi::RES}/images/member_files/account.png"><BR>微预约</A></LI>
+</if>
+<if condition="$thisUser[wlt] eq '1'">
+  <LI><A href="{Saivi::U('Forum/index',array('token'=>$token))}" group="wechat"><IMG 
+  src="{Saivi::RES}/images/member_files/wechat.png"><BR>微论坛</A></LI>
+</if>
+<if condition="$thisUser[wnbd] eq '1'">
+  <LI><A href="{Saivi::U('Custom/record',array('token'=>$token))}" 
+  group="wechat"><IMG src="{Saivi::RES}/images/member_files/reply_keyword.png"><BR>万能表单</A></LI>
+</if>
+  <!--<LI><A href="material_pic.html" group="material"><IMG 
+  src="{Saivi::RES}/images/member_files/material.png"><BR>素材管理</A></LI>-->
+  <if condition="$thisUser[wsm] eq '1'">
+  <LI><A href="{Saivi::U('Fenlei/set',array('token'=>$token))}" group="web"><IMG 
+  src="{Saivi::RES}/images/member_files/web.png"><BR>微商盟</A></LI>
+  </if>
+
+<if condition="$thisUser[weidianshang] eq '1'">
+  <LI><A href="{Saivi::U('Product/index',array('token'=>$token))}" group="shop"><IMG 
+  src="{Saivi::RES}/images/member_files/shop.png"><BR>微商城管理</A></LI>
+  
+
+  <LI><A href="{Saivi::U('Groupon/index',array('token'=>$token))}" group="app"><IMG 
+  src="{Saivi::RES}/images/member_files/tuan.png"><BR>微团购管理</A></LI>
+  </if>
+  <if condition="$thisUser[huiyuan] eq '1'">
+  <LI><A href="{Saivi::U('Member/index',array('token'=>$token))}" group="user"><IMG 
+  src="{Saivi::RES}/images/member_files/user.png"><BR>会员管理</A></LI>
+  </if>
+ <if condition="$thisUser[wdy] eq '1'">
+   <LI><A href="{Saivi::U('Research/index',array('token'=>$token))}" group="app"><IMG 
+  src="{Saivi::RES}/images/member_files/survey.png"><BR>微调研管理</A></LI>
+</if>
+  <LI><A href="{Saivi::U('Photo/index',array('token'=>$token))}" group="app"><IMG 
+  src="{Saivi::RES}/images/member_files/albums.png"><BR>微相册管理</A></LI>
+ <!-- <LI><A href="#" group="#"><IMG 
+  src="{Saivi::RES}/images/member_files/businesscard.png"><BR>微名片管理</A></LI> -->
+  <!-- <LI><A href="qy_microbar.html" group="app"><IMG 
+  src="{Saivi::RES}/images/member_files/microbar.png"><BR>微吧管理</A></LI> -->
+  <LI><A href="{Saivi::U('Company/index',array('token'=>$token))}" group="stores"><IMG 
+  src="{Saivi::RES}/images/member_files/stores.png"><BR>LBS门店定位</A></LI>
+
+  <if condition="$thisUser[wcx] eq '1'"> 
+  <LI><A href="{Saivi::U('Guajiang/index',array('token'=>$token))}" group="action"><IMG 
+  src="{Saivi::RES}/images/member_files/turntable.png"><BR>刮刮卡管理</A></LI>
+   <if condition="$thisUser[sgj] eq '1'">
+  <LI><A href="{Saivi::U('LuckyFruit/index',array('token'=>$token))}" group="action"><IMG 
+  src="{Saivi::RES}/images/member_files/fruit.png"><BR>水果达人管理</A></LI>
+</if>
+  <if condition="$thisUser[dzp] eq '1'">
+  <LI><A href="{Saivi::U('Lottery/index',array('token'=>$token))}" group="action"><IMG 
+  src="{Saivi::RES}/images/member_files/scratch.png"><BR>欢乐大转盘</A></LI>
+  </if>
+  </UL></DIV>
+<DIV class=clear></DIV>
+<DIV class=list>
+<!-- 微行业权限控制开始 -->
+
+
+<DIV><IMG src="{Saivi::RES}/images/member_files/list-trade.png"></DIV>
+<UL>
+
+  <if condition="$thisUser[hunqing] eq '1'">
+  <LI><A href="{Saivi::U('Wedding/index',array('token'=>$token))}" 
+  group="shop"><IMG src="{Saivi::RES}/images/member_files/app_wedding.png"><BR>微喜帖</A></LI>
+</if>
+
+<if condition="$thisUser[cy] eq '1'">
+  <LI><A href="{Saivi::U('Repast/index',array('token'=>$token))}" 
+  group="shop"><IMG src="{Saivi::RES}/images/member_files/app_catering.png"><BR>微餐饮</A></LI>
+</if>
+
+<if condition="$thisUser[fc] eq '1'">
+  <LI><A href="{Saivi::U('Estate/index',array('token'=>$token))}" 
+  group="shop"><IMG src="{Saivi::RES}/images/member_files/app_estate.png"><BR>微房产</A></LI>
+</if>
+
+<if condition="$thisUser[fczj] eq '1'">
+  <LI><A href="{Saivi::U('Fangchan/index',array('token'=>$token))}" 
+  group="shop"><IMG src="{Saivi::RES}/images/member_files/wcjq.png"><BR>房产中介</A></LI>
+</if>
+
+<if condition="$thisUser[jd] eq '1'">
+  <LI><A href="{Saivi::U('Hotels/index',array('token'=>$token))}" 
+  group="shop"><IMG src="{Saivi::RES}/images/member_files/app_hotels.png"><BR>微酒店</A></LI>
+</if>
+
+<if condition="$thisUser[yl] eq '1'">
+  <LI><A href="{Saivi::U('Medical/index',array('token'=>$token))}" 
+  group="shop"><IMG src="{Saivi::RES}/images/member_files/app_medical.png"><BR>微医疗</A></LI>
+</if>
+
+<if condition="$thisUser[qc] eq '1'">
+  <LI><A href="{Saivi::U('Car/index',array('token'=>$token))}" group="shop"><IMG 
+  src="{Saivi::RES}/images/member_files/app_car.png"><BR>微汽车</A></LI>
+</if>
+<if condition="$thisUser[zhuangxiu] eq '1'">
+  <LI><A href="{Saivi::U('Business/index',array('token'=>$token,'type'=>'fitment'))}" group="shop"><IMG 
+  src="{Saivi::RES}/images/member_files/zhuangxiu.png"><BR>微装修</A></LI>
+</if>
+<if condition="$thisUser[hunqing] eq '1'">
+  <LI><A href="{Saivi::U('Business/index',array('token'=>$token,'type'=>'wedding'))}" group="shop"><IMG 
+  src="{Saivi::RES}/images/member_files/wedding.png"><BR>微婚庆</A></LI>
+</if>
+<if condition="$thisUser[zhaopin] eq '1'">
+  <LI><A href="{Saivi::U('Zhaopin/index',array('token'=>$token))}" group="shop"><IMG 
+  src="{Saivi::RES}/images/member_files/zhaogognzuo.png"><BR>微招聘</A></LI>
+</if>
+
+<!-- 微行业权限控制结束 -->
+</UL></DIV></DIV></DIV>
+<DIV>
+<DIV style="DISPLAY: none">
+{Saivi::base64_decode(C('countsz'))}
+</DIV></DIV></DIV></BODY></HTML>

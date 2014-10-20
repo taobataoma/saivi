@@ -1,0 +1,29 @@
+<include file="Frame:header"/>
+<div class="columntitle">公众号管理</div>
+<div style="border:1px solid #E9EFF7;margin-top:10px;">
+
+
+  <table cellspacing="1" cellpadding="1" class="listtable">
+		<tr class="summary-title">
+		    <td align="center">UID</td>
+		    <td>用户名</td>
+			<td>微信名称</td>
+			<td>微信ID</td>
+			<td>Token</td>
+			<td>操作</td>
+		</tr>
+<Saivilist array="list" foreach="list">
+    <tr class="tdbg" onMouseOver="this.className='tdbg-dark';" onMouseOut="this.className='tdbg';" style="height:29px;">
+        <td align="center">{Saivi:$list.uid}</td>
+		<td>{Saivi:$list.username}</td>
+		<td>{Saivi:$list.wxname}</td>
+		<td>{Saivi:$list.wxid}</td>
+		<td>{Saivi:$list.token}</td>
+		<td><a href="###" onclick="if(confirm('确定删除吗')){location.href='?g=Agent&m=Users&a=deleteWxUser&id={Saivi:$list.id}'}">删除</a></td>
+    </tr>
+</Saivilist>
+</table>
+
+</div>
+<div class="pages">{Saivi:$page}</div>
+<include file="Frame:footer"/>

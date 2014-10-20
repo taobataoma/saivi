@@ -1,0 +1,61 @@
+<include file="Public:head"/>
+
+<div class="content" style="width:920px; background:none;   border:none; margin-bottom:30px;" >
+          <div class="cLineB"><h4>添加分类</h4><a href="javascript:history.go(-1);" class="right btn btn-primary btn_submit  J_ajax_submit_btn" style="margin-top:-27px">返回</a></div>
+         
+          <form method="post" action="">
+          <div class="msgWrap form">
+            <table class="userinfoArea" border="0" cellspacing="0" cellpadding="0" width="100%">
+              <tbody>
+			  <tr>
+				<th>名称：</th>
+				<td><input type="text" class="px" id="title" value="" name="title" style="width:200px;"> </td>
+				</tr>
+
+			  <tr>
+				<th>显示顺序：</th>
+				<td><input type="text" class="px" id="displayorder" value="" name="displayorder" style="width:50px;"> </td>
+				</tr>
+	
+				<tr>
+				<th>介绍 ：</th>
+				<td>
+					 <textarea name="summary" style="width:60%;height:200px;border:1px solid;" ></textarea>
+				</td>
+				</tr>
+				
+
+<tr>
+	<th></th>
+	<td><button type="submit" id="button" name="button" class="btn btn-primary btn_submit  J_ajax_submit_btn">保存</button>　<a href="javascript:history.go(-1);" class="btn">取消</a></td>
+</tr>
+ </tbody>
+</table>
+            
+          </div>
+          </form>
+          
+        </div>
+<script  type="text/javascript" charset="utf-8">
+  function inputchek(obj){
+    var reg = new RegExp("^[0-9]*[1-9]*$");
+    if(!reg.test(obj.value)){
+        alert("请输入大于零的整数!");
+    }
+   
+    if(obj.value > 65535){
+        alert("请不要输入大于 65535 的整数!");
+    }
+   
+  }
+
+  $("#stat").focusout(function(event) {
+      inputchek(this);
+  });
+  $("#enddate").focusout(function(event) {
+      inputchek(this);
+  });
+
+</script>
+
+<include file="Public:footer"/>

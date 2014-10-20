@@ -1,0 +1,38 @@
+<include file="Public:head"/>
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/plugins/code/prettify.css" />
+<div class="content">
+  <div class="cLineB">
+    <h4>添加套餐</h4>
+    <a href="{Saivi::U('Cosmetology_departments/index',array('token'=>$token))}"  class="right btn btn-primary btn_submit  J_ajax_submit_btn" style="margin-top:-27px" >返回</a></div>
+  <div class="msgWrap">
+    <form class="form" method="post"   action="{Saivi::U('Cosmetology_departments/insert',array('token'=>$token))}"    enctype="multipart/form-data" >
+      <TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
+        <TBODY>
+        <input type="hidden" class="px" id="id" value="{Saivi:$info.id}" name="id" style="width:500px" >
+        <input type="hidden" class="px" id="token" value="{Saivi:$_SESSION["token"]}" name="token" style="width:500px" >
+        <TR>
+          <TH valign="top"><label for="keyword">套餐名称</label></TH>
+          <TD><input type="text" class="px" id="name" value="" name="name" style="width:300px"   >
+            <br />
+          </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH></TH>
+          <TD><button type="submit"  name="button"  class="btn btn-primary btn_submit  J_ajax_submit_btn" >保存</button>
+            <div class="clr"></div></TD>
+        </TR>
+        </TBODY>
+        
+      </TABLE>
+    </form>
+  </div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+</div>
+<!--底部-->
+</div>
+<include file="Public:footer"/>

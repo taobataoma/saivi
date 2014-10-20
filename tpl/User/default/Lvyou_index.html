@@ -1,0 +1,54 @@
+<include file="Public:head"/>
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<div class="content">
+  <div class="cLineB">
+    <h4>添加旅游区<span class="FAQ">请设置旅游区相关内容。</span></h4>
+  </div>
+  <div class="tab">
+    <ul>
+      <li class="current tabli" id="tab0"><a href="{Saivi::U('Lvyou/index',array('token'=>$token))}">旅游区简介</a></li>
+      <li class="tabli" id="tab0"><a href="{Saivi::U('Lvyousub/index',array('token'=>$token))}">景区</a></li>
+      <li class="tabli" id="tab0"><a href="{Saivi::U('Lvyouunits/index',array('token'=>$token))}">景点</a></li>
+      <li class="tabli" id="tab0"><a href="{Saivi::U('Lvyouposter/index',array('token'=>$token))}">宣传海报</a></li>
+      <li class="tabli" id="tab0"><a href="{Saivi::U('Lvyouphoto/index',array('token'=>$token))}">风景相册</a></li>
+      <li class="tabli" id="tab0"><a href="{Saivi::U('Lvyoucom/index',array('token'=>$token))}">专家点评</a></li>
+    </ul>
+  </div>
+  <div class="cLineC" style="line-height: 32px;"> <a   href="{Saivi::U('Lvyou/add')}" class="btnGrayS vm bigbtn" >添加旅游区</a>　 </div>
+  <div class="msgWrap form">
+    <div class="bdrcontent">
+      <div id="div_ptype">
+        <table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+          <thead>
+            <tr>
+              <th style=" width:100px;">图文消息标题：</th>
+              <th style=" width:100px;">图文消息触发关键词：</th>
+              <th style=" width:100px;">图文消息封面：</th>
+              <th style=" width:100px;">相册名称：</th>
+              <th style=" width:120px;">操作</th>
+            </tr>
+          </thead>
+          <volist name="info" id="vo">
+            <tr>
+              <td>{Saivi:$vo.title}</td>
+              <td>{Saivi:$vo.keyword}</td>
+              <td><div class="cateimg"><img src="{Saivi:$vo.picurl}" class="cateimg_small"  /></div></td>
+              <td>{Saivi:$vo.name}</td>
+              <td class="norightborder"><a  href="{Saivi::U('Lvyou/edit',array('id'=>$vo['id']))}">编辑</a> <a href="{Saivi::U('Lvyou/del',array('id'=>$vo['id']))}">删除</a> </td>
+            </tr>
+          </volist>
+        </table>
+      </div>
+    </div>
+    <div class="footactions" style="padding-left:10px">
+      <div class="pages">{Saivi:$page}</div>
+    </div>
+  </div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+</div>
+<!--底部-->
+</div>
+<include file="Public:footer"/>

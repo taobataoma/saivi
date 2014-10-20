@@ -1,0 +1,137 @@
+<include file="Dining:header"/>
+<style>
+</style>
+</head>
+
+<body class="mode_webapp">
+<div class="menu_header"> 
+     <div class="menu_topbar">
+      <strong class="head-title">修改个人资料</strong>
+      <span class="head_btn_left"><a href="javascript:history.go(-1);"><span>返回</span></a><b></b></span> <a class="head_btn_right" href="{Saivi::U('Dining/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'dining'=>1))}">
+      <span><i class="menu_header_home"></i></span><b></b>
+      </a>
+     </div>
+</div>
+
+    
+
+<form class="form" method="post"   action=""   enctype="multipart/form-data" >
+  <input type="hidden" name="formhash" id="formhash" value="4171ab45" />
+   <input type="hidden" name="insetmb" id="insetmb" value="1" />
+<div class="contact-info" style=" margin-top:10px;">
+<ul>
+<li class="title">个人信息</li>
+<li>
+<table style="padding: 0; margin: 0; width: 100%;">
+<tbody>
+                        <tr>
+<td width="80px"><label for="wxname" class="ui-input-text">微信昵称：</label></td>
+<td>
+<div class="ui-input-text"><input type="text" id="wxname" name="wechaname" value="{Saivi:$thisUser.wechaname}" placeholder="如：智风科技" class="ui-input-text"></div>
+</td>
+</tr>
+                        
+                      <tr>
+<td width="80px"><label for="username" class="ui-input-text">姓名：</label></td>
+<td>
+<div class="ui-input-text"><input type="text" id="username" name="truename" value="{Saivi:$thisUser.truename}" placeholder="如：王先生、闫小姐" class="ui-input-text"></div>
+</td>
+</tr>
+<tr id="nameinfo-layout" style="display: none;">
+<td width="80px"></td>
+<td colspan="2" id="nameinfo" class="cart-editalertinfo"></td>
+</tr>
+
+<tr>
+<td width="80px"><label for="phone" class="ui-input-text">电话：</label></td>
+<td>
+<div class="ui-input-text"><input type="tel" id="phone" name="tel" value="{Saivi:$thisUser.tel}" placeholder="如：18200000000" class="ui-input-text"></div>
+</td>
+</tr>
+<tr id="phoneinfo-layout" style="display: none;">
+<td width="80px"></td>
+<td colspan="2" id="phoneinfo" class="cart-editalertinfo"></td>
+</tr>	
+
+<tr>
+<td width="80px"><label for="address" class="ui-input-text">地址：</label></td>
+<td><textarea id="address" name="address" placeholder="如：XX小区5号楼318" class="ui-input-text">{Saivi:$thisUser.address}</textarea>
+</td>
+</tr>
+<tr id="addressinfo-layout" >
+<td width="80px"></td>
+<td colspan="2" id="addressinfo" class="cart-editalertinfo"></td>
+</tr>
+</tbody></table>					
+</li>
+</ul>
+   
+    </div>
+
+    
+    
+    <div class="footReturn" style="margin-bottom:80px;">
+ <input type="submit" id="showcard"  class="submit"  value="保存" style="width:100%"> 
+<div class="window" id="windowcenter">
+<div id="title" class="wtitle">操作提示<span class="close" id="alertclose"></span></div>
+<div class="content">
+<div id="txt"></div>
+</div>
+</div>
+</div>
+    
+    </form>
+     
+<include file="Dining:footer"/>    
+    
+<script type="text/javascript"> 
+
+
+var oLay = document.getElementById("overlay");	
+$(document).ready(function () { 
+
+
+$("#showcard").click(function () { 
+
+ $(".form").submit();
+oLay.style.display = "block";
+}); 
+}); 
+
+$("#windowclosebutton").click(function () { 
+$("#windowcenter").slideUp(500);
+oLay.style.display = "none";
+
+}); 
+$("#alertclose").click(function () { 
+$("#windowcenter").slideUp(500);
+oLay.style.display = "none";
+
+}); 
+
+function alert(title){ 
+//var windowHeight; 
+//var windowWidth; 
+//var popWidth;  
+//var popHeight; 
+//windowHeight=$(window).height(); 
+//windowWidth=$(window).width(); 
+//popHeight=$(".window").height(); 
+//popWidth=$(".window").width(); 
+//var popY=(windowHeight-popHeight)/2; 
+//var popX=(windowWidth-popWidth)/2; 
+//$("#windowcenter").css("top",popY).css("left",popX).slideToggle("slow"); 
+$("#windowcenter").slideToggle("slow"); 
+$("#txt").html(title);
+//$("#windowcenter").hide("slow"); 
+setTimeout('$("#windowcenter").slideUp(500)',4000);
+} 
+</script>
+
+<script type="text/javascript">
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+WeixinJSBridge.call('hideToolbar');
+});
+</script>
+</body>
+</html>

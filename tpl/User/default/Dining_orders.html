@@ -1,0 +1,215 @@
+<include file="Public:head"/>  
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+
+<script src="{Saivi::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+
+<script src="{Saivi::STATICS}/artDialog/plugins/iframeTools.js"></script>
+
+<div class="content"   >
+
+<div class="cLineB">
+
+<h4 class="left">订单管理（<a href="{Saivi::U('Dining/orders',array('token'=>$token,'handled'=>0,'storeid'=>$storeid))}">未处理订单<span style="color:#f00">{Saivi:$unhandledCount}</span>个</a>） ({Saivi:$page}) </h4>
+
+<div class="searchbar right">
+
+<script language=javascript>
+
+function gourl(v)
+
+{
+
+	window.location.href ="{Saivi::U('Dining/orders',array('token'=>$token))}&storeid="+v;
+
+}
+
+</script>
+
+<b>切换店铺：</b><select name="storeid" onchange="gourl(this.value);">
+
+<option value="0">所有店铺</option>
+
+<volist name="stores" id="st">
+
+<option value="{Saivi:$st.id}" <if condition="$storeid eq $st['id']">selected</if>>{Saivi:$st.name}</option>
+
+</volist>
+
+</select>
+
+</div>
+
+<div class="clr"></div>
+
+</div>
+
+<!--tab start-->
+
+<div class="tab">
+
+<ul>
+
+<li class="tabli" id="tab2"><a href="{Saivi::U('Dining/stores',array('token'=>$token,'storeid'=>$storeid))}">店铺信息</a></li>
+
+<li class="tabli" id="tab0"><a href="{Saivi::U('Dining/index',array('token'=>$token,'storeid'=>$storeid))}">菜品管理</a></li>
+
+<li class="tabli" id="tab2"><a href="{Saivi::U('Dining/cats',array('token'=>$token,'storeid'=>$storeid))}">菜品分类管理</a></li>
+
+<li class="current tabli" id="tab2"><a href="{Saivi::U('Dining/orders',array('token'=>$token,'storeid'=>$storeid))}">订单管理</a></li>
+
+<li class="tabli" id="tab2"><a href="{Saivi::U('Dining/tables',array('token'=>$token,'storeid'=>$storeid))}">桌台管理</a></li>
+
+<li class="tabli" id="tab5"><a href="{Saivi::U('Reply_info/set',array('token'=>$token,'infotype'=>'Dining'))}">订餐回复配置</a></li>
+
+</ul>
+
+</div>
+
+<!--tab end-->
+
+<div class="msgWrap">
+
+<form method="post" action="" id="info">
+
+<div class="cLine">
+
+<div class="pageNavigator left"> <a href="###" onclick="$('#info').submit()" title="" class="btnGrayS vm bigbtn"><img src="{Saivi::RES}/images/product/arrow_switch.png" class="vm">处理订单</a></div>
+
+<div class="clr"></div>
+
+</div>
+
+
+
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+
+<thead>
+
+<tr>
+
+<th class="select"><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>
+
+<th>订单号</th>
+
+<th width="50">类型</th>
+
+<th width="80">姓名</th>
+
+<th width="80">电话</th>
+
+<th class="60">数量</th>
+
+<th width="60">总价</th>
+
+<th class="60">付款/派送</th>
+
+<th class="60">状态</th>
+
+<th width="120">时间</th>
+
+<th width="100" class="norightborder">操作</th>
+
+</tr>
+
+</thead>
+
+<tbody style=" text-align:center;">
+
+<volist name="orders" id="o"> 
+
+<tr>
+
+<td><input type="checkbox" value="{Saivi:$o.id}" class="cbitem" name="id_{Saivi:$i}"></td>
+
+<td>{Saivi:$o.orderid}</td>
+
+<td>
+
+<if condition="$o.diningtype eq 1"><font color="blue">点餐</font><elseif condition="$o.diningtype eq 2" /><font color="#a300a9">外卖</font><elseif condition="$o.diningtype eq 3" /><font color="green">预定</font><else /></if>
+
+</td>
+
+<td>{Saivi:$o.truename}</td>
+
+<td>{Saivi:$o.tel}</td>
+
+<td>{Saivi:$o.total}</td>
+
+<td>{Saivi:$o.price}元</td>
+
+<td><if condition="$o.paid eq 1"><span style="color:green">已付款</span><else/><span style="color:red">未付款</span></if> / <if condition="$o.sent eq 1"><span style="color:green">已派单</span><else/><span style="color:red">未派单</span></if></td>
+
+<td><if condition="$o.handled eq 1"><span style="color:green">已处理</span><else/><span style="color:red">未处理</span></if></td>
+
+<td>{Saivi:$o.time|date="Y-m-d H:i:s",###}</td> 
+
+<td class="norightborder"><a href="###" onclick="showIntroDetail({Saivi:$o.id})">详细</a>
+
+<a href="javascript:drop_confirm('您确定要删除吗?', '{Saivi::U('Dining/deleteOrder',array('token'=>$token,'id'=>$o['id'],'storeid'=>$storeid))}');">删除</a></td>
+
+</tr>
+
+</volist>
+
+</tbody>
+
+</table>
+
+<input type="hidden" name="token" value="{Saivi:$_GET['token']}" />
+
+</form>
+
+<script>
+
+function selectall(name) {
+
+	var checkItems=$('.cbitem');
+
+	if ($("#check_box").attr('checked')==false) {
+
+		$.each(checkItems, function(i,val){
+
+			val.checked=false;
+
+		});
+
+		
+
+	} else {
+
+		$.each(checkItems, function(i,val){
+
+			val.checked=true;
+
+		});
+
+	}
+
+}
+
+function showIntroDetail(id){
+
+	art.dialog.open("{Saivi::U('Dining/orderInfo',array('token'=>$token,'storeid'=>$storeid))}&id="+id,{lock:false,title:'订单详情',width:700,height:420,yesText:'关闭',background: '#000',opacity: 1});
+
+}
+
+</script>
+
+</div>
+
+<div class="cLine">
+
+<div class="pageNavigator right">
+
+<div class="pages">{Saivi:$page}</div>
+
+</div>
+
+<div class="clr"></div>
+
+</div>
+
+</div>
+
+<include file="Public:footer"/>

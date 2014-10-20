@@ -1,0 +1,111 @@
+<include file="Public:head" /> 
+
+<script src="{Saivi::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+
+<script src="{Saivi::STATICS}/artDialog/plugins/iframeTools.js"></script>
+
+<script src="{Saivi::STATICS}/upyun.js"></script>
+
+  <div class="content" style="width:900px; background:none; margin-left:275px; border:none; margin-bottom:30px;" > 
+
+   <div class="cLineB"> 
+
+    <h4>桌台设置</h4> 
+
+    <a href="{Saivi::U('Dining/tables',array('token'=>$token,'storeid'=>$storeid))}" class="right  btnGreen" style="margin-top:-27px">返回</a> 
+
+   </div> 
+
+   <form class="form" method="post" action="" enctype="multipart/form-data"> 
+
+<input type="hidden" name="id" value="{Saivi:$set.id}" />
+
+    <div class="msgWrap bgfc" style="width:920p"> 
+
+     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+
+      <tbody> 
+
+       <tr> 
+
+        <th><span class="red">*</span>名称：</th> 
+
+        <td><input type="text" name="name" value="{Saivi:$set.name}" class="px" style="width:400px;" /></td> 
+
+       </tr>
+
+       <tr> 
+
+        <th><span class="red">*</span>店铺：</th> 
+
+        <td><select id="storeid" name="storeid" class="px">  <option value="0">请选择...</option>
+
+        <volist id="v" name="Stores">
+
+        <option value="{Saivi:$v.id}" <if condition="$set['storeid'] eq $v['id']">selected</if>>{Saivi:$v.name}</option>
+
+        </volist>
+
+        </select></td> 
+
+       </tr>
+
+        <tr> 
+
+        <th>订金：</th>
+
+        <td><input type="text" id="price" name="price" value="{Saivi:$set.price}" class="px" style="width:60px;" /> 元</td> 
+
+       </tr>
+
+        <tr> 
+
+        <th>缩略图：</th>
+
+        <td><input type="text" name="picurl" value="{Saivi:$set.picurl}" class="px" id="picurl" style="width:400px;" /> <a href="###" onclick="upyunPicUpload('picurl',700,700,'{Saivi:$token}')" class="btnGreen">上传</a> <a href="###" class="btnGray vm" onclick="viewImg('picurl')">预览</a></td> 
+
+       </tr>
+
+      <tr> 
+
+        <th>介绍：</th>
+
+        <td><textarea name="intro" class="px" style="width:400px;">{Saivi:$set.intro}</textarea></td> 
+
+       </tr>
+
+        <tr> 
+
+        <th>顺序：</th> 
+
+        <td><input type="text" name="taxis" value="{Saivi:$set.taxis}" class="px" style="width:60px;" /></td> 
+
+       </tr>
+
+        <tr> 
+
+       
+
+       <tr>         
+
+       <th>&nbsp;</th>
+
+       <td>
+
+       <button type="submit" name="button" class="btnGreen">保存</button> &nbsp; <a href="{Saivi::U('Dining/tables',array('token'=>$token,'storeid'=>$storeid))}" class="btnGray vm">取消</a></td> 
+
+       </tr> 
+
+      </tbody> 
+
+     </table> 
+
+     </div>
+
+    
+
+   </form> 
+
+  </div> 
+
+  <include file="Public:footer" />

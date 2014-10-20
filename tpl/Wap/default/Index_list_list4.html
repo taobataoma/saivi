@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>{Saivi:$tpl['wxname']}</title>
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta charset="utf-8">
+<link href="{Saivi::RES}/css/yl/news.css" rel="stylesheet" type="text/css" />
+<link href="{Saivi::RES}/css/ktv/style.css" rel="stylesheet" type="text/css">
+
+<link type="text/css" rel="stylesheet" href="{Saivi::RES}/css/ktv/style01.css">
+
+<script type="text/javascript" charset="utf-8" src="{Saivi::RES}/js/ktv/page_context.js"></script>
+
+</head>
+
+<body screen_capture_injected="true">
+<div>
+	<ul class="mainmenu2 radius margin10">
+		
+		<volist name="res" id="vo">
+		<li class="radius_top border-top-none">
+			<div class="menubtn">
+			<if condition="$vo['url']">
+			<a href="{Saivi:$vo.url}">
+			<else />
+			<a href="{Saivi::U('Index/content',array('id'=>$vo['id'],'token'=>$vo['token']))}">
+			</if>
+				<h2 class="menutitle">{Saivi:$vo.title}</h2>
+				<p class="menudesc">{Saivi:$vo.text}</p>
+				</a> <span class="icon">&nbsp;</span> </div>
+		</li>
+		</volist>
+	</ul>
+	
+</div>
+
+<section id="Page_wrapper">
+<div id="pNavDemo" class="c-pnav-con">
+<section class="c-p-sec">
+<div class='c-p-pre <eq name="p" value="1"> c-p-grey </eq> '><span class="c-p-p"><em></em></span><a <eq name="p" value="1"><else/>href="{Saivi:$f_siteUrl}/index.php?g=Wap&m=Index&a=lists&classid=<php>echo $_GET['classid'];</php>&token={Saivi:$tpl.token}&p=<php>echo $p-1;</php>"</eq>  >上一页</a></div>
+<div class="c-p-cur">
+<div class="c-p-arrow c-p-down"><span>{Saivi:$p}/{Saivi:$page}</span><span></span></div>
+	<select class="c-p-select" onchange="dourl('{Saivi:$f_siteUrl}/index.php?g=Wap&m=Index&a=lists&classid=<php>echo $_GET['classid'];</php>&token={Saivi:$tpl.token}&p='+this.value)">
+		<?php
+			for($i=1;$i<=$page;$i++){
+				if($i==$p){
+					echo '<option value="'.$i.'" selected>第'.$i.'页</option>';
+				}else{
+					echo '<option value="'.$i.'">第'.$i.'页</option>';
+				}
+			}
+		?>
+	</select>
+</div>
+<div class='c-p-next <eq name="p" value="$page"> c-p-grey </eq>'  >
+
+<?php
+	if($p<$page){
+		echo '<a href="'.C('site_url').'/index.php?g=Wap&m=Index&a=lists&classid='.(int)$_GET['classid'].'&token='.$tpl['token'].'&p='.($p+1).'">';
+	}else{
+		echo '<a>';
+	}
+?>
+下一页</a><span class="c-p-p"><em></em></span></div>
+</section>
+</div>
+</section>
+</div>
+<script>
+function dourl(url){
+location.href= url;
+}
+</script>
+ <div class="copyright" style="text-align:center;"><if condition="$iscopyright eq 1">{Saivi:$homeInfo.copyright}<else/>{Saivi:$siteCopyright}</if></div>
+<include file="Index:styleInclude"/> 
+</body>
+</html>

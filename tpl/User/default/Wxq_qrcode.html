@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{Saivi::C('site_name')}{Saivi:$wall.title}</title>
+<meta name="keywords" content="微动力微信墻" />
+<meta name="description" content="微动力微信墻" />
+<script type="text/javascript" src="{Saivi::RES}/wxq/resource/script/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/wxq/source/modules/wxwall/template/common.js"></script>
+<link type="text/css" rel="stylesheet" href="{Saivi::RES}/wxq/source/modules/wxwall/template/common.css" />
+</head>
+<body>
+    <img id="img_id" src="{Saivi:$wall['background']}"/>
+<div id="wallMain">
+    <table id="topbox" class="topbox">
+        <tr>
+            <td class="topbox_l"><span class="site">{Saivi::C('site_my')}</span>
+                <strong class="title">微信墻</strong><br><span class="site">{Saivi:$wall.title}</span></td>
+            <td class=""><span class="site">添加微信号</span> <strong class="title">{Saivi:$wall['account']['wxname']}</strong>
+                <span class="site">发送关键字<strong class="title">{Saivi:$wall['keyword']}</strong>,
+                    登记后发送内容，自动上墙</span>
+            </td>
+        </tr>
+    </table>
+	<div id="msg_list">
+		<div class="talkList" id="msg_{$Saivi:$wall.id}">
+			<img src="{Saivi:$wall.qrcode}" style="width:500px;" />
+			<img src="{Saivi:$wall.qrcode}" style="width:420px;" />
+		</div>
+	</div>
+</div>
+
+    <div class="side_div">
+        <div class="side_item"><a href="{Saivi::U('Wxq/qrcode',array('id'=>$wall['id']))}" >二维码</a></div>
+        <div class="side_item"><a href="{Saivi::U('Wxq/lottery',array('id'=>$wall['id'],'type'=>1))}">去抽奖</a></div>
+        <div class="side_item"><a href="{Saivi::U('Wxq/detail',array('id'=>$wall['id']))}">微信墻</a></div>
+    </div>
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

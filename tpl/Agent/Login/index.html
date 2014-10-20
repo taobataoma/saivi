@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="tpl/Agent/Common/style/style.css" type="text/css" rel="stylesheet">
+<title>{Saivi:$f_siteTitle}代理商后台登录</title>
+<script src="tpl/Agent/Common/js/mootools1.3.js"></script>
+<script src="tpl/Agent/Common/js/mootools-more.js"></script>
+<script src="tpl/Agent/Common/js/manage.js"></script>
+<script src="tpl/Agent/Common/js/user.js"></script>
+</head>
+<body id="body" class="">
+
+
+
+<style>
+.in{height:22px;width:90%}
+html,body{  margin:0px;  height:100%;}
+
+.ls_login_main {background:url(../tpl/static/login_main_bg.png) no-repeat center center; height:100%; min-width:600px;}
+.ls_login_main2 { padding-top:110px;  position: relative; height:520px;}
+.container-fluid2 { width:405px; height:500px;  position: absolute; right:22%; top:110px;  background:url(../tpl/static/login_bg_touming.png) no-repeat left bottom; }
+.login_logo { width:295px; height:60px; padding:0px 55px; text-align:left }
+.login_logo img { height:60px;}
+.login_login { width:295px; height:300px; padding:115px 55px 30px 55px;}
+
+/**
+.login_Keyword { width:222px; line-height:18px; font-size:12px; background:#fff; border:1px solid #af9f9f;}
+.login_KeywordonFocus {border:1px solid #fad732; line-height:18px; text-indent:40px; color:#999; font-size:12px;  width:222px; } **/
+.login_name {margin:15px 34px 0px 39px; width:224px; background:none; ; height:38px; }
+
+.login_name input {width:202px; line-height:18px; background:#fff;
+	height:18px; margin:0px;  font-size:12px; color:#999; padding:10px;  border-radius:5px;
+	transition: all 0.30s ease-in-out;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    border:#af9f9f 1px solid;
+    outline: none;
+	}
+
+.ls_login_botton { width:219px; height:32px; padding:40px 36px 0px 40px;}	
+	
+.login_name input:focus {
+border:#cdf70a 1px solid;
+box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+-webkit-box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+-moz-box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+}	
+
+</style>
+
+
+
+<body  style="background:#0b68b5; min-height:640px; ">
+
+<div class="ls_login_main">
+<div class="ls_login_main2">
+
+<!--
+	<div id="olark" style="display: none;">
+    <olark><iframe id="olark-loader" frameborder="0"></iframe></olark>
+    </div> 
+     -->  
+    
+	<div class="container-fluid2">
+
+		<div class="login_logo">
+            </div>
+		
+<div class="login_login">
+
+<form id="" onsubmit="return checkform();" method="post" action="?g=Agent&m=Login&a=index" style="border:none; margin:0px" id="autoForm" name="formSearch" >
+
+
+<input type="hidden" name="cid" value="{saivi:$cid}"/>
+<input type="hidden" name="k" value="{saivi:$k}"/>
+<div class="login_name">
+
+<input class="login_Keyword" autocomplete="off" type="text" onclick="this.value='';focus()" onfocus="if(this.value=='(请输入用户名)'){this.value=''};this.style.color='black';" onblur="if(this.value==''||this.value=='(请输入用户名)'){this.value='(请输入用户名)';this.style.color='gray';}" name="email" id="email" value="<?php if (isset($_GET['user'])){echo htmlspecialchars($_REQUEST['user'],ENT_COMPAT ,'utf-8');}?>"/>
+</div>
+
+<div class="login_name">
+<input id="password" class="login_Keyword"  name="password" id="password" autocomplete="off" value="" type="password"  style="color:#000" />
+</div>
+
+
+<div class="ls_login_botton">
+<input class="btn btn-primary btn-large" value="" style="font-family:Microsoft Yahei; background:url(../tpl/static/login_cion.png) no-repeat; border:none; width:219px; height:32px;" name="dosubmit" id="dosubmit" type="submit" />
+</div>
+</form>
+
+</div>
+
+
+
+
+	</div>
+    
+</div>
+   
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+var changeVC=function(){
+	//$('vcImg').setProperty('src',"../script.php?oper=checkCode&width=70&height=25&codeNum=4&backGround=&fontColor=&"+Math.random());
+}
+function checkform(){
+		if($('email').value.trim()==''){
+			alert('账号不正确');
+			return false;
+		}else if($('password').value.trim()==''){
+			alert('请输入密码');
+			return false;
+		}
+		return true;
+}
+</script>
+<script language="JavaScript">
+if (window.top != self){
+	window.top.location = self.location;
+}
+</script>
+</body></html>

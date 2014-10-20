@@ -1,0 +1,21 @@
+<?php 
+return array (
+  'site_name' => '赛微Saivi™微信平台管理系统V4.2.1',
+  'site_title' => '赛微Saivi™微信平台管理系统V4.2.1',
+  'site_url' => 'http://www.fengyecn.com',
+  'site_logo' => 'http://demo.saivi.com.cn/tpl/static/kindeditor/attached/image/20140819/20140819073440_47488.png',
+  'site_Token' => '1672-a316-0cd5-c799-8cff',
+  'site_my' => '赛微Saivi™',
+  'ischeckuser' => 'true',
+  'reg_groupid' => '4',
+  'reg_validdays' => '2',
+  'reg_needmp' => 'true',
+  'ipc' => '18910682112',
+  'site_qq' => '264641799',
+  'baidu_map_api' => 'D27897844bc35e217de79b30b3567356',
+  'site_email' => '264641799@qq.com',
+  'keyword' => '北京市通州区梨园云景东里新潮嘉园103-2414',
+  'content' => '赛微Saivi™微信平台管理系统V4.2.1',
+  'counts' => '放假公告；首先祝大家中秋节快乐,6.7.8日放假，假期不处理任何业务问题 给大家带来的不便敬请谅解 BY 赛微Saivi 团队',
+  'copyright' => '赛微Saivi™4.2.1',
+);

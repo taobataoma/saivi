@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/list/4/css/ui.css" media="all" />
+<link href="{Saivi::RES}/css/yl/news.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/list/4/css/list4.css" media="all" />
+<title>{Saivi:$tpl['wxname']}</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+        <!-- Mobile Devices Support @begin -->
+<meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta content="telephone=no, address=no" name="format-detection">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Mobile Devices Support @end -->
+<link href="{Saivi::RES}/css/list/4/list4.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body id="listhome3">
+    <!--背景音乐-->
+    <if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/></if>
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/list/4/css/font-awesome.css?v=2013120416" media="all" />
+	<div class="weimob-page">
+	<div class="Listpage">
+		<div id="todayList">
+			<ul class="chatPanel">
+            	<volist name="res" id="vo">
+				<li class="media mediaFullText">				
+				<if condition="$vo['url']"><a href="{Saivi:$vo.url}"><else /><a href="{Saivi::U('Index/content',array('id'=>$vo['id'],'token'=>$vo['token'],'wecha_id'=>$_GET['wecha_id']))}#mp.weixin.qq.com"></if>
+					<div class="mediaPanel">
+						<div class="mediaHead"><span class="title">{Saivi:$vo.title}</span><span class="time">{Saivi:$vo.createtime|date="Y-m-d",###}</span>
+							<div class="clr"></div>
+						</div>
+						<div class="mediaImg"><img src="{Saivi:$vo.pic}"></div>
+						<div class="mediaContent mediaContentP">
+							<p>{Saivi:$vo.text}</p>
+						</div>
+						<div class="mediaFooter">
+							<span class="mesgIcon right"></span><span style="line-height:50px;" class="left">查看全文</span>
+							<div class="clr"></div>
+						</div>
+					</div>
+					</a>
+				</li>
+    			</volist> 
+			</ul>
+		</div>
+    </div>
+<!--翻页-->		
+<section id="Page_wrapper">
+<div id="pNavDemo" class="c-pnav-con">
+<section class="c-p-sec">
+<div class="c-p-pre <eq name="p" value="1">c-p-grey</eq>"><span class="c-p-p"><em></em></span><a <eq name="p" value="1">href="javascript:void(0);"<else/>href="{Saivi:$f_siteUrl}{Saivi::U(Index/lists,array('classid'=>$_GET['classid'],'token'=>$tpl['token'],'wecha_id'=>$_GET['wecha_id'],'p'=>$p-1))}#mp.weixin.qq.com"</eq>>上一页</a></div>
+<div class="c-p-cur">
+<div class="c-p-arrow c-p-down"><span>{Saivi:$p}/{Saivi:$page}</span><span></span></div>
+	<select class="c-p-select" onchange="dourl('{Saivi:$f_siteUrl}{Saivi::U(Index/lists,array('classid'=>$_GET['classid'],'token'=>$tpl['token'],'wecha_id'=>$_GET['wecha_id']))}&p='+this.value+'#mp.weixin.qq.com')">
+		<?php
+			for($i=1;$i<=$page;$i++){
+				if($i==$p){
+					echo '<option value="'.$i.'" selected>第'.$i.'页</option>';
+				}else{
+					echo '<option value="'.$i.'">第'.$i.'页</option>';
+				}
+			}
+		?>
+	</select>
+</div>
+<div class='c-p-next <eq name="p" value="$page"> c-p-grey </eq>'  >
+
+<?php
+					if($p<$page){
+						echo '<a href="'.C('site_url').U('Index/lists',array('classid'=>$_GET['classid'],'token'=>$tpl['token'],'wecha_id'=>$_GET['wecha_id'],'p'=>$p+1)).'#mp.weixin.qq.com">';
+					}else{
+						echo '<a href="javascript:void(0);">';
+					}
+				?>
+下一页</a><span class="c-p-p"><em></em></span></div>
+</section>
+</div>
+</section>
+<script>
+function dourl(url){
+location.href= url;
+}
+</script>	
+
+	<footer>
+ <div class="copyright" style="text-align:center;"><if condition="$iscopyright eq 1">{Saivi:$homeInfo.copyright}<else/>{Saivi:$siteCopyright}</if></div>
+<include file="Index:styleInclude"/> 
+	</footer>
+</body>
+</html>

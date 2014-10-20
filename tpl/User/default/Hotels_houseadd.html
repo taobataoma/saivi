@@ -1,0 +1,57 @@
+<if condition="$ischild neq 1">
+<include file="Public:head" />
+<else />
+<include file="Repast:head" />
+</if>
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<div class="content"> 
+	<div class="cLineB"> 
+		<h4>房间分类操作</h4> 
+		<a href="{Saivi::U('Hotels/index',array('token' => $token,'cid'=>$cid))}" class="right  btn btn-primary btn_submit  J_ajax_submit_btn" style="margin-top:-27px">返回</a> 
+	</div> 
+<if condition="$ischild neq 1">
+<div style="background:#fefbe4;border:1px solid #f3ecb9;color:#993300;padding:10px;margin-top:5px;">此处只显示总店信息，连锁店订单及菜品请进入相应平台进行管理，连锁店登录账号密码及登录地址请在LBS里设置查看</div>
+</if>
+<form method="post" action="" id="formID">
+<input type="hidden" name="id" value="{Saivi:$tableData.id}" />
+<input type="hidden" name="cid" value="{Saivi:$cid}" />
+    <div class="msgWrap bgfc"> 
+     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+      <tbody> 
+       <tr> 
+        <th><span class="red">*</span>名称：</th> 
+        <td>
+        <input type="text" name="name" id="name" value="{Saivi:$tableData.name}" class="px" style="width:400px;" />
+        </td> 
+       </tr>
+       <tr> 
+        <th><span class="red">*</span>所属分类：</th> 
+        <td>
+        <select name="sid">
+        <volist name="list" id="row"> 
+        <option value="{Saivi:$row['id']}">{Saivi:$row['name']}</option>
+        </volist>
+        </select>
+        </td> 
+       </tr> 
+       <tr> 
+        <th>展示图片：</th>
+        <td><input type="text" name="image" value="{Saivi:$tableData.image}" class="px" id="pic" style="width:400px;" />  <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic',700,700,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a> <a href="###" onclick="viewImg('pic')">预览</a></td> 
+       </tr>
+       <tr> 
+        <th>描述：</th> 
+        <td><textarea name="note" class="px" style="width:400px;height:80px;">{Saivi:$tableData.note}</textarea></td> 
+       </tr>
+       <tr>   
+       <th>&nbsp;</th>
+       <td>
+       <button type="submit" name="submit" class="btn btn-primary btn_submit  J_ajax_submit_btn" id="save">保存</button> &nbsp; <a href="{Saivi::U('Hotels/index',array('token' => $token, 'cid' => $cid))}" class="btn">取消</a></td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     </div>
+</form>
+</div> 
+
+<include file="Public:footer" />

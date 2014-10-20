@@ -1,0 +1,248 @@
+<include file="Dining:header"/>
+
+<script src="{Saivi::RES}/weidingcan/index/js/alert.js" type="text/javascript"></script>
+
+</head>
+
+<body class="mode_webapp">
+
+<div class="menu_header"> 
+
+ <div class="menu_topbar">
+
+  <strong class="head-title">修改个人资料</strong>
+
+  <span class="head_btn_left"><a href="javascript:history.go(-1);"><span>返回</span></a><b></b></span> <a class="head_btn_right" href="{Saivi::U('Dining/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'storeid'=>$storeid))}">
+
+  <span><i class="menu_header_home"></i></span><b></b>
+
+  </a>
+
+ </div>
+
+</div>
+
+<form id="inform" method="post"   action=""   enctype="multipart/form-data">
+
+<input type="hidden" name="insetmb" id="insetmb" value="1" />
+
+<div class="contact-info" style=" margin-top:10px;">
+
+<ul>
+
+<li class="title">个人信息</li>
+
+<li>
+
+<table style="padding: 0; margin: 0; width: 100%;">
+
+<tbody>
+
+<tr>
+
+<td width="80"><label for="wxname" class="ui-input-text">微信名：</label></td>
+
+<td>
+
+<div class="ui-input-text"><input type="text" id="wxname" name="wechaname" value="{Saivi:$thisUser.wechaname}" placeholder="如：一枝梅" class="ui-input-text"></div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td><label for="username" class="ui-input-text">姓名：</label></td>
+
+<td>
+
+<div class="ui-input-text"><input type="text" id="username" name="truename" value="{Saivi:$thisUser.truename}" placeholder="如：王先生、闫小姐" class="ui-input-text"></div>
+
+</td>
+
+</tr>
+
+<tr id="nameinfo-layout" style="display: none;">
+
+<td></td>
+
+<td colspan="2" id="nameinfo" class="cart-editalertinfo"></td>
+
+</tr>
+
+
+
+<tr>
+
+<td><label for="phone" class="ui-input-text">电话：</label></td>
+
+<td>
+
+<div class="ui-input-text"><input type="tel" id="phone" name="tel" value="{Saivi:$thisUser.tel}" placeholder="如：18200000000" class="ui-input-text"></div>
+
+</td>
+
+</tr>
+
+<tr id="phoneinfo-layout" style="display: none;">
+
+<td></td>
+
+<td colspan="2" id="phoneinfo" class="cart-editalertinfo"></td>
+
+</tr>	
+
+
+
+<tr>
+
+<td><label for="address" class="ui-input-text">地址：</label></td>
+
+<td><textarea id="address" name="address" placeholder="如：XX小区5号楼318" class="ui-input-text">{Saivi:$thisUser.address}</textarea>
+
+</td>
+
+</tr>
+
+<tr id="addressinfo-layout" >
+
+<td></td>
+
+<td colspan="2" id="addressinfo" class="cart-editalertinfo"></td>
+
+</tr>
+
+</tbody></table>					
+
+</li>
+
+</ul>
+
+
+
+</div>
+
+<div class="footReturn" style="margin-bottom:80px;">
+
+<input type="button" id="showcard"  class="submit"  value="保存" style="width:100%"> 
+
+</div>
+
+
+
+</form>
+
+ 
+
+<include file="Dining:footer"/>    
+
+<script type="text/javascript">
+
+function g(id){
+
+	return document.getElementById(id);
+
+}
+
+
+
+$(document).ready(function () { 
+
+	$("#showcard").click(function () { 
+
+	if(valiForm()) {
+
+		return;
+
+	}
+
+	$("#inform").submit();
+
+	}); 
+
+}); 
+
+function valiForm(){
+
+	var phonePattern = /^((\(\d{3}\))|(\d{3}\-))?(\(0\d{2,3}\)|0\d{2,3}-)?[1-9]\d{6,7}$/;
+
+	var mobilePattern = /^1\d{10}$/;
+
+	var flag = false;
+
+	if(g("wxname").value.length < 1){
+
+		alert("微信名不能为空");
+
+		return  true;
+
+	}
+
+	if(g("username").value.length < 1){
+
+		alert("联系人不能为空");
+
+		return  true;
+
+	}
+
+	if(!(phonePattern.test(g("phone").value) || mobilePattern.test(g("phone").value))){
+
+		alert("亲，您的联系电话格式有误！");
+
+		return true;
+
+	}
+
+	if(g("address").value.length < 1){
+
+		alert("收货地址不能为空");
+
+		return  true;
+
+	}
+
+	return flag;
+
+}
+
+</script>
+
+<script type="text/javascript" src="{Saivi::RES}/weidingcan/oakshopcart.js"></script>
+
+<script type="text/javascript" >
+
+var cart = new OAK.Shop.Cart();
+
+cart.showTotalNum = function(){
+
+    var quant = cart.getQuantity();
+
+	document.getElementById("cartN2").innerHTML = ""+quant.totalNumber;
+
+};
+
+window.onload = function () {
+
+	cart.getFromCache();
+
+	cart.showTotalNum();
+
+}
+
+</script>
+
+<script type="text/javascript">
+
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+WeixinJSBridge.call('hideToolbar');
+
+});
+
+</script>
+
+</body>
+
+</html>
+

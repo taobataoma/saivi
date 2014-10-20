@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/list/3/css/ui.css" media="all" />
+
+<link href="{Saivi::RES}/css/yl/news.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/list/3/css/list.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/list/3/css/bmenu.css" media="all" />
+<title>{Saivi:$tpl['wxname']}</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta content="telephone=no, address=no" name="format-detection">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<style>
+.mday{ display:block; color:#fff; font-size:0.8rem; text-align:center;}
+.day{ font-size:1rem;}	
+.years{ display:block; color:#fff; font-size:1rem; text-align:center;}
+
+</style>
+</head>
+<body onselectstart="return true;" ondragstart="return false;">
+    <!--背景音乐-->
+    <if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/></if>
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/list/3/css/font-awesome.css" media="all" />
+	<div class="weimob-page">
+		<div style="height:35px!important;"></div>
+
+
+
+		<div class="weimob-content">
+			<div class="weimob-list">
+				<volist name="res" id="vo">
+					<if condition="$vo['url']"><a href="{Saivi:$vo.url}"><else /><a href="{Saivi::U('Index/content',array('id'=>$vo['id'],'token'=>$vo['token'],'wecha_id'=>$_GET['wecha_id']))}#mp.weixin.qq.com"></if>
+                       <div class="weimob-list-sau">
+                            <span class="mday"><b class="day">{Saivi:$vo.createtime|date="m",###}</b>/{Saivi:$vo.createtime|date="d",###}</span>
+                            <span class="years">{Saivi:$vo.createtime|date="Y",###}</span>
+                        </div>
+                        <div class="weimob-list-item">
+                            <div class="weimob-list-item-line">
+                                <div class="weimob-list-item-title">{Saivi:$vo.title}</div>
+                                <div class="weimob-list-item-img"><img src="{Saivi:$vo.pic}" border="0"/></div>
+                                <div class="weimob-list-item-summary">{Saivi:$vo.text}</div>
+                            </div>
+                            <div class="weimob-list-more"><div class="weimob-list-item-more">阅读全文</div>
+                            <div class="weimob-list-item-more-icon icon-arrow-r"></div></div>
+                            
+						</div>
+					</a>
+				</volist>
+			</div>
+		</div>
+    </div>
+	
+<section id="Page_wrapper">
+<div id="pNavDemo" class="c-pnav-con">
+<section class="c-p-sec">
+<div class='c-p-pre <eq name="p" value="1"> c-p-grey </eq> '><span class="c-p-p"><em></em></span><a <eq name="p" value="1"><else/>href="{Saivi:$f_siteUrl}/index.php?g=Wap&m=Index&a=lists&classid=<php>echo $_GET['classid'];</php>&token={Saivi:$tpl.token}&p=<php>echo $p-1;</php>"</eq>  >上一页</a></div>
+<div class="c-p-cur">
+<div class="c-p-arrow c-p-down"><span>{Saivi:$p}/{Saivi:$page}</span><span></span></div>
+	<select class="c-p-select" onchange="dourl('{Saivi:$f_siteUrl}/index.php?g=Wap&m=Index&a=lists&classid=<php>echo $_GET['classid'];</php>&token={Saivi:$tpl.token}&p='+this.value)">
+		<?php
+			for($i=1;$i<=$page;$i++){
+				if($i==$p){
+					echo '<option value="'.$i.'" selected>第'.$i.'页</option>';
+				}else{
+					echo '<option value="'.$i.'">第'.$i.'页</option>';
+				}
+			}
+		?>
+	</select>
+</div>
+<div class='c-p-next <eq name="p" value="$page"> c-p-grey </eq>'  >
+
+<?php
+	if($p<$page){
+		echo '<a href="'.C('site_url').'/index.php?g=Wap&m=Index&a=lists&classid='.(int)$_GET['classid'].'&token='.$tpl['token'].'&p='.($p+1).'">';
+	}else{
+		echo '<a>';
+	}
+?>
+下一页</a><span class="c-p-p"><em></em></span></div>
+</section>
+</div>
+</section>
+<script>
+function dourl(url){
+location.href= url;
+}
+</script>	
+ <div class="copyright" style="text-align:center;"><if condition="$iscopyright eq 1">{Saivi:$homeInfo.copyright}<else/>{Saivi:$siteCopyright}</if></div>
+<include file="Index:styleInclude"/> 
+</body>
+</html>

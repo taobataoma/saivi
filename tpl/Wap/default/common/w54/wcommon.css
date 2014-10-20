@@ -1,0 +1,51 @@
+html {
+	margin: 0px; padding: 0px; color: rgb(34, 34, 34); font-family: Microsoft YaHei,Helvitica,Verdana,Tohoma,Arial,san-serif; text-decoration: none;
+}
+body {
+	margin: 0px; padding: 0px; color: rgb(34, 34, 34); font-family: Microsoft YaHei,Helvitica,Verdana,Tohoma,Arial,san-serif; text-decoration: none;
+}
+* {
+	margin: 0px; padding: 0px;
+}
+fieldset {
+	border: 0px currentColor;
+}
+img {
+	border: 0px currentColor;
+}
+ol {
+	list-style: none; margin: 0px; padding: 0px;
+}
+ul {
+	list-style: none; margin: 0px; padding: 0px;
+}
+h1 {
+	font-size: 100%; font-weight: normal;
+}
+h2 {
+	font-size: 100%; font-weight: normal;
+}
+h3 {
+	font-size: 100%; font-weight: normal;
+}
+h4 {
+	font-size: 100%; font-weight: normal;
+}
+h5 {
+	font-size: 100%; font-weight: normal;
+}
+h6 {
+	font-size: 100%; font-weight: normal;
+}
+a {
+	color: rgb(0, 0, 0); text-decoration: none;
+}
+input {
+	
+}
+textarea {
+	
+}
+select {
+	
+}

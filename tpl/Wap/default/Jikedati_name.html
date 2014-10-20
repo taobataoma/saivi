@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta content="" name="Keywords">
+
+	<meta content="" name="Description">
+
+	<meta name="viewport" content="width=device-width,minimum-scale=1,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<meta name="format-detection" content="telephone=no">
+
+	
+
+    <link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/diaoyan/common.css" media="all" />
+
+    <link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/diaoyan/survey.css" media="all" />
+
+	<script type="text/javascript" src="{Saivi::RES}/js/diaoyan/zepto.js"></script>
+
+	<title>个人信息</title>
+
+	<style type="text/css">
+
+		body{
+
+			background-color: #ffb100;
+
+		}
+
+		.inner-cont{
+
+			width: 280px;
+
+			margin: 0 auto;
+
+			padding-top: 20px;
+
+		}
+
+		.qtitle{
+
+			line-height: 30px;
+
+			font-size: 26px;
+
+			font-weight: bold;
+
+		}
+
+		.field-contain{
+
+			margin-top: 20px;
+
+		}
+
+		.input-label{
+
+			font-size: 18px;
+
+			line-height: 32px;
+
+		}
+
+		.input-text {
+
+			display: block;
+
+			width: 236px;
+
+			height: 32px;
+
+			-moz-border-radius: 8px;
+
+			-webkit-border-radius: 8px;
+
+			border-radius: 8px;
+
+			padding: 2px 5px;
+
+			background: -moz-linear-gradient(top, #d2cfd2 0, #ffffff 50%);
+
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #d2cfd2), color-stop(50%, #ffffff));
+
+			background: -webkit-linear-gradient(top, #d2cfd2 0, #ffffff 50%);
+
+			background: -o-linear-gradient(top, #d2cfd2 0, #ffffff 50%);
+
+			background: -ms-linear-gradient(top, #d2cfd2 0, #ffffff 50%);
+
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2cfd2', endColorstr='#ffffff', GradientType=0 );
+
+			background: linear-gradient(top, #d2cfd2 0, #ffffff 50%);
+
+			border: 1px solid #c6c3c6;
+
+			border-top-width: 2px;
+
+			font-size:19px;
+
+		}
+
+		.loading-mask{
+
+			background: rgba(0,0,0,0);
+
+		}
+
+		.tip{
+
+			color: #FFF;
+
+			font-size: 12px;
+
+		}
+
+		.next-btn{
+
+			border: 0px;
+
+			margin: 0;
+
+			box-shadow: #666 1px 1px 2px;
+
+			-webkit-box-shadow: #666 1px 1px 2px;
+
+			-moz-box-shadow: #666 1px 1px 2px;
+
+		}
+
+	</style>
+
+</head>
+
+
+
+<body>
+
+	<div class="wrapper"  style="background:#7CAC0A">
+
+		
+
+		<div class="inner-cont">
+
+			<div class="qtitle">请先填写您的资料：</div>
+
+			
+
+			<div class="field-contain">
+
+				<label for="username" class="input-label">请输入您的名称:</label>
+
+				<input type="text" name="username" id="username" class="input-text" value="">
+
+			</div>
+
+			<div class="field-contain">
+
+				<label for="phone" class="input-label">请输入您的手机号码:</label>
+
+				<input type="tel" name="phone" id="phone" class="input-text" value="">
+
+				<span class="tip">*请务必填写正确，此手机号将作为您以后领奖的依据</span>
+
+			</div>
+
+			<div class="btn-wrapper">
+
+				<button id="save-btn" class="next-btn">开始</button>
+
+			</div>
+
+		</div>
+
+
+
+ 	<p class="page-url">
+
+		由“{Saivi:$f_siteTitle}”平台提供
+
+	</p>
+
+
+
+
+
+
+
+
+
+	</div>
+
+	<div id="loading" class="loading-mask">
+
+		<img class="gimg" src="{Saivi::RES}/images/diaoyan/ajax-loader.gif">
+
+	</div>
+
+
+
+<script type="text/javascript">
+
+	$(function(){
+
+		$("#save-btn").on("click",function(){
+
+			var $username = $("#username");
+
+			var username = $username.val();
+
+			var $phone = $("#phone");
+
+			var phone = $phone.val();
+
+			if(username == ""){
+
+				alert("请输入用户名!");
+
+				$username.focus();
+
+				return false;
+
+			}
+
+			if(phone == ""){
+
+				alert("请输入手机号码!");
+
+				$phone.focus();
+
+				return false;
+
+			}
+
+			var regu =/^[0-9]{11}$/;
+
+			var re = new RegExp(regu);
+
+			if(!re.test(phone)){
+
+				alert("请输入正确的手机号码!");
+
+				$phone.focus();
+
+				return false;
+
+			}
+
+			var submitData = {
+
+				"username":username,
+
+				"phone":phone,
+
+				"diaoyan_id":'{Saivi:$diaoyan_id}',
+
+				"wecha_id":'{Saivi:$wecha_id}',
+				"token":'{Saivi:$token}'
+
+			};
+
+			$.ajax({
+
+				type : "POST",
+
+				url : '{Saivi::U("Jikedati/name")}',
+
+				data : submitData,
+
+				contentType: "application/x-www-form-urlencoded; charset=utf-8",
+
+				dataType : "json",
+
+				success : function(data){
+
+					if(data.success == true){
+
+						//window.location.href = 'Research_set.html';
+
+						window.location.href = data.url;
+
+					}else{
+
+						alert('发生意外错误。错误代码sb940');
+
+					}
+
+				}
+
+			});
+
+		});
+
+		$(document).on('ajaxBeforeSend', function(e, xhr, options){
+
+			$("#loading").show();
+
+		}).on("ajaxComplete ",function(e, xhr, options){
+
+			$("#loading").hide();
+
+		});
+
+	});
+
+</script>
+
+ 
+
+
+

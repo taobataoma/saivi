@@ -1,0 +1,85 @@
+body,div,h1,h2,h3,h4,h5,h6,p{padding:0; margin:0;}
+body{background-color:#000;}
+a:link,a:visited,a:hover,a:active{text-decoration:none;}
+.clear {font-size:0; line-height:0; height:0; clear:both; visibility:hidden; overflow:hidden; }
+
+.weiba-copyright,.weiba-support{color: #FFFFFF;}
+.list-box{position: relative;padding: 0;margin: 0;white-space:nowrap; padding:10px 0;}
+/*.list-box table{
+	margin:0 auto;
+	width:auto;
+	border-collapse:collapse;
+}
+
+.list-box table td{
+	border-right:5px solid #000;
+	border-bottom:5px solid #000;
+}
+.list-box table td:last-of-type{
+	border-right:0px solid red;
+}
+.list-box table td img{
+	display:inline-block;
+	width:100%;
+	height:100%;
+	background-color:#3874f6;
+}
+
+table, tbody{
+	display:inline-block;
+	width:auto;
+}*/
+
+.list-box ul{
+    padding:0;
+    margin:auto;
+    width:100%;
+    max-width:570px;
+    overflow:hidden;
+}
+.list-box ul li{
+    overflow:hidden;
+    padding:0;
+    margin:0;
+    width:25%;
+    display:inline-block;
+    float:left;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    list-style:none;
+    border:5px solid #000;
+    /*border-right:10px solid #000;
+    border-bottom:10px solid #000;*/
+    /*padding-right:10px;
+    padding-bottom:10px;*/
+}
+.list-box ul li span[class^="icon"]{
+    display:block;
+    color:#fff;
+    font-size:50px;
+    position:relative;
+}
+.list-box ul li span[class^="icon"]:before{
+    position: absolute;
+    top:50%;
+    left:50%;
+    z-index:10;
+    margin:-20px 0 0 -20px;
+}
+
+.list-box ul li:first-child{
+    width: 50%;
+    -webkit-box-sizing:content;
+}
+
+.list-box ul img{
+    width:100%;
+    background-color:#3874f6;
+    margin-bottom:-8px;
+}
+
+footer .weiba-copyright{
+    border-color:#fff;
+    color: #FFFFFF!important;
+}

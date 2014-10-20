@@ -1,0 +1,31 @@
+.body{
+    max-width:640px;
+    margin:auto;
+    min-height:100%;
+    background-color:#e1e0de;
+    position:relative;
+}
+
+.list_ul{
+    margin: 10px;
+    overflow: hidden;
+    padding: 5px;
+    width:150px;
+    margin:auto;
+    margin-left:50px;
+    padding:80px 0 50px 0;
+}
+
+.list_ul a{
+    color:#666;
+    display:block;
+    background:rgba(255,255,255,0.7);
+    line-height:35px;
+    overflow:hidden;
+}
+.list_ul li{
+    padding:2px;
+    display:block;
+    text-align:center;
+    -webkit-box-sizing:border-box;
+}

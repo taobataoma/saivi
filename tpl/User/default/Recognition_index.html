@@ -1,0 +1,81 @@
+<include file="Public:head"/>
+<div class="content">
+
+<div class="cLineB">
+  <h4>认证服务号渠道二维码生成与统计</h4>
+            
+ </div>
+
+         
+    
+ <div class="msgWrap bgfc" style=" padding:5px 10px; margin:0">
+   <table class="ListProduct" border="" cellspacing="0" cellpadding="0" width="100%">
+	<thead>
+		<tr>
+			<th style="width:80px;">渠道ID</th>
+			<th>渠道名称</th>
+			<th>渠道使用量</th>
+			<th>触发关键词</th>
+			<th style="width:80px;">渠道二维码</th>
+			<th style="width:80px;">状态</th>
+			<th style=" width:100px;" class="norightborder">操作</th>
+		</tr>
+	</thead>
+	<tbody>
+			  <Saivilist array="list" foreach="list">
+                <tr>
+                  <td style="width:80px;">{Saivi:$list.id}</td>
+                  <td>{Saivi:$list.title}</td>
+                  <td>{Saivi:$list.attention_num}</td>
+                  <td>{Saivi:$list.keyword}</td>
+                  <td><Saiviif where="$list['code_url'] neq ''"><a href="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket={Saivi:$list.code_url}" target="_blank">点击查看</a><else/><a href="{Saivi::U('Recognition/get_code',array('id'=>$list['id']))}">获取二维码</a> </Saiviif></td>
+				   <td><Saiviif where="$list['status'] eq 0">启用<else/>暂停</Saiviif></td>
+                  <td class="norightborder">
+						<Saiviif where="$list['status'] eq 0"><a href="{Saivi::U('Recognition/status',array('type'=>1,'id'=>$list['id']))}">停用</a><else/><a href="{Saivi::U('Recognition/status',array('type'=>0,'id'=>$list['id']))}">启用</a></Saiviif> | 
+						<a href="{Saivi::U('Recognition/del',array('id'=>$list['id']))}">删除</a>　
+				   </td>
+                </tr>
+      			</Saivilist>
+                 <tr>
+                </tr>
+              </tbody>
+	</table>
+	 <div class="cLine">
+            <div class="pageNavigator right">
+                 <div class="pages">{Saivi:$page}</div>
+              </div>
+            <div class="clr"></div>
+          </div>
+  <form class="form" method="post" action=""   enctype="multipart/form-data">
+<table class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+  <thead>
+<tr>
+  <th valign="top"><label for="title">渠道名称：</label></th>
+  <td><input type="text" class="px" required="" id="title" value="" name="title" style="width:400px"> 请认真填写生成后不可以编辑！只能删除重建<br>
+                   </td>
+  <td>&nbsp;</td>
+</tr>
+                              <tr>
+  <th valign="top"><label for="keyword">触发关键词：</label></th>
+  <td><input type="text" class="px" id="keyword" value="" name="keyword" style="width:60px"> 非必填项，建议留空（留空保留原关注时回复的内容!）<br>
+                   </td>
+  <td>&nbsp;</td>
+</tr>
+                            </thead>
+                            
+  <tbody>
+ 
+<tr>
+  <th></th>
+  <td><button type="submit" name="button" class="btn btn-primary btn_submit  J_ajax_submit_btn">添加</button> 
+  </td>
+  </tr>
+  </tbody>
+</table>
+  </form>
+
+       
+       <div class="clear"></div>
+      </div>
+  </div>
+<include file="Public:footer"/>

@@ -1,0 +1,37 @@
+<style>
+.btn_music {
+display: inline-block;
+width: 35px;
+height: 35px;
+background: url('{Saivi::RES}/images/play.png') no-repeat center center;
+background-size: 100% auto;
+position: absolute;
+z-index: 100;
+left: 15px;
+top: 20px;
+}
+.btn_music.on {
+    background-image: url("{Saivi::RES}/images/stop.png");
+}
+
+</style>
+<script src="{Saivi::RES}/js/audio.js" type="text/javascript"></script>
+<script type="text/javascript">
+// 两秒后模拟点击
+setTimeout(function() {
+    // IE
+    if(document.all) {
+        document.getElementById("playbox").click();
+    }
+    // 其它浏览器
+    else {
+        var e = document.createEvent("MouseEvents");
+        e.initEvent("click", true, true);
+        document.getElementById("playbox").dispatchEvent(e);
+    }
+}, 2000);
+</script>
+
+<span id="playbox" class="btn_music" onclick="playbox.init(this).play();">
+    <audio src="{Saivi:$homeInfo.musicurl}" loop="" id="audio"></audio>
+</span>

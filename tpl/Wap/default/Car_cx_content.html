@@ -1,0 +1,89 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>车系详细 </title>
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link href="{Saivi::RES}/css/style/css/hotels.css" rel="stylesheet" type="text/css">
+<script src="{Saivi::RES}/css/style/js/jquery.min.js" type="text/javascript"></script>
+<script src="{Saivi::RES}/css/style/js/iscroll.js" type="text/javascript"></script>
+
+</head>
+
+<body id="hotelsorder" >
+<div class="banner">
+<div id="wrapper">
+<div id="scroller">
+<ul id="thelist">
+               
+<li><p>{Saivi:$set['name']} </p>
+
+<if condition="$set['picurl'] neq false">
+<img src="{Saivi:$set['picurl']}">
+<else />
+<img src="{Saivi::RES}/css/style/images/KaN8FWiK0o.jpg" width="100%">
+</if>
+
+</li>
+ 
+
+</ul>
+</div>
+</div>
+<div id="nav">
+<div id="prev" onClick="myScroll.scrollToPage('prev', 0,400,1);return false">&larr; prev</div>
+<ul id="indicator">
+            
+<li   >1</li>
+ 
+</ul>
+<div id="next" onClick="myScroll.scrollToPage('next', 0);return false">next &rarr;</div>
+</div>
+<div class="clr"></div>
+</div>
+
+
+<div class="cardexplain">
+
+
+<!--商家房价及类型-->
+<ul class="round">
+<li class="biaotou bradius pad"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td>车系</td>
+<td class="yuanjia">隶属品牌</td>
+
+</tr>
+</table></li>
+<li><span class="noneorder">
+<table class="jiagebiao" width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td>{Saivi:$set['name']}</td>
+<td class="yuanjia">{Saivi:$set['pp']}</td>
+
+</tr>
+</table>
+</span>
+</li>
+
+</ul>
+
+<!--后台可控制是否显示-->
+<ul class="round">
+<li>
+<h2>车系亮点</h2>
+<div class="text">
+<php>echo htmlspecialchars_decode($set['content'])</php>
+</div>
+</li>
+</ul>
+
+
+
+
+</div>
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['car'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if></body>
+</html>

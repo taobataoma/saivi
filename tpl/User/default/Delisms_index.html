@@ -1,0 +1,84 @@
+<include file="Public:head"/>
+<div class="content" >
+          <div class="cLineB"><h4>短信平台</h4></div>
+          <form method="post" action="" target=""  enctype="multipart/form-data">
+          <div class="msgWrap">
+            <table class="userinfoArea" border="0" cellspacing="0" cellpadding="0" width="100%">
+              <thead>
+			    <tr>
+                  <th><span class="red">*</span>短信平台手机号：</th>
+                  <td><input type="text" required="" class="px" name="phone" value="{Saivi:$config.phone}" tabindex="1" size="25"><span class="red">用于接收订单的手机号</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th><span class="red">*</span>短信平台账号：</th>
+                  <td><input type="text" required="" class="px" name="name" value="{Saivi:$config.name}" tabindex="1" size="25"><span class="red">支持平台：<a href="http://cnrdn.com/a97C" target="_blank">点击注册</a></span>
+                  </td>
+                </tr>
+				<tr>
+                  <th><span class="red">*</span>短信平台密码：</th>
+                  <td><input type="password" required="" class="px" name="password"  value="{Saivi:$config.password}" tabindex="1" size="25">
+                  </td>
+                </tr>
+				<tr>
+                  <th><span class="red">*</span>商城通知：</th>
+                  <td>
+				  <input type="radio" value="1" <if condition="$config.shangcheng eq 1">checked="checked"</if> name="shangcheng"/>开启
+				  <input type="radio" value="0" name="shangcheng" <if condition="$config.shangcheng eq 0">checked="checked"</if>/>关闭
+                  <span class="red">商城、团购、订餐通知</span>
+                  </td>
+                </tr>
+				<tr>
+                  <th><span class="red">*</span>行业预约：</th>
+                  <td>
+				  <input type="radio" value="1" <if condition="$config.yuyue eq 1">checked="checked"</if> name="yuyue"/>开启
+				  <input type="radio" value="0" name="yuyue" <if condition="$config.yuyue eq 0">checked="checked"</if>/>关闭
+                  <span class="red">各个行业的预约功能通知</span>
+                  </td>
+                </tr>
+				<tr>
+                  <th><span class="red">*</span>通用订单：</th>
+                  <td>
+				  <input type="radio" value="1" <if condition="$config.dingdan eq 1">checked="checked"</if> name="dingdan"/>开启
+				  <input type="radio" value="0" name="dingdan" <if condition="$config.dingdan eq 0">checked="checked"</if>/>关闭
+                  <span class="red">通用订单通知</span>
+                  </td>
+                </tr>
+				<tr>
+                  <th><span class="red">*</span>万能表单：</th>
+                  <td>
+				  <input type="radio" value="1" <if condition="$config.biaodan eq 1">checked="checked"</if> name="biaodan"/>开启
+				  <input type="radio" value="0" name="biaodan" <if condition="$config.biaodan eq 0">checked="checked"</if>/>关闭
+                  <span class="red">万能表单通知</span>
+                  </td>
+                </tr>
+				<tr>
+                  <th><span class="red">*</span>投票调研：</th>
+                  <td>
+				  <input type="radio" value="1" <if condition="$config.toupiao eq 1">checked="checked"</if> name="toupiao"/>开启
+				  <input type="radio" value="0" name="toupiao" <if condition="$config.toupiao eq 0">checked="checked"</if>/>关闭
+                  <span class="red">投票调研通知</span>
+                  </td>
+                </tr>
+				<div>
+				<input type="hidden" required="" name="type" value="{Saivi:$config.type}" class="px" tabindex="1" size="25">
+				<input type="hidden" name="token" value="{Saivi:$token}" />
+				</div>
+              </thead>
+              
+                <tr>
+                  <td><button type="submit" class="btnGreen" id="saveSetting">保存</button></td>
+                </tr>
+            </table>
+            
+          </div>
+          </form>
+        </div>
+        
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div>
+  <!--底部-->
+  	</div>
+<include file="Public:footer"/>	

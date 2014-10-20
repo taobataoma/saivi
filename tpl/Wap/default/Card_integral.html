@@ -1,0 +1,78 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{Saivi:$thisCard.cardname}积分兑换</title>
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link href="{Saivi::RES}/card/style/style.css" rel="stylesheet" type="text/css">
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js" type="text/javascript"></script>
+<script src="{Saivi::RES}/card/js/accordian.pack.js" type="text/javascript"></script>
+</head>
+<body id="cardnews" onLoad="new Accordian(&#39;basic-accordian&#39;,5,&#39;header_highlight&#39;);" class="mode_webapp">
+<div class="qiandaobanner"><a href="javascript:history.go(-1);"><img src="{Saivi:$thisCard.vip}" ></a> </div>
+
+<div id="basic-accordian">
+<volist name="list" id="item">
+<div id="test{Saivi:$item.id}-header" class="accordion_headings  <?php if ($item['id']==$firstItemID){?>header_highlight<?php } ?>">
+<div class="tab gift">
+<span class="title">{Saivi:$item.title}<p>有效期至{Saivi:$item.enddate|date='Y年m月d日',###}</p></span>
+</div>
+<div id="test{Saivi:$item.id}-content" style=" display: block; overflow: hidden; opacity: 1;">
+<div class="accordion_child">
+<div id="queren{Saivi:$item.id}" style="display:none;">
+								<p style=" margin:10px 0 0 0">
+									<input name="" class="px" id="username{Saivi:$item.id}" value="" type="text" placeholder="请输入商家用户名">
+								</p>
+								<p style=" margin:10px 0 0 0">
+									<input name="" class="px" id="password{Saivi:$item.id}" value="" type="password" placeholder="请输入商家密码">
+								</p>
+								
+								<p style=" margin:10px 0">
+									<a id="showcard0" class="submit" href="javascript:void(0)" onclick="use({Saivi:$item.id})">确定兑换</a>
+								</p>
+							</div>
+							<p class="explain_sn" id="shiyong{Saivi:$item.id}" style="width: 70%;margin: 0px auto;color: #fff;">
+			           			<a style="height: 25px;line-height: 25px;" class="submit" href="###" onclick="this.style.display='none';document.getElementById('queren{Saivi:$item.id}').style.display=''">点击立即兑换</a>
+			           		</p>
+<b>详情说明</b>
+<ul style="min-height:110px;">{Saivi:$item.info}</ul>
+</div> 
+</div>
+</div>
+</volist>
+</div>
+<script>
+var jQ = jQuery.noConflict();
+function use(i){
+	var password =  document.getElementById('password'+i).value;
+	if(!password){
+		alert('请输入密码');
+		return false;
+	}
+	var username =  document.getElementById('username'+i).value;
+	var itemid=i;
+	var submitData = {
+		password:password,
+		username:username,
+		itemid:itemid,
+		wecha_id:'{Saivi:$wecha_id}',
+		cat:2,
+	};
+	jQ.post('/index.php?g=Wap&m=Card&a=action_useIntergral&wecha_id={Saivi:$wecha_id}&token={Saivi:$token}', submitData,
+	function(data) {
+		if (data.success == 1) {
+			document.getElementById('queren'+i).style.display='none';
+			document.getElementById('password'+i).value = '';
+			alert(data.msg);
+		}else{
+			alert(data.msg);
+		}
+	}, "json");
+}
+</script>
+<include file="Card:cardFooter"/>
+<include file="Card:share"/>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<include file="Public:head"/>
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<div class="content"  >
+<div class="cLineB">
+<h4 class="left"><span style="font-size:18px; text-align:inherit; color:#666">{Saivi:$diaoyan.title} </span> 的题目列表 -- 参与人数 <span style="font-size:18px; text-align:inherit; color:#666">{Saivi:$count}</span> 人 </h4>
+<div class="searchbar right">
+<form method="post" action="">
+</form>
+</div>
+<div class="clr"></div>
+</div>
+
+<div class="cLine">
+<div class="clr"></div>
+ <a href="{Saivi::U('Diaoyan/index',array('token'=>$token))}" class="right  btn btn-primary btn_submit  J_ajax_submit_btn" style="margin-top:0">返回</a> 
+</div>
+
+<div class="msgWrap">
+
+
+	<form method="post" action="" id="info">
+	<input name="delall" type="hidden" value="">
+	<input name="wxid" type="hidden" value="">
+	<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+		<volist name="timu" id="item"> 
+			<thead>
+				<tr>
+					<th width="100">{Saivi:$item.title}</th>
+					<th width="100">选项票数</th>
+				</tr>
+			</thead>
+			<tbody>
+				<php>
+					if($item['optia'] != ''){
+				</php>
+					<tr>
+						<td>{Saivi:$item.optia}</td>
+						<td>{Saivi:$item.perca}</td>
+					</tr>
+				<php>
+					}
+				</php>
+				
+				<php>
+					if($item['optib'] != ''){
+				</php>
+					<tr>
+						<td>{Saivi:$item.optib}</td>
+						<td>{Saivi:$item.percb}</td>
+					</tr>
+				<php>
+					}
+				</php>
+				
+				<php>
+					if($item['optic'] != ''){
+				</php>
+					<tr>
+						<td>{Saivi:$item.optic}</td>
+						<td>{Saivi:$item.percc}</td>
+					</tr>
+				<php>
+					}
+				</php>
+				
+				<php>
+					if($item['optid'] != ''){
+				</php>
+					<tr>
+						<td>{Saivi:$item.optid}</td>
+						<td>{Saivi:$item.percd}</td>
+					</tr>
+				<php>
+					}
+				</php>
+				
+				<php>
+					if($item['optie'] != ''){
+				</php>
+					<tr>
+						<td>{Saivi:$item.optie}</td>
+						<td>{Saivi:$item.perce}</td>
+					</tr>
+				<php>
+					}
+				</php>
+			</tbody>
+		</volist>
+		
+	</table>
+	</form>
+
+
+</div>
+<div class="cLine">
+<div class="pageNavigator right">
+<div class="pages">{Saivi:$page}</div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+<include file="Public:footer"/>

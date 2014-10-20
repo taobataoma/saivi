@@ -1,0 +1,157 @@
+/**
+author : zhupinglei
+desc : gcard
+**/
+body{
+	width:100%;
+	background: #9c0004;
+}
+
+.weiba-easycall.home-panel{
+	display:none;
+}
+
+.weiba-easycall.round.show{
+	display: none;
+}
+
+.footer{
+	margin-top:-41px;
+	position: relative;
+	z-index:500;
+	text-align: center;
+	width:100%;
+	color:#f00;
+	text-shadow:1px 1px 1px #111;
+	height:40px;
+	line-height: 20px;
+	overflow: hidden;
+	background: rgba(51,51,51,0.4);
+}
+
+.footer a{
+	display:inline-block;
+	color:#fff;
+}
+
+#gcard{
+	width:100%;
+	overflow: hidden;
+}
+
+.gcard_head img{
+	width:100%;
+	height:auto;
+}
+
+.gcard_foot{
+	width:100%;
+	height:auto;
+	position: relative;
+	z-index:100;
+}
+
+.gcard_foot img{
+	width:100%;
+	height:auto;
+}
+
+.gcard_main{
+	width:90%;
+	margin:0 auto;
+	background: #fff;
+	border-radius: 10px;
+	position: relative;
+	margin-top:-35px;
+}
+
+.gcard_main .imgs img.hj{
+	width:54px; 
+	height:53px;
+	position: absolute;
+	left:0;
+	top:0;
+}
+
+.gcard_main .imgs img.xman{
+	width:67px;
+	height:120px;
+	position: absolute;
+	right:-10px;
+	top:-73px;
+}
+
+.gcard_main h2{
+	height:53px;
+	line-height: 53px;
+	overflow: hidden;
+	text-align: center;
+	font-size:18px;
+}
+
+.gcard_main .gcard_list{
+	text-align: center;
+}
+
+.gcard_main .gcard_list ul{
+	width:264px;
+	display:inline-block;
+	margin-left:-20px;
+}
+
+.gcard_main .gcard_list li{
+	width:112px;
+	height:160px;
+	overflow: hidden;
+	float: left;
+	margin-left:20px;
+	margin-bottom:15px;
+}
+
+.gcard_main .gcard_list li a{
+	display:block;
+	width:112px;
+	height:112px;
+	overflow: hidden;
+	border-radius: 7px;
+	margin-bottom:5px;
+}
+
+.gcard_main .gcard_list li img{
+	width:100%;
+	height:100%;
+}
+
+.gcard_main .gcard_list li p{
+	height:20px;
+	line-height: 20px;
+	overflow: hidden;
+	font-size:12px;
+}
+
+.gcard_main .gcard_list li p.p1{
+	color:#111;
+}
+
+.gcard_main .gcard_list li p.p2{
+	color:#666;
+}
+
+.gcard_main .gcard_list li p.p2 span{
+	color:#cc0000;
+}
+
+.toLogin{
+	height:30px;
+	line-height: 30px;
+	overflow: hidden;
+	background: rgba(51,51,51,0.3);
+	color:#fff;
+	font-size:14px;
+	text-align: center;
+	position: absolute;
+	left:0; 
+	top:0;
+	width:100%;
+	box-shadow: 0px 1px 3px #333;
+}

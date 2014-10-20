@@ -1,0 +1,1141 @@
+<include file="Dining:header"/>
+
+<script src="{Saivi::RES}/weidingcan/index/js/alert.js" type="text/javascript"></script>
+
+<script>
+
+var OAK = OAK || {};
+
+OAK.Dom = {};
+
+OAK.Shop = {};
+
+OAK.Util = {};
+
+OAK.Dom.setAttributes = function (el, prop) {
+
+    for (var i in prop) {
+
+        el.setAttribute(i, prop[i]);
+
+    }
+
+    return el;
+
+}
+
+OAK.Util.setProps = function (s, prop) {
+
+    for (var i in prop) {
+
+        s[i] = prop[i];
+
+    }
+
+    return s;
+
+}
+
+OAK.Util.isEqualInConditions = function (o, conditions) {
+
+    for (var i in conditions) {
+
+        if (o[i] != conditions[i]) {
+
+            return false;
+
+        }
+
+    }
+
+    return true;
+
+}
+
+OAK.Util.copy = function (o) {
+
+    var res = new Object();
+
+    for (var i in o) {
+
+        res[i] = o[i];
+
+    }
+
+    return res;
+
+}
+
+OAK.Util.setParam = function (name, value) {
+
+    localStorage.setItem(name, value);
+
+}
+
+OAK.Util.getParam = function (name) {
+
+    return localStorage.getItem(name);
+
+}
+
+OAK.Shop.Product = function (prop) {
+
+    var prod = {
+
+        id: 0,
+
+        name: "",
+
+        specId: 0,
+
+        price: 0.00,
+
+        number: 0,
+
+        categoryId: 0
+
+    };
+
+    return new OAK.Util.setProps(prod, prop);
+
+}
+
+OAK.Shop.Cart = function () {
+
+    if (typeof OAK.Shop.Cart.single_instance === "undefined") {
+
+        this._totalNumber = 0;
+
+        this._totalAmount = 0.00;
+
+        this._products = [];
+
+        this.onBeforeAdd = null;
+
+        this.onAfterAdd = null;
+
+        this.onBeforeUpdate = null;
+
+        this.onAfterUpdate = null;
+
+        this.onBeforeDelete = null;
+
+        this.onAfterDelete = null;
+
+        OAK.Shop.Cart.single_instance = this;
+
+    }
+
+    return OAK.Shop.Cart.single_instance;
+
+}
+
+OAK.Shop.Cart.prototype = {
+
+	//口味
+
+    specs: {1: "正辣", 2: "微辣", 3: "不辣"},
+
+    //分类
+
+	categories:{"1":"\u5ddd\u83dc","2":"\u95fd\u83dc","3":"\u6e58\u83dc"},
+
+	//
+
+	total:50,
+
+	//保存信息
+
+    saveToCache: function () {
+
+        OAK.Util.setParam("ShoppingdiancaiCart1", JSON.stringify(this));
+
+    },
+
+	//获取from信息
+
+    getFromCache: function () {
+
+        var ShoppingdiancaiCart1 = OAK.Util.getParam("ShoppingdiancaiCart1");
+
+        if (ShoppingdiancaiCart1 != null && ShoppingdiancaiCart1 != "") {
+
+            OAK.Util.setProps(this, JSON.parse(ShoppingdiancaiCart1));
+
+        }
+
+    },
+
+	//清空购物车信息
+
+    clear:function(){
+
+        //localStorage.clear();
+
+        OAK.Util.setParam("ShoppingdiancaiCart1",null);
+
+        this._totalNumber = 0;
+
+        this._totalAmount = 0.00;
+
+        this._products = [];
+
+    },
+
+	//点菜
+
+    addProduct: function (p, conditions) {
+
+        this.onBeforeAdd !== null && this.onBeforeAdd(this, p, conditions);
+
+        var _conditions = conditions || {id: p.id, specId: p.specId, ref: true};
+
+        var alreadyExistProduct = this.getProduct(_conditions);
+
+        var ret_num = 0;
+
+        //一元鸭翅活动
+
+        if(p.name == "一元鸭翅" && this.existProduct({name:p.name})){
+
+            alert("每单只能购买一盒一元鸭翅");
+
+            return;
+
+        }
+
+        if (alreadyExistProduct !== null){
+
+            alreadyExistProduct.number += p.number;
+
+        }
+
+        else
+
+            this._products.push(p);
+
+        this._totalNumber += p.number;
+
+        this._totalAmount += p.number * p.price;
+
+        this.onAfterAdd !== null && this.onAfterAdd(this, alreadyExistProduct ? alreadyExistProduct.number : p.number, _conditions);
+
+    },
+
+	//获取总量
+
+    getQuantity: function () {
+
+        return {totalNumber: this._totalNumber, totalAmount: this._totalAmount};
+
+    },
+
+	//更新总量
+
+    updateNumber: function (num, conditions) {
+
+        this.onBeforeUpdate !== null && this.onBeforeUpdate(this, num, conditions);
+
+        conditions.ref = true;
+
+        var alreadyExistProduct = this.getProduct(conditions);
+
+        if (alreadyExistProduct !== null) {
+
+            this._totalNumber += (parseInt(num) - parseInt(alreadyExistProduct.number));
+
+            this._totalAmount += ((parseInt(num) * parseFloat(alreadyExistProduct.price)) - parseInt(alreadyExistProduct.number) * parseFloat(alreadyExistProduct.price));
+
+            alreadyExistProduct.number = num;
+
+        }
+
+        this.onAfterUpdate !== null && this.onAfterUpdate(this, alreadyExistProduct ? alreadyExistProduct.number : 0, conditions);
+
+    },
+
+    //获取购物车中的所有商品
+
+    getProductList: function () {
+
+        return this._products;
+
+    },
+
+	//获取商品详情
+
+    getProduct: function (conditions) {
+
+        var ref = conditions.ref;
+
+        delete conditions.ref;
+
+        for (var i in this._products) {
+
+            if (OAK.Util.isEqualInConditions(this._products[i], conditions))
+
+                return ref ? this._products[i] : OAK.Util.copy(this._products[i]);
+
+        }
+
+        return null;
+
+    },
+
+	//获取商品数量
+
+    getProductNumber: function (conditions) {
+
+        for (var i in this._products) {
+
+            if (OAK.Util.isEqualInConditions(this._products[i], conditions))
+
+                return this._products[i].number;
+
+        }
+
+        return null;
+
+    },
+
+    existProduct: function (conditions) {
+
+        for (var i in this._products) {
+
+            if (OAK.Util.isEqualInConditions(this._products[i], conditions))
+
+                return true;
+
+        }
+
+        return false;
+
+    },
+
+	//删除商品
+
+    deleteProduct: function (conditions) {
+
+        this.onBeforeDelete !== null && this.onBeforeDelete(this, conditions);
+
+        for (var i in this._products) {
+
+            if (OAK.Util.isEqualInConditions(this._products[i], conditions)) {
+
+                this._totalNumber -= parseInt(this._products[i].number);
+
+                this._totalAmount -= parseInt(this._products[i].number) * parseFloat(this._products[i].price);
+
+                this._products.splice(i, 1);
+
+                break;
+
+            }
+
+        }
+
+        this.onAfterDelete !== null && this.onAfterDelete(this, conditions);
+
+    },
+
+    sortAsc:function(a,b){
+
+        if(a.categoryId> b.categoryId){
+
+            return 1;
+
+        }else if(a.categoryId == b.categoryId){
+
+            if(a.id> b.id)
+
+                return 1;
+
+            else if(a.id == b.id)
+
+                return  a.specId> b.specId?1:-1;
+
+            return -1;
+
+        }
+
+        return -1;
+
+    }
+
+}
+
+</script>
+
+<script>
+
+function g(id){
+
+	return document.getElementById(id);
+
+}
+
+function gotoorder(){
+
+window.location.href="{Saivi::U('Dining/my',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'dining'=>1))}";
+
+}
+
+</script>
+
+<script>
+
+var cart = new OAK.Shop.Cart();
+
+
+
+function clearCache(){
+
+    cart.clear();
+
+    cart.showCartInfo();
+
+}
+
+function addProduct(productId, specId,name,price,categoryId,addnum) {
+
+    cart.addProduct(OAK.Shop.Product({id: productId, specId: specId, number: addnum, price: price, name: name,categoryId:categoryId}));
+
+}
+
+function reduceProduct(productId, specId,num) {
+
+    var oldnum = cart.getProductNumber({id: productId, specId: specId});
+
+    if (oldnum !== null) {
+
+        if (oldnum -num > 0) {
+
+            cart.updateNumber(oldnum - num, {id: productId, specId: specId});
+
+        } else {
+
+            cart.deleteProduct({id: productId, specId: specId});
+
+        }
+
+    }
+
+}
+
+function showTip(){
+
+    var quant = cart.getQuantity();
+
+    if (quant.totalAmount>=cart.total){
+
+        g('infoForm').style.display = "";
+
+        g('notEnoughLi').style.display = "none";
+
+        g('emptyLi').style.display = "none";
+
+    }else{
+
+        g('infoForm').style.display = "none";
+
+        if(quant.totalAmount >0){
+
+            g('notEnoughLi').style.display = "";
+
+            g('emptyLi').style.display = "none";
+
+        }
+
+        else{
+
+            g('emptyLi').style.display = "";
+
+            g('notEnoughLi').style.display = "none";
+
+        }
+
+    }
+
+}
+
+function getNextElement(node){
+
+    if(node.nextSibling.nodeType == 1){    //判断下一个节点类型为1则是"元素"节点
+
+        return node.nextSibling;
+
+    }
+
+    if(node.nextSibling.nodeType == 3){      //判断下一个节点类型为3则是"文本"节点  ，回调自身函数
+
+        return getNextElement(node.nextSibling);
+
+    }
+
+    return null;
+
+}
+
+function getPreviousElement(node){
+
+    if(node.previousSibling.nodeType == 1){    //判断下一个节点类型为1则是"元素"节点
+
+        return node.previousSibling;
+
+    }
+
+    if(node.previousSibling.nodeType == 3){      //判断下一个节点类型为3则是"文本"节点  ，回调自身函数
+
+        return getPreviousElement(node.previousSibling);
+
+    }
+
+    return null;
+
+}
+
+cart.showProductNum =  function(productId,specId,num){
+
+    if(num>0){
+
+        g("num_" + productId+"_"+specId).innerHTML = parseInt(num);
+
+    }else{
+
+        var curNode = g("li_"+productId+"_"+specId);
+
+        var nextNode = getNextElement(curNode);
+
+        if(!nextNode || nextNode.nodeName !='LI' || nextNode.id == 'notEnoughLi' || nextNode.id == 'emptyLi'){
+
+            var previousNode = getPreviousElement(curNode);
+
+            if(previousNode && previousNode.nodeName =='DT'){
+
+                previousNode.parentNode.removeChild(previousNode);
+
+            }
+
+        }
+
+        curNode.parentNode.removeChild(curNode);
+
+    }
+
+}
+
+cart.showTotalNum = function(){
+
+    var quant = cart.getQuantity();
+
+ 	SetCookie("diancai1",quant.totalNumber);
+
+  	g("cartN2").innerHTML = quant.totalNumber;
+
+    g("totalPrice").innerHTML = quant.totalAmount.toFixed(2);
+
+    showTip();
+
+};
+
+cart.showCartInfo=function () {
+
+    var products = cart.getProductList();
+
+    var orderlist = g("ullist");
+
+	//alert(products);
+
+    products && products.sort(cart.sortAsc);
+
+    var liststr = "";
+
+    var currentCategory = 0;
+
+    for(var i in products){
+
+        if (currentCategory != products[i].categoryId) {
+
+            //liststr += "<dt>" + cart.categories[products[i].categoryId] + "</dt>";
+
+            currentCategory = products[i].categoryId;
+
+
+
+        }
+
+        liststr += "<li class=\"ccbg2\" id=\"li_"+ products[i].id+"_"+ products[i].specId+"\">"+
+
+        "<div class=\"orderdish\"><span class=\"\">"+ products[i].name+"</span><p><span class=\"price\" id=\"v_0\">"+products[i].price+"</span><span class=\"price\">元</span></p></div>"+
+
+            "<div class=\"orderchange\">"+
+
+                "<a href=\"javascript:addProduct("+products[i].id+","+products[i].specId+",\'"+products[i].name+"\',"+products[i].price+","+products[i].categoryId+",1"+")\" class=\"increase\"><b class=\"ico_increase\">加一份</b></a>"+
+
+                "<span class=\"count\" id=\"num_"+products[i].id+"_"+products[i].specId+"\">"+products[i].number+"</span>"+
+
+                "<a href=\"javascript:reduceProduct("+products[i].id+","+products[i].specId+",1)\" class=\"reduce\"><b class=\"ico_reduce\">减一份</b></a>"+
+
+            "</div>"+
+
+        "</li>";
+
+ 
+
+    }
+
+    liststr+="<li class=\"ccbg2\" id='notEnoughLi' style='display: none;'>必须要满"+cart.total+"元才能下单哦</li>"+
+
+    "<li class=\"ccbg2\" id='emptyLi' style='display: none;'>购物车为空哦，快去挑选吧！</li>";
+
+
+
+    orderlist.innerHTML = liststr;
+
+    cart.showTotalNum();
+
+};
+
+cart.onAfterAdd = function(obj,num,conditions){
+
+    cart.showProductNum(conditions.id,conditions.specId,num);
+
+    cart.showTotalNum();
+
+    cart.saveToCache();
+
+};
+
+cart.onAfterUpdate = function(obj,num,conditions){
+
+    cart.showProductNum(conditions.id,conditions.specId,num);
+
+    cart.showTotalNum();
+
+    cart.saveToCache();
+
+};
+
+cart.onAfterDelete = function(obj,conditions){
+
+    cart.showProductNum(conditions.id,conditions.specId,0);
+
+    cart.showTotalNum();
+
+    cart.saveToCache();
+
+};
+
+</script>
+
+<script>
+
+function submitOrder(){
+
+	vailReSubmit();
+
+	var quant = cart.getQuantity();
+
+	if(quant.totalAmount<cart.total){
+
+		if(quant.totalAmount >0)
+
+			alert("必须要大于或等于"+cart.total+"元才能下单哦!");
+
+		else
+
+			alert("您还未添加商品哦!");
+
+		return;
+
+	}
+
+	if(valiForm()) {
+
+		return;
+
+	}
+
+
+
+	var goodsData = '';
+
+	var goodsList = cart.getProductList();
+
+	goodsList && goodsList.sort(cart.sortAsc);
+
+	for(var i in goodsList){
+
+		goodsData+=goodsList[i].id+','+goodsList[i].price+','+goodsList[i].number+';';
+
+	}
+
+	var quant = cart.getQuantity();
+
+	g('goodsData').value = goodsData;
+
+	g('price').value = quant.totalAmount.toFixed(2);
+
+	g('count').value = quant.totalNumber;
+
+	if(quant.totalAmount <=0){
+
+		alert("您还未添加商品哦!");
+
+		return;
+
+	}
+
+	document.forms[0].submit();
+
+	cart.clear();
+
+	document.infoForm.issubmit.value=1;//不能再提交
+
+}
+
+function valiForm(){
+
+	var phonePattern = /^((\(\d{3}\))|(\d{3}\-))?(\(0\d{2,3}\)|0\d{2,3}-)?[1-9]\d{6,7}$/;
+
+	var mobilePattern = /^1\d{10}$/;
+
+	var flag = false;
+
+	if(g("name").value.length < 1){
+
+		alert("联系人不能为空");
+
+		return  true;
+
+	}
+
+	if(!(phonePattern.test(g("phone").value) || mobilePattern.test(g("phone").value))){
+
+		alert("亲，您的联系电话格式有误！");
+
+		return true;
+
+	}
+
+	if(g("address").value.length < 1){
+
+		alert("收货地址不能为空");
+
+		return  true;
+
+	}
+
+	return flag;
+
+}
+
+function vailReSubmit(){
+
+	if(document.infoForm.issubmit.value == 0){
+
+		return true;
+
+	}
+
+	else{
+
+		alert(' 按一次就够了，请勿重复提交！请耐心等待！谢谢合作！');
+
+		return false;
+
+	}
+
+}
+
+
+
+
+
+function testInPayArea(){
+
+	if(g("address").value == ""){
+
+	   alert("请先填写收货地址");
+
+	}else{
+
+		return true;
+
+	}
+
+	g('wxpay').checked = false;
+
+	g('huodao').checked = true;
+
+	return false;
+
+}
+
+window.onload = function(){
+
+	cart.getFromCache();
+
+	cart.total = {Saivi:$setinfos.money};
+
+	cart.showCartInfo();
+
+}
+
+</script>
+
+</head>
+
+
+
+<body id="mymenu">
+
+ 
+
+<div id="mcover" onClick="document.getElementById('mcover').style.display='';">
+
+
+
+<div class="textPopup">
+
+    <h2>是否清空菜单？</h2>
+
+    <div>
+
+    <a class="two ok" id="ok" href="javascript:void(0)">确定</a>	
+
+    <a class="two" href="javascript:void(0)">取消</a>
+
+    </div>
+
+    <a class="x" onClick="document.getElementById('mcover').style.display='';">X</a>
+
+</div>
+
+</div>	
+
+
+
+<div class="menu_header"> 
+
+     <div class="menu_topbar">
+
+      <strong class="head-title">{Saivi:$metaTitle}</strong>
+
+      <span class="head_btn_left"><a href="javascript:history.go(-1);"><span>返回</span></a><b></b></span>
+
+      <a class="head_btn_right" href="{Saivi::U('Dining/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'dining'=>1))}">
+
+      <span><i class="menu_header_home"></i></span><b></b>
+
+      </a>
+
+     </div>
+
+</div>
+
+
+
+<div class="header">
+
+        <span class="pCount">当前在{Saivi:$company.name}下单</span>
+
+        <label><i>共计：</i><b id="totalPrice" class="duiqi">0</b><b class="duiqi">元</b></label>
+
+</div>
+
+
+
+<div class="biaodan">
+
+<h2><div style="float:right;">
+
+<button id="clearBtn" class="btn_add emptyIt" onClick="clearCache();">清空</button>
+
+<a href="{Saivi::U('Dining/cats',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'dining'=>1,'setid'=>$_GET['setid']))}"><button class="btn_add">继续点菜</button></a></div>我的订单
+
+</h2>                   
+
+<section class="order">
+
+  <div class="orderlist">
+
+    <ul id="ullist"></ul>
+
+  </div>
+
+</section> 
+
+</div>
+
+
+
+<div class="biaodan" style="margin-top:2px;">                           
+
+<form name="infoForm" id="infoForm" method="post" action="{Saivi::U('Dining/dingdanpost',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'dining'=>1,'setid'=>$_GET['setid']))}" >
+
+<input type="hidden" name="issubmit" value="0">
+
+<input type="hidden" name="goodsData" id="goodsData" value="">
+
+<input type="hidden" name="price" id="price" value="" />
+
+<input type="hidden" name="count" id="count" value="" />
+
+<section class="order">
+
+   <div class="orderlist"><ul></ul>
+
+<table id="desks" style="display: block; width:100%" >
+
+	<tr style="width:100%">
+
+        <td width="100">就餐日期：</td>
+
+        <td>
+
+        <select name="buytimestamp" id="buytimestamp" onChange="tables()">
+
+        <volist name="dateTimes" id="d">
+
+        <option value="{Saivi:$d}"><php>echo date('m月d日',$d);</php></option>
+
+        </volist>
+
+        </select>  
+
+        <select name="hour" id="hour" onChange="tables()">
+
+        <option value="" selected>选择时间</option>
+
+        <volist name="hours" id="h">
+
+        <option value="{Saivi:$h}"><php>echo $h.'时';</php></option>
+
+        </volist>
+
+        </select>
+
+          <input type="hidden" placeholder="请输入具体日期和时间" id="buytime" name="buytime" value="" />
+
+                  </td></tr>
+
+</table>
+
+ 
+
+   <table id="desks" style="display: block; width:100%; margin-top:10px;" >
+
+	<tr>
+
+        <td width="100">点餐方式：</td>
+
+        <td>
+
+        <dl class="dining_type">
+
+          <dd style="float:left;">
+
+          <input type="radio" id="table_1" name="diningtype" <if condition="($dtype eq '1') || ($dtype eq '')">checked="true"</if> title="点餐" value="1"  /> <label for="table_1"> 点餐 </label>  
+
+          </dd>
+
+          <php>if($diningConfig['diningwaimai']==1){</php>
+
+          <dd style="float:left;">
+
+          <input type="radio" id="table_2" name="diningtype" title="外卖" value="2" <if condition="$dtype eq '2'">checked="true"</if> /> <label for="table_2"> 外卖 </label>
+
+          </dd>
+
+         <php>}</php>
+
+         <php>if($diningConfig['diningyuding']==1){</php>
+
+          <dd style="float:left;">
+
+           <input type="radio" id="table_3" name="diningtype" title="预定" value="3" <if condition="$dtype eq '3'">checked="true"</if>/> <label for="table_3"> 预定 </label>
+
+          </dd>
+
+          <php>}</php>
+
+        </dl>
+
+        </td></tr>
+
+</table>
+
+ </div>
+
+</section> 
+
+
+
+
+
+ <div class="biaodan" style="margin-top:2px">  
+
+<!-- <h2>联系信息</h2>  --> 
+
+  <section class="order"> 
+
+<table style="padding: 0; margin: 0;"  width="100%">
+
+<tbody>
+
+                                                   <tr>
+
+<td width="100px"><label for="name" class="ui-input-text">联系人：</label></td>
+
+<td>
+
+<div class="ui-input-text"><input type="text" id="name" name="truename" value="{Saivi:$thisUser.truename}" placeholder="如：王先生" class="ui-input-text"></div>
+
+</td>
+
+</tr>
+
+<tr id="nameinfo-layout" style="display: none;">
+
+<td></td>
+
+<td colspan="2" id="nameinfo" class="cart-editalertinfo"></td>
+
+</tr>
+
+                            <tr>
+
+<td><label for="phone" class="ui-input-text">电话：</label></td>
+
+<td>
+
+<div class="ui-input-text"><input type="tel" id="phone" name="tel" value="{Saivi:$thisUser.tel}" placeholder="如：138888888882" class="ui-input-text"></div>
+
+</td>
+
+</tr>
+
+<tr id="phoneinfo-layout" style="display: none;">
+
+<td></td>
+
+<td colspan="2" id="phoneinfo" class="cart-editalertinfo"></td>
+
+</tr>
+
+  <tr>
+
+<td><label for="address" class="ui-input-text">地址：</label></td>
+
+<td>
+
+<div class="ui-input-text"><input type="text" id="address" name="address" value="{Saivi:$thisUser.address}" placeholder="如：XX路XX小区" class="ui-input-text"></div>
+
+</td>
+
+</tr>
+
+<tr id="phoneinfo-layout" style="display: none;">
+
+<td></td>
+
+<td colspan="2" id="phoneinfo" class="cart-editalertinfo"></td>
+
+</tr>         
+
+</tbody></table>					
+
+
+
+<table style="display:none"  id="paypassword-layout">
+
+<tbody><tr>
+
+<td><label for="paypassword" class="ui-input-text">交易密码：</label></td>
+
+<td>
+
+<div class="ui-input-text"><input type="password" id="paypassword" name="paypassword" class="ui-input-text"></div>
+
+</td>
+
+<td></td>
+
+</tr>
+
+<tr id="paypasswordinfo-layout">
+
+<td></td>
+
+<td colspan="2" id="paypasswordinfo" class="cart-editalertinfo"></td>
+
+</tr>
+
+</tbody></table>
+
+</section>
+
+</div>
+
+ <div class="biaodan" style="margin-top:2px">  
+
+  <section class="order"> 
+
+<table style="padding: 0; margin: 0;"  width="100%">
+
+<tbody>
+
+                                                   <tr>
+
+<td width="100px"><label for="payment" class="ui-input-text">支付方式：</label></td>
+
+<td>
+
+
+
+<input value="0" type="radio" name="payment" checked id="label_1"/><label for="label_1">餐到付款</label><br />
+
+<if condition="$payment">
+
+<volist id="v" name="payment">
+
+<input type="radio" id="{Saivi:$v.pay_code}" name="payment" value="{Saivi:$v.pay_code}"  /> <label for="{Saivi:$v.pay_code}">{Saivi:$v.pay_name}</label><br> 
+
+</volist>
+
+</if>
+
+
+
+</td>
+
+</tr></tbody></table></section>
+
+</div>
+
+<div class="footReturn" style="margin-bottom:70px;"><a id="showcard" class="submit" href="javascript:submitOrder();">确定提交</a></div>
+
+</form>
+
+</div>
+
+    
+
+<include file="Dining:footer"/>
+
+
+
+<script type="text/javascript">
+
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+	WeixinJSBridge.call('hideToolbar');
+
+});
+
+</script>
+
+</body>
+
+</html>

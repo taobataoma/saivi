@@ -1,0 +1,151 @@
+@charset "utf-8";
+/* CSS Document */
+
+.replace-2x {
+	font-size: 1px;
+}
+
+@media all and (-webkit-min-device-pixel-ratio:2) {
+	
+
+.page-sidebar{	background-image:url(menu-bg.png);	-webkit-background-size:75px 75px;}
+
+.hide-sidebar{	background-image:url(deploy-menu@2x.png); -webkit-background-size:18px 12px;}
+.show-sidebar{	background-image:url(deploy-menu@2x.png); -webkit-background-size:18px 12px;}
+.header-mail{	background-image:url(mail@2x.png); -webkit-background-size:18px 12px;}	
+
+.icon-heading{	background-image:url(minus@2x.png); 			-webkit-background-size:12px 12px;}
+
+.menu-item{		background-image:url(menu-item-strip@2x.png); 	 -webkit-background-size:20px 51px;}
+.menu-item:hover{	background-image:url(menu-item-strip-hover@2x.png);	-webkit-background-size:20px 51px;}
+.menu-disabled{	background-image:url(menu_off@2x.png); 		 -webkit-background-size:14px 14px;}
+.menu-enabled{	background-image:url(menu_on@2x.png); 			 -webkit-background-size:14px 14px;}
+
+
+.update-blog{	background-image:url(update-blog@2x.png);		-webkit-background-size:17px 16px;}
+.update-folio{	background-image:url(update-folio@2x.png);	-webkit-background-size:17px 16px;}
+.update-news{	background-image:url(update-news@2x.png);		-webkit-background-size:17px 16px;}
+
+.submenu a{		background-image:url(arrow@2x.png); -webkit-background-size:6px 8px;}
+	
+	
+	.nav-home{		background-image:url(home@2x.png);	 	-webkit-background-size: 51px 51px;}
+	.nav-about{		background-image:url(about@2x.png);	 -webkit-background-size: 51px 51px;}
+	.nav-features{	background-image:url(features@2x.png); -webkit-background-size: 51px 51px;}
+	
+	.nav-portfolio{	background-image:url(folio@2x.png);	-webkit-background-size: 51px 51px;}
+	.nav-videos{	background-image:url(video@2x.png);	-webkit-background-size: 51px 51px;}
+	.nav-blog{		background-image:url(blog@2x.png);		-webkit-background-size: 51px 51px;}
+	
+	.nav-mobile{	background-image:url(phone@2x.png);	-webkit-background-size: 51px 51px;}
+	.nav-sms{		background-image:url(chat@2x.png);		-webkit-background-size: 51px 51px;}
+	.nav-mail{		background-image:url(mail@2x.png);		-webkit-background-size: 51px 51px;}
+	
+	.icon-heading{	background-image:url(heading@2x.png);	-webkit-background-size: 20px 20px;}
+
+	.deploy-share{	background-image:url(go-home@2x.png); -webkit-background-size:16px 16px;}
+	.deploy-menu{	background-image:url(nav-deploy@2x.png); -webkit-background-size:16px 16px;}
+
+	
+	
+	.swipe-null-box{	background-image:url(empty@2x.png); -webkit-background-size:16px 16px;}
+	.swipe-check-box{	background-image:url(cross@2x.png); -webkit-background-size:16px 16px;}
+	.swipe-tick-box{	background-image:url(tick@2x.png);	 -webkit-background-size:16px 16px;}
+	
+	.list-address{			background-image:url(address_32.png);		-webkit-background-size:16px 16px; }
+	.list-block{			background-image:url(block_32.png);			-webkit-background-size:16px 16px; }
+	.list-bookmark{			background-image:url(bookmark_32.png);		-webkit-background-size:16px 16px; }
+	.list-briefcase{		background-image:url(briefcase_32.png);		-webkit-background-size:16px 16px; }
+	.list-bubble{			background-image:url(bubble_32.png);		-webkit-background-size:16px 16px; }
+	.list-buy{				background-image:url(buy_32.png);			-webkit-background-size:16px 16px; }
+	.list-calendar{			background-image:url(calendar_32.png);		-webkit-background-size:16px 16px; }
+	.list-clipboard{		background-image:url(clipboard_32.png);		-webkit-background-size:16px 16px; }
+	.list-delete{			background-image:url(delete_32.png);		-webkit-background-size:16px 16px; }
+	.list-clock{			background-image:url(clock_32.png);			-webkit-background-size:16px 16px; }
+	.list-diagram{			background-image:url(diagram_32.png);		-webkit-background-size:16px 16px; }
+	.list-document{			background-image:url(document_32.png);		-webkit-background-size:16px 16px; }
+	.list-down{				background-image:url(down_32.png);			-webkit-background-size:16px 16px; }
+	.list-flag{				background-image:url(flag_32.png);			-webkit-background-size:16px 16px; }
+	.list-folder{			background-image:url(folder_32.png);		-webkit-background-size:16px 16px; }
+	.list-gear{				background-image:url(gear_32.png);			-webkit-background-size:16px 16px; }
+	.list-globe{			background-image:url(globe_32.png);			-webkit-background-size:16px 16px; }
+	.list-heart{			background-image:url(heart_32.png);			-webkit-background-size:16px 16px; }
+	.list-help{				background-image:url(help_32.png);			-webkit-background-size:16px 16px; }
+	.list-home{				background-image:url(home_32.png);			-webkit-background-size:16px 16px; }
+	.list-key{				background-image:url(key_32.png);			-webkit-background-size:16px 16px; }
+	.list-label{			background-image:url(label_32.png);			-webkit-background-size:16px 16px; }
+	.list-left{				background-image:url(left_32.png);			-webkit-background-size:16px 16px; }
+	.list-letter{			background-image:url(letter_32.png);		-webkit-background-size:16px 16px; }
+	.list-monitor{			background-image:url(monitor_32.png);		-webkit-background-size:16px 16px; }
+	.list-pencil{			background-image:url(pencil_32.png);		-webkit-background-size:16px 16px; }
+	.list-plus{				background-image:url(plus_32.png);			-webkit-background-size:16px 16px; }
+	.list-present{			background-image:url(present_32.png);		-webkit-background-size:16px 16px; }
+	.list-print{			background-image:url(print_32.png);			-webkit-background-size:16px 16px; }
+	.list-right{			background-image:url(right_32.png);			-webkit-background-size:16px 16px; }
+	.list-save{				background-image:url(save_32.png);			-webkit-background-size:16px 16px; }
+	.list-shield{			background-image:url(shield_32.png);		-webkit-background-size:16px 16px; }
+	.list-statistics{		background-image:url(statistics_32.png);	-webkit-background-size:16px 16px; }
+	.list-stop{				background-image:url(stop_32.png);			-webkit-background-size:16px 16px; }
+	.list-tick{				background-image:url(tick_32.png);			-webkit-background-size:16px 16px; }
+	.list-trash{			background-image:url(trash_32.png);			-webkit-background-size:16px 16px; }
+	.list-up{				background-image:url(up_32.png);			-webkit-background-size:16px 16px; }
+	.list-user{				background-image:url(user_32.png);			-webkit-background-size:16px 16px; }
+	.list-walet{			background-image:url(wallet_32.png);		-webkit-background-size:16px 16px; }
+	.list-warning{			background-image:url(warning_32.png);		-webkit-background-size:16px 16px; }
+
+
+	.show-toggle-v5{		background-image:url(minus@2x.png);			-webkit-background-size:12px 12px;		}
+	.hide-toggle-v5{		background-image:url(plus@2x.png);				-webkit-background-size:12px 12px;		}
+	
+	.show-toggle-v4{		background-image:url(delete_32.png);		-webkit-background-size:16px 16px;		}
+	.hide-toggle-v4{		background-image:url(plus_32.png);			-webkit-background-size:16px 16px;		}
+	
+	.show-toggle-v3{		background-image:url(switch-on@2x.png); 		-webkit-background-size:61px 27px;		}
+	.hide-toggle-v3{		background-image:url(switch-off@2x.png);		-webkit-background-size:61px 27px;		}
+	
+	.show-toggle-v2{		background-image:url(delete_32.png);		-webkit-background-size:16px 16px;		}
+	.hide-toggle-v2{		background-image:url(plus_32.png);			-webkit-background-size:16px 16px;		}
+			
+	.show-toggle-v1{		background-image:url(minus@2x.png);			-webkit-background-size:12px 12px;		}
+	.hide-toggle-v1{		background-image:url(plus@2x.png);				-webkit-background-size:12px 12px;		}
+	
+	
+	/*Checkboxes*/
+	/*//////////*/
+	.checkbox-v1{	background-image:url(checkbox@2x.png);						-webkit-background-size:16px 18px;}
+	.checked-v1{	background-image:url(checkbox-selected@2x.png)!important;	-webkit-background-size:16px 18px;}
+	.checkbox-v2{	background-image:url(checkbox2@2x.png);					-webkit-background-size:16px 18px;}
+	.checked-v2{	background-image:url(checkbox2-selected@2x.png)!important;	-webkit-background-size:16px 18px;}
+	.checkbox-v3{	background-image:url(empty@2x.png);						-webkit-background-size:16px 16px;}
+	.checked-v3{	background-image:url(cross@2x.png)!important;				-webkit-background-size:16px 16px;}
+	.checkbox-v4{	background-image:url(empty@2x.png);						-webkit-background-size:16px 16px;}
+	.checked-v4{	background-image:url(tick@2x.png)!important;				-webkit-background-size:16px 16px;}
+	
+	.radio-v1{		background-image:url(radio@2x.png);						-webkit-background-size:16px 18px;}
+	.balled-v1{		background-image:url(radio-selected@2x.png)!important;		-webkit-background-size:16px 18px;}
+	.radio-v2{		background-image:url(radio2@2x.png);						-webkit-background-size:16px 18px;}
+	.balled-v2{		background-image:url(radio2-selected@2x.png)!important;	-webkit-background-size:16px 18px;}
+
+
+
+	/*//////////////////////////////////////////////////////////////////////////////////////*/
+	/*-------------------------Header Notification------------------------------------------*/
+	/*//////////////////////////////////////////////////////////////////////////////////////*/
+	
+	.header-notification strong{ 	color:#666;}
+	.warning-notification em{		background-image:url(warning_32.png);	-webkit-background-size:16px 16px;}
+	.close-notification em{			background-image:url(delete_32.png);	-webkit-background-size:16px 16px;}
+	.heart-notification em{			background-image:url(heart_32.png);		-webkit-background-size:16px 16px;}
+	.calendar-notification em{		background-image:url(calendar_32.png);	-webkit-background-size:16px 16px;}
+	.info-notification em{			background-image:url(info_32.png);		-webkit-background-size:16px 16px;}		
+
+
+	/*Blog*/
+		
+	.posted-by{		background-image:url(user@2x.png);	-webkit-background-size:12px 12px;}
+	.posted-at{		background-image:url(time@2x.png);	-webkit-background-size:13px 12px;}
+	.posted-cat{	background-image:url(cat@2x.png);	-webkit-background-size:16px 11px;}
+	.posted-tag{	background-image:url(tag@2x.png);	-webkit-background-size:12px 12px;}
+	.posted-more{	background-image:url(more@2x.png);	-webkit-background-size:17px 12px;}
+	
+};

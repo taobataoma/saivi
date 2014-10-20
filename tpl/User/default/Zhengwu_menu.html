@@ -1,0 +1,19 @@
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<div class="tab" style="margin-left:30px">
+<ul>
+<li class="<if condition="ACTION_NAME EQ 'index'">current</if> tabli" id="tab0"><a href="{Saivi::U('Zhengwu/index',array('token'=>$token))}">政务部门介绍</a></li>
+
+<li class="<if condition="ACTION_NAME EQ 'son' ">current</if> tabli" id="tab2"><a href="{Saivi::U('Zhengwu/son',array('token'=>$token))}">服务窗口</a></li>
+
+<li class="<if condition="ACTION_NAME EQ 'housetype' ">current</if> tabli" id="tab2"><a href="{Saivi::U('Zhengwu/housetype',array('token'=>$token))}">服务类型</a></li>
+
+<li class="<if condition="ACTION_NAME EQ 'album' or ACTION_NAME EQ 'album_add'">current</if> tabli" id="tab5"><a href="{Saivi::U('Zhengwu/album',array('token'=>$token))}">政务相册</a></li>
+
+<li class="<if condition="ACTION_NAME EQ 'expert'">current</if> tabli" id="tab5"><a href="{Saivi::U('Zhengwu/expert',array('token'=>$token))}">市民印象点评</a></li>
+
+<li class="<if condition="ACTION_NAME EQ 'zhengwuindex'">current</if> tabli" id="tab6"><a href="{Saivi::U('Reservation/zhengwuindex',array('token'=>$token))}">预约管理</a></li>
+
+<li class="<if condition="ACTION_NAME EQ 'aboutus'">current</if> tabli" id="tab6"><a href="{Saivi::U('Zhengwu/aboutus',array('token'=>$token))}">关于我们</a></li>
+</ul>
+
+</div>

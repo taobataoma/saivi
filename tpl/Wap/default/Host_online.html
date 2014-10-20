@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>在线预订</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+<link href="{Saivi::RES}/css/style/css/hotels.css" rel="stylesheet" type="text/css">
+<script src="{Saivi::RES}/css/style/js/jquery.min.js" type="text/javascript"></script>
+<script src="{Saivi::RES}/js/tel.js" type="text/javascript"></script> 
+</head>
+<body id="hotelsmore" >
+<div class="qiandaobanner"> <img src="{Saivi::RES}/css/style/images/RTqs2yHIc9.jpg" > </div>
+<div class="cardexplain">
+<!--连锁店-->
+<ul class="round">
+ <volist name="list" id="vo"> 
+    <li><a href="index.php?g=Wap&m=Host&a=index&token={Saivi:$vo.token}&hid={Saivi:$vo.id}&wecha_id={Saivi:$Think.get.wecha_id}"><span>{Saivi:$vo.title}</span></a></li>     
+</volist>
+</ul>
+     </div>
+<script>
+function dourl(url){
+location.href= url;
+}
+</script>
+
+<script type="text/javascript">
+window.shareData = {  
+            "moduleName":"Host",
+            "moduleID":"0",
+            "imgUrl": "", 
+            "sendFriendLink": "{Saivi:$f_siteUrl}{Saivi::U('Host/index',array('token'=>$token))}",
+            "tTitle": "预定",
+            "tContent": ""
+};
+</script>
+{Saivi:$shareScript}
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['zxyd'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if></body>
+</html>

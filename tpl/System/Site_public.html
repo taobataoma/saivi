@@ -1,0 +1,8 @@
+<style type="text/css">	
+	.btn-warning>a{color: #fff;}
+</style>
+<div class="btn-group" style="margin-top:10px;">
+	<volist name="nav" id="vo">
+		<li class="btn btn-large <if condition="ACTION_NAME eq $vo['name']">btn-warning</if>" ><a href="{Saivi::U($action.'/'.$vo['name'],array('pid'=>6,'level'=>3))}">{Saivi:$vo['title']}</a></li>
+	</volist>	
+</div>

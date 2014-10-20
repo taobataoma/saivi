@@ -1,0 +1,62 @@
+<include file="Public:head"/>
+<include file="Zhengwu:menu"/> 
+<link rel="stylesheet" type="text/css" href="{Saivi::STATICS}/default_user_com.css" media="all">
+
+ <div class="content">
+
+          
+          <div class="cLine">
+</div>
+          
+          <div class="cLine">
+            <div class="pageNavigator left" >
+                <a href="{Saivi::U('Zhengwu/housetype_add',array('token'=>$token))}" class="btnGrayS vm bigbtn">
+                    <img src="{Saivi::RES}/images/pic.png" class="vm">添加服务类型
+                </a>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <div class="msgWrap">
+          <form method="post" action="" id="info">
+          <input name="delall" type="hidden" value="del">
+           <input name="wxid" type="hidden" value="gh_423dwjkewad">
+            <table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+              <thead>
+             <tr>
+                                             
+                                            <th class="span3">服务类型名称</th>
+                                            <th class="span3">所属服务窗口</th>
+                                            <th class="span1">显示顺序</th>
+                                            <th class="span3">操作</th>
+                                        </tr>
+                                       </thead>
+                                                  <tbody>
+                                        <if condition="$housetype eq ''">
+                                        <tr>
+                                        <td colspan="6" style="text-align:center; height:30px;"><strong>没有服务类型信息.</strong></td>
+                                        </tr>
+                                    <else/>
+                                    <volist name="housetype" id="list">
+                                        <tr>
+                                        <td style="">{Saivi:$list['name']}</td>
+                                        <td style=""><span class="label"> {Saivi:$list['title']|default=""}</span></td>
+                                        <td style="">{Saivi:$list['sort']}</td>
+                                        <td style="">
+                                        <a href="{Saivi::U('Zhengwu/housetype_add',array('id'=>$list['id'],'token'=>$list['token']))}" class="btn">编辑</a>
+                                        <a href="{Saivi::U('Zhengwu/housetype_del',array('id'=>$list['id'],'token'=>$list['token']))}" onclick="return(confirm('确定要删除吗？'))" class="btn">删除</a></a>
+                                        </td>
+                                        </tr>
+                                    </volist>
+                                    </if>
+                                    </tbody>
+            </table>
+           </form> 
+          </div>
+          <div class="cLine">
+            <div class="pageNavigator right">
+                 <div class="pages">{Saivi:$page}</div>
+            </div>
+            <div class="clr"></div>
+          </div>
+        </div>  
+<include file="Public:footer"/>

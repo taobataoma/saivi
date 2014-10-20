@@ -1,0 +1,99 @@
+<include file="Public:head"/>
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<div class="content">
+
+<div class="cLineB">
+  <h4>一战到底配置 </h4><a href="javascript:history.go(-1);" class="right btn btn-primary btn_submit  J_ajax_submit_btn" style="margin-top:-27px">返回</a>
+ </div>
+ <!--tab start-->
+<div class="tab">
+<ul>
+<li class="tabli" id="tab0"><a href="{Saivi::U('Dati/index')}">选择题列表</a></li>
+<li class="tabli" id="tab2"><a href="{Saivi::U('Dati/jdt')}">简答题列表</a></li>
+<li class="tabli" id="tab2"><a href="{Saivi::U('Dati/ktc')}">看图猜列表</a></li>
+<li class="tabli current" id="tab2"><a href="#">编辑<if condition="$type eq 0">选择题<elseif condition="$type eq 1" />简答题<else />看图猜</if>题目</a></li>
+</ul>
+</div>
+<!--tab end-->        
+    <div class="msgWrap bgfc" style="margin-top:10px;">
+	  <form class="form" method="post" action=""   enctype="multipart/form-data">	 
+		<table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tbody>
+				<tr>
+				  <th valign="top"><span class="red">*</span><if condition="$type eq 2"> 标题<else />题目</if>：</th>
+				  <td>
+                  <if condition="$type eq 2">
+                  <input type="text" name="title" class="px" style="width:550px;" value="{Saivi:$info.title}">
+                  <else />
+                  <textarea style="width:560px;height:75px" name="title" id="info" class="px">{Saivi:$info.title}</textarea><br/><font color="red"><span id="counter">130</span>字以内<br></font>
+                  </if>
+					</td>
+				</tr>
+				<if condition="$type eq 2">
+                <tr>
+					<th width="120"><span class="red">*</span>图片题目：</th>
+					<td><input type="text" name="picurl" id="picurl" class="px" style="width:450px;" value="{Saivi:$info.picurl}">&nbsp;&nbsp;<input type="button" id="uploadbutton" value="本地上传" /></td>
+				</tr>
+                <tr>
+					<th width="120"><span class="red">*</span>题目描述：</th>
+					<td><textarea style="width:560px;height:75px" name="info" id="info" class="px">{Saivi:$info.info}</textarea><br/><font color="red"><span id="counter">130</span>字以内<br></font></td>
+				</tr>
+                </if>
+				<tr>
+					<th width="120"><span class="red">*</span>答案：</th>
+					<td><input type="text" name="daan" class="px" value="{Saivi:$info.daan}" style="width:550px;"></td>
+				</tr>
+               <tr>
+					<th width="120"><span class="red">*</span>奖励积分：</th>
+					<td><input type="text" name="score" class="px" value="{Saivi:$info.score}" style="width:50px;"> 1~100数字</td>
+				</tr>
+				<th>&nbsp;</th>
+					<td>
+                    	<input type="hidden" name="type" value="{Saivi:$type}" />
+                        <input type="hidden" name="id" value="{Saivi:$info.id}" />
+						<button type="submit" name="button" class="btn btn-primary btn_submit  J_ajax_submit_btn">保存</button>
+						<a href="javascript:history.go(-1);" class="btn">取消</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+  </div> 
+ 
+  
+        </div>
+<link rel="stylesheet" href="/static/js/editor/themes/default/default.css" />
+<script charset="utf-8" src="/static/js/editor/kindeditor-min.js"></script>
+<script charset="utf-8" src="/static/js/editor/zh_CN.js"></script>
+<script>
+	KindEditor.ready(function(K) {
+		var uploadbutton = K.uploadbutton({
+			button : K('#uploadbutton')[0],
+			fieldName : 'imgFile',
+			url : '/index.php?g=User&m=Attachment&a=upload&type=dati',
+			afterUpload : function(data) {
+				if (data.error === 0) {
+					K('#picurl').val(data.url);
+				} else {
+					alert(data.message);
+				}
+			},
+			afterError : function(str) {
+				alert('自定义错误信息: ' + str);
+			}
+		});
+		uploadbutton.fileBox.change(function(e) {
+			uploadbutton.submit();
+		});
+	});
+</script>
+<script language="javascript">
+function countChar(textareaName,spanName){
+ document.getElementById(spanName).innerHTML=37-document.getElementById(textareaName).value.length;
+ if(document.getElementById(textareaName).value.length>=37){
+  window.alert("已经是最大字数了哦！")
+  return false;
+ }
+}
+</script>
+<include file="Public:footer"/>

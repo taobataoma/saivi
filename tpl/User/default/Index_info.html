@@ -1,0 +1,126 @@
+﻿<style>
+.msgWrap .control-group {
+margin-bottom: 20px;
+}
+.msgWrap .control-label {
+text-align: left;
+width: 140px;
+font-weight: bold;
+padding-top: 5px;
+float: left;
+display: block;
+margin-bottom: 5px;
+}
+.msgWrap .controls {
+margin-left: 160px;
+}
+.msgWrap .form-actions {
+padding: 19px 20px 20px 160px;
+margin-top: 20px;
+}
+.span4, .span1, .option, .valid, .input-large{
+	background: url(../images/px.png) repeat-x scroll 0 0 #FFFFFF;
+    border-color: #848484 #E0E0E0 #E0E0E0 #848484;
+    border-style: solid;
+    border-width: 1px;
+	border-radius: 2px 2px 2px 2px;
+	padding:5px;
+	width: 210px;
+}
+.alert {
+padding: 8px 35px 0 10px;
+text-shadow: none;
+-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+-moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+background-color: #9FCCFC;
+border: 1px solid #6BC1F1;
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;
+color: #333333;
+margin-top: 5px;
+}
+.alert p {
+margin: 0 0 10px;
+display: block;
+}
+.alert .bold{
+font-weight:bold;
+}
+</style>
+<link href="{Saivi::RES}/css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="{Saivi::RES}/js/common.js"></script>
+<div class="content" style="margin-left:30px; margin-top:20px; height:1000px">
+<div class="usercontent">
+<ul>
+<li><a href="" class="btn btn-primary btn_submit  J_ajax_submit_btn" title="查看资金" >账户资金总数：{Saivi:$thisUser.money}</a></li>
+<li class="addli"><a class="btn btn-primary btn_submit  J_ajax_submit_btn" title="已消费资金数" href="" >已消费资金数：{Saivi:$thisUser.spend}</a></li>
+<li class="addli"><a class="btn btn-primary btn_submit  J_ajax_submit_btn" title="添加微信公众号" onclick="location.href='{Saivi::U('Index/add')}';">添加微信公众号</a></li>
+<li><a href="index.php?g=User&m=Alipay&a=index" title="支付宝在线充值" class="btn btn-primary btn_submit  J_ajax_submit_btn">支付宝在线充值</a></li>
+
+<li><a href="http://wpa.qq.com/msgrd?v=3&uin={Saivi::C('site_qq')}&site=qq&menu=yes" title="在线客服" class="btn btn-primary btn_submit  J_ajax_submit_btn">在线客服</a></li>
+
+
+</ul>
+        <div class="clr"></div>
+      </div>
+      <div class="cLine">
+   <div class="alert">
+    <p><span class="bold">温馨提示：</span>{Saivi::C('counts')}</p>
+    </div> 
+</div>
+          <div class="msgWrap">
+            <TABLE class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+              <THEAD>
+                <TR>
+                  <TH>公众号名称</TH>
+                  <TH>VIP等级</TH>
+                  <TH>创建时间/到期时间</TH>
+                   <TH>已定义/上限</TH>
+                   <TH>请求数</TH>
+                  <TH>操作</TH>
+                </TR>
+              </THEAD>
+              <TBODY>
+                <TR></TR>                
+                 <volist name="info" id="vo"> 
+					<TR>
+					  <TD><p><a href="{Saivi::U('Function/index',array('id'=>$vo['id'],'token'=>$vo['token']))}" title="点击进入功能管理"><img src="{Saivi:$vo.headerpic}" width="40" height="40"></a></p><p>{Saivi:$vo.wxname}</p></TD>
+					  <TD align="center"><php>if($_SESSION['gid']>1){echo $_SESSION['gid']-1;}else{echo 0;}</php></TD>
+					  <TD><p>创建时间:{Saivi:$vo.createtime|date="Y-m-d",###}</p><p>到期时间:{Saivi:$viptime|date="Y-m-d",###}</p><p><a   href="{Saivi::U('Alipay/index')}" id="smemberss" class="green"><em>升降级vip续费</em></a></p></Td>
+					  <TD><p>图文：<php>echo $_SESSION['diynum'].'/'.$group[$_SESSION['gid']]['did'];</php></p></TD>
+					   <TD><p>总请求数:<php>echo $_SESSION['connectnum']</php></p><p> 本月请求数:<php>echo $group[$_SESSION['gid']]['cid'];</php></p></TD>
+					  
+					  <TD class="norightborder">　
+                   
+                      <a href="{Saivi::U('Index/edit',array('id'=>$vo['id']))}" class="btn btn-primary btn_submit  J_ajax_submit_btn">编辑</a>　
+                      
+                  <a  href="javascript:drop_confirm('您确定要删除吗?删除后是不可恢复的！', \'{Saivi::U('Index/del',array('id'=>$vo['id']))}\');" style="background:#F00" class="btn btn-primary btn_submit  J_ajax_submit_btn">删除</a>
+					  <a onclick="window.parent.location.href='{Saivi::U('Index/frame',array('id'=>$vo['id'],'token'=>$vo['token']))}';" class="btn btn-primary btn_submit  J_ajax_submit_btn" target='_top' >功能管理</a>
+					  <a href="{Saivi::U('Home/Index/help',array('id'=>$vo['id'],'token'=>$vo['token']))}" class="btn btn-primary btn_submit  J_ajax_submit_btn" >API接口</a>
+					  </TD>
+					</TR>
+                  </volist>
+
+              </TBODY>
+            </TABLE>
+            
+          </div>
+          
+          <div class="cLine">
+            <div class="pageNavigator right">
+              <div class="pages"></div>
+            </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+        
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div>
+  <!--底部-->
+  	</div>
+
+<include file="Public:footer"/>	

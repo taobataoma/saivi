@@ -1,0 +1,65 @@
+body,div,h1,h2,h3,h4,h5,h6,p{padding:0; margin:0;}
+body{background-color:#000;}
+a:link,a:visited,a:hover,a:active{text-decoration:none;}
+.clear {font-size:0; line-height:0; height:0; clear:both; visibility:hidden; overflow:hidden; }
+
+.weiba-copyright,.weiba-support{color: #FFFFFF;}
+.list-box{position: relative;padding: 0;margin: 0;white-space:nowrap; letter-spacing: -0.31em;}
+.list-item{display: block;position: relative;padding: 0;height: 48px;width: 33%;background-color: #4B4B4B;float: left;margin: 3px 1px 3px 0;}
+.item-title{color: #FFFFFF;letter-spacing:0;line-height: 48px;}
+.item-image{display: none;}
+.item-title .title-text{text-align: center;}
+.list-item._C3{margin-right: 0;}
+.list-item._C0{height: 100px;width: 100%;background-color: inherit;border: none;margin: 0;padding: 0;letter-spacing: -0.31em;}
+.list-item._C0 .item-title .title-text{display:inline-block;width: 60px;line-height: 32px;padding: 6px;}
+.list-item._C0 .item-title{width: 33%;height: 100%;position: absolute;top:0;background: url(../../img/2.png) right bottom no-repeat; -webkit-background-size:30px auto;}
+.list-item._L0 .item-title{ left: 0; background-color: #2995C4;}
+.list-item._L1 .item-title{  right: 0;background-color: #ED940D;}
+.list-item._C0 .item-image{ width: 66.4%; height: 100%; position: absolute;top:0;background-repeat: no-repeat;background-size: cover;display: block;}
+.list-item._L0 .item-image{right: 0;}
+.list-item._L1 .item-image{left: 0;}
+
+.weimob-detail{ margin:5px;}
+.weimob-detail p{ line-height:26px; font-size:1rem; text-indent:2em; color:#FFF;}
+.weimob-detail img{ max-width: 100%;min-width: 100%;}
+.weimob-detailit img {max-width: 100%;}
+
+
+body{
+	background-color:#e1e0de;
+}
+
+._C1, ._C2, ._C3{
+	text-align: center;
+	background-color:#ffffff;
+	border-radius:3px;
+	-webkit-box-shadow:1px 1px 3px #ccc;
+}
+._C1 .item-title, ._C2 .item-title, ._C3 .item-title{
+	color:#000000;
+}
+
+.item_title2{
+	letter-spacing:0.1em;
+	background:rgba(0,0,0,0.5);
+	line-height:30px;
+	position: absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	text-indent: 30px;
+	color:#fff;
+    height:30px;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden
+}
+
+._C0>.item-title>div:first-child{
+    font-size: 30px;
+    width: 65px!important;
+}
+
+.weimob-page{
+    overflow:hidden;
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title{Saivi:$tpl['wxname']}</title>
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/mlktv/common.css"/>
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/mlktv/reset.css"/>
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/mlktv/home-20.css" />
+<script type="text/javascript" src="{Saivi::RES}/mlktv/jQuery.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/mlktv/swipe.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/mlktv/zepto.js"></script>
+    </head>
+    <body onselectstart="return true;" ondragstart="return false;">
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/mlktv/font-awesome.css" />
+
+<div class="body">
+    <!--背景音乐-->
+    <if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/></if>
+		<!--
+	幻灯片管理
+	-->
+	<div style="-webkit-transform:translate3d(0,0,0);">
+		<div id="banner_box" class="box_swipe">
+			<ul>
+             <volist name="flash" id="so">
+				<li>
+						  <a href="{Saivi:$so.url|htmlspecialchars_decode}"><img src="{Saivi:$so.img}" /></a>
+				</li></volist>
+			</ul>
+			<ol>
+			  <volist name="flash" id="so">
+<li   <if condition="$i eq 1">class="active"</if>  >{Saivi:$i}</li>
+				</volist>
+							</ol>
+		</div>
+	</div>
+		<script>
+		$(function(){
+			new Swipe(document.getElementById('banner_box'), {
+				speed:500,
+				auto:3000,
+				callback: function(){
+					var lis = $(this.element).next("ol").children();
+					lis.removeClass("on").eq(this.index).addClass("on");
+				}
+			});
+		});
+	</script>
+			<section>
+			<a href="tel:{Saivi:$speeddial.phone}" class="link_tel icon-phone">{Saivi:$info.phone}</a>
+		</section>
+				<!--
+		用户分类管理
+        -->
+		<section>
+			<ul class="list_ul">
+             <volist name="info" id="vo">
+									<li>
+													<a href="<if condition="$vo['url'] eq ''">{Saivi::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{Saivi:$vo.url}</if>">
+													<figure>
+								<div>
+									<img src="{Saivi:$vo.img}" />
+								</div>
+								<figcaption>
+									{Saivi:$vo.name}									<p>{Saivi:$vo.info}</p>
+								</figcaption>
+							</figure>
+						</a>
+					</li></volist>
+									
+							</ul>
+		</section>
+	</div>
+<script>
+var count = document.getElementById("thelist").getElementsByTagName("img").length;	
+
+for(i=0;i<count;i++){
+ document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
+
+}
+document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
+
+ setInterval(function(){
+myScroll.scrollToPage('next', 0,400,count);
+},3500 );
+window.onresize = function(){ 
+for(i=0;i<count;i++){
+document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
+}
+ document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
+} 
+
+</script>
+<!--
+导航菜单
+   后台设置的快捷菜单
+-->
+
+		<script>
+			window.addEventListener("DOMContentLoaded", function(){
+				btn = document.getElementById("plug-btn");
+				btn.onclick = function(){
+					var divs = document.getElementById("plug-phone").querySelectorAll("div");
+					var className = className=this.checked?"on":"";
+					for(i = 0;i<divs.length; i++){
+						divs[i].className = className;
+					}
+					document.getElementById("plug-wrap").style.display = "on" == className? "block":"none";
+				}
+			}, false);
+		</script>
+        			<footer>
+<div class="copyright" style="text-align:center;"><if condition="$iscopyright eq 1">{Saivi:$homeInfo.copyright}<else/>{Saivi:$siteCopyright}</if></div>
+<include file="Index:styleInclude"/> 
+
+							</footer>
+				<div mark="stat_code" style="width:0px; height:0px; display:none;">
+					</div>
+	</body>
+</html>

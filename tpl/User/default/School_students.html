@@ -1,0 +1,99 @@
+<include file="Public:head"/>
+<include file="School:menu"/>
+
+<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+
+<script>
+    window.onload=function(){
+        document.forms[0].reset();
+        placeFo();
+    }
+    function placeFo(){
+        document.forms[0].elements[0].focus();
+    }
+</script>
+<script>
+    jQuery(document).ready(function(){
+      jQuery("#formID").validationEngine();
+    });
+    </script>
+<div class="content">
+
+          <div class="cLineB">
+              <h4 class="left">当前位置：微学校 >> 学员管理</h4><a href="{Saivi::U('School/student_add',array('token'=>$token,'type'=>'semester'))}" class="right btnGreen vm" style="margin-top:-2px">新增学员</a>
+              <div class="clr"></div>
+          </div>
+          <div class="cLineD">
+    <form method="post" id="formID" action="{Saivi::U('School/search',array('token'=>$token))}">
+        <input type="hidden" name="searchkey[key]" value="students">
+        姓名:<input size="20" value=""  placeholder="请输入学员姓名"  name="searchkey[name]" class="px">&nbsp;&nbsp;&nbsp;手机号:<input size="20" value="" name="searchkey[phone]"placeholder="请输入学员电话" class="px">&nbsp;&nbsp;&nbsp;
+        <button type="submit" name="appidsubmit"  value="true" class="btnGreen vm" ><strong>查询</strong></button>
+    </form>
+ </div>
+          <div class="msgWrap">
+           <div style="background:#fefbe4;border:1px solid #f3ecb9;color:#993300;padding:10px;margin-top:5px;">注意:地址只显示街道地址,上面查询支持模糊查询.</div>
+
+
+          <!-- <input name="delall"  type="hidden" value="del" />
+           <input name="wxid"  type="hidden" value="gh_423dwjkewad" /> -->
+            <TABLE class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+              <THEAD>
+                <TR>
+                <TH>姓名</TH>
+                <TH>年龄</TH>
+                <TH>性别</TH>
+                <TH>出生</TH>
+                <TH>家庭住址</TH>
+                <TH>手机</TH>
+                <TH>固话</TH>
+                <TH>班级</TH>
+                <TH>报名时间</TH>
+                <TH>生效时间</TH>
+                <TH>终止时间</TH>
+              <TH >操作</TH>
+                </TR>
+              </THEAD>
+              <TBODY>
+                <TR></TR>
+<volist id="list" name="students">
+                <TR>
+                  <TD>{Saivi:$list['s_name']}</TD>
+                  <TD>{Saivi:$list['age']}</TD>
+                  <TD><if condition="$list['sex'] eq 1">男</if><if condition="$list['sex'] eq 2">女</if></TD>
+                  <TD>{Saivi:$list['birthdate']}</TD>
+                  <TD>{Saivi:$list['area_addr']}</TD>
+                  <TD>{Saivi:$list['mobile']}</TD>
+                  <TD>{Saivi:$list['homephone']}</TD>
+                  <TD>{Saivi:$list['bj_nmae']}</TD>
+                  <TD>{Saivi:$list['createdate']|date="Y-m-d",###}</TD>
+                  <TD><if condition="$list['seffectivetime'] neq '0000-00-00'">{Saivi:$list['seffectivetime']}<else/>---</if></TD>
+                 <TD><if condition="$list['stheendtime'] neq '0000-00-00'">{Saivi:$list['stheendtime']}<else/>---</if></TD>
+                 <TD>
+<a href="{Saivi::U('School/student_add',array('token'=>$token,'id'=>$list['id'],'type'=>'edit'))}"><font color="red">编辑</font></a>
+<a class="btn" href="{Saivi::U('School/del_item',array('token'=>$vo['token'],'id'=>$list['id'],'deltype'=>'students'))}" onclick="return(confirm('确定要删除吗？'))"  title="删除"><font color="#CCC7C7">删除</font></a>
+<a href="{Saivi::U('School/student_score',array('token'=>$token,'id'=>$list['id']))}">录成绩</a>
+                 </TD>
+                </TR>
+</volist>
+              </TBODY>
+            </TABLE>
+          </div>
+          <div class="cLine">
+            <div class="pageNavigator right">
+                <div class="pages">{Saivi:$page}</div>
+              </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+
+  </script>
+  <!--底部-->
+    </div>
+
+<include file="Public:footer"/>

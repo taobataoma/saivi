@@ -1,0 +1,97 @@
+<include file="Public:head"/>
+
+<div class="content"  >
+
+
+
+<div class="cLineB">
+
+  <h4>{Saivi:$state.acttitle}最终结果<span class="FAQ">参与人数{Saivi:$info.joinnum}</span></h4>
+
+  
+
+ </div>
+
+         
+
+ 
+
+ <div class="msgWrap form">
+
+
+
+<div class="bdrcontent">
+
+<div id="div_ptype">
+
+
+
+
+
+<table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+
+<thead>
+
+<tr>
+
+<th>名次</th>                 
+
+<th>电话</th>
+
+<th>摇晃数</th>
+
+</tr>
+
+</thead>
+
+<volist name="point" id="vo"  >
+
+<tr>
+
+<td>第{Saivi:$vo[0]}名</td>
+
+<td>{Saivi:$vo[1]}</td>
+
+<td>{Saivi:$vo[2]}</td>
+
+</tr>
+
+</volist>
+
+               
+
+  </table>
+
+</div>
+
+</div>
+
+<div class="footactions" style="padding-left:10px">
+
+  
+
+</div>
+
+          </div>
+
+  
+
+        </div>
+
+   
+
+        <div class="clr"></div>
+
+      </div>
+
+    </div>
+
+  </div> 
+
+  <!--底部-->
+
+  	</div>
+
+
+
+<include file="Public:footer"/>

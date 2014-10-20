@@ -1,0 +1,54 @@
+<include file="Public:head"/>
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<div class="content">
+  <div class="cLineB">
+    <h4>婚庆公司管理<span class="FAQ">请设置婚庆相关内容。</span></h4>
+  </div>
+  <div class="tab">
+    <ul>
+      <li class="current tabli" id="tab0"><a href="{Saivi::U('Hunqing/index',array('token'=>$token))}">婚庆公司简介</a></li>
+      <li class="tabli" id="tab0"><a href="{Saivi::U('Hunqingsub/index',array('token'=>$token))}">婚庆分店</a></li>
+      <li class="tabli" id="tab0"><a href="{Saivi::U('Hunqingunits/index',array('token'=>$token))}">成功案例</a></li>
+      <li class="tabli" id="tab0"><a href="{Saivi::U('Hunqingposter/index',array('token'=>$token))}">宣传海报</a></li>
+      <li class="tabli" id="tab0"><a href="{Saivi::U('Hunqingphoto/index',array('token'=>$token))}">婚庆相册</a></li>
+      <li class="tabli" id="tab0"><a href="{Saivi::U('Hunqingcom/index',array('token'=>$token))}">客户点评</a></li>
+    </ul>
+  </div>
+  <div class="cLineC" style="line-height: 32px;"> <a   href="{Saivi::U('Hunqing/add')}" class="btnGrayS vm bigbtn" >添加婚庆</a>　 </div>
+  <div class="msgWrap form">
+    <div class="bdrcontent">
+      <div id="div_ptype">
+        <table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+          <thead>
+            <tr>
+              <th style=" width:100px;">图文消息标题：</th>
+              <th style=" width:100px;">图文消息触发关键词：</th>
+              <th style=" width:100px;">图文消息封面：</th>
+              <th style=" width:100px;">相册名称：</th>
+              <th style=" width:120px;">操作</th>
+            </tr>
+          </thead>
+          <volist name="info" id="vo">
+            <tr>
+              <td>{Saivi:$vo.title}</td>
+              <td>{Saivi:$vo.keyword}</td>
+              <td><div class="cateimg"><img src="{Saivi:$vo.picurl}" class="cateimg_small"  /></div></td>
+              <td>{Saivi:$vo.name}</td>
+              <td class="norightborder"><a  href="{Saivi::U('Hunqing/edit',array('id'=>$vo['id']))}">编辑</a> <a href="{Saivi::U('Hunqing/del',array('id'=>$vo['id']))}">删除</a> </td>
+            </tr>
+          </volist>
+        </table>
+      </div>
+    </div>
+    <div class="footactions" style="padding-left:10px">
+      <div class="pages">{Saivi:$page}</div>
+    </div>
+  </div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+</div>
+<!--底部-->
+</div>
+<include file="Public:footer"/>

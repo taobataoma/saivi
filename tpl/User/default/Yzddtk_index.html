@@ -1,0 +1,88 @@
+<include file="Public:head"/>
+<div id="content" style="margin-top:50px; margin-left:15px;">
+         
+          <div class="cLineB">
+              <h4 class="left">题库信息</h4>
+              <div class="clr"></div>
+          </div>
+          <div class="cLine">
+              <div class="pageNavigator left">
+  <a href='{Saivi::U("Yzddtk/add")}' title='新增题目' class='btnGrayS vm bigbtn'><img src="{Saivi::RES}/images/text.png" class="vm" />新增题目</a>　              
+            </div>
+          
+            <div class="clr"></div>
+          </div>
+          <div class="msgWrap">
+            <TABLE class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+              <THEAD>
+                <TR>
+					
+					<TH class="keywords">题目</TH>
+					<TH class="answer">正确答案</TH>
+                    <TH  class="category" >操作</TH>
+                </TR>
+              </THEAD>
+              <TBODY>
+                <TR></TR>
+				<volist name="info" id="vo">
+				<tr>
+                   
+                   
+                   <td>{Saivi:$vo.tm}</td>
+                   <td>{Saivi:$vo[$vo['zd']]}</td>
+                   <td class="norightborder">
+				  
+				   <a href="{Saivi::U('Yzddtk/edit',array('id'=>$vo['id']))}" title="编辑题目">编辑</a>
+				
+				   <a href="{Saivi::U('Yzddtk/del',array('id'=>$vo['id']))}">删除</a></td>
+          
+                </tr>
+				</volist>
+                              
+              </TBODY>
+            </TABLE>
+
+           <script>
+   function checkvotethis() {
+var aa=document.getElementsByName('del_id[]');
+var mnum = aa.length;
+j=0;
+for(i=0;i<mnum;i++){
+if(aa[i].checked){
+j++;
+}
+}
+if(j>0) {
+document.getElementById('info').submit();
+} else {
+alert('未选中任何文章或回复！')
+}
+}
+
+   </script>
+          </div>
+          <div class="cLine">
+            <div class="pageNavigator right">
+                 <div class="pages">{Saivi:$page}</div>
+              </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+
+        <div class="clr"></div>
+  <script>
+
+function checkAll(form, name) {
+for(var i = 0; i < form.elements.length; i++) {
+var e = form.elements[i];
+if(e.name.match(name)) {
+e.checked = form.elements['chkall'].checked;
+}
+}
+}
+
+
+  </script>
+  <!--底部-->
+  	</div>
+<include file="Public:footer"/>

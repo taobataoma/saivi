@@ -1,0 +1,60 @@
+<include file="Public:head"/>
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<div class="content">
+<div class="cLineB">
+  <h4>添加预约保养<span class="FAQ">请设置预约保养相关内容。</span></h4>
+</div>
+<div class="tab">
+<ul>
+<li class="tabli" id="tab0"><a href="{Saivi::U('Car_pp/index',array('token'=>$token))}">品牌管理</a></li>
+<li class="tabli" id="tab0"><a href="{Saivi::U('Car_cx/index',array('token'=>$token))}">车系管理</a></li>
+<li class="tabli" id="tab0"><a href="{Saivi::U('Car_cxing/index',array('token'=>$token))}">车型管理</a></li>
+<li class="tabli" id="tab2"><a href="{Saivi::U('Car_sale/index',array('token'=>$token))}">销售管理</a></li>
+<li class="current tabli" id="tab2"><a href="{Saivi::U('Car_baoyang/index',array('token'=>$token))}">预约管理</a></li>
+<li class="tabli" id="tab2"><a href="{Saivi::U('Car_guanhuai/index',array('token'=>$token))}">车主关怀</a></li>
+
+</ul>
+</div>
+
+ <div class="cLineC" style="line-height: 32px;">
+ <a   href="{Saivi::U('Car_baoyang/add')}" class="btnGrayS vm bigbtn" >添加预约保养</a>　 
+</div>
+ 
+ <div class="msgWrap form">
+
+<div class="bdrcontent">
+<div id="div_ptype">
+<table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+<thead>
+<tr> <th style=" width:100px;">关键词</th> <th style=" width:100px;">标题</th> <th style=" width:100px;">图文封面</th> <th style=" width:100px;">地址</th> <th style=" width:100px;">联系方式</th>  <th style=" width:100px;">预约时间</th> </span></span></th>
+<th style=" width:120px;">操作</th>
+</tr>
+</thead>
+<volist name="info" id="vo">
+<tr><td>{Saivi:$vo.keyword}</td><td>{Saivi:$vo.title}</td><td><div class="cateimg"><img src="{Saivi:$vo.picurl}" class="cateimg_small"  /></div></td><td>{Saivi:$vo.address}</td><td>{Saivi:$vo.phone}</td><td>{Saivi:$vo.starttime}</td><td class="norightborder">
+	<a  href="index.php?g=User&m=Car_baoyang_input&a=index&id={Saivi:$vo.id}&token={Saivi:$vo.token}">查看订单</a>
+	<a  href="{Saivi::U('Car_baoyang/edit',array('id'=>$vo['id']))}">编辑</a>
+	<a href="{Saivi::U('Car_baoyang/del',array('id'=>$vo['id']))}">删除</a>
+</td>
+</tr>
+</volist>
+               
+  </table>
+</div>
+</div>
+<div class="footactions" style="padding-left:10px">
+  <div class="pages">{Saivi:$page}</div>
+</div>
+          </div>
+  
+        </div>
+   
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div> 
+  <!--底部-->
+  	</div>
+
+<include file="Public:footer"/>

@@ -1,0 +1,136 @@
+<include file="Store:header"/>
+<if condition="empty($products) neq true ">
+<ul class="m-cart-list">
+<volist name="products" id="p">
+	<if condition="empty($p['detail']) neq true">
+		<volist name="p['detail']" id="row">
+			<li number="1">
+				<span class="pic"><a href="{Saivi::U('Store/product',array('token'=>$_GET['token'],'id'=>$p['id'],'wecha_id'=>$_GET['wecha_id']))}"><img src="{Saivi:$p.logourl}" width="75" height="75"></a></span>
+				<span class="con">
+					<a href="{Saivi::U('Store/product',array('token'=>$_GET['token'],'id'=>$p['id'],'wecha_id'=>$_GET['wecha_id']))}" class="t">{Saivi:$p.name}</a>
+					<i class="d"><if condition="empty($p['formatTitle']) neq true">{Saivi:$p.formatTitle}：{Saivi:$row.formatName}</if> <if condition="empty($p['colorTitle']) neq true">，{Saivi:$p.colorTitle}：{Saivi:$row.colorName}</if></i>
+					<p>
+					<label>数量：</label>
+					<span>
+					<i style="cursor: pointer;" onclick="plus_minus({Saivi:$p.id}, -1, {Saivi:$row.id})" class="dec"></i>
+					<input type="text" value="{Saivi:$row.count}" onchange="change_minus({Saivi:$p.id}, {Saivi:$row.id})" id="num_{Saivi:$p.id}_{Saivi:$row.id}">
+					<i style="cursor: pointer;" onclick="plus_minus({Saivi:$p.id}, 1, {Saivi:$row.id})" class="add"></i>
+					</span>
+					</p>
+					<p>
+					<label>库存：</label>
+					<span id="stock">{Saivi:$row.num}</span>
+					</p>
+					<p>	
+					<label>价格：</label><span class="price">￥{Saivi:$row.price}</span>
+					<!-- <label style="cursor:pointer" onclick="location.href='{Saivi::U('Store/deleteCart',array('token'=>$_GET['token'],'id'=>$p['id'],'did'=>$row['id'],'wecha_id'=>$_GET['wecha_id']))}'" class="del">删除</label> -->
+					<label style="cursor:pointer" onclick="location.href='{Saivi::U('Store/deleteCart',array('token'=>$_GET['token'],'id'=>$p['id'],'did'=>$row['id'],'wecha_id'=>$_GET['wecha_id']))}'" class="del">删除</label>
+					</p>
+				</span>
+			</li>
+		</volist>
+	<else/>
+		<li number="{Saivi:$p.count}">
+			<span class="pic"><a href="{Saivi::U('Store/product',array('token'=>$_GET['token'],'id'=>$p['id'],'wecha_id'=>$_GET['wecha_id']))}"><img src="{Saivi:$p.logourl}" width="75" height="75"></a></span>
+			<span class="con">
+				<a href="{Saivi::U('Store/product',array('token'=>$_GET['token'],'id'=>$p['id'],'wecha_id'=>$_GET['wecha_id']))}" class="t">{Saivi:$p.name}</a>
+				<p>
+					<label>数量：</label>
+					<span>
+						<i style="cursor: pointer;" onclick="plus_minus({Saivi:$p.id}, -1, 0)" class="dec"></i>
+						<input type="text" value="{Saivi:$p.count}" onchange="change_minus({Saivi:$p.id}, 0)" id="num_{Saivi:$p.id}_0">
+						<i style="cursor: pointer;" onclick="plus_minus({Saivi:$p.id}, 1, 0)" class="add"></i>
+					</span>
+				</p>
+				<p>
+				<label>库存：</label>
+				<span id="stock">{Saivi:$p.num}</span>
+				</p>
+				<p>	
+				<label>销售价：</label><span class="price">￥{Saivi:$p.price}</span>
+				<label style="cursor:pointer" onclick="location.href='{Saivi::U('Store/deleteCart',array('token'=>$_GET['token'],'id'=>$p['id'],'did'=>0,'wecha_id'=>$_GET['wecha_id']))}'" class="del">删除</label>
+				</p>
+			</span>
+		</li>
+	</if>
+</volist>
+</ul>
+<div class="m-cart-toal">
+<!-- <p style="color:#E58B4C;text-align:left;padding:0 10px 1rem;border-bottom:1px dotted #ccc;margin:0 -10px 1rem;font-size:1.2rem;line-height:1.4rem">享受的优惠: 注册名鞋库会员，满百包邮！（货到付款除外）</p> -->
+<p class="check" style="font-size:1.4rem">商品总数:<b id="total_count">{Saivi:$totalCount}</b>　商品总额:<b id="total_price">￥{Saivi:$totalFee}</b></p>
+<p class="act">
+	<a href="{Saivi::U('Store/index',array('token'=>$_GET['token'], 'wecha_id'=>$_GET['wecha_id']))}" class="back">继续购物<i></i></a>
+	<a href="{Saivi::U('Store/orderCart',array('token'=>$_GET['token'], 'wecha_id'=>$_GET['wecha_id']))}" class="checkout">下单结算</a>
+</p>
+</div>
+<else/>
+<div class="m-cart-e">
+<div class="icon"></div>
+<div class="txt">您还没有挑选商品哦</div>
+<a href="{Saivi::U('Store/cats',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}" class="gobuy">去挑选商品</a>
+</div>
+</if>
+<script type="text/javascript">
+function full_update(rowid,price) {
+    var _this = $('#qty'+rowid);
+    var this_val = parseInt($(_this).val());
+    if (this_val < 1 || isNaN(this_val)) {
+        alert('购买数量不能小于1！');
+        $(_this).focus();
+        return false;
+    }
+    update_cart(rowid, this_val,price);
+}
+//加减
+function plus_minus(rowid, number, did) {
+    var num = parseInt($('#num_'+rowid + '_' + did).val());
+    num = num + number;
+    if (num < 1) {
+        return false;
+    }
+     $('#num_'+rowid + '_' + did).attr('value',num);
+    update_cart(rowid, num, did);     
+}
+function change_minus(rowid, did) {
+	var num = parseInt($('#num_'+rowid + '_' + did).val());
+    if (num < 1) {
+        return false;
+    }
+     $('#num_'+rowid + '_' + did).attr('value',num);
+    update_cart(rowid, num, did);
+}
+//更新购物车
+function update_cart(rowid, num, did) {
+	if (num > parseInt($("#stock").text())) {
+		num = parseInt($("#stock").text());
+		$('#num_'+rowid + '_' + did).val(num);
+		floatNotify.simple('抱歉，您的购买量超过了库存了');
+	}
+	$.ajax({
+		url: '{Saivi::U('Store/ajaxUpdateCart',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}&id='+rowid+'&count='+num+'&did='+ did,
+		success: function( data ) {
+			if(data){
+				var datas=data.split('|');
+				//$('#p_buy #all_price').html('￥'+datas[1]);
+				$('#total_count').html(datas[0]);
+				$('#total_price').html('￥'+datas[1]);
+			}
+		}
+	});
+}
+</script>
+</body>
+<script type="text/javascript">
+window.shareData = {  
+            "moduleName":"Store",
+            "moduleID":"0",
+            "imgUrl": "", 
+            "timeLineLink": "{Saivi::C('site_url') .  U('Store/cart',array('token' => $_GET['token']))}",
+            "sendFriendLink": "{Saivi::C('site_url') .  U('Store/cart',array('token' => $_GET['token']))}",
+            "weiboLink": "{Saivi::C('site_url') .  U('Store/cart',array('token' => $_GET['token']))}",
+            "tTitle": "{Saivi:$metaTitle}",
+            "tContent": "{Saivi:$metaTitle}"
+        };
+</script>
+{Saivi:$shareScript}
+</html>

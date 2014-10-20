@@ -1,0 +1,68 @@
+<include file="Public:head"/>
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<div class="content">
+<div class="cLineB">
+  <h4>微贺卡配置 </h4><a href="javascript:history.go(-1);" class="right btn btn-primary btn_submit  J_ajax_submit_btn" style="margin-top:-27px">返回</a>
+ </div>
+ <!--tab start-->
+<div class="tab">
+<ul>
+
+<li class="tabli current" id="tab2"><a href="{Saivi::U('Heka/index')}">配置贺卡</a></li>
+<li class="tabli" id="tab0"><a href="{Saivi::U('Heka/add')}">管理贺卡</a></li>
+
+</ul>
+</div>
+<!--tab end-->        
+    <div class="msgWrap bgfc" style="margin-top:10px;">
+	  <form class="form" method="post" action=""   enctype="multipart/form-data">	 
+		<table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tbody>
+            	<tr>
+					<th width="120"><span class="red">*</span>回复标题：</th>
+					<td><input type="text" name="title" class="px" style="width:550px;" value="<if condition="$info.title neq ''">{Saivi:$info.title}</if>" /></td>
+				</tr>
+                
+				<tr>
+				  <th valign="top"><span class="red">*</span> 关键词：</th>
+				  <td>
+                  <font color="red">回复”贺卡“即可</font>
+					</td>
+				</tr>
+                
+                <tr>
+					<th width="120"><span class="red">*</span>回复图片：</th>
+					<td><input type="text" name="picurl" id="picurl" class="px" style="width:500px;" value="<if condition="$info.picurl neq ''">{Saivi:$info.picurl}</if>" />&nbsp;&nbsp;
+<script src="/tpl/static/upyun.js"></script>
+<a href="javascript:void(0)" onclick="upyunPicUpload('picurl',700,420,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a>
+<a href="###" onclick="viewImg('picurl')" class="btn btn-primary btn_submit  J_ajax_submit_btn">预览</a>
+					</td>
+				</tr>
+                
+                
+                <tr>
+					<th width="120"><span class="red">*</span>描述：</th>
+					<td><textarea style="width:560px;height:75px" name="info" id="info" class="px"><if condition="$info.info neq ''">{Saivi:$info.info}</if></textarea></td>
+				</tr>
+                
+				<tr>
+					<th width="120"><span class="red">*</span>背景图片：</th>
+					<td><input type="text" name="background" id="background" class="px" style="width:450px;" value="<if condition="$info.info neq ''">{Saivi:$info.background}</if>" />&nbsp;&nbsp;
+						<a href="javascript:void(0)" onclick="upyunPicUpload('background',700,420,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a>
+				<a href="###" onclick="viewImg('background')" class="btn btn-primary btn_submit  J_ajax_submit_btn">预览</a>
+					</td>
+				</tr>
+				<th>&nbsp;</th>
+					<td>
+						<button type="submit" name="button" class="btn btn-primary btn_submit  J_ajax_submit_btn">保存</button>
+						<a href="javascript:history.go(-1);" class="btn">取消</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+  </div> 
+ 
+  
+        </div>
+<include file="Public:footer"/>

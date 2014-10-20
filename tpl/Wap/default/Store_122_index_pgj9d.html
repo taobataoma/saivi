@@ -1,0 +1,597 @@
+﻿<!DOCTYPE html>
+
+<html><head>
+
+         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <title>{Saivi:$tpl.wxname}</title>
+
+        <base href="." />
+
+        <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+        <meta name="format-detection" content="telephone=no" />
+
+<link href="{Saivi::RES}/css/allcss/cate23_0.css" rel="stylesheet" type="text/css" />
+
+        
+
+    <!-- <link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/122/common.css" media="all"> -->
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/122/reset.css" media="all">
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/122/font-awesome.css" media="all">
+
+<!-- <link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/122/home-42.css" media="all"> -->
+
+<script type="text/javascript" src="{Saivi::RES}/css/116/jQuery.js"></script>
+
+<script type="text/javascript" src="{Saivi::RES}/css/122/zepto.js"></script>
+
+<script type="text/javascript" src="{Saivi::RES}/css/122/swipe.js"></script>
+
+
+
+    <body onselectstart="return true;" ondragstart="return false;">
+
+    <div id="top"></div>
+
+<div id="scnhtm5" class="m-body">
+
+<div class="menu">
+
+<a href="{Saivi::U('Store/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}"><i></i>所有商品</a>
+
+<a href="{Saivi::U('Store/cart',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}"><i></i>购物车</a>
+
+<a href="{Saivi::U('Store/my',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}"><i></i>查物流</a>
+
+<a href="{Saivi::U('Store/my',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}"><i></i>用户中心</a>
+
+</div>  <!--背景音乐-->
+
+ 
+
+        <div class="body" style="width:100%">
+
+    <section>
+
+        <!--img src="../images/v32_1.jpg" style="width:100%;" /-->
+
+        <ul class="list_ul" style="width:100%">
+
+            <li class="box">
+
+            <volist name="cats" id="hostlist">
+
+                <if condition="$i lt 3">    
+
+            <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+            <label>{Saivi:$hostlist.name}</label>
+
+                    <span>
+
+                            <img src="{Saivi:$hostlist.logourl}" class="icon-file-text" style="width:60px;height:40px;"align="right">
+
+                        </span>
+
+                </a>
+
+                </if>
+
+            </volist>
+
+                                       
+
+            </li>
+
+            <li class="box">   
+
+            <volist name="cats" id="hostlist">
+
+                <if condition="$i eq 3">                           
+
+            <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+                                <div class="imgBox fl">
+
+                        <img src="{Saivi:$hostlist.logourl}" style="width:150px;height:85px;" />
+
+                    </div>
+
+                    <label>{Saivi:$hostlist.name}</label>
+
+                </a>
+
+                </if>
+
+                </volist>
+
+                </li>
+
+                <li class="box">
+
+            <volist name="cats" id="hostlist">
+
+                <if condition="($i gt 3) and ($i lt 6)">                              
+
+                <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+            <label>{Saivi:$hostlist.name}</label>
+
+                    <span>
+
+                            <img src="{Saivi:$hostlist.logourl}" class="icon-file-text" style="width:60px;height:40px;"align="right">
+
+                        </span>
+
+                </a>
+
+                </if>
+
+                </volist>
+
+                                       
+
+            </li>
+
+            <li class="box"> 
+
+            <volist name="cats" id="hostlist">
+
+                <if condition="$i eq 6">                          
+
+            <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+                                <div class="imgBox fl">
+
+                        <img src="{Saivi:$hostlist.logourl}" style="width:150px;height:85px;" />
+
+                    </div>
+
+                    <label>{Saivi:$hostlist.name}</label>
+
+                </a>
+
+                </if>
+
+                </volist>
+
+                </li>
+
+				<li class="box">
+
+            <volist name="cats" id="hostlist">
+
+                <if condition="($i gt 6) and ($i lt 9)">    
+
+            <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+            <label>{Saivi:$hostlist.name}</label>
+
+                    <span>
+
+                            <img src="{Saivi:$hostlist.logourl}" class="icon-file-text" style="width:60px;height:40px;"align="right">
+
+                        </span>
+
+                </a>
+
+                </if>
+
+            </volist>
+
+                                       
+
+            </li>
+
+            <li class="box">   
+
+            <volist name="cats" id="hostlist">
+
+                <if condition="$i eq 9">                           
+
+            <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+                                <div class="imgBox fl">
+
+                        <img src="{Saivi:$hostlist.logourl}" style="width:150px;height:85px;" />
+
+                    </div>
+
+                    <label>{Saivi:$hostlist.name}</label>
+
+                </a>
+
+                </if>
+
+                </volist>
+
+                </li>
+
+                <li class="box">
+
+            <volist name="cats" id="hostlist">
+
+                <if condition="($i gt 9) and ($i lt 12)">                              
+
+                <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+            <label>{Saivi:$hostlist.name}</label>
+
+                    <span>
+
+                            <img src="{Saivi:$hostlist.logourl}" class="icon-file-text" style="width:60px;height:40px;"align="right">
+
+                        </span>
+
+                </a>
+
+                </if>
+
+                </volist>
+
+                                       
+
+            </li>
+
+            <li class="box"> 
+
+            <volist name="cats" id="hostlist">
+
+                <if condition="$i eq 12">                          
+
+            <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+                                <div class="imgBox fl">
+
+                        <img src="{Saivi:$hostlist.logourl}" style="width:150px;height:85px;" />
+
+                    </div>
+
+                    <label>{Saivi:$hostlist.name}</label>
+
+                </a>
+
+                </if>
+
+                </volist>
+
+                </li>
+
+                <li class="box">
+
+            <volist name="cats" id="hostlist">
+
+                <if condition="($i gt 12) and ($i lt 15)">                              
+
+                <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+            <label>{Saivi:$hostlist.name}</label>
+
+                    <span>
+
+                            <img src="{Saivi:$hostlist.logourl}" class="icon-file-text" style="width:60px;height:40px;"align="right">
+
+                        </span>
+
+                </a>
+
+                </if>
+
+                </volist>
+
+                                       
+
+            </li>
+
+            <li class="box"> 
+
+            <volist name="cats" id="hostlist">
+
+                <if condition="$i eq 15">                          
+
+            <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+                                <div class="imgBox fl">
+
+                        <img src="{Saivi:$hostlist.logourl}" style="width:150px;height:85px;" />
+
+                    </div>
+
+                    <label>{Saivi:$hostlist.name}</label>
+
+                </a>
+
+                </if>
+
+                </volist>
+
+                </li>
+
+				<li class="box">
+
+            <volist name="cats" id="hostlist">
+
+                <if condition="($i gt 15) and ($i lt 18)">    
+
+            <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+            <label>{Saivi:$hostlist.name}</label>
+
+                    <span>
+
+                            <img src="{Saivi:$hostlist.logourl}" class="icon-file-text" style="width:60px;height:40px;"align="right">
+
+                        </span>
+
+                </a>
+
+                </if>
+
+            </volist>
+
+                                       
+
+            </li>
+
+            <li class="box">   
+
+            <volist name="cats" id="hostlist">
+
+                <if condition="$i eq 18">                           
+
+            <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+                                <div class="imgBox fl">
+
+                        <img src="{Saivi:$hostlist.logourl}" style="width:150px;height:85px;" />
+
+                    </div>
+
+                    <label>{Saivi:$hostlist.name}</label>
+
+                </a>
+
+                </if>
+
+                </volist>
+
+                </li>
+
+                <li class="box">
+
+            <volist name="cats" id="hostlist">
+
+                <if condition="($i gt 18) and ($i lt 21)">                              
+
+                <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+            <label>{Saivi:$hostlist.name}</label>
+
+                    <span>
+
+                            <img src="{Saivi:$hostlist.logourl}" class="icon-file-text" style="width:60px;height:40px;"align="right">
+
+                        </span>
+
+                </a>
+
+                </if>
+
+                </volist>
+
+                                       
+
+            </li>
+
+            <li class="box"> 
+
+            <volist name="cats" id="hostlist">
+
+                <if condition="$i eq 21">                          
+
+            <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+                                <div class="imgBox fl">
+
+                        <img src="{Saivi:$hostlist.logourl}" style="width:150px;height:85px;" />
+
+                    </div>
+
+                    <label>{Saivi:$hostlist.name}</label>
+
+                </a>
+
+                </if>
+
+                </volist>
+
+                </li>
+
+				<li class="box">
+
+            <volist name="cats" id="hostlist">
+
+                <if condition="($i gt 21) and ($i lt 24)">    
+
+            <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+            <label>{Saivi:$hostlist.name}</label>
+
+                    <span>
+
+                            <img src="{Saivi:$hostlist.logourl}" class="icon-file-text" style="width:60px;height:40px;"align="right">
+
+                        </span>
+
+                </a>
+
+                </if>
+
+            </volist>
+
+                                       
+
+            </li>
+
+            <li class="box">   
+
+            <volist name="cats" id="hostlist">
+
+                <if condition="$i eq 24">                           
+
+            <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+                                <div class="imgBox fl">
+
+                        <img src="{Saivi:$hostlist.logourl}" style="width:150px;height:85px;" />
+
+                    </div>
+
+                    <label>{Saivi:$hostlist.name}</label>
+
+                </a>
+
+                </if>
+
+                </volist>
+
+                </li>
+
+                <li class="box">
+
+            <volist name="cats" id="hostlist">
+
+                <if condition="($i gt 24) and ($i lt 27)">                              
+
+                <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+            <label>{Saivi:$hostlist.name}</label>
+
+                    <span>
+
+                            <img src="{Saivi:$hostlist.logourl}" class="icon-file-text" style="width:60px;height:40px;"align="right">
+
+                        </span>
+
+                </a>
+
+                </if>
+
+                </volist>
+
+                                       
+
+            </li>
+
+            <li class="box"> 
+
+            <volist name="cats" id="hostlist">
+
+                <if condition="$i eq 27">                          
+
+            <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+                                <div class="imgBox fl">
+
+                        <img src="{Saivi:$hostlist.logourl}" style="width:150px;height:85px;" />
+
+                    </div>
+
+                    <label>{Saivi:$hostlist.name}</label>
+
+                </a>
+
+                </if>
+
+                </volist>
+
+                </li>
+
+                <li class="box">
+
+            <volist name="cats" id="hostlist">
+
+                <if condition="($i gt 27) and ($i lt 30)">                              
+
+                <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+            <label>{Saivi:$hostlist.name}</label>
+
+                    <span>
+
+                            <img src="{Saivi:$hostlist.logourl}" class="icon-file-text" style="width:60px;height:40px;"align="right">
+
+                        </span>
+
+                </a>
+
+                </if>
+
+                </volist>
+
+                                       
+
+            </li>
+
+            <li class="box"> 
+
+            <volist name="cats" id="hostlist">
+
+                <if condition="$i eq 30">                          
+
+            <a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url|htmlspecialchars_decode}</if>">
+
+                                <div class="imgBox fl">
+
+                        <img src="{Saivi:$hostlist.logourl}" style="width:150px;height:85px;" />
+
+                    </div>
+
+                    <label>{Saivi:$hostlist.name}</label>
+
+                </a>
+
+                </if>
+
+                </volist>
+
+                </li>
+
+
+
+				<ul>
+
+    </ul></ul></section>
+
+<div class="copyright" style="text-align:center;padding:10px 0">
+
+<if condition="$iscopyright eq 1">
+
+{Saivi:$homeInfo.copyright}
+
+<else/>
+
+{Saivi:$siteCopyright}
+
+</if>
+
+</div>
+
+</div>
+
+     
+
+<!-- share -->
+
+<include file="Index:share" />
+
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['sc'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if></body></html>
+

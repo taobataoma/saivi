@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<link href="{Saivi::RES}/css/Estate/jianjie/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<script src="{Saivi::RES}/css/Estate/jianjie/js/common.js" type="text/javascript"></script>
+<script src="{Saivi::RES}/css/Estate/jianjie/js/index.js" type="text/javascript"></script>
+<title>
+<volist name="lp" id="info">{Saivi:$info.title}</volist>
+简介</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta name="format-detection" content="telephone=no" />
+<link rel="shortcut icon" href="{Saivi::RES}/css/Estate/img/favicon.ico" />
+</head>
+<body>
+<div class="wrapper" id="container">
+  <footer class="nav_footer">
+    <ul class="box_db">
+      <li><a href="javascript:history.go(-1);">返回</a></li>
+      <li><a href="javascript:history.go(1);">前进</a></li>
+      <li><a href="{Saivi::U('Jiuba/shouye',array('token'=>$_GET['token'],'id'=>$estate['id']))}">首页</a></li>
+      <li><a href="javascript:location.reload();">刷新</a></li>
+    </ul>
+  </footer>
+  <div class="act_top" id="actTop" style="">
+    <div class="act_top_show">
+      <volist name="lp" id="info"> <img src="{Saivi:$info.toppicurl}" width="100%" height="150" id="bannerPic"> </volist>
+    </div>
+  </div>
+  <div class="box box_up">
+    <h3>
+      <volist name="lp" id="info"> {Saivi:$info.title} </volist>
+      简介<a style="float:right; margin-right:10px;" href="{Saivi::U('Jiuba/subestate_index',array('token'=>$_GET['token'],'title'=>$info['title']))}"><span>查看
+      <volist name="lp" id="info"> <span style="color:#999900;">&nbsp;{Saivi:$info.title}&nbsp;</span> </volist>
+      分店</span></a></h3>
+    <div class="box_info">
+      <ul>
+        <volist name="lp" id="info">
+          
+          <li style="width:97%; margin:0 auto;">
+            <php>echo htmlspecialchars_decode($info['content'])</php>
+          </li>
+        </volist>
+      </ul>
+    </div>
+    <a href="javascript:void(0);" onClick="Index.switchIndex(this);return false;" class="btn_more"><span>更多</span></a> </div>
+  <div class="box box_up" style="display:">
+    <h3>项目简介<a style="float:right; margin-right:10px;" href="{Saivi::U('Jiuba/poster',array('token'=>$_GET['token'],'subestatename'=>$info['title'],'id'=>$_GET['id']))}"><span>查看
+      <volist name="lp" id="info"> <span style="color:#999900;">&nbsp;{Saivi:$info.title}&nbsp;</span> </volist>
+      海报</span></a></h3>
+    <div class="box_info">
+      <p>
+        <volist name="lp" id="info">
+          <php>echo htmlspecialchars_decode($info['xmcontent'])</php>
+          <br>
+        </volist>
+      </p>
+    </div>
+    <a href="javascript:void(0);" onClick="Index.switchIndex(this);return false;" class="btn_more"><span>更多</span></a> </div>
+  <div class="box box_up">
+    <h3>客户点评<a style="float:right; margin-right:10px;" href="{Saivi::U('Jiuba/comments_all',array('token'=>$_GET['token'],'subestatename'=>$info['title']))}"><span>查看
+      <volist name="lp" id="info"> <span style="color:#999900;">&nbsp;{Saivi:$info.title}&nbsp;</span> </volist>
+      点评</span></a></h3>
+    <div class="box_time">
+      <ul>
+        <div style="width:100%; height:auto; margin:0 auto;">
+          <volist name="lp_zjdp" id="zjdp"> <a href="{Saivi::U('Jiuba/comments',array('token'=>$_GET['token'],'id'=>$zjdp['id']))}">
+            <li style="width:46%; height:75px; float:left; margin:5px; overflow:hidden;"><img src="{Saivi:$zjdp.picurl}" width="70" height="70" style="width:70px!important; height:70px!important; float:left; margin-right:5px; " alt="">
+              <h3>{Saivi:$zjdp.name}<em><br>
+                {Saivi:$zjdp.subestatename}</em></h3>
+            </li>
+            </a> </volist>
+          <div style="clear:both; height:0px;"></div>
+        </div>
+      </ul>
+    </div>
+    <a href="javascript:void(0);" onClick="Index.switchIndex(this);return false;" class="btn_more"><span>更多</span></a> </div>
+  <div class="box box_up" style="display:">
+    <h3>交通配套</h3>
+    <div class="box_info">
+      <p>
+        <volist name="lp" id="info">
+          <php>echo htmlspecialchars_decode($info['jtcontent'])</php>
+          <br>
+        </volist>
+      </p>
+    </div>
+    <a href="javascript:void(0);" onClick="Index.switchIndex(this);return false;" class="btn_more"><span>更多</span></a> </div>
+  <div class="box" style="display:">
+    <h3>地址</h3>
+    <div class="box_info">
+      <volist name="lp" id="info">
+        <p>{Saivi:$info.address}</p>
+      </volist>
+    </div>
+    <a href="http://map.baidu.com/?latlng={Saivi:$info.lng}&lat={Saivi:$info.lat}&title={Saivi:$info.title}" class="btn_more"><span>查看地图</span></a> </div>
+  <div class="box">
+    <div style=" text-align:center;"> <a href="{Saivi::U('Jiuba/photo',array('token'=>$_GET['token'],'namephoto'=>$info['name']))}">
+      <h3 style="color:#999933;">点击查看 <volist name="lp" id="info"> <span style="color:#999900;">&nbsp;{Saivi:$info.title}&nbsp;</span> </volist>相册</h3>
+      </a> </div>
+  </div>
+</div>
+<p>&nbsp;</p>
+<div class="pop_mask" id="popMask" style="display:none;"></div>
+<div id="popFail" style="display: none; " jqmoldstyle="block">
+  <div class="bk"></div>
+  <div class="cont"> <img src="{Saivi::RES}/css/Shipi/jianjie/img/img.gif" alt="loading..."> 正在加载... </div>
+</div>
+<div mark="stat_code" style="width:0px; height:0px; display:none;"> </div>
+  <script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['jiuba'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if></body>
+</html>

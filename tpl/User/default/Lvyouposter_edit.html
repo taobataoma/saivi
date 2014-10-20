@@ -1,0 +1,89 @@
+<include file="Public:head"/>
+
+<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/js/formCheck/formcheck.js"> </script>
+
+<div class="content">
+  <div class="cLineB">
+    <h4>编辑海报：</h4>
+    <a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div>
+
+  <div class="msgWrap">
+    <form class="form" method="post"  action="{Saivi::U('Lvyouposter/upsave')}"    enctype="multipart/form-data" >
+      <TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
+        <TBODY>
+        <input type="hidden" class="px" id="id" value="{Saivi:$_GET['id']}" name="id" style="width:500px" >
+        <input type="hidden" class="px" id="token" value="{Saivi:$_SESSION['token']}" name="token" style="width:500px" >
+        <TR>
+          <TH valign="top"><label for="keyword">名称</label></TH>
+          <TD><input type="input" class="px" id="name" value="{Saivi:$info.name}" name="name" style="width:300px"   >
+            <br/>
+            请输入关键词,10个字以内 </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">旅游区：</label></TH>
+          <TD><input type="input" class="px" id="subestatename" value="{Saivi:$info.subestatename}" name="subestatename" style="width:50px"   >
+            <br/>
+          </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">海报1：</label></TH>
+          <TD><input type="input" class="px" id="picurl" value="{Saivi:$info.picurl}" name="picurl" style="width:400px"   >
+            <br />
+  <script src="/tpl/static/upyun.js"></script>
+<a href="###" onclick="upyunPicUpload('picurl',700,420,'{Saivi:$token}')" class="a_upload">上传</a> 
+<a href="###" onclick="viewImg('picurl')">预览</a> </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">海报2：</label></TH>
+          <TD><input type="input" class="px" id="picurl1" value="{Saivi:$info.picurl1}" name="picurl1" style="width:400px" >
+            <br />
+<a href="###" onclick="upyunPicUpload('picurl1',700,420,'{Saivi:$token}')" class="a_upload">上传</a> 
+<a href="###" onclick="viewImg('picurl1')">预览</a> </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">海报3：</label></TH>
+          <TD><input type="input" class="px" id="picurl2" value="{Saivi:$info.picurl2}" name="picurl2" style="width:400px" >
+            <br />
+<a href="###" onclick="upyunPicUpload('picurl2',700,420,'{Saivi:$token}')" class="a_upload">上传</a> 
+<a href="###" onclick="viewImg('picurl2')">预览</a> </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">海报4：</label></TH>
+          <TD><input type="input" class="px" id="picurl3" value="{Saivi:$info.picurl3}" name="picurl3" style="width:400px"  >
+            <br />
+<a href="###" onclick="upyunPicUpload('picurl3',700,420,'{Saivi:$token}')" class="a_upload">上传</a> 
+<a href="###" onclick="viewImg('picurl3')">预览</a> </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH valign="top"><label for="keyword">海报5：</label></TH>
+          <TD><input type="input" class="px" id="picurl4" value="{Saivi:$info.picurl4}" name="picurl4" style="width:400px"  >
+            <br />
+<a href="###" onclick="upyunPicUpload('picurl4',700,420,'{Saivi:$token}')" class="a_upload">上传</a> 
+<a href="###" onclick="viewImg('picurl4')">预览</a> </TD>
+          <TD></TD>
+        </TR>
+        <TR>
+          <TH></TH>
+          <TD><button type="submit"  name="button"  class="btnGreen left" >保存</button>
+            <div class="clr"></div></TD>
+        </TR>
+        </TBODY>
+        
+      </TABLE>
+    </form>
+  </div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+</div>
+<!--底部-->
+</div>
+<include file="Public:footer"/>

@@ -1,0 +1,151 @@
+<include file="Public:head"/>
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<div class="content" >  
+<div class="cLineB"><h4>微信墙设置</h4><a href="javascript:history.go(-1);"  class="right btn btn-primary btn_submit  J_ajax_submit_btn" style="margin-top:-27px" >返回</a></div> 
+<div class="msgWrap">
+<form class="form" method="post" enctype="multipart/form-data" >
+<TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
+  <THEAD>
+<TR>
+  <TH valign="top"><label for="acttitle">活动名称：</label></TH>
+  <TD><input type="text" class="px" id="title"  name="title" style="width:500px"  value="{Saivi:$info.title}" >    </TD>
+</TR>
+<TR>
+  <TH valign="top"><label for="acttitle">关键词：</label></TH>
+  <TD><input type="text" class="px" id="keyword"  name="keyword" style="width:500px"  value="{Saivi:$info.keyword}" >    </TD>
+</TR>
+<TR>
+  <TH valign="top"><label for="text">Logo：</label></TH>
+  <TD><input type="text" class="px" id="logo" value="{Saivi:$info.logo}" name="logo" style="width:250px" value="" >  <a href="###" onclick="chooseFile('logo','my')" class="btn btn-primary btn_submit  J_ajax_submit_btn">选择</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="upyunPicUpload('logo',400,400,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('logo')" class="btn btn-primary btn_submit  J_ajax_submit_btn">预览</a> 标题前面的logo,高度最佳80px，宽度最佳不超过200px，可以不填写
+</TD>
+</TR>
+
+<TR>
+  <TH valign="top"><label for="text">开幕背景：</label></TH>
+  <TD><input type="text" class="px" id="startbackground" value="{Saivi:$info.startbackground}" name="startbackground" style="width:250px" value="{Saivi:$info.startbackground}" > <script src="/tpl/static/upyun.js"></script><a href="###" onclick="chooseFile('startbackground','background')" class="btn btn-primary btn_submit  J_ajax_submit_btn">选择</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="upyunPicUpload('startbackground',1500,1000,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('startbackground')" class="btn btn-primary btn_submit  J_ajax_submit_btn">预览</a> 最佳尺寸宽984px,高636px
+</TD>
+</TR>
+<TR>
+  <TH valign="top"><label for="text">背景：</label></TH>
+  <TD><input type="text" class="px" id="background" value="{Saivi:$info.background}" name="background" style="width:250px" value="{Saivi:$info.background}" > <script src="/tpl/static/upyun.js"></script><a href="###" onclick="chooseFile('background','background')" class="btn btn-primary btn_submit  J_ajax_submit_btn">选择</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="upyunPicUpload('background',1500,1000,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('background')" class="btn btn-primary btn_submit  J_ajax_submit_btn">预览</a>  默认为空会有更好的显示效果
+</TD>
+</TR>
+<TR>
+  <TH valign="top"><label for="text">结束背景：</label></TH>
+  <TD><input type="text" class="px" id="endbackground" value="{Saivi:$info.endbackground}" name="endbackground" style="width:250px" value="{Saivi:$info.endbackground}" > <script src="/tpl/static/upyun.js"></script><a href="###" onclick="chooseFile('endbackground','background')" class="btn btn-primary btn_submit  J_ajax_submit_btn">选择</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="upyunPicUpload('endbackground',1500,1000,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('endbackground')" class="btn btn-primary btn_submit  J_ajax_submit_btn">预览</a> 
+</TD>
+</TR>
+<TR>
+  <TH valign="top"><label for="text">二维码：</label></TH>
+  <TD><input type="text" class="px" id="qrcode" value="{Saivi:$info.qrcode}" name="qrcode" style="width:250px" value="" >  <a href="###" onclick="upyunPicUpload('qrcode',800,800,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('qrcode')" class="btn btn-primary btn_submit  J_ajax_submit_btn">预览</a>
+</TD>
+</TR>
+<TR>
+  <TH valign="top">状态：</TH>
+  <TD><label for="radio3"><input id="radio3" class="radio" type="radio" name="isopen" value="1"  <eq name="info.isopen" value="1">checked="checked"</eq> /> 开启</label><br /><label for="radio4"><input class="radio" id="radio4" type="radio" name="isopen" value="0" <eq name="info.isopen" value="0">checked="checked"</eq> /> 关闭</label></TD>
+</TR>
+<TR>
+  <TH valign="top"><label for="text">一等奖名称：</label></TH>
+  <TD><input type="text" class="px" value="{Saivi:$info.firstprizename}" name="firstprizename" style="width:250px" value="" ></td>
+</TR>
+<TR>
+  <TH valign="top"><label for="text">一等奖数量：</label></TH>
+  <TD><input type="text" class="px" value="{Saivi:$info.firstprizecount}" name="firstprizecount" style="width:50px" value="" ></td>
+</TR>
+<TR>
+  <TH valign="top"><label for="text">一等奖图片：</label></TH>
+  <TD><input type="text" class="px" value="{Saivi:$info.firstprizepic}" id="firstprizepic" name="firstprizepic" style="width:250px" value="" >  <a href="###" onclick="upyunPicUpload('firstprizepic',600,600,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('firstprizepic')" class="btn btn-primary btn_submit  J_ajax_submit_btn">预览</a></td>
+</TR>
+
+
+<TR>
+  <TH valign="top"><label for="text">二等奖名称：</label></TH>
+  <TD><input type="text" class="px" value="{Saivi:$info.secondprizename}" name="secondprizename" style="width:250px" value="" ></td>
+</TR>
+<TR>
+  <TH valign="top"><label for="text">二等奖数量：</label></TH>
+  <TD><input type="text" class="px" value="{Saivi:$info.secondprizecount}" name="secondprizecount" style="width:50px" value="" ></td>
+</TR>
+<TR>
+  <TH valign="top"><label for="text">二等奖图片：</label></TH>
+  <TD><input type="text" class="px" value="{Saivi:$info.secondprizepic}" id="secondprizepic" name="secondprizepic" style="width:250px" value="" >  <a href="###" onclick="upyunPicUpload('secondprizepic',600,600,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('secondprizepic')" class="btn btn-primary btn_submit  J_ajax_submit_btn">预览</a></td>
+</TR>
+
+<TR>
+  <TH valign="top"><label for="text">三等奖名称：</label></TH>
+  <TD><input type="text" class="px" value="{Saivi:$info.thirdprizename}" name="thirdprizename" style="width:250px" value="" ></td>
+</TR>
+<TR>
+  <TH valign="top"><label for="text">三等奖数量：</label></TH>
+  <TD><input type="text" class="px" value="{Saivi:$info.thirdprizecount}" name="thirdprizecount" style="width:50px" value="" ></td>
+</TR>
+<TR>
+  <TH valign="top"><label for="text">三等奖图片：</label></TH>
+  <TD><input type="text" class="px" value="{Saivi:$info.thirdprizepic}" id="thirdprizepic" name="thirdprizepic" style="width:250px" value="" >  <a href="###" onclick="upyunPicUpload('thirdprizepic',600,600,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('thirdprizepic')" class="btn btn-primary btn_submit  J_ajax_submit_btn">预览</a></td>
+</TR>
+
+<TR style="display:none">
+  <TH valign="top"><label for="text">四等奖名称：</label></TH>
+  <TD><input type="text" class="px" value="{Saivi:$info.fourthprizename}" name="fourthprizename" style="width:250px" value="" ></td>
+</TR>
+<TR style="display:none">
+  <TH valign="top"><label for="text">四等奖数量：</label></TH>
+  <TD><input type="text" class="px" value="{Saivi:$info.fourthprizecount}" name="fourthprizecount" style="width:50px" value="" ></td>
+</TR>
+<TR style="display:none">
+  <TH valign="top"><label for="text">四等奖图片：</label></TH>
+  <TD><input type="text" class="px" value="{Saivi:$info.fourthprizepic}" id="fourthprizepic" name="fourthprizepic" style="width:250px" value="" >  <a href="###" onclick="upyunPicUpload('fourthprizepic',600,600,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('fourthprizepic')" class="btn btn-primary btn_submit  J_ajax_submit_btn">预览</a></td>
+</TR>
+
+
+<TR style="display:none">
+  <TH valign="top"><label for="text">五等奖名称：</label></TH>
+  <TD><input type="text" class="px" value="{Saivi:$info.fifthprizename}" name="fifthprizename" style="width:250px" value="" ></td>
+</TR>
+<TR style="display:none">
+  <TH valign="top"><label for="text">五等奖数量：</label></TH>
+  <TD><input type="text" class="px" value="{Saivi:$info.fifthprizecount}" name="fifthprizecount" style="width:50px" value="" ></td>
+</TR>
+<TR style="display:none">
+  <TH valign="top"><label for="text">五等奖图片：</label></TH>
+  <TD><input type="text" class="px" value="{Saivi:$info.fifthprizepic}" id="fifthprizepic" name="fifthprizepic" style="width:250px" value="" >  <a href="###" onclick="upyunPicUpload('fifthprizepic',0,0,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('fifthprizepic')" class="btn btn-primary btn_submit  J_ajax_submit_btn">预览</a></td>
+</TR>
+
+
+<TR style="display:none">
+  <TH valign="top"><label for="text">六等奖名称：</label></TH>
+  <TD><input type="text" class="px" value="{Saivi:$info.sixthprizename}" name="sixthprizename" style="width:250px" value="" ></td>
+</TR>
+<TR style="display:none">
+  <TH valign="top"><label for="text">六等奖数量：</label></TH>
+  <TD><input type="text" class="px" value="{Saivi:$info.sixthprizecount}" name="sixthprizecount" style="width:50px" value="" ></td>
+</TR>
+<TR style="display:none">
+  <TH valign="top"><label for="text">六等奖图片：</label></TH>
+  <TD><input type="text" class="px" value="{Saivi:$info.sixthprizepic}" id="sixthprizepic" name="sixthprizepic" style="width:250px" value="" >  <a href="###" onclick="upyunPicUpload('sixthprizepic',600,600,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a>&nbsp;&nbsp;&nbsp;<a href="###" onclick="viewImg('sixthprizepic')" class="btn btn-primary btn_submit  J_ajax_submit_btn">预览</a></td>
+</TR>
+
+<TR>
+  <TH></TH>
+  <TD><input type="hidden" value="{Saivi:$info.id}" name="id" /><button type="submit"  name="button"  class="btn btn-primary btn_submit  J_ajax_submit_btn" >保存</button>　
+  	</TD>
+  </TR>
+  </TBODY>
+</TABLE>
+  </form>
+
+
+
+  </div> 
+
+        </div>
+        
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div> 
+
+<!--底部-->
+  	</div>
+<include file="Public:footer"/>

@@ -1,0 +1,197 @@
+<include file="Public:head"/>
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/plugins/code/prettify.css" />
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<script src="{Saivi::RES}/vote/js/jquery.min.js" type="text/javascript"></script>
+<script src="{Saivi::RES}/vote/js/jquery.js" type="text/javascript"></script>
+
+<div class="content">
+  <div class="cLineB">
+    <h4><span class="FAQ">请设置医院相关内容。注意：医院介绍和表单设置，第一次使用，请点击添加医院介绍和添加表单设置，并点击保存。希望你使用愉快！</span></h4>
+  </div>
+  <div class="tab">
+    <ul>
+      <li class="tabli" id="tab2"><a href="{Saivi::U('Medical/index',array('token'=>$token))}">医院介绍</a></li>
+      <li class="tabli" id="tab2"><a href="{Saivi::U('Medical_setup_control/index',array('token'=>$token,'id'=>$infoa['id']))}">表单设置</a></li>
+      <li class="tabli" id="tab2"><a href="{Saivi::U('Medical_departments/index',array('token'=>$token))}">科室设置</a></li>
+      <li class="tabli" id="tab2"><a href="{Saivi::U('Medical_setup/index',array('token'=>$token))}">预约管理</a></li>
+    </ul>
+  </div>
+  <div class="cLineC" style="line-height: 32px;">
+    <if condition="$tj eq 0"> 
+	<a   href="{Saivi::U('Medical_setup_control/add',array('token'=>$token))}" class="btn btn-primary btn_submit  J_ajax_submit_btn" >添加表单设置</a>
+      <else/>
+	  <a   class="btn btn-primary btn_submit  J_ajax_submit_btn" >表单设置</a> </if>
+  </div>
+  <form class="form" method="post"  action="{Saivi::U('Medical_setup_control/upsave',array('token'=>$infoa['token'],'id'=>$infoa['id']))}"    enctype="multipart/form-data" >
+    <table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+      <thead>
+        <tr>
+          <th style=" width:250px;">字段类型</th>
+          <th style=" width:250px;">字段名称</th>
+          <th style=" width:250px;">初始内容</th>
+          <th style=" width:220px;">操作</th>
+        </tr>
+      </thead>
+      <input type="hidden" class="px" id="id" value="{Saivi:$_GET['id']}" name="id" style="width:500px" >
+      <input type="hidden" class="px" id="token" value="{Saivi:$_SESSION['token']}" name="token" style="width:500px" >
+      <tr>
+        <td>单行文字</td>
+        <td><input type="text" class="px" disabled="disabled" value="患者姓名"  style="width:230px" ></td>
+        <td><input type="text" class="px" disabled="disabled" value="请输入你的名字"  style="width:230px" ></td>
+        <td>
+          <select name="name" id="name"   style="width:100px" >
+            <option value="{Saivi:$info.name}">
+            <if condition="$info.name eq 1">显示
+              <else/>
+              不显示</if>
+            </option>
+            <option value="0">不显示</option>
+            <option value="1">显示</option>
+          </select>
+          <label for="keyword">是否显示</label></td>
+      </tr>
+      <tr>
+        <td>性别选择</td>
+        <td><input type="text" class="px" disabled="disabled" value="性别"  style="width:230px" ></td>
+        <td><input type="text" class="px" disabled="disabled" value="性别"  style="width:230px" ></td>
+        <td>
+          <select name="sex" id="sex"   style="width:100px" >
+            <option value="{Saivi:$info.sex}">
+            <if condition="$info.sex eq 1">显示
+              <else/>
+              不显示</if>
+            </option>
+            <option value="0">不显示</option>
+            <option value="1">显示</option>
+          </select>
+          <label for="keyword">是否显示</label></td>
+      </tr>
+      <tr>
+        <td>单行文字</td>
+        <td><input type="text" class="px" disabled="disabled" value="年龄"  style="width:230px" ></td>
+        <td><input type="text" class="px" disabled="disabled" value="请输入你的年龄"  style="width:230px" ></td>
+        <td>
+          <select name="age" id="age"   style="width:100px" >
+            <option value="{Saivi:$info.age}">
+            <if condition="$info.age eq 1">显示
+              <else/>
+              不显示</if>
+            </option>
+            <option value="0">不显示</option>
+            <option value="1">显示</option>
+          </select>
+          <label for="keyword">是否显示</label></td>
+      </tr>
+      <tr>
+        <td>单行文字</td>
+        <td><input type="text" class="px" disabled="disabled" value="联系电话"  style="width:230px" ></td>
+        <td><input type="text" class="px" disabled="disabled" value="请输入你的电话"  style="width:230px" ></td>
+        <td>
+          <select name="phone" id="phone"   style="width:100px" >
+            <option value="{Saivi:$info.phone}">
+            <if condition="$info.phone eq 1">显示
+              <else/>
+              不显示</if>
+            </option>
+            <option value="0">不显示</option>
+            <option value="1">显示</option>
+          </select>
+          <label for="keyword">是否显示</label></td>
+      </tr>
+      <tr>
+        <td>时间选择</td>
+        <td><input type="text" class="px" disabled="disabled" value="预定日期"  style="width:230px" ></td>
+        <td><input type="text" class="px" disabled="disabled" value="请输入你的预定日期"  style="width:230px" ></td>
+        <td>
+          <select name="scheduled_date" id="scheduled_date"   style="width:100px" >
+            <option value="{Saivi:$info.scheduled_date}">
+            <if condition="$info.scheduled_date eq 1">显示
+              <else/>
+              不显示</if>
+            </option>
+            <option value="0">不显示</option>
+            <option value="1">显示</option>
+          </select>
+          <label for="keyword">是否显示</label></td>
+      </tr>
+      <tr>
+        <td>多行文字</td>
+        <td><input type="text" class="px" disabled="disabled" value="联系地址"  style="width:230px" ></td>
+        <td><input type="text" class="px" disabled="disabled" value="请输入你的联系地址"  style="width:230px" ></td>
+        <td>
+          <select name="address" id="address"   style="width:100px" >
+            <option value="{Saivi:$info.address}">
+            <if condition="$info.address eq 1">显示
+              <else/>
+              不显示</if>
+            </option>
+            <option value="0">不显示</option>
+            <option value="1">显示</option>
+          </select>
+          <label for="keyword">是否显示</label></td>
+      </tr>
+      <tr>
+        <td>科室选择</td>
+        <td><input type="text" class="px" disabled="disabled" value="预约科室"  style="width:230px" ></td>
+        <td><input type="text" class="px" disabled="disabled" value="预约科室"  style="width:230px" ></td>
+        <td>
+          <select name="departments" id="departments"   style="width:100px" >
+            <option value="{Saivi:$info.departments}">
+            <if condition="$info.departments eq 1">显示
+              <else/>
+              不显示</if>
+            </option>
+            <option value="0">不显示</option>
+            <option value="1">显示</option>
+          </select>
+          <label for="keyword">是否显示</label></td>
+      </tr>
+      <tr>
+        <td>专家选择</td>
+        <td><input type="text" class="px" disabled="disabled" value="预约专家"  style="width:230px" ></td>
+        <td><input type="text" class="px" disabled="disabled" value="预约专家"  style="width:230px" ></td>
+        <td>
+          <select name="expert" id="expert"   style="width:100px" >
+            <option value="{Saivi:$info.expert}">
+            <if condition="$info.expert eq 1">显示
+              <else/>
+              不显示</if>
+            </option>
+            <option value="0">不显示</option>
+            <option value="1">显示</option>
+          </select>
+          <label for="keyword">是否显示</label></td>
+      </tr>
+      <tr>
+        <td>病种选择</td>
+        <td><input type="text" class="px" disabled="disabled" value="预约病种"  style="width:230px" ></td>
+        <td><input type="text" class="px" disabled="disabled" value="预约病种"  style="width:230px" ></td>
+        <td>
+          <select name="disease" id="disease"   style="width:100px" >
+            <option value="{Saivi:$info.disease}">
+            <if condition="$info.disease eq 1">显示
+              <else/>
+              不显示</if>
+            </option>
+            <option value="0">不显示</option>
+            <option value="1">显示</option>
+          </select>
+          <label for="keyword">是否显示</label></td>
+      </tr>
+      <TR>
+        <TH></TH>
+        <TH><br />
+          <button type="submit"  name="button"  class="btn btn-primary btn_submit  J_ajax_submit_btn" >保存</button>
+          <div class="clr"></div></TH>
+      </TR>
+    </table>
+  </form>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+</div>
+<!--底部-->
+</div>
+<include file="Public:footer"/>

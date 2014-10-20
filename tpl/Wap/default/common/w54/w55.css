@@ -1,0 +1,68 @@
+#cate16 {
+	background-color: #000000;overflow-x: hidden;
+}
+#cate16 .mainbg{ 
+	width:100%;
+	position:fixed;
+	z-index:1
+}
+#cate16 .mainbg img{
+	width:100%;
+}
+#nav {
+	width: 100%; float: none;
+}
+#scroller li p {
+	display: none;
+}
+#wrapper {
+	position: fixed;
+}
+#indicator {
+	margin: 0px; left: 0px; width: 100%; text-align: center; bottom: 120px; position: fixed;
+}
+#indicator > li {
+	float: none; display: inline-block;
+}
+#indicator > li.active {
+	background: rgb(255, 255, 255);
+}
+#cate16 .flex-control-nav {
+	bottom: 30%; position: fixed;
+}
+#cate16 .bottom_nav {
+	background: url("../../images/cate16/nav_bg.png") repeat-x top; padding: 5px 0px; left: 0px; width: 100%; height: 80px; bottom: 0px; overflow: hidden; position: fixed; z-index: 999;
+}
+#cate16 .cateul {
+	width: 200%;
+}
+#cate16 .menuimg img {
+	width: 50px; height: 50px;
+}
+#cate16 .menutitle {
+	overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+}
+#cate16 .cateul li {
+	width: 12.5%; float: left;
+}
+#cate16 .cateul li a {
+	width: 12.5%; text-align: center; color: rgb(255, 255, 255); line-height: 35px; font-size: 14px;
+}
+#cate16 .cateul .pre {
+	top: 0px; width: 20px; height: 55px; text-align: center; padding-top: 35px; display: block; position: absolute; z-index: 999;
+}
+#cate16 .cateul .next {
+	top: 0px; width: 20px; height: 55px; text-align: center; padding-top: 35px; display: block; position: absolute; z-index: 999;
+}
+#cate16 .cateul .pre {
+	left: 0px;
+}
+#cate16 .cateul .next {
+	right: 0px;
+}
+#cate18 .flex-control-paging li a {
+	background: rgb(255, 255, 255);
+}
+#cate16 .copyright {
+	width: 100%; text-align: center; bottom: 100px; color: rgb(255, 255, 255); font-size: 12px; position: fixed; z-index: 999;
+}

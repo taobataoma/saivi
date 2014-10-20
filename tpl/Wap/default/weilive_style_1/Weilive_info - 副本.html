@@ -1,0 +1,93 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="gb2312" />
+	<title>{Saivi:$vo.name}</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="stylesheet" type="text/css" href="http://www.lanrenmb.com/wap/221/css/mobile.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+	<script type="text/javascript" src="http://www.lanrenmb.com/wap/221/javascript/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="http://www.lanrenmb.com/wap/221/javascript/mobile.js"></script>
+    <script type="text/javascript" src="http://www.lanrenmb.com/wap/221/javascript/mobileUtil.js"></script>
+</head>
+
+<body>
+	<div class="wrap">
+		<div class="main area">
+			<div class="shopTop"><h1><a href="#">{Saivi:$vo.name}</a></h1></div>
+            
+			<ul class="shopNav">
+				<li><a href="#">首页</a></li>
+				<li><a href="#1">公司简�?/a></li>
+				<li><a href="#2" >产品展示</a></li>
+				<li><a href="#shopContact">联系我们</a></li>
+			</ul>
+            
+			            
+			<div class="shopPart cf">
+            	
+            	<div class="shopItem shopDes" id="1">
+					<div class="sTitle">
+						<h2>公司简�?/h2>
+						
+					</div>
+					<div class="coDes">
+						{Saivi:$vo.description}
+					</div>
+				</div>
+                
+				
+			</div>
+
+			<div class="shopItem shopPro" id="2">
+				<div class="sTitle">
+					<h2>产品展示</h2>
+					
+				</div>
+				<ul class="prolist">
+                	                    
+								
+										
+			<?php
+			$tmps = findList("Member_business_product","bid=".$vo['id']);
+			foreach($tmps as $value){
+				echo "<li><a href='{$value['logo']}' class='iImg'><img class='setImg' src='{$value['logo']}' /></a><a href='{$value['logo']}' class='iDes'>{$value['name']}</a>
+				<p class='iPrice'>￥：{$value['price']}�?/p></li>";
+				}
+				
+				?>	
+
+                    				</ul>
+			</div>
+
+			<div class="shopItem" id="shopContact">
+				<div class="sTitle">
+					<h2>联系我们</h2>
+				</div>
+				<ul class="contactList">
+					<li>单位名称�? {Saivi:$vo.name}</li>					     				            
+					<li>电话号码�? <a href="tel:{Saivi:$vo.tel}">{Saivi:$vo.tel}</a> (点击拨号)</li> 
+					<li>详细地址�? {Saivi:$vo.addr}</li>
+				</ul>	
+			</div>
+            
+	
+
+			<div class="shopCopy">
+				<p>版权所�?微懒�?br />Copyright &copy; 2013-2014 http://wx.lanrenmb.com All Rights Reserved </p>
+			</div>
+
+		</div>
+	</div>
+    
+    <script type="text/javascript">
+    //设置图片的长宽比�?    window.onresize = window.onload = function(){
+        setImg("setImg", 101/142);
+    };
+    </script>
+</body>
+</html>
+
+

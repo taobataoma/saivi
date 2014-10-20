@@ -1,0 +1,111 @@
+ <include file="Public:head" /> 
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+
+<input type="hidden" id="catUrl" value="{Saivi::U('Product/ajaxCatOptions',array('token'=>$token))}" />
+  <div class="content"> 
+   <div class="cLineB"> 
+    <h4>360°全景设置</h4> 
+    <a href="{Saivi::U('Panorama/index',array('token'=>$token))}" class="right  btn btn-primary btn_submit  J_ajax_submit_btn" style="margin-top:-27px">返回</a> 
+   </div> 
+   
+   
+   
+   <form class="form" method="post" action="" enctype="multipart/form-data"> 
+   <input type="hidden" name="token" value="{Saivi:$token}" />
+<if condition="$isUpdate eq 1">
+<input type="hidden" name="id" value="{Saivi:$set.id}" />
+</if>
+<input type="hidden" name="discount" id="discount" value="{Saivi:$set.discount}" />
+    <div class="msgWrap bgfc"> 
+    <table class="userinfoArea" border="0" cellspacing="0" cellpadding="0" width="100%">
+              <tbody>
+              	 <tr>
+                    <td align="right"><label for="title">名称：</label></td>
+              		 
+              		 
+              		<td><input type="text" class="px" id="name" name="name" value="{Saivi:$set.name}" style="width:420px;"></td>
+              		</tr>
+              		 <tr>
+                    <td align="right"><label for="title">关键词：</label></td>
+              		<td><input type="text" class="px" id="keyword" value="{Saivi:$set.keyword}" name="keyword" style="width:420px;"></td>
+              		</tr>
+              		<tr>
+                    <td align="right"><label for="title">顺序数字：</label></td>
+              		<td><input type="text" class="px" id="taxis" value="{Saivi:$set.taxis}" name="taxis" style="width:420px;">  由小到大排列</td>
+              		</tr>
+					<tr>
+						<td valign="top" class="f_l_r"><span class="red">*</span>回复标题：</span></th>
+						<td><input type="text" class="px" id="title" value="{Saivi:$set.title}" name="title" style="width:420px;">&nbsp;&nbsp;例：全景客厅展示</td>
+						</tr>
+					<tr>
+					<td valign="top" class="f_l_r"><span class="red">*</span>回复图片：</th>
+					<td><input type="text" class="px" id="picurl" name="picurl" style="width:420px;" value="{Saivi:$set.picurl}"><br />
+					<a href="###" onclick="upyunPicUpload('picurl',1000,500,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a> <a href="###" onclick="viewImg('picurl')">预览</a>
+					</td>
+				</tr>
+                     <tr >
+                    <td align="right"><label for="title">背景音乐：</label></td>
+              		<td><input type="text" class="px" id="music" value="{Saivi:$set.music}" name="music" style="width:420px;">
+              		<br>
+              		<a href="###" onclick="upyunPicUpload('music',1000,500,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a>
+              		</td>
+              		</tr>
+                     <tr>
+                       <td align="right">&nbsp;</td>
+                       <td>
+                       <table border="0" cellspacing="0" cellpadding="0" class="quanjing">
+                         <tbody><tr>
+                           <td align="center">前</td>
+                           <td align="center">右</td>
+                           <td align="center">后</td>
+                           <td align="center">左</td>
+                           <td align="center">顶部</td>
+                           <td align="center">底部</td>
+                         </tr>
+                         <tr>
+                           <td align="center"><img src="{Saivi:$set.frontpic}" id="frontpic_src" style="width:145px;"></td>
+                           <td align="center"><img src="{Saivi:$set.rightpic}" id="rightpic_src" style="width:145px;"></td>
+                           <td align="center"><img src="{Saivi:$set.backpic}" id="backpic_src" style="width:145px;"></td>
+                           <td align="center"><img src="{Saivi:$set.leftpic}" id="leftpic_src" style="width:145px;"></td>
+                           <td align="center"><img src="{Saivi:$set.toppic}" id="toppic_src" style="width:145px;"></td>
+                           <td align="center"><img src="{Saivi:$set.bottompic}" id="bottompic_src" style="width:145px;"></td>
+                         </tr>
+                         <tr>
+                           <td><input type="text" class="px" id="frontpic" value="{Saivi:$set.frontpic}" name="frontpic" style="width:135px;"></td>
+                           <td><input type="text" class="px" id="rightpic" value="{Saivi:$set.rightpic}" name="rightpic" style="width:135px;"></td>
+                           <td><input type="text" class="px" id="backpic" value="{Saivi:$set.backpic}" name="backpic" style="width:135px;"></td>
+                           <td><input type="text" class="px" id="leftpic" value="{Saivi:$set.leftpic}" name="leftpic" style="width:135px;"></td>
+                           <td><input type="text" class="px" id="toppic" value="{Saivi:$set.toppic}" name="toppic" style="width:135px;"></td>
+                           <td><input type="text" class="px" id="bottompic" value="{Saivi:$set.bottompic}" name="bottompic" style="width:135px;"></td>
+                         </tr>
+                         <tr>
+                           <td align="center"><script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('frontpic',1000,500,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a> <a href="###" onclick="viewImg('frontpic')">预览</a></td>
+                           <td align="center"><a href="###" onclick="upyunPicUpload('rightpic',1000,500,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a> <a href="###" onclick="viewImg('rightpic')">预览</a></td>
+                           <td align="center"><a href="###" onclick="upyunPicUpload('backpic',1000,500,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a> <a href="###" onclick="viewImg('backpic')">预览</a></td>
+                           <td align="center"><a href="###" onclick="upyunPicUpload('leftpic',1000,500,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a> <a href="###" onclick="viewImg('leftpic')">预览</a></td>
+                           <td align="center"><a href="###" onclick="upyunPicUpload('toppic',1000,500,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a> <a href="###" onclick="viewImg('toppic')">预览</a></td>
+                           <td align="center"><a href="###" onclick="upyunPicUpload('bottompic',1000,500,'{Saivi:$token}')" class="btn btn-primary btn_submit  J_ajax_submit_btn">上传</a> <a href="###" onclick="viewImg('bottompic')">预览</a></td>
+                         </tr>
+                       </tbody></table></td>
+                     </tr>
+                     
+                   <tr>
+                    <td align="right" valign="top"><label for="catepic">描述信息：</label></td>
+              		 
+              		 
+              		<td><textarea name="intro" class="px" style="width:420px; height:150px">{Saivi:$set.intro}</textarea> </td>
+              		</tr>
+
+
+              	<tr>
+              		<td></td>
+              		<td colspan="3"><button type="submit" name="button" class="btn btn-primary btn_submit  J_ajax_submit_btn">保存</button>　<a href="{Saivi::U('Panorama/index',array('token'=>$token))}" class="btn">取消</a></td>
+              		</tr>
+              	</tbody>
+            </table>
+     </div>
+    
+   </form> 
+  </div> 
+  <include file="Public:footer" />

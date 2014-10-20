@@ -1,0 +1,50 @@
+<link href="{Saivi::RES}/css/style.css?id=100" rel="stylesheet" type="text/css" /> 
+<div class="content">
+<!--tab start-->
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />  
+<div class="tab">
+<ul>
+<li class='<if condition="(ACTION_NAME eq \'autobind_add\')">current </if> tabli' id="tab5"><a href="{Saivi::U('Index/autobind_add')}">一键绑定</a></li>
+<li class='<if condition="(ACTION_NAME eq \'add\')">current </if> tabli' id="tab5"><a href="{Saivi::U('Index/add')}">手动绑定</a></li>
+</ul>
+</div>
+<!--tab end-->
+          <div class="cLineB" style="margin-left:20px;"><h4>一键智能升级微信平台</h4></div>
+          <div class="msgWrap">
+            <table class="userinfoArea" border="0" cellspacing="0" cellpadding="0" width="600px;" style="margin-left:20px;">
+              <thead>
+	             <form action="{Saivi::U('User/Index/insertAuto')}" method="POST" class="form-horizontal form-validate">
+	             	<input type="hidden" name="token" maxlength="30" value="{Saivi:$tokenvalue}" class="px" tabindex="1" size="40">
+                 <tr>
+				  <th><span class="red">*</span>微信公众帐号</th>
+                  <td><input type="text" name="weixin" value="{Saivi:$info.weixin}" class="px" tabindex="1" size="40"></td>
+                 </tr>
+
+                <tr>
+                  <th><span class="red">*</span>微信公众帐号密码：</th>
+                  <td><input type="wxpwd" required class="px" tabindex="1" value="" name="wxpwd" size="25"></td>
+                </tr>
+
+                <tr>
+                  <th></th>
+                  <td>绑定大概要5秒钟时间，本站不会记录任何数据，如果不放心请使用手动绑定模式！</td>
+                </tr>
+              
+                <tr>
+                  <th></th>
+                  <td><button type="submit" class="btn btn-primary btn_submit  J_ajax_submit_btn" id="saveSetting">一键绑定</button></td>
+                </tr></form>
+              </tbody>
+            </table>
+            
+          </div>
+          
+        </div>
+        
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div>
+  <!--底部-->
+  	</div>
+<include file="Public:footer"/>	

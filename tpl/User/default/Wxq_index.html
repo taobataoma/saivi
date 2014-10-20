@@ -1,0 +1,106 @@
+<include file="Public:head"/>
+<div class="content"   >
+  <div class="cLineB"> 
+  <h4>微信墙活动设置<span class="FAQ">只能添加一个活动，活动自动退出时间尽量不要写太长，</span>否则如果删除活动，那么在里面的用户就不能退出！刷新时间设置5000即可！</h4>
+ </div>
+         <div class="cLineC" style="line-height: 32px;">
+  <a href='{Saivi::U("Wxq/add")}' title='添加微信墻' class='btnGrayS vm bigbtn'><img src="{Saivi::RES}/images/text.png" class="vm" />添加微信墻</a>　
+  <!--<a class="btnGrayS vm bigbtn" onclick="location.href='index.php?ac=csv&id=9379';" ><img src="{Saivi::RES}/images/import.png" class="vm" />批量导入文本</a>　<a class="btnGrayS vm bigbtn" onclick="location.href='index.php?ac=outtxt&page=1&type=0&classid=0&wxid=gh_858dwjkeww5';" ><img src="{Saivi::RES}/images/export.png" class="vm" />批量导出本页文本结果</a>-->
+
+            </div>
+
+            <div class="clr"></div>
+          </div>
+          <div class="msgWrap">
+          <form method="post"  action="index.php?ac=importtxt&amp;id=9379&amp;wxid=gh_858dwjkeww5" id="info" >
+          <input name="delall"  type="hidden" value="del" />
+           <input name="wxid"  type="hidden" value="gh_858dwjkeww5" />
+            <TABLE class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+              <THEAD>
+  <div class="msgWrap form">
+<div class="bdrcontent">
+<div id="div_ptype">
+<table class="ListProduct" border="0" style="margin-bottom:20px; border:2px #333 solid" cellSpacing="0" cellPadding="0" width="100%">
+<thead>
+<tr>
+                      <TH >编号</TH>
+                      <TH class="keywords">入墻关键词</TH>
+                      <TH class="">活动主题</TH>
+                      <TH>操作</TH>
+                  </TR>
+              </THEAD>
+              <TBODY>
+                <TR>
+				</TR>
+				<volist name="info" id="vo">
+				<tr>
+                  <td>  {Saivi:$i}</td>
+                  <td>{Saivi:$vo.keyword}</td>
+                  <td><div>{Saivi:$vo.title}</div></td>
+
+                   <td class="norightborder">
+                       <a href="{Saivi::U('Wxq/edit',array('id'=>$vo['id']))}" title="编辑文本">编辑</a>
+                       <a href="{Saivi::U('Wxq/del',array('id'=>$vo['id']))}">删除</a>
+                       <eq name="vo.isshow" value="1">
+                       <a href="{Saivi::U('Wxq/examineInfo',array('id'=>$vo['id'],'isshow'=>0))}" target="_blank">审核显示内容</a>
+                   <else/>未开启审核</eq>
+<!--                   <a target="_blank" href="{Saivi::U('Wxq/manageUser',array('id'=>$vo['id']))}">管理用户</a>-->
+                   <a target="_blank" href="{Saivi::U('Wxq/detail',array('id'=>$vo['id']))}" >我的墻面</a>
+                   <a href="{Saivi::U('Wxq/awardList',array('id'=>$vo['id']))}">中奖用户</a>
+
+
+                   </td>
+
+                </tr>
+				</volist>
+
+              </TBODY>
+            </TABLE>
+           </form>
+           <script>
+   function checkvotethis() {
+var aa=document.getElementsByName('del_id[]');
+var mnum = aa.length;
+j=0;
+for(i=0;i<mnum;i++){
+if(aa[i].checked){
+j++;
+}
+}
+if(j>0) {
+document.getElementById('info').submit();
+} else {
+alert('未选中任何文章或回复！')
+}
+}
+
+   </script>
+          </div>
+          <div class="cLine">
+            <div class="pageNavigator right">
+                 <div class="pages">{Saivi:$page}</div>
+              </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+
+function checkAll(form, name) {
+for(var i = 0; i < form.elements.length; i++) {
+var e = form.elements[i];
+if(e.name.match(name)) {
+e.checked = form.elements['chkall'].checked;
+}
+}
+}
+
+
+  </script>
+  <!--底部-->
+  	</div>
+<include file="Public:footer"/>

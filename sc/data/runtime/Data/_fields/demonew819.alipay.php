@@ -1,0 +1,1 @@
+{"0":"id","1":"token","2":"alipayname","3":"partner","4":"key","_autoinc":true,"_pk":"id","_type":{"id":"int(11)","token":"varchar(50)","alipayname":"varchar(100)","partner":"varchar(100)","key":"varchar(100)"}}

@@ -1,0 +1,197 @@
+<include file="Dining:header"/>
+
+<script src="{Saivi::RES}/weidingcan/index/js/iscroll.js" type="text/javascript"></script>
+
+<SCRIPT type=text/javascript>
+
+var myScroll;
+
+function loaded() {
+
+	myScroll = new iScroll('wrapper', {
+
+	snap: true,
+
+	momentum: false,
+
+	hScrollbar: false,
+
+	onScrollEnd: function () {
+
+	document.querySelector('#indicator > li.active').className = '';
+
+	document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+
+	}
+
+ });
+
+}
+
+document.addEventListener('DOMContentLoaded', loaded, false);
+
+</SCRIPT>
+
+<style type="text/css">
+
+/*.round .dandanb ul { border-top:1px solid #ddd;}
+
+.round .dandanb ul li{width:30%; height:36px; line-height:36px; float:left; text-indent:25px;}*/
+
+.round .dandanb .kjj { border-top:1px solid #ddd;}
+
+.round .dandanb .kjj span {width:30%; height:30px; line-height:32px; float:left; text-indent:25px; padding:0;margin:0;}
+
+.round .dandanb .kjj span.tell{width:40%; background:url({Saivi::RES}/weidingcan/index/images/card/themes/1/icon_order.png) left 5px no-repeat; background-size:24px;}
+
+.round .dandanb .kjj span.reserve{background:url({Saivi::RES}/weidingcan/index/images/card/themes/1/icon_reserve.png) left 5px no-repeat; background-size:24px;}
+
+.round .dandanb .kjj span.lbs{background:url({Saivi::RES}/weidingcan/index/images/card/themes/1/icon_lbs.png) left 5px no-repeat; background-size:24px;}
+
+.round .dandanb .kjj span a{color:#36B35F; text-decoration:none;}
+
+
+
+</style>
+
+</head>
+
+<body id="diancaiindex">
+
+
+
+<!--轮换图start-->
+
+<div class="banner">
+
+    <div id="wrapper">
+
+        <div id="scroller">
+
+            <ul id="thelist">
+
+              <volist name="flash" id="so">
+
+                <!--<li><p>{Saivi:$so.info}</p><a href="{Saivi:$so.url}"><img src="{Saivi:$so.img}" /></a></li>-->
+
+                <li><p>{Saivi:$so.info}</p><a href="#"><img src="{Saivi:$so.img}" /></a></li>
+
+                 </volist>                 
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div id="nav">
+
+        <div id="prev" onClick="myScroll.scrollToPage('prev', 0,400,2);return false">&larr; prev</div>
+
+            <ul id="indicator">
+
+                        
+
+                <volist name="flash" id="so">
+
+                    <li  <if condition="$i eq 1">class="active"</if>  >{Saivi:$i}</li>
+
+                </volist>
+
+             
+
+            </ul>
+
+        <div id="next" onClick="myScroll.scrollToPage('next', 0);return false">next &rarr;</div>
+
+    </div>
+
+	<div class="clr"></div>
+
+</div>
+
+<!--轮换图end-->
+
+
+
+
+
+<div class="cardexplain"> 
+
+
+
+<!--热门商家-->
+
+<ul class="round">
+
+<li class="title"><span class="none smallspan">店铺信息({Saivi:$branchStoreCount}个)</span></li>
+
+	<volist id="b" name="branchStores">
+
+           <li class="dandanb"><a href="{Saivi::U('Dining/cats',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'dining'=>1,'setid'=>$b['id'],'dtype'=>$_GET['dtype']))}"><span class="none shangjia"><img src="{Saivi:$b.logourl}"><h2>{Saivi:$b.name}</h2>
+
+<p>区域：{Saivi:$b.scope}</p><p>起送价：￥{Saivi:$b.money}</p><em class="ok"><if condition="$b.status eq 1">未营业<else/>营业中</if></em></span></a>
+
+<div class="kjj">
+
+				<span class="tell"><a href="tel:{Saivi:$b.tel}">电话预订</a></span>
+
+				<span class="reserve"><a href="{Saivi::U('Dining/about',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'dining'=>1,'setid'=>$b['id']))}">店铺信息</a></span>
+
+				<span class="lbs"><a href="http://api.map.baidu.com/marker?location={Saivi:$b.latitude},{Saivi:$b.longitude}&amp;title={Saivi:$b.name}&amp;content={Saivi:$b.address}&amp;output=html">导航</a></span>
+
+			</div>
+
+            <div class="clr"></div>
+
+</li>
+
+</volist>
+
+</ul>
+
+</div>
+
+
+
+<script>
+
+var count = $("#thelist img").size();
+
+$("#thelist img").css("width",document.body.clientWidth);
+
+$("#scroller").css("width",document.body.clientWidth*count);
+
+ setInterval(function(){
+
+myScroll.scrollToPage('next', 0,400,count);
+
+},3500 );
+
+window.onresize = function(){
+
+  $("#thelist img").css("width",document.body.clientWidth);
+
+  $("#scroller").css("width",document.body.clientWidth*count);
+
+} 
+
+
+
+</script>
+
+
+
+<script type="text/javascript">
+
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+WeixinJSBridge.call('hideToolbar');
+
+});
+
+</script>
+
+</body>
+
+</html>

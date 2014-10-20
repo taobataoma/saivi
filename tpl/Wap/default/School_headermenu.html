@@ -1,0 +1,34 @@
+   <script type="text/javascript">
+window.shareData = {
+            "moduleName":"School",
+            "moduleID":"0",
+            "imgUrl": "{Saivi:$info['head_url']}",
+            "sendFriendLink": "{Saivi::C('site_url')}{Saivi::U('School/index',array('token'=>$token))}",
+            "tTitle": "{Saivi:$info['title']}",
+            "tContent": "{Saivi:$info['info']|html_entity_decode|strip_tags|mb_substr=0,89,'utf-8'}..."
+        };
+</script>
+{Saivi:$shareScript}
+
+    <div id="ui-header" >
+        <div class="fixed">
+            <a class="ui-title" id="popmenu">选择分类</a> <a class="ui-btn-left_pre" href="{Saivi::U('School/index',array('token'=>$token,'wecha_id'=>$wecha_id))}">
+            </a><a class="ui-btn-right" href=""></a>
+        </div>
+    </div>
+    <div id="overlay"></div>
+<div id="win" >
+<ul class="dropdown">
+<li><a href="{Saivi::U('School/public_list',array('token'=>$token,'wecha_id'=>$wecha_id,'cid'=>$info['menu1_id']))}"><span>{Saivi:$info['menu1']|default='学校简介'}</span></a></li>
+<li><a href="{Saivi::U('School/public_list',array('token'=>$token,'wecha_id'=>$wecha_id,'cid'=>$info['menu2_id'],'type'=>'assess'))}"><span>{Saivi:$info['menu2']|default='教师风采'}</span></a></li>
+<li><a href="{Saivi::U('School/public_list',array('token'=>$token,'wecha_id'=>$wecha_id,'cid'=>$info['menu3_id']))}"><span>{Saivi:$info['menu3']|default='同学天地'}</span></a></li>
+<li><a href="{Saivi::U('School/public_list',array('token'=>$token,'wecha_id'=>$wecha_id,'cid'=>$info['menu4_id'],'type'=>'yyclass'))}"><span>{Saivi:$info['menu4']|default='课程介绍'}</span></a></li>
+<li><a href="{Saivi::U('School/public_list',array('token'=>$token,'wecha_id'=>$wecha_id,'type'=>'school'))}"><span>{Saivi:$info['menu5']|default='食谱安排'}</span></a></li>
+<li><a href="{Saivi::U('School/public_list',array('token'=>$token,'wecha_id'=>$wecha_id,'cid'=>$info['menu6_id']))}"><span>{Saivi:$info['menu6']|default='校园公告'}</span></a></li>
+<li><a href="{Saivi::U('School/qresults',array('token'=>$token,'wecha_id'=>$wecha_id))}"><span>{Saivi:$info['menu7']|default='成绩查询'}</span></a></li>
+<li><a href="{Saivi::U('Reply/index',array('token'=>$token,'wecha_id'=>$wecha_id))}"><span>{Saivi:$info['menu8']|default='家长建议'}</span></a></li>
+<li><a href="{Saivi::U('School/public_list',array('token'=>$token,'wecha_id'=>$wecha_id,'type'=>'course'))}"><span>{Saivi:$info['menu9']|default='课程预约'}</span></a></li>
+<li><a href="{Saivi::U('School/public_list',array('token'=>$token,'wecha_id'=>$wecha_id,'type'=>'curriculum'))}"><span>{Saivi:$info['menu10']|default='课程安排'}</span></a></li>
+<div class="clr"></div>
+ </ul>
+</div>

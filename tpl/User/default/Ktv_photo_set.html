@@ -1,0 +1,575 @@
+<include file="Public:head"/>
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/themes/default/default.css" />
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/plugins/code/prettify.css" />
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/themes/default/default.css" />
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/plugins/code/prettify.css" />
+
+<script src="{Saivi::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+
+<script src="{Saivi::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+
+<script src="{Saivi::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+
+<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+
+<script type="text/javascript" src="{Saivi::RES}/js/formCheck/formcheck.js"> </script>
+
+<script src="{Saivi::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+
+<script>
+
+	KindEditor.ready(function(K){
+
+		var editor = K.editor({
+
+			allowFileManager:true
+
+		});
+
+		K('#upload_pic').click(function() {
+
+			editor.loadPlugin('image', function() {
+
+				editor.plugin.imageDialog({
+
+					fileUrl : K('#pic').val(),
+
+					clickFn : function(url, title) {
+
+						if(url.indexOf("http") > -1){
+
+							K('#pic').val(url);
+
+						}else{
+
+							K('#pic').val("{Saivi::C('site_url')}"+url);
+
+						}
+
+						editor.hideDialog();
+
+					}
+
+				});
+
+			});
+
+		});
+
+		K('#upload_opening_animation').click(function() {
+
+			editor.loadPlugin('image', function() {
+
+				editor.plugin.imageDialog({
+
+					fileUrl : K('#opening_animation').val(),
+
+					clickFn : function(url, title) {
+
+						if(url.indexOf("http") > -1){
+
+							K('#opening_animation').val(url);
+
+						}else{
+
+							K('#opening_animation').val("{Saivi::C('site_url')}"+url);
+
+						}
+
+						editor.hideDialog();
+
+					}
+
+				});
+
+			});
+
+		});
+
+		K('#upload_small_pic').click(function() {
+
+			editor.loadPlugin('image', function() {
+
+				editor.plugin.imageDialog({
+
+					fileUrl : K('#small_pic').val(),
+
+					clickFn : function(url, title) {
+
+						if(url.indexOf("http") > -1){
+
+							K('#small_pic').val(url);
+
+						}else{
+
+							K('#small_pic').val("{Saivi::C('site_url')}"+url);
+
+						}
+
+						editor.hideDialog();
+
+					}
+
+				});
+
+			});
+
+		});
+
+		K('#upload_site_map_1').click(function() {
+
+			editor.loadPlugin('image', function() {
+
+				editor.plugin.imageDialog({
+
+					fileUrl : K('#site_map_1').val(),
+
+					clickFn : function(url, title) {
+
+						if(url.indexOf("http") > -1){
+
+							K('#site_map_1').val(url);
+
+						}else{
+
+							K('#site_map_1').val("{Saivi::C('site_url')}"+url);
+
+						}
+
+						editor.hideDialog();
+
+					}
+
+				});
+
+			});
+
+		});
+
+		K('#upload_site_map_2').click(function() {
+
+			editor.loadPlugin('image', function() {
+
+				editor.plugin.imageDialog({
+
+					fileUrl : K('#site_map_2').val(),
+
+					clickFn : function(url, title) {
+
+						if(url.indexOf("http") > -1){
+
+							K('#site_map_2').val(url);
+
+						}else{
+
+							K('#site_map_2').val("{Saivi::C('site_url')}"+url);
+
+						}
+
+						editor.hideDialog();
+
+					}
+
+				});
+
+			});
+
+		});
+
+		K('#upload_site_map_3').click(function() {
+
+			editor.loadPlugin('image', function() {
+
+				editor.plugin.imageDialog({
+
+					fileUrl : K('#site_map_3').val(),
+
+					clickFn : function(url, title) {
+
+						if(url.indexOf("http") > -1){
+
+							K('#site_map_3').val(url);
+
+						}else{
+
+							K('#site_map_3').val("{Saivi::C('site_url')}"+url);
+
+						}
+
+						editor.hideDialog();
+
+					}
+
+				});
+
+			});
+
+		});
+
+		K('#upload_site_map_4').click(function() {
+
+			editor.loadPlugin('image', function() {
+
+				editor.plugin.imageDialog({
+
+					fileUrl : K('#site_map_4').val(),
+
+					clickFn : function(url, title) {
+
+						if(url.indexOf("http") > -1){
+
+							K('#site_map_4').val(url);
+
+						}else{
+
+							K('#site_map_4').val("{Saivi::C('site_url')}"+url);
+
+						}
+
+						editor.hideDialog();
+
+					}
+
+				});
+
+			});
+
+		});
+
+		K('#upload_site_map_5').click(function() {
+
+			editor.loadPlugin('image', function() {
+
+				editor.plugin.imageDialog({
+
+					fileUrl : K('#site_map_5').val(),
+
+					clickFn : function(url, title) {
+
+						if(url.indexOf("http") > -1){
+
+							K('#site_map_5').val(url);
+
+						}else{
+
+							K('#site_map_5').val("{Saivi::C('site_url')}"+url);
+
+						}
+
+						editor.hideDialog();
+
+					}
+
+				});
+
+			});
+
+		});
+
+		K('#upload_site_map_6').click(function() {
+
+			editor.loadPlugin('image', function() {
+
+				editor.plugin.imageDialog({
+
+					fileUrl : K('#site_map_6').val(),
+
+					clickFn : function(url, title) {
+
+						if(url.indexOf("http") > -1){
+
+							K('#site_map_6').val(url);
+
+						}else{
+
+							K('#site_map_6').val("{Saivi::C('site_url')}"+url);
+
+						}
+
+						editor.hideDialog();
+
+					}
+
+				});
+
+			});
+
+		});
+
+	});
+
+</script>
+
+
+
+<script>
+
+
+
+var editor;
+
+KindEditor.ready(function(K) {
+
+editor = K.create('#content', {
+
+resizeType : 1,
+
+allowPreviewEmoticons : false,
+
+allowImageUpload : false,
+
+items : [
+
+'source','undo','clearhtml','hr',
+
+'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+
+'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
+
+});
+
+
+
+});
+
+</script>
+
+<script>
+
+function selectall(name) {
+
+	var checkItems=$('.cbitem');
+
+	if ($("#check_box").attr('checked')==false) {
+
+		$.each(checkItems, function(i,val){
+
+			val.checked=false;
+
+		});
+
+		
+
+	} else {
+
+		$.each(checkItems, function(i,val){
+
+			val.checked=true;
+
+		});
+
+	}
+
+}
+
+function setlatlng(longitude,latitude){
+
+	art.dialog.data('longitude', longitude);
+
+	art.dialog.data('latitude', latitude);
+
+	// 此时 iframeA.html 页面可以使用 art.dialog.data('test') 获取到数据，如：
+
+	// document.getElementById('aInput').value = art.dialog.data('test');
+
+	art.dialog.open('{Saivi::U('Map/setLatLng',array('token'=>$token,'id'=>$id))}',{lock:false,title:'设置经纬度',width:600,height:400,yesText:'关闭',background: '#000',opacity: 0.87});
+
+}
+
+</script>
+
+<div class="content"  >
+<div class="tab">
+
+		<ul>
+<li class="current tabli" id="tab2"><a href="{Saivi::U('Huisuo/index',array('token'=>$token))}">会所管理</a></li>
+ <li class="current tabli" id="tab0"><a href="{Saivi::U('Huisuo/photo_index',array('token'=>$token))}">会所相册</a></li>
+		<li class="tabli" id="tab2"><a href="{Saivi::U('Huisuo/infos',array('token'=>$token,'pid'=>$set['id']))}">订单管理</a></li>
+		<li class="tabli" id="tab2"><a href="{Saivi::U('Huisuo/setcin',array('token'=>$token,'pid'=>$set['id']))}">套餐设置</a></li>
+		<li class="tabli" id="tab2"><a href="{Saivi::U('Huisuo/setinfo',array('token'=>$token,'pid'=>$set['id']))}">表单设置</a></li>
+
+		</ul>
+
+	</div>
+
+   <div class="cLineB" style=" overflow:visible"> 
+
+    <h4>添加会所相册</h4> 
+
+    <a href="{Saivi::U('Huisuo/photo_index',array('token'=>$token))}" class="right  btnGreen" style="margin-top:-27px">返回</a> 
+
+   </div> 
+
+
+
+   <form class="form" method="post" id="form" action="" enctype="multipart/form-data"> 
+
+<if condition="$isUpdate eq 1">
+
+<input type="hidden" name="id" value="{Saivi:$set.id}" />
+
+</if>
+
+    <div class="msgWrap bgfc"> 
+
+     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+
+      <tbody> 
+
+       
+
+	   <tr> 
+
+        <th>相册名称：</th>
+
+        <td><input type="text" name="name" id="keyword" value="{Saivi:$set.name}" class="px" style="width:400px;" />
+
+			<span class="red">*</span>尽量简单，不要超过20字
+
+		</td> 
+
+       </tr>
+
+	   <tr> 
+
+        <th >显示顺序：</th> 
+
+        <td><input  type="text" id="name" name="show_order" value="{Saivi:$set.show_order}" class="px require" style="width:400px;" />
+
+		    <span class="red">*</span>数值越大越靠前
+
+		</td> 
+
+       </tr> 
+
+	   <tr>
+
+			<th valign="top"><label for="info">图片1：</label></th>
+
+            <td><input type="text" name="topic1" value="{Saivi:$set.topic1}" id="site_map_1" class="px" style="width:400px;"  readonly="readonly"/><script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('site_map_1',700,420,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('site_map_1')">预览</a></td> 
+
+       </tr>
+
+	   <tr>
+
+			<th valign="top"><label for="info">图片2：</label></th>
+
+            <td><input type="text" name="topic2" value="{Saivi:$set.topic2}" id="site_map_2" class="px" style="width:400px;"  readonly="readonly"/><a href="###" onclick="upyunPicUpload('site_map_2',700,420,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('site_map_2')">预览</a></td> 
+
+       </tr> 
+
+ 	   <tr>
+
+			<th valign="top"><label for="info">图片3：</label></th>
+
+            <td><input type="text" name="topic3" value="{Saivi:$set.topic3}" id="site_map_3" class="px" style="width:400px;"  readonly="readonly"/><a href="###" onclick="upyunPicUpload('site_map_3',700,420,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('site_map_3')">预览</a></td> 
+
+       </tr> 
+
+ 	   <tr>
+
+			<th valign="top"><label for="info">图片4：</label></th>
+
+            <td><input type="text" name="topic4" value="{Saivi:$set.topic4}" id="site_map_4" class="px" style="width:400px;"  readonly="readonly"/><a href="###" onclick="upyunPicUpload('site_map_4',700,420,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('site_map_4')">预览</a></td> 
+
+       </tr> 
+
+ 	   <tr>
+
+			<th valign="top"><label for="info">图片5：</label></th>
+
+            <td><input type="text" name="topic5" value="{Saivi:$set.topic5}" id="site_map_5" class="px" style="width:400px;"  readonly="readonly"/><a href="###" onclick="upyunPicUpload('site_map_5',700,420,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('site_map_5')">预览</a></td> 
+
+       </tr>
+
+ 	   <tr>
+
+			<th valign="top"><label for="info">图片6：</label></th>
+
+            <td><input type="text" name="topic6" value="{Saivi:$set.topic6}" id="site_map_6" class="px" style="width:400px;"  readonly="readonly"/><a href="###" onclick="upyunPicUpload('site_map_6',700,420,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('site_map_6')">预览</a></td> 
+
+       </tr>
+
+	   <tr>
+
+			<th valign="top"><label for="info">图片7：</label></th>
+
+            <td><input type="text" name="topic7" value="{Saivi:$set.topic7}" id="opening_animation" class="px" style="width:400px;"  readonly="readonly"/><a href="###" onclick="upyunPicUpload('site_map_7',700,420,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('site_map_7')">预览</a></td> 
+
+       </tr>
+
+ 	   <tr>
+
+			<th valign="top"><label for="info">图片8：</label></th>
+
+            <td><input type="text" name="topic8" value="{Saivi:$set.topic8}" id="small_pic" class="px" style="width:400px;"  readonly="readonly"/><a href="###" onclick="upyunPicUpload('site_map_8',700,420,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('site_map_8')">预览</a></td> 
+
+       </tr>	   
+
+        <tr>
+
+			<th valign="top"><label for="info">相册介绍：</label></th>
+
+            <td><textarea name="info" id="content"  rows="5" style="width:590px;height:360px">{Saivi:$set.info}</textarea></td>
+
+       </tr>
+
+ 
+
+       <tr>         
+
+       <th>&nbsp;</th>
+
+       <td>
+
+		<!--input type="hidden" name="time" value="{Saivi:$set.time}" /-->
+
+       <button type="submit" class="btnGreen">保存</button> &nbsp; <a href="{Saivi::U('Yuyue/add',array('token'=>$token))}" class="btnGray vm">取消</a></td> 
+
+       </tr> 
+
+	   
+
+      </tbody> 
+
+     </table> 
+
+     </div>
+
+    
+
+   </form> 
+
+  </div> 
+
+<script language="javascript">
+
+$(function(){
+
+	$("#form").valid([
+
+	{ name:"name",simple:"名称",require:true},
+
+	{ name:"keyword",simple:"关键词",require:true}
+
+		
+
+	],true,true);
+
+
+
+})
+
+</script>
+
+  <include file="Public:footer" />

@@ -1,0 +1,65 @@
+<include file="Public:head"/>
+<include file="Jiaoyu:menu"/> 
+<link rel="stylesheet" type="text/css" href="{Saivi::STATICS}/default_user_com.css" media="all">
+ <div class="content" style="width:920px; background:none;  border:none; margin-bottom:30px;" >
+
+          
+          <div class="cLine">
+    <div class="alert">
+    <p><span class="bold">使用方法：</span><if condition="$album neq ''">
+                                    <span style="color:red;">（注：系统默认为至少添加3个相册,注意不要重复添加同一个相册）</span><span style="color:red;">（注：请不要重复添加同一个相册，否则删除一个同样的相册都删除）修改<strong><a href="{Saivi::U('Photo/index',array('token'=>$token))}"><font color='green'>[相册内容]</font></a></strong></span>
+                                <else/>
+                                 <span style="color:red;"> 请您先去［培训机构］添加培训机构信息。再来添加培训机构相册</span>
+                                </if></p>
+    </div>
+</div>
+          
+          <div class="cLine">
+            <div class="pageNavigator left">
+                <a href="{Saivi::U('Jiaoyu/album_add',array('token'=>$token))}" class="btnGrayS vm bigbtn">
+                    <img src="{Saivi::RES}/images/pic.png" class="vm">添加相册
+                </a>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <div class="msgWrap">
+          <form method="post" action="" id="info">
+          <input name="delall" type="hidden" value="del">
+           <input name="wxid" type="hidden" value="gh_423dwjkewad">
+            <table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+              <thead>
+                                        <tr>
+                                            <th class="span3">相册名称</th>
+                                            <th class="span5">描述</th>
+                                            <th class="span2">操作</th>
+                                        </tr>
+                                    </thead>
+                                            <tbody>
+                                        <if condition="$album eq ''">
+                                        <tr>
+                                        <td colspan="5" style="text-align:center; height:30px;"><strong>无任何教育照片信息.</strong></td>
+                                        </tr>
+                                    <else/>
+                                    <volist name="album" id="list">
+                                        <tr> 
+                                        <td style="">{Saivi:$list['title']}</td>
+                                        <td style="">{Saivi:$list['info']}</td> 
+                                        <td style="">
+                                        <a href="{Saivi::U('Jiaoyu/album_add',array('poid'=>$list['id'],'token'=>$list['token']))}" class="btn">编辑</a>
+                                        <a href="{Saivi::U('Jiaoyu/album_del',array('id'=>$list['id'],'token'=>$list['token']))}" onclick="return(confirm('确定要删除吗？'))" class="btn">删除</a></a>
+</td>
+                                        </tr>
+                                    </volist>
+                                    </if>
+                                            </tbody>
+            </table>
+           </form> 
+          </div>
+          <div class="cLine">
+            <div class="pageNavigator right">
+                 <div class="pages">{Saivi:$page}</div>
+            </div>
+            <div class="clr"></div>
+          </div>
+        </div>  
+<include file="Public:footer"/>

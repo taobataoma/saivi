@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!-- saved from url=(0103)http://xiangshan.juweile.com/wap.php?m=resume&a=detail&page=1&id=4291&wxid=olqrhjkniK_cMuV-IRKG6aMlmy-Q -->
+<html><head _wxhkphogpkobbkjccgfifhfjlahnoocnan_="shake_1.0"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/zhaopin/xiangqing/main.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/zhaopin/xiangqing/dialog.css" media="all">
+	<script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/xiangqing/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/xiangqing/main.js"></script>
+	<script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/xiangqing/dialog_min.js"></script>
+	<title>个人求职详情</title>
+	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+	<meta name="Keywords" content="{Saivi:$f_siteName}">
+	<meta name="Description" content="{Saivi:$f_siteName}">
+	<!-- Mobile Devices Support @begin -->
+	<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+	<meta content="no-cache" http-equiv="pragma">
+	<meta content="0" http-equiv="expires">
+	<meta content="telephone=no, address=no" name="format-detection">
+	<meta name="apple-mobile-web-app-capable" content="yes"> <!-- apple devices fullscreen -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta charset="utf-8">
+<title>个人简历</title>
+<meta name="viewport" content="width = device-width ,initial-scale =1.0 ,
+minimum-scale = 1.0 ,maximum-scale =1.0 ,user-scalable = no">
+<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/zhaopin/xiangqing/my_style.css" media="all">
+<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/zhaopin/xiangqing/base_m.css" media="all">
+
+
+</head><body><header id="top">
+	<span class="at"><a href="{Saivi::U('Wap/Zhaopin/jlindex',array('token'=>$info['token']))}">返回</a></span>
+	<span>
+		<font class="at">
+			<a class="areaname" href="http://mp.weixin.qq.com/s?__biz=MjM5NzE1Mzk0Mg==&mid=200035509&idx=1&sn=85296d44e36bce522fdc279639878e75#rd">{Saivi:$wxuser.wxname}</a>
+		</font>
+	</span>
+</header>
+
+<div class="line"><em></em></div>
+
+<!-- <nav id="tp">
+	<p>
+		<a href="#">兼职</a>
+		<a href="#">服务行业</a>
+		<a href="#">普工/技工</a>
+		<a href="#">市场/运营</a>
+	</p>
+</nav> -->
+
+<br>
+<div class="wp">
+	<div class="wbox">
+		<h1 class="ltle">{Saivi:$info.job}</h1>
+<!-- 		<a class="i cp blin" href="">人气：0</a> -->
+			<aside class="hlbox word">
+				<span class="at">姓名<font class="c_ashy">{Saivi:$info.name}</font></span>
+				<span class="at">发布时间<font class="c_ashy">{Saivi:$info.date|substr=0,10}</font></span>
+				<span class="at">性别<font class="c_ashy">{Saivi:$info.sex}</font></span>
+				<span class="at">期望薪资<font class="c_ashy">{Saivi:$info.salary}</font></span>
+				<span class="at">学历<font class="c_ashy">{Saivi:$info.education}</font></span>
+				<span class="title">电话<font class="c_ashy"><a href="tel:{Saivi:$info.phone}">{Saivi:$info.phone}</a></font></span>
+				<div class="clear"></div>
+			</aside>
+	</div>
+</div>
+
+<div class="wp">
+<p class="btitle"><span class="c_dark">个人简介/工作经验</span></p>
+</div>
+<div class="wp">
+	<div class="wbox">
+		<div class="word">
+			<div class="aox"><article>{Saivi:$info.introduce|htmlspecialchars_decode}</article>
+				<p class="art_more">
+					<span class="icin">显示全部</span>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<center class="cop">
+	<input class="but" type="button" value="发布" onclick="location.href='{Saivi::U('Wap/Zhaopin/geren',array('token'=>$_GET['token']))}'">
+	<input class="but" type="button" value="关注" onclick="location.href='{Saivi::U('Wap/Index/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}'">
+</center>
+
+<div class="wp">
+<p class="btitle"><span class="c_dark">其他简历信息</span></p>
+<volist name="info1" id="vo">
+			<li class="box">
+			<a class="i" href="{Saivi::U('Wap/Zhaopin/jlinfo',array('id'=>$vo['id'],'token'=>$vo['token']))}">查看&nbsp;&nbsp;{Saivi:$vo.name}&nbsp;&nbsp;个人简历</a>
+		</li>
+        </volist>
+			
+	</div>
+
+&nbsp;
+<footer style="margin-top: 1px;"><a class="" href="{Saivi::U('Wap/Index/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}">{Saivi:$date.copyright}</a><a></a></footer><a>
+
+
+<script>
+
+
+
+(function(){
+	   var onBridgeReady=function(){
+	   WeixinJSBridge.on('menu:share:appmessage', function(argv){
+	      WeixinJSBridge.invoke('sendAppMessage',{
+	         "appid":dataForWeixin.appId,
+	         "img_url":dataForWeixin.MsgImg,
+	         "img_width":"640",
+	         "img_height":"640",
+	         "link":dataForWeixin.path,
+	         "desc":dataForWeixin.desc,
+	         "title":dataForWeixin.title
+	      }, function(res){(dataForWeixin.callback)();});
+	   });
+	   WeixinJSBridge.on('menu:share:timeline', function(argv){
+		  (dataForWeixin.callback)();
+		  WeixinJSBridge.invoke('shareTimeline',{
+	         "img_url":dataForWeixin.TLImg,
+	         "img_width":"640",
+	         "img_height":"640",
+	         "link":dataForWeixin.path,
+	         "desc":dataForWeixin.desc,
+	         "title":dataForWeixin.title
+	      }, function(res){});
+	   });
+	   WeixinJSBridge.on('menu:share:weibo', function(argv){
+		  WeixinJSBridge.invoke('shareWeibo',{
+	         "content":dataForWeixin.title,
+	         "url":dataForWeixin.path
+	      }, function(res){(dataForWeixin.callback)();});
+	   });
+	   WeixinJSBridge.on('menu:share:facebook', function(argv){
+		  (dataForWeixin.callback)();
+		  WeixinJSBridge.invoke('shareFB',{
+	         "img_url":dataForWeixin.TLImg,
+	         "img_width":"640",
+	         "img_height":"640",
+	         "link":dataForWeixin.path,
+	         "desc":dataForWeixin.desc,
+	         "title":dataForWeixin.title
+	      }, function(res){});
+	   });
+	};
+	if(document.addEventListener){
+	   document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+	}else if(document.attachEvent){
+	   document.attachEvent('WeixinJSBridgeReady'   , onBridgeReady);
+	   document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
+	}
+	})();
+	var _cookie={
+		_set:function(name,value,expires){
+		   if(expires){
+			  var _end = new Date();
+			  _end.setTime(_end.getTime()+(expires*1000));
+		    }
+		    document.cookie=name+"="+escape(value)+(expires ? ";expires="+_end.toGMTString() : "")+"; path=/";
+	    },
+		_get:function(name){
+	       var _cookie=document.cookie;
+	       var _start=_cookie.indexOf(name+"=");
+	       if(_start!=-1){
+	          _start+=name.length+1;
+	          var _end=_cookie.indexOf(";",_start);
+	          if(_end==-1){_end = _cookie.length;}
+	          return unescape(_cookie.substring(_start,_end));
+	        }
+	        return "";
+	    }
+	};
+</script><!-- <footer style="margin-top: 1px;"><a class="" href="http://mp.weixin.qq.com/s?__biz=MjM5NzE1Mzk0Mg==&mid=200035509&idx=1&sn=85296d44e36bce522fdc279639878e75#rd">&copy;2012-2014&nbsp;聚微乐城市生活</a></footer>
+</div> -->
+
+</a><div style="display:none"><a>
+
+<script type="text/javascript">
+			window.shareData = {  
+					"moduleName":"Zhaopin",
+					"moduleID": '0',
+					"imgUrl": "{Saivi:$date.tp}", 
+					"timeLineLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"sendFriendLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"weiboLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"tTitle": "{Saivi:$date.title}",
+					"tContent": "{Saivi:$date.info}"
+				};
+		</script>	
+        {Saivi:$shareScript}
+
+
+</body></html>

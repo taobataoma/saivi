@@ -1,0 +1,18 @@
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<div class="tab" style="margin-left:30px">
+<ul>
+<li class="<if condition="ACTION_NAME EQ 'index'">current</if> tabli" id="tab0"><a href="{Saivi::U('Ktv/index',array('token'=>$token))}">经营主体介绍</a></li>
+
+<li class="<if condition="ACTION_NAME EQ 'son' ">current</if> tabli" id="tab2"><a href="{Saivi::U('Ktv/son',array('token'=>$token))}">KTV分店</a></li>
+
+<li class="<if condition="ACTION_NAME EQ 'housetype' ">current</if> tabli" id="tab2"><a href="{Saivi::U('Ktv/housetype',array('token'=>$token))}">KTV包厢</a></li>
+
+<li class="<if condition="ACTION_NAME EQ 'album' or ACTION_NAME EQ 'album_add'">current</if> tabli" id="tab5"><a href="{Saivi::U('Ktv/album',array('token'=>$token))}">宣传相册</a></li>
+
+<li class="<if condition="ACTION_NAME EQ 'expert'">current</if> tabli" id="tab5"><a href="{Saivi::U('Ktv/expert',array('token'=>$token))}">客人印象</a></li>
+
+<li class="<if condition="ACTION_NAME EQ 'ktvindex'">current</if> tabli" id="tab6"><a href="{Saivi::U('Reservation/ktvindex',array('token'=>$token))}">预约管理</a></li>
+<li class="<if condition="ACTION_NAME EQ 'aboutus'">current</if> tabli" id="tab6"><a href="{Saivi::U('Ktv/aboutus',array('token'=>$token))}">关于我们</a></li>
+</ul>
+
+</div>

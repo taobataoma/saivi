@@ -1,0 +1,182 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{Saivi:$thisCard.cardname}会员特权</title>
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link href="{Saivi::RES}/card/style/style.css" rel="stylesheet" type="text/css">
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js" type="text/javascript"></script>
+<script src="{Saivi::RES}/card/js/accordian.pack.js" type="text/javascript"></script>
+</head>
+<body id="cardnews" onLoad="new Accordian(&#39;basic-accordian&#39;,5,&#39;header_highlight&#39;);" class="mode_webapp">
+<div class="qiandaobanner"><a href="javascript:history.go(-1);"><img src="{Saivi:$thisCard.vip}" ></a> </div>
+
+<div id="basic-accordian">
+<volist name="list" id="item">
+<div id="test{Saivi:$item.id}-header" class="accordion_headings  <?php if ($item['id']==$firstItemID){?>header_highlight<?php } ?>">
+<div class="tab  vip ">
+<span class="title">{Saivi:$item.title}<p><?php if ($item['type']&&$item['enddate']){?>有效期至{Saivi:$item.enddate|date='Y年m月d日',###}<?php }else{ ?>无限期<?php } ?></p></span>
+</div>
+<div id="test{Saivi:$item.id}-content">
+<div class="accordion_child">
+<div id="queren{Saivi:$item.id}" style="display:none;">
+	<form action="/index.php?g=Wap&m=Card&a=action_usePrivelege&wecha_id={Saivi:$wecha_id}&token={Saivi:$token}" method="post" id="payform{Saivi:$item.id}">
+								<p style=" margin:10px 0;text-align:center">
+									<input type="radio" name="paytype" onchange="radiochange(this,{Saivi:$item.id})" id="paytype{Saivi:$item.id}" value="0" /><label for="paytype{Saivi:$item.id}" style="font-size:12px;">线下支付</label> &nbsp; &nbsp; &nbsp; &nbsp;
+									<input type="radio" name="paytype" onchange="radiochange(this,{Saivi:$item.id})" id="paytype2{Saivi:$item.id}" value="1" /><label for="paytype2{Saivi:$item.id}" style="font-size:12px;">会员卡支付</label>
+								
+								</p>
+								<p style=" margin:10px 0">
+									<input name="money" type="text" class="px" id="money{Saivi:$item.id}" value="" placeholder="请输入实际消费金额">
+								</p>
+								<p style=" margin:10px 0" id="usetime_p{Saivi:$item.id}">
+									<input name="s_money" type="text" class="px" id="s_money{Saivi:$item.id}" value="" placeholder="请再输入消费金额">
+								</p>
+								<p style=" margin:10px 0 0 0">
+									<input name="username" class="px" id="username{Saivi:$item.id}" value="" type="text" placeholder="请输入商家用户名">
+								</p>
+								<p style=" margin:10px 0 0 0">
+									<input name="password" class="px" id="password{Saivi:$item.id}" value="" type="password" placeholder="请输入商家密码">
+								</p>
+								
+								<p style=" margin:10px 0">
+									<input type="hidden" name="itemid" value="{Saivi:$item.id}" />
+									<input type="hidden" name="wecha_id" value="{Saivi:$_GET['wecha_id']}" />
+									<a id="showcard0" class="submit" href="javascript:void(0)" onclick="payformsubmit({Saivi:$item.id})">确定使用</a>
+									<a id="showcard4" class="submit" href="javascript:void(0)" style="display:none">正在提交，请稍候...</a>
+								</p>
+							</div>
+							</form>	
+							<p class="explain_sn" id="shiyong{Saivi:$item.id}" style="width: 70%;margin: 0px auto;color: #fff;">
+			           			<a style="height: 25px;line-height: 25px;" class="submit" href="###" onclick="this.style.display='none';document.getElementById('queren{Saivi:$item.id}').style.display=''">点击立即使用</a>
+			           		</p>
+<b>详情说明</b>
+<ul style="min-height:200px;">{Saivi:$item.info}</ul>
+
+</div> 
+<div style="clear:both;height:20px;"></div>
+</div>
+</div>
+
+
+</volist>
+</div>
+
+<script>
+function radiochange(e,tid){
+
+
+	var unameEle = '<p style=" margin:10px 0 0 0"><input name="username" class="px" id="username'+tid+'" value="" type="text" placeholder="请输入商家用户名"></p>';
+	var upassEle = '<p style=" margin:10px 0 0 0"><input name="password" class="px" id="password'+tid+'" value="" type="password" placeholder="请输入商家密码"></p>';
+			
+
+ 
+	var ptype = e.value;
+
+			if(ptype == 1){
+				var uname = document.getElementById('username'+tid);
+				var upass = document.getElementById('password'+tid);
+				
+				uname.parentNode.removeChild(uname);
+				upass.parentNode.removeChild(upass);
+
+				
+			}else{
+				jQuery(function($) {
+					var usetime_p = document.getElementById('usetime_p'+tid);
+					var obj = document.getElementById('username'+tid);
+					if(!obj) {
+						
+						$('#usetime_p'+tid).after(upassEle);
+						$('#usetime_p'+tid).after(unameEle);
+					}
+
+				});			
+
+			}
+}
+
+function payformsubmit(itemid){
+
+  var o=document.getElementsByName('paytype');
+ var len=o.length;   
+    for (var j=0;j<len ;j++ )
+    { if(o[j].checked==true)
+     {
+      var radioValue = o[j].value;
+	  
+     }
+    }
+	
+
+	if(radioValue == 1){
+		document.getElementById('payform'+itemid).submit();
+	}else{
+		use(itemid);
+	}
+
+}
+
+
+var jQ = jQuery.noConflict();
+function use(i){
+/*
+	var o=document.getElementsByName('paytype');
+	var len=o.length;   
+    for (var j=0;j<len ;j++ )
+    { if( o[j].checked==true )
+     {
+      var ptype = o[j].value;
+     }
+    }
+*/	
+	document.getElementById('showcard0').style.display='none';
+	document.getElementById('showcard4').style.display='';
+	var password =  document.getElementById('password'+i).value;
+	
+	var money =  document.getElementById('money'+i).value;
+	var s_money =  document.getElementById('s_money'+i).value;
+	if(!money){
+		alert('请输入金额');
+		document.getElementById('showcard0').style.display='';
+	document.getElementById('showcard4').style.display='none';
+		return false;
+	}
+	if(money!=s_money){
+		alert('两次输入的金额不一致');
+		document.getElementById('showcard0').style.display='';
+	document.getElementById('showcard4').style.display='none';
+		return false;
+	}
+	var username =  document.getElementById('username'+i).value;
+	var itemid=i;
+	var submitData = {
+		password:password,
+		username:username,
+		itemid:itemid,
+		ptype: 0,
+		money: money,
+		wecha_id:'{Saivi:$wecha_id}',
+		cat:1,
+	};
+	jQ.post('/index.php?g=Wap&m=Card&a=action_usePrivelege&wecha_id={Saivi:$wecha_id}&token={Saivi:$token}', submitData,
+	function(data) {
+		document.getElementById('showcard0').style.display='';
+	document.getElementById('showcard4').style.display='none';
+		if (data.success == 1) {
+			document.getElementById('queren'+i).style.display='none';
+			document.getElementById('password'+i).value = '';
+			document.getElementById('money'+i).value='';
+			alert(data.msg);
+		}else{
+			alert(data.msg);
+		}
+	}, "json");
+}
+</script>
+<include file="Card:cardFooter"/>
+<include file="Card:share"/>
+</body>
+</html>

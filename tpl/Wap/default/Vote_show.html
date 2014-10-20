@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>我是{Saivi:$data.item}，来给我投一票吧</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="description" content="聚美汇成中国好身材大赛">
+    <meta name="keywords" content="中国好身材，大赛，聚美汇成">
+    <link rel="stylesheet" type="text/css" href="{Saivi::RES}/bootstrap/css/bootstrap.min.css">
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+    <script type="text/javascript">
+    $(function(){
+        var pageWidth=$(window).width();
+        var xiangkuangLeft = pageWidth/2-113;
+        $('.xiangkuang img').css('left',xiangkuangLeft);
+    })
+    </script>
+    <style>
+    /*!
+    Pure v0.5.0
+    Copyright 2014 Yahoo! Inc. All rights reserved.
+    Licensed under the BSD License.
+    https://github.com/yui/pure/blob/master/LICENSE.md
+    */
+    /*!
+    normalize.css v1.1.3 | MIT License | git.io/normalize
+    Copyright (c) Nicolas Gallagher and Jonathan Neal
+    */
+    /*! normalize.css v1.1.3 | MIT License | git.io/normalize */
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,video{display:inline-block;*display:inline;*zoom:1}audio:not([controls]){display:none;height:0}[hidden]{display:none}html{font-size:100%;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}html,button,input,select,textarea{font-family:sans-serif}body{margin:0}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:.67em 0}h2{font-size:1.5em;margin:.83em 0}h3{font-size:1.17em;margin:1em 0}h4{font-size:1em;margin:1.33em 0}h5{font-size:.83em;margin:1.67em 0}h6{font-size:.67em;margin:2.33em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}blockquote{margin:1em 40px}dfn{font-style:italic}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}mark{background:#ff0;color:#000}p,pre{margin:1em 0}code,kbd,pre,samp{font-family:monospace,serif;_font-family:'courier new',monospace;font-size:1em}pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word}q{quotes:none}q:before,q:after{content:'';content:none}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}dl,menu,ol,ul{margin:1em 0}dd{margin:0 0 0 40px}menu,ol,ul{padding:0 0 0 40px}nav ul,nav ol{list-style:none;list-style-image:none}img{border:0;-ms-interpolation-mode:bicubic}svg:not(:root){overflow:hidden}figure{margin:0}form{margin:0}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0;white-space:normal;*margin-left:-7px}button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle}button,input{line-height:normal}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;*overflow:visible}button[disabled],html input[disabled]{cursor:default}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0;*height:13px;*width:13px}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}[hidden]{display:none!important}
+    p{margin:0;}
+    body{background:#032664 url({Saivi::RES}/images/background.jpg) 50% 0 no-repeat;background-size:cover;font-family: "Microsoft Yahei";}
+    a{text-decoration: none;}
+    .hd,.bd{text-align: center;}
+    .hd{width: 100%;height:130px;}
+    .logo-wrap{margin-bottom: 10px;}
+    .logo{height:100px;}
+    .logo-img{width:100%;}
+    .logo-btn{position:absolute;top:32px;right:0;background: yellow;color:#0b2777;font-size:12px;border-radius: 8px;padding:2px 8px;}
+
+    .thumb-wrap{height:269px;max-width:100%;overflow:hidden;}
+    .thumb{position:relative;display:inline-block;height:100%;}
+    .thumb-img{height:100%;}
+    .thumb-icon{position:absolute;bottom:0;right:0;background: url(http://p3.qhimg.com/t010d053b7d9bdd48a9.jpg) no-repeat;width:23px;height:20px;background-size: 23px 20px;}
+    .info-wrap{width:192px;height:74px;background: url(http://p3.qhimg.com/t01ed662f24c2cc8f0c.png) 0 2px no-repeat;padding:26px 30px 20px;margin: 0 auto;background-size: 240px 120px;}
+    .info-item,.main-info{color:#fff;font-size:12px;}
+    .info-item{margin-left: 20px;text-align:left;line-height: 1.5;}
+    .main-info{color:#00eaff;text-align: center;}
+    .btn-l{color:#fff;font-size:20px;display: block;width:178px;height:41px;line-height: 41px;border-radius:24px;background-color: #d7014e;margin: 0 auto;border:solid 8px #04213f;background-clip: padding-box;cursor: pointer;}
+    .btn-l.disabled, .btn-l.done {background-color: #aaa;color: #eee;cursor: default;}
+    .share{color:#fff;text-decoration: underline;font-size:13px;display: inline-block;padding:20px;}
+    #toVote {visibility: hidden;}
+    .share-layer{position:fixed;width:100%;height:100%;top:0;left:0;background: rgba(0,0,0,0.8) url(http://p3.qhimg.com/t0159aa6c5bd26da420.png) 99% 0 no-repeat;text-align: center;display:none;}
+    .share-layer.active{display: block;}
+    .share-text{color:#fff;font-size:17px;margin-top: 20px;line-height: 2em;}
+    .share-em{color:#ffcc00;font-style:normal;}
+    .btn-wrap {position: relative;}
+    .btn-wrap .plusone{color:red;font-weight:700;opacity:1;position:absolute;left:50%;top:-15px;-webkit-transition:all 1s;transition:all 1s;visibility:hidden;font-size:30px}.btn-wrap .slideup{opacity:0;top:-45px;visibility:visible}
+    #cover{z-index: 1000;background: rgba(0,0,0,0.7);width: 100%;height: 150%;position: fixed;left: 0px;top: 0px;}
+#cover p{text-align:left;margin: 0 auto;font-family: microsoft yahei;color: white;font-size: 20px;margin-top: 180px;line-height: 30px;width: 90%;border: 1px dashed yellow;}
+.xiangkuang img{z-index: 100;position: absolute;height: 300px;margin-top: -10px;}
+    </style>
+</head>
+<body>
+    <div id="cover" style='display:none;'>
+        <p>您可能是从朋友分享过的页面打开的连接，无法直接投票<br><br>您可以点击右上角→查看公众号，关注公众号后，回复投票即可参与投票</p>
+
+    </div>    
+    <div class="hd">
+        <div class="logo-wrap">
+<span class="logo">
+    
+<a class="logo-btn" href="{Saivi::U('index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'id'=>$_GET['vid']))}">查看排行榜</a>
+</span>
+        </div>
+        <!-- <div class="sponsor"></div> -->
+    </div>
+    <div class='xiangkuang'><img src="{Saivi::RES}/images/xiangkuang.png"></div>
+    <div class="bd">
+        <div class="thumb-wrap" id="actorPhotoArea">
+            <span class="thumb">
+                <img class="thumb-img" id="actorPhoto" src="{Saivi:$data.startpicurl}" alt="选手照片">
+            </span>
+            
+        </div>
+        <div class="info-wrap">
+            <p class="info-item">姓名：{Saivi:$data.item}</p>
+            <p class="info-item">
+                <span>身高：{Saivi:$data.sex}</span>
+                <span>体重：{Saivi:$data.weight}</span>
+     
+            </p>
+            <p class="info-item">项目：{Saivi:$data.description}</p>
+            <p class="main-info">当前票数：<span id="voteNum">{Saivi:$data.vcount}</span></p>
+        </div>
+    <div class="click">
+        <button class="btn btn-large btn-success" id="click" style="margin-bottom:10px;">投我一票</button>
+
+        <a href="{Saivi::U('Wap/Baoming/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'id'=>2,'sgssz'=>$_GET['sgssz']))}">
+            <button class="btn btn-large btn-warning" style="margin-bottom:10px;">我要参加</button>
+            
+        </a>
+        
+        
+    </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(function(){
+            
+            
+            $('.name').css('top',10);
+
+            $('#click').click(function(){
+
+                var vid = '{Saivi:$_GET['vid']}';
+                var token = '{Saivi:$_GET['token']}';
+                var wecha_id = '{Saivi:$_GET['wecha_id']}';
+                var id = '{Saivi:$_GET['id']}';
+                var sgssz = '{Saivi:$_GET['sgssz']}';
+                if(!wecha_id){
+                    $('#cover').show();
+                    return false;
+                }
+                
+                $.ajax({
+                    type:'post',
+                    url:'{Saivi::U('vote')}',
+                    data:{vid:vid,id:id,token:token,wecha_id:wecha_id},
+                    dataType:'json',
+                    success:function(data){
+                        if(data.status == 1){
+                            if(confirm('你已经投过票了')){
+                                window.location.href="index.php?g=Wap&m=Vote&a=index&token="+token+"&wecha_id="+wecha_id+"&id="+vid+"&sgssz="+sgssz;
+                            }
+                        }
+
+                        if(data.status == 2){
+                            if(confirm('投票成功\n点击确定，立刻参加《中国好身材》大赛\n点击取消，查看最新排名')){
+                           
+                                window.location.href="index.php?g=Wap&m=Baoming&a=index&token="+token+"&wecha_id="+wecha_id+"&id=2&sgssz="+sgssz;
+                            }else{
+                                window.location.href="index.php?g=Wap&m=Vote&a=index&token="+token+"&wecha_id="+wecha_id+"&id="+vid+"&sgssz="+sgssz;
+                            }
+                            
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+
+    <script type="text/javascript">
+
+var imgUrl = "{saivi:$data.startpicurl}";
+        var lineLink = "{saivi:$Think.server.http_host}{Saivi::U('show',array('token'=>$_GET['token'],'id'=>$_GET['id'],'vid'=>$_GET['vid'],'sgssz'=>$_GET['sgssz']))}";
+        var descContent = "亲爱的，我在参加科美爱尔肤《中国\n好身材》大赛，请为我投上一票吧。";
+        var shareTitle = '{Saivi:$data.item}';
+        var appid = 'wxa84796a6ad7591fc';
+        
+         
+        function shareFriend() {
+            WeixinJSBridge.invoke('sendAppMessage',{
+                "appid": appid,
+                "img_url": imgUrl,
+                "img_width": "200",
+                "img_height": "200",
+                "link": lineLink,
+                "desc": descContent,
+                "title": shareTitle
+            }, function(res) {
+                //_report('send_msg', res.err_msg);
+            })
+        }
+        function shareTimeline() {
+            WeixinJSBridge.invoke('shareTimeline',{
+                "img_url": imgUrl,
+                "img_width": "200",
+                "img_height": "200",
+                "link": lineLink,
+                "desc": descContent,
+                "title": descContent
+            }, function(res) {
+                   //_report('timeline', res.err_msg);
+            });
+        }
+        function shareWeibo() {
+            WeixinJSBridge.invoke('shareWeibo',{
+                "content": descContent,
+                "url": lineLink,
+            }, function(res) {
+                //_report('weibo', res.err_msg);
+            });
+        }
+
+        
+        // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+            // 发送给好友
+            WeixinJSBridge.on('menu:share:appmessage', function(argv){
+                shareFriend();
+            });
+            // 分享到朋友圈
+            WeixinJSBridge.on('menu:share:timeline', function(argv){
+                shareTimeline();
+            });
+            // 分享到微博
+            WeixinJSBridge.on('menu:share:weibo', function(argv){
+                shareWeibo();
+            });
+        }, false);
+    </script>
+
+</body></html>

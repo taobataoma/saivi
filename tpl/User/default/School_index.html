@@ -1,0 +1,301 @@
+<include file="Public:head"/>
+<include file="School:menu"/>
+
+<div class="content">
+
+<div class="cLineB">
+  <h4>您的位置: 分类管理 >
+  <if condition="$type eq 'semester'">
+   学期管理|== <a href="{Saivi::U('School/index',array('token'=>$token ,'type'=>'semester'))}">学期管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token ,'type'=>'theclass'))}">班级管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'score'))}">成绩管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'subject'))}">科目管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'timeframe'))}">时段管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'week'))}">星期管理</a>
+  <elseif condition="$type eq 'theclass'"/>
+   班级管理 |== <a href="{Saivi::U('School/index',array('token'=>$token ,'type'=>'semester'))}">学期管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token ,'type'=>'theclass'))}">班级管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'score'))}">成绩管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'subject'))}">科目管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'timeframe'))}">时段管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'week'))}">星期管理</a>
+  <elseif condition="$type eq 'score'"/>
+  成绩管理|== <a href="{Saivi::U('School/index',array('token'=>$token ,'type'=>'semester'))}">学期管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token ,'type'=>'theclass'))}">班级管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'score'))}">成绩管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'subject'))}">科目管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'timeframe'))}">时段管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'week'))}">星期管理</a>
+  <elseif condition="$type eq 'subject'"/>
+  科目管理|== <a href="{Saivi::U('School/index',array('token'=>$token ,'type'=>'semester'))}">学期管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token ,'type'=>'theclass'))}">班级管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'score'))}">成绩管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'subject'))}">科目管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'timeframe'))}">时段管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'week'))}">星期管理</a>
+  <elseif condition="$type eq 'timeframe'"/>
+  时段管理|== <a href="{Saivi::U('School/index',array('token'=>$token ,'type'=>'semester'))}">学期管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token ,'type'=>'theclass'))}">班级管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'score'))}">成绩管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'subject'))}">科目管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'timeframe'))}">时段管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'week'))}">星期管理</a>
+  <elseif condition="$type eq 'week'"/>
+  星期管理|== <a href="{Saivi::U('School/index',array('token'=>$token ,'type'=>'semester'))}">学期管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token ,'type'=>'theclass'))}">班级管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'score'))}">成绩管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'subject'))}">科目管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'timeframe'))}">时段管理</a>||<a href="{Saivi::U('School/index',array('token'=>$token,'type'=>'week'))}">星期管理</a>
+  </if>
+   </h4>  <a href="javascript:window.location.reload();" class="btn btn-primary btn_submit  J_ajax_submit_btn right" style="margin-top:-27px">刷新</a>
+ </div>
+ <style>
+.cLine {
+    overflow: hidden;
+    padding: 5px 0;
+  color:#000000;
+}
+.alert {
+padding: 8px 35px 0 10px;
+text-shadow: none;
+-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+-moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+background-color: #f9edbe;
+border: 1px solid #f0c36d;
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;
+color: #333333;
+margin-top: 5px;
+}
+.alert p {
+margin: 0 0 10px;
+display: block;
+}
+.alert .bold{
+font-weight:bold;
+}
+ </style>
+<div class="cLine">
+    <div class="alert">
+    <p><span class="bold">使用方法：</span>
+    <if condition="$type eq 'semester'">
+   填写学期,如 2014第一学期,2014第二学期,2015第一学期....<br/>
+   <strong><font color='red'>特别提醒: 当你删除该学期项的时候,该学期项下相关的所有数据都会被删除,请谨慎操作!以免丢失数据!</font></strong>
+  <elseif condition="$type eq 'theclass'"/>
+   填写班级,如 一年级,二年级,三年级....
+  <elseif condition="$type eq 'score'"/>
+   填写成绩分类,如 第一期,第二期,第三期....
+  <elseif condition="$type eq 'subject'"/>
+   填写科目,如 语文,数学,英语....
+  <elseif condition="$type eq 'timeframe'"/>
+   填写时段,如 09:00-09:45 , 10:00-10:45 , 11:00-11:45....
+  <elseif condition="$type eq 'week'"/>
+   填写班级,如 星期一,星期二,星期三....
+  </if>
+    </p>
+    </div>
+</div>
+
+<div class="msgWrap bgfc" style="margin-top:-10px;">
+      <form class="form" method="post" action=""  enctype="multipart/form-data">
+        <div class="bdrcontent">
+<div id="div_ptype">
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+
+
+<script type="text/javascript">
+
+
+function addDeltbody(i) {
+
+    if (i != 1) {
+       document.getElementById("div_add_del_" + i).style.display = "none";
+       document.getElementById("add" + i).style.display = "";
+
+    }
+}
+function addTabody(i) {
+
+     document.getElementById('div_add_del_' + i).style.display = "";
+     document.getElementById('add' + i).style.display = "none";
+     document.getElementById("addssort_" + i).value = 1;
+}
+
+function delrow(obj, tbody,objid) {
+   removeElement(tbody);
+   var obj = {sid:objid}
+   $.post("{Saivi::U('School/del_item',array('deltype'=>$type))}", obj,function(data) {if(data.errno==1)alert('删除成功');},"json");
+}
+
+function removeElement(obj){
+  var obj = document.getElementById(obj);
+  var _parenElment = obj.parentNode;
+  if(_parenElment){
+    _parenElment.removeChild(obj);
+  }
+}
+
+
+
+  </script>
+<tbody>
+<tr>
+
+    <td width="260">名称</td>
+    <td width="50">排序</td>
+    <td class="norightborder">操作</td>
+</tr>
+</tbody>
+
+
+<if condition="$semester neq ''">
+<volist name="semester" id="ivo">
+<tbody id="div_add_del_{Saivi:$i+500}" name="div_add_del">
+<tr>
+    <input type="hidden" name="add[sid][]"   value="{Saivi:$ivo.sid}" style="width:20px;">
+    <td width="120"><input type="text" name="add[sname][]" value="{Saivi:$ivo.sname}" class="px" style="width:120px;"></td>
+    <td width="20"><input type="text" name="add[ssort][]" value="{Saivi:$ivo.ssort}" style="width:20px;" class="px"></td>
+    <td width="50" class="norightborder"><a href="javascript:;" onclick="delrow(this, 'div_add_del_{Saivi:$i+500}',{Saivi:$ivo.sid});">删除</a></td>
+</tr>
+ </tbody>
+</volist>
+ </if>
+
+
+<tbody id="div_add_del_1" name="div_add_del">
+    <tr>
+     <input type="hidden" name="add[sid][]" readonly disabled="disabled" value="" style="width:20px;">
+        <td width="120">
+            <input type="text" name="add[sname][]" value="" placeholder="请填写选项标题" class="px" style="width:120px;">
+        </td>
+        <td>
+            <input type="text" name="add[ssort][]" id="addssort_1" value="1" style="width:20px;" class="px">
+        </td>
+        <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(1)">删除</a>
+          <a href="javascript:;" id="add2" onclick="addTabody(2)">添加</a></td>
+    </tr>
+</tbody>
+
+<tbody id="div_add_del_2" name="div_add_del" style="display:none">
+    <tr>
+     <input type="hidden" name="add[sid][]" readonly disabled="disabled" value="" style="width:20px;">
+        <td width="120">
+            <input type="text" name="add[sname][]" value="" placeholder="请填写选项标题" class="px" style="width:120px;">
+        </td>
+        <td>
+            <input type="text" name="add[ssort][]" value=""  id="addssort_2"  style="width:20px;" class="px">
+        </td>
+        <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(2)">删除</a>
+          <a href="javascript:;" id="add3" onclick="addTabody(3)">添加</a></td>
+    </tr>
+</tbody>
+
+<tbody id="div_add_del_3" name="div_add_del" style="display:none">
+    <tr>
+      <input type="hidden" name="add[sid][]" readonly disabled="disabled" value="" style="width:50px;">
+        <td width="120">
+            <input type="text" name="add[sname][]" value="" placeholder="请填写选项标题" class="px" style="width:120px;">
+        </td>
+        <td>
+            <input type="text" name="add[ssort][]" value="" id="addssort_3" style="width:20px;" class="px">
+        </td>
+
+        <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(3)">删除</a>
+          <a href="javascript:;" id="add4" onclick="addTabody(4)">添加</a></td>
+    </tr>
+</tbody>
+
+
+<tbody id="div_add_del_4" name="div_add_del" style="display:none">
+    <tr>
+      <input type="hidden" name="add[sid][]" readonly disabled="disabled" value="" style="width:50px;">
+        <td width="120">
+            <input type="text" name="add[sname][]" placeholder="请填写选项标题" value="" class="px" style="width:120px;">
+        </td>
+        <td>
+            <input type="text" name="add[ssort][]" value="" id="addssort_4" style="width:20px;" class="px">
+        </td>
+        <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(4)">删除</a>
+          <a href="javascript:;" id="add5" onclick="addTabody(5)">添加</a></td>
+    </tr>
+</tbody>
+
+
+<tbody id="div_add_del_5" name="div_add_del" style="display:none">
+    <tr>
+     <input type="hidden" name="add[sid][]" readonly disabled="disabled" value="" style="width:50px;">
+        <td width="120">
+            <input type="text" name="add[sname][]" value="" placeholder="请填写选项标题" class="px" style="width:120px;">
+        </td>
+        <td>
+            <input type="text" name="add[ssort][]" value="" id="addssort_5" style="width:20px;" class="px">
+        </td>
+        <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(5)">删除</a>
+          <a href="javascript:;" id="add6" onclick="addTabody(6)">添加</a></td>
+    </tr>
+</tbody>
+
+<tbody id="div_add_del_6" name="div_add_del" style="display:none">
+    <tr>
+     <input type="hidden" name="add[sid][]" readonly disabled="disabled" value="" style="width:50px;">
+        <td width="120">
+            <input type="text" name="add[sname][]" value="" placeholder="请填写选项标题" class="px" style="width:120px;">
+        </td>
+        <td>
+            <input type="text" name="add[ssort][]" value="" id="addssort_6" style="width:20px;" class="px">
+        </td>
+        <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(6)">删除</a>
+          <a href="javascript:;" id="add7" onclick="addTabody(7)">添加</a></td>
+    </tr>
+</tbody>
+
+<tbody id="div_add_del_7" name="div_add_del" style="display:none">
+    <tr>
+     <input type="hidden" name="add[sid][]" readonly disabled="disabled" value="" style="width:50px;">
+        <td width="120">
+            <input type="text" name="add[sname][]" value="" placeholder="请填写选项标题" class="px" style="width:120px;">
+        </td>
+        <td>
+            <input type="text" name="add[ssort][]" value="" id="addssort_7" style="width:20px;" class="px">
+        </td>
+         <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(7)">删除</a>
+          <a href="javascript:;" id="add8" onclick="addTabody(8)">添加</a></td>
+    </tr>
+</tbody>
+<tbody id="div_add_del_8" name="div_add_del" style="display:none">
+    <tr>
+     <input type="hidden" name="add[sid][]" readonly disabled="disabled" value="" style="width:50px;">
+        <td width="120">
+            <input type="text" name="add[sname][]" value="" placeholder="请填写选项标题" class="px" style="width:120px;">
+        </td>
+        <td>
+            <input type="text" name="add[ssort][]" value="" id="addssort_8" style="width:20px;" class="px">
+        </td>
+         <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(8)">删除</a>
+          <a href="javascript:;" id="add9" onclick="addTabody(9)">添加</a></td>
+    </tr>
+</tbody>
+<tbody id="div_add_del_9" name="div_add_del" style="display:none">
+    <tr>
+     <input type="hidden" name="add[sid][]" readonly disabled="disabled" value="" style="width:50px;">
+        <td width="120">
+            <input type="text" name="add[sname][]" value="" placeholder="请填写选项标题" class="px" style="width:120px;">
+        </td>
+        <td>
+            <input type="text" name="add[ssort][]" value="" id="addssort_9" style="width:20px;" class="px">
+        </td>
+         <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(9)">删除</a>
+          <a href="javascript:;" id="add10" onclick="addTabody(10)">添加</a></td>
+    </tr>
+</tbody>
+
+<tbody id="div_add_del_10" name="div_add_del" style="display:none">
+    <tr>
+     <input type="hidden" name="add[sid][]" readonly disabled="disabled" value="" style="width:50px;">
+        <td width="120">
+            <input type="text" name="add[sname][]" value="" placeholder="请填写选项标题" class="px" style="width:120px;">
+        </td>
+        <td>
+            <input type="text" name="add[ssort][]" value=""  id="addssort_10" style="width:20px;" class="px">
+        </td>
+          <td width="50" class="norightborder"><a href="javascript:;" onclick="addDeltbody(10)">删除</a>
+          </td>
+    </tr>
+</tbody>
+<tbody>
+        <tr>
+            <td colspan="4" class="norightborder">
+                添加顶级分类
+        </td></tr>
+  </tbody>
+  <tbody>
+       <tr>
+        <td>
+        <button type="submit" name="button" class="btn btn-primary btn_submit  J_ajax_submit_btn">保存</button>
+       
+        </td>
+        </tr>
+  </tbody>
+</table>
+
+</div>
+</div>
+    </form>
+  </div>
+
+        </div>
+
+<include file="Public:footer"/>

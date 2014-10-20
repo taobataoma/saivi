@@ -1,0 +1,36 @@
+<div style="height:40px;"></div>
+<div class="footermenu">
+    <ul>
+    	<li>
+            <a <php>if($infoType=='memberCardHome'){</php>class="active"<php>}</php> href="/index.php?g=Wap&m=Card&a=index&token={Saivi:$token}&wecha_id={Saivi:$wecha_id}">
+           <img src="{Saivi::RES}/card/images/home.png">
+            <p>会员卡</p>
+            </a>
+        </li>
+        <li>
+            <a <php>if($infoType=='card'){</php>class="active"<php>}</php> href="/index.php?g=Wap&m=Card&a=card&token={Saivi:$token}&cardid={Saivi:$thisCard.id}&wecha_id={Saivi:$wecha_id}">
+           <img src="{Saivi::RES}/card/images/c.png">
+            <p>此卡首页</p>
+            </a>
+        </li>
+        <li>
+            <a <php>if($infoType=='privelege'){</php>class="active"<php>}</php> href="/index.php?g=Wap&m=Card&a=previlege&token={Saivi:$token}&wecha_id={Saivi:$wecha_id}&cardid={Saivi:$thisCard.id}">
+           <img src="{Saivi::RES}/card/images/prev.png">
+            <p>特权</p>
+            </a>
+        </li>
+        <li>
+            <a <php>if($infoType=='coupon'){</php>class="active"<php>}</php> href="/index.php?g=Wap&m=Card&a=coupon&token={Saivi:$token}&wecha_id={Saivi:$wecha_id}&cardid={Saivi:$thisCard.id}">
+           <img src="{Saivi::RES}/card/images/coupon.png">
+            <p>优惠券</p>
+            </a>
+        </li>
+        <li>
+            <a <php>if($infoType=='integral'){</php>class="active"<php>}</php> href="/index.php?g=Wap&m=Card&a=integral&token={Saivi:$token}&wecha_id={Saivi:$wecha_id}&cardid={Saivi:$thisCard.id}">
+           <img src="{Saivi::RES}/card/images/intergral.png">
+            <p>兑换</p>
+            </a>
+        </li>
+      
+    </ul>
+</div>

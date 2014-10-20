@@ -1,0 +1,560 @@
+<!DOCTYPE html> 
+
+<html lang="zh-CN">
+
+<head> 
+
+<title>微生活商盟</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=no,user-scalable=no">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<meta name="format-detection" content="telephone=no">
+
+<link rel="stylesheet" href="{Saivi::RES}/weilive/jquery.mobile-1.1.0.min.CSS" />
+
+<link rel="stylesheet" href="{Saivi::RES}/weilive/My.jquery.mobile.CSS" />
+
+<script src="{Saivi::RES}/weilive/jquery-1.7.1.min.JS"></script>
+
+<script src="{Saivi::RES}/weilive/jquery.mobile-1.1.0.min.JS"></script>
+
+<link rel="stylesheet" href="{Saivi::RES}/weilive/flexslider.CSS" type="text/weilive" media="screen" />
+
+<script src="{Saivi::RES}/weilive/jquery.flexslider-min.JS"></script>
+
+<!-- Hook up the FlexSlider -->
+
+<script type="text/javascript">
+
+$(window).load(function() {
+
+});	
+
+</script>
+
+
+
+<script language=JavaScript>
+
+function chkif_weixin()  
+
+{  
+
+if(typeof(WeixinweiliveBridge) =="undefined"){
+
+my_header.style.display='block'; 
+
+}
+
+}
+
+</script>
+
+
+
+
+
+<script language=JavaScript>
+
+function chkif_weixin()  
+
+{  
+
+if(typeof(WeixinweiliveBridge) =="undefined"){
+
+my_header.style.display='block';
+
+}
+
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+</head>
+
+<body onload="chkif_weixin()"> 
+
+
+
+<!-- ALLPAGE -->
+
+<div data-role="page" class="type-home" id="index">
+
+
+
+<!-- header -->
+
+<div data-role="header" data-position="inline" data-theme="x" id="my_header" style="display:none">
+
+<h1 style="font-size:20px;margin:9px 0px 8px 0px !important;">微生活商盟</h1>
+
+</div> 
+
+<!-- /header -->
+
+
+
+
+
+
+
+
+
+<!-- content -->
+
+<div data-role="content">
+
+
+
+
+
+<div class="content-primary">
+
+
+
+
+
+<div class="flexslider" id="flexslider">
+
+<ul class="slides">
+
+
+
+
+
+<!--广告切换-->
+
+
+
+<?php
+
+		$list1 = findList("member_business_ad","","addtime",3);
+
+		foreach($list1 as $v){
+
+			echo '
+
+
+
+<li><a rel="external" href="'.$v['url'].'"><img src="'.$v['img'].'" width="100%" height="150"></a>
+
+<p class="flex-caption"><span class="title"></span></p>
+
+</li>';
+
+		}
+
+	?>
+
+	<!--END 广告切换	-->
+
+
+
+</ul>
+
+</div>
+
+
+
+
+
+<script type="text/javascript">
+
+  $('#flexslider').flexslider();
+
+</script>
+
+
+
+
+
+
+
+<a rel="external" href="showhome_wapnews91122.html"><img src="1.jpg" width="100%" height="60"></a>
+
+
+
+
+
+
+
+<!--
+
+<link href="http://www.lbaix.com/wap/weilive/cp_style20130306.weilive" rel="stylesheet" type="text/weilive">
+
+<script src="http://www.lbaix.com/static/weilive/index.weilive" type="text/javascript"></script>
+
+<script type="text/javascript" src="http://www.lbaix.com/wap/weilive/lazyload-20121210.weilive"></script>
+
+<script type="text/javascript" src="http://m.lbaix.com/weilive/category.weilive"></script>
+
+<div class="content">
+
+    <div class="mall-cate-box">
+
+      <div id="fullbg" style="display: none;"></div>
+
+      <ul class="mall-cate">
+
+        <li><a href="javascript:void(0);" id="show_categories" class="cate21">全部地区<em></em></a></li>
+
+        <li><a href="javascript:void(0);" id="show_district" class="cate31">全部星级<em></em></a></li>
+
+        <li><a href="javascript:void(0);" id="show_sort" class="cate41">全部桌数<em></em></a></li>
+
+      </ul>
+
+    
+
+      <div class="nav-item shadow show_categories" style="display: none;">
+
+        <div class="nav-item-close"><span class="close-dialog"><i></i></span></div>
+
+        
+
+		
+
+		
+
+		<dl class="nav-item-dl">
+
+          <dt class="cat1_weilive"> <a href="index.php?gid=0&sid=0&aid=0" style="border-top:none;" class="cur">青羊区</a> <a href="index.php?gid=0&sid=0&aid=0&by=31" class="">锦江区<em class="g"></em></a> <a href="index.php?gid=0&sid=0&aid=0&by=11" class="">金牛区<em class="g"></em></a> <a href="index.php?gid=0&sid=0&aid=0&by=21" class="">成华区<em class="g"></em></a> <a href="index.php?gid=0&sid=0&aid=0&by=22" style="border-bottom:none;" class="">武候区<em class="g"></em></a> 
+
+		   <a href="index.php?gid=0&sid=0&aid=0&by=22" style="border-bottom:none;" class="">青白江区<em class="g"></em></a> 
+
+		    <a href="index.php?gid=0&sid=0&aid=0&by=22" style="border-bottom:none;" class="">龙泉驿区<em class="g"></em></a> 
+
+			 <a href="index.php?gid=0&sid=0&aid=0&by=22" style="border-bottom:none;" class="">新都区<em class="g"></em></a> 
+
+			  <a href="index.php?gid=0&sid=0&aid=0&by=22" style="border-bottom:none;" class="">温江区<em class="g"></em></a> 
+
+			  <a href="index.php?gid=0&sid=0&aid=0&by=22" style="border-bottom:none;" class="">周边近郊<em class="g"></em></a> 
+
+		  
+
+		  
+
+		  
+
+		  
+
+		  </dt>
+
+          <dd></dd>
+
+        </dl>
+
+
+
+
+
+      </div>
+
+ 
+
+      
+
+
+
+      <div class="nav-item shadow show_district" style="display:none;">
+
+        <div class="nav-item-close"><span class="close-dialog"><i></i></span></div>
+
+         <dl class="nav-item-dl">
+
+          <dt class="cat1_weilive"> <a href="index.php?gid=0&sid=0&aid=0" style="border-top:none;" class="cur">5星级酒店</a> <a href="index.php?gid=0&sid=0&aid=0&by=31" class="">最新发布<em class="g"></em></a> <a href="index.php?gid=0&sid=0&aid=0&by=11" class="">3星级酒店<em class="d"></em></a> <a href="index.php?gid=0&sid=0&aid=0&by=21" class="">4星级酒店<em class="g"></em></a> <a href="index.php?gid=0&sid=0&aid=0&by=22" style="border-bottom:none;" class="">酒家酒楼<em class="g"></em></a>  <a href="index.php?gid=0&sid=0&aid=0&by=22" style="border-bottom:none;" class="">田园农家<em class="g"></em></a> </dt>
+
+          <dd></dd>
+
+        </dl>
+
+      </div>
+
+      
+
+      
+
+
+
+ 
+
+      <div class="nav-item shadow show_sort" style="display:none;"> 
+
+        <div class="nav-item-close"><span class="close-dialog"><i></i></span></div>
+
+      
+
+        <dl class="nav-item-dl">
+
+          <dt class="cat1_weilive"> <a href="index.php?gid=0&sid=0&aid=0" style="border-top:none;" class="cur">10以下</a> <a href="index.php?gid=0&sid=0&aid=0&by=31" class="">10-20桌<em class="g"></em></a> <a href="index.php?gid=0&sid=0&aid=0&by=11" class="">20-30桌<em class="g"></em></a> <a href="index.php?gid=0&sid=0&aid=0&by=21" class="">30-50桌<em class="g"></em></a> <a href="index.php?gid=0&sid=0&aid=0&by=22" style="border-bottom:none;" class="">50桌以上<em class="g"></em></a> </dt>
+
+          <dd></dd>
+
+        </dl>
+
+      </div>
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+ <!--排序内容结束--> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--搜索-->
+
+	<form action="{Saivi::U('Weilive/search',array('token'=>$_GET['token']))}" method="post">
+
+		<table>
+
+			<tr >
+
+				<td  width=25%>
+
+					区域：
+
+					<select name="flag_q">
+
+						<option selected="" value="1">青羊区</option>
+
+						<option value="2">锦江区</option>
+
+						<option value="3">金牛区</option>
+
+						<option value="4">成华区</option>
+
+						<option value="5">武候区</option>
+
+						<option value="6">青白江区</option>
+
+						<option value="7">龙泉驿区</option>
+
+						<option value="8">新都区</option>
+
+						<option value="9">温江区</option>
+
+						<option value="0">周边近郊</option>
+
+					</select>
+
+				</td>
+
+
+
+				<td  width=25%>
+
+					星级：
+
+					<select name="flag_x">
+
+						<option selected="" value="5">5星级酒店</option>
+
+						<option value="4">4星级酒店</option>
+
+						<option value="3">3星级酒店</option>
+
+						<option value="2">酒家酒楼</option>
+
+						<option value="1">田园农家乐</option>
+
+						<option value="0">特色场地</option>
+
+					</select>
+
+				</td>
+
+
+
+				<td  width=25%>
+
+					桌数：
+
+					<select name="flag_z">
+
+						<option selected="" value="0">10以下</option>
+
+						<option value="1">10-20桌</option>
+
+						<option value="2">20-30桌</option>
+
+						<option value="3">30-50桌</option>
+
+						<option value="4">50桌以上</option>
+
+					</select>
+
+				</td>
+
+
+
+				<td  width=25%>
+
+					<input type="submit" name="submit" value="提交">
+
+				</td>
+
+			</tr>
+
+		</table>
+
+	</form>
+
+ 
+
+ 
+
+<!--END搜索-->
+
+
+
+
+
+
+
+
+
+<div style="width:100%;padding-left:5px;line-height:30px;height:30px;background-color:#cbcac8;text-align:left;">
+
+<h1 class="ui-li-heading">婚宴场地商家<span style="float:right;padding-right:15px;"><a href="liebiao.html">更多</a></span></h1>
+
+</div>
+
+
+
+<!--icon list start-->
+
+<div class="wap-index-table0">
+
+
+
+<volist name="list" id="vo">
+
+<table border='0' cellpadding='0' cellspacing='0' align=center class='table_iconlist'>
+
+
+
+<?php $tmps = findList("Member_business","catid=".$vo['id']);
+
+				foreach($tmps as $value){
+
+					echo "<tr>
+
+<td width=25%><a rel='external' href='/index.php?g=Wap&m=Weilive&a=info&token={$value['token']}&wecha_id={$_GET['wecha_id']}&id={$value['id']}'><img src='{$value['logo']}' width='100' height='80'></a></td>
+
+
+
+</tr>
+
+
+
+<tr>
+
+<td height=18><a rel='external' href='/index.php?g=Wap&m=Weilive&a=info&token={$value['token']}&wecha_id={$_GET['wecha_id']}&id={$value['id']}'><font color=#545454>{$value['name']}</font></a></td>
+
+
+
+</tr>";
+
+				}
+
+			?>
+
+
+
+</volist>
+
+</table>
+
+
+
+</div>
+
+<!--icon list --end-->
+
+
+
+<div style="width:100%;padding-left:5px;line-height:20px;height:20px;text-align:CENTER;">
+
+微懒人 版权所有 © 2013-2014
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- footer -->
+
+<div data-role="footer" data-theme="a">
+
+<h4> <a href="tel:027-888888888">免费咨询：027-888888888</a></h4>
+
+</div>
+
+
+
+
+
+</body>
+
+</html>
+

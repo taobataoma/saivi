@@ -1,0 +1,134 @@
+<include file="Public:head"/> 
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+
+<div class="content"   >
+<include file="Public:hangye"/>
+    <h4>套餐信息 ({Saivi:$page} ) </h4>
+
+	<div class="tab">
+
+
+		<ul>
+
+		<li class="tabli" id="tab2"><a href="{Saivi::U('Huisuo/index',array('token'=>$token))}">会所管理</a></li>
+          <li class="tabli" id="tab2"><a href="{Saivi::U('Huisuo/photo_index',array('token'=>$token))}">会所相册</a></li>
+
+		<li class="tabli" id="tab2"><a href="{Saivi::U('Huisuo/infos',array('token'=>$token,'pid'=>$set['id']))}">订单管理</a></li>
+
+		<li class="current tabli" id="tab0"><a href="{Saivi::U('Huisuo/setcin',array('token'=>$token,'pid'=>$set['id']))}">套餐设置</a></li>
+
+		<li class="tabli" id="tab2"><a href="{Saivi::U('Huisuo/setinfo',array('token'=>$token,'pid'=>$set['id']))}">表单设置</a></li>
+
+		</ul>
+
+	</div>
+
+<div class="searchbar right">
+
+<form method="post" action="">
+
+<input type="text" id="msgSearchInput" class="txt left" placeholder="输入关键词搜索" name="searchkey" value="{Saivi:$key}">
+
+<input type="submit" value="搜索" id="msgSearchBtn" href="" class="btnGrayS" title="搜索">
+
+</form>
+
+</div>
+
+<div class="clr"></div>
+
+
+
+
+
+<div class="cLine">
+
+<div class="">
+
+<a href="{Saivi::U($type.'/addcin',array('id'=>$set['id'],'token'=>$token))}" title="添加" class="btn btn-primary btn_submit  J_ajax_submit_btn"><img src="{Saivi::RES}/images/product/add.png"  class="vm">添加</a>
+<a href="{Saivi::U($type.'/index',array('token'=>$token))}" class="right btn btn-primary btn_submit  J_ajax_submit_btn" style="">返回</a> 
+
+</div>
+
+<div class="clr"></div>
+
+</div>
+
+<div class="msgWrap">
+
+<form method="post" action="" id="info">
+
+<input name="delall" type="hidden" value="">
+
+<input name="wxid" type="hidden" value="">
+
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+
+<thead>
+
+<tr>
+
+<th width="140">类型</th>
+
+<th width="160">原价</th>
+
+<th width="140">优惠价</th>
+
+<th width="250">简要说明</th>
+
+<th width="180" class="norightborder">操作</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr></tr>
+
+<volist name="data" id="item"> 
+
+<tr>
+
+<td>{Saivi:$item.name}</td>
+
+<td>{Saivi:$item.yuanjia}</td>
+
+<td>{Saivi:$item.youhui}</td>
+
+<td>{Saivi:$item.memo}</td> 
+
+
+
+<td class="norightborder"><a href="{Saivi::U($type.'/updatecin',array('aid'=>$item['pid'],'id'=>$item['id'],'token'=>$token))}">编辑</a>&nbsp;&nbsp;<a href="{Saivi::U($type.'/delcin',array('aid'=>$item['pid'],'id'=>$item['id'],'token'=>$token))}">删除</a></td>
+
+</tr>
+
+</volist>
+
+</tbody>
+
+</table>
+
+</form>
+
+
+
+</div>
+
+<div class="cLine">
+
+<div class="pageNavigator right">
+
+<div class="pages">{Saivi:$page}</div>
+
+</div>
+
+<div class="clr"></div>
+
+</div>
+
+</div></div>
+
+<include file="Public:footer"/>

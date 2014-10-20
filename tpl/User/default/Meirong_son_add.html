@@ -1,0 +1,49 @@
+<include file="Public:head"/>
+<include file="Meirong:menu"/>
+<div class="content">
+
+<div class="cLineB">
+  <h4>添加美容门店 </h4><a href="javascript:history.go(-1);return false;" class="right btnGrayS vm" style="margin-top:-27px">返回</a>
+ </div>
+         
+    <div class="msgWrap bgfc">
+	  <form class="form" method="post" action="" >	 
+		<table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tbody>
+				<tr>
+				  <th valign="top"><span class="red">*</span>美容门店名称：</th>
+				  <td>
+				  <input type="hidden" name="addtype" value="meirong">
+					 <input type="text" id="title" name="title" value="{Saivi:$son['title']}" class="input-large px" data-rule-required="true" data-rule-maxlength="20">
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">尽量简单，不要超过20字</span></td>
+				</tr>
+				<tr>
+					<th width="120">显示顺序</th>
+					<td> <input type="text" id="sort" name="sort" value="{Saivi:$son['sort']|default=1}" class="input-mini px" data-rule-required="true" data-rule-number="true">
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">数值越大越靠前</span></td>
+				</tr>
+				<tr>
+					<th>美容门店介绍：</th>
+					<td><textarea class="px" id="description" name="description" style="width:560px;height:75px" data-rule-maxlength="150" placeholder="可不填">{Saivi:$son['description']}</textarea></td>
+				</tr>
+				<th>&nbsp;</th>
+				  <if condition="$son['id'] neq ''">
+                                    <input type="hidden" name="id" value="{Saivi:$son['id']}" />
+                                    
+                                    </if>
+                                    <input type="hidden" name="pid" value="{Saivi:$pid}">
+					<td>
+						<button type="submit" name="button" class="btnGreen">保存</button>
+						<a href="javascript:history.go(-1);" class="btnGray vm">取消</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+  </div> 
+ 
+  
+        </div>
+<include file="Public:footer"/>

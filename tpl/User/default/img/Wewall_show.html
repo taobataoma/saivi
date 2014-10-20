@@ -1,0 +1,463 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<title>{Saivi:$info.acttitle} 启东飞海科技 - 微信营销运营专家</title>
+
+<style>
+
+div,body,h2,li,p { margin:0; padding:0;}
+
+body{ background: <if condition="$info['background'] eq ''"> url("/tpl/User/default/img/wewallbg.jpg") no-repeat center top<else />url("{Saivi:$info.background}") no-repeat center top</if>;}
+
+.page { width:900px; margin:0 auto;}
+
+.box { width:100%; height:540px; position:relative; overflow:hidden; }
+
+#box {  position:absolute; left:0; bottom:0}
+
+#lottery { display:none; width:100%; margin:0 auto; border:1px #999 solid; padding-top:10px; background:#FFF; margin-top:20px}
+
+h2 { text-align:center; font-size:20px;}
+
+#box .boxs { background:#fff; border:1px #F00 solid; font-family:'微软雅黑'; color:#C60; font-size:70px; width:850px; padding:0 23px; margin-top:10px; line-height:160px; height:160px; overflow:hidden}
+
+.lbox { width:100%; height:100px; text-align:center;}
+
+.lbox input{ display:inline-block; width:25%; height:80px; margin-top:10px;}
+
+#codebox { width:100%; height:200px; font-size:160px; line-height:190px; color:#000; text-align:center; cursor:pointer}
+
+#showbonu { width:75%; clear:both; margin:20px auto;}
+
+#showbonu .leftb { width:40%; float:left; margin-left:20px; font-size:40px; text-align:center}
+
+#showbonu .rightb { width:50%; float:left;font-size:40px; text-align:center}
+
+.clearb { clear:both; width:100%; float:none}
+
+.logo { width:100%; clear:both; margin-top:20px;}
+
+.logo img { display:block; float:left;}
+
+.logo h2 { text-align:center; font-size:60px; padding-top:10px; color:#fff; font-family:'微软雅黑'}
+
+.btmbox { text-align:center;}
+
+.btmbox a { display:inline-block; width:50px; height:50px; color:#000; border:1px solid #999; background:#fff; text-align:center; line-height:50px; font-size:12px; font-family:'微软雅黑'; text-decoration:none;margin:auto 10px}
+
+.btmbox #sa { float:left; display:block}
+<!--头部-->
+.head {
+	background: rgba(255, 255, 255, .9);
+	margin: 10px;
+}
+.head_info {
+	display: inline-block;
+	float: left;
+	background: rgba(215, 41, 80, .8);
+	color: white;
+}
+.head h1 {
+	padding: 20px;
+	margin: 0;
+}
+.head_flag {
+	float: left;
+	margin: 0;
+	width: 0;
+	height: 0;
+	padding: 0;
+	border: 0;
+	border-top: 20px rgba(215, 41, 80, .8) solid;
+	border-right: 20px rgba(215, 41, 80, 0) solid;
+	border-left: 0;
+}
+.head_right > h1, .head_right > h2, .head_right > h3 {
+	display: inline-block;
+	padding: 20px 0;
+	margin: 0 6px;
+	line-height: 1.2em;
+	color: #444;
+}
+.head_right > h3 > span {
+	font-size: 1.3em;
+	margin: 0 6px;
+	color: black;
+}
+.clear {
+	clear: both;
+}
+<!--end-->
+
+</style>
+
+<script type="text/javascript" src="{Saivi::RES}/js/jquery.js"></script>
+
+<script type="text/javascript" src="{Saivi::RES}/js/jquery.easing.min.js"></script>
+
+<script>
+
+var yuni,hoko;//计时器
+
+var showtime={Saivi:$info.showtime}*1000;//抓取数据间隔
+
+var word=Array();//留言堆栈
+
+var sncodeArr=Array();//抽奖码堆栈
+
+var bonuOne={Saivi:$info.bonu1};//一等奖数量
+
+var bonuTwo={Saivi:$info.bonu2};//二等奖数量
+
+var bonuThree={Saivi:$info.bonu3}; //三等奖数量
+
+var lflag=true; // hoko计时器判定
+
+function getRamCo(){
+
+	return ('00000'+(Math.random()*0x1000000<<0).toString(16)).substr(-6);
+
+	}
+
+function addWord(){
+
+	//console.log(word+"-----"+word.length+"------"+a);
+
+	if(word.length>0){
+
+	  height=$(".box:last").get(0).offsetHeight+10;
+
+	  if(len(word[word.length-1])>26){
+
+		  fontSize="font-size:50px; line-height:80px;";
+
+		  }
+
+	  else{
+
+		  fontSize="";
+
+		  }
+
+	  $('#box').prepend("<div class='boxs' style='"+fontSize+" '>"+word.pop()+"</div>")
+
+	  $('.boxs:last').animate({height:0},{easing: 'easeOutBounce',duration: 500,complete:function(){$(".boxs:last").remove();}});
+
+	}
+
+	setTimeout(addWord,3000);
+
+	}
+
+function len(s) { 
+
+	var l = 0; 
+
+	var a = s.split(""); 
+
+	for (var i=0;i<a.length;i++) { 
+
+		if (a[i].charCodeAt(0)<299) { 
+
+		l++; 
+
+		} else { 
+
+			l+=2; 
+
+		} 
+
+	} 
+
+	return l; 
+
+}
+
+function getMessage(){ 
+
+    $.ajax({ 
+
+    type: "post", 
+
+    url : "{Saivi::U('Wewall/sentMessage')}",
+
+    dataType:'json', 
+
+    data: 'token={Saivi:$info.token}&uid={Saivi:$info.id}',
+
+    success: function(json){
+
+		if(json!=null){
+
+	     	for(i=0;i<json.length;i++){
+
+				 word.push(json[0]['content'])
+
+			 }
+
+		  }
+
+        }  
+
+	  });	 
+
+	yuni=setTimeout(getMessage,showtime) ;	 
+
+} 
+
+function parseGame(){
+
+	 clearTimeout(yuni);
+
+	 $.ajax({
+
+		 type: "post",
+
+		 url : "{Saivi::U('Wewall/contralGame')}",
+
+		 dataType:'json', 
+
+		 data: 'token={Saivi:$info.token}&id={Saivi:$info.id}&act=parse',
+
+		 success: function(json){ 
+
+		   if(json!=null){
+
+	     	for(i=0;i<json.length;i++){
+
+				 sncodeArr.push(json[i]['sncode']);
+
+			 }
+
+		   }
+
+		 }
+
+	 });	
+
+	}
+
+function continueGame(){
+
+	$.ajax({type: "post",url : "{Saivi::U('Wewall/contralGame')}", data: 'token={Saivi:$info.token}&id={Saivi:$info.id}&act=go'});
+
+	sncodeArr=Array();
+
+	getMessage();
+
+	$("#box").show();
+
+	$("#lottery").hide();
+
+}
+
+function lottery(){
+
+	if(sncodeArr.length==0){alert("未发现抽奖数据，可能游戏未暂停或无人参与"); return false;}
+
+	$("#box").hide();
+
+	$("#lottery").show();
+
+	}
+
+function randNum(min,max){
+
+    return Math.floor(min+Math.random()*(max-min));
+
+}
+
+function goLottery(num){
+
+	if (num==1){
+
+		if(bonuOne==0){ alert("一等奖名额已抽取完毕"); return false;}
+
+		bonuOne-=1;
+
+		}
+
+	else if(num==2){
+
+		if(bonuTwo==0){ alert("二等奖名额已抽取完毕"); return false;}
+
+		bonuTwo-=1;
+
+		}
+
+	else if(num==3){
+
+		if(bonuThree==0){ alert("三等奖名额已抽取完毕"); return false;}
+
+		bonuThree-=1;
+
+		}
+
+	var lo=function(){
+
+		ko=randNum(0,sncodeArr.length);
+
+		$("#codebox").html(sncodeArr[ko]);
+
+		hoko=setTimeout(lo,50);
+
+		}
+
+	if(lflag==true){
+
+		$("#codebox").attr("rank",num)
+
+		lo();
+
+		lflag=false;
+
+	}
+
+}
+
+function sentMark(){
+
+	coli=$("#codebox").attr("rank");
+
+	coll=$("#codebox").html();
+
+	$.ajax({type: "post",url : "{Saivi::U('Wewall/savemark')}", data: 'token={Saivi:$info.token}&id={Saivi:$info.id}&num='+coli+'&sncode='+coll+''});
+
+	for(i=0;i<sncodeArr.length;i++){
+
+		if(sncodeArr[i]==coll){
+
+			sncodeArr.splice(i,1)
+
+			}
+
+		}
+
+	$("#showbonu").prepend('<div class="leftb">'+coli+'等奖</div><div class="rightb">'+coll+'</div><Div class="clearb"></Div>')
+
+	}
+
+
+
+$(function(){
+
+	addWord();
+
+	getMessage();
+
+	$('#codebox').click(function(){
+
+		if (lflag==false){
+
+			clearTimeout(hoko);
+
+			lflag=true;
+
+			sentMark();
+
+		}
+
+		})
+
+	})
+
+</script>
+
+</head>
+
+
+
+<body>
+
+  <div class="page">
+  <div class="head">
+<div class="head_left">
+<div class="head_info">
+<h1>微信大屏幕</h1>
+</div>
+<div class="head_flag"></div>
+</div>
+
+<div class="head_right">
+<img alt="bababa" src="/tpl/User/default/img/bullhorn.png">
+<h2>添加</h2><h1>{Saivi:$info.acttitle}</h1><h3>发送<span>#上墙# 你想说的话</span>即可上墙</h3>
+</div>
+<div class="clear"></div>
+</div>
+
+  	 <!--<div class="logo"><h2>{Saivi:$info.acttitle}</h2></div>-->
+
+     <div class="box">
+
+        <Div id="box">
+
+           
+
+           <Div class="boxs">发送##加您要说的话 例如</Div>
+
+           <Div class="boxs">##每天洗澡都发现自己帅呆了</Div>
+
+           <Div id="kk" class="boxs">大家快踊跃参加吧</Div>
+
+        </Div>
+
+        <Div id="lottery">
+
+        	<h2>现场抽奖</h2>
+
+            <div class="lbox"><input type="button" onClick="goLottery(1)" value="抽取一等奖"><input type="button" onClick="goLottery(2)" value="抽取二等奖"><input type="button" onClick="goLottery(3)" value="抽取三等奖"></div>
+
+            <div id="codebox" rank="">XXXXXXXX</div>
+
+            <div id="showbonu">
+
+                
+
+                
+
+            </div>
+
+        </Div>
+
+     </div>
+
+     
+
+     <div class="btmbox" style=" margin-top:10px; width:100%;">
+
+     	
+
+        <a href="javascript:parseGame()">暂停</a>
+
+        <a href="javascript:continueGame()">继续</a>
+
+        <a href="javascript:lottery()">抽奖</a> 
+
+     </div>
+
+  </div>
+
+  
+
+
+
+
+
+
+
+<!-- wtoken.com Baidu tongji analytics -->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F866a46b8a4d233aa883b072a2158aaa2' type='text/javascript'%3E%3C/script%3E"));
+
+</script>
+</body>
+
+</html>
+

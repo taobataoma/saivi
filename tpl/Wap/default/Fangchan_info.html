@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!-- saved from url=(0102)http://xiangshan.juweile.com/wap.php?m=house&a=detail&page=1&id=1401&wxid=olqrhjkniK_cMuV-IRKG6aMlmy-Q -->
+<html><head _wxhkphogpkobbkjccgfifhfjlahnoocnan_="shake_1.0"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/fangchan/xiangqing/main.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/fangchan/xiangqing/dialog.css" media="all">
+	<script type="text/javascript" src="/tpl/Wap/default/common/fangchan/xiangqing/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/tpl/Wap/default/common/fangchan/xiangqing/main.js"></script>
+	<script type="text/javascript" src="/tpl/Wap/default/common/fangchan/xiangqing/dialog_min.js"></script>
+	<title>房产详情</title>
+	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+	<meta name="Keywords" content="{Saivi:$f_siteName}">
+	<meta name="Description" content="{Saivi:$f_siteName}">
+	<!-- Mobile Devices Support @begin -->
+	<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+	<meta content="no-cache" http-equiv="pragma">
+	<meta content="0" http-equiv="expires">
+	<meta content="telephone=no, address=no" name="format-detection">
+	<meta name="apple-mobile-web-app-capable" content="yes"> <!-- apple devices fullscreen -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<title></title>
+<meta name="viewport" content="width = device-width ,initial-scale =1.0 ,
+minimum-scale = 1.0 ,maximum-scale =1.0 ,user-scalable = no">
+<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/fangchan/xiangqing/my_style.css" media="all">
+<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/fangchan/xiangqing/base_m.css" media="all">
+</head>
+
+<!-- <body style="background:#e9f4f4;"> -->
+<!-- <div class="container employ detail_style"> -->
+
+
+
+<body><header id="top">
+	<span class="at"><a href="{Saivi::U('Wap/Fangchan/index',array('token'=>$info['token'],'wecha_id'=>$_get['wecha_id']))}">返回</a></span>
+	<span>
+		<font class="at">
+			<a class="areaname" >{Saivi:$wxuser.wxname}</a>
+		</font>
+	</span>
+</header>
+
+<div class="line"><em></em></div>
+
+<nav id="tp">
+	<p>
+		<a href="{Saivi::U('Wap/Fangchan/index1',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'type'=>'出租'))}">出租</a>
+			<a href="{Saivi::U('Wap/Fangchan/index1',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'type'=>'出租'))}">出售</a>
+			<a href="{Saivi::U('Wap/Fangchan/index1',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'type'=>'求购'))}">求购</a>
+			<a href="{Saivi::U('Wap/Fangchan/index1',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'type'=>'求租'))}">求租</a>
+	</p>
+</nav>
+
+<br>
+<div class="wp">
+	<div class="wbox">
+		<h1 class="ltle">{Saivi:$info.title}</h1>
+		<!-- <a class="i cp blin" href="">有限公司</a> -->
+			<aside class="hlbox word">
+				<span class="at">属性<font class="c_ashy">{Saivi:$info.type}</font></span>
+				<span class="at">发布时间<font class="c_ashy">{Saivi:$info.date|substr=0,10}</font></span>
+				<span class="at">地区<font class="c_ashy">{Saivi:$info.area}</font></span>
+				<span class="at">房型<font class="c_ashy">{Saivi:$info.houseType}</font></span>
+				<span class="at">联系人<font class="c_ashy">{Saivi:$info.contacter}</font></span>
+				<span class="title">电话<font class="c_ashy"><a style="color: #3A8ACC;" href="tel:{Saivi:$info.phone}">{Saivi:$info.phone}</a></font></span>
+				<div class="clear"></div>
+			</aside>
+	</div>
+</div>
+<div class="wp">
+<p class="btitle"><span class="c_dark">详情描述</span></p>
+</div>
+<div class="wp">
+	<div class="wbox">
+		<div class="word">
+			<div class="aox mk on"><article>{Saivi:$info.content|htmlspecialchars_decode}</article>
+<!-- 				<p class="art_more">
+					<span class="icin">显示全部</span>
+				</p> -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<center class="cop">
+	<input class="but" type="button" value="发布" onclick="location.href='{Saivi::U('Wap/Fangchan/fabu',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}'">
+	<input class="but" type="button" value="关注" onclick="location.href='{Saivi::U('Wap/Index/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}'">
+</center>
+
+<div class="wp">
+<p class="btitle"><span class="c_dark">相关房产信息</span></p>
+  <volist name="info1" id="vo">
+			<li class="box">
+			<a class="i" href="{Saivi::U('Wap/Fangchan/info',array('id'=>$vo['id'],'token'=>$vo['token'],'wechat_id'=>$_get['wechat_id']))}">[{Saivi:$vo.area}] {Saivi:$vo.type}&nbsp;&nbsp;{Saivi:$vo.title} </a>
+		</li>
+			</volist>
+	</div>
+
+<footer style="margin-top: 1px;"><a class="" href="{Saivi::U('Wap/Index/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}">{Saivi:$date.copyright}</a></footer>
+
+<!-- 
+<style>
+.nav_add_addr ul {
+background: #ffffff;
+}
+.nav_add_addr a.btn {
+background: #f1c40f;
+}
+</style>
+
+        <nav class="nav_add_addr">
+            <ul class="tbox">
+                <li>
+                    <a class="icons icons_before" href="wap.php?m=house&page=1&wxid=olqrhjkniK_cMuV-IRKG6aMlmy-Q">&nbsp;</a>
+                </li>
+                <li class="align_right"> -->
+                    <!-- <a class="btn" href="wap.php?m=house&a=add&wxid=olqrhjkniK_cMuV-IRKG6aMlmy-Q">发布房产信息 </a> -->
+<!--                 </li>
+            </ul>
+        </nav>
+
+</div> -->
+
+<script type="text/javascript">
+			window.shareData = {  
+					"moduleName":"Fangchan",
+					"moduleID": '0',
+					"imgUrl": "{Saivi:$date.tp}", 
+					"timeLineLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"sendFriendLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"weiboLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"tTitle": "{Saivi:$date.title}",
+					"tContent": "{Saivi:$date.info}"
+				};
+		</script>	
+        {Saivi:$shareScript}
+
+
+
+</body></html>

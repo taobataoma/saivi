@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>良缘婚礼微信墙</title>
+<meta name="keywords" content="良缘婚礼微信墙台" />
+<meta name="description" content="良缘婚礼微信墙" />
+<script type="text/javascript" src="./resource/script/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="./source/modules/wxwall/template/common.js"></script>
+<link type="text/css" rel="stylesheet" href="./source/modules/wxwall/template/common.css" />
+</head>
+
+<body>
+<div id="wallMain">
+	<div id="topbox" class="topbox">
+		<div class="topbox_l">
+			<div class="topic">
+				<h1 class="msg_tit">添加微信号 <strong class="red">{$wall['account']['name']}({$wall['account']['account']})</strong></h1>
+				<span class="addCnt">发送 {loop $wall['keyword'] $row}<span class="red Topic_cnt">{$row['content']}</span>，{/loop} 登记后刷内容广播自动上墙</span>
+			</div>
+		</div>
+	</div>
+	<div id="msg_list">
+		<div class="talkList" id="msg_{$row['id']}">
+			<img src="{$_W['attachurl']}/qrcode_{$wall['rule']['weid']}.jpg" style="width:500px;" />
+			<img src="{$_W['attachurl']}/qrcode_{$wall['rule']['weid']}.jpg" style="width:420px;" />
+		</div>
+	</div>
+</div>
+
+<div class="side_div">
+	<div class="side_item"><a href="{php echo create_url('index/module', array('name' => 'wxwall', 'do' => 'detail', 'id' => $wall['rid']))}">微信墙</a></div>
+	{if $_W['uid']}<div class="side_item"><a href="{php echo create_url('index/module', array('name' => 'wxwall', 'do' => 'lottery', 'id' => $wall['rid']))}">抽奖</a></div>{/if}
+</div>
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

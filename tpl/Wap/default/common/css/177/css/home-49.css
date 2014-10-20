@@ -1,0 +1,36 @@
+
+
+
+.list_font{
+	width:200px;
+	margin:50px 10px;
+}
+
+.list_font li{
+	padding:5px;
+	width:100px!important;
+	height:100px!important;
+	background:none;
+}
+.list_font li a{
+	color:#fff;
+	background: rgba(255,255,255,0.2);
+	position:relative;
+}
+
+.list_font a>div:nth-of-type(2){
+	position:absolute;
+	bottom:0;
+	background: rgba(0,0,0,0.2);
+	width:100%;
+	line-height:30px;
+}
+
+.logo{
+	padding-top: 50px;
+	padding-left:30px;
+}
+.lofo img{
+	max-height:50px;
+	max-width:100px;
+}

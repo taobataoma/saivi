@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>微医疗</title>
+<!-- <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;"> -->
+
+  <link rel="stylesheet" type="text/css" href="{Saivi::STATICS}/public-them/generated/jquery.mobile.flatui.css" />
+  <script src="{Saivi::STATICS}/public-them/generated/js/jquery.js"></script>
+  <script src="{Saivi::STATICS}/public-them/generated/js/jquery.mobile-1.4.0-rc.1.js"></script>
+<style>
+.ui-mobile [data-role=page],
+.ui-mobile [data-role=dialog],
+.ui-page {
+  top: 0;
+  left: 0;
+  width: 100%;
+  border: 0;
+}
+</style>
+</head>
+<body>
+  <div data-role="page">
+
+
+<include file="Medical:menu"/>
+
+    <div data-role="content" role="main">
+      <ul data-role="listview" data-inset="true">
+        <li data-role="list-divider" data-theme="a">{Saivi:$about['name']}</li>
+        <p style="text-align: center;"><img src="{Saivi:$about['logourl']}" alt=""></p>
+        <p style="padding: .7em 1em;vertical-align: middle;">{Saivi:$about['intro']|html_entity_decode|trim}</p>
+        <li ><a  href="http://site.tg.qq.com/forwardToPhonePage?siteId=1&phone={Saivi:$about['tel']}">{Saivi:$about['tel']}</a></li>
+        <li><a style="text" href="http://map.baidu.com/?latlng={Saivi:$about['longitude']}&lat={Saivi:$about['latitude']}&title=我们的位置&info=温馨提示：医院大概位置">
+    <span color="#2c2c2c">地址： {Saivi:$about['address']} </span>
+      </a></li>
+      </ul>
+
+<include file="Medical:footer"/>
+
+    </div>
+  </div>
+
+  <div id="highlight"> </div>
+</body>
+</html>

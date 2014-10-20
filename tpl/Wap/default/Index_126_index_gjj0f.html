@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html><head>
+         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>{saivi:$tpl.wxname}</title>
+        <base href="." />
+        <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="format-detection" content="telephone=no" />
+<link href="{saivi::RES}/css/allcss/cate{saivi:$tpl.tpltypeid}_{saivi:$tpl.color_id}.css" rel="stylesheet" type="text/css" />
+ 
+<link rel="stylesheet" type="text/css" href="{saivi::RES}/css/126/reset.css" media="all">
+<!-- <link rel="stylesheet" type="text/css" href="{saivi::RES}/css/126/home-28.css" media="all"> -->
+<script type="text/javascript" src="{saivi::RES}/css/126/maivl.js"></script>
+<script type="text/javascript" src="{saivi::RES}/css/116/jQuery.js"></script>
+<script type="text/javascript" src="{saivi::RES}/css/126/swipe.js"></script>
+<script type="text/javascript" src="{saivi::RES}/css/126/zepto.js"></script>
+    </head>
+    <body onselectstart="return true;" ondragstart="return false;">
+     <!--背景音乐-->
+<if condition="$homeInfo['musicurl'] neq false">
+<include file="Index:music"/>
+</if> 
+<link rel="stylesheet" type="text/css" href="{saivi::RES}/css/126/font-awesome.css" media="all">
+
+<div class="body">
+        <!--
+    幻灯片管理
+    -->
+    <div style="-webkit-transform:translate3d(0,0,0);">
+        <div id="banner_box" class="box_swipe" style="visibility: visible;">
+            <ul style="list-style: none; width: {saivi:$num*433}px; transition: 500ms; -webkit-transition: 500ms; -webkit-transform: translate3d(-866px, 0, 0);">
+            <volist name="flash" id="so">
+                <li style="width: 433px; display: table-cell; vertical-align: top;">
+                            <a href="{saivi:$so.url}">
+                                <img src="{saivi:$so.img}"  style="width:100%;">
+                            </a>
+                    </li>
+                    </volist>
+                                    
+                            </ul>
+            <ol>
+                <volist name="flash" id="so">
+                    <li <if condition="$i eq 1">class="on"</if>></li>
+                </volist>
+            </ol>
+        </div>
+    </div>
+        <script>
+        $(function(){
+            new Swipe(document.getElementById('banner_box'), {
+                speed:500,
+                auto:3000,
+                callback: function(){
+                    var lis = $(this.element).next("ol").children();
+                    lis.removeClass("on").eq(this.index).addClass("on");
+                }
+            });
+        });
+    </script>
+<br><header>
+        <div class="snower">
+            <script type="text/javascript"></script>
+        </div>
+    </header>               <!--
+        用户分类管理
+        -->
+        <section>
+            <ul class="list_ul">
+            <volist name="info" id="vo">
+                <li>
+                        <a href="<if condition="$vo['url'] eq ''">{saivi::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{saivi:$vo.url|htmlspecialchars_decode}</if>">
+                                    <figure>
+                                <div style="background-image:url({saivi:$vo.img});">&nbsp;</div>
+                                <figcaption style="height:33px; overflow:hidden;">{saivi:$vo.name}</figcaption>
+                            </figure>
+                        </a>
+                    </li>
+                     </volist>
+                                  
+                            </ul>
+        </section>
+
+
+<div class="copyright" style="text-align:center;padding:10px 0">
+<if condition="$iscopyright eq 1">
+{saivi:$homeInfo.copyright}
+<else/>
+{saivi:$siteCopyright}
+</if>
+</div>
+    </div>
+    
+<include file="Index:styleInclude"/><include file="$cateMenuFileName"/> 
+	<if condition="ACTION_NAME eq 'index'">
+		<script type="text/javascript">
+			window.shareData = {  
+					"moduleName":"Index",
+					"moduleID": '0',
+					"imgUrl": "{saivi:$homeInfo.picurl}", 
+					"timeLineLink": "{saivi::C('site_url')}{saivi::U(Index/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"sendFriendLink": "{saivi::C('site_url')}{saivi::U(Index/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"weiboLink": "{saivi::C('site_url')}{saivi::U(Index/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"tTitle": "{saivi:$homeInfo.title}",
+					"tContent": "{saivi:$homeInfo.info}"
+				};
+		</script>
+	<else />
+		<script type="text/javascript">
+			window.shareData = {  
+				"moduleName":"Index",
+				"moduleID": '1',
+				"imgUrl": "{saivi:$homeInfo.picurl}", 
+				"timeLineLink": "{saivi::C('site_url')}{saivi::U(Index/ACTION_NAME,array('token'=>$_GET['token'],'classid'=>$_GET['classid']))}",
+				"sendFriendLink": "{saivi::C('site_url')}{saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token'],'classid'=>$_GET['classid']))}",
+				"weiboLink": "{saivi::C('site_url')}{saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token'],'classid'=>$_GET['classid']))}",
+				"tTitle": "{saivi:$homeInfo.title}",
+				"tContent": "{saivi:$homeInfo.info}"
+			};
+		</script>	
+	
+	</if>
+{saivi:$shareScript}
+</body></html>

@@ -1,0 +1,163 @@
+.body{
+	max-width:640px;
+	margin:auto;
+	min-height:100%;
+	position:relative;
+}
+
+.body{
+	display:block;
+	/*background:#eeeeee;*/
+}
+
+/******************************/
+.header2{
+	position: relative;
+	background:#1e81a7;
+	background-size:100% 100%;
+	border-bottom:80px solid #fff;
+}
+.header2>figure>img{
+	overflow: hidden;
+	width:100%;
+	min-height:160px;
+}
+
+.header2 a{
+	position:absolute;
+	left:10px;
+	bottom:10px;
+	display:inline-block;
+	color:#fff;
+}
+.header2 a span[class*="icon"]{
+	background:rgba(200,200,200,0.5);
+	border-radius: 30px;
+	border:1px solid #ffffff;
+	width:20px;
+	height:20px;
+	line-height:20px;
+	text-align: center;
+	display:inline-block;
+}
+
+.header2 p{
+	font-size:16px;
+}
+
+.header2 figure:nth-of-type(2){
+	position:absolute;
+	width:100px;
+	height:100px;
+	border:6px solid rgba(255,255,255,0.5);
+	border-radius:120px;
+	-webkit-box-sizing:border-box;
+	left:50%;
+	bottom:0;
+	margin-left:-50px;
+	margin-bottom:-50px;
+	z-index:10;
+}
+.header2 figure:nth-of-type(2) img{
+	width:100%;
+	min-height:100%;
+	border-radius:100px;
+}
+.header2 figure:nth-of-type(2) label{
+	margin-top:10px;
+	font-size: 18px;
+	display: inline-block;
+	width: 200px;
+	margin-left: -60px;
+	text-align: center;
+	overflow: hidden;
+	font-weight: bolder;
+}
+
+
+/**********************************/
+.nav_for_list_ul ul:first-of-type{
+	text-align: center;
+	background:#fff;
+	text-align:center;
+}
+.nav_for_list_ul ul:first-of-type li{
+	width:8px;
+	height:8px;
+	background:#eaeaea;
+	border-radius: 5px;
+	display:inline-block;
+	margin:3px;
+}
+.nav_for_list_ul ul:first-of-type li.on{
+	background:#cacaca;
+}
+
+.nav_for_list_ul ul:nth-of-type(2){
+	height:43px;
+	border-bottom:3px solid #eaeaea;
+	background:-webkit-gradient(linear, 0 0, 0 80%, from(#efefef), to(#fff));
+	-webkit-box-sizing:border-box;
+	white-space: nowrap;
+}
+
+.nav_for_list_ul ul:nth-of-type(2) li{
+	width:33.3%;
+	display:inline-block;
+	-webkit-box-sizing:border-box;
+}
+.nav_for_list_ul ul:nth-of-type(2) li a{
+	display:block;
+	height:43px;
+	line-height:40px;
+	text-align: center;
+	color:#6898a1;
+	overflow: hidden;
+	margin:0 10px;
+	color:#666666;
+}
+
+.nav_for_list_ul ul:nth-of-type(2) li a.on{
+	color:#6898a1;
+	height:40px;
+	border-bottom: 3px solid #6898a1;
+}
+
+
+.list_uls li{
+	
+}
+.list_uls dl{
+	overflow: hidden;
+}
+
+.list_uls dl dd{
+	display:inline-block;
+	width:33.33%;
+	float:left;
+	text-align: center;
+}
+.list_uls dl dd a{
+	display: block;
+	margin:8px;
+}
+
+.list_uls dl dd a figure>div{
+	width:85px;
+	height:60px;
+	overflow: hidden;
+	border-radius:5px;
+	margin: auto;
+}
+.list_uls dl dd a figure>div img{
+	width:100%;
+	min-height: 100%;
+}
+.list_uls dl dd a figcaption label{
+	display: block;
+	line-height:25px;
+	height:25px;
+	overflow: hidden;
+	color:#333333;
+	font-size:14px;
+}

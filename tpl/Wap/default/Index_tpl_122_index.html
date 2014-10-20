@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD> <title>{Saivi:$tpl.wxname}</title>
+        <base href="." />
+<META content="text/html; charset=UTF-8" http-equiv=Content-Type>
+<META name=viewport content=width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;>
+<META name=apple-mobile-web-app-capable content=yes>
+<META name=apple-mobile-web-app-status-bar-style content=black>
+<META name=format-detection content=telephone=no>
+<LINK rel=stylesheet type=text/css href="{Saivi::RES}/w54/w60.css">
+<SCRIPT type=text/javascript src="{Saivi::RES}/w54/jquery-1.7.2.min.js"></SCRIPT>
+<SCRIPT type=text/javascript src="{Saivi::RES}/w54/rotate.js"></SCRIPT>
+<SCRIPT type=text/javascript src="{Saivi::RES}/w54/jquery.transform.js"></SCRIPT>
+<SCRIPT type=text/javascript src="{Saivi::RES}/w54/iscroll.js"></SCRIPT>
+
+<script type="text/javascript">
+            var myScroll;
+
+            function loaded() {
+                myScroll = new iScroll('wrapper', {
+                    snap: true,
+                    momentum: false,
+                    hScrollbar: false,
+                    onScrollEnd: function () {
+                        document.querySelector('#indicator > li.active').className = '';
+                        document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+                    }
+                });
+ 
+ 
+            }
+
+            document.addEventListener('DOMContentLoaded', loaded, false);
+        </script>
+
+<META name=GENERATOR content="MSHTML 9.00.8112.16446"></HEAD>
+<BODY id=cate5>
+    <!--背景音乐-->
+    <if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/></if>
+<DIV class=banner>
+<DIV style="OVERFLOW: hidden" id=wrapper>
+<DIV id=scroller>
+<UL id=thelist>
+<volist name="flash" id="so">
+  <LI>
+  <P>{Saivi:$so.name}</P><IMG src="{Saivi:$so.img}"> </LI>
+    </volist></UL></DIV></DIV>
+<DIV id=nav>
+<DIV id=prev onClick="myScroll.scrollToPage('prev', 0,400,2);return false">← 
+prev </DIV>
+<UL id=indicator>
+	<volist name="flash" id="so">
+  <LI>{Saivi:$i}
+  </volist>
+  </UL>
+<DIV id=next onClick="myScroll.scrollToPage('next', 0);return false">next → 
+</DIV></DIV>
+<DIV class=clr></DIV></DIV>
+	
+<UL class=mainmenu>
+<volist name="info" id="vo">
+  <LI class=li0><A 
+  href="<if condition="$vo['url'] eq ''">{Saivi::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{Saivi:$vo.url|htmlspecialchars_decode}</if>">
+  <DIV class=menubtn>
+  <DIV class=menuimg><IMG 
+  src="{Saivi:$vo.img}"> 
+  </DIV>
+  <DIV class=menutitle>{Saivi:$vo.name}</DIV></DIV></A></LI>
+</volist>
+ </UL>
+ <script>
+
+
+            var count = document.getElementById("thelist").getElementsByTagName("img").length;	
+
+
+            for(i=0;i<count;i++){
+                document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
+
+            }
+
+            document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
+
+
+            setInterval(function(){
+                myScroll.scrollToPage('next', 0,400,count);
+            },3500 );
+
+            window.onresize = function(){ 
+                for(i=0;i<count;i++){
+                    document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
+
+                }
+
+                document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
+            } 
+
+        </script>
+<div class="copyright" style="text-align:center;"><if condition="$iscopyright eq 1">{Saivi:$homeInfo.copyright}<else/>{Saivi:$siteCopyright}</if></div>
+<include file="Index:styleInclude"/> 
+</BODY></HTML>

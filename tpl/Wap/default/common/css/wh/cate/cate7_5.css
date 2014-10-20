@@ -1,0 +1,84 @@
+html, body {
+	color:#222;
+	font-family:Microsoft YaHei,Helvitica,Verdana,Tohoma,Arial,san-serif;
+	margin:0;
+	padding: 0;
+	text-decoration: none;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+	margin:0;
+	padding:0;
+}
+img {
+	border:0;
+}
+ol, ul {
+	list-style: none outside none;
+	margin:0;
+	padding: 0;
+}
+a {
+	color:#000000;
+	text-decoration: none;
+}
+.clr {
+	display:block;
+	clear:both;
+	height:0;
+	overflow:hidden;
+}
+.copyright{padding:8px;text-align:center;font-size:14px;color:#666;}
+.copyright a{color:#666;}
+/*cate7*/
+#cate7{
+	background-color:#F3EAFF;
+	margin: 0 auto;overflow-x: hidden;
+	width:100%;
+}
+#cate7 .banner {
+	margin-bottom: 15px;
+}
+#cate7 .banner img{
+	width:100%;
+	/*box-shadow:0 0 10px rgba(0, 0, 0, 0.06);
+	-moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.06);
+	-webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.06);*/
+}
+#cate7 ul{
+	display:block; margin-top:0;
+}
+#cate7 li{
+	float:left; display:block;margin: 0 0 15px;
+}
+#cate7 .cateul li{
+	float:left; display:block;margin: 0 0 15px;width: 33%;
+}
+#cate7 li{
+	float:left; display:block;margin: 0 0 15px;
+}
+#cate7 #thelist li{
+	margin:0;
+}
+#cate7 #indicator li{
+	margin:0 4px 0 0;
+}
+#cate7 li.li0 .menubtn{
+	text-align:center
+}
+#cate7 li.li1 .menubtn{
+	border-top:0;
+	text-align:center
+}
+#cate7 li.li2 .menubtn{
+	text-align:center
+}
+#cate7 .menubtn img{
+	width:65%; margin: 0 auto;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border-radius:6px;
+}
+#cate7 .menutitle {
+	font-size:14px; color:#666; display:block; margin: 5px auto 0; width:72px;
+	overflow: hidden;text-align: center;text-overflow: ellipsis;white-space: nowrap;
+}

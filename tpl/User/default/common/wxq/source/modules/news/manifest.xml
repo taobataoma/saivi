@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest versionCode="0.4">
+	<application setting="false">
+		<name><![CDATA[基本混合图文回复]]></name>
+		<identifie><![CDATA[news]]></identifie>
+		<version><![CDATA[1.0]]></version>
+		<ability><![CDATA[为你提供生动的图文资讯]]></ability>
+		<description><![CDATA[一问一答得简单对话, 但是回复内容包括图片文字等更生动的媒体内容. 当访客的对话语句中包含指定关键字, 或对话语句完全等于特定关键字, 或符合某些特定的格式时. 系统自动应答设定好的图文回复内容.]]></description>
+		<author><![CDATA[WeEngine Team]]></author>
+	</application>
+	<hooks>
+		<hook name="rule" />
+	</hooks>
+	<install><![CDATA[
+CREATE TABLE IF NOT EXISTS `ims_news_reply` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rid` int(10) unsigned NOT NULL,
+  `parentid` int(10) unsigned NOT NULL DEFAULT '0',
+  `title` varchar(50) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `thumb` varchar(60) NOT NULL,
+  `content` text NOT NULL,
+  `url` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+	]]></install>
+	<uninstall><![CDATA[]]></uninstall>
+	<upgrade><![CDATA[]]></upgrade>
+</manifest>

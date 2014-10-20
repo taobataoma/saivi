@@ -1,0 +1,154 @@
+<include file="Public:head"/>
+<include file="Jiaoyu:menu"/> 
+<link rel="stylesheet" type="text/css" href="{Saivi::STATICS}/default_user_com.css" media="all">
+<script src="{Saivi::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{Saivi::STATICS}/artDialog/plugins/iframeTools.js"></script>
+<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/plugins/code/prettify.css" />
+<script src="{Saivi::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+<script src="{Saivi::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+<script src="{Saivi::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+<script>
+			KindEditor.ready(function(K) {
+				var editor = K.editor({
+					allowFileManager : true
+				});
+				K('#image1').click(function() {
+					editor.loadPlugin('image', function() {
+						editor.plugin.imageDialog({
+							imageUrl : K('#face').val(),
+							clickFn : function(url, title, width, height, border, align) {
+								K('#face').val(url);
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+				K('#insertfile').click(function() {
+					editor.loadPlugin('insertfile', function() {
+						editor.plugin.fileDialog({
+							fileUrl : K('#url4').val(),
+							clickFn : function(url, title) {
+								K('#url4').val(url);
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+			});
+		</script>
+ <script src="/tpl/static/upyun.js"></script>
+<script>
+
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('#description', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : true,
+uploadJson : '/index.php?g=User&m=Upyun&a=kindedtiropic',
+items : [
+'source','undo','plainpaste','wordpaste','clearhtml','quickformat','selectall','fullscreen','fontname', 'fontsize','subscript','superscript','indent','outdent','|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','hr']
+});
+
+
+
+editor = K.create('#comment', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : true,
+uploadJson : '/index.php?g=User&m=Upyun&a=kindedtiropic',
+items : [
+'source','undo','plainpaste','wordpaste','clearhtml','quickformat','selectall','fullscreen','fontname', 'fontsize','subscript','superscript','indent','outdent','|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','hr']
+});
+});
+</script>
+ <div class="content" style="width:920px; background:none;  border:none; margin-bottom:30px;" >
+<div class="cLineB">
+
+ 
+<div class="cLineB">
+  <h4>添加点评 </h4><a href="javascript:history.go(-1);return false;" class="right btnGrayS vm" style="margin-top:-27px">返回</a>
+ </div>
+     <link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+
+ 
+    <div class="msgWrap bgfc">
+	  <form class="form" method="post" action=""  >	 
+		<table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tbody>
+				<tr>
+					<input type="hidden" name="addtype" value="Jiaoyu">
+				  <th valign="top"><span class="red">*</span>标题:</th>
+				  <td>
+					 <input type="text" id="title" name="title" value="{Saivi:$expert['title']}" class="input-large px" data-rule-required="true" data-rule-maxlength="20">
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">尽量简单，不要超过20字</span></td>
+				</tr>
+				<tr>
+					<th width="120">显示顺序:</th>
+					<td> <input type="text" id="sort" name="sort" value="{Saivi:$expert['sort']|default=1}" class="input-mini px" data-rule-required="true" data-rule-number="true">
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">数值越大越靠前</span></td>
+				</tr>
+				<tr>
+					<th width="120">学员姓名：</th>
+					<td> <input type="text" id="name" name="name" value="{Saivi:$expert['name']}" class="input-large px" data-rule-required="true">
+                                        <span class="maroon">*</span></td>
+				</tr>
+				<tr>
+					<th width="120">学员职位：</th>
+					<td>  <input type="text" id="position" name="position" value="{Saivi:$expert['position']}" class="input-large px" data-rule-required="true" data-rule-maxlength="20">
+                                        <span class="maroon">*</span></td>
+				</tr>
+				<tr>
+					<th width="120">学员照片：</th>
+					<td>  <script src="{Saivi::STATICS}/upyun.js"></script>
+                                        <p>
+                                            <img class="thumb_img" id="face_src" src="{Saivi:$expert['face']}" style="max-height:100px;">
+                                            <input type="input" class="px" id="face" value="{Saivi:$expert['face']}" name="face" >
+                                     
+                                            <span class="help-inline">
+                                                 	<span class="ke-button-common" id="image1" style="margin-top: 3px;margin-left: 5px;">
+                  		<input type="button" class="ke-button-common ke-button" value="上传"></span> 
+                                                 <a href="###" onclick="viewImg('face')">预览</a>
+                                                <span class="help-inline">建议尺寸：宽400像素，高400像素</span>
+                                            </span>
+                                        </p></td>
+				</tr>
+				<tr>
+					<th width="120">学员介绍：</th>
+					<td>  <textarea id="description" name="description" placeholder='学员描述' style="width:560px;height:75px" >{Saivi:$expert['description']}</textarea>
+                                        <span class="maroon">*</span>
+                                        <span class="help-block">最多可150字</span></td>
+				</tr>
+				<tr>
+					<th>点评内容：</th>
+					<td>
+	 <textarea id="comment" name="comment" placeholder='点评内容' style="width:560px;height:75px" >{Saivi:$expert['comment']}</textarea>
+                                        <span class="maroon">*</span>
+                                        <span class="help-block">最多可5k字</span>
+					</td>
+				</tr>
+				<th>&nbsp;</th>
+				  <if condition="$expert['id'] neq ''">
+                                    <input type="hidden" name="id" value="{Saivi:$expert['id']}" />
+                                </if>
+                                    <input type="hidden" name="pid" value="{Saivi:$pid}">
+					<td>
+						<button type="submit" name="button" class="btnGreen">保存</button>
+						<a href="javascript:history.go(-1);" class="btnGray vm">取消</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+  </div> 
+ 
+  
+        </div>
+<include file="Public:footer"/>

@@ -1,0 +1,248 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>微美容-预约美容</title>
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link href="{Saivi::RES}/css/style/css/hotels.css" rel="stylesheet" type="text/css">
+<script src="{Saivi::RES}/css/style/js/jquery.min.js" type="text/javascript"></script>
+<script src="{Saivi::RES}/css/style/js/iscroll.js" type="text/javascript"></script>
+<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+<script>
+window.onload=function(){
+
+		
+		if({Saivi:$pd.name}==0)
+		{	document.getElementById("namea").style.display="none";
+		}else
+		{	document.getElementById("namea").style.display="";}
+		
+		if({Saivi:$pd.sex}==0)
+		{	document.getElementById("sexa").style.display="none";
+		}else
+		{	document.getElementById("sexa").style.display="";}
+		
+		if({Saivi:$pd.age}==0)
+		{	document.getElementById("agea").style.display="none";
+		}else
+		{	document.getElementById("agea").style.display="";}
+		
+		if({Saivi:$pd.phone}==0)
+		{	document.getElementById("phonea").style.display="none";
+		}else
+		{	document.getElementById("phonea").style.display="";}
+		
+		
+		if({Saivi:$pd.scheduled_date}==0)
+		{	document.getElementById("scheduled_datea").style.display="none";
+		}else
+		{	document.getElementById("scheduled_datea").style.display="";}
+		
+			if({Saivi:$pd.address}==0)
+		{	document.getElementById("addressa").style.display="none";
+		}else
+		{	document.getElementById("addressa").style.display="";}
+		
+			if({Saivi:$pd.departments}==0)
+		{	document.getElementById("departmentsa").style.display="none";
+		}else
+		{	document.getElementById("departmentsa").style.display="";}
+			
+			if({Saivi:$pd.expert}==0)
+		{	document.getElementById("experta").style.display="none";
+		}else
+		{	document.getElementById("expert").style.display="";}
+		
+			
+			if({Saivi:$pd.disease}==0)
+		{	document.getElementById("diseasea").style.display="none";
+		}else
+		{	document.getElementById("diseasea").style.display="";}
+	
+		}
+		
+</script>
+</head>
+<body id="hotelsorder" >
+<div class="banner">
+  <div id="wrapper">
+    <div id="scroller">
+      <ul id="thelist">
+        <li>
+          <p>{Saivi:$pt['title']} </p>
+          <if condition="$pt['registrationtoppic'] neq null"> <img src="{Saivi:$pt['registrationtoppic']}">
+            <else />
+            <img src="{Saivi::RES}/Cosmetology/img/jiudian.jpg" width="100%"> </if>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="nav">
+    <div id="prev" onClick="myScroll.scrollToPage('prev', 0,400,1);return false">&larr; prev</div>
+    <ul id="indicator">
+      <li   >1</li>
+    </ul>
+    <div id="next" onClick="myScroll.scrollToPage('next', 0);return false">next &rarr;</div>
+  </div>
+  <div class="clr"></div>
+</div>
+<div class="cardexplain">
+  <ul class="round">
+    <li class="title mb"><span class="none">请认真填写在线预约信息！以免给你带来不便！</span></li>
+    <li class="nob" id="namea">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+        <tr>
+          <th>姓名</th>
+          <td><input name="name"  type="text" class="px" id="name" value="{Saivi:$userinfo['name']}" placeholder="请输入您的真实姓名"></td>
+        </tr>
+      </table>
+    </li>
+    <li class="nob" id="sexa">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+        <tr>
+          <th>性别</th>
+          <td><input name="sex"  type="text"  class="px" id="sex" value="{Saivi:$userinfo['sex']}" placeholder="性别"></td>
+        </tr>
+      </table>
+    </li>
+    <li class="nob" id="agea">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+        <tr>
+          <th>年龄</th>
+          <td><input name="age"  type="text"  class="px" id="age" value="{Saivi:$userinfo['age']}" placeholder="年龄"></td>
+        </tr>
+      </table>
+    </li>
+    <li class="nob" id="phonea">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+        <tr>
+          <th>联系电话</th>
+          <td><input name="phone"  type="text"  class="px" id="phone" value="{Saivi:$userinfo['phone']}" placeholder="请输入您的电话"></td>
+        </tr>
+      </table>
+    </li>
+    <li class="nob" id="scheduled_datea">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+        <tr>
+          <th>预约时间</th>
+          <td><input type="input" class="px" id="scheduled_date" value="" name="scheduled_date" style="width:150px" onClick="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true});"   >
+          </td>
+        </tr>
+      </table>
+    </li>
+    <li class="nob" id="addressa">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+        <tr>
+          <th>地址</th>
+          <td><input name="address"  type="text"  class="px" id="address" value="{Saivi:$userinfo['address']}" placeholder="请输入您的地址"></td>
+        </tr>
+      </table>
+    </li>
+    <li class="nob" id="departmentsa">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+        <tr>
+          <th>套餐选择</th>
+          <td><select name="departments" id="departments"   style="width:200px" onFocus="leave();">
+              <option value="">请选择套餐</option>
+              <volist name="id" id="ks">
+                <option value="{Saivi:$ks.name}">{Saivi:$ks.name}</option>
+              </volist>
+            </select>
+          </td>
+        </tr>
+      </table>
+    </li>
+    <li class="nob" id="experta">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+        <tr>
+          <th>人数</th>
+          <td><input name="expert"  type="text"  class="px" id="expert" value="{Saivi:$userinfo['expert']}" placeholder="请输入人数"></td>
+        </tr>
+      </table>
+    </li>
+    <li class="nob" id="diseasea">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+        <tr>
+          <th>备注</th>
+          <td><input name="disease"  type="text"  class="px" id="disease" value="{Saivi:$userinfo['disease']}" placeholder="以上如有不足或有其它要求，请在此填写！"></td>
+        </tr>
+      </table>
+    </li>
+  </ul>
+  <div class="footReturn"> <a id="showcard"  class="submit" href="javascript:submit1();">预约提交</a>
+   </br>
+  <a id="showcard"  class="submit" href="{Saivi::U('Cosmetology_setup/orders',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}">查看订单</a>
+    <div class="window" id="windowcenter">
+      <div id="title" class="wtitle"><span class="close" id="alertclose"></span></div>
+      <div class="content">
+        <div id="txt"></div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript"> 
+
+function submit1() {  
+if($("#name").val()==''){alert('名字不能为空');return;} 
+if($("#phone").val()==''){alert('电话不能为空');return;} 
+if($("#scheduled_date").val()==''){alert('预约日期不能为空');return;} 
+ 
+var submitData = {
+            name : $("#name").val(),
+			   sex      : $("#sex").val(),
+			      age      : $("#age").val(),
+				     phone      : $("#phone").val(),
+					    scheduled_date      : $("#scheduled_date").val(),
+						  address     : $("#address").val(),
+						      departments      : $("#departments").val(),
+							  
+            expert     : $("#expert").val(),
+           disease      : $("#disease").val(),
+		  
+            action   : "book"
+        };
+        
+$.post('index.php?g=Wap&m=Cosmetology_setup&a=book&token={Saivi:$Think.get.token}&wecha_id={Saivi:$Think.get.wecha_id}', 
+            submitData,function(result){
+   	alert(result);
+   	form1.reset();
+
+});
+	}
+$("#windowclosebutton").click(function () { 
+$("#windowcenter").slideUp(500);
+oLay.style.display = "none";
+
+}); 
+$("#alertclose").click(function () { 
+$("#windowcenter").slideUp(500);
+oLay.style.display = "none";
+
+}); 
+
+function alert(title){ 
+
+$("#windowcenter").slideToggle("slow"); 
+$("#txt").html(title);
+setTimeout('$("#windowcenter").slideUp(500)',4000);
+} 
+
+var count = $("#thelist img").size();
+$("#thelist img").css("width",document.body.clientWidth);
+$("#scroller").css("width",document.body.clientWidth*count);
+ setInterval(function(){
+myScroll.scrollToPage('next', 0,400,count);
+},3500 );
+window.onresize = function(){ 
+ 
+  $("#thelist img").css("width",document.body.clientWidth);
+  $("#scroller").css("width",document.body.clientWidth*count);
+} 
+
+</script>
+</div>
+</div>
+  <script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['meirong'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if></body>
+</html>

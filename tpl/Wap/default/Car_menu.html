@@ -1,0 +1,21 @@
+
+
+    <span class="copyright" >
+    <if condition="$iscopyright eq 1">
+    {Saivi:$homeInfo.copyright}
+    <else/>
+    {Saivi:$siteCopyright}
+    </if>
+    </span>
+
+<script type="text/javascript">
+window.shareData = {
+            "moduleName":"Car",
+            "moduleID":"0",
+            "imgUrl": "",
+            "sendFriendLink": "{Saivi:$f_siteUrl}{Saivi::U('Car/index',array('token'=>$token))}",
+            "tTitle": "微汽车",
+            "tContent": "微汽车"
+        };
+</script>
+{Saivi:$shareScript}

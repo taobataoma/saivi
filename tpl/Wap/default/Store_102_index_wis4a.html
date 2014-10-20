@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<title>{Saivi:$metaTitle}</title>
+	<meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="cleartype" content="on">
+	<link type="text/css" rel="stylesheet" href="{Saivi:$staticFilePath}/css1/style.css" />
+	<link rel="stylesheet" href="{Saivi:$staticFilePath}/css1/base.css?v=20131207">	
+	<link rel="stylesheet" href="{Saivi:$staticFilePath}/css1/common.css?v=20131207">
+	<link rel="stylesheet" href="{Saivi:$staticFilePath}/css1/index.css?v=20131207">
+    <link rel="stylesheet" href="{Saivi:$staticFilePath}/css1/cats.css">
+	<link rel="stylesheet" type="text/css" href="{Saivi:$staticFilePath}/css1/idangerous.swiper.css?v=20131207">
+	<link rel="stylesheet" type="text/css" href="{Saivi:$staticFilePath}/css1/dynamic-slides.css?v=20131207">
+	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="{Saivi:$staticFilePath}/js1/mjquery.js?v=20131206"></script>
+	<script type="text/javascript" src="{Saivi:$staticFilePath}/js1/swipe.js"></script>
+	
+	<script type="text/javascript" src="{Saivi:$staticFilePath}/js1/common.js?v=20131206"></script>
+    
+	
+    <script type="text/javascript" src="{Saivi:$staticFilePath}/hd/jquery-ui.js"></script>
+   
+   <style>
+   img {
+width: 100%!important;
+}
+   </style>
+
+</head>
+
+<body >
+	<!--头部-->
+	<header>
+		<div>
+			<a onclick="javascript:;" class="Storecats" style="margin-top:5px"><span></span></a>
+			<a href="{Saivi::U('Store/cats',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'dining'=>$isDining))}" class="home"><span></span></a>
+			<a href="{Saivi::U('Store/my',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'dining'=>$isDining))}" class="kf"><span></span></a>
+			<a href="{Saivi::U('Store/cart',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'dining'=>$isDining))}" class="car"><span></span></a>
+		</div>
+	</header><!--主体-->
+   <div id="imgs_box" class="box_swipe">
+
+
+
+			<ul>
+				<?php
+
+				for($i=1;$i<=3;$i++){
+				?>
+					<li style="width: 100%; display: table-cell; vertical-align: top;"><img src="<?php echo $date['picurls'.$i];?>"></li>
+				<?php
+				}
+				?>
+			</ul>
+
+			<ol>
+				<?php
+				for($i=1;$i<=3;$i++){
+				?>
+					<li class="on"></li>
+				<?php
+				}
+				?>
+			</ol>
+
+
+
+	</div>
+
+
+
+
+    <!--幻灯-->
+    
+    
+   <script type="text/javascript">
+    
+
+
+
+function dothis(nums){
+
+}
+
+$(document).ready(function () {
+
+
+
+	new Swipe(document.getElementById('imgs_box'), {
+
+
+
+				speed:1000,
+
+
+
+				auto:5000,
+
+
+
+				callback: function(){
+
+
+
+					var lis = $(this.element).next("ol").children();
+
+
+
+					lis.removeClass("on").eq(this.index).addClass("on");
+
+
+
+				}
+
+
+
+			}); 
+
+}); 
+
+
+</script>
+   
+<!--end-->
+    
+    
+    
+    
+    
+    
+	<div id="win" style="display: none;">
+		<ul class="dropdown"> 
+			<volist name="headercats" id="cat">
+			<li><a href="<if condition="$cat['parentid'] eq 0">{Saivi::U('Store/Stores',array('token'=>$_GET['token'],'catid'=>$cat['id'],'wecha_id'=>$wecha_id,'dining'=>$isDining))}<else/>{:U('Store/Stores',array('token'=>$_GET['token'],'catid'=>$cat['id'],'wecha_id'=>$wecha_id))}</if>"><span>{Saivi:$cat.name}</span></a></li>
+			</volist>
+			
+		<div class="clr"></div>
+		</ul>
+	</div>
+
+<!--主体-->
+
+<section>
+<ul class="v12_ul">
+
+
+	<volist name="cats" id="hostlist"> 
+
+			<li class="card_lol"  <if condition="$i%2 eq 1"> style="direction:rtl;" </if>>
+
+		
+
+			<a href="<if condition="$hostlist['parentid'] eq 0">{Saivi::U('Store/products',array('token'=>$_GET['token'],'catid'=>$hostlist['id'],'wecha_id'=>$wecha_id,'dining'=>$isDining))}<else/>{Saivi::U('Store/Stores',array('token'=>$_GET['token'],'catid'=>$hostlist['id'],'wecha_id'=>$wecha_id))}</if>" class="tbox">
+
+					<div style="font-size:18px; text-align:center;font-family: Helvetica, Arial, sans-serif;line-height: 1.231;">{Saivi:$hostlist.name}<span>{Saivi:$hostlist.des}</span></div>
+                    <div style="background-image: url({Saivi:$hostlist.logourl})">
+
+					
+
+                        
+
+					</div>
+
+				</a>
+
+
+	</li>
+
+	</volist> 
+</ul>
+		</section>
+<include file="Store:foot"/>
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['sc'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if> 
+<p style="text-align:center;background:#949494;color:#fff;">&copy; {Saivi:$date.copyright}</p>
+</body>
+
+</html>
+
+

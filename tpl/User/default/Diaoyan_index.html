@@ -1,0 +1,94 @@
+<include file="Public:head"/>
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<div class="content"  >
+<div class="cLineB">
+<h4 class="left">调研管理 </h4>
+<div class="searchbar right">
+<!-- <form method="post" action="">
+<input type="text" id="msgSearchInput" class="txt left" placeholder="输入关键词搜索" name="searchkey" value="{Saivi:$key}">
+<input type="submit" value="搜索" id="msgSearchBtn" href="" class="btnGrayS" title="搜索">
+</form> -->
+</div>
+<div class="clr"></div>
+</div>
+
+<div class="cLine">
+<div class="pageNavigator left"> <a href="{Saivi::U('Diaoyan/add',array('token'=>$token))}" title="添加" class="btn btn-primary btn_submit  J_ajax_submit_btn"><img src="{Saivi::RES}/images/product/add.png" width="16" class="vm">添加</a></div>
+<div class="clr"></div>
+
+</div>
+<div class="msgWrap">
+<form method="post" action="" id="info">
+<input name="delall" type="hidden" value="">
+<input name="wxid" type="hidden" value="">
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+<thead>
+<tr>
+<th width="30">ID</th>
+<th width="160">调研名称</th>
+<th width="120">关键词</th>
+<th width="260">调研时间</th>
+<th width="90">状态</th> 
+<th width="200" class="norightborder">操作</th>
+</tr>
+</thead>
+<tbody>
+<tr></tr>
+<volist name="data" id="item"> 
+	<tr>
+	<td>{Saivi:$item.id}</td>
+	<td>{Saivi:$item.title}</td>
+	<td>{Saivi:$item.keyword}</td>
+	<td>{Saivi:$item.stime} - {Saivi:$item.etime}</td>
+	
+	<?php
+		
+		$where = array(
+			'id'=> $item['id']
+		);
+		$db = M("diaoyan"); 
+		$date = $item['etime'];
+		$arr = explode('-', $date);
+		$date = mktime(0,0,0,$arr[1], $arr[2], $arr[0]);
+		$now = time();
+		if($now>=$date){
+			//'过期
+			$db-> where($where)->setField('stat',1);
+		}else{
+			$db-> where($where)->setField('stat',0);
+		}
+	
+	?>
+	<php>
+		if($item['stat']==0){
+	</php>
+		<td>进行中</td>
+	<php>
+		}elseif($item['stat']==1){
+	</php>
+		<td>已结束</td>
+	<php>
+		}
+	</php>
+	<td class="norightborder">
+		<a href="{Saivi::U('Diaoyan/timu',array('id'=>$item['id'],'token'=>$token))}">题目</a>&nbsp;&nbsp;
+		<a href="{Saivi::U('Diaoyan/set',array('id'=>$item['id'],'token'=>$token))}">修改</a>&nbsp;&nbsp;
+		<a href="{Saivi::U('Diaoyan/survey',array('id'=>$item['id'],'token'=>$token))}">统计</a>&nbsp;&nbsp;
+		<a href="{Saivi::U('Diaoyan/del',array('id'=>$item['id'],'token'=>$token))}">删除</a>
+	</td>
+	</tr>
+</volist>
+</tbody>
+</table>
+</form>
+
+</div>
+<div class="cLine">
+<div class="pageNavigator right">
+<div class="pages">{Saivi:$page}</div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+<include file="Public:footer"/>

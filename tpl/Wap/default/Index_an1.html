@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>国内最大的微信公众服务平台</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <meta name="Keywords" content="微信营销、微信代运营、微信定制开发、微信托管、微网站、微商城、微营销" />
+        <meta name="Description" content="国内最大的微信公众智能服务平台，微盟八大微体系：微菜单、微官网、微会员、微活动、微商城、微推送、微服务、微统计，企业微营销必备。" />
+        <!-- Mobile Devices Support @begin -->
+            <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+            <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+            <meta content="no-cache" http-equiv="pragma">
+            <meta content="0" http-equiv="expires">
+            <meta content="telephone=no, address=no" name="format-detection">
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+            <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Mobile Devices Support @end -->
+        <link rel="shortcut icon" href="/img/favicon.ico" />
+        <style>
+            img{width:100%!important;}
+        </style>
+    </head>
+    <body onselectstart="return true;" ondragstart="return false;">
+        <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="anjey.wu">
+	<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=UTF-8">
+	<meta http-equiv="Cache-Control" content="no-cache,must-revalidate">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<meta name="format-detection" content="telephone=no, address=no">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+	<style>
+	html,body{
+		height:100%;	
+		overflow:hidden;
+	}
+	#loader1{
+		width:200px;
+		height:200px;
+		display:inline-block;
+		position:absolute;
+		z-index:100;
+		top:50%;
+		left:50%;
+		margin-top:-100px;
+		margin-left:-100px;
+	}
+	*{ margin:0; padding:0;}
+	body{ background:rgba(160,236,110,0.8); background-size:100% 100%; height:100%; }
+		.pie{
+			width:200px;
+			height:200px;
+			background-color: #3f4042;
+			border-radius:100px;
+			position:absolute;
+		}
+		.pie1 {
+			clip:rect(0px,200px,200px,100px);
+			-webkit-transform:rotate(0deg);
+			background:#63a735; 
+			-webkit-transition:all .2s ease;
+		}
+		.pie2 {
+			clip:rect(0px,100px,200px,0px);
+			-webkit-transform:rotate(0deg);
+			background:#63a735; 
+			-webkit-transition:all .2s ease;
+		}
+		.hold {
+			width:200px;
+			height:200px;
+			position:absolute;
+			z-index:1;
+			
+		}
+		.hold1 {
+			clip:rect(0px,200px,200px,100px);
+		}
+		.hold2 {
+			clip:rect(0px,100px,200px,0px);
+		}
+		.bg {
+			width:200px; height:200px;
+			border-radius:100px;
+			position:absolute;
+			 background:rgba(138,211,89,0.8);
+			
+			/*box-shadow:0px 0px 8px #333;*/
+		}
+		.time {
+			color:#fff;
+			width:160px;
+			height:160px;
+			margin:20px 0 0 20px;
+			/*background-color:#fff;*/
+			border-radius:100px;
+			position:absolute;
+			z-index:1;
+			/*box-shadow:0px 0px 8px #333 inset;*/
+			text-align:center;
+			line-height:160px;
+			font-family:"Book Antiqua", Palatino, serif;
+			font-size:100px;
+			font-weight:bold;
+			text-shadow: 1px 1px 3px #333;
+		}
+	</style>
+	<script>
+		var loader = (function(){
+			var _loader = function(obj){
+				this.selector = document.getElementById(obj.id);
+				this.step_deg = 0;
+				this.seconds = obj.seconds;
+				this.cur_deg = 0;
+				this.ticker = null;
+				this.end_fn = obj.end_fn || function(){};
+				this.tick_fn = obj.tick_fn || function(){}
+			}
+			_loader.prototype = {
+				start: function(){
+					var that = this;
+					that.step_deg = 360/that.seconds;
+					that.ticker = setInterval(function(){
+						that.tick();
+					}, 1000);
+
+				},
+				tick: function(){
+					var that = this;
+					that.cur_deg += that.step_deg;
+					if(that.cur_deg>180){
+						that.selector.querySelectorAll(".pie2")[0].style.webkitTransform = "rotate(" + (that.cur_deg-180) + "deg)";
+					}else{
+						that.selector.querySelectorAll(".pie1")[0].style.webkitTransform = "rotate(" + that.cur_deg + "deg)";
+					}
+					that.selector.querySelectorAll(".time")[0].innerHTML = -- that.seconds;
+					//
+					that.tick_fn.call(that, null);
+					if(that.cur_deg>=360){
+						that.end();
+					}
+					return that;
+				},
+				end: function(fn){
+					var that = this;
+					clearInterval(that.ticker);
+					that.end_fn.call(that, null);
+				}
+			}
+
+			return _loader;
+		})();
+	</script>
+	<script>
+		//
+		window.onload = function(){
+			window.loader1 = new loader({
+				id: "loader1",
+				seconds: 2,
+				end_fn: function(){
+					screenAndAudio();
+				}
+			}).start();
+		}
+
+		function screenAndAudio(){
+			var closeScreen = {
+				manual_off: false,
+				evtName: ("ontouchstart" in window)?"touchend":"click",
+				handleEvent: function(){
+					if(closeScreen.manual_off){
+						var playbox = parent.playbox;
+						if(playbox){
+							playbox.autoPlayFix.on = false;
+							playbox.autoPlayEvt(false);
+							playbox.play();
+						}
+					}
+					setTimeout(function(){
+						var iframe_screen = parent.document.getElementById("iframe_screen");
+						iframe_screen.parentNode.removeChild(iframe_screen);
+					}, 500);
+				}
+			}
+			//
+			if(closeScreen.manual_off){
+				document.body.addEventListener(closeScreen.evtName, closeScreen, false);
+			}else{
+				closeScreen.handleEvent();
+			}
+		}
+
+
+
+	</script>
+</head>
+<body ontouchmove="return false;">
+	<section id="loader1">
+		<div class="hold hold1">
+		  <div class="pie pie1" style="-webkit-transform: rotate:0deg);"></div>
+		</div>
+		<div class="hold hold2">
+		  <div class="pie pie2"></div>
+		</div>
+		<div class="bg"></div>
+		<div class="time"><span>2</span></div>
+	</section>
+</body>
+</html>        		<div mark="stat_code" style="width:0px; height:0px; display:none;">
+					</div>
+	</body>
+</html>

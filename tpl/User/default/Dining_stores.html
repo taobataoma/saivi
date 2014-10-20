@@ -1,0 +1,105 @@
+<include file="Public:head"/>  
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+
+<script src="{Saivi::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+
+<script src="{Saivi::STATICS}/artDialog/plugins/iframeTools.js"></script>
+
+
+
+<div class="content"   >
+
+<div class="cLineB">
+
+<h4 class="left">店铺列表</h4>
+
+<div class="clr"></div>
+
+</div>
+
+<!--tab start-->
+
+<div class="tab">
+
+<ul>
+
+<li class="current tabli" id="tab2"><a href="{Saivi::U('Dining/stores',array('token'=>$token,'storeid'=>$storeid))}">店铺信息</a></li>
+
+<li class="tabli" id="tab0"><a href="{Saivi::U('Dining/index',array('token'=>$token,'storeid'=>$storeid))}">菜品管理</a></li>
+
+<li class="tabli" id="tab2"><a href="{Saivi::U('Dining/cats',array('token'=>$token,'storeid'=>$storeid))}">菜品分类管理</a></li>
+
+<li class="tabli" id="tab2"><a href="{Saivi::U('Dining/orders',array('token'=>$token,'storeid'=>$storeid))}">订单管理</a></li>
+
+<li class="tabli" id="tab2"><a href="{Saivi::U('Dining/tables',array('token'=>$token,'storeid'=>$storeid))}">桌台管理</a></li>
+
+<li class="tabli" id="tab5"><a href="{Saivi::U('Reply_info/set',array('token'=>$token,'infotype'=>'Dining'))}">订餐回复配置</a></li>
+
+</ul>
+
+</div>
+
+<!--tab end-->  
+
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+
+<thead>
+
+<tr>
+
+<th width="200">店铺名称</th>
+
+<th width="100">店铺状态</th>
+
+<th width="150">营业时间</th>
+
+<th>配送区域</th>
+
+<th width="150" class="norightborder">操作</th>
+
+</tr>
+
+</thead>
+
+<tbody style="text-align:center;">
+
+<volist name="stores" id="c"> 
+
+<tr>
+
+<td>{Saivi:$c.name}</td>
+
+<td><if condition="$c.status eq 1"><span style="color:green">营业中</span><else/><span style="color:red">歇业中</span></if></td>
+
+<td>{Saivi:$c.time}</td>
+
+<td>{Saivi:$c.scope}</td>
+
+<td class="norightborder"><a href="{Saivi::U('Dining/storeset',array('token'=>$token,'id'=>$c['id'],'storeid'=>$storeid))}">修改</a></td>
+
+</tr>
+
+</volist>
+
+</tbody>
+
+</table>
+
+</div>
+
+<div class="cLine">
+
+<div class="pageNavigator right">
+
+<div class="pages">{Saivi:$page}</div>
+
+</div>
+
+<div class="clr"></div>
+
+</div>
+
+</div>
+
+<include file="Public:footer"/>

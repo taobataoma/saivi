@@ -1,0 +1,19 @@
+<div class="wrap_header">
+    <div class="header">
+        <div class="navigation">
+            <div class="logo"><img src="{Saivi::C('site_logo')}" style="height:50px;">
+                </img>
+            </div>
+            <ul><li class="current"><a href="/">首页</a></li><li><a href="{Saivi::U('Index/index')}#func">功能</a></li><li><a href="{Saivi::U('Index/case')}">案例</a></li><li><a href="{Saivi::U('Index/agency')}">代理</a></li><li><a href="{Saivi::U('Index/reg')}">入驻</a></li><li><a href="{Saivi::U('Index/contact')}">联系</a></li></ul>
+            <div class="login">
+                <if condition="$_SESSION[uid]==false">
+                  <a href="{Saivi::U('Index/login')}">登录</a>
+                  <a href="{Saivi::U('Index/reg')}" <if condition="$curr eq 'reg' ">class="current"</if>>注册</a>
+                <else />
+                  <a href="{Saivi::U('System/Adminsaivi/logout')}">注销</a><a style="color: #F00" href="{Saivi::U('User/Index/index')}">管理中心</a>
+                </if>
+            </div>
+          
+        </div>
+    </div>
+</div>

@@ -1,0 +1,237 @@
+<include file="Public:head"/> 
+
+
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+
+
+
+<div class="content"  >
+
+
+
+<div class="cLineB">
+
+
+
+<h4 class="left">类型信息 ({Saivi:$page} ) </h4>
+
+
+
+<div class="searchbar right">
+
+
+
+<form method="post" action="">
+
+
+
+<input type="text" id="msgSearchInput" class="txt left" placeholder="输入关键词搜索" name="searchkey" value="{Saivi:$key}">
+
+
+
+<input type="submit" value="搜索" id="msgSearchBtn" href="" class="btnGrayS" title="搜索">
+
+
+
+</form>
+
+
+
+</div>
+
+
+
+<div class="clr"></div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="cLine">
+
+
+
+<div class="">
+
+
+
+<a href="{Saivi::U($type.'/addcin',array('pid'=>$id,'token'=>$token))}" title="添加" class="btn btn-primary btn_submit  J_ajax_submit_btn"><img src="{Saivi::RES}/images/product/add.png" width="16" class="vm">添加</a>
+
+
+
+<a href="{Saivi::U($type.'/index',array('token'=>$token))}" class="right  btn btn-primary btn_submit  J_ajax_submit_btn" style="">返回</a> 
+
+
+
+</div>
+
+
+
+<div class="clr"></div>
+
+
+
+</div>
+
+
+
+<div class="msgWrap">
+
+
+
+<form method="post" action="" id="info">
+
+
+
+<input name="delall" type="hidden" value="">
+
+
+
+<input name="wxid" type="hidden" value="">
+
+
+
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+
+
+
+<thead>
+
+
+
+<tr>
+
+
+
+<th width="140">类型</th>
+
+
+
+<th width="160">原价</th>
+
+
+
+<th width="140">优惠价</th>
+
+
+
+<th width="250">简要说明</th>
+
+
+
+<th width="180" class="norightborder">操作</th>
+
+
+
+</tr>
+
+
+
+</thead>
+
+
+
+<tbody>
+
+
+
+<tr></tr>
+
+
+
+<volist name="data" id="item"> 
+
+
+
+<tr>
+
+
+
+<td>{Saivi:$item.name}</td>
+
+
+
+<td>{Saivi:$item.yuanjia}</td>
+
+
+
+<td>{Saivi:$item.youhui}</td>
+
+
+
+<td>{Saivi:$item.memo}</td> 
+
+
+
+
+
+
+
+<td class="norightborder"><a href="{Saivi::U($type.'/updatecin',array('aid'=>$item['pid'],'id'=>$item['id'],'token'=>$token))}">编辑</a>&nbsp;&nbsp;<a href="{Saivi::U($type.'/delcin',array('aid'=>$item['pid'],'id'=>$item['id'],'token'=>$token))}">删除</a></td>
+
+
+
+</tr>
+
+
+
+</volist>
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+</form>
+
+
+
+
+
+
+
+</div>
+
+
+
+<div class="cLine">
+
+
+
+<div class="pageNavigator right">
+
+
+
+<div class="pages">{Saivi:$page}</div>
+
+
+
+</div>
+
+
+
+<div class="clr"></div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+<include file="Public:footer"/>

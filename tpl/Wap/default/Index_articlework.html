@@ -1,0 +1,776 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="/dedemao/images/logo-ico.png" type="image/x-icon">
+<link rel="icon" href="/dedemao/images/logo-ico.png" type="/dedemao/images/png"/>
+<title>{dede:field.seotitle /}_{dede:global.cfg_webname/}</title>
+<meta name="keywords" content="{dede:field name='keywords'/}" />
+<meta name="description" content="{dede:field name='description' function='html2text(@me)'/}" />
+<!--常用CSS-->
+<link rel="stylesheet" type="text/css" href="/dedemao/css/basic.css">
+<link rel="stylesheet" type="text/css" href="/dedemao/css/style.css">
+<!--常用CSS end-->
+<!--轮播CSS-->
+<link rel="stylesheet" type="text/css" href="/dedemao/css/slide/settings.css">
+<link rel="stylesheet" type="text/css" href="/dedemao/css/slide/styles.css">
+<!--轮播CSS end-->
+<!--tel CSS-->
+<link rel="stylesheet" type="text/css" href="/dedemao/css/tel/borrar.css">
+<link rel="stylesheet" type="text/css" href="/dedemao/css/tel/estilos.css">
+<!--tel CSS end-->
+<!--轮播JS-->
+<script src="/dedemao/js/slide/jquery.js"></script> 
+<script src="/dedemao/js/slide/jquery.themepunch.plugins.min.js"></script> 
+<script src="/dedemao/js/slide/jquery.themepunch.revolution.min.js"></script> 
+<script src="/dedemao/js/slide/jquery.themepunch.showbizpro.min.js"></script> 
+<script src="/dedemao/js/slide/jquery.fancybox.pack.js"></script> 
+<script src="/dedemao/js/slide/jquery.isotope.min.js"></script> 
+<script src="/dedemao/js/slide/scripts.js"></script>
+<!--轮播JS end-->
+<!--tel JS-->
+<script type="text/javascript" src="/dedemao/js/tel.js"></script>
+<!--tel JS end-->
+<!--首页滚动JS-->
+<script type="text/javascript" src="/dedemao/js/index.js"></script>
+<!--首页滚动JS end-->
+<!--[if lt IE 9]>
+<link rel="stylesheet" type="text/css" href="/dedemao/css/slide/ie8.css" media="all" />
+<![endif]-->
+<!--[if lt IE 9]>
+<script src="/dedemao/js/slide/html5shiv.js"></script>
+<![endif]-->
+<!--workJS-->
+<script type="text/javascript" src="/dedemao/js/work.js"></script>
+<script type="text/javascript"> 
+
+	$(function(){ 
+
+		var H=$(window).width()/2-10
+
+		if(H)
+
+		{
+
+			$(".ss-left").css("width",H)	
+
+			$(".ss-right").css("width",H)	
+
+		} 
+
+	})
+
+	$(function(){ 
+
+		var T=$(window).width()
+
+		if(T<=3840 & T>=1890 ){
+
+			$("#brand").css("width","1820px")
+
+		}else{
+
+			$("#brand").css("width","1090px")
+
+		}
+
+	}) 
+
+</script> 
+
+<script>
+
+$(window).resize(function(){
+
+	var resolutionList="320,400,640,800,1024,1280,1400,1440,1600,1680,1920,2048,2560,3200,3840,";
+
+	var nowwidth=window.screen.width;
+
+	var H=$(window).width()/2-10
+
+	var T=$(window).width()
+
+	if(resolutionList.indexOf(nowwidth + ",")==-1 ){
+
+		if(H)
+
+		{
+
+			$(".ss-left").css("width",H)	
+
+			$(".ss-right").css("width",H)	
+
+		}
+
+	}
+
+	else{
+
+			if(H)
+
+			{
+
+				$(".ss-left").css("width",H)	
+
+				$(".ss-right").css("width",H)	
+
+			}
+
+		}
+
+	if(resolutionList.indexOf(nowwidth + ",")==-1 ){
+
+				if(T<=3840 & T>=1890 ){
+
+					$("#brand").css("width","1820px")
+
+				}else{
+
+					$("#brand").css("width","1090px")
+
+				}
+
+	}
+
+	else{
+
+			if(T<=3840 & T>=1890 ){
+
+				$("#brand").css("width","1820px")
+
+			}else{
+
+				$("#brand").css("width","1090px")
+
+			}
+
+		}
+
+
+
+});
+
+</script>
+
+<!--workJS end-->
+
+<script type="text/javascript" src="/dedemao/js/jquery.SuperSlide.2.1.1.js"></script>
+
+
+
+<!--导航JS-->
+
+<script>
+$(document).ready(function() {	
+	$("#menu1 a").each(function() { //For each list item...
+		var linkText = $(this).find("div").html(); //Find the text inside of the a tag
+	}); 
+	
+	$("#menu1 a").hover(function() {	//On hover...
+		$(this).find("p").stop().animate({ 
+			marginTop: "-20" //Find the span tag and move it up 40 pixels
+		}, 200);
+	} , function() { //On hover out...
+		$(this).find("p").stop().animate({
+			marginTop: "0" //Move the span back to its original state (0px)
+		}, 200);
+	});	
+});
+</script>
+
+<script type="text/javascript" src="/dedemao/js/right-nav.js"></script>
+
+<script>
+
+	$(window).bind("scroll", function(){ 
+
+	//当滚动条滚动时
+
+		var scroll_top = $(document).scrollTop();
+
+		if(scroll_top == 0)
+
+		{
+
+			$(".M-top").removeClass("M-top-show");
+
+			$(".M-top").animate({top:'0px'},"slow");
+
+			$(".M-top").css("left","0px");
+
+		}
+
+		if(scroll_top > 0)
+
+		{
+
+			$(".M-top").addClass("M-top-show");
+
+			$(".M-top").css("left","0px");
+
+			$(".M-top").css("top","-165px");
+
+			
+
+		}
+
+		if(scroll_top <500)
+
+		{
+
+			$("#nav").hide();
+
+			
+
+		}
+
+		if(scroll_top >=400)
+
+		{
+
+			$("#nav").show();
+
+			
+
+		}
+
+	});
+
+	
+
+	$(function(){
+
+		$(".M-menu2").click(function(){
+
+			$(".M-top").addClass("M-top-show");
+
+			$(".M-top").animate({top:'0px'},"slow");
+
+			$("#topcontrol").animate({right:'-122px'},"slow");
+
+		})
+
+		
+
+	})
+
+</script>
+
+<!--导航JS end-->
+
+
+
+<!--new-->
+
+<link rel="stylesheet" type="text/css" href="/dedemao/css/new/new.css">
+
+
+
+<link rel="stylesheet" type="text/css" href="/dedemao/css/new/reset.css">
+
+
+
+<link rel="stylesheet" type="text/css" href="/dedemao/css/new/style.css">
+
+<!--[if lt IE 9]>
+
+<link rel="stylesheet" type="text/css" href="newcss/styleIE.css" />
+
+<![endif]-->
+
+
+
+<script type="text/javascript" src="/dedemao/js/new/jquery.easing.1.3.js"></script>
+
+<script type="text/javascript" src="/dedemao/js/new/modernizr.custom.11333.js"></script>
+
+<!--new end-->
+
+<script type="text/javascript">
+
+$(document).ready(
+
+function () {
+
+var m_st, m_po = 230; //滚动到600像素时显示
+
+$(window).scroll(function(){
+
+	m_st = Math.max(document.body.scrollTop || document.documentElement.scrollTop);
+
+	if (m_st > m_po) 
+
+	{
+
+	$(".M-design").animate({top:'0px'},1000);
+
+	$(".Brand").animate({top:'0px'},1500);
+
+	$(".move").animate({top:'0px'},2000);
+
+	$(".ui").animate({top:'0px'},2500);
+
+	}	
+
+});
+
+
+
+});
+
+</script>
+
+<script>
+
+$(document).keydown(function(event){
+
+		var t=$(document).scrollTop();
+
+		if(t>=0 & t<=586){
+
+			if (event.keyCode == 40){ 
+
+			$("html,body").animate({scrollTop:600},1000);
+
+			return false; 
+
+		  }
+
+		  if (event.keyCode == 38){ 
+
+			$("html,body").animate({scrollTop:0},1000);
+
+			return false; 
+
+		  }
+
+		}
+
+		if(t>=600 & t<=1240){
+
+			if (event.keyCode == 40){ 
+
+			$("html,body").animate({scrollTop:1250},1000);
+
+			return false; 
+
+		  }
+
+		  if (event.keyCode == 38){ 
+
+			$("html,body").animate({scrollTop:0},1000);
+
+			return false; 
+
+		  }
+
+		}
+
+		if(t>=1240 & t<=2090){
+
+			if (event.keyCode == 40){ 
+
+			$("html,body").animate({scrollTop:2100},1000);
+
+			return false; 
+
+		  }
+
+		  if (event.keyCode == 38){ 
+
+			$("html,body").animate({scrollTop:600},1000);
+
+			return false; 
+
+		  }
+
+		}
+
+		if(t>=2100 & t<=2240){
+
+			if (event.keyCode == 40){ 
+
+			$("html,body").animate({scrollTop:2840},1000);
+
+			return false; 
+
+		  }
+
+		  if (event.keyCode == 38){ 
+
+			$("html,body").animate({scrollTop:1250},1000);
+
+			return false; 
+
+		  }
+
+		}
+
+		if(t>=2240){
+
+		  if (event.keyCode == 38){ 
+
+			$("html,body").animate({scrollTop:2102},1000);
+
+			return false; 
+
+		  }
+
+		}
+
+		if($(document).scrollTop() >= $(document).height() - $(window).height()){
+
+		  if (event.keyCode == 38){ 
+
+			$("html,body").animate({scrollTop:2100},1000);
+
+			return false; 
+
+		  }
+
+		}
+
+})
+
+</script>
+
+</head>
+
+<body style="background:#F3F3F3 !important;">
+
+
+<div class="page_spinner"></div>
+
+<div id="warp">
+
+	<div id="container">
+
+	 <div class="M-top clearfix">
+        <div class="M-logo fl"> <a href="/"><img src="/dedemao/images/logo.png"></a> </div>
+        <div class="M-top-right fr clearfix">
+          <div class="M-nav clearfix fl" id="menu1">
+            <ul id="topMenu">      
+          <li> <a href="/" class="active">首页</a> </li>
+        <li><a href="#section-2"><div style="margin-top: 0px;"><p><span>微享专长</span></p><font>微享专长</font></div></a></li>    
+		<li><a href="/tpl/Home/weiqianlong/Index_articlework.html"><div style="margin-top: 0px;"><p><span>案例展示</span></p><font>案例展示</font></div></a></li>    
+		<li><a href="#section-4"><div style="margin-top: 0px;"><p><span>新闻动态</span></p><font>新闻动态</font></div></a></li>    
+		<li><a  href="#section-5"><div style="margin-top: 0px;"><p><span>联系我们</span></p><font>联系我们</font></div></a></li>
+        <li><a  href="/tpl/Home/weiqianlong/Index_login.html"><div style="margin-top: 0px;"><p><span >登陆平台</span></p><font>登陆微享</font></div></a></li>
+        <li><a  href="/tpl/Home/weiqianlong/Index_reg.html"><div style="margin-top: 0px;"><p><span>注册账号</span></p><font>注册账号</font></div></a></li>
+            </ul>
+          </div>
+          <ul id="iconbar" class="fl">
+            <li> <a href="/#section-5"> <img src="/dedemao/images/tel-icoo.png" alt="" /> <span>0577-85783766</span> </a> </li>
+            <li> <a href="{dede:type typeid='13'}[field:typelink /]{/dede:type}"> <img src="/dedemao/images/tel-ico2o.png" alt="" /> <span>招聘小伙伴</span> </a> </li>
+            <li> <a href="http://wpa.qq.com/msgrd?v=3&uin=2103695452&site=qq&menu=yes" target="blank"> <img src="/dedemao/images/tel-ico3o.png" alt="" /> <span>点击在线咨询</span> </a> </li>
+          </ul>
+        </div>
+      </div>
+    <div class="page-work">
+
+    	<div class="page-top-title clearfix">
+
+        	<span class="title">快速 · 有效 · 有创新</span>
+
+            <font>我们为诸多企业搭建有效提供企业品牌的认知，和促进销售提升的微信平台。</font>
+
+            <span class="x"></span>
+
+        </div>
+
+        <div class="work-table-content clearfix">
+
+        	<div class="page-table-nav clearfix">
+
+            	<ul>
+
+                	<li class="{dede:field name=typeid runphp='yes'}(@me=='3')? @me='cur':@me='';{/dede:field}"><a href="{dede:type typeid='3'}[field:typelink /]{/dede:type}">全部</a></li>
+
+ <li ><a href='~typelink~' >眼镜案例</a></li><li><a href='[field:typeurl/]'></a></li>
+ <li ><a href='~typelink~' >房产案例</a></li><li><a href='[field:typeurl/]'></a></li>
+ <li ><a href='~typelink~' >商城案例</a></li><li><a href='[field:typeurl/]'></a></li>
+    
+    
+
+   
+
+               
+
+                </ul>
+
+            </div>
+
+            <div id="brand" class="clearfix">
+
+                <ul class="bd-box" id="mainContent">
+                <script type="text/javascript" src="/dedemao/js/CJL.0.1.min.js"></script>
+                    <script type="text/javascript" src="/dedemao/js/LazyLoad.js"></script>
+                    <style>
+					.floorMain a{background:url(/dedemao/images/loading.gif) center center no-repeat;float:left; display:block; width:355px; height:211px;}
+					.floorMain img{border:0;filter:alpha(opacity:0);opacity:0;}
+					</style>
+
+				 
+
+                         
+
+
+  
+
+                    <li> 
+
+                        <div class="just floorMain">
+
+                        	<a href="#"><img _lazysrc="/tpl/Home/weiqianlong/common/case/ksyjh.jpg" /></a>
+
+                        </div>
+
+                        <div class="against"><img _lazysrc="/tpl/Home/weiqianlong/common/case/ksyj.jpg"></div>
+
+                    </li>
+                    <li> 
+
+                        <div class="just floorMain">
+
+                        	<a href="#"><img _lazysrc="/tpl/Home/weiqianlong/common/case/thwhh.jpg" /></a>
+
+                        </div>
+
+                        <div class="against"><img _lazysrc="/tpl/Home/weiqianlong/common/case/thwh.jpg"></div>
+
+                    </li>
+                    <li> 
+
+                        <div class="just floorMain">
+
+                        	<a href="#"><img _lazysrc="/tpl/Home/weiqianlong/common/case/wgqch.jpg" /></a>
+
+                        </div>
+
+                        <div class="against"><img _lazysrc="/tpl/Home/weiqianlong/common/case/wgqc.jpg"></div>
+
+                    </li>
+                     <li> 
+
+                        <div class="just floorMain">
+
+                        	<a href="#"><img _lazysrc="/tpl/Home/weiqianlong/common/case/ygfmh.jpg" /></a>
+
+                        </div>
+
+                        <div class="against"><img _lazysrc="/tpl/Home/weiqianlong/common/case/ygfm.jpg"></div>
+
+                    </li>
+                       <li> 
+
+                        <div class="just floorMain">
+
+                        	<a href="#"><img _lazysrc="/tpl/Home/weiqianlong/common/case/cswgh.jpg" /></a>
+
+                        </div>
+
+                        <div class="against"><img _lazysrc="/tpl/Home/weiqianlong/common/case/cswg.jpg"></div>
+
+                    </li>
+                     <li> 
+
+                        <div class="just floorMain">
+
+                        	<a href="#"><img _lazysrc="/tpl/Home/weiqianlong/common/case/xjxtdh.jpg" /></a>
+
+                        </div>
+
+                        <div class="against"><img _lazysrc="/tpl/Home/weiqianlong/common/case/xjxtd.jpg"></div>
+
+                    </li>
+                      <li> 
+
+                        <div class="just floorMain">
+
+                        	<a href="#"><img _lazysrc="/tpl/Home/weiqianlong/common/case/lsyjh.jpg" /></a>
+
+                        </div>
+
+                        <div class="against"><img _lazysrc="/tpl/Home/weiqianlong/common/case/lsyj.jpg"></div>
+
+                    </li>
+                    
+
+                                                 
+
+
+
+
+                          
+
+
+
+                    
+                    <script language="javascript">
+					function isIE() { //ie?
+						if (window.navigator.userAgent.toLowerCase().indexOf("msie") >= 1) return true;
+						else return false;
+					}
+					var _ie = isIE();
+					(function(){
+						var row = $$("mainContent"), total = row.getElementsByTagName("img").length, cells = [];
+						for (var i = 0, n = total; i < n; i++){
+							var img = row.getElementsByTagName("img")[i];
+							if(img){
+								//图片地址添加随机数避免缓存，可删除
+								img.setAttribute("_lazysrc", img.getAttribute("_lazysrc") + "?" + Math.random());
+								cells.push(img);
+							}
+						}
+						var lazy = new ImagesLazyLoad({
+							container: window, mode: "vertical",
+							holder: "/dedemao/images/s.gif",
+							onLoad: function(img){
+								img.onload = function(){
+									showPic(this);
+								}
+							}
+						});
+						function showPic(img) {
+							var t = setInterval(function(){
+								var opacity = _ie?img.filters.alpha.opacity:img.style.opacity*100
+								if(opacity < 100){
+									(_ie?img.filters.alpha.opacity += 10 : img.style.opacity = (opacity + 10)/100);
+								}else{
+									clearInterval(t);
+								}
+							}, 15);
+						}
+					})();
+					</script>
+
+                </ul>
+            </div>
+
+            <!--page-work-->
+
+<script>
+                $(function(){
+                    var aLi = $('#brand .bd-box li');
+                    var aImg =  $('#brand .bd-box li div.just img');
+                    var aSpan = $('#brand .bd-box li div.against img');
+                    var aSpann = $('#brand .bd-box li div.against');
+                    aLi.each(function(index){
+                        $(this).mouseover(function(){
+                            aSpan.eq(index).stop();
+                            aSpann.eq(index).stop();
+                            aImg.eq(index).stop();
+                            aImg.eq(index).css({zIndex:1}).animate({
+                                left:177.5,
+                                width:0
+                            },80,'',function(){
+                                $(this).hide();
+                                aSpan.eq(index).show().css({zIndex:3}).animate({
+                                    left:0,
+                                    width:355
+                                },80)
+                                aSpann.eq(index).show().css({zIndex:4}).animate({
+                                    left:0,
+                                    width:355
+                                },80)
+                            })
+                        })
+                        $(this).mouseout(function(){
+                            aSpan.eq(index).stop();
+                            aSpann.eq(index).stop();
+                            aImg.eq(index).stop();
+                            aSpan.eq(index).css({zIndex:1}).animate({
+                                left:177.5,
+                                width:0
+                            },80,''),
+                            aSpann.eq(index).css({zIndex:1}).animate({
+                                left:177.5,
+                                width:0
+                            },80,'',function(){
+                                $(this).hide();
+                                aImg.eq(index).show().css({zIndex:2}).animate({
+                                    left:0,
+                                    width:355
+                                },80)
+                            })
+                        })
+                    })
+                })
+            </script>
+
+        </div>
+
+    </div>
+
+   <div class="page-work-bottom clearfix">
+
+       <a href="#page-work-foot" class="top-ico3"></a>
+
+   </div>
+
+   <div class="page-work-foot clearfix" id="page-work-foot">
+
+   		<div class="page-consult">
+
+        	<span>定制每个不一样的你</span>
+
+            <a href="http://wpa.qq.com/msgrd?v=3&uin={dede:global.qq/}&site=qq&menu=yes" target="blank" class="work-btn">立即咨询</a>
+
+        </div>
+
+        {dede:include filename="footer2.htm"/}
+
+   </div>
+
+   </div>
+
+</div>
+
+
+<div style="display:none">
+{dede:global.tongji/}
+</div>
+</body>
+
+</html>
+
+
+
+<!--login-->
+
+<!-- =========================== END FOOTER ======================== -->
+
+<script>
+
+$(window).load(function(){$('.page_spinner').fadeOut(1000);$('body').css({overflow:'visible'})})
+
+</script>
+
+
+
+<script>
+
+	$(function(){
+
+		var browser=navigator.appName 
+
+		var b_version=navigator.appVersion 
+
+		var version=b_version.split(";"); 
+
+		var trim_Version=version[1].replace(/[ ]/g,""); 
+
+		if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE7.0") 
+
+		{ 
+
+		$("#ifrm").hide();	
+
+		} 
+
+	})
+
+</script>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+
+
+<html style="overflow: hidden;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="utf-8">
+
+<title>微信公众平台管理系统</title>
+
+</head>
+
+ <link href="{wqlcms::RES}/css/style.css?id=100" rel="stylesheet" type="text/css" />
+
+<body style="overflow: hidden;">
+<script src="http://res.xiami.net/pc/lay/lib.js"></script>
+<script src="/tpl/static/layer/layer.min.js"></script>
+
+<script language="javascript" src="{wqlcms::RES}/js/jquery-1.4.4.min.js"></script>
+<script language="javascript" src="{wqlcms::RES}/js/jquery.easing.js"></script>
+
+<!-- <script type="text/javascript" src="{wqlcms::RES}/js/jquery.mousewheel.js"></script> -->
+
+<script type="text/javascript" src="{wqlcms::RES}/js/jquery.jscrollpane.js"></script>
+
+<script type="text/javascript" src="{wqlcms::RES}/js/global.js"></script>
+
+<script type="text/javascript" src="{wqlcms::RES}/js/main2.js"></script>
+
+
+
+
+<link href="{wqlcms::RES}/css/style.css" rel="stylesheet" type="text/css">
+
+<link href="{wqlcms::RES}/js/jquery.jscrollpane.css" rel="stylesheet" type="text/css">
+
+<link href="{wqlcms::RES}/css/main.css" rel="stylesheet" type="text/css" />
+
+<link href="{wqlcms::RES}/css/global.css" rel="stylesheet" type="text/css" />
+
+
+
+<script language="javascript">$(document).ready(main_obj.page_init); window.onresize=main_obj.page_init;</script>
+
+<script>
+;!function(){
+
+$(function(){
+   $.layer({
+        type: 1,
+        title: false, //不显示默认标题栏
+        shade: [0.5, '#000'], //不显示遮罩
+        area: ['600px', '360px'],
+		shadeClose: true,
+		shift:'top',
+        page: {html: '<img src="/tpl/User/default/common/images/czlc.png" alt="layer">'}
+    });
+});
+
+
+
+}();
+</script>
+
+<DIV id=header>
+
+<DIV class=logo><a href="/" class="f_l" style="font-size: 50px;"><img src="{wqlcms::RES}/images/main/logo.png" /></a>
+
+</DIV>
+
+<UL>
+  <LI class=ico-0><A href="{wqlcms::U('Index/info',array('token'=>$token))}" target=iframe>我的帐号</A></LI>
+
+  <LI class=ico-6><A 
+
+  href="{wqlcms::U('Index/useredit')}" 
+
+  target=iframe>修改密码</A></LI>
+
+  <!--<LI class=ico-1><A 
+
+  href="http://www.ptwqlcms.com/member/?m=html&amp;a=anstructions" 
+
+  target=iframe>使用说明</A></LI>
+
+  <LI class=ico-2><A 
+
+  href="#rar">使用手册下载</A></LI>
+
+  <LI class=ico-3><A href="http://www.ptwqlcms.com/member/?m=html&amp;a=vedio" 
+
+  target=iframe>视频教程</A></LI>
+
+  <LI class=ico-4><A href="#" 
+
+  target=iframe>推广技巧</A></LI>-->
+
+  <LI class=ico-5><a href="/#" onclick="Javascript:window.open('{wqlcms::U('Home/Index/logout')}','_self')" >退出登录</A></LI></UL></DIV>
+
+<DIV id=main>
+
+<DIV class=menu>
+
+<DL>
+
+  <DT group="wechat0" style="display: block;"><IMG src="{wqlcms::RES}/images/main/m-ico-0.png">管理平台</DT>
+
+  <DD>
+
+  <DIV>+ <A href="{wqlcms::U('Index/useredit',array('token'=>$token))}" 
+
+  target=iframe>修改密码</A></DIV>
+
+  <DIV>+ <A href="{wqlcms::U('Index/info',array('token'=>$token))}" 
+
+  target=iframe>我的帐号</A></DIV>
+
+  <DIV>+ <A href="{wqlcms::U('Index/add',array('token'=>$token))}" 
+
+  target=iframe>添加公众号</A></DIV>
+
+  <DIV>+ <A href="{wqlcms::U('Alipay/index',array('token'=>$token))}" 
+
+  target=iframe>会员充值</A></DIV>
+   <DIV>+ <A href="{wqlcms::U('Alipay/vip',array('token'=>$token))}" 
+
+  target=iframe>升降级</A></DIV>
+   <DIV>+ <A href="{wqlcms::U('Sms/index',array('token'=>$token))}" 
+
+  target=iframe>短信管理</A></DIV>
+   <DIV>+ <A href="{wqlcms::U('Index/invite',array('token'=>$token))}" 
+
+  target=iframe>邀请好友</A></DIV>
+
+
+</DL>
+
+</DIV>
+
+<DIV class=iframe><IFRAME src="{wqlcms::U('User/Index/info')}" frameBorder=0 
+
+name=iframe scrolling=auto></IFRAME></DIV>
+
+<DIV class=clear></DIV></DIV>
+
+<DIV id=footer>
+
+<DIV class=oem></DIV></DIV>
+
+</BODY></HTML>
+
+
+

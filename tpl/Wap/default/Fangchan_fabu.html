@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!-- saved from url=(0084)http://xiangshan.juweile.com/wap.php?m=house&a=add&wxid=olqrhjkniK_cMuV-IRKG6aMlmy-Q -->
+<html><head _wxhkphogpkobbkjccgfifhfjlahnoocnan_="shake_1.0"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/fangchan/fabu/main.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/fangchan/fabu/dialog.css" media="all">
+	<script type="text/javascript" src="/tpl/Wap/default/common/fangchan/fabu/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/tpl/Wap/default/common/fangchan/fabu/main.js"></script>
+	<script type="text/javascript" src="/tpl/Wap/default/common/fangchan/fabu/dialog_min.js"></script>
+	<title>房产添加</title>
+	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+	<meta name="Keywords" content="{Saivi:$f_siteName}">
+	<meta name="Description" content="{Saivi:$f_siteName}">
+	<!-- Mobile Devices Support @begin -->
+	<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+	<meta content="no-cache" http-equiv="pragma">
+	<meta content="0" http-equiv="expires">
+	<meta content="telephone=no, address=no" name="format-detection">
+	<meta name="apple-mobile-web-app-capable" content="yes"> <!-- apple devices fullscreen -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<script type="text/javascript" src="/tpl/Wap/default/common/fangchan/fabu/mymain.js"></script>
+<script type="text/javascript" src="/tpl/Wap/default/common/fangchan/fabu/aSelect.js"></script>
+<script type="text/javascript" src="/tpl/Wap/default/common/fangchan/fabu/aLocation.js"></script>
+<script type="text/javascript" src="/tpl/Wap/default/common/fangchan/fabu/dater_min.js"></script>
+<link type="text/css" rel="stylesheet" href="chrome-extension://cpngackimfmofbokmjmljamhdncknpmg/style.css">
+<script type="text/javascript" charset="utf-8" src="chrome-extension://cpngackimfmofbokmjmljamhdncknpmg/js/page_context.js"></script>
+
+<style type="text/css">
+*[data-card] header {
+padding: 10px 30px;
+-webkit-box-sizing: border-box;
+background: -webkit-gradient(linear, 0 0, 100% 0, from(#ebebeb), to(#ebebeb), color-stop(30%, #ebebeb));
+}
+.info_tx {
+background: #67616a;
+}
+.list_ul_card *[data-card] header label span {
+display: inline-block;
+width: 40px;
+height: 40px;
+background: url(/tpl/Wap/default/common/fangchan/icons14.png) no-repeat center -106px;
+-webkit-background-size: 50px auto;
+}
+.list_ul_card *[data-card] header label {
+display: block;
+line-height: 40px;
+color: #973ecc; 
+font-size: 18px;
+}
+.button {
+background: #973ecc;
+}
+</style></head>
+
+<body onselectstart="return true;" ondragstart="return false;" style="">
+
+<div class="container info_tx">
+	<div class="body pt_10">
+		<ul class="list_ul_card">
+		<li data-card="">
+		
+			<form id="form1" action="" method="post">
+				<header class="center">
+					<label style="display:inline-block;"><span>&nbsp;</span>房产信息登记表</label>
+				</header>
+								<div class="forms">
+ 						<dl>
+							<dt>类别： </dt>
+							<dd>
+								<select name="type" id="type" class="select" style="width:100%;">
+																		<option value="求租">求租</option>
+																		<option value="求购">求购</option>
+																		<option value="出租">出租</option>
+																		<option value="出售">出售</option>
+																	</select>
+							</dd>
+						</dl>
+ 						<dl>
+							<dt>户型： </dt>
+							<dd>
+								<select name="houseType" id="houseType" class="select" style="width:100%;">
+																		<option value="一室">一室</option>
+																		<option value="二室">二室</option>
+																		<option value="三室">三室</option>
+																		<option value="四室">四室</option>
+                                                                        <option value="五室">五室</option>
+                                                                        <option value="六室">六室</option>
+                                                                        <option value="七室">七室</option>
+																	</select>
+							</dd>
+						</dl>
+                        <dl>
+							<dt>地区： </dt>
+							<dd>
+								<input type="text" name="area" id="area" placeholder="请填写所属地区" maxlength="30" class="input">
+							</dd>
+						</dl>
+						<dl>
+							<dt>标题： </dt>
+							<dd>
+								<input type="text" name="title" id="shopname" placeholder="请填写标题" maxlength="30" class="input">
+							</dd>
+						</dl>
+                        
+                        <dl>
+							<dt>房产详情： </dt>
+							<dd>
+								<fieldset><textarea name="content" id="content" class="textarea" placeholder="请填写房产详情" rows="5" style="width:100%"></textarea></fieldset>
+							</dd>
+						</dl>
+
+                        <dl>
+							<dt>联系人： </dt>
+							<dd>
+								<input type="text" name="contacter" id="contacter" placeholder="必填项" maxlength="30" class="input">
+							</dd>
+						</dl>
+                        
+                        <dl>
+							<dt>联系电话： </dt>
+							<dd>
+								<input type="text" name="phone" id="phone" placeholder="必填项" maxlength="30" class="input">
+							</dd>
+						</dl>
+                        <dl>
+							<dt>有效期： </dt>
+							<dd>
+								<select name="valid_date" id="valid_date" class="select" style="width:100%;">
+																		<option value="5">5天</option>
+																		<option value="10">10天</option>
+																		<option value="20" selected="">20天</option>
+																		<option value="30">30天</option>
+																		<option value="60">两个月</option>
+																		<option value="182">半年</option>
+																		<option value="365">一年</option>
+																	</select>
+								</dd>
+						</dl>  
+                       
+				</div><button style="width:100%" type="submit" class="button">发&nbsp;&nbsp;布</button></form></li>
+				
+			
+		</ul>
+	</div>
+<!-- 			<footer>
+				<nav class="nav_add_addr">
+					<ul class="tbox">
+						<li>
+							<a href="wap.php?m=house&wxid=olqrhjkniK_cMuV-IRKG6aMlmy-Q" class="icons icons_before">&nbsp;</a>
+						</li>
+					</ul>
+				</nav>
+			</footer> -->
+</div>
+
+
+
+</script> <script type="text/javascript">
+			window.shareData = {  
+					"moduleName":"Fangchan",
+					"moduleID": '0',
+					"imgUrl": "{Saivi:$date.tp}", 
+					"timeLineLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"sendFriendLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"weiboLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"tTitle": "{Saivi:$date.title}",
+					"tContent": "{Saivi:$date.info}"
+				};
+		</script>
+        	
+        {Saivi:$shareScript}
+
+</body></html>

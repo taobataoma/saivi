@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/jikedati/survey.css">
+	<style type="text/css">
+.copyright {
+padding: 8px;
+text-align: center;
+font-size: 14px;
+color: #333;
+}
+#again {
+	display: none;
+}          /*banner图*/
+.page-content {
+	background-image: url({Saivi:$copyright.banner});
+}          /*封面图*/
+.home .page-content {
+	background-image: url({Saivi:$copyright.banner});
+}          /* 主题色*/
+.progress div, h2 {
+	color: #7cac0a;
+}
+.progress div, h2 {
+	border: 5px solid #7CAC0A;
+}
+.options li, .home .start span {
+	background-color: #C2C2C2;
+
+}          /*主题按下色*/
+.options li:active, .home .start span:active {
+	background-color: #415c02;
+}          /*结果反色*/
+.result .score {
+	background-color: #f85b28;
+}
+.result .score span i {
+	color: #f85b28;
+}
+.btn-info{color:#fff;text-shadow:0 -1px 0 rgba(0,0,0,0.25);background-color:#49afcd;*background-color:#2f96b4;background-image:-moz-linear-gradient(top,#5bc0de,#2f96b4);background-image:-webkit-gradient(linear,0 0,0 100%,from(#5bc0de),to(#2f96b4));background-image:-webkit-linear-gradient(top,#5bc0de,#2f96b4);background-image:-o-linear-gradient(top,#5bc0de,#2f96b4);background-image:linear-gradient(to bottom,#5bc0de,#2f96b4);background-repeat:repeat-x;border-color:#2f96b4 #2f96b4 #1f6377;border-color:rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de',endColorstr='#ff2f96b4',GradientType=0);filter:progid:DXImageTransform.Microsoft.gradient(enabled=false)}.btn-info:hover,.btn-info:focus,.btn-info:active,.btn-info.active,.btn-info.disabled,.btn-info[disabled]{color:#fff;background-color:#2f96b4;*background-color:#2a85a0}.btn-info:active,.btn-info.active{background-color:#24748c \9}
+</style>
+</head>
+<body style="margin:0 auto;text-align:center;">
+	<h1 style="margin:0 auto;text-align:center;">红色是选错的选项，绿色是正确的选项</h1>
+	<a href="{Saivi::U('show',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'score'=>$_GET['score']))}"><button style="width:90%;height:40px;" class="btn-info">查看最新榜单</button></a>
+	<volist name='data' id='vo'>
+	<div class="page-content">
+        <h2>{Saivi:$vo.timu}</h2>
+      <ul class="options" subjectid="7">
+      	<li class="next option"    score="{Saivi:$vo.score1}"<if condition="$vo.score1 neq 0">style="background-color:#7CAC0A;"</if> <if condition="$vo.wrong eq 1">style="background-color:#D10800;"</if>>{Saivi:$vo.answer1} </li>
+      	<li class="next option"  score="{Saivi:$vo.score2}" <if condition="$vo.score2 neq 0">style="background-color:#7CAC0A;"</if> <if condition="$vo.wrong eq 2">style="background-color:#D10800;"</if>>{Saivi:$vo.answer2}  </li>
+      	<li class="next option"  score="{Saivi:$vo.score3}" <if condition="$vo.score3 neq 0">style="background-color:#7CAC0A;"</if> <if condition="$vo.wrong eq 3">style="background-color:#D10800;"</if>>{Saivi:$vo.answer3}   </li>
+      	<li class="next option"  score="{Saivi:$vo.score4}" <if condition="$vo.score4 neq 0">style="background-color:#7CAC0A;"</if> <if condition="$vo.wrong eq 4">style="background-color:#D10800;"</if>>{Saivi:$vo.answer4}</li>
+      </ul>
+  </div>
+</volist>
+</body>
+</html>

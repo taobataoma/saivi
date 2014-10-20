@@ -1,0 +1,355 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title{Saivi:$tpl['wxname']}</title>
+
+
+
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<meta name="format-detection" content="telephone=no">
+
+<meta charset="utf-8">
+
+<link href="{Saivi::RES}/abc/iscroll.css" rel="stylesheet" type="text/css" />
+
+<link href="{Saivi::RES}/abc/cate/cate14_4.css" rel="stylesheet" type="text/css" />
+
+<style>
+
+#cate15 .mainmenu li:nth-child(10n+1) a{
+
+        background-color:rgba(255, 152, 0, 0.46);
+
+}
+
+#cate15 .mainmenu li:nth-child(10n+2) a{
+
+        background-color:rgba(255, 51, 0, 0.46);
+
+}
+
+#cate15 .mainmenu li:nth-child(10n+3) a{
+
+        background-color:rgba(255, 254, 0, 0.46);
+
+}
+
+#cate15 .mainmenu li:nth-child(10n+4) a{
+
+        background-color:rgba(121, 255, 0, 0.46);/*rgb颜色及透明度0.46，可以自行调整*/
+
+}
+
+#cate15 .mainmenu li:nth-child(10n+5) a{
+
+        background-color: rgba(0, 192, 255, 0.46);
+
+}
+
+#cate15 .mainmenu li:nth-child(10n+6) a{
+
+        background-color: rgba(206, 0, 255, 0.46);
+
+}
+
+#cate15 .mainmenu li:nth-child(10n+7) a{
+
+        background-color: rgba(113, 0, 255, 0.46);
+
+}
+
+#cate15 .mainmenu li:nth-child(10n+8) a{
+
+        background-color: rgba(255, 0, 211, 0.46);
+
+}
+
+#cate15 .mainmenu li:nth-child(10n+9) a{
+
+        background-color: rgba(255, 101, 0, 0.46);
+
+}
+
+#cate15 .mainmenu li:nth-child(10n+10) a{
+
+        background-color: rgba(255, 152, 0, 0.46);
+
+} 
+
+#cate15 .mainmenu {
+
+    bottom: 60px;  /*60px表示距离底部60个像素，可以自行调整*/
+
+}
+
+ .themeStyle{background:#FFD712 !important; background-color:#FFD712 !important; }  
+
+</style>
+
+<script src="{Saivi::RES}/abc/iscroll.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+var myScroll;
+
+
+
+function loaded() {
+
+myScroll = new iScroll('wrapper', {
+
+snap: true,
+
+momentum: false,
+
+hScrollbar: false,
+
+onScrollEnd: function () {
+
+document.querySelector('#indicator > li.active').className = '';
+
+document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+
+}
+
+ });
+
+ 
+
+ 
+
+}
+
+
+
+document.addEventListener('DOMContentLoaded', loaded, false);
+
+</script>
+
+</head>
+
+
+
+<body id="cate14">
+
+    <!--背景音乐-->
+
+    <if condition="$homeInfo['musicurl'] neq false"><include file="Index:music"/></if>
+
+
+
+<style>
+
+.btn_music {
+
+display: inline-block;
+
+width: 35px;
+
+height: 35px;
+
+background: url('{Saivi::RES}/hx/images/play.png') no-repeat center center;
+
+background-size: 100% auto;
+
+position: absolute;
+
+z-index: 100;
+
+left: 15px;
+
+top: 20px;
+
+}
+
+.btn_music.on {
+
+    background-image: url("{Saivi::RES}/images/hx/stop.png");
+
+}
+
+
+
+</style>
+
+<script src="{Saivi::RES}/js/hx/audio.js" type="text/javascript"></script>
+
+ <script>
+
+window.addEventListener("DOMContentLoaded", function(){
+
+playbox.init("playbox");
+
+}, false);
+
+</script>
+
+        
+
+<span id="playbox" class="btn_music" onclick="playbox.init(this).play();"><audio src="{Saivi:$homeInfo.musicurl}" loop id="audio"></audio></span>
+
+<div class="banner">
+
+<div id="wrapper">
+
+<div id="scroller">
+
+<ul id="thelist">
+
+               
+
+   <volist name="flash" id="so">
+
+		<li><p>{Saivi:$so.info}</p><a href="{Saivi:$so.url|htmlspecialchars_decode}"><img src="{Saivi:$so.img}" /></a></li>
+
+	</volist>
+
+
+
+ 
+
+
+
+</ul>
+
+</div>
+
+</div>
+
+    <div id="nav">
+
+<div id="prev" onClick="myScroll.scrollToPage('prev', 0,400,3);return false">&larr; prev</div>
+
+<ul id="indicator">
+
+            
+
+<volist name="flash" id="so">
+
+<li   <if condition="$i eq 1">class="active"</if>  >{Saivi:$i}</li>
+
+</volist>
+
+ 
+
+</ul>
+
+<div id="next" onClick="myScroll.scrollToPage('next', 0,400,3);return false">next &rarr;</div>
+
+</div>
+
+    <div class="clr"></div>
+
+</div>
+
+
+
+<div class="mainmenu">
+
+<ul><div id="insert1" ></div>
+
+
+
+ <volist name="info" id="vo">    
+
+<li>
+
+<div class="menubtn">
+
+<a href="<if condition="$vo['url'] eq ''">{Saivi::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{Saivi:$vo.url}</if>">{Saivi:$vo.name}</a>
+
+</div>
+
+
+
+</li>
+
+ </volist>
+
+        
+
+        <div class="clr"></div>
+
+</ul>
+
+</div>
+
+
+
+<div class="copyright" style="text-align:center;"><if condition="$iscopyright eq 1">{Saivi:$homeInfo.copyright}<else/>{Saivi:$siteCopyright}</if></div>
+
+<include file="Index:styleInclude"/> 
+
+
+
+
+
+<script>
+
+var count = document.getElementById("thelist").getElementsByTagName("img").length;	
+
+
+
+var count2 = document.getElementsByClassName("menuimg").length;
+
+for(i=0;i<count;i++){
+
+ document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
+
+
+
+}
+
+document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
+
+
+
+ setInterval(function(){
+
+myScroll.scrollToPage('next', 0,400,count);
+
+},3500 );
+
+window.onresize = function(){ 
+
+for(i=0;i<count;i++){
+
+document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
+
+
+
+}
+
+ document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
+
+} 
+
+
+
+
+
+</script>
+
+
+
+ 
+
+ 
+
+
+
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['status'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if> </body>
+
+</html>
+

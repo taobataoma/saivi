@@ -1,0 +1,91 @@
+.nav_10{
+	height:60px;
+	text-align:center;
+}
+.nav_10 ul{
+	height:53px;
+	position:fixed;
+	z-index:200;
+	bottom:0;
+	left:0;
+	width:100%;
+	background: #1c1b21;
+}
+.nav_10 li>a{
+	font-size:12px;
+	color:#ffffff;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+	border-bottom:0;
+	display:block;
+	height:53px;
+	padding:5px 0;
+	text-align:center;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.nav_10 li>a.on, .nav_10 li>a.active{
+	color:#fff;
+}
+.nav_10 li>a>*{
+	pointer-events:none;
+}
+.nav_10 li>a>span{
+	display: block;
+	width:25px;
+	height:25px;
+	margin:auto;
+	font-size:20px;
+}
+.nav_10 li>a>span.back{
+	background:url(../../img/template/lib/v83_icon.png);
+	-webkit-background-size: auto 25px;
+	background-position:-16px 0px;
+}
+.nav_10 li>a>span.phone{
+	background:url(../../img/template/lib/v83_icon.png);
+	-webkit-background-size: auto 25px;
+	background-position:-69px 0px
+}
+.nav_10 li>a>span.address{
+	background:url(../../img/template/lib/v83_icon.png);
+	-webkit-background-size: auto 25px;
+	background-position:-121px 0px
+}
+.nav_10 li>a>span.home{
+	background:url(../../img/template/lib/v83_icon.png);
+	-webkit-background-size: auto 25px;
+	background-position:-174px 0px
+}
+.nav_10 li>a>span.share{
+	background:url(../../img/template/lib/v83_icon.png);
+	-webkit-background-size: auto 25px;
+	background-position:-227px 0px
+}
+
+.nav_10 li.on{
+	background:#ffe228;
+}
+
+.nav_10 li>a label{
+	width: 100%; text-align:center;
+	display: block;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+
+.nav_10 li.more{
+ 	position:relative;
+}
+.nav_10 li.more ul{
+	position:absolute;
+	right:0px;
+	width:100%;
+	bottom:120px;
+	display:none;
+	
+}
+.nav_10 li.more ul.on{display:block;}
+.nav_10 li.more ul li{
+	background: #1c1b21;
+}

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/yuyue/common.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/yuyue/datepicker.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/yuyue/onlinebooking.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/yuyue/weimob-ui-1-1.css" media="all" />
+
+<script type="text/javascript" src="{Saivi::RES}/js/yuyue/jQuery.js"></script>
+
+<script type="text/javascript" src="{Saivi::RES}/js/yuyue/jquery-ui.js"></script>
+
+<title>{Saivi:$data.copyright}</title>
+
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+
+<meta name="Keywords" content="微我网、微信营销、微信代运营、微信定制开发、微信托管、微网站、微商城、微营销" />
+
+<meta name="Description" content="微我网，国内最大的微信公众智能服务平台，微我网八大微体系：微菜单、微官网、微会员、微活动、微商城、微推送、微服务、微统计，企业微营销必备。" />
+
+<!-- Mobile Devices Support @begin -->
+
+<meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+
+<meta content="no-cache" http-equiv="pragma">
+
+<meta content="0" http-equiv="expires">
+
+<meta content="telephone=no, address=no" name="format-detection">
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<!-- apple devices fullscreen -->
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<!-- Mobile Devices Support @end -->
+
+<link rel="shortcut icon" href="img/favicon.ico" />
+
+<style>
+
+img {
+
+	width:100%!important;
+
+}
+
+</style>
+
+</head>
+
+<body onselectstart="return true;" ondragstart="return false;">
+
+<body id="onlinebooking">
+
+<!-- -------------------------------------------------------------------------------------------------------------------------------- -->
+
+<div class="qiandaobanner">
+
+  <if condition="$data['topic'] neq ''"><img src="{Saivi:$data.topic}">
+
+    <else />
+
+    <img src="{Saivi::RES}/images/yuyue/head_pic.jpg"></if>
+
+</div>
+
+<div class="cardexplain">
+
+  <!--普通用户登录时显示-->
+
+  <ul class="round">
+
+    <li> <a href="{Saivi::U($type.'/order',array('token'=> $data['token'], 'wecha_id'=> $data['wecha_id'],'id'=>$data['id']))}"  ><span>我的订单<em class="ok">{Saivi:$data.count}</em></span></a> </li>
+
+  </ul>
+
+  <!--后台可控制是否显示-->
+
+  <ul class="round">
+
+    <li class="title"> <span class="none">{Saivi:$data.title}</span> </li>
+
+    <volist name="info" id="item">
+
+      <li class="dandanb"> <a href="{Saivi::U($type.'/info',array('token'=> $data['token'], 'wecha_id'=> $data['wecha_id'],'id'=>$item['pid'],'aid'=>$item['id']))}" > <span>
+
+        <table class="jiagebiao" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+          <tr>
+
+            <td><div>{Saivi:$item.name}</div>
+
+              <div><img src="{Saivi:$item.pic1}" class="showimg" style="max-width:100px;">
+
+                <p>{Saivi:$item.memo}</p>
+
+                <p>原价：<a class="yuanjia">￥{Saivi:$item.yuanjia}</a></p>
+
+                <p>优惠价：<a class="youhuijia">￥{Saivi:$item.youhui}</a></p>
+
+              </div></td>
+
+          </tr>
+
+        </table>
+
+        </span> </a> </li>
+
+    </volist>
+
+  </ul>
+
+  <ul class="round">
+
+    <li>
+
+      <h2>挂号说明</h2>
+
+      <div class="text">{Saivi:$data.info}</div>
+
+    </li>
+
+  </ul>
+
+  <!--后台可控制是否显示-->
+
+  <ul class="round">
+
+    <li class="addr"><a href="http://api.map.baidu.com/marker?location={Saivi:$data.longitude},{Saivi:$data.latitude}&title={Saivi:$data.copyright}&name={Saivi:$data.copyright}&content={Saivi:$data.address}&output=html&src=weiba|weiweb"><span>医院地址： {Saivi:$data.address}</span></a></li>
+
+    <li class="tel"><a href="tel:{Saivi:$data.phone}"><span>预约电话： {Saivi:$data.phone}</span></a></li>
+
+    <li class="detail"><a href=""><span>医院简介</span></a> {Saivi:$data.description}</li>
+
+  </ul>
+
+</div>
+
+<script type="text/javascript"> 
+
+$(document).ready(function () {
+
+		$( "#dateline" ).datepicker({
+
+			minDate: new Date(),
+
+			dateFormat: "yy-mm-dd"
+
+		}).val((
+
+				function(d){
+
+					return [d.getFullYear(), d.getMonth()+1, d.getDate()].join("-");
+
+				}
+
+			)(new Date()));
+
+	$("#showcard").click(function () {
+
+		var ret_single = ret_download = tel_num = '';
+
+		$(".single").each(function(i){
+
+			var s_name = $(this).parent().siblings().text();
+
+			var s_value = $(this).val();
+
+			if('' != s_value) ret_single += '$'+s_name+'#'+s_value;
+
+		});
+
+		$(".download").each(function(i){
+
+			var s_name = $(this).parent().siblings().text();
+
+			var s_value = $(this).val();
+
+			if('' != s_value) ret_download += '$'+s_name+'#'+s_value;
+
+		});
+
+		tel_num = $("#tel").val();
+
+		if('undefined' !== typeof(tel_num)){
+
+			if(tel_num ==''){alert('电话不能为空');return;} 
+
+			if(tel_num.length < 11){alert('请输入正确的电话');return;} 
+
+		}
+
+		if($("#truename").val()==''){alert('名字不能为空');return;}
+
+//		if($("#dateline").val()==''){alert('请选择时间');return;}
+
+		var submitData = {
+
+			wecha_id: $("#wecha_id").val(),
+
+			pid: $("#pid").val(),
+
+			token: $("#token").val(),
+
+			name: $("#truename").val(),
+
+			phone: $("#tel").val(),
+
+			date: $("#dateline").val(),
+
+			time: $("#timepart").val(),
+
+			memo: $("#info").val(),
+
+			fieldsigle: ret_single,
+
+			fielddownload: ret_download,
+
+		};
+
+		if('fromUsername' == submitData.wechatid) submitData.wechatid = '';
+
+		$.post('index.php?g=wap&m={Saivi:$type}&a=add', submitData,
+
+			function(data) {
+
+				if (0 == data.error) {
+
+					alert(data.msg);
+
+					setTimeout('window.location.href=location.href',1000);
+
+				} else {
+
+					alert(data.msg);
+
+					setTimeout('window.location.href=location.href',1000);
+
+				}
+
+			},
+
+		"json")
+
+	}); 
+
+}); 
+
+$("#dateline").change(function () {
+
+	var submitData = {
+
+	wxname: "o5JGbjuFTr6lumWIyyW3yfP-G5m0",
+
+	dateline: $("#dateline").val(),
+
+	formhash: $("#formhash").val(),
+
+	action: "getcount"
+
+	};
+
+}); 
+
+$("#windowclosebutton").click(function () { 
+
+$("#windowcenter").slideUp(500);
+
+}); 
+
+$("#alertclose").click(function () { 
+
+$("#windowcenter").slideUp(500);
+
+}); 
+
+function jumpurl(url){
+
+	window.location.href = url;
+
+}
+
+function alert(title){ 
+
+$("#windowcenter").slideToggle("slow"); 
+
+$("#txt").html(title);
+
+//$("#windowcenter").hide("slow"); 
+
+setTimeout('$("#windowcenter").slideUp(500)',4000);
+
+} 
+
+</script>
+
+<footer style="text-align:center; color:#ffd800;margin-right:20px;margin-top:0px;"><a>©{Saivi:$data.copyright}</a></footer>
+
+</body>
+
+<div mark="stat_code" style="width:0px; height:0px; display:none;"></div>
+
+</body>
+
+</html>

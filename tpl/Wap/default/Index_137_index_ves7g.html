@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!-- saved from url=(0295)http://1071.m.weimob.com/weisite/home?_tj_twtype=16&_tj_pid=1071&_tt=1&_tj_graphicid=315&_tj_title=%E6%AC%A2%E8%BF%8E%E8%BF%9B%E5%85%A5%E5%BE%AE%E7%9B%9F%E5%BE%AE%E5%AE%98%E7%BD%91&_tj_keywords=%E9%A6%96%E9%A1%B5&pid=1071&bid=5&wechatid=osXr8jqNRVYR1Fa-v6jn8gwB-dXg&from=1&wxref=mp.weixin.qq.com -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/137/reset.css" media="all">
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/137/snower.css" media="all">
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/137/common.css" media="all">
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/137/font-awesome.css" media="all">
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/137/home-69.css" media="all">
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/137/ZoomPic.css" media="all">
+
+<script type="text/javascript" async src="{Saivi::RES}/css/137//inpage_linkid.js" id="undefined"></script>
+<script type="text/javascript" charset="utf-8" async src="{Saivi::RES}/css/137/lxb.js"></script>
+<script type="text/javascript" async src="{Saivi::RES}/css/137/wtj.js"></script>
+<script type="text/javascript" charset="utf-8" async src="{Saivi::RES}/css/137/lxb.js"></script>
+<script async src="{Saivi::RES}/css/137/analytics.js"></script>
+<script async src="{Saivi::RES}/css/137/analytics.js"></script>
+<script type="text/javascript" async src="{Saivi::RES}/css/137/ga.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/css/137/maivl.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/css/137/jQuery.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/css/137/zepto.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/css/137/swipe.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/css/137/ZoomPic.js"></script>
+<title>{Saivi:$tpl.wxname}</title>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+
+<!-- Mobile Devices Support @begin -->
+
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta content="telephone=no, address=no" name="format-detection">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- apple devices fullscreen -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Mobile Devices Support @end -->
+<link rel="shortcut icon" href="http://stc.weimob.com/img/favicon.ico">
+<script charset="utf-8" src="{Saivi::RES}/css/137/v.js"></script>
+        <style type="text/css">
+
+.body{
+
+    display:block;
+
+    /*background:url("<if condition="$homeInfo.homeurl neq false">{Saivi:$homeInfo.homeurl}<else/>{Saivi::RES}/images/themes/bg1.jpg</if> ") no-repeat center 0;*/
+
+    <volist name="flashbg" id="so">
+
+        background:url('{Saivi:$so.img}') no-repeat center 0;
+
+    </volist>
+
+        background-size:100% 100%;
+
+}
+
+</style>
+</head>
+<body onselectstart="return true;" ondragstart="return false;">
+<div class="body" id="body">
+  <div class="bg">  </div>
+  <div class="bg_black"></div>
+  <header style="overflow:hidden;">
+    <div class="clearfix">
+      <div id="focus_Box"> <span class="prev" style="left: 26px; ">&nbsp;</span> <span class="next" style="left: 565px; ">&nbsp;</span>
+        <ul>
+          <volist name="flash" id="so">
+          <li style="display: none; width: 0px; height: 0px; top: 37px; left: 305px; z-index: 1; "> <a  href="{Saivi:$so.url}"> <img src="{Saivi:$so.img}" style="opacity: 1; "></a> </li>
+        </ul>
+        </volist>
+      </div>
+    </div>
+  </header>
+  <section class="section_body">
+    <div class="list">
+      <ul>
+        <volist name="info" id="vo">
+        <li>
+          <div> <span class="transparent-layer"></span> <a href="<if condition="$vo['url'] eq ''">{Saivi::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}
+            <else/>{Saivi:$vo.url|htmlspecialchars_decode}</if>" class="tbox"> 
+            <span class="icon icon-indent-right" style="background:url({Saivi:$vo.img}); background-size:100%"></span> 
+            <span class="title" >{Saivi:$vo.name}</span> </a> </div>
+        </li>
+        </volist>
+      </ul>
+    </div>
+  </section>
+  
+</div>
+<include file="Index:styleInclude"/>
+<!--chat-->
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['status'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if> 
+
+<!--
+分享前控制
+-->
+
+<!--背景音乐-->
+
+    <if condition="$dh['animation'] neq '0'"><iframe id="iframe_screen" src="./tpl/Wap/default/Index_an{Saivi:$dh.animation}.html" frameborder="0"></iframe></if> <if condition="$homeInfo['musicurl'] neq false">
+
+<include file="Index:music"/>
+
+</if><!--chat-->
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['status'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if>   </body>
+
+</html>

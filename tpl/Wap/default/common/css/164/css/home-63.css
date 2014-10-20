@@ -1,0 +1,55 @@
+
+
+
+/******************************/
+.header2{
+	height:150px;
+}
+
+.header2 a.btn_music{
+	display:inline-block;
+	width:25px;
+	height:25px;
+	margin:5px 10px;
+	min-width:25px;
+	background:url("../../img/template/lib/v72_2.png") no-repeat right center;
+	background-size:auto 100%;
+}
+.header2 a.btn_music.on{
+	background-position:0 center;
+}
+/*****************************/
+.list_ul{
+	padding: 10px;
+}
+
+.list_ul li a{
+	display: inline-block;
+	height:37px;
+	line-height:37px;
+	min-width:100px;
+	padding:0 15px;
+	-webkit-box-sizing:border-box;
+	max-width:100%;
+	margin:1px 0 1px 0;
+	color:#ffffff;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+
+}
+.list_ul li a span{
+	font-size:20px;
+	margin-right:10px;
+	float: left;
+	height: 37px;
+	line-height: 37px;
+}
+
+/***************************/
+.list_ul li:nth-of-type(6n+1) a{background-color: #af8c85;}
+.list_ul li:nth-of-type(6n+2) a{background-color: #865247;}
+.list_ul li:nth-of-type(6n+3) a{background-color: #c7624e;}
+.list_ul li:nth-of-type(6n+4) a{background-color: #d34225;}
+.list_ul li:nth-of-type(6n+5) a{background-color: #93220b;}
+.list_ul li:nth-of-type(6n) a{background-color: #480f03;}

@@ -1,0 +1,101 @@
+﻿<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>一战到底</title>
+<link type="text/css" rel="stylesheet" href="{Saivi::RES}/yzdd/style/war.css" />
+<style>
+.wrapper {width: 100%; height:100%; position: relative; background:url({Saivi::RES}/yzdd/images/bg_reading.jpg); background-size:100% 100%;}
+.desc-cont1{position:absolute;background:none;z-index: 1;word-break: break-word;padding:30px;font-size:15px;line-height: 28px;width:200px;height:200px; left:50%; top:30%;  margin-left:-130px;}
+.start-text {font-size: 24px;color: #FFFFFF;position:inherit;top:0px;width: 100%;padding-left:0px; text-align:center;}
+
+.next-btn {padding: 10px 32px;background: #fa2;background: -moz-linear-gradient(top,#fa2 0,#f04a02 100%);background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#fa2),color-stop(100%,#f04a02));background: -webkit-linear-gradient(top,#fa2 0,#f04a02 100%);background: -o-linear-gradient(top,#fa2 0,#f04a02 100%);background: -ms-linear-gradient(top,#fa2 0,#f04a02 100%);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffaa22',endColorstr='#f04a02',GradientType=0);background: linear-gradient(top,#fa2 0,#f04a02 100%);color: #000;font-size: 20px;border: 1px solid #c94e04;-moz-border-radius: 8px;-webkit-border-radius: 8px;border-radius: 8px;font-weight: bold;margin-top: 80px;margin-left:75px;}
+.start1 {position: inherit;top:0px;left:0px;z-index: 14;font-size: 18px;background: #f4bf5f;background: -moz-linear-gradient(top, #f4bf5f 0, #cd9f18 100%);}
+</style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="desc-cont1">
+       <!-- <img class="bg" src="{Saivi::RES}/yzdd/images/bg_reading_2.png">-->        
+		<div class="start-text">今日问题已结束&nbsp;&nbsp;&nbsp;&nbsp;<br/>明天继续来征战。</div>
+        <button class="next-btn start1" style="border: none;">积分:{Saivi:$jrjf}</button>
+	</div>
+</div>
+</body>
+
+<script type="text/javascript">
+   //分享出去的连接统一都改为wecha_id = fromuser,后台判定就行重新获取
+	var dataForWeixin={
+	    baseUrl:"{Saivi::C('site_url')}",
+		img:	"{Saivi:$hdxx.pic}", 
+		url:	"{Saivi::U('Yzdd/index',array('token'=>$_GET['token'],'wecha_id'=>'fromUser','id'=>$hdxx['id']))}",
+		title:	"{Saivi:$hdxx.name}",
+		desc:	"{Saivi:$hdxx.ms}"
+	};
+   
+	(function() {
+		var onBridgeReady = function() {
+			
+			
+			WeixinJSBridge.on('menu:share:appmessage',
+		          function(argv) {
+					   // alert('朋友');
+					WeixinJSBridge.invoke('sendAppMessage', {
+						"img_url": dataForWeixin.img,
+						"img_width": "120",
+						"img_height": "120",
+						"link": dataForWeixin.baseUrl+dataForWeixin.url,
+						"desc": dataForWeixin.desc,
+						"title": dataForWeixin.title
+					},
+					function(res) { 
+						//alert(res.err_msg);
+					});
+				});
+				
+			WeixinJSBridge.on('menu:share:contact',
+					function(argv) {
+					    //alert('关注');
+						WeixinJSBridge.invoke('addContact', {webtype: "1",username: 'gh_a079aeaa0380'},
+						function(res) {
+						//e.err_msg:add_contact:added 已经添加
+			            //e.err_msg:add_contact:cancel 取消添加
+			            //e.err_msg:add_contact:ok 添加成功
+			            if(res.err_msg == 'add_contact:added' || res.err_msg == 'add_contact:ok'){
+			                //关注成功，或者已经关注过
+			            }
+						
+						// alert(res.err_msg);
+						});
+					});
+			
+		WeixinJSBridge.on('menu:share:timeline',
+			function(argv) { 
+				WeixinJSBridge.invoke('shareTimeline', {
+					"img_url": dataForWeixin.img,
+					"img_width": "120",
+					"img_height": "120",
+					"link": dataForWeixin.baseUrl+dataForWeixin.url,
+					"desc": dataForWeixin.desc,
+					"title": dataForWeixin.title
+				},function(res) {
+					
+					
+				});
+			});
+		};
+		if (document.addEventListener) {
+			document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+		} else if (document.attachEvent) {
+			document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+			document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+		}else{
+			alert(3);
+		}
+	})();
+</script>
+</html>

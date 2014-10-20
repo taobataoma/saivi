@@ -1,0 +1,82 @@
+<include file="Public:head"/>  
+<div class="content">
+         
+          <div class="cLineB">
+              <h4 class="left">会员信息</h4>
+                 
+              <div class="clr"></div>
+          </div>
+          <div class="cLineD">
+
+ </div>
+          <div class="msgWrap">
+        
+          <input name="delall"  type="hidden" value="del" />
+           <input name="wxid"  type="hidden" value="gh_423dwjkewad" />
+            <TABLE class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+              <THEAD>
+                <TR>
+				 
+				<TH>编号</TH>
+				<TH>微信名</TH>
+				<TH>真实姓名</TH>
+                <TH>联系电话</TH>
+				<TH>QQ号码</TH>
+				<TH>性别</TH>
+				<TH>年龄</TH>
+				<TH>生日</TH>
+				<TH>地址</TH>
+                <TH>领卡时间</TH>
+				<TH>备注</TH>
+				 
+                </TR>
+              </THEAD>
+              <TBODY>
+                <TR></TR>
+				
+                <TR>
+                 <TD>{Saivi:$list.id} </TD>
+                  <TD>{Saivi:$list.wechaname} </TD>
+                  <TD>{Saivi:$list.truename} </TD>
+                  <TD>{Saivi:$list.tel} </TD>
+                  <TD>{Saivi:$list.qq} </TD> 
+				          <TD>
+                  <if condition="$list['sex'] eq 1">
+                      男 
+                  <else/>
+                   女
+                  </if>
+                  
+                   </TD>
+                  <TD>{Saivi:$list.age} </TD>                  
+                  <TD>{Saivi:$list.birthday} </TD>
+                  <TD>{Saivi:$list.address} </TD>
+                  <TD>{Saivi:$list.getcardtime|date='Y-m-d',###} </TD>
+                  <TD>{Saivi:$list.info} </TD>
+                  
+                </TR>
+			
+              </TBODY>
+            </TABLE>
+         
+          
+          </div>
+            
+
+ 
+ 
+          <div class="cLine">
+            <div class="pageNavigator right">
+                 <div class="pages"></div>
+              </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div>
+
+  	</div>
+<include file="Public:footer"/>  

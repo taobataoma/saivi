@@ -1,0 +1,387 @@
+<include file="Public:head"/> 
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/themes/default/default.css" />
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/plugins/code/prettify.css" />
+
+<script src="{Saivi::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+
+<script src="{Saivi::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+
+<script src="{Saivi::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+
+<script src="./tpl/User/weilieshou/common/js/cart/jscolor.js" type="text/javascript"></script>
+
+
+
+<script type="text/javascript" src="/tpl/User/weilieshou/common/js/jQuery.js"></script>
+
+<script>
+
+var editor;
+
+KindEditor.ready(function(K) {
+
+editor = K.create('#intro', {
+
+resizeType : 1,
+
+allowPreviewEmoticons : false,
+
+allowImageUpload : true,
+
+uploadJson : '/index.php?g=User&m=Upyun&a=kindedtiropic',
+
+items : [
+
+'source','undo','clearhtml','hr',
+
+'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+
+'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
+
+});
+
+
+
+});
+
+</script>
+
+
+
+<div class="content" style="width:920px; background:none; border:none; margin-bottom:30px;">
+
+
+
+          <div class="cLineB"><h4>微信墙活动设置</h4><a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div> 
+
+
+
+<div class="msgWrap">
+
+
+
+  <form class="form" method="post"   action="{Saivi::U('Wewall/insert')}">
+
+
+
+<TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
+
+
+
+  <THEAD>
+
+
+
+<TR>
+
+
+
+  <TH valign="top"><label for="acttitle">活动名称：</label></TH>
+
+
+
+  <TD><input type="input" class="px" id="acttitle"  name="acttitle" style="width:500px"  value="默认活动" >    </TD>
+
+
+
+  <TD>&nbsp;</TD>
+
+
+
+</TR>
+
+
+
+<TR>
+
+
+
+  <TH valign="top">是否审核：</TH>
+
+
+
+  <TD><label for="radio1"><input id="radio1" class="radio" type="radio" name="ifcheck" value="1" > 需要</label>&nbsp;&nbsp;&nbsp;<label for="radio2"><input class="radio" id="radio2" type="radio" name="ifcheck" value="0" checked="checked"> 不需要</label></TD>
+
+
+
+</TR>
+
+
+
+<TR>
+
+
+
+  <TH valign="top">是否抽奖：</TH>
+
+
+
+  <TD><!--<label for="radio1"><input id="radio1" class="radio" type="radio" name="iflottery" value="1"> 需要</label>&nbsp;&nbsp;&nbsp;--><label for="radio2"><input class="radio" id="radio2" type="radio" name="iflottery" value="0"  checked="checked"> 不需要</label></TD>
+
+
+
+</TR>
+
+
+
+</THEAD>
+
+
+
+<TBODY>
+
+
+
+<TR>
+
+
+
+  <TH valign="top"><label for="text">前台页传输间隔：</label></TH>
+
+
+
+  <TD><input type="input" class="px" id="showtime"  name="showtime" style="width:50px" value="3" >  数字越大服务器负担越小，但是要考虑客户体验!
+
+
+
+ 
+
+
+
+
+
+
+
+</TD>
+
+
+
+  <TD rowspan="2" valign="top"></TD>
+
+
+
+</TR> 
+
+
+
+<TR>
+
+
+
+  <TH valign="top"><label for="text">一等奖数量：</label></TH>
+
+
+
+  <TD><input type="input" class="px" id="bonu1"  name="bonu1" style="width:50px" value="1" >  不开启抽奖功能的话无需填写
+
+
+
+ 
+
+
+
+
+
+
+
+</TD>
+
+
+
+  <TD rowspan="2" valign="top"></TD>
+
+
+
+</TR> 
+
+
+
+<TR>
+
+
+
+  <TH valign="top"><label for="text">二等奖数量：</label></TH>
+
+
+
+  <TD><input type="input" class="px" id="bonu2"  name="bonu2" style="width:50px" value="3" >  不开启抽奖功能的话无需填写
+
+
+
+ 
+
+
+
+
+
+
+
+</TD>
+
+
+
+  <TD rowspan="2" valign="top"></TD>
+
+
+
+</TR> 
+
+
+
+<TR>
+
+
+
+  <TH valign="top"><label for="text">三等奖数量：</label></TH>
+
+
+
+  <TD><input type="input" class="px" id="bonu3"  name="bonu3" style="width:50px" value="5" >  不开启抽奖功能的话无需填写
+
+
+
+ 
+
+
+
+
+
+
+
+</TD>
+
+
+
+  <TD rowspan="2" valign="top"></TD>
+
+
+
+</TR>
+
+
+
+<TR>
+
+
+
+  <TH valign="top"><label for="text">前台页面背景：</label></TH>
+
+
+
+  <TD><input type="input" class="px require"  id="pic" value="" name="background" style="width:250px" value="" > <script src="/tpl/static/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic',700,420,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic')">预览</a></td>定义前台页面背景，为URL地址
+
+</TD>
+
+
+
+  <TD rowspan="2" valign="top"></TD>
+
+
+
+</TR>
+
+
+
+
+
+  
+
+
+
+<TR>
+
+
+
+  <TH></TH>
+
+
+
+  <TD><button type="submit"  name="button"  class="btnGreen left" >保存</button>　
+
+
+
+  	</TD>
+
+
+
+  </TR>
+
+
+
+  </TBODY>
+
+
+
+</TABLE>
+
+
+
+  </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div> 
+
+
+
+
+
+
+
+        </div>
+
+
+
+        
+
+
+
+        <div class="clr"></div>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+  </div> 
+
+
+
+
+
+
+
+<!--底部-->
+
+
+
+  	</div>
+
+
+
+<include file="Public:footer"/>

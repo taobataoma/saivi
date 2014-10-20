@@ -1,0 +1,122 @@
+<include file="Public:head"/>
+
+<div class="content"  >
+
+          <div class="cLineB"><h4>邮件平台</h4></div>
+
+          <form method="post" action="{Saivi::U('User/Mail/upsave')}" enctype="multipart/form-data">
+
+          <input type="hidden" name="id" value="{Saivi:$info.id}">
+
+          <div class="msgWrap">
+
+            <table class="userinfoArea" border="0" cellspacing="0" cellpadding="0" width="100%">
+
+              <thead>
+
+			    <tr>
+
+                  <th><span class="red">*</span>接收邮件的地址：</th>
+
+                  <td><input type="text" required class="px" name="email" value="{Saivi:$info.email}" tabindex="1" size="25">
+
+                  <span class="red">商家用于接收邮件的地址&nbsp;如：2103695452@qq.com</span>
+
+                  </td>
+
+                </tr>
+
+                <tr>
+
+                  <th><span class="red">*</span>发送邮箱账号：</th>
+
+                  <td><input type="text" required class="px" name="emailuser" value="{Saivi:$info.emailuser}" tabindex="1" size="25">
+
+                  <span class="red">必须为163邮箱&nbsp;如：2103695452@163.com</span>
+
+                  </td>
+
+                </tr>
+
+				<tr>
+
+                  <th><span class="red">*</span>发送邮箱密码：</th>
+
+                  <td><input type="password" required class="px" name="emailpassword" value="{Saivi:$info.emailpassword}" tabindex="1" size="25">
+
+                  <span class="red">请输入您163邮箱的密码</span>
+
+                  </td>
+
+                </tr>
+
+				<tr>
+
+                  <th><span class="red">*</span>邮件平台状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$info.emailstatus eq 1">checked="checked"</if> name="emailstatus"/>开启 <input type="radio" value="0" 
+                  <if condition="$info.emailstatus eq 0">checked="checked"</if>name="emailstatus"/>关闭
+
+                  </td>
+
+                </tr>
+
+				<div>
+
+				<input type="hidden" required class="px" name="wxname" value="{Saivi:$info.wxname}" tabindex="1" size="25">
+
+				<input type="hidden" required  name="wxid" value="{Saivi:$info.wxid}" class="px" tabindex="1" size="25" >
+
+				<input type="hidden" required name="weixin" value="{Saivi:$info.weixin}" class="px" tabindex="1" size="25">
+
+				<input type="hidden" class="px" name="headerpic" value="{Saivi:$info.headerpic}" size="60">
+
+				<input type="hidden" name="token" value="{Saivi:$info.token}" class="px" tabindex="1" size="40">
+
+				<input type="hidden" class="px" id="province" value="{Saivi:$info.province}" name="province" tabindex="1" size="20">
+
+				<input id="city" value="{Saivi:$info.city}" type="hidden" name="city" class="px" tabindex="1" size="20">
+
+				<input type="hidden" required class="px" tabindex="1" value="{Saivi:$info.qq}" name="qq" size="25">
+
+				<input type="hidden" required name="wxfans" value="{Saivi:$info.wxfans}" class="px" tabindex="1" size="25">
+
+				<input type="hidden" required name="type" value="{Saivi:$info.typeid}" class="px" tabindex="1" size="25">
+
+				</div>
+
+              </thead>
+
+              
+
+                <tr>
+
+                  <td><button type="submit" class="btnGreen" id="saveSetting">保存</button></td>
+
+                </tr>
+
+            </table>
+
+            
+
+          </div>
+
+          </form>
+
+        </div>
+
+        
+
+        <div class="clr"></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!--底部-->
+
+  	</div>
+
+<include file="Public:footer"/>	

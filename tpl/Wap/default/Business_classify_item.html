@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{Saivi:$busines['mtitle']}</title>
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="Keywords" content="{Saivi:$busines['mtitle']}" />
+    <meta name="Description" content="{Saivi:$busines['mtitle']}" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{Saivi::STATICS}/schools/css/plugmenu.css">
+    <link href="{Saivi::STATICS}/schools/css/news3_3.css" rel="stylesheet" type="text/css" />
+
+</head>
+<script type="text/javascript">
+    window.onload = function () {
+        var oWin = document.getElementById("win");
+        var oLay = document.getElementById("overlay");
+        var oBtn = document.getElementById("popmenu");
+        var oClose = document.getElementById("close");
+        oBtn.onclick = function () {
+            oLay.style.display = "block";
+            oWin.style.display = "block";
+            //oWin.style.zIndex = 99999;
+        };
+        oLay.onclick = function () {
+            oLay.style.display = "none";
+            oWin.style.display = "none";
+        }
+    };
+</script>
+
+
+<body id="news3">
+<!--分享-->
+    <div id="mcover" onclick="document.getElementById('mcover').style.display='';" style="display: none;">
+        <img src="{Saivi::STATICS}/schools/images/guide.png"></div>
+
+<!-- <include file="Business:public_menu"/> -->
+
+    <div class="Listpage"  >
+<!--     <div class="top46" ></div> -->
+    <div class="page-bizinfo" style="padding-top:10px" >
+    
+       <!-- <div style="position: relative;" class="header">
+            <h1 id="activity-name"  style=" color:#959595">{Saivi:$classify['name']}</h1>
+             <span class="commentNum">浏览次数:{Saivi:$readinfo['click']}</span> 
+        </div>-->
+        <div id="content" class="text" style="margin-top:5px; margin-bottom:5px; font-size:16px;">
+        <if condition="$classify['desc_pic'] neq ''">
+                <div class="showpic" style="border:5px solid #fff; border-bottom:0px; border-radius:6px 6px 0px 0px; "><img style="border-radius:6px 6px 0px 0px; padding:0px; margin:0px; " alt="" src="{Saivi:$classify['desc_pic']}"> </div>
+        </if>
+            <p style="background:#BEBEBE; font-size:14px; color:#fff; line-height:20px; padding:5px; border:5px solid #fff; border-top:0px;"> {Saivi:$classify['main_desc']|html_entity_decode} </p>
+        </div>
+
+
+<!--
+<if condition="$type eq 'fitness'">
+     <p>健身项目</p>
+<elseif condition="$type eq 'gover'"/>
+  <p>服务项目</p>
+<elseif condition="$type eq 'food'"/>
+    <p>食品列表</p>
+<elseif condition="$type eq 'travel'"/>
+  <p>景区景点</p>
+<elseif condition="$type eq 'flower'"/>
+   <p>特色香花</p>
+<elseif condition="$type eq 'property'"/>
+     <p>业主服务</p>
+<elseif condition="$type eq 'ktv'"/>
+   <p>KTV包厢</p>
+<elseif condition="$type eq 'bar'"/>
+
+<elseif condition="$type eq 'fitment'"/>
+    <p>成功案例</p>
+<elseif condition="$type eq 'wedding'"/>
+   <p>服务项目</p>
+<elseif condition="$type eq 'affections'"/>
+    <p>宠物用品</p>
+<elseif condition="$type eq 'housekeeper'"/>
+    <p>服务项目</p>
+<elseif condition="$type eq 'lease'"/>
+    <p>租赁项目</p>
+<elseif condition="$type eq 'beauty'"/>
+    <p>美容套餐</p>
+</if>
+
+
+     表格上方项目名称-->
+
+
+<table class="table table-bordered table-hover table-condensed" >
+ <tr style="background:#EAA515; color:#fff; line-height:35px; height:35px;">
+<if condition="$type eq 'fitness'">
+           <th>健身项目</th>
+           <th>健身目的</th>
+           <th>预约</th>
+<elseif condition="$type eq 'gover'"/>
+           <th>服务名称</th>
+           <th>服务项目</th>
+           <th>预约</th>
+<elseif condition="$type eq 'food'"/>
+           <th>食品名称</th>
+           <th>重量</th>
+           <th>购买</th>
+<elseif condition="$type eq 'travel'"/>
+           <th>景点名称</th>
+           <th>景点特色</th>
+           <th>预约</th>
+<elseif condition="$type eq 'flower'"/>
+           <th>香花名称</th>
+           <th>花语</th>
+           <th>购买</th>
+<elseif condition="$type eq 'property'"/>
+           <th>业主服务</th>
+           <th>服务描述</th>
+           <th>预约</th>
+<elseif condition="$type eq 'ktv'"/>
+           <th>包厢名称</th>
+           <th>包厢描述</th>
+           <th>预约</th>
+<elseif condition="$type eq 'bar'"/>
+           <th>特色酒水</th>
+           <th>简要描述</th>
+           <th>预约</th>
+<elseif condition="$type eq 'fitment'"/>
+           <th>装修套餐</th>
+           <th>简要描述</th>
+           <th>预约</th>
+<elseif condition="$type eq 'wedding'"/>
+           <th>套餐名称</th>
+           <th>服务范围</th>
+           <th>预约</th>
+<elseif condition="$type eq 'affections'"/>
+           <th>名称</th>
+           <th>简要描述</th>
+           <th>购买</th>
+<elseif condition="$type eq 'housekeeper'"/>
+           <th>服务项目</th>
+           <th>服务范围</th>
+           <th>预约</th>
+<elseif condition="$type eq 'lease'"/>
+           <th>租赁项目</th>
+           <th>服务范围</th>
+           <th>预约</th>
+<elseif condition="$type eq 'beauty'"/>
+           <th>套餐名称</th>
+           <th>产品功效</th>
+           <th>购买</th>
+</if>
+       </tr>
+<volist name="sec_item" id="vo">
+        <tr class='success'>
+            <td  style=" background:#fff;"><a style="color:#959595" href="{Saivi::U('Business/project',array('token'=>$token,'wecha_id'=>$wecha_id,'type'=>$vo['type'],'bid'=>$bid,'sid'=>$vo['sid']))}">{Saivi:$vo['name']}</a></td>
+            <td  style=" background:#fff;"><a style="color:#959595" href="{Saivi::U('Business/project',array('token'=>$token,'wecha_id'=>$wecha_id,'type'=>$vo['type'],'bid'=>$bid,'sid'=>$vo['sid']))}">{Saivi:$vo['datatype']}</a></td>
+            <td   style=" background:#fff;"><if condition="$vo['googsnumber'] neq 0"><a style="color:#959595"  href="{Saivi::U('Business/project',array('token'=>$token,'wecha_id'=>$wecha_id,'type'=>$vo['type'],'bid'=>$bid,'sid'=>$vo['sid']))}"><button class='btn-mini btn-success'>可以预约</button></a><else/><a class='btn-mini btn-danger' href="{Saivi::U('Business/project',array('token'=>$token,'wecha_id'=>$wecha_id,'type'=>$vo['type'],'bid'=>$bid,'sid'=>$vo['sid']))}"><button class='btn-mini btn-success'>不可预约</button></a></if></td>
+
+        </tr>
+    </volist>
+    </table>
+
+        <div class="page-content"></div>
+
+    </div>
+<script>
+   $('#plug-wrap').removeClass();
+</script>
+<style>
+    #plug-wrap{z-index: -1}
+</style>
+<!-- <div id="mess_share" >
+    <div id="share_1">
+        <button class="button2" onclick="document.getElementById('mcover').style.display='block';">
+            <img src="{Saivi::STATICS}/schools/images/icon_msg.png">&nbsp;发送给朋友</button>
+    </div>
+    <div id="share_2">
+        <button class="button2" onclick="document.getElementById('mcover').style.display='block';">
+            <img src="{Saivi::STATICS}/schools/images/icon_timeline.png">&nbsp;分享到朋友圈</button>
+    </div>
+    <div class="clr"></div>
+
+ <div class="clr"></div>
+    <a target="_self" href="#news3" class="footer"><span class="top">返回顶部</span></a>
+</div>
+ -->
+    <div class="copyright">
+      <span class="copyright">
+    <if condition="$iscopyright eq 1">
+    {Saivi:$homeInfo.copyright}
+    <else/>
+    {Saivi:$siteCopyright}
+    </if>
+    </span></div>
+
+<include file="Index:styleInclude"/><include file="$cateMenuFileName"/>
+</div>
+<script>
+   $('#plug-wrap').removeClass();
+</script>
+<style>
+    #plug-wrap{z-index: -1}
+</style>
+
+</body>
+</html>

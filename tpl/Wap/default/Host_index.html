@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>{Saivi:$set['title']}|在线订购</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link href="{Saivi::RES}/css/style/css/hotels.css" rel="stylesheet" type="text/css">
+</head>
+
+<body id="" >
+<div class="qiandaobanner"> 
+  <if condition="$set['ppicurl'] neq false">
+   <img src="{Saivi:$set['ppicurl']}"  />  
+  <else />
+    <img src="{Saivi::RES}/css/style/images/default.jpg"  />  
+ </if>
+ </div>
+<div class="cardexplain"> 
+
+  <!--普通用户登录时显示-->
+     
+
+<!--商家房价及类型-->
+<ul class="round">
+<li class="title"><span class="none">{Saivi:$set['title']}</span></li>
+            
+ <volist name="list" id="vo">            
+<li class="dandanb"> <!--订房-->
+<a href="index.php?g=Wap&m=Host&a=lists&token={Saivi:$vo.token}&id={Saivi:$vo.id}&wecha_id={Saivi:$Think.get.wecha_id}&hid={Saivi:$set['id']}"><span>
+<table class="jiagebiao" width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td><div>{Saivi:$vo.type}</div>
+<div><img src="{Saivi:$vo.picurl}" class="showimg">
+<p>{Saivi:$vo.typeinfo}</p>
+<p>原价：<a class="yuanjia">￥{Saivi:$vo.price}</a></p>
+<p>优惠价：<a class="youhuijia">￥{Saivi:$vo.yhprice}</a></p></td>
+</tr>
+</table>
+</span></a>
+</li>
+</volist>  
+</ul>
+
+<!--后台可控制是否显示-->
+<ul class="round">
+<li class="title"><span class="none">订单说明</span></li>
+<li>
+<div class="text">
+{Saivi:$set['info2']}
+</div>
+</li>
+</ul>
+
+<!--后台可控制是否显示-->
+<ul class="round">
+<li class="addr"><a href="?g=Wap&m=Company&a=map&token={Saivi:$Think.get.token}&wecha_id={Saivi:$Think.get.wecha_id}"><span>{Saivi:$set['address']}</span></a></li>
+<li class="tel"><a href="tel://{Saivi:$set['tel2']}"><span>{Saivi:$set['tel2']} 电话预订</span></a></li>
+<if condition="$set['tel'] neq false">
+<li class="tel"><a href="tel://{Saivi:$set['tel']}"><span>{Saivi:$set['tel']} 电话预订</span></a></li>
+</if>
+<li class="detail"><a href="index.php?g=Wap&m=Host&a=companyDetail&token={Saivi:$Think.get.token}&wecha_id={Saivi:$Think.get.wecha_id}&hid={Saivi:$Think.get.hid}"><span>查看商家详情</span></a></li>
+</ul>
+</div>
+
+
+<script type="text/javascript">
+window.shareData = {  
+            "moduleName":"Host",
+            "moduleID":"0",
+            "imgUrl": "", 
+            "sendFriendLink": "{Saivi:$f_siteUrl}{Saivi::U('Host/index',array('token'=>$token))}",
+            "tTitle": "{Saivi:$set['title']}",
+            "tContent": "{Saivi:$set['title']}"
+};
+</script>
+{Saivi:$shareScript}
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['zxyd'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if></body>
+</html>

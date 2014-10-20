@@ -1,0 +1,116 @@
+<include file="Public:head"/>
+<div class="content" >
+          <div class="cLineB"><h4>邮件平台</h4></div>
+<script>
+function ccolumns(value){
+	if(value=='1'){
+		$('.alipay').css('display','');
+	}else{
+		$('.alipay').css('display','none');
+	}
+}
+</script>
+          <form method="post" action="" enctype="multipart/form-data">
+          <div class="msgWrap">
+            <table class="userinfoArea" border="0" cellspacing="0" cellpadding="0" width="100%">
+              <thead>
+				<tr>
+					<th>发送邮箱：</th>
+					<td><select name="type" onchange="ccolumns(this.value)">
+					<option value="1" <if condition="$config.type eq '1'">selected</if>>自定义邮箱发送</option>
+					<option value="0" <if condition="$config.type neq '1'"> selected</if>>系统邮箱发送</option></select>
+					<span class="red">推荐用系统邮箱发送比较稳定</span>
+					</td>
+				</tr>
+				
+				<tr class="alipay" <if condition="$config.type neq '1'">style="display:none"</if>>
+					<th width="120">smtp服务器：</th>
+					<td><input type="text" name="smtpserver" value="{Saivi:$config.smtpserver}" class="px">
+					<span class="red">一定要在邮箱里开通smtp服务，一般163的为smtp.163.com ，QQ邮箱的为smtp.qq.com</span>
+					</td>
+				</tr>
+				<tr class="alipay" <if condition="$config.type neq '1'">style="display:none"</if>>
+					<th width="120">smtp端口：</th>
+					<td><input type="text" name="port" value="{Saivi:$config.port}" class="px">
+					<span class="red">一般默认端口都是25</span>
+					</td>
+				</tr>
+				<tr class="alipay" <if condition="$config.type neq '1'">style="display:none"</if>>
+					<th>SMTP账号：</th>
+					<td><input type="text" name="name" value="{Saivi:$config.name}" class="px">
+					<span class="red">输入邮箱帐号</span>
+					</td>
+				</tr>
+				<tr class="alipay" <if condition="$config.type neq '1'">style="display:none"</if>>
+					<th>SMTP密码：</th>
+					<td><input type="password" name="password" value="{Saivi:$config.password}" class="px">
+					<span class="red">输入邮箱密码</span>
+					</td>
+				</tr>
+			    <tr>
+                  <th><span class="red">*</span>接受邮箱：</th>
+                  <td><input type="text" required class="px" name="receive" value="{Saivi:$config.receive}" tabindex="1" size="25">
+                  <span class="red">商家邮箱用于接收邮件</span>
+                  </td>
+                </tr>
+				<tr>
+                  <th><span class="red">*</span>商城通知：</th>
+                  <td>
+				  <input type="radio" value="1" <if condition="$config.shangcheng eq 1">checked="checked"</if> name="shangcheng"/>开启
+				  <input type="radio" value="0" name="shangcheng" <if condition="$config.shangcheng eq 0">checked="checked"</if>/>关闭
+                  <span class="red">商城、团购、订餐通知</span>
+                  </td>
+                </tr>
+				<tr>
+                  <th><span class="red">*</span>行业预约：</th>
+                  <td>
+				  <input type="radio" value="1" <if condition="$config.yuyue eq 1">checked="checked"</if> name="yuyue"/>开启
+				  <input type="radio" value="0" name="yuyue" <if condition="$config.yuyue eq 0">checked="checked"</if>/>关闭
+                  <span class="red">各个行业的预约功能通知</span>
+                  </td>
+                </tr>
+				<tr>
+                  <th><span class="red">*</span>通用订单：</th>
+                  <td>
+				  <input type="radio" value="1" <if condition="$config.dingdan eq 1">checked="checked"</if> name="dingdan"/>开启
+				  <input type="radio" value="0" name="dingdan" <if condition="$config.dingdan eq 0">checked="checked"</if>/>关闭
+                  <span class="red">通用订单通知</span>
+                  </td>
+                </tr>
+				<tr>
+                  <th><span class="red">*</span>万能表单：</th>
+                  <td>
+				  <input type="radio" value="1" <if condition="$config.biaodan eq 1">checked="checked"</if> name="biaodan"/>开启
+				  <input type="radio" value="0" name="biaodan" <if condition="$config.biaodan eq 0">checked="checked"</if>/>关闭
+                  <span class="red">万能表单通知</span>
+                  </td>
+                </tr>
+				<tr>
+                  <th><span class="red">*</span>投票调研：</th>
+                  <td>
+				  <input type="radio" value="1" <if condition="$config.toupiao eq 1">checked="checked"</if> name="toupiao"/>开启
+				  <input type="radio" value="0" name="toupiao" <if condition="$config.toupiao eq 0">checked="checked"</if>/>关闭
+                  <span class="red">投票调研通知</span>
+                  </td>
+                </tr>
+				<div>
+				<input type="hidden" name="token" value="{Saivi:$config.token}" class="px" tabindex="1" size="40">
+				</div>
+              </thead>
+              
+                <tr>
+                  <td><button type="submit" class="btnGreen" id="saveSetting">保存</button></td>
+                </tr>
+            </table>
+            
+          </div>
+          </form>
+        </div>
+        
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div>
+  <!--底部-->
+  	</div>
+<include file="Public:footer"/>	

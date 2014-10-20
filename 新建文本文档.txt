@@ -1,0 +1,6 @@
+安装 域名+install
+
+因LIUNX 系统安装时需要导入数据库 ，所以为了版本统一 ，我们没有进行密码数值清空，默认后台用户名密码  admin  adminadmin
+
+安装完成后 admincms.php 是后台登陆地址  adminCMS 名字可以修改  
+

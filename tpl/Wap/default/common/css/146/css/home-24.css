@@ -1,0 +1,59 @@
+.body{
+    max-width:640px;
+    margin:auto;
+    min-height:100%;
+    background-color:#e1e0de;
+    position:relative;
+}
+
+
+.list_ul{
+    margin:10px 5px;
+    overflow:hidden;
+    border:1px solid #dadada;
+    border-radius:8px;
+    overflow:hidden;
+}
+
+.list_ul a{
+    color:#666;
+    display:block;
+    background:url("../../img/arr1.png") no-repeat 97% center;
+    background-size:8px auto;
+    background-color:#fff;
+    padding:0;
+    color:#666;
+    overflow:hidden;
+}
+.list_ul figcaption p{
+    color:#aaa;
+    font-size:12px;
+}
+.list_ul figure div{
+    display:inline-block;
+    width:35px;
+    height:35px;
+    border-radius:35px;
+    border:2px solid #e2e2e2;
+    overflow:hidden;
+}
+.list_ul li{
+    border-bottom:1px solid #dadada;
+}
+.list_ul li:last-child{
+    border:0;
+}
+.list_ul li img{
+    width:100%;
+    min-height:100%;
+}
+
+
+.list_ul figure{
+    display:table;
+}
+.list_ul figure>*{
+    margin:3px 5px;
+    display:table-cell;
+    vertical-align: middle;
+}

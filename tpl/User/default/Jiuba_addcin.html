@@ -1,0 +1,859 @@
+<include file="Public:head"/>
+
+
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/themes/default/default.css" />
+
+
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/plugins/code/prettify.css" />
+
+
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+
+
+
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+
+
+
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+
+
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/themes/default/default.css" />
+
+
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/plugins/code/prettify.css" />
+
+
+
+<script src="{Saivi::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+
+
+
+<script src="{Saivi::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+
+
+
+<script src="{Saivi::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+
+
+
+<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+
+
+
+<script type="text/javascript" src="{Saivi::RES}/js/formCheck/formcheck.js"> </script>
+
+
+
+<script src="{Saivi::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+
+
+
+<script>
+
+
+
+	KindEditor.ready(function(K){
+
+
+
+		var editor = K.editor({
+
+
+
+			allowFileManager:true
+
+
+
+		});
+
+
+
+		K('#upload_pic1').click(function() {
+
+
+
+			editor.loadPlugin('image', function() {
+
+
+
+				editor.plugin.imageDialog({
+
+
+
+					fileUrl : K('#pic1').val(),
+
+
+
+					clickFn : function(url, title) {
+
+
+
+						if(url.indexOf("http") > -1){
+
+
+
+							K('#pic1').val(url);
+
+
+
+						}else{
+
+
+
+							K('#pic1').val("{Saivi::C('site_url')}"+url);
+
+
+
+						}
+
+
+
+						editor.hideDialog();
+
+
+
+					}
+
+
+
+				});
+
+
+
+			});
+
+
+
+		});
+
+
+
+		K('#upload_pic2').click(function() {
+
+
+
+			editor.loadPlugin('image', function() {
+
+
+
+				editor.plugin.imageDialog({
+
+
+
+					fileUrl : K('#pic2').val(),
+
+
+
+					clickFn : function(url, title) {
+
+
+
+						if(url.indexOf("http") > -1){
+
+
+
+							K('#pic2').val(url);
+
+
+
+						}else{
+
+
+
+							K('#pic2').val("{Saivi::C('site_url')}"+url);
+
+
+
+						}
+
+
+
+						editor.hideDialog();
+
+
+
+					}
+
+
+
+				});
+
+
+
+			});
+
+
+
+		});
+
+
+
+		K('#upload_pic3').click(function() {
+
+
+
+			editor.loadPlugin('image', function() {
+
+
+
+				editor.plugin.imageDialog({
+
+
+
+					fileUrl : K('#pic3').val(),
+
+
+
+					clickFn : function(url, title) {
+
+
+
+						if(url.indexOf("http") > -1){
+
+
+
+							K('#pic3').val(url);
+
+
+
+						}else{
+
+
+
+							K('#pic3').val("{Saivi::C('site_url')}"+url);
+
+
+
+						}
+
+
+
+						editor.hideDialog();
+
+
+
+					}
+
+
+
+				});
+
+
+
+			});
+
+
+
+		});
+
+
+
+		K('#upload_pic4').click(function() {
+
+
+
+			editor.loadPlugin('image', function() {
+
+
+
+				editor.plugin.imageDialog({
+
+
+
+					fileUrl : K('#pic4').val(),
+
+
+
+					clickFn : function(url, title) {
+
+
+
+						if(url.indexOf("http") > -1){
+
+
+
+							K('#pic4').val(url);
+
+
+
+						}else{
+
+
+
+							K('#pic4').val("{Saivi::C('site_url')}"+url);
+
+
+
+						}
+
+
+
+						editor.hideDialog();
+
+
+
+					}
+
+
+
+				});
+
+
+
+			});
+
+
+
+		});
+
+
+
+		K('#upload_pic5').click(function() {
+
+
+
+			editor.loadPlugin('image', function() {
+
+
+
+				editor.plugin.imageDialog({
+
+
+
+					fileUrl : K('#pic5').val(),
+
+
+
+					clickFn : function(url, title) {
+
+
+
+						if(url.indexOf("http") > -1){
+
+
+
+							K('#pic5').val(url);
+
+
+
+						}else{
+
+
+
+							K('#pic5').val("{Saivi::C('site_url')}"+url);
+
+
+
+						}
+
+
+
+						editor.hideDialog();
+
+
+
+					}
+
+
+
+				});
+
+
+
+			});
+
+
+
+		});
+
+
+
+	});
+
+
+
+</script>
+
+
+
+
+
+
+
+<script>
+
+
+
+
+
+
+
+var editor;
+
+
+
+KindEditor.ready(function(K) {
+
+
+
+editor = K.create('#content1', {
+
+
+
+resizeType : 1,
+
+
+
+allowPreviewEmoticons : false,
+
+
+
+allowImageUpload : false,
+
+
+
+items : [
+
+
+
+'source','undo','clearhtml','hr',
+
+
+
+'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+
+
+
+'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut']
+
+
+
+});
+
+
+
+
+
+
+
+});
+
+
+
+</script>
+
+
+
+<script>
+
+
+
+function selectall(name) {
+
+
+
+	var checkItems=$('.cbitem');
+
+
+
+	if ($("#check_box").attr('checked')==false) {
+
+
+
+		$.each(checkItems, function(i,val){
+
+
+
+			val.checked=false;
+
+
+
+		});
+
+
+
+		
+
+
+
+	} else {
+
+
+
+		$.each(checkItems, function(i,val){
+
+
+
+			val.checked=true;
+
+
+
+		});
+
+
+
+	}
+
+
+
+}
+
+
+
+function setlatlng(longitude,latitude){
+
+
+
+	art.dialog.data('longitude', longitude);
+
+
+
+	art.dialog.data('latitude', latitude);
+
+
+
+	// 此时 iframeA.html 页面可以使用 art.dialog.data('test') 获取到数据，如：
+
+
+
+	// document.getElementById('aInput').value = art.dialog.data('test');
+
+
+
+	art.dialog.open('{Saivi::U('Map/setLatLng',array('token'=>$token,'id'=>$id))}',{lock:false,title:'设置经纬度',width:600,height:400,yesText:'关闭',background: '#000',opacity: 0.87});
+
+
+
+}
+
+
+
+</script>
+
+
+
+<div class="content"   >
+
+<include file="Public:hangye"/>
+
+
+
+    <h4>类型设置</h4> 
+
+
+
+    <a href="{Saivi::U($type.'/setcin',array('pid'=>$id,'token'=>$token))}" class="right  btnGreen" style="margin-top:-27px">返回</a> 
+
+
+
+
+
+
+
+
+
+
+
+   <form class="form" method="post" id="form" action="" enctype="multipart/form-data"> 
+
+
+
+
+
+
+
+    <div class="msgWrap bgfc"> 
+
+
+
+     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+
+
+
+      <tbody> 
+
+
+
+        <tr>
+
+
+
+			<th>套餐类型：</td>
+
+
+
+			<td><input type="text" name="name" class="px" value="{Saivi::$data[name]}"  /></td>
+
+
+
+		</tr>
+
+
+
+		<tr>
+
+
+
+			<th>原价：</td>
+
+
+
+			<td><input type="text" name="yuanjia" class="px" value="{Saivi::$data[yuanjia]}"  /></td>
+
+
+
+		</tr>
+
+
+
+		<tr>
+
+
+
+			<th>优惠价：</td>
+
+
+
+			<td><input type="text" name="youhui" class="px" value="{Saivi::$data[youhui]}"  /></td>	
+
+
+
+		</tr>
+
+
+
+		<tr>
+
+
+
+			<th>简要说明：</td>
+
+
+
+			<td><input type="text" name="memo" class="px" value="{Saivi::$data[memo]}"  /></td>
+
+
+
+		</tr>
+
+
+
+		<tr> 
+
+
+
+			<th>图片：</th>
+
+
+
+			<td><input type="text" name="pic1" value="{Saivi::$data[pic1]}" id="pic1" class="px" style="width:400px;"  readonly="readonly"/><script src="{Saivi::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic1',720,400,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic1')" class="a_upload">预览</a></td> 
+
+
+
+        </tr>
+
+
+
+		<tr> 
+
+
+
+			<th></th>
+
+
+
+			<td><input type="text" name="pic2" value="{Saivi::$data[pic2]}" id="pic2" class="px" style="width:400px;"  readonly="readonly"/><script src="{Saivi::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic2',720,400,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic2')" class="a_upload">预览</a></td> 
+
+
+
+        </tr>
+
+
+
+		<tr> 
+
+
+
+			<th></th>
+
+
+
+			<td><input type="text" name="pic3" value="{Saivi::$data[pic3]}" id="pic3" class="px" style="width:400px;"  readonly="readonly"/><script src="{Saivi::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic3',720,400,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic3')" class="a_upload">预览</a></td> 
+
+
+
+        </tr>
+
+
+
+		<tr> 
+
+
+
+			<th></th>
+
+
+
+			<td><input type="text" name="pic4" value="{Saivi::$data[pic4]}" id="pic4" class="px" style="width:400px;"  readonly="readonly"/><script src="{Saivi::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic4',720,400,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic4')" class="a_upload">预览</a></td> 
+
+
+
+        </tr>
+
+
+
+		<tr> 
+
+
+
+			<th></th>
+
+
+
+			<td><input type="text" name="pic5" value="{Saivi::$data[pic5]}" id="pic5" class="px" style="width:400px;"  readonly="readonly"/><script src="{Saivi::STATICS}/upyun.js"></script><a href="###" onclick="upyunPicUpload('pic5',720,400,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('pic5')" class="a_upload">预览</a></td> 
+
+
+
+        </tr>
+
+
+
+        <TR>
+
+
+
+			<TH valign="top"><label for="info">配套设施：</label></TH>
+
+
+
+            <TD><textarea name="messages" id="content1"  rows="5" style="width:590px;height:360px">{Saivi::$data[messages]}</textarea></TD>
+
+
+
+        </TR>  
+
+
+
+		
+
+
+
+       <tr>         
+
+
+
+       <th>&nbsp;</th>
+
+
+
+       <td>
+
+
+
+		<!--input type="hidden" name="time" value="{Saivi:$set.time}" /-->
+
+
+
+       <button type="submit" class="btnGreen">保存</button> &nbsp; <a href="{Saivi::U($type.'/setcin',array('id'=>$id,'token'=>$token))}" class="btnGray vm">取消</a></td> 
+
+
+
+       </tr> 
+
+
+
+	   
+
+
+
+      </tbody> 
+
+
+
+     </table> 
+
+
+
+     </div>
+
+
+
+    
+
+
+
+   </form> 
+
+
+
+  </div>    </div> 
+
+
+
+<script language="javascript">
+
+
+
+$(function(){
+
+
+
+	$("#form").valid([
+
+
+
+	{ name:"name",simple:"名称",require:true},
+
+
+
+	{ name:"keyword",simple:"关键词",require:true}
+
+
+
+		
+
+
+
+	],true,true);
+
+
+
+
+
+
+
+});
+
+
+
+</script>
+
+
+
+<script>
+
+
+
+function clan(i) {
+
+
+
+	document.getElementById("pic" + i).value = "";
+
+
+
+}
+
+
+
+</script>
+
+
+
+  <include file="Public:footer" />

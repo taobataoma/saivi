@@ -1,0 +1,540 @@
+<include file="Public:head"/> 
+
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+
+
+
+
+
+
+
+<div class="content"  >
+
+
+
+
+
+
+
+<div class="cLineB">
+
+
+
+
+
+
+
+<h4 class="left">订单列表 ({Saivi:$page}) </h4>
+
+
+
+
+
+
+
+<a href="{Saivi::U($type.'/index',array('token'=>$token))}" class="right  btn btn-primary btn_submit  J_ajax_submit_btn" >返回</a>
+
+
+
+
+
+
+
+<div class="searchbar right">
+
+<a href="{Saivi::U('Yuyue/infos',array('token'=>$token,'type'=>$type,'pid'=>$pid ))}&download=1" title='导出订单数据' class='btn btn-primary btn_submit  J_ajax_submit_btn'><img src="{Saivi::RES}/images/pic.png" class="vm" />导出订单数据</a>
+
+
+
+
+
+<form method="post" action="">
+
+
+
+
+
+
+
+</form>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="clr"></div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="msgWrap">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+
+
+
+
+
+
+
+	<thead>
+
+
+
+
+
+
+
+	<tr>
+
+
+
+
+
+
+
+	<th width="150">状态</th>
+
+
+
+
+
+
+
+	<th width="100">姓名</th>
+
+
+
+
+
+
+
+	<th width="120">电话</th>
+    <th width="120">预约类型</th>
+
+
+
+
+
+
+
+	<th width="160">时间</th>
+
+
+
+
+
+
+
+	<th width="120" class="norightborder">操作</th>
+
+
+
+
+
+
+
+	</tr>
+
+
+
+
+
+
+
+	</thead>
+
+
+
+
+
+
+
+	<tbody>
+
+
+
+
+
+
+
+	<tr></tr>
+
+
+
+
+
+
+
+	<volist name="data" id="item"> 
+
+
+
+
+
+
+
+		<form method="post" action="" id="info">
+
+
+
+
+
+
+
+		<input name="delall" type="hidden" value="">
+
+
+
+
+
+
+
+		<input name="wxid" type="hidden" value="">
+
+
+
+
+
+
+
+		<tr>
+
+
+
+
+
+
+
+		<td>
+
+
+
+
+
+
+
+			<a href="{Saivi::U($type.'/setType',array('id'=>$item['id'],'pid'=>$item['pid'],'token'=>$token, 'type'=>0 ))}">
+
+
+
+
+
+
+
+			<input onclick="location.href='{Saivi::U($type.'/setType',array('id'=>$item['id'],'pid'=>$item['pid'],'token'=>$token, 'type'=>0 ))}';" type="radio" name="type" <?php if($item['type'] == 0 ) echo 'checked="checked"';?> /><span style="background:#999; color:#fff;">等待</span>
+
+
+
+
+
+
+
+			</a>
+
+
+
+
+
+
+
+			<a href="{Saivi::U($type.'/setType',array('id'=>$item['id'],'pid'=>$item['pid'],'token'=>$token, 'type'=>1 ))}">
+
+
+
+
+
+
+
+			<input onclick="location.href='{Saivi::U($type.'/setType',array('id'=>$item['id'],'pid'=>$item['pid'],'token'=>$token, 'type'=>1 ))}';" type="radio" name="type" <?php if($item['type'] == 1 ) echo 'checked="checked"';?> /><span style="background:#360; color:#fff;">确定</span>
+
+
+
+
+
+
+
+			</a>
+
+
+
+
+
+
+
+			<a href="{Saivi::U($type.'/setType',array('id'=>$item['id'],'pid'=>$item['pid'],'token'=>$token, 'type'=>2 ))}">
+
+
+
+
+
+
+
+			<input onclick="location.href='{Saivi::U($type.'/setType',array('id'=>$item['id'],'pid'=>$item['pid'],'token'=>$token, 'type'=>2 ))}';" type="radio" name="type" <?php if($item['type'] == 2 ) echo 'checked="checked"';?> /><span style="background:red; color:#fff;">拒绝</span>
+
+
+
+
+
+
+
+			</a>
+
+
+
+
+
+
+
+		</td>
+
+
+
+
+
+
+
+		<td>{Saivi:$item.name}</td>
+
+
+
+
+
+
+
+		<td>{Saivi:$item.phone}</td>
+        
+        <td>{Saivi:$item.kind}</td>
+
+
+
+
+
+
+
+		<td>{Saivi:$item.date} {Saivi:$item.time}</td> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<td class="norightborder">
+
+
+
+
+
+
+
+			<a href="{Saivi::U($type.'/infos_detail',array('id'=>$item['id'],'token'=>$token))}">查看详细信息 </a>&nbsp;&nbsp;
+
+
+
+
+
+
+
+			<a href="javascript:drop_confirm('您确定要删除吗?', '{Saivi::U($type.'/delinfos',array('id'=>$item['id'],'token'=>$token))}');">删除 </a>
+
+
+
+
+
+
+
+		</td>
+
+
+
+
+
+
+
+		</tr>
+
+
+
+
+
+
+
+	</form>
+
+
+
+
+
+
+
+	</volist>
+
+
+
+
+
+
+
+	</tbody>
+
+
+
+
+
+
+
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="cLine">
+
+
+
+
+
+
+
+<div class="pageNavigator right">
+
+
+
+
+
+
+
+<div class="pages">{Saivi:$page}</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="clr"></div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<include file="Public:footer"/>

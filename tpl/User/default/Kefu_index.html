@@ -1,0 +1,360 @@
+<include file="Public:head"/>
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default">
+</script>
+<script src="/tpl/static/artDialog/plugins/iframeTools.js">
+</script>
+<style type="text/css">
+.userinfoArea th{ width:200px;}
+</style>
+<div class="content"  style="width:100%" >
+  <div class="cLineB">
+   
+  <h4>在线客服设置： </h4>
+ </div>
+         
+    <div class="msgWrap bgfc">
+	  <form class="form" method="post" action=""   >
+      <input type="hidden" name="id" value="{Saivi:$kefu.id}"/>
+		<table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tbody>
+				<tr>
+				  <th valign="top"><span class="red">*</span>关键词：</th>
+				  <td width="570">
+					<input type="text" name="keyword" id="keyword" value="{Saivi:$kefu.keyword}"
+                            class="px" style="width:200px;"></td>
+				</tr>
+				<tr>
+				  <th valign="top">标题：</th>
+				  <td>
+					<input type="text" name="title" id="title" value="{Saivi:$kefu.title}"
+                            class="px" style="width:200px;"></td>
+				</tr>
+				<tr>
+                        <th>
+                            封面图片：
+                        </th>
+                        <td>
+                            <input type="text" name="picurl" id="picurl" value="{Saivi:$kefu.picurl}"
+                            class="px" style="width:350px;">
+                            <script src="/tpl/static/upyun.js">
+                            </script>
+                            <a href="#" onclick="upyunPicUpload('picurl',700,420,'{Saivi:$token}')"
+                            class="btn btn-primary btn_submit  J_ajax_submit_btn">
+                                上传
+                            </a>
+                            <a href="#" onclick="viewImg('picurl')" class="btn btn-primary btn_submit  J_ajax_submit_btn">
+                                预览
+                            </a>
+                        </td>
+                </tr>
+                <tr>
+
+					<th width="200">内容介绍：</th>
+
+					<td><textarea style="width:400px;height:75px" name="text" id="text" class="px">{Saivi:$kefu.text}</textarea><br/>最多填写120个字</td>
+
+				</tr>
+				
+				
+					<th>客服链接：</br>（直接聊天）</th>
+					<td><input type="text" name="info2" id="info2" value="{Saivi:$kefu.info2}" class="px" style="width:400px;">
+					</td>
+					<td>例如&nbsp;http://kefu6.kuaishang.com.cn/bs/im.htm?cas=10128___177444&fi=10282</td>
+				</tr>
+				<tr>
+				<th></th>
+				<td><a style="color:#F00; font-size:15px" target="_blank" href="http://agent.kuaishang.cn/agent/member/index/285.htm">点击注册并下载客户端获取相关代码（必须此链接注册才能免费使用）</a></td>
+				</tr>
+                <tr>
+                 
+
+                  <th><span class="red">*</span>微网站客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.status eq 1">checked="checked"</if> name="status"/>开启 <input type="radio" value="0" 
+                  <if condition="$kefu.status eq 0">checked="checked"</if>name="status"/>关闭
+
+                  </td>
+
+                </tr>
+                 <tr>
+                 
+
+                  <th><span class="red">*</span>微商城客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.sc eq 1">checked="checked"</if> name="sc"/>开启 <input type="radio" value="0" 
+                  <if condition="$kefu.sc eq 0">checked="checked"</if>name="sc"/>关闭
+
+                  </td>
+
+                </tr>
+                  <tr>
+                 
+
+                  <th><span class="red">*</span>微餐饮客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.cy eq 1">checked="checked"</if> name="cy"/>开启 <input type="radio" value="0" 
+                  <if condition="$kefu.cy eq 0">checked="checked"</if>name="cy"/>关闭
+
+                  </td>
+
+                </tr>
+                  <tr>
+                 
+
+                  <th><span class="red">*</span>微论坛客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.lt eq 1">checked="checked"</if> name="lt"/>开启 <input type="radio" value="0" 
+                  <if condition="$kefu.lt eq 0">checked="checked"</if>name="lt"/>关闭
+
+                  </td>
+
+                </tr>
+                 <tr>
+                 
+
+                  <th><span class="red">*</span>微预约客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.yy eq 1">checked="checked"</if> name="yy"/>开启 <input type="radio" value="0" 
+                  <if condition="$kefu.yy eq 0">checked="checked"</if>name="yy"/>关闭
+
+                  </td>
+
+                </tr>
+                      <tr>
+                 
+
+                  <th><span class="red">*</span>微会员客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.hyk eq 1">checked="checked"</if> name="hyk"/>开启 <input type="radio" value="0" 
+                  <if condition="$kefu.hyk eq 0">checked="checked"</if>name="hyk"/>关闭
+
+                  </td>
+
+                </tr>
+                  <tr>
+                 
+
+                  <th><span class="red">*</span>微汽车客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.car eq 1">checked="checked"</if> name="car"/>开启 <input type="radio" value="0" 
+                  <if condition="$kefu.car eq 0">checked="checked"</if>name="car"/>关闭
+
+                  </td>
+
+                </tr>
+                  <tr>
+                 
+
+                  <th><span class="red">*</span>微医疗客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.yiliao eq 1">checked="checked"</if> name="yiliao"/>开启 <input type="radio" value="0" 
+                  <if condition="$kefu.yiliao eq 0">checked="checked"</if>name="yiliao"/>关闭
+
+                  </td>
+
+                </tr>
+                
+				<tr>
+                  <tr>
+                 
+
+                  <th><span class="red">*</span>微教育客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.jiaoyu eq 1">checked="checked"</if> name="jiaoyu"/>开启 <input type="radio" value="0" 
+                  <if condition="$kefu.jiaoyu eq 0">checked="checked"</if>name="jiaoyu"/>关闭
+
+                  </td>
+
+                </tr>
+                 <tr>
+                 
+
+                  <th><span class="red">*</span>微酒店宾馆客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.jdbg eq 1">checked="checked"</if> name="jdbg"/>开启 <input type="radio" value="0" 
+                  <if condition="$kefu.jdbg eq 0">checked="checked"</if>name="jdbg"/>关闭
+
+                  </td>
+
+                </tr>
+                 <tr>
+                 
+
+                  <th><span class="red">*</span>微房产馆客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.fc eq 1">checked="checked"</if> name="fc"/>开启 <input type="radio" value="0" 
+                  <if condition="$kefu.fc eq 0">checked="checked"</if>name="fc"/>关闭
+
+                  </td>
+
+                </tr>
+                <tr>
+                 
+
+                  <th><span class="red">*</span>微ktv馆客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.ktv eq 1">checked="checked"</if> name="ktv"/>开启 <input type="radio" value="0" 
+                  <if condition="$kefu.ktv eq 0">checked="checked"</if>name="ktv"/>关闭
+
+                  </td>
+
+                </tr>
+                 <tr>
+                 
+
+                  <th><span class="red">*</span>微酒吧馆客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.jiuba eq 1">checked="checked"</if> name="jiuba"/>开启 <input type="radio" value="0" 
+                  <if condition="$kefu.jiuba eq 0">checked="checked"</if>name="jiuba"/>关闭
+
+                  </td>
+
+                </tr>
+                 <tr>
+                 
+
+                  <th><span class="red">*</span>微会所客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.huisuo eq 1">checked="checked"</if> name="huisuo"/>开启 <input type="radio" value="0" 
+                  <if condition="$kefu.huisuo eq 0">checked="checked"</if>name="huisuo"/>关闭
+
+                  </td>
+
+                </tr>
+                 <tr>
+                 
+
+                  <th><span class="red">*</span>微美容客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.meirong eq 1">checked="checked"</if> name="meirong"/>开启 <input type="radio" value="0" 
+                  <if condition="$kefu.meirong eq 0">checked="checked"</if>name="meirong"/>关闭
+
+                  </td>
+
+                </tr>
+                 <tr>
+                 
+
+                  <th><span class="red">*</span>微装修客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.zhuangxiu eq 1">checked="checked"</if> name="zhuangxiu"/>开启 <input type="radio" value="0" <if condition="$kefu.zhuangxiu eq 0">checked="checked"</if>name="zhuangxiu"/>关闭
+
+                  </td>
+
+                </tr>
+                 <tr>
+                 
+
+                  <th><span class="red">*</span>微食品客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.shipin eq 1">checked="checked"</if> name="shipin"/>开启 <input type="radio" value="0"  <if condition="$kefu.shipin eq 0">checked="checked"</if>name="shipin"/>关闭
+
+                  </td>
+
+                </tr>
+                 <tr>
+                 
+
+                  <th><span class="red">*</span>微健身客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.jianshen eq 1">checked="checked"</if> name="jianshen"/>开启 <input type="radio" value="0" <if condition="$kefu.jianshen eq 0">checked="checked"</if>name="jianshen"/>关闭
+
+                  </td>
+
+                </tr>
+                 <tr>
+                 
+
+                  <th><span class="red">*</span>微政务客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.zhengwu eq 1">checked="checked"</if> name="zhengwu"/>开启 <input type="radio" value="0" <if condition="$kefu.zhengwu eq 0">checked="checked"</if>name="zhengwu"/>关闭
+
+                  </td>
+
+                </tr>
+                 <tr>
+                 
+
+                  <th><span class="red">*</span>微旅游客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.lvyou eq 1">checked="checked"</if> name="lvyou"/>开启 <input type="radio" value="0" <if condition="$kefu.lvyou eq 0">checked="checked"</if>name="lvyou"/>关闭
+
+                  </td>
+
+                </tr>
+                 <tr>
+                 
+
+                  <th><span class="red">*</span>微物业客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.wuye eq 1">checked="checked"</if> name="wuye"/>开启 <input type="radio" value="0"  <if condition="$kefu.wuye eq 0">checked="checked"</if>name="wuye"/>关闭
+
+                  </td>
+
+                </tr>
+                 <tr>
+                 
+
+                  <th><span class="red">*</span>微投票客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.toupiao eq 1">checked="checked"</if> name="toupiao"/>开启 <input type="radio" value="0"  <if condition="$kefu.toupiao eq 0">checked="checked"</if>name="toupiao"/>关闭
+
+                  </td>
+
+                </tr>
+                 <tr>
+                 
+
+                  <th><span class="red">*</span>微调研客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.dianyan eq 1">checked="checked"</if> name="dianyan"/>开启 <input type="radio" value="0"  <if condition="$kefu.dianyan eq 0">checked="checked"</if>name="dianyan"/>关闭
+
+                  </td>
+
+                </tr>
+                 <tr>
+                 
+
+                  <th><span class="red">*</span>活动报名客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.baoming eq 1">checked="checked"</if> name="baoming"/>开启 <input type="radio" value="0"  <if condition="$kefu.baoming eq 0">checked="checked"</if>name="baoming"/>关闭
+
+                  </td>
+
+                </tr>
+                 <tr>
+                 
+
+                  <th><span class="red">*</span>在线预定客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.zxyd eq 1">checked="checked"</if> name="zxyd"/>开启 <input type="radio" value="0"  <if condition="$kefu.zxyd eq 0">checked="checked"</if>name="zxyd"/>关闭
+
+                  </td>
+
+                </tr>
+                 <tr>
+                 
+
+                  <th><span class="red">*</span>微邀请客服状态：</th>
+
+                  <td><input type="radio" value="1" <if condition="$kefu.yaoqing eq 1">checked="checked"</if> name="yaoqing"/>开启 <input type="radio" value="0"  <if condition="$kefu.yaoqing eq 0">checked="checked"</if>name="yaoqing"/>关闭
+
+                  </td>
+
+                </tr>
+                
+                
+				<tr>
+					<th></th>
+					<td><input type="hidden"  name="token" i value="{Saivi:$token}" class="px" style="width:550px;">
+						<button type="submit" name="button" class="btn btn-primary btn_submit  J_ajax_submit_btn">保存</button> &nbsp;&nbsp;<a href="javascript:history.go(-1);" class="btn">取消</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+  </div> 
+ 
+  
+        </div>
+<include file="Public:footer"/>

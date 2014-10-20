@@ -1,0 +1,44 @@
+ <include file="Public:head" /> 
+ <script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+  <div class="content"> 
+   <div class="cLineB"> 
+    <h4><span class="red">{Saivi:$catData.name}</span>的分类<if condition="$type eq 1">外观<else />规格</if>值得设置</h4> 
+    <a href="{Saivi::U('Store/norms',array('token'=>$token,'catid'=>$catid, 'type' => $type))}" class="right  btn btn-primary btn_submit  J_ajax_submit_btn" style="margin-top:-27px">返回</a> 
+   </div> 
+   <form class="form" method="post" action="" enctype="multipart/form-data"> 
+    <input type="hidden" name="id" value="{Saivi:$set.id}" /> 
+     
+    <div class="msgWrap bgfc"> 
+     <table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%"> 
+      <tbody> 
+      <if condition="$type eq 1">
+       <tr> 
+        <th>外观名称：</th> 
+        <td>{Saivi:$catData.color}</td> 
+       </tr>
+       <else />
+       <tr> 
+        <th>规格名称：</th> 
+        <td>{Saivi:$catData.norms}</td> 
+       </tr>
+	   </if>
+       <tr>
+        <th><span class="red">*</span><if condition="$type eq 1">外观<else />规格</if>属性值：</th> 
+        <td><input type="text" name="value" value="{Saivi:$set.value}" class="px"/></td> 
+       </tr>
+       <tr>         
+       <th>&nbsp;</th>
+       <td>
+       <input type="hidden" value="{Saivi::$type}" name="type" />
+       <input type="hidden" value="{Saivi::$catid}" name="catid" />
+       <input type="hidden" value="{Saivi::$token}" name="token" />
+       <button type="submit" name="button" class="btn btn-primary btn_submit  J_ajax_submit_btn">保存</button> &nbsp; <a href="{Saivi::U('Store/norms',array('token' => $token, 'catid' => $catid, 'type' => $type))}" class="btn">取消</a></td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     </div>
+    
+   </form> 
+  </div> 
+  <include file="Public:footer" />

@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/yuyue/common.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/yuyue/datepicker.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/yuyue/onlinebooking.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/yuyue/weimob-ui-1-1.css" media="all" />
+
+<script type="text/javascript" src="{Saivi::RES}/js/yuyue/jQuery.js"></script>
+
+<script type="text/javascript" src="{Saivi::RES}/js/yuyue/jquery-ui.js"></script>
+
+<title>{Saivi:$data.copyright}</title>
+
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+
+<meta name="Keywords" content="Saivi、微信营销、微信代运营、微信定制开发、微信托管、微网站、微商城、微营销" />
+
+<meta name="Description" content="Saivi，国内最大的微信公众智能服务平台，Saivi八大微体系：微菜单、微官网、微会员、微活动、微商城、微推送、微服务、微统计，企业微营销必备。" />
+
+<!-- Mobile Devices Support @begin -->
+
+<meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+
+<meta content="no-cache" http-equiv="pragma">
+
+<meta content="0" http-equiv="expires">
+
+<meta content="telephone=no, address=no" name="format-detection">
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<!-- apple devices fullscreen -->
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<!-- Mobile Devices Support @end -->
+
+<link rel="shortcut icon" href="img/favicon.ico" />
+
+<style>
+
+img {
+
+	width:100%!important;
+
+}
+
+</style>
+
+</head>
+
+<body onselectstart="return true;" ondragstart="return false;">
+
+<body id="onlinebooking-no">
+
+<div class="qiandaobanner"> <img src="{Saivi::RES}/images/yuyue/head_pic.jpg"> </div>
+
+<div class="cardexplain">
+
+  <!--粉丝填写过的信息的，直接就显示名字电话，粉丝没有填写过信息的话，这里就直接留空让粉丝填写-->
+
+  <ul class="round">
+
+    <form action="javascript:;" method="post">
+
+      <li class="title mb"> <span class="none">{Saivi:$data.date}订单详情<em class="no">等待客服回电</em> </span> </li>
+
+      <li class="nob">
+
+        <div class="beizhu">此订单可重新修改后再提交！</div>
+
+        <input name="formhash" id="formhash" value="2be3071a" type="hidden">
+
+        <input class="yuanjia" id="yj" type="hidden" value="{Saivi:$info.yuanjia}" />
+
+        <input class="youhuijia" id="yhj" type="hidden" value="{Saivi:$info.youhui}" />
+
+      </li>
+
+      <if condition="$str.person eq 0">
+
+        <li class="nob" style="display:none;">
+
+          <else />
+
+        <li class="nob">
+
+      </if>
+
+      <table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+
+          <th>订单人</th>
+
+          <td><input name="name" class="px" id="truename" value="{Saivi:$data.name}" placeholder="请输入您的真实姓名" type="text"></td>
+
+        </tr>
+
+      </table>
+
+      </li>
+
+      <if condition="$str.phone eq 0">
+
+        <li class="nob" style="display:none;">
+
+          <else />
+
+        <li class="nob">
+
+      </if>
+
+      <table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+
+          <th>联系电话</th>
+
+          <td><input name="phone" class="px" id="tel" value="{Saivi:$data.phone}" placeholder="请输入您的电话" type="tel"></td>
+
+        </tr>
+
+      </table>
+
+      </li>
+
+      <if condition="$str.date eq 0">
+
+        <li class="nob" style="display:none;">
+
+          <else />
+
+        <li class="nob">
+
+      </if>
+
+      <table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+
+          <th>预约日期</th>
+
+          <td><input type="text" class="px" name="date" id="dateline" readonly value="{Saivi:$data.or_date}"/></td>
+
+        </tr>
+
+      </table>
+
+      </li>
+
+      <if condition="$str.time eq 0">
+
+        <li class="nob" style="display:none;">
+
+          <else />
+
+        <li class="nob">
+
+      </if>
+
+      <table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+
+          <th>预约时间</th>
+
+          <td><select name="time" id="timepart" class="dropdown-select">
+
+              <option value="{Saivi:$data.time}">{Saivi:$data.time}</option>
+
+              <option value="0:00-1:00">0:00-1:00</option>
+
+              <option value="1:00-2:00">1:00-2:00</option>
+
+              <option value="2:00-3:00">2:00-3:00</option>
+
+              <option value="3:00-4:00">3:00-4:00</option>
+
+              <option value="4:00-5:00">4:00-5:00</option>
+
+              <option value="5:00-6:00">5:00-6:00</option>
+
+              <option value="6:00-7:00">6:00-7:00</option>
+
+              <option value="7:00-8:00">7:00-8:00</option>
+
+              <option value="8:00-9:00">8:00-9:00</option>
+
+              <option value="9:00-10:00">9:00-10:00</option>
+
+              <option value="10:00-11:00">10:00-11:00</option>
+
+              <option value="11:00-12:00">11:00-12:00</option>
+
+              <option value="12:00-13:00">12:00-13:00</option>
+
+              <option value="13:00-14:00">13:00-14:00</option>
+
+              <option value="14:00-15:00">14:00-15:00</option>
+
+              <option value="15:00-16:00">15:00-16:00</option>
+
+              <option value="16:00-17:00">16:00-17:00</option>
+
+              <option value="17:00-18:00">17:00-18:00</option>
+
+              <option value="18:00-19:00">18:00-19:00</option>
+
+              <option value="19:00-20:00">19:00-20:00</option>
+
+              <option value="20:00-21:00">20:00-21:00</option>
+
+              <option value="21:00-22:00">21:00-22:00</option>
+
+              <option value="22:00-23:00">22:00-23:00</option>
+
+              <option value="23:00-24:00">23:00-24:00</option>
+
+            </select></td>
+
+        </tr>
+
+      </table>
+
+      </li>
+
+      <li class="nob">
+
+        <table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+          <tr>
+
+            <th>类型</th>
+
+            <td><input class="px" id="room_type" value="{Saivi:$info.name}" readonly type="text"></td>
+
+          </tr>
+
+        </table>
+
+      </li>
+
+      <li class="nob">
+
+        <table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+          <tr>
+
+            <th>预订数量</th>
+
+            <td><select name="nums" class="dropdown-select" id="nums" onChange="dothis(this.value)">
+
+                <option selected="selected" value="{Saivi:$data.nums}">{Saivi:$data.nums}</option>
+
+                <option value="1">1</option>
+
+                <option value="2">2</option>
+
+                <option value="3">3</option>
+
+                <option value="4">4</option>
+
+                <option value="5">5</option>
+
+                <option value="6">6</option>
+
+                <option value="7">7</option>
+
+                <option value="8">8</option>
+
+                <option value="9">9</option>
+
+                <option value="10">10</option>
+
+                <option value="11">11</option>
+
+                <option value="12">12</option>
+
+                <option value="13">13</option>
+
+                <option value="14">14</option>
+
+                <option value="15">15</option>
+
+                <option value="16">16</option>
+
+                <option value="17">17</option>
+
+                <option value="18">18</option>
+
+                <option value="19">19</option>
+
+                <option value="20">20</option>
+
+              </select></td>
+
+          </tr>
+
+        </table>
+
+      </li>
+
+      <li class="nob">
+
+        <table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+          <tr>
+
+            <th>原价</th>
+
+            <td class="userinfo" id="price1">￥{Saivi:$info.yuanjia}</td>
+
+          </tr>
+
+        </table>
+
+      </li>
+
+      <li class="nob">
+
+        <table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+          <tr>
+
+            <th>现价</th>
+
+            <td class="userinfo price" id="price2">￥{Saivi:$info.youhui}</td>
+
+          </tr>
+
+        </table>
+
+      </li>
+
+      <li class="nob">
+
+        <table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+          <tr>
+
+            <th>为你节省</th>
+
+            <td class="userinfo price2" id="price3">￥{Saivi:$info.sheng}</td>
+
+          </tr>
+
+        </table>
+
+      </li>
+
+      <volist name="arr" id="item" key="i">
+
+        <li class="nob" >
+
+          <table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+
+              <th>{Saivi:$item.name}</th>
+
+              <td><input name="text{Saivi:$i}" class="single px" id="text{Saivi:$i}" value="{Saivi:$detail.text.$i.1}" placeholder="{Saivi:$item.value}" type="text"></td>
+
+            </tr>
+
+          </table>
+
+        </li>
+
+      </volist>
+
+      <volist name="list" id="item" key="k">
+
+        <li class="nob" >
+
+          <table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+
+              <th>{Saivi:$item.name}</th>
+
+              <td><select name="" class="download dropdown-select">
+
+                  <option value="{Saivi:$detail.down.$k.1}">{Saivi:$detail.down.$k.1}</option>
+
+                  <volist name="item[value]" id="i">
+
+                    <option value="{Saivi:$i}">{Saivi:$i}</option>
+
+                  </volist>
+
+                </select></td>
+
+            </tr>
+
+          </table>
+
+        </li>
+
+      </volist>
+
+      <li class="nob">
+
+        <table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+          <tr>
+
+            <th class="thtop" valign="top">{Saivi:$str.message}</th>
+
+            <td><textarea name="memo" class="pxtextarea" style=" height:99px;overflow-y:visible" id="info" placeholder="请输入备注信息">{Saivi:$data.memo}</textarea>
+
+              <input type="hidden" name="wecha_id" id="wecha_id" value="{Saivi:$data.wecha_id}" />
+
+              <input type="hidden" name="token" id="token" value="{Saivi:$data.token}" />
+
+              <input type="hidden" name="pid" id="pid" value="{Saivi:$data.pid}" />
+
+              <input type="hidden" name="price" id="price" value="{Saivi:$data.price}" /></td>
+
+          </tr>
+
+        </table>
+
+      </li>
+
+    </form>
+
+  </ul>
+
+  <div class="footReturn">
+
+    <ul>
+
+      <li class="footerbtn"><a id="showcard2" class="del right3" href="javascript:void(0)">删除订单</a></li>
+
+      <li class="footerbtn"><a id="showcard" class="submit left3" href="javascript:void(0)">提交消息</a></li>
+
+    </ul>
+
+    <div class="clr"></div>
+
+    <div class="window" id="windowcenter">
+
+      <div id="title" class="wtitle">操作成功<span class="close" id="alertclose"></span></div>
+
+      <div class="content">
+
+        <div id="txt"></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script type="text/javascript">
+
+function dothis(nums){
+
+		var yj = $("#yj").val();
+
+		var yhj = $("#yhj").val();
+
+		var diff = yj - yhj;
+
+		var str1 = yj*nums;
+
+		var str2 = yhj*nums;
+
+		var str3 = diff*nums;
+
+		$("#price1").text("￥"+str1);
+
+		$("#price2").text("￥"+str2);
+
+		$("#price3").text("￥"+str3);
+
+} 
+
+$(document).ready(function () { 
+
+		$( "#dateline" ).datepicker({
+
+			minDate: new Date(),
+
+			dateFormat: "yy-mm-dd"
+
+		});
+
+	$("#showcard").click(function () {
+
+		var ret_single = ret_download = tel_num = '';
+
+		$(".single").each(function(i){
+
+			var s_name = $(this).parent().siblings().text();
+
+			var s_value = $(this).val();
+
+			if('' != s_value) ret_single += '$'+s_name+'#'+s_value;
+
+		});
+
+		$(".download").each(function(i){
+
+			var s_name = $(this).parent().siblings().text();
+
+			var s_value = $(this).val();
+
+			if('' != s_value) ret_download += '$'+s_name+'#'+s_value;
+
+		});
+
+		tel_num = $("#tel").val();
+
+		if("{Saivi:$str['phone']}" == 1){
+
+		if('undefined' !== typeof(tel_num)){
+
+			if(tel_num ==''){alert('电话不能为空');return;} 
+
+			if(tel_num.length < 11){alert('请输入正确的电话');return;} 
+
+		}}
+
+		if("{Saivi:$str['name']}" == 1){if($("#truename").val()==''){alert('名字不能为空');return;}}
+
+		//if($("#dateline").val()==''){alert('请选择时间');return;}
+
+		var submitData = {
+
+			wecha_id: $("#wecha_id").val(),
+
+			pid: $("#pid").val(),
+
+			token: $("#token").val(),
+
+			name: $("#truename").val(),
+
+			phone: $("#tel").val(),
+
+			or_date: $("#dateline").val(),
+
+			time: $("#timepart").val(),
+
+			nums: $("#nums").val(),
+
+			memo: $("#info").val(),
+
+			kind: $("#room_type").val(),
+
+			price: $("#price").val(),
+
+			fieldsigle: ret_single,
+
+			fielddownload: ret_download,
+
+		};
+
+		//if('fromUsername' == submitData.wechatid) submitData.wechatid = '';
+
+		$.post("index.php?g=wap&m={Saivi:$type}&a=runSet&id={Saivi:$data['id']}", submitData,
+
+			function(data) {
+
+				if (0 == data.error) {
+
+					alert(data.msg);
+
+					//setTimeout('window.location.href=location.href',1000);
+
+				} else {
+
+					alert(data.msg);
+
+					setTimeout('window.location.href="'+data.url+'"',3000);
+
+				}
+
+			},
+
+		"json")
+
+	}); 
+
+}); 
+
+$("#showcard2").click(function () {
+
+	if(confirm('您确定要删除吗?')){
+
+		var submitData = {
+
+			id:'{Saivi:$data['id']}',
+
+			wecha_id: $("#wecha_id").val(),
+
+			pid: $("#pid").val(),
+
+			token: $("#token").val(),
+
+		};
+
+		$.post('index.php?g=wap&m={Saivi:$type}&a=del', submitData,
+
+			function(data) {
+
+				if (0 == data.error) {
+
+					alert(data.msg);
+
+					//setTimeout('window.location.href=location.href',1000);
+
+					 // window.location.reload();
+
+				} else {
+
+					alert(data.msg);
+
+					/*setTimeout(function (){
+
+						history.back();
+
+					},1000)*/
+
+					setTimeout('window.location.href="'+data.url+'"',3000);
+
+				}
+
+			},
+
+		"json")
+
+	}
+
+}); 
+
+$("#windowclosebutton").click(function () { 
+
+	$("#windowcenter").slideUp(500);
+
+}); 
+
+$("#alertclose").click(function () { 
+
+	$("#windowcenter").slideUp(500);
+
+}); 
+
+function jumpurl(url){
+
+	window.location.href = url;
+
+}
+
+function alert(title){ 
+
+//var windowHeight; 
+
+//var windowWidth; 
+
+//var popWidth;  
+
+//var popHeight; 
+
+//windowHeight=$(window).height(); 
+
+//windowWidth=$(window).width(); 
+
+//popHeight=$(".window").height(); 
+
+//popWidth=$(".window").width(); 
+
+//var popY=(windowHeight-popHeight)/2; 
+
+//var popX=(windowWidth-popWidth)/2; 
+
+//$("#windowcenter").css("top",popY).css("left",popX).slideToggle("slow"); 
+
+$("#windowcenter").slideToggle("slow"); 
+
+$("#txt").html(title);
+
+//$("#windowcenter").hide("slow"); 
+
+setTimeout('$("#windowcenter").slideUp(500)',1000);
+
+} 
+
+</script>
+
+<footer style="text-align:center; color:#ffd800;margin-right:20px;margin-top:0px;"><a>©{Saivi:$data.copyright}</a></footer>
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['huisuo'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if>
+</body>
+
+<div mark="stat_code" style="width:0px; height:0px; display:none;"></div>
+
+</body>
+
+</html>

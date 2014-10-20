@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+    <title>{Saivi:$copyright.title}</title>
+    <link href="/tpl/Wap/default/common/fangyan/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/tpl/Wap/default/common/fangyan/css/style.css" />
+    <style type="text/css">
+    body {
+        background: #000 url(/tpl/Wap/default/common/fangyan/img/linan.jpg) top center no-repeat !important;
+        background-size:100% auto !important;
+    }
+    </style>
+</head>
+
+<div class="container">
+    <div class="text-center header">
+        <h1 class="bold">{Saivi:$copyright.title}</h1>
+      <!--  <p>已有13145人参与测试</p>-->
+        <div class="avatar1 text-center">
+            <div class="img-circle">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </div>
+        </div>
+    </div>
+    <div id="bd" class="panel">
+        <div id="panel1" class="panel-body">
+            <dl>
+                <dd style="font-size:18px;">✍ {Saivi:$copyright.gz}<br>
+☞ 添加/关注微信：{Saivi:$copyright.copyright} </dd>
+            </dl>
+            <div class="buttons">
+                <a href="#result" class="btn btn-lg btn-danger btn-block" onclick="return next(0);">开始测试</a>
+            </div>
+        </div>
+        <volist name="info" id="vo">
+                <div id="panel2" class="panel-body js_answer" style="display: none;">
+            <dl><dd>{Saivi:$vo.timu}      
+</dd></dl>
+            <ul class="list-group js_group">
+                                <li class="list-group-item" data-score="{Saivi:$vo.score1}" onclick="return toggle(this);"><i class="glyphicon glyphicon-unchecked"></i> A.{Saivi:$vo.answer1}</li>
+                                <li class="list-group-item" data-score="{Saivi:$vo.score2}" onclick="return toggle(this);"><i class="glyphicon glyphicon-unchecked"></i> B.{Saivi:$vo.answer2}  </li>
+                                <li class="list-group-item" data-score="{Saivi:$vo.score3}" onclick="return toggle(this);"><i class="glyphicon glyphicon-unchecked"></i> C.{Saivi:$vo.answer3}</li>
+                                <li class="list-group-item" data-score="{Saivi:$vo.score4}" onclick="return toggle(this);"><i class="glyphicon glyphicon-unchecked"></i> D.{Saivi:$vo.answer4}</li>
+                            </ul>
+        </div>
+        </volist>
+                
+        <div id="panel3" class="panel-body js_result" data-id="0" style="display:none;">
+            <h1 class="bold text-danger">没到10分</h1>
+            <hr>
+            <dl>
+                <dt>详细分析:</dt>
+                <dd>
+                    <p>{Saivi:$copyright.tip1}&quot;&quot;&quot;&quot;</p>
+                </dd>
+            </dl>
+            <div class="buttons">
+                <a href="javascript:void(0)" class="btn btn-lg btn-success" style="width:100%" onclick="$('#mcover').show()">分享给朋友(圈)</a>
+            </div>
+        </div>
+        <div id="panel3" class="panel-body js_result" data-id="1" style="display:none;">
+            <h1 class="bold text-danger">没到50分</h1>
+            <hr>
+            <dl>
+                <dt>详细分析:</dt>
+                <dd>
+                    <p>{Saivi:$copyright.tip2}&quot;&quot;&quot;&quot;</p>
+                </dd>
+            </dl>
+            <div class="buttons">
+                <a href="javascript:void(0)" class="btn btn-lg btn-success" style="width:100%" onclick="$('#mcover').show()">分享给朋友(圈)</a>
+            </div>
+        </div>
+        <div id="panel3" class="panel-body js_result" data-id="2" style="display:none;">
+            <h1 class="bold text-danger">没到60分</h1>
+            <hr>
+            <dl>
+                <dt>详细分析:</dt>
+                <dd>
+                    <p>{Saivi:$copyright.tip3}&quot;&quot;&quot;&quot;</p>
+                </dd>
+            </dl>
+            <div class="buttons">
+                <a href="javascript:void(0)" class="btn btn-lg btn-success" style="width:100%" onclick="$('#mcover').show()">分享给朋友(圈)</a>
+            </div>
+        </div>
+        <div id="panel3" class="panel-body js_result" data-id="3" style="display:none;">
+            <h1 class="bold text-danger">没到70分</h1>
+            <hr>
+            <dl>
+                <dt>详细分析:</dt>
+                <dd>
+                    <p>{Saivi:$copyright.tip4}&quot;&quot;&quot;&quot;</p>
+                </dd>
+            </dl>
+            <div class="buttons">
+                <a href="javascript:void(0)" class="btn btn-lg btn-success" style="width:100%" onclick="$('#mcover').show()">分享给朋友(圈)</a>
+            </div>
+        </div>
+        <div id="panel3" class="panel-body js_result" data-id="4" style="display:none;">
+            <h1 class="bold text-danger">没到80分</h1>
+            <hr>
+            <dl>
+                <dt>详细分析:</dt>
+                <dd>
+                    <p>{Saivi:$copyright.tip5}&quot;&quot;&quot;&quot;</p>
+                </dd>
+            </dl>
+            <div class="buttons">
+                <a href="javascript:void(0)" class="btn btn-lg btn-success" style="width:100%" onclick="$('#mcover').show()">分享给朋友(圈)</a>
+            </div>
+        </div>
+        <div id="panel3" class="panel-body js_result" data-id="5" style="display:none;">
+            <h1 class="bold text-danger">没到90分</h1>
+            <hr>
+            <dl>
+                <dt>详细分析:</dt>
+                <dd>
+                    <p>{Saivi:$copyright.tip6}&quot;&quot;&quot;&quot;</p>
+                </dd>
+            </dl>
+            <div class="buttons">
+                <a href="javascript:void(0)" class="btn btn-lg btn-success" style="width:100%" onclick="$('#mcover').show()">分享给朋友(圈)</a>
+            </div>
+        </div>
+        <div id="panel3" class="panel-body js_result" data-id="6" style="display:none;">
+            <h1 class="bold text-danger">哇噻，满分！</h1>
+            <hr>
+            <dl>
+                <dt>详细分析:</dt>
+                <dd>
+                    <p>{Saivi:$copyright.tip7}&quot;&quot;&quot;&quot;</p>
+                </dd>
+            </dl>
+            <div class="buttons">
+                <a href="javascript:void(0)" class="btn btn-lg btn-success" style="width:100%" onclick="$('#mcover').show()">分享给朋友(圈)</a>
+            </div>
+        </div>
+    </div>
+        <div class=""><span style="line-height:1.5;color:#FFE500;"></span><a href="{Saivi:$copyright.url}"><img src="{Saivi:$copyright.banner}" style="width:100%" /></a></div>
+    </div>
+<div class="footer text-center navbar-fixed-bottom">
+    <div class="container">&copy;{Saivi:$copyright.copyright}</div>
+</div>
+<div id="mcover" onclick="$(this).hide()">
+    <img src="/tpl/Wap/default/common/fangyan/img/guide.png">
+</div>
+<div class="loads" style="display:bolck"><i></i></div>
+<script src="/tpl/Wap/default/common/fangyan/js/zepto.min.js"></script>
+<script src="/tpl/Wap/default/common/fangyan/js/WeixinApi.min.js"></script>
+<script type="text/javascript">
+
+    var total = '{Saivi:$count}';
+    var tScore = 0;
+    var scoreArr = new Array();
+        scoreArr[0] = 0;
+        scoreArr[1] = 10;
+        scoreArr[2] = 50;
+        scoreArr[3] = 60;
+        scoreArr[4] = 70;
+        scoreArr[5] = 80;
+        scoreArr[6] = 90;
+    function next(t){
+        $(".panel-body").hide();
+        $(".js_answer").eq(t).show();
+    }
+
+    function result(t){
+        console.log("得分"+tScore);
+        $(".panel-body").hide();
+        for (var i = scoreArr.length - 1; i >= 0; i--) {
+            if ( parseInt(t) >= parseInt(scoreArr[i]) ) {
+                console.log("应该弹"+i);
+                $(".js_result").eq(i).show();
+                $.get("mobile.php?act=module&name=dialect&do=detail&weid=2", {id: "1"});
+                return false;
+            }
+            else{
+                continue;    
+            }
+        };
+    }
+
+    function toggle(t){
+        $(".list-group-item").removeClass('active')
+        var score = $(t).attr("data-score");
+        tScore  = parseInt(tScore) + parseInt(score);
+        $(t).find('i').removeClass('glyphicon-unchecked').addClass('glyphicon-ok');
+        var t = $(".js_answer").index($(t).parents(".js_answer")) + 1;
+        if(t == total){
+            result(tScore);
+        }
+        else{
+            setTimeout(function(){next(t);},300);
+        }
+    }
+    Zepto(function($){
+        $('.loads').hide();
+    })
+    WeixinApi.ready(function(Api) {
+        Api.showOptionMenu();
+        var wxData = {
+            "appId": "",
+            "imgUrl" : '{Saivi:$copyright.tp}',
+            "link" : '{Saivi:$f_siteUrl}/index.php?g=Wap&m=Fanyan&a=index&token={Saivi:$Think.get.token}&wecha_id={Saivi:$Think.get.wecha_id}',
+            "desc" : '{Saivi:$copyright.info}',
+            "title" : '{Saivi:$copyright.title}'
+        };
+        // 分享的回调
+        var wxCallbacks = {
+            // 分享被用户自动取消
+            cancel : function(resp) {
+                alert("别这样的啦，好东西要和朋友分享的嘛！分享后我告诉你一个秘密。");
+            },
+            // 分享失败了
+            fail : function(resp) {
+                alert("分享失败，可能是网络问题，一会儿再试试？");
+            },
+            // 分享成功
+            confirm : function(resp) {
+                $.get("mobile.php?act=module&name=dialect&do=detail&weid=2", {id: "1",op:'share'});
+                window.location.href='{Saivi:$f_siteUrl}/index.php?g=Wap&m=Index&a=index&token={Saivi:$Think.get.token}&wecha_id={Saivi:$Think.get.wecha_id}';
+            },
+        };
+        Api.shareToFriend(wxData,wxCallbacks);
+        Api.shareToTimeline(wxData,wxCallbacks);
+        Api.shareToWeibo(wxData,wxCallbacks);
+    });
+</script>
+<div class="hide"></div>
+</body>
+</html>

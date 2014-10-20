@@ -1,0 +1,110 @@
+<include file="Public:head"/>
+<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>  
+<div class="content">
+         
+          <div class="cLineB">
+              <h4 class="left">当前位置：<a href="{Saivi::U('Member_card/index',array('token'=>$token))}">会员卡</a> >> {Saivi:$thisCard.cardname}会员管理</h4>
+                 
+              <div class="clr"></div>
+          </div>
+          <div class="cLineD">
+查询资料[仅支持按照会员卡号查询]
+	<form method="post" action="">
+		<input size="80" value="" name="searchkey" class="px">
+		<button type="submit" name="appidsubmit" value="true" class="btn btn-primary btn_submit  J_ajax_submit_btn vm" ><strong>查询</strong></button>
+	</form>
+ </div>
+          <div class="msgWrap">
+           <div style="background:#fefbe4;border:1px solid #f3ecb9;color:#993300;padding:10px;margin-top:5px;">注意:在每行的输入框里可以通过输入消费金额（可以填写负数）来增减会员积分</div>
+
+         
+          <input name="delall"  type="hidden" value="del" />
+           <input name="wxid"  type="hidden" value="gh_423dwjkewad" />
+            <TABLE class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+              <THEAD>
+                <TR>
+				<TH>卡号</TH>
+				<TH>微信名</TH>
+				<TH>姓名</TH>
+				<TH>性别</TH>
+				<TH>生日</TH>
+        <TH>联系电话</TH>
+				<TH>QQ号码</TH> 
+        <TH>领卡时间</TH>
+        <TH>积分</TH>
+        <TH>消费总额(元)</TH>
+        <TH>消费金额(元)</TH> 
+        <TH class="norightborder">添加</TH>              
+				<TH >操作</TH>
+                </TR>
+              </THEAD>
+              <TBODY>
+                <TR></TR>
+
+				 <volist id="list" name="members">
+                <TR>
+                  <TD>{Saivi:$list.number}</TD>
+                  <TD>{Saivi:$list.wechaname}</TD>
+                  <TD>{Saivi:$list.truename}</TD>
+                  <TD><if condition="$list['sex'] eq 1">男</if><if condition="$list['sex'] eq 2">女</if></TD>
+                  <TD>{Saivi:$list.bornyear}-{Saivi:$list.bornmonth}-{Saivi:$list.bornday}</TD>
+                  <TD>{Saivi:$list.tel}</TD>
+                  <TD>{Saivi:$list.qq}</TD> 
+                  <TD>
+                   <if condition="$list['getcardtime'] gt 0">
+                        {Saivi:$list.getcardtime|date='Y-m-d',###}
+                    <else/>
+                    无时间记录
+                    </if>                      
+                  </TD>
+                  <TD>{Saivi:$list.total_score}</TD> 
+                  <TD>{Saivi:$list.expensetotal}</TD> 
+ <form method="post"  action="/index.php?g=User&m=Member_card&a=memberExpense&token={Saivi:$Think.get.token}&id={Saivi:$thisCard.id}" >
+                  <TD>
+                  <input type="text" name="money" value="0" class="px" style="width:40px;">
+                  <input type="hidden" name="wecha_id" value="{Saivi:$list.wecha_id}">
+                   </TD>
+                   <TD>  <button type="submit" style="cursor:pointer">设置</button></TD>
+</form>
+                  <TD class="norightborder">				  
+				                <a href="/index.php?g=User&m=Member_card&a=member&token={Saivi:$Think.get.token}&id={Saivi:$thisCard.id}&itemid={Saivi:$list.id}"><strong>消费记录</strong></a>  <a href="/index.php?g=User&m=Member_card&a=signrecords&token={Saivi:$Think.get.token}&id={Saivi:$thisCard.id}&itemid={Saivi:$list.id}"><strong>签到记录</strong></a>  <a href="javascript:drop_confirm('您确定要删除吗?', '/index.php?g=User&m=Member_card&a=member_del&token={Saivi:$Think.get.token}&itemid={Saivi:$list.id}&id={Saivi:$thisCard.id}');"><strong>删除</strong></a> 
+                  </TD>
+                </TR>
+				</volist>
+
+
+              </TBODY>
+            </TABLE>
+          
+
+          </div>
+            
+
+ 
+ 
+          <div class="cLine">
+            <div class="pageNavigator right">
+                <div class="pages">{Saivi:$page}</div>
+              </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+
+function checkAll(form, name) {
+for(var i = 0; i < form.elements.length; i++) {
+var e = form.elements[i];
+if(e.name.match(name)) {
+e.checked = form.elements['chkall'].checked;
+}
+}
+}
+  </script>
+  <!--底部-->
+  	</div>
+<include file="Public:footer"/>  

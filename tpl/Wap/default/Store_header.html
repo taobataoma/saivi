@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" /><meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="format-detection" content="telephone=no"/>
+<title>{Saivi:$metaTitle}</title>
+<script src="{Saivi::$staticFilePath}/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="{Saivi::$staticFilePath}/js/jquery.lazyload.js" type="text/javascript"></script>
+<script src="{Saivi::$staticFilePath}/js/notification.js" type="text/javascript"></script>
+<script src="{Saivi::$staticFilePath}/js/swiper.min.js" type="text/javascript"></script>
+<script src="{Saivi::$staticFilePath}/js/main.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" href="{Saivi::$staticFilePath}/css/style_touch.css">
+</head>
+<script>
+$(document).ready(function(){
+$(".m-hd .cat").parent('div').click( function() {
+    var docH=$(document).height();
+  	$('.sub-menu-list').toggle();
+    $(".m-right-pop-bg2").addClass("on").css('min-height',docH);
+});
+$(".m-right-pop-bg2").click( function() {
+    $('.sub-menu-list').hide();
+   $(".m-right-pop-bg2").removeClass("on").removeAttr("style");
+});
+});
+</script>
+<body>
+<div id="top"></div>
+<div id="scnhtm5" class="m-body">
+<div class="m-detail-mainout">
+<div class="m-hd">
+<div><a href="javascript:history.go(-1);" class="back">返回</a></div>
+<div><a href="javascript:void(0);" class="cat">商品分类</a></div>
+<div class="tit">{Saivi:$metaTitle}</div>
+<div><a href="{Saivi::U('Store/my',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}" class="uc">用户中心</a></div>
+<div><a href="{Saivi::U('Store/cart',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}" class="cart">购物车<i class="cart_com"><if condition="$totalProductCount neq 0" >{Saivi:$totalProductCount}</if></i></a></div>
+</div>
+<ul class="sub-menu-list">
+<li><a href="{Saivi::U('Store/cats',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}">首页</a></li>
+<volist name="cats" id="hostlist" key="i"> 
+<li><a href="{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}">{Saivi:$hostlist.name}</a></li>
+</volist>
+</ul>

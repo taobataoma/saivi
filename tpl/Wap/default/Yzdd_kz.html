@@ -1,0 +1,148 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>一战到底</title>
+<link type="text/css" rel="stylesheet" href="{Saivi::RES}/yzdd/style/war.css" />
+<script src="{Saivi::RES}/css/guajiang/js/jquery.js" type="text/javascript"></script> 
+</head>
+<body style="background:#feae05;">
+<div class="wrapper">
+	<img class="bg" src="{Saivi::RES}/yzdd/images/bg_exam.jpg">
+	<div class="top">
+		<div class="time"><span id="jsf">19</span>:<span id="jsm">99</span></div>
+		<div class="index">第<strong>{Saivi:$recordinfo['jrtms']+1}</strong>题</div>
+		<div class="score">积分:<span style="color: red;font-size: 16px;line-height: 30px;">{Saivi:$score}</span></div>
+	</div>
+	<div class="question">
+		<div class="title">{Saivi:$info.tm}</div>
+		<div class="options">
+		<if condition="$info.d1 neq ''">
+		<div class="option" data-value="d1">
+				<img class="oimg" src="{Saivi::RES}/yzdd/images/option_bg.png">
+				<img class="oimg-sel" src="{Saivi::RES}/yzdd/images/option_sel_bg.png">
+				<div class="text">
+					<div class="i">A</div>
+					<div class="otext">{Saivi:$info.d1}</div>
+				</div>
+		</div>
+		</if>
+		<if condition="$info.d2 neq ''">
+		<div class="option" data-value="d2">
+				<img class="oimg" src="{Saivi::RES}/yzdd/images/option_bg.png">
+				<img class="oimg-sel" src="{Saivi::RES}/yzdd/images/option_sel_bg.png">
+				<div class="text">
+					<div class="i">B</div>
+					<div class="otext">{Saivi:$info.d2}</div>
+				</div>
+		</div>
+		</if>
+		<if condition="$info.d3 neq ''">
+		<div class="option" data-value="d3">
+				<img class="oimg" src="{Saivi::RES}/yzdd/images/option_bg.png">
+				<img class="oimg-sel" src="{Saivi::RES}/yzdd/images/option_sel_bg.png">
+				<div class="text">
+					<div class="i">C</div>
+					<div class="otext">{Saivi:$info.d3}</div>
+				</div>
+		</div>
+		</if>
+		<if condition="$info.d4 neq ''">
+		<div class="option" data-value="d4">
+				<img class="oimg" src="{Saivi::RES}/yzdd/images/option_bg.png">
+				<img class="oimg-sel" src="{Saivi::RES}/yzdd/images/option_sel_bg.png">
+				<div class="text">
+					<div class="i">D</div>
+					<div class="otext">{Saivi:$info.d4}</div>
+				</div>
+		</div>
+		</if>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+var submit_flag = false;
+$(".option").bind("click",function(){
+	//alert(12);
+	clearInterval(window.djs);
+	checkans($(this).attr('data-value'));
+});
+
+setTimeout("show_time()",10);
+window.djs = setInterval(function(){
+	var jsm = parseInt($('#jsm').text());
+	var jsf = parseInt($('#jsf').text());
+	if(jsm>0){
+		jsm-=1;
+		$('#jsm').text(jsm+'');
+	}else if(jsf>0){
+		jsf-=1;
+		$('#jsm').text('99');
+		$('#jsf').text(jsf+'');
+	}else{
+		checkans('0');
+		clearInterval(window.djs);
+	}
+	
+},10);
+function checkans(ans){
+	
+	if(submit_flag){
+		//alert('重复');
+		return;
+	}
+	
+	$.ajax({
+		url: "{Saivi::U('Yzdd/check',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}&rid={Saivi:$recordinfo['id']}&tmid={Saivi:$info.id}&uuid={Saivi:$uuid}&zqda="+ans,
+		success: function( m ) {
+
+			if(m=='ok'){
+				tusi('恭喜回答正确');
+			}else if(m=='no'){
+				tusi('回答错误');
+			}else if(m=='out'){
+				tusi('答题超时');
+			}else if(m=='invalid'){
+				tusi('无效的操作，自动跳转下一题');
+			}
+		    
+			setTimeout(function(){
+				location.href="{Saivi::U('Yzdd/kz',array('wecha_id'=>$_GET['wecha_id'],'id'=>$_GET['id'],'rid'=>$recordinfo['id'],'token'=>$_GET['token']))}&timestamp="+new Date().getMilliseconds();
+			},888);
+		
+		},
+		error:function(XMLHttpRequest, textStatus){
+
+			submit_flag = false;
+
+	     }
+
+	});
+	submit_flag= true;
+	
+};
+function tusi(txt,fun){
+	$('.tusi').remove();
+	var div = $('<div style="background:url({Saivi::RES}/yzdd/images/tusi.png);max-width: 85%;min-height: 77px;min-width: 270px;position: absolute;left: -1000px;top: -1000px;text-align: center;border-radius:10px;"><span style="color: #ffffff;line-height: 77px;font-size: 23px;">'+txt+'</span></div>');
+	$('body').append(div);
+	div.css('zIndex',9999999);
+	div.css('left',parseInt(($(window).width()-div.width())/2));
+	var top = parseInt($(window).scrollTop()+($(window).height()-div.height())/2);
+	div.css('top',top);
+	setTimeout(function(){
+		div.remove();
+    	if(fun){
+    		fun();
+    	}
+	},2000);
+}
+</script>
+</body>
+</html>
+
+
+

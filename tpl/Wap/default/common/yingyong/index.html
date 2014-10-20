@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://mp.lywnds.com/xxz/jixiang/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <title>招聘广告都这么屌！</title>
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
+  <meta content="洛阳吉祥驾照2014年下半年招聘启事！" name="Description">
+  <meta content="招聘,吉祥驾校" name="Keywords">
+    <style type="text/css">
+        #load-layer {position: absolute; top:0; left:0; bottom:0; right:0; background-color: #ffffff; z-index: 999}
+        #loading {position:absolute; width:70px; height:70px; left:50%; top:50%; margin:-35px 0 0 -35px; font-size:12px; font-weight:bold; line-height:22px; color:#808080; text-align: center;}
+        #loading img {margin:5px auto;}
+    </style>
+    <script type="text/javascript">
+        document.write('<div id="load-layer"><div id="loading"><img src="img/loading.gif" /><!--<p>给力读取中...</p>--></div></div>');
+        window.onload=function(){
+            var load = document.getElementById("load-layer");
+            load.parentNode.removeChild(load);
+        }
+    </script></head><body>
+  <link rel="stylesheet" type="text/css" href="/test1/idangerous.swiper.css">
+  <link rel="stylesheet" type="text/css" href="/test1/index.css">
+
+
+  <div class="swiper-container">
+    <!--音乐控制-->
+    <div class="audio-controls"></div>
+    <!-- 滑动操作指示 -->
+    <div class="start"><strong></strong></div>
+    <!-- 主体 -->
+    <div class="swiper-wrapper" style="width: 1325px; height: 4816px; -webkit-transform: translate3d(0px, -602px, 0px); -webkit-transition: 0s; "><div class="swiper-slide slide15" style="width: 1325px; height: 602px; ">
+        <div class="in-elements">
+          <p class="p1"></p>
+          <p class="p2"></p>
+        </div>
+      </div>
+      <!-- s1 -->
+      <div class="swiper-slide slide1 swiper-slide-visible swiper-slide-active" style="width: 1325px; height: 602px; ">
+        <div class="in-elements">
+          <p class="p1"></p>
+          <p class="p2"></p>
+          <p class="p3"></p>
+        </div>
+      </div>  
+      <!-- s2 -->
+      <div class="swiper-slide slide2" style="width: 1325px; height: 602px; ">
+        <div class="in-elements">
+          <p class="p1"></p>
+          <p class="p2"></p>
+        </div>
+      </div>    
+      <!-- s3 -->
+      <div class="swiper-slide slide3" style="width: 1325px; height: 602px; ">
+        <div class="in-elements">
+          <p class="p1"></p>
+          <p class="p2"></p>
+          <p class="p3"></p>
+        </div>
+      </div> 
+      <!-- s4 -->
+      <div class="swiper-slide slide4" style="width: 1325px; height: 602px; ">
+        <div class="in-elements">
+          <p class="p1"></p>
+          <p class="p2"></p>
+          <p class="p3"></p>
+        </div>
+      </div> 
+      <!-- s5 -->
+      <div class="swiper-slide slide5" style="width: 1325px; height: 602px; ">
+        <div class="in-elements">
+          <p class="p1"></p>
+          <p class="p2"></p>
+          <p class="p3"></p>
+        </div>
+      </div> 
+      <!-- s15 -->
+      <div class="swiper-slide slide15" style="width: 1325px; height: 602px; ">
+        <div class="in-elements">
+          <p class="p1"></p>
+          <p class="p2"></p>
+        </div>
+      </div> 
+    <div class="swiper-slide slide1" style="width: 1325px; height: 602px; ">
+        <div class="in-elements">
+          <p class="p1"></p>
+          <p class="p2"></p>
+          <p class="p3"></p>
+        </div>
+      </div></div>
+    <!--位置标识 <div class="pagination"></div>-->
+  </div>
+  <!-- 背景音乐 -->
+  <audio id="audio" autoplay loop>
+      <source src="Jack Johnson-Do You Remember .mp3" type="audio/mpeg">
+  </audio>
+<script src="/test1/jquery-2.1.0.min.js"></script>
+<script src="/test1/idangerous.swiper-2.1.min.js"></script>
+<!-- 滑动 -->
+<script type="text/javascript">
+var mySwiper = new Swiper('.swiper-container',{
+  loop:true,
+  mode:'vertical',
+  //pagination: '.pagination',
+  //paginationClickable: true,  
+})
+</script>
+<!-- 音频暂停播放 -->
+<script type="text/javascript">
+    var audioAuto = document.getElementById('audio');
+    $(".audio-controls").click(function (){
+        if (audioAuto.paused) {
+            audioAuto.play()
+            $(".audio-controls").removeClass("off")
+        }
+        else {
+            audioAuto.pause();
+            $(".audio-controls").addClass("off")
+        }
+    })
+</script>
+<!-- 微信分享设置 -->
+<script type="text/javascript">
+        var imgUrl = 'http://mp.lywnds.com/xxz/jixiang/img/loading.gif';
+        var lineLink = 'http://mp.lywnds.com/xxz/jixiang/';
+        var descContent = "洛阳吉祥驾照2014年下半年招聘启事！";
+        var shareTitle = '招聘广告都这么屌！';
+        var appid = '';
+       
+        function shareFriend() {
+            WeixinJSBridge.invoke('sendAppMessage',{
+                "appid": appid,
+                "img_url": imgUrl,
+                "img_width": "200",
+                "img_height": "200",
+                "link": lineLink,
+                "desc": descContent,
+                "title": shareTitle
+            }, function(res) {
+                //_report('send_msg', res.err_msg);
+            })
+        }
+        function shareTimeline() {
+            WeixinJSBridge.invoke('shareTimeline',{
+                "img_url": imgUrl,
+                "img_width": "200",
+                "img_height": "200",
+                "link": lineLink,
+                "desc": descContent,
+                "title": shareTitle
+            }, function(res) {
+                   //_report('timeline', res.err_msg);
+            });
+        }
+        function shareWeibo() {
+            WeixinJSBridge.invoke('shareWeibo',{
+                "content": descContent,
+                "url": lineLink,
+            }, function(res) {
+                //_report('weibo', res.err_msg);
+            });
+        }
+        function onBridgeReady(){
+           WeixinJSBridge.call('hideToolbar');
+        }
+
+        if (typeof WeixinJSBridge == "undefined"){
+            if( document.addEventListener ){
+                document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+            }else if (document.attachEvent){
+                document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
+                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+            }
+        }else{
+            onBridgeReady();
+        }
+        // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+            // 发送给好友
+            WeixinJSBridge.on('menu:share:appmessage', function(argv){
+                shareFriend();
+            });
+            // 分享到朋友圈
+            WeixinJSBridge.on('menu:share:timeline', function(argv){
+                shareTimeline();
+            });
+            // 分享到微博
+            WeixinJSBridge.on('menu:share:weibo', function(argv){
+                shareWeibo();
+            });
+        }, false);
+
+</script>
+
+</body></html>

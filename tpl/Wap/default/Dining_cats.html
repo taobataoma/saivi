@@ -1,0 +1,454 @@
+<include file="Dining:header"/>
+
+<script type="text/javascript" src="{Saivi::RES}/weidingcan/oakshopcart.js"></script>
+
+<script>  
+
+function g(id) {
+
+	return document.getElementById(id);
+
+}
+
+//打印数组
+
+function print_array(arr){
+
+	for(var key in arr){
+
+		if(typeof(arr[key])=='array'||typeof(arr[key])=='object'){//递归调用  
+
+			print_array(arr[key]);
+
+		}else{
+
+			document.write(key + ' = ' + arr[key] + '<br>');
+
+		}
+
+	}
+
+}
+
+</script>
+
+<script>
+
+var catid={Saivi:$Catid};
+
+var cart = new OAK.Shop.Cart();
+
+//添加购物车
+
+function addProduct(productId, specId,name,price,categoryId,addnum) {
+
+    cart.addProduct(OAK.Shop.Product({id: productId, specId: specId, number: addnum, price: price, name: name,categoryId:categoryId}));
+
+}
+
+//减少数量
+
+function reduceProduct(productId, specId,num) {
+
+    var oldnum = cart.getProductNumber({id: productId, specId: specId});
+
+    if (oldnum !== null) {
+
+        if (oldnum -num > 0) {
+
+            cart.updateNumber(oldnum - num, {id: productId, specId: specId});
+
+        } else {
+
+            cart.deleteProduct({id: productId, specId: specId});
+
+        }
+
+    }
+
+}
+
+
+
+cart.showProductNum =  function(productId,specId,num){
+
+    if(num>0){
+
+        g("num_" + productId+"_"+specId).className = "count";
+
+        g("del_" + productId+"_"+specId).style.display = "";
+
+    }else{
+
+        g("num_"  + productId+"_"+specId).className = "count_zero";
+
+        g("del_"  + productId+"_"+specId).style.display = "none";
+
+    }
+
+    g("num_" + productId+"_"+specId).innerHTML = parseInt(num);
+
+}
+
+cart.showTotalNum = function(){
+
+    var quant = cart.getQuantity();
+
+	//g("cartN").innerHTML = ""+quant.totalNumber+"份 ￥"+quant.totalAmount;
+
+	SetCookie("diancai1",quant.totalNumber);
+
+	g("cartN2").innerHTML = ""+quant.totalNumber;
+
+};
+
+cart.showCartInfo=function () {
+
+    var products = cart.getProductList();
+
+    for(var i in products){
+
+        var product_id = products[i].id;
+
+        var spec_id =  products[i].specId;
+
+		if(catid==0 || catid==products[i].categoryId){
+
+			cart.showProductNum(product_id, spec_id,cart.getProductNumber({id:product_id,specId:spec_id})||0);
+
+		}
+
+    }
+
+    cart.showTotalNum();
+
+};
+
+cart.onAfterAdd = function(obj,num,conditions){
+
+    cart.showProductNum(conditions.id,conditions.specId,num);
+
+    cart.showTotalNum();
+
+    cart.saveToCache();
+
+};
+
+cart.onAfterUpdate = function(obj,num,conditions){
+
+    cart.showProductNum(conditions.id,conditions.specId,num);
+
+    cart.showTotalNum();
+
+    cart.saveToCache();
+
+};
+
+cart.onAfterDelete = function(obj,conditions){
+
+    cart.showProductNum(conditions.id,conditions.specId,0);
+
+    cart.showTotalNum();
+
+    cart.saveToCache();
+
+};
+
+
+
+function showMenu(is_show) {
+
+		if (typeof(is_show) == "undefined") {
+
+			if (hasClass(g("menu"), "sort_on"))
+
+				removeClass(g("menu"), "sort_on");
+
+			else
+
+				addClass(g("menu"), "sort_on");
+
+		} else {
+
+			if (is_show) {
+
+				addClass(g("menu"), "sort_on");
+
+			} else {
+
+				removeClass(g("menu"), "sort_on");
+
+			}
+
+		}
+
+}
+
+
+
+function hasClass(obj, cls) {
+
+	return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+
+}
+
+
+
+function addClass(obj, cls) {
+
+	if (!this.hasClass(obj, cls)) obj.className += " " + cls;
+
+}
+
+
+
+function removeClass(obj, cls) {
+
+	if (hasClass(obj, cls)) {
+
+		var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+
+		obj.className = obj.className.replace(reg, ' ');
+
+	}
+
+}
+
+function showAll(){
+
+    var dts = document.getElementsByTagName("dt");
+
+    for(var i in dts){
+
+        if(dts[i].innerText != null){
+
+            dts[i].style.display = "";
+
+            var dd = dts[i].nextElementSibling;
+
+            while(dd != null && dd.tagName != 'DT' ){
+
+                dd.style.display = "";
+
+                dd = dd.nextElementSibling
+
+            }
+
+        }
+
+    }
+
+    showMenu(false);
+
+}
+
+function showProducts(categoryName){
+
+    showAll();
+
+    var dts = document.getElementsByTagName("dt");
+
+    for(var i in dts){
+
+        if(dts[i].innerText != null && dts[i].innerText != categoryName){
+
+            dts[i].style.display = "none";
+
+            var dd = dts[i].nextElementSibling;
+
+            while(dd != null && dd.tagName != 'DT' ){
+
+                dd.style.display = "none";
+
+                dd = dd.nextElementSibling
+
+            }
+
+        }
+
+    }
+
+}
+
+
+
+window.onload = function () {
+
+	cart.getFromCache();
+
+	cart.showCartInfo();
+
+	setHeight();
+
+}
+
+</script>
+
+<style>
+
+</style>
+
+</head>
+
+<body class="mode_webapp">
+
+<div class="menu_header"> 
+
+     <div class="menu_topbar">
+
+      <strong class="head-title"><if condition='$thisCat.id eq ""'>点菜<else/>{Saivi:$thisCat.name}</if></strong>
+
+      <span class="head_btn_left"><a href="javascript:history.go(-1);"><span>返回</span></a><b></b></span> <a class="head_btn_right" href="{Saivi::U('Dining/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}">
+
+      <span><i class="menu_header_home"></i></span><b></b>
+
+      </a>
+
+     </div>
+
+</div>
+
+<!--菜品简介-->
+
+<div id="mcover" onClick="document.getElementById('mcover').style.display='';">
+
+<div id="Popup">
+
+	<div class="imgPopup">
+
+		<img  id="picsrc" src=""><h3 id="h3title" ></h3>
+
+    <p class="jianjie" id="jianjie" > </div>
+
+</div>
+
+    <a class="close" onClick="document.getElementById('mcover').style.display='';">X</a>
+
+</div>	
+
+<script>
+
+function htmlit(url,title,intro,fid){
+
+document.getElementById('mcover').style.display='block';
+
+document.getElementById('Popup').style.display='block';
+
+document.getElementById("picsrc").src = url;
+
+document.getElementById("h3title").innerHTML = title;
+
+document.getElementById("jianjie").innerHTML = intro;
+
+}
+
+</script>
+
+<!--菜品简介end-->
+
+<div style="background-color:#FFF">
+
+<div id="navBar">
+
+<dl>
+
+<dt><a href="{Saivi::U('Dining/cats',array('token'=>$token,'wecha_id'=>$wecha_id,'dtype'=>$dtype,'storeid'=>$storeid))}" >全部菜单</a></dt>
+
+<volist name="cats" id="hostlist"> 
+
+	<dd <if condition="$thisCat['id'] eq $hostlist['id']">class="active"</if> ><a href="{Saivi::U('Dining/cats',array('token'=>$token,'wecha_id'=>$wecha_id,'dtype'=>$dtype,'storeid'=>$storeid,'catid'=>$hostlist['id']))}" >{Saivi:$hostlist.name}</a></dd>
+
+</volist>   
+
+</dl>
+
+</div >
+
+    
+
+<div id="infoSection">
+
+<section class="menu">
+
+    <section class="list listimg">
+
+    <dl>
+
+        <div class="ccbg">
+
+      <volist name="products" id="item">     
+
+    <dd>
+
+        <span class="count_zero" id="num_{Saivi:$item.id}_{Saivi:$storeid}"></span>
+
+          <div class="tupian"><img src="{Saivi:$item.logourl}" onClick="htmlit('{Saivi:$item.logourl}','{Saivi:$item.name}','{Saivi:$item.intro}','{Saivi:$item.id}')">
+
+        <a href="javascript:addProduct('{Saivi:$item.id}','{Saivi:$storeid}','{Saivi:$item.name}','{Saivi:$item.price}','{Saivi:$item.catid}',1);" class="add">
+
+        <h3>{Saivi:$item.name}</h3>
+
+        <em>￥{Saivi:$item.price}元/份<del> {Saivi:$item.oprice}元/份</del></em>
+
+         <p class="dpNum">{Saivi:$item['salecount']+$item['fakemembercount']}人点过</p></a> 
+
+        <a href="javascript:reduceProduct('{Saivi:$item.id}','{Saivi:$storeid}',1);" class="reduce" id="del_{Saivi:$item.id}_{Saivi:$storeid}" style="display:none;"><b class="ico_reduce">减一份</b></a>
+
+         </div>
+
+        </dd>
+
+      </volist>
+
+      </div>
+
+    </dl>
+
+    </section>
+
+    <div class="copyright">© 2014-2018 <a href="http://siyuan.fjd100.com">上海思源网络-技术支持</a></div>
+
+</section>
+
+    </div> 
+
+<div class="clr"></div>  
+
+</div>
+
+<include file="Dining:footer"/>
+
+<script type="text/javascript">
+
+    function setHeight(){
+
+        var  cHeight;
+
+        cHeight = document.documentElement.clientHeight;
+
+        cHeight = cHeight +"px"
+
+        document.getElementById("navBar").style.height =  cHeight;
+
+        document.getElementById("infoSection").style.height =  cHeight;
+
+    }
+
+    window.onresize = function(){setHeight();}
+
+</script>
+
+<script type="text/javascript">
+
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+	WeixinJSBridge.call('hideToolbar');
+
+});
+
+</script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,185 @@
+<include file="Public:head"/>
+
+<div class="content" >
+
+
+
+<div class="cLineB">
+
+  <h4>现场摇一摇活动设置<span class="FAQ">每次只能开启一个活动，上个活动未结束不能创建下个活动</span></h4>
+
+  
+
+ </div>
+
+         <div class="cLineC" style="line-height: 32px;">
+
+ <a href="{Saivi::U('Shake/add')}" class="btnGrayS vm bigbtn" >添加活动</a>　 
+
+</div>
+
+ 
+
+ <div class="msgWrap form">
+
+
+
+<div class="bdrcontent">
+
+<div id="div_ptype">
+
+<table class="ListProduct" border="0" style="margin-bottom:20px; border:2px #0b94fe solid" cellSpacing="0" cellPadding="0" width="100%">
+
+<thead>
+
+<tr>
+
+<th style=" width:180px;">正在进行的活动名称</th>                 
+
+<th style=" width:110px;">客户端发送间隔</th>
+
+<th>前台发送间隔</th>
+
+<th>前台显示人数</th>
+
+<th>前台背景图片</th>
+
+<th>摇晃类型</th>
+
+<th style=" width:150px;" class="norightborder">操作</th>
+
+</tr>
+
+</thead>
+
+
+
+<tr>
+
+<if condition="$actinfo neq NULL">
+
+<td>{Saivi:$actinfo.acttitle}</td>
+
+<td>{Saivi:$actinfo.clienttime}</td>
+
+<td>{Saivi:$actinfo.showtime}</td>
+
+<td>{Saivi:$actinfo.shownum}</td>
+
+<td><img style="width:100px" src="{Saivi:$actinfo.pass}"></td>
+
+<td>{Saivi:$actinfo.shaketype}</td>
+
+<td class="norightborder">
+
+    <if condition="$actinfo['isopen'] eq 0"> 
+
+    <a href="{Saivi::U('Shake/change',array('id'=>$actinfo['id'],'actid'=>0,'token'=>$_SESSION['token']))}">启动</a>&nbsp;&nbsp;&nbsp;
+
+    <else /> <a href="{Saivi::U('Shake/change',array('id'=>$actinfo['id'],'actid'=>1,'token'=>$_SESSION['token']))}">停止</a>&nbsp;&nbsp;&nbsp;
+
+    <a target="_blank" href="{Saivi::U('Shake/show',array('token'=>$_SESSION['token']))}">前台</a>&nbsp;&nbsp;&nbsp;
+
+    </if>
+
+    <a href="{Saivi::U('Shake/edit',array('id'=>$actinfo['id'],'token'=>$_SESSION['token']))}" >编辑</a>&nbsp;&nbsp;&nbsp;
+
+    <a href="{Saivi::U('Shake/change',array('id'=>$actinfo['id'],'actid'=>2,'token'=>$_SESSION['token']))}" title="统计活动人数并关闭活动，无法再次开启">关闭</a>
+
+</td>
+
+<else />
+
+<td colspan="7" style="text-align:center">目前没有进行中的活动哦</td>
+
+</if>
+
+</tr>
+
+
+
+</table>
+
+
+
+<table class="ListProduct" border="0" cellSpacing="0" cellPadding="0" width="100%">
+
+<thead>
+
+<tr>
+
+<th style=" width:120px;">过往活动名称</th>                 
+
+<th style=" width:70px;">结束时间</th>
+
+<th>参与人数</th>
+
+<th>摇晃类型</th>
+
+<th style=" width:100px;" class="norightborder">操作</th>
+
+</tr>
+
+</thead>
+
+<volist name="info" id="vo">
+
+<tr>
+
+<td>{Saivi:$vo.acttitle}</td>
+
+<td>{Saivi:$vo.endtime|date="Y-m-d",###}</td>
+
+<td>{Saivi:$vo.joinnum}</td>
+
+<td>{Saivi:$vo.shaketype}</td>
+
+<td class="norightborder">
+
+	<a target="ddd" href="{Saivi::U('Shake/check',array('id'=>$vo['id'],'token'=>$_SESSION['token']))}">查看成绩</a>&nbsp;&nbsp;
+
+	<a href="{Saivi::U('Shake/delold',array('id'=>$vo['id']))}">删除</a>
+
+</td>
+
+</tr>
+
+</volist>
+
+               
+
+  </table>
+
+</div>
+
+</div>
+
+<div class="footactions" style="padding-left:10px">
+
+  <div class="pages">{Saivi:$page}</div>
+
+</div>
+
+          </div>
+
+  
+
+        </div>
+
+   
+
+        <div class="clr"></div>
+
+      </div>
+
+    </div>
+
+  </div> 
+
+  <!--底部-->
+
+  	</div>
+
+
+
+<include file="Public:footer"/>

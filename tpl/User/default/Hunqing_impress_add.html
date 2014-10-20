@@ -1,0 +1,85 @@
+<include file="Public:head"/>
+<include file="Hunqing:menu"/> 
+<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/plugins/code/prettify.css" />
+<script src="{Saivi::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+<script src="{Saivi::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+<script src="{Saivi::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+
+ <script src="/tpl/static/upyun.js"></script>
+<script>
+
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('#description', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : true,
+uploadJson : '/index.php?g=User&m=Upyun&a=kindedtiropic',
+items : [
+'source','undo','plainpaste','wordpaste','clearhtml','quickformat','selectall','fullscreen','fontname', 'fontsize','subscript','superscript','indent','outdent','|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline','hr']
+});
+});
+</script>
+ <div class="content">
+
+
+<div style="clear:both"></div>
+<div class="cLineB">
+<h4>添加点评</h4><a href="javascript:history.go(-1);return false;" class="right btnGrayS vm" style="margin-top:-27px">返回</a>
+ </div>
+         
+    <div class="msgWrap bgfc">
+	  <form class="form" method="post" action=""  >	 
+		<table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tbody>
+				<tr>
+				  <th valign="top"><span class="red">*</span>标题：</th>
+				  <td>
+					<input type="text" id="title" name="title" value="{Saivi:$impress['title']}" class="input-large px" data-rule-required="true" data-rule-maxlength="4" maxlength="4">
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">请填写4个中文印象！</span>
+					</td>
+				</tr>
+				<tr>
+					<th width="120">显示顺序：</th>
+					<td> <input type="text" id="sort" name="sort" value="{Saivi:$impress['sort']|default=1}" class="input-mini px" data-rule-required="true" data-rule-number="true">
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">数值越大越靠前</span></td>
+				</tr>
+				<tr>
+					<th width="120">印象数：</th>
+					<td> <input type="text" id="comment" name="comment" value="{Saivi:$impress['comment']}" class="input-large px" data-rule-required="true" data-rule-number="true">
+                                        <span class="maroon">*</span></td>
+				</tr>
+				<tr>
+					<th>是否显示：</th>
+					<td><label class="radio inline">
+                                            <input type="radio" name="is_show" value="1" <if condition="$impress['is_show'] eq 1"> checked="checked"</if>>显示此印象
+                                        </label>
+                                        <label class="radio inline">
+                                            <input type="radio" name="is_show" value="0" <if condition="$impress['is_show'] eq 0"> checked="checked"</if>>不显示此印象
+                                        </label></td>
+				</tr>
+				<th>&nbsp;</th>
+				  <if condition="$impress['id'] neq ''">
+                                    <input type="hidden" name="id" value="{Saivi:$impress['id']}" />
+                                    </if>
+                                    <input type="hidden" name="pid" value="{Saivi:$pid}">
+					<td>
+						<button type="submit" name="button" class="btnGreen">保存</button>
+						<a href="javascript:history.go(-1);" class="btnGray vm">取消</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+  </div> 
+ 
+  
+        </div>
+<include file="Public:footer"/>

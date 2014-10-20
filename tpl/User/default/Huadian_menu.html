@@ -1,0 +1,13 @@
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<div class="tab" style="margin-left:30px">
+<ul>
+<li class="<if condition="ACTION_NAME EQ 'index'">current</if> tabli" id="tab0"><a href="{Saivi::U('Huadian/index',array('token'=>$token))}">经营主体介绍</a></li>
+<li class="<if condition="ACTION_NAME EQ 'son' ">current</if> tabli" id="tab2"><a href="{Saivi::U('Huadian/son',array('token'=>$token))}">鲜花门店</a></li>
+<li class="<if condition="ACTION_NAME EQ 'housetype' ">current</if> tabli" id="tab2"><a href="{Saivi::U('Huadian/housetype',array('token'=>$token))}">特色鲜花</a></li>
+<li class="<if condition="ACTION_NAME EQ 'album' or ACTION_NAME EQ 'album_add'">current</if> tabli" id="tab5"><a href="{Saivi::U('Huadian/album',array('token'=>$token))}">花店相册</a></li>
+<li class="<if condition="ACTION_NAME EQ 'expert'">current</if> tabli" id="tab5"><a href="{Saivi::U('Huadian/expert',array('token'=>$token))}">客人印象</a></li>
+<li class="<if condition="ACTION_NAME EQ 'huadianindex'">current</if> tabli" id="tab6"><a href="{Saivi::U('Reservation/huadianindex',array('token'=>$token))}">预约管理</a></li>
+<li class="<if condition="ACTION_NAME EQ 'aboutus'">current</if> tabli" id="tab6"><a href="{Saivi::U('Huadian/aboutus',array('token'=>$token))}">关于我们</a></li>
+</ul>
+
+</div>

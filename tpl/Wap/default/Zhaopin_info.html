@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head _wxhkphogpkobbkjccgfifhfjlahnoocnan_="shake_1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/zhaopin/xiangqing/main.css" media="all">
+<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/zhaopin/xiangqing/dialog.css" media="all">
+<script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/xiangqing/jquery-1.9.1.min.js"></script><script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/xiangqing/main.js"></script><script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/xiangqing/dialog_min.js"></script>
+<title>招聘详情</title>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta name="Keywords" content="{Saivi:$f_siteName}">
+<!-- Mobile Devices Support @begin -->
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta content="telephone=no, address=no" name="format-detection">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- apple devices fullscreen -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>{Saivi:$info.jiegou}</title>
+<meta name="viewport" content="width = device-width ,initial-scale =1.0 ,minimum-scale = 1.0 ,maximum-scale =1.0 ,user-scalable = no">
+<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/zhaopin/xiangqing/my_style.css" media="all">
+<link rel="stylesheet" type="text/css" href="/tpl/Wap/default/common/zhaopin/xiangqing/base_m.css" media="all">
+<script type="text/javascript" src="/tpl/Wap/default/common/zhaopin/xiangqing/base_m.js"></script>
+</head>
+<body>
+<header id="top"> <span class="at"><a href="{Saivi::U('Wap/Zhaopin/index',array('token'=>$info['token']))}">返回</a></span> <span> <font class="at"> <a class="areaname" href="javascript:void(0)">{Saivi:$info.jiegou}</a> </font> </span></header>
+<div class="line"><em></em></div>
+<nav id="tp">
+  <p> <a href="{Saivi::U('Wap/Zhaopin/index1',array('token'=>$_GET['token'],'leibie'=>'服务/销售'))}">服务/销售</a> <a href="{Saivi::U('Wap/Zhaopin/index1',array('token'=>$_GET['token'],'leibie'=>'电子/商务'))}">电子/商务</a> <a href="{Saivi::U('Wap/Zhaopin/index1',array('token'=>$_GET['token'],'leibie'=>'普工/技工'))}">普工/技工</a> <a href="{Saivi::U('Wap/Zhaopin/index1',array('token'=>$_GET['token'],'leibie'=>'市场/运营'))}">市场/运营</a> </p>
+</nav>
+<!-- <section id="hser">		<p class="tab">			<span><font>按行业分类</font></span><span class="bb"><font>按时间先后</font></span><span><font>按薪资高低</font></span>						<a class="icin" href="#"></a>		</p></section> --><br>
+<div class="wp">
+  <div class="wbox">
+    <h1 class="ltle">{Saivi:$info.gangwei}</h1>
+    <a class="i cp blin">本消息由&nbsp;{Saivi:$info.jigou}&nbsp;发布</a>
+    <aside class="hlbox word"> <span class="at">招聘人数<font class="c_ashy">{Saivi:$info.ren}</font></span><!-- 				<span class="at">剩余时间<font class="c_ashy"></font></span> --> <span class="at">薪资<font class="c_ashy">{Saivi:$info.xinzi}</font></span> <span class="at">联系人<font class="c_ashy">{Saivi:$info.people}</font></span> <span class="title">电话<font class="c_ashy"><a href="tel:{Saivi:$info.tell}">{Saivi:$info.tell}</a></font></span> <span class="at"><a href="http://api.map.baidu.com/marker?location={Saivi:$info['latitude']},{Saivi:$info['longitude']}&title={Saivi:$info['jigou']}&name={Saivi:$info['jigou']}&content={Saivi:$info['address']}&output=html&src=weiba|weiweb">工作地点<font class="c_ashy">{Saivi:$info.address}</font></a></span>
+      <div class="clear"></div>
+    </aside>
+  </div>
+</div>
+<div class="wp">
+  <p class="btitle"><span class="c_dark">职位描述</span></p>
+</div>
+<div class="wp">
+  <div class="wbox">
+    <div class="word">
+      <div class="aox">{Saivi:$info.yaoqiu|htmlspecialchars_decode} </div>
+    </div>
+  </div>
+</div>
+<center class="cop">
+  <input class="but" type="button" value="我要发布" onclick="location.href='{Saivi::U('Wap/Zhaopin/qiye',array('token'=>$_GET['token']))}'">
+  <input class="but" type="button" value="关注我" onclick="location.href='{Saivi::U('Wap/Index/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}'">
+</center>
+<div class="wp">
+  <p class="btitle"><span class="c_dark">其他职位</span></p>
+  <volist name="info1" id="vo">
+    <li class="box"> <a class="i" href="{Saivi::U('Wap/Zhaopin/info',array('id'=>$vo['id'],'token'=>$vo['token']))}">「{Saivi:$vo.jigou}」招&nbsp;{Saivi:$vo.gangwei}&nbsp;&nbsp; </a> </li>
+  </volist>
+</div>
+&nbsp;
+<footer style="margin-top: 1px;"><a class="" href="{Saivi::U('Wap/Index/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}">{Saivi:$date.copyright}</a></footer>
+<!-- <div class="lala"></div><style>.nav_add_addr ul {background: #ffffff;}.nav_add_addr a.btn {background: #f1c40f;}</style>        <nav class="nav_add_addr">            <ul class="tbox">                <li>                    <a class="icons icons_before" href="wap.php?m=house&page=1&wxid=olqrhjkniK_cMuV-IRKG6aMlmy-Q">&nbsp;</a>                </li>                <li class="align_right"> --> <!-- <a class="btn" href="wap.php?m=house&a=add&wxid=olqrhjkniK_cMuV-IRKG6aMlmy-Q">发布房产信息 </a> --><!--                 </li>            </ul>        </nav></div> -->
+<script type="text/javascript">
+    window.shareData = {
+        "moduleName": "Zhaopin",
+        "moduleID": '0',
+        "imgUrl": "{Saivi:$date.tp}",
+        "timeLineLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token'],'id'=>$_GET['id']))}",
+        "sendFriendLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token'],'id'=>$_GET['id']))}",
+        "weiboLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token'],'id'=>$_GET['id']))}",
+        "tTitle": "{Saivi:$date.title}",
+        "tContent": "{Saivi:$date.info}"
+    };
+</script>{Saivi:$shareScript}
+</body>
+</html>

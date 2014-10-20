@@ -1,0 +1,127 @@
+<include file="Public:head"/> 
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+
+<div class="content"  >
+
+	<div class="tab">
+
+		<ul>
+<a href="{Saivi::U('Ktv/index',array('token'=>$token))}"><li class="tabli" id="tab2">Ktv管理</li></a>
+        <a href="{Saivi::U('Ktv/photo_index',array('token'=>$token,'pid'=>$set['id']))}"><li class="current tabli" id="tab0">相册管理</li></a>
+
+		<a href="{Saivi::U('Ktv/infos',array('token'=>$token,'pid'=>$_GET['pid']))}"><li class="tabli" id="tab2">订单管理</li></a>
+
+		<a href="{Saivi::U('Ktv/setcin',array('token'=>$token,'pid'=>$_GET['pid']))}"><li class="tabli" id="tab2">套餐设置</li></a>
+
+		<a href="{Saivi::U('Ktv/setinfo',array('token'=>$token,'pid'=>$_GET['pid']))}"><li class="tabli" id="tab2">表单设置</li></a>
+
+		</ul>
+
+	</div>
+
+
+
+<div class="cLineB" style="overflow:visible">
+
+<h4 class="left">会所相册管理</h4>
+
+<div class="searchbar right">
+
+<form method="post" action="">
+
+<input type="text" id="msgSearchInput" class="txt left" placeholder="输入关键词搜索" name="searchkey" value="{Saivi:$key}">
+
+<input type="submit" value="搜索" id="msgSearchBtn" href="" class="btnGrayS" title="搜索">
+
+</form>
+
+</div>
+
+<div class="clr"></div>
+
+</div>
+
+
+
+<div class="cLine">
+
+<div class="pageNavigator left"> <a href="{Saivi::U('Ktv/photo_add',array('token'=>$token))}" title="添加" class="btnGrayS vm bigbtn"><img src="{Saivi::RES}/images/product/add.png" width="16" class="vm">添加相册</a></div>
+
+<div class="clr"></div>
+
+</div>
+
+<div class="msgWrap">
+
+<form method="post" action="" id="info">
+
+<input name="delall" type="hidden" value="">
+
+<input name="wxid" type="hidden" value="">
+
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+
+<thead>
+
+
+
+<tr>
+
+<th width="160">相册名称</th>
+
+<th width="160">描述</th>
+
+<th width="160">显示顺序</th>
+
+<th width="200" class="norightborder">操作</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr></tr>
+
+<volist name="data" id="item"> 
+
+<tr>
+
+<td>{Saivi:$item.name}</td>
+
+<td>{Saivi:$item.info}</td>
+
+<td>{Saivi:$item.show_order}</td>
+
+<td class="norightborder"><a href="{Saivi::U('Huisuo/photo_set',array('id'=>$item['id'],'token'=>$token))}">修改</a>&nbsp;&nbsp;<a href="{Saivi::U('Huisuo/photo_del',array('id'=>$item['id'],'token'=>$token))}">删除</a></td>
+
+</tr>
+
+</volist>
+
+</tbody>
+
+</table>
+
+</form>
+
+
+
+</div>
+
+<div class="cLine">
+
+<div class="pageNavigator right">
+
+<div class="pages">{Saivi:$page}</div>
+
+</div>
+
+<div class="clr"></div>
+
+</div>
+
+</div>
+
+<include file="Public:footer"/>

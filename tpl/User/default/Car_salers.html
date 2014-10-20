@@ -1,0 +1,62 @@
+<include file="Public:head"/>
+<include file="Car:menu"/>
+<link rel="stylesheet" type="text/css" href="{Saivi::Common}/default_user_com.css" media="all">
+<div class="content">
+          <div class="cLineB">
+              <h4 class="left">销售顾问管理</h4>
+              <div class="clr"></div>
+          </div>
+          
+          <div class="cLine">
+    
+</div>
+          
+          <div class="cLine">
+            <div class="pageNavigator left">
+            <a href="{Saivi::U('Car/add_saler',array('token'=>$token))}" class="btn btn-primary btn_submit  J_ajax_submit_btn" id="add_menu">
+                    <img src="tpl/User/default/common/images/pic.png" class="vm">添加销售顾问
+                </a>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <div class="msgWrap">
+          <form method="post" action="" id="info">
+            <table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+              <thead>
+                <tr>
+                   <th>头像</th>
+                   <th>姓名</th>
+                   <th>电话</th>
+                   <th>销售类型</th>
+                   <th>显示顺序</th>
+                   <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+              <volist name="salers" id="vo">
+                    <tr>
+                      <td><img src="{Saivi:$vo['picture']}" style="max-height:50px;"/></td>
+                      <td>{Saivi:$vo['name']}</td>
+                      <td>{Saivi:$vo['mobile']}</td>
+                      <td><if condition="$vo['salestype'] eq 1">售前</if><if condition="$vo['salestype'] eq 2">售后</if> <if condition="$vo['salestype'] eq 3">售前/售后</if> </td>
+                      <td>{Saivi:$vo['sort']}</td>
+                      <td class="input-medium">
+                        <a class="btn btn-primary btn_submit  J_ajax_submit_btn" href="{Saivi::U('Car/edit_salers',array('token'=>$token,'id'=>$vo['id']))}" title="编辑">编辑</a>
+                        <a class="btn btn-primary btn_submit  J_ajax_submit_btn" href="{Saivi::U('Car/del_salers',array('token'=>$token,'id'=>$vo['id']))}" title="删除" onclick="return(confirm('确定要删除吗？'))">删除</a>
+                      </td>
+                </volist>
+                 <tr>
+
+                </tr>
+              </tbody>
+            </table>
+           </form> 
+          </div>
+          <div class="cLine">
+            <div class="pageNavigator right">
+                 <div class="pages">{Saivi:$page}</div>
+            </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+<include file="Public:footer"/>

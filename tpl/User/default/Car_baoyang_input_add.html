@@ -1,0 +1,56 @@
+<include file="Public:head"/>
+				<script src="{Saivi::RES}/js/date/WdatePicker.js"></script>
+				<script type="text/javascript" src="{Saivi::RES}/js/formCheck/formcheck.js"> </script>
+<div class="content">
+          <div class="cLineB"><h4>添加客户预约</h4><a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div> 
+
+<div class="msgWrap">
+  <form class="form" method="post"   action="{Saivi::U('Car_baoyang_input/insert')}"    enctype="multipart/form-data" >
+<TABLE class="userinfoArea" style=" margin:20px 0 0 0;" border="0" cellSpacing="0" cellPadding="0" width="100%">
+ <TBODY>
+<TR><input type="hidden" class="px" id="id" value="{Saivi:$info.id}" name="id" style="width:500px" ><input type="hidden" class="px" id="token" value="{Saivi:$_SESSION["token"]}" name="token" style="width:500px" ><input type="hidden" class="px" id="wecha_id" value="{Saivi:$info.wecha_id}" name="wecha_id" style="width:500px" ><input type="hidden" class="px" id="hid" value="{Saivi:$info.hid}" name="hid" style="width:500px" >  <TR>
+  <TH valign="top"><label for="keyword">名称</label></TH>
+  <TD><input type="input" class="px" id="name" value="" name="name" style="width:500px"   ><br />
+                  </TD>
+  <TD></TD>
+</TR>  <TR>
+  <TH valign="top"><label for="keyword">联系方式</label></TH>
+  <TD><input type="input" class="px" id="phone" value="" name="phone" style="width:500px"   ><br />
+                  </TD>
+  <TD></TD>
+</TR>  <TR>
+  <TH valign="top"><label for="keyword">车牌</label></TH>
+  <TD><input type="input" class="px" id="carno" value="" name="carno" style="width:500px"   ><br />
+                  </TD>
+  <TD></TD>
+</TR>  <TR>
+  <TH valign="top"><label for="keyword">公里数</label></TH>
+  <TD><input type="input" class="px" id="Kilometer" value="" name="Kilometer" style="width:500px"   ><br />
+                  </TD>
+  <TD></TD>
+</TR>  <TR>
+  <TH valign="top"><label for="keyword">预约时间</label></TH>
+  <TD><input type="input" class="px" id="starttime" value="" name="starttime" style="width:500px" onClick="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true});"    ><br />
+                  </TD>
+  <TD></TD>
+</TR><TR>
+  <TH></TH>
+  <TD><button type="submit"  name="button"  class="btnGreen left" >保存</button>
+  	<div class="clr"></div>
+  	</TD>
+  </TR>
+  </TBODY>
+</TABLE>
+  </form>
+  </div> 
+
+        </div>
+        
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div> 
+
+<!--底部-->
+  	</div>
+<include file="Public:footer"/>

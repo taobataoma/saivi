@@ -1,0 +1,821 @@
+<include file="Public:head"/>
+<!--鼠标移动上去效果start-->
+<style>
+    li .mbtip {
+    display: none;
+} 
+.cateradio li:hover .mbtip {
+    background-color: #000000;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 7px;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.15);
+    color: #FFFFFF;
+    display: block;
+    padding: 6px;
+    float:right;
+    position:relative;
+    right:-140px;
+    top:-325px;
+    width: 130px;
+    text-align: left;
+    z-index: 999;
+}
+
+</style>
+
+
+<!--鼠标移动上去效果end-->
+
+<div class="content">
+
+    <div class="cLineB">
+        <h4>模板管理 <span class="FAQ">选择适合您的模版风格，手机输入“首页”测试效果。</span></h4>
+    </div>
+
+    <div class="msgWrap form">
+        <ul id="tags">
+            <li class="selectTag"><a onclick="selectTag('tagContent0',this)" href="javascript:void(0)">1. 栏目首页模板风格</a> </li>
+            <li><a onclick="selectTag('tagContent1',this)" href="javascript:void(0)">2.图文列表模板风格</a> </li>
+            <li><a onclick="selectTag('tagContent2',this)" href="javascript:void(0)">3.图文详细页模板风格</a> </li>
+            <li><a onclick="selectTag('tagContent3',this)" href="javascript:void(0)">4.颜色风格&预览</a> </li>
+            <div class="clr"></div>
+        </ul>
+
+        <div id="tagContent">
+            <div class="tagContent selectTag" id="tagContent0">
+<!---------改动二------------->
+<style>
+#tags_ {
+	MARGIN: 15px 0 0 0; WIDTH: 990px; PADDING-TOP: 0px; HEIGHT: 30px
+}
+#tags_ LI {
+	BACKGROUND: url({Saivi::RES}/images/img/tagleft2.jpg) no-repeat left bottom; FLOAT: left; MARGIN-RIGHT: 3px; LIST-STYLE-TYPE: none; HEIGHT: 30px
+}
+#tags_ LI A {
+	PADDING:0 20px; BACKGROUND: url({Saivi::RES}/images/img/tagright2.jpg) no-repeat right bottom; FLOAT: left; COLOR: #999; LINE-HEIGHT: 30px; HEIGHT: 30px; TEXT-DECORATION: none; font-size:16px;
+}
+#tags_ LI.emptyTag {
+	BACKGROUND: none transparent scroll repeat 0% 0%; WIDTH: 4px
+}
+#tags_ LI.selectTag {
+	BACKGROUND-POSITION: left top; MARGIN-BOTTOM: -2px; POSITION: relative; HEIGHT: 30px
+}
+#tags_ LI.selectTag A {
+	BACKGROUND-POSITION: right top; COLOR: #fff; LINE-HEIGHT: 30px; HEIGHT: 30px
+}
+</style>
+			<ul id="tags_">
+            <li class="selectTag"><a onclick="selectTag_('tagC0',this)" href="javascript:void(0)">经典大方</a> </li>
+            
+            <li class=""><a onclick="selectTag_('tagC1',this)" href="javascript:void(0)">简约时尚</a> </li>
+            <li class=""><a onclick="selectTag_('tagC2',this)" href="javascript:void(0)">五彩斑斓</a> </li>
+            <li class=""><a onclick="selectTag_('tagC3',this)" href="javascript:void(0)">行业专属</a> </li>
+			<li class=""><a onclick="selectTag_('tagC4',this)" href="javascript:void(0)">个性定制</a> </li>
+            <div class="clr"></div>
+			</ul>
+				<!----------分类一列表开始----------->
+				<div class="tagContent selectTag" id="tagC0" style="display:block;">
+                <fieldset>
+                    <ul class="cateradio">
+                     <li <eq name="info.tpltypeid" value="1">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate1.png">
+                                <input class="radio" type="radio" name="optype" value="1" <eq name="info.tpltypeid" value="1">checked</eq> /> 模板1 
+                            </label>
+                            <if condition="$desinfo[1] neq ''"><p class="mbtip">{Saivi:$desinfo[1]}</p></if>
+                        </li>
+                        <li <eq name="info.tpltypeid" value="2">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate2.png">
+                                <input class="radio" type="radio" name="optype" value="2" <eq name="info.tpltypeid" value="2">checked</eq> /> 模板2 
+                            </label>
+                            <if condition="$desinfo[2] neq ''"><p class="mbtip">{Saivi:$desinfo[2]}</p></if>
+                        </li>
+                        <li <eq name="info.tpltypeid" value="3">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate3.png">
+                                <input class="radio" type="radio" name="optype" value="3" <eq name="info.tpltypeid" value="3">checked</eq> /> 模板3 
+                            </label>
+                            <if condition="$desinfo[3] neq ''"><p class="mbtip">{Saivi:$desinfo[3]}</p></if>
+                        </li>
+                          <li <eq name="info.tpltypeid" value="4">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate4.png">
+                                <input class="radio" type="radio" name="optype" value="4" <eq name="info.tpltypeid" value="4">checked</eq> /> 模板4 
+                            </label>
+                            <if condition="$desinfo[4] neq ''"><p class="mbtip">{Saivi:$desinfo[4]}</p></if>
+                        </li>
+                        <li <eq name="info.tpltypeid" value="5">class="active"</eq>><label>
+                                <img src="{Saivi::RES}/images/cate9.png">
+                                <input class="radio" type="radio" name="optype" value="5" <eq name="info.tpltypeid" value="5">checked</eq> /> 模板5 
+                            </label>
+                            <if condition="$desinfo[5] neq ''"><p class="mbtip">{Saivi:$desinfo[5]}</p></if>
+                        </li>
+                        <li <eq name="info.tpltypeid" value="6">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate106.png">
+                                <input class="radio" type="radio" name="optype" value="6" <eq name="info.tpltypeid" value="6">checked</eq> /> 模板6 
+                            </label>
+                            <if condition="$desinfo[6] neq ''"><p class="mbtip">{Saivi:$desinfo[6]}</p></if>
+                        </li> 
+
+
+                        <li <eq name="info.tpltypeid" value="10">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate110.png">
+                                <input class="radio" type="radio" name="optype" value="10" <eq name="info.tpltypeid" value="10">checked</eq> /> 模板10 
+                            </label>
+                            <if condition="$desinfo[10] neq ''"><p class="mbtip">{Saivi:$desinfo[10]}</p></if>
+                        </li>
+                        <li <eq name="info.tpltypeid" value="11">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate111.png">
+                                <input class="radio" type="radio" name="optype" value="11" <eq name="info.tpltypeid" value="11">checked</eq> /> 模板11
+                            </label>
+                            <if condition="$desinfo[11] neq ''"><p class="mbtip">{Saivi:$desinfo[11]}</p></if>
+                        </li>
+
+                        <li <eq name="info.tpltypeid" value="18">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate118.png">
+                                <input class="radio" type="radio" name="optype" value="18" <eq name="info.tpltypeid" value="18">checked</eq> /> 模板18
+                            </label>
+                            <if condition="$desinfo[18] neq ''"><p class="mbtip">{Saivi:$desinfo[18]}</p></if>
+                        </li>
+                          <li <eq name="info.tpltypeid" value="19">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate119.png">
+                                <input class="radio" type="radio" name="optype" value="19" <eq name="info.tpltypeid" value="19">checked</eq> /> 模板19 
+                            </label>
+                            <if condition="$desinfo[19] neq ''"><p class="mbtip">{Saivi:$desinfo[19]}</p></if>
+                        </li>
+                        
+                        <li <eq name="info.tpltypeid" value="23">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate123.png">
+                                <input class="radio" type="radio" name="optype" value="23" <eq name="info.tpltypeid" value="23">checked</eq> /> 模板23
+                            </label>
+                            <if condition="$desinfo[23] neq ''"><p class="mbtip">{Saivi:$desinfo[23]}</p></if>
+                        </li>
+                        <li <eq name="info.tpltypeid" value="24">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate124.png">
+                                <input class="radio" type="radio" name="optype" value="24" <eq name="info.tpltypeid" value="24">checked</eq> /> 模板24
+                            </label>
+                            <if condition="$desinfo[24] neq ''"><p class="mbtip">{Saivi:$desinfo[24]}</p></if>
+                        </li>
+                        <li <eq name="info.tpltypeid" value="25">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate125.png">
+                                <input class="radio" type="radio" name="optype" value="25" <eq name="info.tpltypeid" value="25">checked</eq> /> 模板25 
+                            </label>
+                            <if condition="$desinfo[25] neq ''"><p class="mbtip">{Saivi:$desinfo[25]}</p></if>
+                        </li>
+                        <li <eq name="info.tpltypeid" value="26">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate126.png">
+                                <input class="radio" type="radio" name="optype" value="26" <eq name="info.tpltypeid" value="26">checked</eq> /> 模板26 
+                            </label>
+                            <if condition="$desinfo[26] neq ''"><p class="mbtip">{Saivi:$desinfo[26]}</p></if>
+                        </li>
+                        <li <eq name="info.tpltypeid" value="27">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate127.png">
+                                <input class="radio" type="radio" name="optype" value="27" <eq name="info.tpltypeid" value="27">checked</eq> /> 模板27
+                            </label>
+                            <if condition="$desinfo[27] neq ''"><p class="mbtip">{Saivi:$desinfo[27]}</p></if>
+                        </li>
+
+
+						<li <eq name="info.tpltypeid" value="48">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate48.png">
+						<input class="radio" type="radio" name="optype" value="48" <eq name="info.tpltypeid" value="48">checked</eq> /> 模板48
+						</label>
+						<if condition="$desinfo[48] neq ''"><p class="mbtip">{Saivi:$desinfo[48]}</p></if>
+						</li> 
+
+						<li <eq name="info.tpltypeid" value="49">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate49.png">
+						<input class="radio" type="radio" name="optype" value="49" <eq name="info.tpltypeid" value="49">checked</eq> /> 模板49
+						</label>
+						<if condition="$desinfo[49] neq ''"><p class="mbtip">{Saivi:$desinfo[49]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="58">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate58.png">
+						<input class="radio" type="radio" name="optype" value="58" <eq name="info.tpltypeid" value="58">checked</eq> /> 模板58
+						</label>
+						<if condition="$desinfo[58] neq ''"><p class="mbtip">{Saivi:$desinfo[58]}</p></if>
+						</li> 
+
+						<li <eq name="info.tpltypeid" value="59">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate59.png">
+						<input class="radio" type="radio" name="optype" value="59" <eq name="info.tpltypeid" value="59">checked</eq> /> 模板59
+						</label>
+						<if condition="$desinfo[59] neq ''"><p class="mbtip">{Saivi:$desinfo[59]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="60">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate60.png">
+						<input class="radio" type="radio" name="optype" value="60" <eq name="info.tpltypeid" value="60">checked</eq> /> 模板60
+						</label>
+						<if condition="$desinfo[60] neq ''"><p class="mbtip">{Saivi:$desinfo[60]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="61">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate61.png">
+						<input class="radio" type="radio" name="optype" value="61" <eq name="info.tpltypeid" value="61">checked</eq> /> 模板61
+						</label>
+						<if condition="$desinfo[61] neq ''"><p class="mbtip">{Saivi:$desinfo[61]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="68">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate68.png">
+						<input class="radio" type="radio" name="optype" value="68" <eq name="info.tpltypeid" value="68">checked</eq> /> 模板68
+						</label>
+						<if condition="$desinfo[68] neq ''"><p class="mbtip">{Saivi:$desinfo[68]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="69">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate69.png">
+						<input class="radio" type="radio" name="optype" value="69" <eq name="info.tpltypeid" value="69">checked</eq> /> 模板69
+						</label>
+						<if condition="$desinfo[69] neq ''"><p class="mbtip">{Saivi:$desinfo[69]}</p></if>
+						</li> 
+                        <!--li <eq name="info.tpltypeid" value="6">class="active"</eq>><label><img src="{Saivi::RES}/images/cate6.png"><input class="radio" type="radio" name="optype" <eq name="Think.session.gid" value="2">disabled="disabled"</eq> value="6" <eq name="info.tpltypeid" value="6">checked</eq> /> v1模板6(metro风格) </label></li>
+                        <li <eq name="info.tpltypeid" value="7">class="active"</eq>><label><img src="{Saivi::RES}/images/cate7.png" title="提示：头部为首页封面图片外链720x400，高度可以根据自己情况调整，
+                        图标最好是144x144透明png图片外链，
+                        懂PS的玩，不懂的就算了，"><input class="radio" type="radio" name="optype" value="7" <eq name="Think.session.gid" value="2">disabled="disabled"</eq> <eq name="info.tpltypeid" value="7">checked</eq> />v1 模板7(自定义风格) </label></li>-->
+                    </ul>
+                </fieldset>
+                </div>
+                <!--简约时尚-->
+                <div class="tagContent selectTag" id="tagC1" style="display:none;">
+        		<fieldset>
+        			<ul class="cateradio">
+                        <li <eq name="info.tpltypeid" value="12">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate112.png">
+                                <input class="radio" type="radio" name="optype" value="12" <eq name="info.tpltypeid" value="12">checked</eq> /> 模板12
+                            </label>
+                            <if condition="$desinfo[12] neq ''"><p class="mbtip">{Saivi:$desinfo[12]}</p></if>
+                        </li>
+                        <li <eq name="info.tpltypeid" value="13">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate113.png">
+                                <input class="radio" type="radio" name="optype" value="13" <eq name="info.tpltypeid" value="13">checked</eq> /> 模板13
+                            </label>
+                            <if condition="$desinfo[13] neq ''"><p class="mbtip">{Saivi:$desinfo[13]}</p></if>
+                        </li>
+                        <li <eq name="info.tpltypeid" value="14">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate114.png">
+                                <input class="radio" type="radio" name="optype" value="14" <eq name="info.tpltypeid" value="14">checked</eq> /> 模板14
+                            </label>
+                            <if condition="$desinfo[14] neq ''"><p class="mbtip">{Saivi:$desinfo[14]}</p></if>
+                        </li> 
+                         <li <eq name="info.tpltypeid" value="15">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate5.png">
+                                <input class="radio" type="radio" name="optype" value="15" <eq name="info.tpltypeid" value="15">checked</eq> /> 模板15
+                            </label>
+                            <if condition="$desinfo[15] neq ''"><p class="mbtip">{Saivi:$desinfo[15]}</p></if>
+                        </li>
+
+                        <li <eq name="info.tpltypeid" value="17">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate117.png">
+                                <input class="radio" type="radio" name="optype" value="17" <eq name="info.tpltypeid" value="17">checked</eq> /> 模板17
+                            </label>
+                            <if condition="$desinfo[17] neq ''"><p class="mbtip">{Saivi:$desinfo[17]}</p></if>
+                        </li>
+						<li <eq name="info.tpltypeid" value="52">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate52.png">
+						<input class="radio" type="radio" name="optype" value="52" <eq name="info.tpltypeid" value="52">checked</eq> /> 模板52
+						</label>
+						<if condition="$desinfo[52] neq ''"><p class="mbtip">{Saivi:$desinfo[52]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="55">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate55.png">
+						<input class="radio" type="radio" name="optype" value="55" <eq name="info.tpltypeid" value="55">checked</eq> /> 模板55
+						</label>
+						<if condition="$desinfo[55] neq ''"><p class="mbtip">{Saivi:$desinfo[55]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="56">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate56.png">
+						<input class="radio" type="radio" name="optype" value="56" <eq name="info.tpltypeid" value="56">checked</eq> /> 模板56
+						</label>
+						<if condition="$desinfo[56] neq ''"><p class="mbtip">{Saivi:$desinfo[56]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="62">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate62.png">
+						<input class="radio" type="radio" name="optype" value="62" <eq name="info.tpltypeid" value="62">checked</eq> /> 模板62
+						</label>
+						<if condition="$desinfo[62] neq ''"><p class="mbtip">{Saivi:$desinfo[62]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="63">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate63.png">
+						<input class="radio" type="radio" name="optype" value="63" <eq name="info.tpltypeid" value="63">checked</eq> /> 模板63
+						</label>
+						<if condition="$desinfo[63] neq ''"><p class="mbtip">{Saivi:$desinfo[63]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="64">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate64.png">
+						<input class="radio" type="radio" name="optype" value="64" <eq name="info.tpltypeid" value="64">checked</eq> /> 模板64
+						</label>
+						<if condition="$desinfo[64] neq ''"><p class="mbtip">{Saivi:$desinfo[64]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="65">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate65.png">
+						<input class="radio" type="radio" name="optype" value="65" <eq name="info.tpltypeid" value="65">checked</eq> /> 模板65
+						</label>
+						<if condition="$desinfo[65] neq ''"><p class="mbtip">{Saivi:$desinfo[65]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="66">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate66.png">
+						<input class="radio" type="radio" name="optype" value="66" <eq name="info.tpltypeid" value="66">checked</eq> /> 模板66
+						</label>
+						<if condition="$desinfo[66] neq ''"><p class="mbtip">{Saivi:$desinfo[66]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="67">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate67.png">
+						<input class="radio" type="radio" name="optype" value="67" <eq name="info.tpltypeid" value="67">checked</eq> /> 模板67
+						</label>
+						<if condition="$desinfo[67] neq ''"><p class="mbtip">{Saivi:$desinfo[67]}</p></if>
+						</li> 
+					</ul>
+				</fieldset>
+				</div>
+                <!--五彩斑斓-->
+                <div class="tagContent selectTag" id="tagC2" style="display:none;">
+        		<fieldset>
+        			<ul class="cateradio">
+                        <li <eq name="info.tpltypeid" value="7">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate107.png">
+                                <input class="radio" type="radio" name="optype" value="7" <eq name="info.tpltypeid" value="7">checked</eq> /> 模板7 
+                            </label>
+                            <if condition="$desinfo[7] neq ''"><p class="mbtip">{Saivi:$desinfo[7]}</p></if>
+                        </li>
+                        <li <eq name="info.tpltypeid" value="9">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate109.png">
+                                <input class="radio" type="radio" name="optype" value="9" <eq name="info.tpltypeid" value="9">checked</eq> /> 模板9 
+                            </label>
+                            <if condition="$desinfo[9] neq ''"><p class="mbtip">{Saivi:$desinfo[9]}</p></if>
+                        </li>
+                        <li <eq name="info.tpltypeid" value="29">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate129.png">
+                                <input class="radio" type="radio" name="optype" value="29" <eq name="info.tpltypeid" value="29">checked</eq> /> 模板29
+                            </label>
+                            <if condition="$desinfo[29] neq ''"><p class="mbtip">{Saivi:$desinfo[29]}</p></if>
+                        </li>
+
+
+						<li <eq name="info.tpltypeid" value="44">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate44.png">
+						<input class="radio" type="radio" name="optype" value="44" <eq name="info.tpltypeid" value="44">checked</eq> /> 模板44
+						</label>
+						<if condition="$desinfo[44] neq ''"><p class="mbtip">{Saivi:$desinfo[44]}</p></if>
+						</li> 
+
+						<li <eq name="info.tpltypeid" value="45">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate45.png">
+						<input class="radio" type="radio" name="optype" value="45" <eq name="info.tpltypeid" value="45">checked</eq> /> 模板45
+						</label>
+						<if condition="$desinfo[45] neq ''"><p class="mbtip">{Saivi:$desinfo[45]}</p></if>
+						</li> 
+
+						<li <eq name="info.tpltypeid" value="51">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate51.png">
+						<input class="radio" type="radio" name="optype" value="51" <eq name="info.tpltypeid" value="51">checked</eq> /> 模板51
+						</label>
+						<if condition="$desinfo[51] neq ''"><p class="mbtip">{Saivi:$desinfo[51]}</p></if>
+						</li> 
+
+						<li <eq name="info.tpltypeid" value="71">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate71.png">
+						<input class="radio" type="radio" name="optype" value="71" <eq name="info.tpltypeid" value="71">checked</eq> /> 模板71
+						</label>
+						<if condition="$desinfo[71] neq ''"><p class="mbtip">{Saivi:$desinfo[71]}</p></if>
+						</li> 
+                        </ul>
+				</fieldset>
+                </div>
+                <!--行业专属-->
+                <div class="tagContent selectTag" id="tagC3" style="display:none;">
+              <fieldset>
+                <ul class="cateradio">
+
+                        <li <eq name="info.tpltypeid" value="8">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate108.png">
+                                <input class="radio" type="radio" name="optype" value="8" <eq name="info.tpltypeid" value="8">checked</eq> /> 模板8
+                            </label>
+                            <if condition="$desinfo[8] neq ''"><p class="mbtip">{Saivi:$desinfo[8]}</p></if>
+                        </li>
+                       <li <eq name="info.tpltypeid" value="16">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate116.png">
+                                <input class="radio" type="radio" name="optype" value="16" <eq name="info.tpltypeid" value="16">checked</eq> /> 模板16 
+                            </label>
+                            <if condition="$desinfo[16] neq ''"><p class="mbtip">{Saivi:$desinfo[16]}</p></if>
+                        </li>
+                        <li <eq name="info.tpltypeid" value="20">class="active"</eq>><label>
+                                <img src="{Saivi::RES}/images/cate120.png">
+                                <input class="radio" type="radio" name="optype" value="20" <eq name="info.tpltypeid" value="20">checked</eq> /> 模板20
+                            </label>
+                            <if condition="$desinfo[20] neq ''"><p class="mbtip">{Saivi:$desinfo[20]}</p></if>
+                        </li>
+                        <li <eq name="info.tpltypeid" value="21">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate121.png">
+                                <input class="radio" type="radio" name="optype" value="21" <eq name="info.tpltypeid" value="21">checked</eq> /> 模板21 
+                            </label>
+                            <if condition="$desinfo[21] neq ''"><p class="mbtip">{Saivi:$desinfo[21]}</p></if>
+                        </li> 
+                        <li <eq name="info.tpltypeid" value="22">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate122.png">
+                                <input class="radio" type="radio" name="optype" value="22" <eq name="info.tpltypeid" value="22">checked</eq> /> 模板22 
+                            </label>
+                            <if condition="$desinfo[22] neq ''"><p class="mbtip">{Saivi:$desinfo[22]}</p></if>
+                        </li> 
+						<li <eq name="info.tpltypeid" value="50">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate50.png">
+						<input class="radio" type="radio" name="optype" value="50" <eq name="info.tpltypeid" value="50">checked</eq> /> 模板50
+						</label>
+						<if condition="$desinfo[50] neq ''"><p class="mbtip">{Saivi:$desinfo[50]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="54">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate54.png">
+						<input class="radio" type="radio" name="optype" value="54" <eq name="info.tpltypeid" value="54">checked</eq> /> 模板54
+						</label>
+						<if condition="$desinfo[54] neq ''"><p class="mbtip">{Saivi:$desinfo[54]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="57">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate57.png">
+						<input class="radio" type="radio" name="optype" value="57" <eq name="info.tpltypeid" value="57">checked</eq> /> 模板57
+						</label>
+						<if condition="$desinfo[57] neq ''"><p class="mbtip">{Saivi:$desinfo[57]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="70">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate70.png">
+						<input class="radio" type="radio" name="optype" value="70" <eq name="info.tpltypeid" value="70">checked</eq> /> 模板70
+						</label>
+						<if condition="$desinfo[70] neq ''"><p class="mbtip">{Saivi:$desinfo[70]}</p></if>
+						</li> 
+                </ul>
+                </fieldset>
+                </div>
+                <!--个性定制-->
+                <div class="tagContent selectTag" id="tagC4" style="display:none;">
+                 <fieldset>
+                 <ul class="cateradio">
+                        <li <eq name="info.tpltypeid" value="28">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate128.png">
+                                <input class="radio" type="radio" name="optype" value="28" <eq name="info.tpltypeid" value="28">checked</eq> /> 模板28
+                            </label>
+                            <if condition="$desinfo[28] neq ''"><p class="mbtip">{Saivi:$desinfo[28]}</p></if>
+                        </li>
+                        <li <eq name="info.tpltypeid" value="30">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate130.png">
+                                <input class="radio" type="radio" name="optype" value="30" <eq name="info.tpltypeid" value="30">checked</eq> /> 模板30
+                            </label>
+                            <if condition="$desinfo[30] neq ''"><p class="mbtip">{Saivi:$desinfo[30]}</p></if>
+                        </li> 
+                         <li <eq name="info.tpltypeid" value="31">class="active"</eq>>
+                            <label>
+                                <img src="{Saivi::RES}/images/cate131.png">
+                                <input class="radio" type="radio" name="optype" value="31" <eq name="info.tpltypeid" value="31">checked</eq> /> 模板31
+                            </label>
+                            <if condition="$desinfo[31] neq ''"><p class="mbtip">{Saivi:$desinfo[31]}</p></if>
+                        </li> 
+
+						<li <eq name="info.tpltypeid" value="32">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate32.png">
+						<input class="radio" type="radio" name="optype" value="32" <eq name="info.tpltypeid" value="32">checked</eq> /> 模板32
+						</label>
+						<if condition="$desinfo[32] neq ''"><p class="mbtip">{Saivi:$desinfo[32]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="33">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate33.png">
+						<input class="radio" type="radio" name="optype" value="33" <eq name="info.tpltypeid" value="33">checked</eq> /> 模板33
+						</label>
+						<if condition="$desinfo[33] neq ''"><p class="mbtip">{Saivi:$desinfo[33]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="34">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate34.png">
+						<input class="radio" type="radio" name="optype" value="34" <eq name="info.tpltypeid" value="34">checked</eq> /> 模板34
+						</label>
+						<if condition="$desinfo[34] neq ''"><p class="mbtip">{Saivi:$desinfo[34]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="35">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate35.png">
+						<input class="radio" type="radio" name="optype" value="35" <eq name="info.tpltypeid" value="35">checked</eq> /> 模板35
+						</label>
+						<if condition="$desinfo[35] neq ''"><p class="mbtip">{Saivi:$desinfo[35]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="36">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate36.png">
+						<input class="radio" type="radio" name="optype" value="36" <eq name="info.tpltypeid" value="36">checked</eq> /> 模板36
+						</label>
+						<if condition="$desinfo[36] neq ''"><p class="mbtip">{Saivi:$desinfo[36]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="37">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate37.png">
+						<input class="radio" type="radio" name="optype" value="37" <eq name="info.tpltypeid" value="37">checked</eq> /> 模板37
+						</label>
+						<if condition="$desinfo[37] neq ''"><p class="mbtip">{Saivi:$desinfo[37]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="38">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate38.png">
+						<input class="radio" type="radio" name="optype" value="38" <eq name="info.tpltypeid" value="38">checked</eq> /> 模板38
+						</label>
+						<if condition="$desinfo[38] neq ''"><p class="mbtip">{Saivi:$desinfo[38]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="39">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate39.png">
+						<input class="radio" type="radio" name="optype" value="39" <eq name="info.tpltypeid" value="39">checked</eq> /> 模板39
+						</label>
+						<if condition="$desinfo[39] neq ''"><p class="mbtip">{Saivi:$desinfo[39]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="40">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate40.png">
+						<input class="radio" type="radio" name="optype" value="40" <eq name="info.tpltypeid" value="40">checked</eq> /> 模板40
+						</label>
+						<if condition="$desinfo[40] neq ''"><p class="mbtip">{Saivi:$desinfo[40]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="41">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate41.png">
+						<input class="radio" type="radio" name="optype" value="41" <eq name="info.tpltypeid" value="41">checked</eq> /> 模板41
+						</label>
+						<if condition="$desinfo[41] neq ''"><p class="mbtip">{Saivi:$desinfo[41]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="42">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate42.png">
+						<input class="radio" type="radio" name="optype" value="42" <eq name="info.tpltypeid" value="42">checked</eq> /> 模板42
+						</label>
+						<if condition="$desinfo[42] neq ''"><p class="mbtip">{Saivi:$desinfo[42]}</p></if>
+						</li> 
+						<li <eq name="info.tpltypeid" value="43">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate43.png">
+						<input class="radio" type="radio" name="optype" value="43" <eq name="info.tpltypeid" value="43">checked</eq> /> 模板43
+						</label>
+						<if condition="$desinfo[43] neq ''"><p class="mbtip">{Saivi:$desinfo[43]}</p></if>
+						</li> 
+
+
+						<li <eq name="info.tpltypeid" value="46">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate46.png">
+						<input class="radio" type="radio" name="optype" value="46" <eq name="info.tpltypeid" value="46">checked</eq> /> 模板46
+						</label>
+						<if condition="$desinfo[46] neq ''"><p class="mbtip">{Saivi:$desinfo[46]}</p></if>
+						</li> 
+
+						<li <eq name="info.tpltypeid" value="47">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate47.png">
+						<input class="radio" type="radio" name="optype" value="47" <eq name="info.tpltypeid" value="47">checked</eq> /> 模板47
+						</label>
+						<if condition="$desinfo[47] neq ''"><p class="mbtip">{Saivi:$desinfo[47]}</p></if>
+						</li> 
+						
+						<li <eq name="info.tpltypeid" value="53">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate53.png">
+						<input class="radio" type="radio" name="optype" value="53" <eq name="info.tpltypeid" value="53">checked</eq> /> 模板53
+						</label>
+						<if condition="$desinfo[53] neq ''"><p class="mbtip">{Saivi:$desinfo[53]}</p></if>
+						</li> 
+
+						<li <eq name="info.tpltypeid" value="72">class="active"</eq>>
+						<label>
+						<img src="{Saivi::RES}/images/cate72.png">
+						<input class="radio" type="radio" name="optype" value="72" <eq name="info.tpltypeid" value="72">checked</eq> /> 模板72
+						</label>
+						<if condition="$desinfo[72] neq ''"><p class="mbtip">{Saivi:$desinfo[72]}</p></if>
+						</li> 
+                </ul>
+                </fieldset>
+                </div>
+                
+                
+            </div>
+            <div class="tagContent" id="tagContent1">
+                <fieldset>
+                    <ul class="cateradio2">
+
+                        <li <eq name="info.tpllistid" value="1">class="active"</eq>>
+                            <label><img src="{Saivi::RES}/images/list1.png">
+                                <input class="radio2" type="radio" name="optype2" value="1" <eq name="info.tpllistid" value="1">checked</eq> /> 模板1
+                            </label>
+                        </li>
+                        
+                        <li <eq name="info.tpllistid" value="2">class="active"</eq>>
+                            <label><img src="{Saivi::RES}/images/list2.png">
+                                <input class="radio2" type="radio" name="optype2" value="2" <eq name="info.tpllistid" value="2">checked</eq> /> 模板2
+                            </label>
+                        </li>
+                        
+                        <li <eq name="info.tpllistid" value="3">class="active"</eq>>
+                            <label><img src="{Saivi::RES}/images/list3.png">
+                                <input class="radio2" type="radio" name="optype2" value="3" <eq name="info.tpllistid" value="3">checked</eq> /> 模板2
+                            </label>
+                        </li>
+
+                        <li <eq name="info.tpllistid" value="4">class="active"</eq> >
+                            <label><img src="{Saivi::RES}/images/list4.png">
+                                <input class="radio2" type="radio" name="optype2" <eq name="Think.session.gid" value="4">disabled="disabled"</eq> value="4" <eq name="info.tpllistid" value="4">checked</eq> /> 模板4
+                            </label>
+                        </li>
+                        <!--                        <li <eq name="info.tpllistid" value="2">class="active"</eq> ><label><img src="{Saivi::RES}/images/list2.png"><input class="radio2" type="radio" name="optype2" value="2" <eq name="info.tpllistid" value="2">checked</eq> /> 模板2(省流量) </label></li>
+                                                <li <eq name="info.tpllistid" value="3">class="active"</eq> ><label><img src="{Saivi::RES}/images/list3.png"><input class="radio2" type="radio" name="optype2" <eq name="Think.session.gid" value="2">disabled="disabled"</eq> value="3" <eq name="info.tpllistid" value="3">checked</eq> /> 模板3(小清晰)V1 </label></li>-->
+
+                        <!--<li <eq name="info.tpllistid" value="5">class="active"</eq> ><label><img src="{Saivi::RES}/images/list5.png"><input class="radio2" type="radio" name="optype2" <eq name="Think.session.gid" value="2">disabled="disabled"</eq> value="5" <eq name="info.tpllistid" value="5">checked</eq> /> 模板5(文艺风) V1</label></li>
+                        <li <eq name="info.tpllistid" value="6">class="active"</eq> ><label><img src="{Saivi::RES}/images/list6.png" title="提示：仅适合一张图片配少量文字内容的微信号，
+                        如：冷笑话/经典语录"><input class="radio2" type="radio" name="optype2" <eq name="Think.session.gid" value="2">disabled="disabled"</eq> value="6" <eq name="info.tpllistid" value="6">checked</eq> /> 模板6(经典语录) V1</label></li>-->
+                    </ul>
+                </fieldset>
+            </div>
+            <div class="tagContent" id="tagContent2">
+                <fieldset>
+                    <ul class="cateradio3">
+                        <li <eq name="info.tplcontentid" value="1">class="active"</eq> ><label><img src="{Saivi::RES}/images/news1.png"><input class="radio3" type="radio" name="optype3" value="1" <eq name="info.tplcontentid" value="1">checked</eq>/>模板1(有头像) </label></li>
+                        <!--<li <eq name="info.tplcontentid" value="2">class="active"</eq> ><label><img src="{Saivi::RES}/images/news2.png"><input class="radio3" <eq name="Think.session.gid" value="2">disabled="disabled"</eq> type="radio" name="optype3" value="2" <eq name="info.tplcontentid" value="2">checked</eq>/>模板2 V1(无头像)</label></li>-->
+                        <li <eq name="info.tplcontentid" value="3">class="active"</eq> ><label><img src="{Saivi::RES}/images/news3.png"><input class="radio3" type="radio" name="optype3" value="3" <eq name="info.tplcontentid" value="3">checked</eq>/>模板3(无头像)</label></li>
+                    </ul>
+                </fieldset>
+            </div>
+            <div class="tagContent" id="tagContent3">
+                <fieldset>
+                    <div class="cateradio4">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td width="400" rowspan="2" valign="top">
+                                        <div class="samsung-render">
+                                            <iframe src="/index.php?g=Wap&m=Index&token={Saivi:$info.token}&show=1" id="myiframe" width="320" height="406" frameborder="0" style="overflow-x:hidden;" scrolling="auto"></iframe>
+                                        </div>
+                                    </td>
+                                    <td valign="top"><h3>请选择你喜欢的颜色风格，实时预览 (<span style="color:#c30">注意：只有在手机上才能获得最佳浏览效果，电脑浏览并不一定是最终显示效果，并且仅部分模板支持更换颜色风格</span>)</h3>
+                                        <ul>
+                                            <li><label><input class="radio4" type="radio" name="optype4" value="0" <eq name="info.color_id" value="0">checked="checked"</eq>> 默认风格</label></li>
+                                            <li><label><input class="radio4" type="radio" name="optype4" value="1" <eq name="info.color_id" value="1">checked="checked"</eq>> 黑色风格</label></li>
+                                            <li><label><input class="radio4" type="radio" name="optype4" value="2" <eq name="info.color_id" value="2">checked="checked"</eq>> 蓝色风格</label></li>
+                                            <li><label><input class="radio4" type="radio" name="optype4" value="3" <eq name="info.color_id" value="3">checked="checked"</eq>> 木纹风格</label></li>
+                                            <li><label><input class="radio4" type="radio" name="optype4" value="4" <eq name="info.color_id" value="4">checked="checked"</eq>> 橙色风格</label></li>
+                                            <li><label><input class="radio4" type="radio" name="optype4" value="5" <eq name="info.color_id" value="5">checked="checked"</eq>> 紫色风格</label></li>
+                                            <li><label><input class="radio4" type="radio" name="optype4" value="6" <eq name="info.color_id" value="6">checked="checked"</eq>> 绿色风格</label></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="clr"></div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            function selectTag(showContent,selfObj){
+                // 操作标签
+                var tag = document.getElementById("tags").getElementsByTagName("li");
+                var taglength = tag.length;
+                for(i=0; i<taglength; i++){
+                    tag[i].className = "";
+                }
+                selfObj.parentNode.className = "selectTag";
+                // 操作内容
+                for(i=0; j=document.getElementById("tagContent"+i); i++){
+                    j.style.display = "none";
+                }
+                document.getElementById(showContent).style.display = "block";
+            }
+	/////二级标签操作
+			  function selectTag_(showContent,selfObj){
+                // 操作标签
+                var tag = document.getElementById("tags_").getElementsByTagName("li");
+                var taglength = tag.length;
+                for(i=0; i<taglength; i++){
+                    tag[i].className = "";
+                }
+                selfObj.parentNode.className = "selectTag";
+                // 操作内容
+                for(i=0; j=document.getElementById("tagC"+i); i++){
+                    j.style.display = "none";
+                }
+                document.getElementById(showContent).style.display = "block";
+
+
+            }
+        </script>
+
+
+        <script>
+
+            $(".radio").click(function(){
+                $(".cateradio li").each(function(){
+                    $(this).removeClass("active");
+                });
+                $(this).parents("li").addClass("active");
+                var myurl='index.php?g=User&m=Tmpls&a=add&style='+$(this).val()+'&r='+Math.random(); 
+                $.ajax({url:myurl,async:false});
+
+//                $("#homeurl").attr("href","http://baidu.com/index.php?ac=cate"+$(this).val()+"&tid=9379&w=1");
+                $("#myiframe").attr("src",$("#myiframe").attr("src")+'&r='+Math.random());
+
+
+            });
+            $(".radio2").click(function(){
+                $(".cateradio2 li").each(function(){
+                    $(this).removeClass("active");
+                });
+                $(this).parents("li").addClass("active");
+  
+                var myurl ='index.php?g=User&m=Tmpls&a=lists&style='+$(this).val()+'&r='+Math.random(); 
+                $.ajax({url:myurl,async:false});
+
+
+            });
+            $(".radio3").click(function(){
+                $(".cateradio3 li").each(function(){
+                    $(this).removeClass("active");
+                });
+                $(this).parents("li").addClass("active");
+  
+                var myurl='index.php?g=User&m=Tmpls&a=content&style='+$(this).val()+'&r='+Math.random(); 
+                $.ajax({url:myurl,async:false});
+
+            });
+            $(".radio4").click(function(){
+                var myurl='index.php?g=User&m=Tmpls&a=background&style='+$(this).val()+'&r='+Math.random(); 
+                $.ajax({url:myurl,async:false});
+                $("#myiframe").attr("src",$("#myiframe").attr("src")+'&r='+Math.random());
+            });
+            function changeapp(obj,gid){
+                if(obj.checked==true){
+                    //var image=new Image();   
+                    var myurl='index.php?ac=app&op=open&value=1&id=9379&wxid=gh_858dwjkeww5&openid='+gid+'&r='+Math.random(); 
+                    $.ajax({url:myurl,async:false});
+
+                }else{
+ 
+                    var myurl='index.php?ac=app&op=open&value=0&id=9379&wxid=gh_858dwjkeww5&openid='+gid+'&r='+Math.random(); 
+                    $.ajax({url:myurl,async:false});
+
+                }
+            }
+
+        </script>
+
+
+        <div class="clr"></div>
+    </div>
+
+</div>
+
+<div class="clr"></div>
+</div>
+</div>
+</div> 
+<!--底部-->
+</div>
+<include file="Public:footer"/>

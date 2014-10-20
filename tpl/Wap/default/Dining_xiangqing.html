@@ -1,0 +1,231 @@
+<include file="Dining:header"/>
+
+</head>
+
+<body class="mode_webapp">
+
+<div class="menu_header"> 
+
+ <div class="menu_topbar">
+
+  <strong class="head-title">订单详情</strong>
+
+  <span class="head_btn_left"><a href="javascript:history.go(-1);"><span>返回</span></a><b></b></span>
+
+  <a class="head_btn_right" href="{Saivi::U('Dining/index',array('token'=>$token,'wecha_id'=>$wecha_id))}">
+
+  <span><i class="menu_header_home"></i></span><b></b>
+
+  </a>
+
+ </div>
+
+</div>
+
+<div class="cardexplain"> 
+
+<ul class="round">
+
+<li class="title"><span class="none smallspan">订单详情</span></li>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="cpbiaoge">
+
+<tr>
+
+<th>菜品名称</th>
+
+<th class="cc">单价</th>
+
+<th class="cc">份数</th>
+
+<th class="rr">小计</th>
+
+</tr>
+
+<volist name="products" id="p">   
+
+<tr>
+
+<td>{Saivi:$p.name}</td>
+
+<td class="cc">￥{Saivi:$p.price}</td>
+
+<td class="cc">{Saivi:$p.count}</td>
+
+<td class="rr">￥<php>echo ($p['price']*$p['count']);</php></td>
+
+</tr>
+
+</volist>
+
+<tr>
+
+<td>总计：</td>
+
+<td class="cc"></td>
+
+<td class="cc">{Saivi:$totalCount}</td>
+
+<td class="rr">￥{Saivi:$totalFee}元</td>
+
+</tr>
+
+</table>
+
+</ul>
+
+<ul class="round">
+
+<li class="title"><span class="none smallspan">订单信息</span></li>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="cpbiaoge">
+
+<tr>
+
+<td width="70">订单编号：{Saivi:$thisOrder.orderid}</td>
+
+</tr>
+
+<tr>
+
+<td>下单时间：{Saivi:$thisOrder.time|date="Y-m-d H:i:s",###}</td>
+
+</tr>
+
+<tr>
+
+<td>下单店铺：{Saivi:$thisOrder.storename}</td>
+
+</tr>
+
+<tr>
+
+<td>桌台：{Saivi:$thisOrder.tableName}</td>
+
+</tr>
+
+<tr>
+
+<td>联系人：{Saivi:$thisOrder.truename}</td>
+
+</tr>
+
+<tr>
+
+<td>联系电话：{Saivi:$thisOrder.tel}</td>
+
+</tr>
+
+<tr>
+
+<td>联系地址：{Saivi:$thisOrder.address}</td>
+
+</tr>
+
+<tr>
+
+<td>备注：{Saivi:$thisOrder.dingbei}</td>
+
+</tr>
+
+<if condition="$totalFee" >
+
+<tr>
+
+<td>付款状态：<if condition="$thisOrder.paid eq 1" ><em class='ok'>已付款</em><else/><em class='error'>未付款</em></if></td>
+
+</tr>
+
+</if>
+
+<tr>
+
+<td>订单状态：<if condition="$thisOrder.handled eq 1" ><em class='ok'>已处理</em><else/><em class='no'>未处理</em></if>  <if condition="$thisOrder.set eq 1" ><em class='ok'>已派单</em><else/><em class='no'>未派单</em></if></td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<if condition="($thisOrder.paid eq 0) and $payment and $totalFee" >
+
+<a id="delorder" class="del" href="javascript:void(0)" style="width:35%;float:left;">删除信息</a>
+
+<a id="payorder" class="submit" style="width:35%;float:right;" href="{Saivi::U('Dining/orderpay',array('token'=>$token,'id'=>$thisOrder['id'],'wecha_id'=>$wecha_id,'storeid'=>$storeid))}">支付订单</a>
+
+<else />
+
+<a id="delorder" class="del" href="javascript:void(0)">删除信息</a>
+
+</if>
+
+</td>
+
+</tr>
+
+</table>
+
+</ul>
+
+</div>
+
+<script type="text/javascript" >
+
+$(document).ready(function () {
+
+	$("#delorder").click(function () {
+
+		if(confirm("确定要删除订单吗？"))
+
+ 		{
+
+			window.location.href="{Saivi::U('Dining/deleteOrder',array('token'=>$token,'id'=>$thisOrder['id'],'wecha_id'=>$wecha_id,'storeid'=>$storeid))}";
+
+		}
+
+	});
+
+});
+
+</script>
+
+<include file="Dining:footer"/>
+
+<script type="text/javascript" src="{Saivi::RES}/weidingcan/oakshopcart.js"></script>
+
+<script type="text/javascript" >
+
+var cart = new OAK.Shop.Cart();
+
+cart.showTotalNum = function(){
+
+    var quant = cart.getQuantity();
+
+	document.getElementById("cartN2").innerHTML = ""+quant.totalNumber;
+
+};
+
+window.onload = function () {
+
+	cart.getFromCache();
+
+	cart.showTotalNum();
+
+}
+
+</script>
+
+<script type="text/javascript">
+
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+WeixinJSBridge.call('hideToolbar');
+
+});
+
+</script>
+
+</body>
+
+</html>

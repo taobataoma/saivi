@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class=" clickberry-extension clickberry-extension-standalone">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="{Saivi::STATICS}/vhouse/online_booking.css" media="all">
+<link rel="stylesheet" type="text/css" href="{Saivi::STATICS}/vhouse/pig-ui.css" media="all">
+<link rel="stylesheet" type="text/css" href="{Saivi::STATICS}/vhouse/common.css" media="all">
+<script type="text/javascript" src="{Saivi::STATICS}/vhouse/jQuery.js"></script>
+<title>我的预约</title>
+        <style>
+            img{width:100%!important;}
+        </style>
+    <meta content="clickberry-extension-here">
+    </head>
+    <body onselectstart="return true;" ondragstart="return false;" id="onlinebooking-list">
+        
+<div class="qiandaobanner">
+    <a href="javascript:;">
+        <img src="{Saivi:$headpic|default='./Common/reserve/header.png'}">
+    </a></div><a href="javascript:;">
+    </a><div class="cardexplain"><a href="javascript:;">
+    <!--普通用户登">
+    </a>
+</div>
+<div class="cardexplain"> 
+
+<!--超过预订时间3天后自动删掉预订记录，免得占服务器资源！-->
+    
+</a>
+<ul class="round">
+<if condition="$books eq ''">
+<a href="javascript:;">
+        <li class="title">
+        <span>订单详情 <if condition="$vo['remate'] eq 0"><em class="no">等待客服回电</em></if></span>
+        </li>
+</a>
+<li><a href="javascript:;">
+            </a><div class="text"><a href="javascript:;">
+               您还没有预约。
+                </div>
+        </div>
+</li>
+</if>
+<volist name="books" id="vo">
+<a href="javascript:;">
+        <li class="title">
+        <span>{Saivi:$vo['booktime']|date='Y年m月d日',###}订单详情 <if condition="$vo['remate'] eq 0"><em class="no">等待客服回电</em></if></span>
+        </li>
+</a>
+<li><a href="javascript:;">
+            </a><div class="text"><a href="javascript:;">
+                <p>联系人：{Saivi:$vo['truename']}</p>
+                <p>联系电话：{Saivi:$vo['tel']}</p>
+                <p>选择看房户型 ：{Saivi:$vo['housetype']}</p>
+                <p>预约时间 ：{Saivi:$vo['timepart']}</p> 
+                <p>提交时间：{Saivi:$vo['booktime']|date='Y年m月d日',###}</p>
+                </a><div class="footReturn"><a href="javascript:;">
+                </a><a id="" style="color:#fff;" class="submit" href="{Saivi::U('Reservation/edit',array('token'=>$token,'wecha_id'=>$wecha_id,'id'=>$vo['id']))}">修改订单 </a>
+                </div>
+        </div>
+</li>
+</volist>
+</ul>
+
+<!--页码-->
+    </div>
+                <div mark="stat_code" style="width:0px; height:0px; display:none;">
+                    </div>
+    
+</body></html>

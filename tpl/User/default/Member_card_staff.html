@@ -1,0 +1,57 @@
+<include file="Public:head"/>  
+<div class="content">
+         
+          <div class="cLineB">
+              <h4 class="left">职员管理</h4>
+               
+              <div class="clr"></div>
+          </div>
+          <div class="cLine">
+			<div class="pageNavigator left">
+			<a href="{Saivi::U('Member_card/staffSet',array('token'=>$token,'id'=>$thisCard['id']))}" title="" class="btn btn-primary btn_submit  J_ajax_submit_btn">添加</a>　
+
+			</div>
+			<a href="javascript:history.go(-1);" class="right btnGrayS vm" style="margin-top:10px">返回</a>          
+			<div class="clr"></div>
+          </div>
+          <div class="msgWrap">
+          <form method="post" action="index.php?ac=importtxt&amp;id=9878&amp;wxid=gh_423dwjkewad" id="info">
+          <input name="delall" type="hidden" value="del">
+           <input name="wxid" type="hidden" value="gh_423dwjkewad">
+            <table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+              <thead>
+                <tr>
+                <th width="200">所属店铺</th>
+					<th width="90">姓名</th>
+					<th width="100">电话</th>
+					<th width="130">添加时间</th>
+					<th class="edit norightborder">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <volist name="staffs" id="staff">           
+                <tr>
+					
+					  <td>{Saivi:$staff.companyName}</td>
+					 <td>{Saivi:$staff.name}</td>
+					  <td>{Saivi:$staff.tel}</td>
+					  <td>{Saivi:$staff.time|date='Y-m-d',###}</td>
+					  <td class="norightborder">
+						<a href="{Saivi::U('Member_card/staffSet',array('itemid'=>$staff['id'],'id'=>$thisCard['id']))}">编辑</a> <a href="{Saivi::U('Member_card/staffDelete',array('itemid'=>$staff['id'],'id'=>$thisCard['id']))}">删除</a>
+					  </td>
+                </tr>
+				</volist>
+      			 
+              </tbody>
+            </table>
+           </form> 
+		
+          </div>
+          <div class="cLine">
+            <div class="pageNavigator right">
+                 <div class="pages"></div>
+             </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+<include file="Public:footer"/>

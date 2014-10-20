@@ -1,0 +1,97 @@
+<if condition="$ischild neq 1">
+<include file="Public:head" />
+<else />
+<include file="Repast:head" />
+</if>
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+<div class="content" style=" width:94%; margin:0px; padding:0px; border:0px; padding:0px 3%; border-left: 0px solid #D7DDE6 !important;">
+<div class="cLineB" style="border-bottom:2px solid #1A6AAC; -webkit-box-shadow:0px 2px 0px #CCC;box-shadow:0px 2px 0px #ccc; padding-bottom:0px; margin-top:0px;">
+<h4 class="left" style="font-weight:bolder">订单管理({Saivi:$page}) </h4>
+<div class="searchbar right">
+<!-- <form method="post" action="">
+<input type="text" id="msgSearchInput" class="txt left" placeholder="输入订购人名字搜索" name="searchkey" value="">
+<input type="hidden" name="ac" value="hotels-list">
+<input type="hidden" name="id" value="9878">
+<input type="hidden" name="wxid" value="gh_423dwjkewad">
+<input type="submit" value="搜索" id="msgSearchBtn" href="" class="btnGrayS" title="搜索">
+</form> -->
+<script>
+function selectall(name) {
+	var checkItems=$('.cbitem');
+	if ($("#check_box").attr('checked')==false) {
+		$.each(checkItems, function(i,val){
+			val.checked=false;
+		});
+		
+	} else {
+		$.each(checkItems, function(i,val){
+			val.checked=true;
+		});
+	}
+}
+</script>
+</div>
+<div class="clr"></div>
+</div>
+<!--tab start-->
+<div class="tab">
+<ul>
+<li class="tabli" id="tab0"><a href="{Saivi::U('Repast/company_index', array('token' => $token,'cid' => $cid))}">餐厅管理</a></li>
+<li class="tabli" id="tab1"><a href="{Saivi::U('Repast/index', array('token' => $token,'cid' => $cid))}">餐台管理</a></li>
+<li class="current tabli" id="tab2"><a href="{Saivi::U('Repast/detail', array('token' => $token,'cid' => $cid))}">餐台预定情况</a></li>
+<li class="tabli" id="tab2"><a href="{Saivi::U('Repast/sort', array('token' => $token,'cid' => $cid))}">分类管理</a></li>
+<li class="tabli" id="tab3"><a href="{Saivi::U('Repast/dish', array('token' => $token,'cid' => $cid))}">菜品管理</a></li>
+<li class="tabli" id="tab4"><a href="{Saivi::U('Repast/orders', array('token' => $token,'cid' => $cid))}">订单管理</a></li>
+<if condition="$ischild neq 1" >
+<li class="tabli" id="tab5"><a href="{Saivi::U('Reply_info/set', array('token'=>$token,'infotype'=>'Dining'))}">订餐回复配置</a></li>
+</if>
+</ul>
+</div>
+<!--tab end-->
+<div class="msgWrap">
+<form method="post" action="" id="info">
+<div class="cLine">
+<!-- <div class="pageNavigator left"> <a href="###" onclick="$('#info').submit()" title="" class="btnGrayS vm bigbtn"><img src="{Saivi::RES}/images/product/arrow_switch.png" class="vm">处理订单</a></div> -->
+查看时间：
+<select onchange="change(this);">
+	<volist name="dates" id="d">
+	<option value="{Saivi:$d['k']}">{Saivi:$d['v']}</option>
+	</volist>
+</select>
+<div class="clr"></div>
+</div>
+
+<table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+<thead>
+<tr>
+<th width="300">店铺名称</th>
+<th width="100">餐桌号</th>
+<th width="200">预定用餐时间</th>
+<th class="60">是否已经使用</th>
+</tr>
+</thead>
+<tbody>
+<tr></tr>
+<volist name="list" id="o"> 
+<tr>
+<td><?php echo $Companys_arr[$o['cid']];?></td>
+<td>{Saivi:$o.name}</td>
+<td>{Saivi:$o.reservetime|date="Y-m-d H:i:s",###}</td> 
+<td><if condition="$o.isuse eq 1"><span style="color:green">已使用</span><else/><span style="color:red">未使用</span></if></td>
+</tr>
+</volist>
+</tbody>
+</table>
+<input type="hidden" name="token" value="{Saivi:$_GET['token']}" />
+</form>
+</div>
+</div>
+
+<script>
+function change(obj) {
+	location.href = "{Saivi::U('Repast/detail',array('token' => $token, 'cid' => $cid))}&time=" + $(obj).val();
+}
+</script>
+<include file="Public:footer"/>

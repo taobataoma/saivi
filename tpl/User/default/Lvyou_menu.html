@@ -1,0 +1,13 @@
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/css/cymain.css" />
+<div class="tab" style="margin-left:30px">
+<ul>
+<li class="<if condition="ACTION_NAME EQ 'index'">current</if> tabli" id="tab0"><a href="{Saivi::U('Lvyou/index',array('token'=>$token))}">旅游区简介</a></li>
+<li class="<if condition="ACTION_NAME EQ 'son'">current</if> tabli" id="tab2"><a href="{Saivi::U('Lvyou/son',array('token'=>$token))}">景区</a></li>
+<li class="<if condition="ACTION_NAME EQ 'housetype'">current</if> tabli" id="tab2"><a href="{Saivi::U('Lvyou/housetype',array('token'=>$token))}">景点</a></li>
+<li class="<if condition="ACTION_NAME EQ 'album'">current</if> tabli" id="tab5"><a href="{Saivi::U('Lvyou/album',array('token'=>$token))}">风景相册</a></li>
+<li class="<if condition="ACTION_NAME EQ 'expert'">current</if> tabli" id="tab6"><a href="{Saivi::U('Lvyou/expert',array('token'=>$token))}">游客点评</a></li>
+<li class="<if condition="ACTION_NAME EQ 'reservation'">current</if> tabli" id="tab7"><a href="{Saivi::U('Reservation/lvyouindex',array('token'=>$token))}">预约门票</a></li>
+
+<li class="<if condition="ACTION_NAME EQ 'aboutus'">current</if> tabli" id="tab7"><a href="{Saivi::U('Lvyou/aboutus',array('token'=>$token))}">关于我们</a></li>
+</ul>
+</div>

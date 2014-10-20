@@ -1,0 +1,99 @@
+<include file="Public:head"/>
+
+<div class="content">
+         
+          <div class="cLineB">
+             <h4 class="left">3G投票活动信息 ({Saivi:$count}) 条<span class="FAQ">你本月有 {Saivi:$group.activitynum} 次机会可免收活动创建费，已经使用了 {Saivi:$activitynum} 次机会!</span></h4>
+                  <!--div class="searchbar right">  <form method="get"  action="index.php"  >
+                  <input type="text" id="msgSearchInput" class="txt left" placeholder="输入关键词搜索"  name="keyz" value="">
+                  <input type="hidden" name="ac" value="activity-lottery-list"  />
+                  <input type="hidden" name="id" value="9878"  />
+                  <input type="hidden" name="wxid" value="gh_423dwjkewad"  />
+                 
+                  <input type="submit" value="搜索" id="msgSearchBtn" href="" class="btnGrayS" title="搜索">
+                  </form>
+                  </div-->
+              <div class="clr"></div>
+          </div>
+          <div class="cLine">
+            <div class="pageNavigator left">
+            <if condition="$ok eq 1">
+<a href=""  title="发起文字投票" class="btn btn-primary btn_submit  J_ajax_submit_btn"><img src="{Saivi::RES}/images/text.png" class="vm">发起文字投票</a>　
+<a href="" title="发起图片投票" class="btn btn-primary btn_submit  J_ajax_submit_btn"><img src="{Saivi::RES}/images/pic.png" class="vm">发起图片投票</a>
+            <else/>
+            <a href="{Saivi::U('Vote/add',array('type'=>'text'))}"  title="发起文字投票" class="btn btn-primary btn_submit  J_ajax_submit_btn"><img src="{Saivi::RES}/images/text.png" class="vm">发起文字投票</a>　<a href="{Saivi::U('Vote/add',array('type'=>'img'))}" title="发起图片投票" class="btn btn-primary btn_submit  J_ajax_submit_btn"><img src="{Saivi::RES}/images/pic.png" class="vm">发起图片投票</a>
+            </if>
+  　　
+              
+            </div>
+          
+            <div class="clr"></div>
+          </div>
+          <div class="msgWrap">
+          <form method="post" action="index.php?ac=vote-manage&amp;id=9878" id="info">
+          <input name="delall" type="hidden" value="del">
+           <input name="wxid" type="hidden" value="gh_423dwjkewad">
+            <table class="ListProduct" border="0" cellspacing="0" cellpadding="0" width="100%">
+              <thead>
+                <tr>
+					<th class="select">选择</th>
+					<th>关键词</th>
+					<th>标题</th>
+					<th>类型</th>
+					<th class="time">开始时间</th>
+					<th class="time">结束时间</th>
+					<th>外链代码</th>
+					<th class="norightborder">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr></tr>
+                  <volist id="list" name="list">
+                <tr>
+                  <td>  <input type="checkbox" name="del_id[]" value="674" class="checkitem"></td>
+                  <td>{Saivi:$list.keyword}</td>
+                  <td>{Saivi:$list.title}</td>
+                  <td><if condition="$list['type'] eq 'text'"><img src="{Saivi::RES}/images/text.png" class="vm"> 文字投票<else/><img src="{Saivi::RES}/images/pic.png" class="vm"> 图片投票</if></td>
+                  <td>{Saivi:$list.statdate|date='Y-m-d',###}</td>
+                  <td>{Saivi:$list.enddate|date='Y-m-d',###}</td>
+                  <td> <if condition="$list['type'] eq 'text'">文字投票<else/>图片投票</if>{Saivi:$list.id}</td>
+                   <td class="norightborder"><a href="{Saivi::U('Vote/totals',array('type'=>$list['type'],'id'=>$list['id']))}" title="投票结果">投票结果</a> <a href="{Saivi::U('Vote/edit',array('type'=>$list['type'],'id'=>$list['id']))}" title="编辑">编辑</a> <a href="javascript:drop_confirm('您确定要删除吗?删除会把投票结果也一起删除！', '{Saivi::U('Vote/del',array('type'=>$list['type'],'id'=>$list['id']))}');">删除</a> 
+                   <if condition="$list['status'] eq 0">
+                   <a href="javascript:drop_confirm('开始投票活动', '{Saivi::U('Vote/setinc',array('type'=>$list['type'],'id'=>$list['id']))}');">开始</a> 
+                   <else/>
+                   <a href="javascript:drop_confirm('你是否真的想结束投票活动.', '{Saivi::U('Vote/setdes',array('type'=>$list['type'],'id'=>$list['id']))}');">结束</a> 
+                   </if>
+                   </td>
+          
+                </tr>
+                  </volist>
+      			                
+                  
+              </tbody>
+            </table>
+           </form> 
+           <script>
+   function checkvotethis() {
+var aa=document.getElementsByName('del_id[]');
+var mnum = aa.length;
+j=0;
+for(i=0;i<mnum;i++){
+if(aa[i].checked){
+j++;
+}
+}
+if(j>0) {
+document.getElementById('info').submit();
+} else {
+alert('未选中内容！')
+}
+}</script>
+   </div> 
+          <div class="cLine">
+            <div class="pageNavigator right">
+                 <div class="pages"></div>
+              </div>
+            <div class="clr"></div>
+          </div>
+  </div>
+<include file="Public:footer"/>

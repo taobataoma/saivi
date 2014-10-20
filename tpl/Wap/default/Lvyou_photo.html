@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<link href="{Saivi::RES}/css/Estate/lp/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="common/css/Estate/lp/css/style.css">
+<script src="{Saivi::RES}/css/Estate/lp/js/share.js" type="text/javascript"></script>
+<script src="{Saivi::RES}/css/Estate/lp/js/common.js" type="text/javascript"></script>
+<script src="{Saivi::RES}/css/Estate/lp/js/house.js" type="text/javascript"></script>
+<title>相册</title>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta content="telephone=no, address=no" name="format-detection">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="shortcut icon" href="{Saivi::RES}/css/Estate/img/favicon.ico" />
+</head>
+<body onselectstart="return true;" ondragstart="return false;">
+<div class="wrapper" id="container">
+  <footer class="nav_footer">
+    <ul class="box_db">
+      <li><a href="javascript:history.go(-1);">返回</a></li>
+      <li><a href="javascript:history.go(1);">前进</a></li>
+      <li><a href="{Saivi::U('Lvyou/shouye',array('token'=>$_GET['token'],'id'=>$estate['id']))}">首页</a></li>
+      <li><a href="javascript:location.reload();">刷新</a></li>
+    </ul>
+  </footer>
+
+  <div class="box">
+    <h3>相册</h3>
+    <div class="box_type" style=" height:auto;">
+      <ul class="house_type">
+        <volist name="xc" id="info">
+          <li id="boxLi29" style="height:43px;"> <a href="{Saivi::U('Lvyou/photo_list',array('token'=>$_GET['token'],'id'=>$info['id']))}" onClick="List.toggleList(29,0);"><span>{Saivi:$info.name}</span> </a> </li>
+        </volist>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="popFail" style="display: none; " jqmoldstyle="block">
+  <div class="bk"></div>
+  <div class="cont"> <img src="{Saivi::RES}/css/Estate/jianjie/img/img.gif" alt="loading..."> 正在加载... </div>
+</div>
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['lvyou'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if></body>
+</html>

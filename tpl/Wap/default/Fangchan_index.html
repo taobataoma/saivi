@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<!-- saved from url=(0078)http://xiangshan.juweile.com/wap.php?m=house&wxid=olqrhjkniK_cMuV-IRKG6aMlmy-Q -->
+<html><head _wxhkphogpkobbkjccgfifhfjlahnoocnan_="shake_1.0"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href=" /tpl/Wap/default/common/fangchan/main.css" media="all">
+	<link rel="stylesheet" type="text/css" href=" /tpl/Wap/default/common/fangchan/dialog.css" media="all">
+	<script type="text/javascript" src=" /tpl/Wap/default/common/fangchan/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src=" /tpl/Wap/default/common/fangchan/main.js"></script>
+	<script type="text/javascript" src=" /tpl/Wap/default/common/fangchan/dialog_min.js"></script>
+	<title>房产一览</title>
+	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+	<meta name="Keywords" content="{Saivi:$f_siteName}">
+	<meta name="Description" content="{Saivi:$f_siteName}">
+	<!-- Mobile Devices Support @begin -->
+	<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+	<meta content="no-cache" http-equiv="pragma">
+	<meta content="0" http-equiv="expires">
+	<meta content="telephone=no, address=no" name="format-detection">
+	<meta name="apple-mobile-web-app-capable" content="yes"> <!-- apple devices fullscreen -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta charset="utf-8">
+<title>房产信息</title>
+<meta name="viewport" content="width = device-width ,initial-scale =1.0 ,minimum-scale = 1.0 ,maximum-scale =1.0 ,user-scalable = no">
+<link rel="stylesheet" type="text/css" href=" /tpl/Wap/default/common/fangchan/my_style.css" media="all">
+<link rel="stylesheet" href=" /tpl/Wap/default/common/fangchan/flexslider.css" type="text/css" media="screen">
+<link rel="stylesheet" href=" /tpl/Wap/default/common/fangchan/home_m.css" type="text/css" media="screen">
+<link rel="stylesheet" type="text/css" href=" /tpl/Wap/default/common/fangchan/base_m.css" media="all">
+</head>
+
+
+<body screen_capture_injected="true">
+<div class="page1">
+
+<!-- 顶部 start -->
+	<header id="top">
+		<span class="at"><a >微房产</a></span>		
+		<span><font class="at"><a class="areaname">{Saivi:$wxuser.wxname}</a></font></span>
+	</header>
+<!-- 顶部 end -->
+
+<!-- 公用菜单 start -->
+<table id="bk"  >
+	<tbody>
+		<tr>
+			<td width="33.3%">
+				<a href="{Saivi::U('Wap/Fangchan/index',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token']))}"><p class="e1"><span></span><em>房产信息</em></p></a>
+				
+			
+			</td>
+			<td>
+				<a  href="{Saivi::U('Wap/Fangchan/fabu',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token']))}"><p class="e2" style="margin:0px"><span></span><em>进入主页</em></p></a>
+<!-- 				<a href="wap.php?m=cat&a=new&wxid=olqrhjkniK_cMuV-IRKG6aMlmy-Q"><p class="e5"><span></span><em>首页</em></p></a> -->
+			</td>
+			<td width="33.3%">
+				<a href="{Saivi::U('Wap/Fangchan/fabu',array('wecha_id'=>$_GET['wecha_id'],'token'=>$_GET['token']))}"><p class="e6"><span></span><em>发布信息</em></p></a>
+				
+<!-- 				<a href="wap.php?m=house&a=add&wxid=olqrhjkniK_cMuV-IRKG6aMlmy-Q"><p class="e8"><span></span><em>发布房产</em></p></a> -->
+			</td>
+		</tr>
+	</tbody>
+</table>
+<!-- 公用菜单 end -->
+
+<!-- 信息分类 start -->
+<!-- <section class="xb"> -->
+<!-- 	<header class="b2" style="background-color: #4D5A8A;"> -->
+<!-- 		<a href="./wap.php?m=house">房产信息</a> -->
+	<nav id="tp">
+		<p>
+			<a href="{Saivi::U('Wap/Fangchan/index1',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'type'=>'出租'))}">出租</a>
+			<a href="{Saivi::U('Wap/Fangchan/index1',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'type'=>'出租'))}">出售</a>
+			<a href="{Saivi::U('Wap/Fangchan/index1',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'type'=>'求购'))}">求购</a>
+			<a href="{Saivi::U('Wap/Fangchan/index1',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'type'=>'求租'))}">求租</a>
+		</p>
+	</nav>
+<!-- 	</header> -->
+<!-- 信息分类 end -->
+
+<style>
+html, body, p, form, ul, h1, h2, p, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+}
+body {
+	position: relative;
+	line-height: 20px;
+	font-size: 14px;
+	color: #474340;
+	background-color: #232A45;
+}
+article, p, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+.xb {
+	margin: 0 5px 5px;
+	background-color: #FFF;
+}
+a {
+	color: #474340;
+	text-decoration: none;
+}
+.e {
+	position: relative;
+	display: block;
+	color: #8a8a8a;
+	padding: 10px;
+	background-color: #FFF;
+}
+.i, .e {
+	border-bottom: 1px solid #D4D4D4;
+}
+.box :last-child.i, .box :last-child.e {
+	border-bottom: none;
+}
+h1, h2, p, h4, h5, h6 {
+	font-weight: normal;
+	font-size: 14px;
+}
+.e p {
+	position: relative;
+	height: 20px;
+	color: #474340;
+}
+.e p, .e p {
+	padding-right: 80px;
+}
+i, sp, b {
+	font-style: normal;
+}
+.e i, .e sp {
+	position: absolute;
+	width: 80px;
+	right: 10px;
+	top: 10px;
+}
+.e sp {
+	top: 30px;
+}
+.at, .i, .t, .e p, .e p sp, .e p, .e p, .e i, .e sp, .i sp {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+</style>
+
+<!--  房产列表 start -->
+<ul><volist name="info" id="vo">
+		<li>
+		<a class="e" href="{Saivi::U('Wap/Fangchan/info',array('id'=>$vo['id'],'token'=>$vo['token']))}" style="text-decoration:none;">
+<!-- 			<span class="icon">&nbsp;</span> -->
+				<p>{Saivi:$vo.title}</p>
+				<p style="color: #8a8a8a;">「{Saivi:$vo.houseType}」</p>
+				<sp style="font-size: 13px;">{Saivi:$vo.date|substr=0,10}</sp>
+				<i>{Saivi:$vo.type}</i>
+                <span class="release_time" style="bottom: 30px;">阅读{Saivi:$vo.click}</span>
+<!-- 			<span class="release_time">2014-08-11</span> -->
+
+		</a>
+	</li>
+    </volist>
+		
+	</ul>
+<!-- 房产列表 end -->
+<style type="text/css">
+p.page a {
+text-decoration: none;
+display: inline-block;
+border: 1px solid rgba(0,0,0,0.1);
+border-radius: 3px;
+width: 45px;
+height: 25px;
+background-color: inherit;
+color: rgba(255, 255, 255, 0.6);
+line-height: 25px;
+font-size: 14px;
+}
+p.page span {
+color: rgba(255, 255, 255, 0.6);
+}
+</style>
+<!--  翻页 start -->
+<p class="page">
+		<a href="{Saivi::U('Wap/Index/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}">首页</a>
+				<a href="{Saivi:$f_siteUrl}/index.php?g=Wap&m=Fangchan&a=index&token=<php>echo $_GET['token'];</php>&p=<php>echo $p-1;</php>" class="l_icon">&nbsp;</a>
+				<span style="font-size:18px;">{Saivi:$p}/{Saivi:$page}</span>
+             <?php
+	if($p<$page){
+		echo '<a  href="'.C('site_url').'/index.php?g=Wap&m=Fangchan&a=index&token='.$_GET['token'].'&p='.($p+1).'" class="r_icon" >&nbsp;</a>';
+	}else{
+		echo '<a  class="r_icon">&nbsp;</a>';
+	}
+?>
+               
+			</p>
+<!--  翻页 end -->
+
+</div>
+
+<footer style="margin-top: 1px;"><a class="" href="{Saivi::U('Wap/Index/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}">{Saivi:$date.copyright}</a></footer>
+
+
+    <script type="text/javascript">
+			window.shareData = {  
+					"moduleName":"Zhaopin",
+					"moduleID": '0',
+					"imgUrl": "{Saivi:$date.tp}", 
+					"timeLineLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"sendFriendLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"weiboLink": "{Saivi::C('site_url')}{Saivi::U(MODULE_NAME/ACTION_NAME,array('token'=>$_GET['token']))}",
+					"tTitle": "{Saivi:$date.title}",
+					"tContent": "{Saivi:$date.info}"
+				};
+		</script>
+        	
+        {Saivi:$shareScript}
+
+
+
+
+</body></html>

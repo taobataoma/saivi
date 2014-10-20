@@ -1,0 +1,139 @@
+body{
+    margin:0px;
+    padding:0px;
+}
+/* banner */
+img {
+border:0px;
+}
+/* banner END */
+.indexhot{
+    margin:0px;
+    padding:0px;
+    width:100%;
+    height:100%;
+}
+/* 热门商品 */
+.indexgoodslist ul{
+    overflow:hidden;
+    width:100%;
+    margin:0px;
+    padding:0px;
+}
+.hotswiper{
+    height:100%;
+    width:100%;
+    margin:0px;
+    padding:0px;
+}
+.indexgoodslist li{
+    width:200px;
+    float:left;
+    padding-right:5px;
+    height:100%;
+    overflow:hidden;
+    position:relative;
+}
+.indexgoodslist li .th{
+    width:100%;
+    height:
+}
+.indexgoodslist li .bgstyle{
+    height:100%;
+    width:100%;
+    background:#fff;
+}
+.indexgoodslist li .bgstyle img{
+    width:100%;
+    height:100%;
+}
+/* 热门商品 END */
+.th_info {
+    position:absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background-color: rgba(0,0,0,0.7);
+}
+.th_info2 {
+    position:absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+    height:100%;
+    display:none;
+	background-color: rgba(0,0,0,0.7);
+}
+.th_up {
+	display: block;
+	height: 30px;
+	padding: 5px 0 0 10px;
+	color: #fff;
+	border-top: 1px solid #000;
+	-webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.2) inset;
+}
+
+.th_up em {
+	display: block;
+    width:120px;
+    line-height:15px;
+    font-size:10px;
+}
+
+.th_up .btn_more {
+	position: absolute;
+	top: 35px;
+	right: 10px;
+    font-size:12px;
+}
+
+.th_up .btn_more::after {
+	content: "";
+	display: inline-block;
+	width: 13px;
+	height: 10px;
+	margin-left: 5px;
+	background: url(../images/sprite.png) no-repeat;
+	-webkit-background-size: 160px auto;
+}
+
+.th_num {
+	text-align: center;
+	background-color: rgba(255,255,255,0.1);
+	color: #fff;
+	line-height: 23px;
+    font-size:14px;
+	text-shadow: -1px -1px 0 #000;
+}
+
+.th_full .btn_show_close,.type_full .type_num {
+	display: none;
+}
+
+.th_full .type_info {
+	top: 0;
+	height: 100%;
+}
+
+.th_full .type_up .btn_more::after {
+	background: url(../images/sprite.png) no-repeat -20px 0;
+	-webkit-background-size: 160px auto;
+}
+
+.th_full .type_detail {
+	display: block;
+	color: #fff;
+	border-top: 2px solid #000;
+	-webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.2) inset;
+	font-size: 15px;
+	line-height: 25px;
+	padding: 15px 0 0 15px;
+}
+
+.th_detail ul {
+	padding-top: 15px
+}
+
+.th_detail {
+	display: none;
+}

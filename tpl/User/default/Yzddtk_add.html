@@ -1,0 +1,74 @@
+<include file="Public:head"/>
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="{Saivi::STATICS}/kindeditor/plugins/code/prettify.css" />
+<script src="{Saivi::STATICS}/kindeditor/kindeditor.js" type="text/javascript"></script>
+<script src="{Saivi::STATICS}/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+<script src="{Saivi::STATICS}/kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+<script src="/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="/tpl/static/artDialog/plugins/iframeTools.js"></script>
+
+
+<div id="content" style="margin-top:50px; margin-left:15px;">
+          <div class="cLineB"><h4>新增题目</h4><a href="javascript:history.go(-1);"  class="right btnGrayS vm" style="margin-top:-27px" >返回</a></div>
+         
+          <form method="post"   action="{Saivi::U('Yzddtk/insert')}"  enctype="multipart/form-data" >
+          <div class="msgWrap form">
+            <TABLE class="userinfoArea" border="0" cellSpacing="0" cellPadding="0" width="100%">
+             
+              <TBODY>
+               
+                <TR>
+                  <TH valign="top"><label for="text">题目：</label></TH>
+                  <TD><textarea  class="px" id="tm"     name="tm" style="width:580px;  height:100px"></textarea><br />限制200字内
+                   
+
+                  </TD>
+                </TR>
+                <TR>
+                  <TH><span class="red">*</span><label for="title">答案1：</label></TH>
+                  <TD><input type="input" class="px" id="d1" value="{Saivi:$info.title}"    name="d1" style="width:580px;"> </TD>
+                </TR>
+                
+                <TR>
+                  <TH><span class="red">*</span><label for="title">答案2：</label></TH>
+                  <TD><input type="input" class="px" id="d2" value="{Saivi:$info.title}"    name="d2" style="width:580px;"> </TD>
+                </TR>
+                <TR>
+                  <TH><label for="title">答案3：</label></TH>
+                  <TD><input type="input" class="px" id="d3" value="{Saivi:$info.title}"    name="d3" style="width:580px;"> </TD>
+                </TR>
+                <TR>
+                  <TH><label for="title">答案4：</label></TH>
+                  <TD><input type="input" class="px" id="d4" value="{Saivi:$info.title}"    name="d4" style="width:580px;"> </TD>
+                </TR>
+                
+                <TR>
+                  <TH valign="top"><label for="classid">正确答案：</label></TH>
+                  <TD>
+                   <select name="zd"   > 
+                       <option  value="d1">答案1</option>
+                       <option  value="d2">答案2</option>
+                       <option  value="d3">答案3</option>
+                       <option  value="d4">答案4</option>
+                    </select>
+                  </TD>
+                </TR> 
+                <TR>
+                  <TH></TH>
+                  <TD><input type="hidden" name="token" value="{Saivi:$token}" /><input type="submit" value="保存" name="sbmt" class="btnGreen left">　<a href="{Saivi::U('Yzddtk/index')}"  class="btnGray vm">取消</a></TD>
+                </TR>
+              </TBODY>
+            </TABLE>
+            
+          </div>
+          </form>
+          
+        </div>     
+ 
+        <div class="clr"></div>
+      
+   
+ 
+<!--底部-->
+  	
+<include file="Public:footer"/>

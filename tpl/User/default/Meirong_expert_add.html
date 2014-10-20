@@ -1,0 +1,85 @@
+<include file="Public:head"/>
+<include file="Meirong:menu"/>
+<link rel="stylesheet" type="text/css" href="{Saivi::Common}/default_user_com.css" media="all">
+<script src="{Saivi::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script src="{Saivi::STATICS}/artDialog/plugins/iframeTools.js"></script>
+<div class="content">
+
+<div class="cLineB">
+  <h4>添加点评 </h4><a href="javascript:history.go(-1);return false;" class="right btnGrayS vm" style="margin-top:-27px">返回</a>
+ </div>
+         
+    <div class="msgWrap bgfc">
+	  <form class="form" method="post" action="" >	 
+		<table class="userinfoArea" style=" margin:0;" border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tbody>
+				<tr>
+				  <th valign="top"><span class="red">*</span>标题:</th>
+				  <td>
+				  <input type="hidden" name="addtype" value="meirong">
+					 <input type="text" id="title" name="title" value="{Saivi:$expert['title']}" class="input-large px" data-rule-required="true" data-rule-maxlength="20">
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">尽量简单，不要超过20字</span></td>
+				</tr>
+				<tr>
+					<th width="120">显示顺序:</th>
+					<td> <input type="text" id="sort" name="sort" value="{Saivi:$expert['sort']|default=1}" class="input-mini px" data-rule-required="true" data-rule-number="true">
+                                        <span class="maroon">*</span>
+                                        <span class="help-inline">数值越大越靠前</span></td>
+				</tr>
+				<tr>
+					<th width="120">客户姓名：</th>
+					<td> <input type="text" id="name" name="name" value="{Saivi:$expert['name']}" class="input-large px" data-rule-required="true">
+                                        <span class="maroon">*</span></td>
+				</tr>
+				<tr>
+					<th width="120">客户职位：</th>
+					<td>  <input type="text" id="position" name="position" value="{Saivi:$expert['position']}" class="input-large px" data-rule-required="true" data-rule-maxlength="20">
+                                        <span class="maroon">*</span></td>
+				</tr>
+				<tr>
+					<th width="120">客户照片：</th>
+					<td>  <script src="{Saivi::STATICS}/upyun.js"></script>
+                                        <p>
+                                            <!-- <img class="thumb_img" id="face" src="{Saivi:$expert['face']}" style="max-height:100px;"> -->
+                                            <input type="text" class="px" id="face" value="{Saivi:$expert['face']}" name="face" >	
+		
+                                            <span class="help-inline">
+												<script src="{Saivi::STATICS}/upyun.js"></script>
+                                                 <a href="###" onclick="upyunPicUpload('face',720,400,'{Saivi:$token}')" class="a_upload">上传</a> <a href="###" onclick="viewImg('face')">预览</a>
+                                                <span class="help-inline">建议尺寸：宽400像素，高400像素</span>
+                                            </span>
+                                        </p></td>
+				</tr>
+				<tr>
+					<th width="120">客户介绍：</th>
+					<td>  <textarea class="px" id="description" name="description" placeholder='专家描述' style="width:560px;height:75px" >{Saivi:$expert['description']}</textarea>
+                                        <span class="maroon">*</span>
+                                        <span class="help-block">最多可150字</span></td>
+				</tr>
+				<tr>
+					<th>点评内容：</th>
+					<td>
+	 <textarea class="px" id="comment" name="comment" placeholder='点评内容' style="width:560px;height:75px" >{Saivi:$expert['comment']}</textarea>
+                                        <span class="maroon">*</span>
+                                        <span class="help-block">最多可5k字</span>
+					</td>
+				</tr>
+				<th>&nbsp;</th>
+				  <if condition="$expert['id'] neq ''">
+                                    <input type="hidden" name="id" value="{Saivi:$expert['id']}" />
+                                </if>
+                                    <input type="hidden" name="pid" value="{Saivi:$pid}">
+					<td>
+						<button type="submit" name="button" class="btnGreen">保存</button>
+						<a href="javascript:history.go(-1);" class="btnGray vm">取消</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+  </div> 
+ 
+  
+        </div>
+<include file="Public:footer"/>

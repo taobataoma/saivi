@@ -1,0 +1,91 @@
+<include file="Public:head"/> 
+  <link href="{Saivi::STATICS}/vote/wap/skins/all.css?v=0.9.1" rel="stylesheet">
+    <link href="{Saivi::STATICS}/vote/wap/vote.css" rel="stylesheet">
+  <script src="{Saivi::STATICS}/vote/wap/js/jquery.js"></script>
+  <script src="{Saivi::STATICS}/vote/wap/jquery.icheck.min.js?v=0.9.1"></script>
+
+<div style="width:70%;margin-left:250px;">
+    
+
+  <div class="layout clear">
+      <div class="skin skin-line">          
+         
+            <div class="skin-section">
+              <h4>{Saivi:$vote.title}</h4>  
+             <h3><a href="{Saivi::U('Vote/index')}" class="right btn btn-primary btn_submit  J_ajax_submit_btn" style="margin-top:-27px">返回</a></h3>
+              
+             <p class="modus"> <if condition="$vote['cknums'] eq 1"> 单选<else/>多选</if>投票，<span class="number">共有{Saivi:$count}人参与投票</span></p>
+              <ul class="list">
+              <volist name="vote_item" id="li"> 
+              <if condition="$vote['cknums'] eq 1">
+          <if condition="$vote['type'] eq 'text'">
+              <li>
+                <input tabindex="{Saivi:$i}" type="radio" name="vid" value="{Saivi:$li.id}" id="line-radio-{Saivi:$i}">
+                <label for="line-radio-{Saivi:$i}">{Saivi:$li.item}</label>
+                 
+               <div class="progress-bar orange shine">
+    <span style="width: {Saivi:$li.per|default=2}%">{Saivi:$li.per}%</span> &nbsp;<span>{Saivi:$li['pro']} (人)</span>
+</div>             
+             </li>
+          <else/> <!--img-->
+                <li>
+                <span><img src="{Saivi:$li.startpicurl}" ></span>
+                <input tabindex="{Saivi:$i}" type="radio" name="vid" value="{Saivi:$li.id}" id="line-radio-{Saivi:$i}">
+                <label for="line-radio-{Saivi:$i}">{Saivi:$li.item}</label>
+                 
+                <div class="progress-bar orange shine">
+    <span style="width: {Saivi:$li.per|default=2}%">{Saivi:$li.per}%</span> &nbsp;<span>{Saivi:$li['pro']} (人)</span>
+</div>                   
+              </li>
+          </if>
+                 
+
+              <else/>
+                    <if condition="$vote['type'] eq 'text'">
+              <li>
+                <input tabindex="{Saivi:$i}" type="radio" name="vid" value="{Saivi:$li.id}" id="line-radio-{Saivi:$i}">
+                <label for="line-radio-{Saivi:$i}">{Saivi:$li.item}</label>
+                 
+                <div class="progress-bar orange shine">
+    <span style="width: {Saivi:$li.per|default=2}%">{Saivi:$li.per}%</span> &nbsp;<span>{Saivi:$li['pro']} (人)</span>
+</div>             
+             </li>
+          <else/> <!--img-->
+                <li>
+                <span><img src="{Saivi:$li.startpicurl}" ></span>
+                <input tabindex="{Saivi:$i}" type="radio" name="vid" value="{Saivi:$li.id}" id="line-radio-{Saivi:$i}">
+                <label for="line-radio-{Saivi:$i}">{Saivi:$li.item}</label>
+                 
+                <div class="progress-bar orange shine">
+    <span style="width: {Saivi:$li.per|default=2}%">{Saivi:$li.per}%</span> &nbsp;<span>{Saivi:$li['pro']} (人)</span>
+</div>                 
+              </li>
+          </if>
+              </if>
+                </volist>                  
+        </ul>             
+             
+     </div>
+    
+
+<script>
+  $(document).ready(function(){
+     $('.skin-line input').each(function(){
+       var self = $(this),
+        label = self.next(),
+        label_text = label.text();
+        
+       label.remove();
+       self.iCheck({
+         checkboxClass: 'icheckbox_line-orange',
+         radioClass: 'iradio_line-orange',
+         insert: '<div class="icheck_line-icon"></div>' + label_text
+       });       
+        
+    });
+});
+</script>  
+</div> 
+</div>  
+</div>
+<include file="Public:footer"/>

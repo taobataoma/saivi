@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>{Saivi:$tpl['wxname']}</title>
+
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<meta name="format-detection" content="telephone=no">
+
+<style type="text/css">
+
+@charset "utf-8";
+
+*{
+
+	margin:0;
+
+	padding:0;}
+
+.wz_wrapper a{
+
+	display:block;
+
+	color: #FFF;
+
+	text-decoration: none;
+
+	}
+
+
+
+.wz_flat_left{
+
+	float:left;}
+
+.wz_flat_right{
+
+	float:right;}
+
+.clfl{
+
+	float:none;
+
+	clear:both;}
+
+.wz_color_01{
+
+	background-color:#228981;}
+
+.wz_color_02{
+
+	background-color:#8019bf;}
+
+.wz_color_03{
+
+	background-color:#22601a;}
+
+.wz_color_04{
+
+	background-color:#1f4b89;}
+
+.wz_color_05{
+
+	background-color:#af1d42;}
+
+.wz_color_06{
+
+	background-color:#ce6619;}
+
+
+
+.wz_wrapper {
+
+	width: 320px;
+
+	margin-right: auto;
+
+	margin-left: auto;
+
+}
+
+.wz_line{
+
+	color:#FFF;
+
+	font-size:16px;
+
+	font-family:"微软雅黑";
+
+	background-color:#999;
+
+	height:103px;
+
+	width:100%;
+
+	margin-bottom:10px;}
+
+.wz_text{
+
+	overflow:hidden;
+
+	text-align:center;
+
+	line-height:103px;
+
+	width:103px;
+
+	height:103px;
+
+	}
+
+.wz_img{
+
+	overflow:hidden;
+
+	height:103px;
+
+	width:217px;}
+
+	
+
+.wz_img img{
+
+	width:100%;
+
+	min-height:103px;
+
+}
+
+
+
+</style><link type="text/css" rel="stylesheet" href="{Saivi::$staticFilePath}/css/touch_index.css"></head>
+
+<body>
+
+    <div id="top"></div>
+
+<div id="scnhtm5" class="m-body">
+
+<div class="menu">
+
+<a href="{Saivi::U('Store/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}"><i></i>所有商品</a>
+
+<a href="{Saivi::U('Store/cart',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}"><i></i>购物车</a>
+
+<a href="{Saivi::U('Store/my',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}"><i></i>查物流</a>
+
+<a href="{Saivi::U('Store/my',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}"><i></i>用户中心</a>
+
+</div>  <!--背景音乐-->
+
+     
+
+<div class="wz_wrapper">
+
+<php>
+
+$color=1;
+
+$f=1;
+
+</php>
+
+	<volist name="cats" id="hostlist">
+
+		<div class="wz_line">
+
+		<a href="<if condition="$hostlist['url'] eq ''">{Saivi::U('Store/products',array('token' => $_GET['token'], 'catid' => $hostlist['id'], 'wecha_id' => $wecha_id))}<else/>{Saivi:$hostlist.url}</if>">
+
+<php>
+
+		if($f==1){
+
+		$flat='left';
+
+		}else{
+
+        $flat='right';
+
+		}
+
+		echo '		<div class="wz_text wz_color_0'.$color.' wz_flat_'.$flat.'">';
+
+		$color++;
+
+		$f++;
+
+		if($color==7){
+
+		$color=1;
+
+		}
+
+		if($f==3){
+
+		$f=1;
+
+		}
+
+</php>
+
+{Saivi:$hostlist.name}</div>
+
+		<div class="wz_img "><img src="{Saivi:$hostlist.logourl}"/></div></a>
+
+		<div class="clfl"></div>
+
+		</div>
+
+	</volist>
+
+</div>
+
+<div class="copyright" style="text-align:center;"><if condition="$iscopyright eq 1">{Saivi:$homeInfo.copyright}<else/>{Saivi:$siteCopyright}</if></div>
+
+  
+
+<script type="text/javascript" src="/tpl/Wap/default/common/js/ChatFloat.js"></script>
+<if condition="$kefu['sc'] eq '1'"><a href="{Saivi:$kefu.info2}" id="CustomerChatFloat" style="position: fixed; right: 0px; top: 150px; z-index: 99999; height: 70px; width: 65px; min-width: 65px; background-image: url(/tpl/Wap/default/common/css/img/MobileChatFloat.png); background-size: 65px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;"></a></if></body>
+
+</html>
+
+
+
+
+

@@ -1,0 +1,53 @@
+body {
+    background: url(../../img/bg.jpg) !important;
+}
+
+.weimob-content{
+    background:inherit;
+}
+
+.weimob-list-item{
+    width:47%;
+    height: 96px;
+    display: inline-block;
+    padding: 1%;
+    background: none;
+    border:none;
+}
+
+.weimob-list-item-bg{
+    min-height: 100%;
+    background: url(../../img/item_bg.png);
+    background-size: 100% 100%;
+}
+
+.weimob-list-item-image{
+    position: relative;
+    margin: auto;
+    left : 0;
+    top:10px;
+    width:48px;height: 48px;
+}
+
+.weimob-list-item-box{
+    top:20px;
+    position: relative;
+    margin: auto;
+    display: table;
+}
+
+.weimob-list-item-line{
+    padding: 0;
+    margin: auto;
+    text-align: center;
+    max-width: 88%;
+}
+
+.weimob-list-item-title{
+    color:#FFFFFF;
+    font-size: 14px;
+}
+
+.weimob-copyright{
+    color: #FFFFFF;
+}

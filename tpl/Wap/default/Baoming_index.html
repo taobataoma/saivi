@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0069)http://w.17ll.com/apply/apply-51-.html?from=timeline&isappinstalled=0 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>{Saivi:$info.zhuti}</title>
+
+<meta charset=UTF-8">
+<meta name="viewport" content="target-densitydpi=get-target-densitydpi,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width, user-scalable=no">
+<meta name="apple-touch-fullscreen" content="no">
+<meta content="telephone=no" name="format-detection">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link href="http://w.17ll.com/apply/ico/s2.png" rel="apple-touch-icon-precomposed"> 
+<link href="http://w.17ll.com/apply/ico/s1.png" sizes="114x114" rel="apple-touch-icon-precomposed">  
+
+<link rel="stylesheet" type="text/css" href="{Saivi::RES}/baoming/index.css">
+
+<script type="text/javascript" language="javascript" src="{Saivi::RES}/baoming/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/baoming/thickbox.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/baoming/touchslider.dev.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/baoming/touchScroll.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/baoming/awap.js" ></script>
+<script type="text/javascript" language="javascript" src="{Saivi::RES}/baoming/topHeight.js"></script>
+<script type="text/javascript" src="{Saivi::RES}/baoming/weixin.js"></script>
+
+<style >
+
+body{}
+.bgHeight{ }
+img{ width:100%}
+</style>
+</head>
+
+<body>
+
+
+<header class="top box_shadow_1 clearfix">
+	<div class="top_btnL fl"><a href="javascript:void(0);" onclick="history.go(-1);">返回</a></div>
+    <div class="top_btnR2 fr"><a href="javascript:void(0);" onclick="apply1();">报名</a></div>
+    <p class="top_title">活动报名</p>
+</header>
+<div class="height45"></div>
+
+
+<article class="explain_warp">
+
+     <div class="bgHeight"></div>
+	 
+     <h3 class="ex_title">{Saivi:$info.zhuti}</h3>
+     <ul class="ex_list">
+     	<!-- <li><a href="javascript:void(0);">时间：{Saivi:$info.time}</a></li><li><a href="javascript:void(0);">费用：{Saivi:$info.feiyong}</a></li>
+     </ul>
+     <a class="ex_btn" href="javascript:void(0);" onclick="apply1();">我要报名</a>
+          <div class="ex_banner ex_txt4"><img src="{Saivi:$info.banner}"></div>
+     
+     
+     <div class="ex_txt ex2_txt">
+   {Saivi:$info.info|htmlspecialchars_decode}
+     </div>
+     
+     <div class="btn_list">
+        <a class="btn_mobile1 apply" onclick="apply1();" href="javascript:void(0);">我要报名</a>
+        <!--<a class="btn_general btn3" onclick="apply2();" href="javascript:void(0);">查看已报名人员信息</a>-->
+        
+     
+    </div>
+     
+     
+</article>
+
+<div class="J_Shade"></div>
+
+
+<div class="apply_box apply_box1">
+	<p>输入报名信息</p>
+    <form id="baoMingForm" action="index.php?g=Wap&m=Baoming&a=add" method="post">
+    <input type="text" id="username" name="username" placeholder="真实姓名（必填）" maxlength="4" value="">
+    <input type="text" onblur="check3(this)" id="phone" name="phone" placeholder="手机，非常重要，唯一身份析别（必填）" maxlength="11" value="">
+    <input type="text" id="weixin" name="weixin" placeholder="微信，唯一互联网联系方式（必填）" maxlength="30" value="">
+    <input type="text" id="beizhu" name="beizhu" placeholder="备注，附加说明" maxlength="25">
+    
+	<input type="hidden" name="wecha_id" id="wecha_id" value="{Saivi:$wecha_id}" />
+    <input type="hidden" name="pid" id="id" value="{Saivi:$id}" />
+	<input type="hidden" name="token" id="token" value="{Saivi:$token}" />
+    <div class="apply_boxBtn clearfix">
+        <ul>
+          <li class="sub" id="BtnOn1"><input id="aid" name="aid" type="hidden" value="51"><input class="BtnOn1" id="BtnOn1" type="button" value="提交" onclick="apply_save();"></li>
+           <li class="sub2" id="BtnOn2">提交</li>
+           <li class="reset fr" id="BtnOn3">取消</li>
+        </ul>
+    </div>
+    </form>
+</div>
+
+
+<div class="apply_box apply_box2">
+	<p>请输入管理密码</p>
+    <input id="pwd" name="pwd" type="password" required="" placeholder="输入管理密码" maxlength="16">
+    <div class="apply_boxBtn clearfix">
+    	<ul>
+           <li class="sub" id="BtnOn4"><input class="BtnOn1" id="BtnOn1" type="submit" value="提交" onclick="apply_user_check();"></li>
+           <li class="sub2" id="BtnOn5">提交</li>
+           <li class="reset fr" id="BtnOn6">取消</li>
+        </ul>
+    </div>
+</div><div class="net_re" id="net_re"></div>
+
+
+
+<div id="foot">
+
+<div class="height45"></div>
+
+<div class="footer2 gradient_7 box_shadow_1">
+	    <a href="{Saivi::U('Index/index',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id']))}" ><div class="footer2_left fl">首页</div></a>
+     <div class="fr">
+        <a href="javascript:void(0);" onclick="apply1();"><div class="footer2_right fl"><div class="footer2_right_2">报名</div></div></a><a href="javascript:void(0);" onclick="window.location.reload();"><div class="footer2_right fl"><div class="footer2_right_2">刷新</div></div></a>
+     </div>
+</div>
+
+</div>
+<div class="WeiXinShareShow" onclick="shareWebClose()"></div>
+<div class="ShareOn" onclick="shareWeb('weixin')"></div><div class="J_Shade"></div>
+<div class="J_Shade_tip">
+    <img class="J_Shade_tip_img" src="{Saivi::RES}/baoming/share_tip_txt1.png">
+    <div class="vote_tip_operate">
+        <div class="yl"><a href="javascript:void(0);">预览</a></div>
+        <div class="zf"><a href="javascript:void(0);" onclick="location.href=&#39;apply-add.html&#39;;">再发一条</a></div>
+        <div class="fq"><a href="javascript:void(0);">放弃</a></div>
+    </div>
+</div>
+
+<script>
+/*保存报名数据开始*/
+function apply_save() {
+
+	var username=$("#username").val();
+	var phone=$("#phone").val();
+	var weixin=$("#weixin").val();
+	var beizhu=$("#beizhu").val();	
+	var aid=$("#aid").val();
+
+	if (aid=="" || isNaN(aid)) {
+       alert("数据异常！");
+       return false;
+    }
+	
+	if (username == "" || username.length > 4 || username.length < 2) {
+       alert("提示：请正确输入真实姓名！");
+       return false;
+    }
+	
+	if (isChn(username)==false) return (false);
+	
+	if (phone == "" || phone.length != 11 || isNaN(phone)) {
+       alert("提示：请正确输入手机！");
+       return false;
+    }
+	
+	if (checkPhone(phone)==false) return (false);
+	
+	if (weixin == "" || weixin.length > 30) {
+       alert("提示：请正确输入微信帐号！");
+       return false;
+    }
+	
+	if (beizhu != "" && (beizhu==" " || beizhu=="　")) {
+       alert("提示：请正确输入备注！");
+       return false;
+    }
+	
+	$("#BtnOn1").css("display","none");
+	$("#BtnOn2").css("display","inline");
+	//$("#BtnOn3").css("display","none");
+	
+	$("#baoMingForm").submit();
+	
+}
+
+
+
+function apply_save_re(a1) {
+   if (a1=="no"){
+	  $("#BtnOn1").css("display","inline");
+	  $("#BtnOn2").css("display","none");
+	  $("#BtnOn3").css("display","inline");
+   }
+   
+   if (a1=="yes"){
+      apply1();	
+	  $("#BtnOn1").css("display","inline");
+	  $("#BtnOn2").css("display","none");
+	  $("#BtnOn3").css("display","inline");
+   }
+}
+/*保存报名数据结束*/
+
+</script>
+<script type="text/javascript">
+window.shareData = {
+            "moduleName":"Baoming",
+            "moduleID":"0",
+            "imgUrl": "{Saivi:$info.banner}",
+            "sendFriendLink": "{Saivi::C('site_url')}{Saivi::U('Baoming/index',array('token'=>$token,'id'=>$_GET['id']))}",
+            "tTitle": "{Saivi:$info.zhuti}",
+            "tContent": " 时间：{Saivi:$info.time}费用：{Saivi:$info.feiyong}"
+        };
+</script>
+{Saivi:$shareScript}
+</body></html>

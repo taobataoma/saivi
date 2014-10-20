@@ -1,0 +1,441 @@
+<include file="Dining:header"/>
+
+<script src="{Saivi::RES}/weidingcan/index/js/alert.js" type="text/javascript"></script>
+
+<style>
+
+.cpbiaoge tr:hover{ background-color:#FFC;}
+
+.f_order_list{padding:10px;}
+
+.f_order_list dt{float:left;height:60px; display:block; margin-right:10px;}
+
+.f_order_list dt.pic{width:50px;}
+
+.f_order_list dt.tit{width:60px;}
+
+.f_order_list dt.price{width:100px;}
+
+.f_order_list dd{border:1px solid #e0e0e0; display:block;float:left; margin-top:5px; display:block;width:20px;}
+
+.f_order_list dd label{display: block;height:20px;height:20px; overflow:hidden; }
+
+.f_order_list dd input{ display:none;}
+
+.f_order_list dd.on{border:2px solid #f90; position: relative; color: #F90}
+
+.f_order_list dd.on:after{content: " "; position: absolute; right: 0px; bottom: 0px; width: 0px; height: 0px; border-right: 5px solid #f90; border-bottom: 5px solid #f90; border-left: 5px solid #fff; border-top: 5px solid #fff;}
+
+</style>
+
+</head>
+
+<body class="mode_webapp">
+
+<div class="menu_header"> 
+
+ <div class="menu_topbar">
+
+  <strong class="head-title">桌台预定</strong>
+
+  <span class="head_btn_left"><a href="javascript:history.go(-1);"><span>返回</span></a><b></b></span>
+
+  <a class="head_btn_right" href="{Saivi::U('Dining/index',array('token'=>$token,'wecha_id'=>$wecha_id))}">
+
+  <span><i class="menu_header_home"></i></span><b></b>
+
+  </a>
+
+ </div>
+
+</div>
+
+<!--简介-->
+
+<div id="mcover" onClick="document.getElementById('mcover').style.display='';">
+
+<div id="Popup">
+
+	<div class="imgPopup">
+
+		<img  id="picsrc" src=""><h3 id="h3title" ></h3>
+
+    <p class="jianjie" id="jianjie" > </div>
+
+</div>
+
+    <a class="close" onClick="document.getElementById('mcover').style.display='';">X</a>
+
+</div>	
+
+<script>
+
+function htmlit(url,title,intro,fid){
+
+document.getElementById('mcover').style.display='block';
+
+document.getElementById('Popup').style.display='block';
+
+document.getElementById("picsrc").src = url;
+
+document.getElementById("h3title").innerHTML = title;
+
+document.getElementById("jianjie").innerHTML = intro;
+
+}
+
+</script>
+
+<!--简介end-->
+
+<div class="cardexplain">
+
+<form name="infoForm" id="infoForm" method="post" action="{Saivi::U('Dining/dingdanpost',array('token'=>$token,'wecha_id'=>$wecha_id,'storeid'=>$storeid))}" >
+
+<input type="hidden" name="issubmit" value="0">
+
+<input type="hidden" name="goodsData" id="goodsData" value="">
+
+<input type="hidden" name="price" id="price" value="0" />
+
+<input type="hidden" name="count" id="count" value="1" />
+
+<input type="hidden" name="diningtype" id="count" value="{Saivi:$dtype}" />
+
+<ul class="round desks" id="desks">
+
+<li class="title"><b id="total_price" style="float:right; margin-top:2px;font-size:12px;color:red;"></b><span class="none smallspan">桌台列表</span></li>
+
+<dl class="f_order_list single">
+
+<volist name="tables" id="t">
+
+<dt class="pic"><img src="{Saivi:$t.picurl}" width="50" height="50" onClick="htmlit('{Saivi:$t.picurl}','{Saivi:$t.name}','{Saivi:$t.intro}','{Saivi:$t.id}')"></dt>
+
+<dt class="tit"><b>{Saivi:$t.name}</b></dt><dt class="price"><font color="#999">订金：</font>{Saivi:$t.price}元</dt>
+
+<dd id="table_radio_{Saivi:$t.id}" <if condition="$i eq 0">class = "on"</if>><label for="tableid_{Saivi:$t.id}">
+
+<input type="radio" name="tableid" id="tableid_{Saivi:$t.id}" class="radio_tableid"  value="{Saivi:$t.id}" /></label>
+
+<input type="hidden" name="tbprice_{Saivi:$t.id}" id="tbprice_{Saivi:$t.id}" value="{Saivi:$t.price}" />
+
+</dd>
+
+<div class="clr"></div>
+
+</volist>
+
+</dl>
+
+</ul>
+
+<ul class="round" style="margin-top:2px">  
+
+<li class="title">
+
+<table style="padding: 0; margin: 0;"  width="100%">
+
+<tbody>
+
+<tr style="width:100%">
+
+    <td width="80">就餐日期：</td>
+
+    <td>
+
+    <select name="buytimestamp" id="buytimestamp" onChange="tables()"  class="dropdown-select" style="float:left;width:40%;">
+
+    <volist name="dateTimes" id="d">
+
+    <option value="{Saivi:$d}"><php>echo date('m月d日',$d);</php></option>
+
+    </volist>
+
+    </select>  
+
+    <select name="hour" id="hour" onChange="tables()"  class="dropdown-select" style="float:left; margin-left:8px; width:40%;">
+
+    <option value="" selected>选择时间</option>
+
+    <volist name="hours" id="h">
+
+    <option value="{Saivi:$h}"><php>echo $h.'时';</php></option>
+
+    </volist>
+
+    </select>
+
+    <input type="hidden" placeholder="请输入具体日期和时间" id="buytime" name="buytime" value="" />
+
+    </td>
+
+    </tr>
+
+<tr>
+
+<td><label for="name">联系人：</label></td>
+
+<td>
+
+<div class="ui-input-text"><input type="text" id="name" name="truename" value="{Saivi:$thisUser.truename}" placeholder="如：惠先生" class="ui-input-text"></div>
+
+</td>
+
+</tr>
+
+<tr id="nameinfo-layout" style="display: none;">
+
+<td></td>
+
+<td colspan="2" id="nameinfo" class="cart-editalertinfo"></td>
+
+</tr>
+
+<tr>
+
+<td><label for="phone">电话：</label></td>
+
+<td>
+
+<div class="ui-input-text"><input type="tel" id="phone" name="tel" value="{Saivi:$thisUser.tel}" placeholder="如：13295218495" class="ui-input-text"></div>
+
+</td>
+
+</tr>
+
+<tr id="phoneinfo-layout" style="display: none;">
+
+<td></td>
+
+<td colspan="2" id="phoneinfo" class="cart-editalertinfo"></td>
+
+</tr>
+
+<tr>
+
+<td><label for="address">地址：</label></td>
+
+<td>
+
+  <textarea name="address" class="ui-input-text" id="address" placeholder="如：XX路XX小区">{Saivi:$thisUser.address}</textarea>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td><label for="dingbei">备注：</label></td>
+
+<td>
+
+  <textarea name="dingbei" class="ui-input-text" id="dingbei" >{Saivi:$thisUser.dingbei}</textarea>
+
+</td>
+
+</tr>      
+
+</tbody>
+
+</table>
+
+</li>
+
+</ul>
+
+<a id="orderbtn" class="submit2" href="javascript:submitOrder();">在线预定</a>
+
+</form>
+
+</div>
+
+<include file="Dining:footer"/>
+
+<script type="text/javascript" >
+
+function g(id){
+
+	return document.getElementById(id);
+
+}
+
+function submitOrder(){
+
+	vailReSubmit();
+
+	if(valiForm()) {
+
+		return;
+
+	}
+
+	var tableid=$("input[name='tableid']:checked").val();
+
+	if(!tableid){
+
+		alert('请选择桌台！');
+
+	}
+
+	g('price').value = g('tbprice_'+tableid).value;
+
+	document.forms[0].submit();
+
+	document.infoForm.issubmit.value=1;//不能再提交
+
+}
+
+function valiForm(){
+
+	var phonePattern = /^((\(\d{3}\))|(\d{3}\-))?(\(0\d{2,3}\)|0\d{2,3}-)?[1-9]\d{6,7}$/;
+
+	var mobilePattern = /^1\d{10}$/;
+
+	var flag = false;
+
+	if(g("name").value.length < 1){
+
+		alert("联系人不能为空");
+
+		return  true;
+
+	}
+
+	if(!(phonePattern.test(g("phone").value) || mobilePattern.test(g("phone").value))){
+
+		alert("亲，您的联系电话格式有误！");
+
+		return true;
+
+	}
+
+	if(g("address").value.length < 1){
+
+		alert("收货地址不能为空");
+
+		return  true;
+
+	}
+
+	return flag;
+
+}
+
+function vailReSubmit(){
+
+	if(document.infoForm.issubmit.value == 0){
+
+		return true;
+
+	}
+
+	else{
+
+		alert(' 按一次就够了，请勿重复提交！请耐心等待！谢谢合作！');
+
+		return false;
+
+	}
+
+}
+
+$('.desks dd').click(function(){
+
+    $(this).parent().children('.on').removeClass('on');
+
+    $(this).addClass('on');
+
+    $(this).parent().children('input').removeAttr('checked');
+
+    $(this).children('input').attr('checked', 'true');    
+
+}) 
+
+function tables(){
+
+	var timestamp=g("buytimestamp").value;
+
+	var hour=g("hour").value;
+
+	$.ajax({
+
+		url:"{Saivi::U('Dining/ajaxTables',array('token'=>$token,'wecha_id'=>$wecha_id,'storeid'=>$storeid))}&time="+timestamp+"&hour="+hour,
+
+		success : function(data) {
+
+			if(data){
+
+				var tableids=data.split(',');
+
+				var count=tableids.length;
+
+				if(count){
+
+					$('.radio_tableid').attr("checked", false);
+
+					$('.f_order_list dd').removeClass('on');
+
+					$('.f_order_list dd').css('display','');
+
+					for(i=0;i<count;i++){
+
+						var id=tableids[i];
+
+						if($('#table_radio_'+id)){
+
+							$('#table_radio_'+id).css('display','none');
+
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+	});
+
+}
+
+</script>
+
+<script type="text/javascript" src="{Saivi::RES}/weidingcan/oakshopcart.js"></script>
+
+<script type="text/javascript" >
+
+var cart = new OAK.Shop.Cart();
+
+cart.showTotalNum = function(){
+
+    var quant = cart.getQuantity();
+
+	document.getElementById("cartN2").innerHTML = ""+quant.totalNumber;
+
+};
+
+window.onload = function () {
+
+	cart.getFromCache();
+
+	cart.showTotalNum();
+
+}
+
+</script>
+
+<script type="text/javascript">
+
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+	WeixinJSBridge.call('hideToolbar');
+
+});
+
+</script>
+
+</body>
+
+</html>

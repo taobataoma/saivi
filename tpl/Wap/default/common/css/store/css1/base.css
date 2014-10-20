@@ -1,0 +1,31 @@
+@charset "utf-8";
+/************************
+ * 描述：HTML5基类样式
+ * 作者：Gibil
+ * 时间：2013-11-15
+************************/
+
+/* 常用标签初始样式 */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video
+{ margin:0; padding:0; border:0; font-size:100%; font:inherit; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display:block; }
+body { line-height:1.5; font-size:13px; font-family:Arial,Helvetica,SimSun,sans-serif,"Microsoft YaHei"; background-color:#efefef; }
+ol, ul { list-style:none; }
+blockquote, q { quotes:none; }
+blockquote:before, blockquote:after, q:before, q:after { content:''; content:none; }
+table { border-collapse:collapse; border-spacing:0; }
+a { text-decoration:none; }
+
+/* 自定义通用样式 */
+.clear { clear:both; }
+.blank { height:10px; }
+.hide { display:none; }
+.gray { color:gray; }
+.paddingtb10 { padding:10px 0; }
+.paddinglr10 { padding:0 10px; }
+.padding10 { padding:10px; }
+.rmb { font-family:"Microsoft YaHei"; }
+.red { color:#d30000; }
+.none { display:none; }
+.disabled { color:#ccc; }
+.pointer { cursor:pointer; }

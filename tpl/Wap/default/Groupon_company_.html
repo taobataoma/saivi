@@ -1,0 +1,45 @@
+<include file="Groupon:header_0"/>
+    <div id="deal-bizinfo" class="box-style deal-bizinfo">
+        <h2><span class="icon-fonts">H</span>总店信息</h2>
+
+            <div class="biz-info">
+                <a href="{Saivi::U('Groupon/company',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'id'=>$product['id']))}">
+                    <div class="biz-detail">
+                        <p class="title ell"> {Saivi:$thisCompany.name}</p>
+
+                        <p class="address ell">{Saivi:$thisCompany.address}</p>
+                    </div>
+                </a>
+
+                <div class="icon-fonts call">
+                    <a href="tel:{Saivi:$thisCompany.tel}">E</a>
+                </div>
+            </div>
+            <a class="more" href="{Saivi::U('Groupon/companyMap',array('token'=>$_GET['token'],'id'=>$_GET['id'],'companyid'=>$thisCompany['id'],'wecha_id'=>$_GET['wecha_id']))}">查看地图</a>
+            
+    </div>
+    
+    <Saiviif where="$branchStoreCount gt 0">
+    <div id="deal-bizinfo" class="box-style deal-bizinfo">
+        <h2><span class="icon-fonts">H</span>分店信息</h2>
+        <Saivilist array="branchStores" foreach="s">
+            <div class="biz-info">
+                <a href="{Saivi::U('Groupon/company',array('token'=>$_GET['token'],'wecha_id'=>$_GET['wecha_id'],'id'=>$product['id']))}">
+                    <div class="biz-detail">
+                        <p class="title ell"> {Saivi:$s.name}</p>
+
+                        <p class="address ell">{Saivi:$s.address}</p>
+                    </div>
+                </a>
+
+                <div class="icon-fonts call">
+                    <a href="tel:{Saivi:$s.tel}">E</a>
+                </div>
+            </div>
+            
+            <a class="more" href="{Saivi::U('Groupon/companyMap',array('token'=>$_GET['token'],'id'=>$_GET['id'],'companyid'=>$s['id'],'wecha_id'=>$_GET['wecha_id']))}">查看地图</a><br>
+            </Saivilist>
+            
+    </div>
+    </Saiviif>
+<include file="Groupon:footer_0"/>

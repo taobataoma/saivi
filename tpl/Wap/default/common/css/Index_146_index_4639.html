@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>{Saivi:$tpl.wxname}</title>
+        <base href="." />
+        <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="format-detection" content="telephone=no" />
+		<link href="{Saivi::RES}/css/4639/cate46_0.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="{Saivi::RES}/css/flash/css/plugmenu.css">
+        <script src="{Saivi::RES}/css/4639/iscroll.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var myScroll;
+
+            function loaded() {
+                myScroll = new iScroll('wrapper', {
+                    snap: true,
+                    momentum: false,
+                    hScrollbar: false,
+                    onScrollEnd: function () {
+                        document.querySelector('#indicator > li.active').className = '';
+                        document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+                    }
+                });
+ 
+ 
+            }
+
+            document.addEventListener('DOMContentLoaded', loaded, false);
+        </script>
+    </head>
+
+<body style="margin:0 auto;text-align:center;">
+	<div id="wrapper">
+		<div id="scroller">
+			<ul id="thelist">
+					<volist name="flash" id="so">
+						<li><p>{Saivi:$so.info}</p><if condition="$so['url'] eq ''"><img src="{Saivi:$so.img}" /><else/><a href="{Saivi:$so.url}"><img src="{Saivi:$so.img}" /></a></if></li>
+					</volist>
+							</ul>
+		</div>
+	</div>
+	<div id="nav">
+			<div id="prev" onclick="myScroll.scrollToPage('prev', 0,400,3);return false">&larr; prev</div>
+			<ul id="indicator">
+			<volist name="flash" id="so">
+			<li   <if condition="$i eq 1">class="active"</if>  >{Saivi:$i}</li>
+			</volist>
+			 
+			</ul>
+			<div id="next" onclick="myScroll.scrollToPage('next', 0);return false">next &rarr;</div>
+	</div>
+	<div class="clr"></div>
+</div>
+	
+	<img src="{Saivi::RES}/css/4639/head.png" width="100%" >
+    
+	<div class="main" style="margin:0 auto;width:280px;">
+	<php>$f=1;</php>
+
+
+    	<ul>
+		<volist name="info" id="vo">
+    	<php>
+		if($f==1){
+		$f++;
+		$flat='m1';
+		}else{
+        $flat='m2';
+		$f=1;
+		}
+		echo '<li id="'.$flat.'">';
+		</php>
+                      	<div>
+                	  <a href="<if condition="$vo['url'] eq ''">{Saivi::U('Wap/Index/lists',array('classid'=>$vo['id'],'token'=>$vo['token']))}<else/>{Saivi:$vo.url|htmlspecialchars_decode}</if>">
+                    <span  class="icon" style="background:url({Saivi:$vo.img}) no-repeat;background-size:98px 93px;margin:-26px 0 0;"><em></em></span>
+                    <span class="title">{Saivi:$vo.name}</span>
+                    </a>
+                </div>
+		</volist>
+            </li>
+                                
+                    </ul>
+    </div>
+
+	<script>
+
+
+            var count = document.getElementById("thelist").getElementsByTagName("img").length;	
+
+
+            for(i=0;i<count;i++){
+                document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
+
+            }
+
+            document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
+
+
+            setInterval(function(){
+                myScroll.scrollToPage('next', 0,400,count);
+            },3500 );
+
+            window.onresize = function(){ 
+                for(i=0;i<count;i++){
+                    document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
+
+                }
+
+                document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
+            } 
+
+	</script>
+
+        <div id="insert2"></div>
+        <div style="display:none"> </div>
+
+
+<script src="{Saivi::RES}/css/4639/zepto.min.js" type="text/javascript"></script>
+<script src="{Saivi::RES}/css/4639/plugmenu.js" type="text/javascript"></script>
+<div class="copyright">
+<if condition="$iscopyright eq 0">
+<else/>
+</if>
+</div> 
+<div style="text-align:center; color:#fff; font-size:10px;">{Saivi:$homeInfo.copyright}</div>
+<div style="display:none"> {Saivi:$tpl.tongji|htmlspecialchars_decode}</div>
+    
+<include file="Index:styleInclude"/>
+</body></html>

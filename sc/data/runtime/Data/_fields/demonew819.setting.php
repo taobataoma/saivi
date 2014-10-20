@@ -1,0 +1,1 @@
+{"0":"token","1":"name","2":"data","3":"remark","_autoinc":false,"_type":{"token":"varchar(50)","name":"varchar(100)","data":"text","remark":"varchar(255)"}}

@@ -1,0 +1,133 @@
+.body{
+	max-width:640px;
+	margin:auto;
+	min-height:100%;
+	position:relative;
+}
+
+.body{
+	display:block;
+	/*background:#eeeeee;*/
+}
+
+/******************************/
+.header2{
+	position: relative;
+}
+.header2 img{
+	width:100%;
+	min-height:100px;
+	max-height:320px;
+}
+
+.header2 a.tel{
+	font-size:14px;
+	padding-left:10px;
+	display:block;
+	width:100%;
+	height:40px;
+	line-height:40px;
+	color:#fff;
+	background:#6898a1;
+	-webkit-box-sizing:border-box;
+}
+.header2 a.tel span{
+	float:right;
+	margin-right:10px;
+	border-radius:30px;
+	border:3px solid #fff;
+	height:30px;
+	width:30px;
+	-webkit-box-sizing:border-box;
+	margin-top:5px;
+	font-size:20px;
+	text-indent:2px;
+	line-height:25px;
+}
+
+/**********************************/
+.nav_for_list_ul ul:first-of-type{
+	text-align: center;
+	background:#fff;
+	text-align:center;
+}
+.nav_for_list_ul ul:first-of-type li{
+	width:8px;
+	height:8px;
+	background:#eaeaea;
+	border-radius: 5px;
+	display:inline-block;
+	margin:8px 3px;
+}
+.nav_for_list_ul ul:first-of-type li.on{
+	background:#cacaca;
+}
+
+.nav_for_list_ul ul:nth-of-type(2){
+	height:43px;
+	border-bottom:3px solid #eaeaea;
+	background:-webkit-gradient(linear, 0 0, 0 80%, from(#efefef), to(#fff));
+	-webkit-box-sizing:border-box;
+	white-space: nowrap;
+}
+
+.nav_for_list_ul ul:nth-of-type(2) li{
+	width:33.3%;
+	display:inline-block;
+	-webkit-box-sizing:border-box;
+}
+.nav_for_list_ul ul:nth-of-type(2) li a{
+	display:block;
+	height:43px;
+	line-height:40px;
+	text-align: center;
+	color:#6898a1;
+	overflow: hidden;
+	margin:0 10px;
+	color:#666666;
+}
+
+.nav_for_list_ul ul:nth-of-type(2) li a.on{
+	color:#6898a1;
+	height:40px;
+	border-bottom: 3px solid #6898a1;
+}
+
+
+.list_uls li{
+	
+}
+.list_uls dl{
+	overflow: hidden;
+}
+
+.list_uls dl dd{
+	display:inline-block;
+	width:33.33%;
+	float:left;
+	text-align: center;
+}
+.list_uls dl dd a{
+	display: block;
+	margin:8px;
+}
+
+.list_uls dl dd a figure>div{
+	width:85px;
+	height:60px;
+	overflow: hidden;
+	border-radius:5px;
+	margin: auto;
+}
+.list_uls dl dd a figure>div img{
+	width:100%;
+	min-height: 100%;
+}
+.list_uls dl dd a figcaption label{
+	display: block;
+	line-height:25px;
+	height:25px;
+	overflow: hidden;
+	color:#333333;
+	font-size:14px;
+}
